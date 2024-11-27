@@ -15,7 +15,7 @@ namespace MH3
                 .Subscribe((actor, inputController.Actions), static (_, t) =>
                 {
                     var velocity = t.Actions.Player.Move.ReadValue<Vector2>();
-                    t.actor.MovementController.Move(new Vector3(velocity.x, 0, velocity.y));
+                    t.actor.MovementController.Move(new Vector3(velocity.x, 0, velocity.y) * t.actor.SpecController.MoveSpeed);
                     if(velocity != Vector2.zero)
                     {
                         t.actor.MovementController.Rotate(Quaternion.LookRotation(new Vector3(velocity.x, 0, velocity.y)));

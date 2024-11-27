@@ -9,6 +9,8 @@ namespace MH3.ActorControllers
         private Vector3 velocity;
 
         private Quaternion rotation;
+
+        private float rotationSpeed;
         
         private readonly ReactiveProperty<bool> isMoving = new(false);
         public ReadOnlyReactiveProperty<bool> IsMoving => isMoving;
@@ -19,6 +21,7 @@ namespace MH3.ActorControllers
 
         public void Setup(Actor actor)
         {
+            SetRotationSpeed(actor.SpecController.RotationSpeed);
             actor.UpdateAsObservable()
                 .Subscribe(actor, (_, a) =>
                 {
@@ -35,7 +38,7 @@ namespace MH3.ActorControllers
 
                     if (rotation == Quaternion.identity || CanRotate.Value)
                     {
-                        a.transform.rotation = Quaternion.Slerp(a.transform.rotation, rotation, Time.deltaTime);
+                        a.transform.rotation = Quaternion.Slerp(a.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
@@ -49,6 +52,11 @@ namespace MH3.ActorControllers
         public void Rotate(Quaternion rotation)
         {
             this.rotation = rotation;
+        }
+
+        public void SetRotationSpeed(float rotationSpeed)
+        {
+            this.rotationSpeed = rotationSpeed;
         }
     }
 }

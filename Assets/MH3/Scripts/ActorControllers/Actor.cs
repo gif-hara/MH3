@@ -7,6 +7,9 @@ namespace MH3.ActorControllers
     public class Actor : MonoBehaviour
     {
         [SerializeField]
+        private ActorSpec spec;
+
+        [SerializeField]
         private ScriptableSequences initialState;
         
         public ActorMovementController MovementController { get; private set; }
@@ -14,9 +17,12 @@ namespace MH3.ActorControllers
         public ActorStateMachine StateMachine { get; private set; }
         
         public ActorStateProvider StateProvider { get; private set; }
+
+        public ActorSpecController SpecController { get; private set; }
         
         void Awake()
         {
+            SpecController = new ActorSpecController(spec);
             MovementController = new ActorMovementController();
             StateMachine = new ActorStateMachine(this, initialState);
             StateProvider = new ActorStateProvider(this);
