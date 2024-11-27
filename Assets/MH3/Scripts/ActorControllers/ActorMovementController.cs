@@ -8,16 +8,24 @@ namespace MH3.ActorControllers
     {
         private Vector3 velocity;
         
-        private Vector3 lastVelocity;
+        private readonly ReactiveProperty<bool> isMoving = new(false);
+        public ReadOnlyReactiveProperty<bool> IsMoving => isMoving;
 
         public void Setup(Actor actor)
         {
             actor.UpdateAsObservable()
                 .Subscribe(actor, (_, a) =>
                 {
-                    a.transform.position += velocity * Time.deltaTime;
-                    lastVelocity = velocity;
-                    velocity = Vector3.zero;
+                    if (velocity == Vector3.zero)
+                    {
+                        isMoving.Value = false;
+                    }
+                    else
+                    {
+                        a.transform.position += velocity * Time.deltaTime;
+                        velocity = Vector3.zero;
+                        isMoving.Value = true;
+                    }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
@@ -25,11 +33,6 @@ namespace MH3.ActorControllers
         public void Move(Vector3 velocity)
         {
             this.velocity = velocity;
-        }
-        
-        public bool IsMoving()
-        {
-            return lastVelocity != Vector3.zero;
         }
     }
 }
