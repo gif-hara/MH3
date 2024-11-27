@@ -12,9 +12,8 @@ namespace MH3.ActorControllers
 
         private readonly Actor actor;
         
-        private ScriptableSequences currentStateSequence;
+        private ScriptableSequences stateSequences;
         
-        private ScriptableSequences nextStateSequence;
         
         public ActorStateMachine(Actor actor, ScriptableSequences initialState)
         {
@@ -29,18 +28,16 @@ namespace MH3.ActorControllers
         
         public void ChangeState(ScriptableSequences sequence)
         {
-            nextStateSequence = sequence;
+            stateSequences = sequence;
             stateMachine.Change(State);
         }
         
         private async UniTask State(CancellationToken scope)
         {
-            currentStateSequence = nextStateSequence;
             var container = new Container();
             container.Register("Actor", actor);
-            var sequencer = new Sequencer(container, currentStateSequence.Sequences);
+            var sequencer = new Sequencer(container, stateSequences.Sequences);
             await sequencer.PlayAsync(scope);
-            currentStateSequence = null;
         }
     }
 }
