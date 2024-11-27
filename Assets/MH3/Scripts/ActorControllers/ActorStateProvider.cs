@@ -9,6 +9,7 @@ namespace MH3.ActorControllers
         {
             IsMoving,
             CanMove,
+            CanRotate,
         }
 
         private readonly Actor actor;
@@ -24,6 +25,7 @@ namespace MH3.ActorControllers
             {
                 BooleanType.IsMoving => actor.MovementController.IsMoving,
                 BooleanType.CanMove => actor.MovementController.CanMove,
+                BooleanType.CanRotate => actor.MovementController.CanRotate,
                 _ => throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}"),
             };
         }
@@ -34,6 +36,9 @@ namespace MH3.ActorControllers
             {
                 case BooleanType.CanMove:
                     actor.MovementController.CanMove.Value = value;
+                    break;
+                case BooleanType.CanRotate:
+                    actor.MovementController.CanRotate.Value = value;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}");
