@@ -36,10 +36,7 @@ namespace MH3.ActorControllers
                     }
                     velocity = Vector3.zero;
 
-                    if (rotation != Quaternion.identity)
-                    {
-                        a.transform.rotation = Quaternion.Slerp(a.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-                    }
+                    a.transform.rotation = Quaternion.Slerp(a.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
