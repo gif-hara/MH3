@@ -1,5 +1,4 @@
 using MH3.ActorControllers;
-using UnityEngine;
 
 namespace MH3
 {
@@ -7,7 +6,6 @@ namespace MH3
     {
         public static void Attach(Actor actor, InputController inputController)
         {
-            Debug.Log($"PlayerController.Attach: {actor}");
         }
     }
 }
