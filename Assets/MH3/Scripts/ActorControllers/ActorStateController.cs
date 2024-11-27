@@ -3,7 +3,6 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using R3;
-using UnityEngine;
 
 namespace MH3.ActorControllers
 {
@@ -23,7 +22,7 @@ namespace MH3.ActorControllers
         {
             stateMachine?.Dispose();
         }
-
+        
         private UniTask StateIdle(CancellationToken scope)
         {
             actor.MovementController.IsMoving
