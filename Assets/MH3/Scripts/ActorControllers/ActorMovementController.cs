@@ -36,7 +36,7 @@ namespace MH3.ActorControllers
                         isMoving.Value = true;
                     }
 
-                    if (rotation == Quaternion.identity || CanRotate.Value)
+                    if (rotation != Quaternion.identity)
                     {
                         a.transform.rotation = Quaternion.Slerp(a.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
                     }
@@ -51,7 +51,10 @@ namespace MH3.ActorControllers
 
         public void Rotate(Quaternion rotation)
         {
-            this.rotation = rotation;
+            if(CanRotate.Value)
+            {
+                this.rotation = rotation;
+            }
         }
 
         public void SetRotationSpeed(float rotationSpeed)
