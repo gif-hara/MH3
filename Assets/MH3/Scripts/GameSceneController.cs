@@ -10,7 +10,8 @@ namespace MH3
         
         private void Start()
         {
-            Instantiate(playerPrefab);
+            var player = Instantiate(playerPrefab);
+            PlayerController.Attach(player);
         }
     }
 }
