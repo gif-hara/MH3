@@ -16,6 +16,10 @@ namespace MH3
                 {
                     var velocity = t.Actions.Player.Move.ReadValue<Vector2>();
                     t.actor.MovementController.Move(new Vector3(velocity.x, 0, velocity.y));
+                    if(velocity != Vector2.zero)
+                    {
+                        t.actor.MovementController.Rotate(Quaternion.LookRotation(new Vector3(velocity.x, 0, velocity.y)));
+                    }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             inputController.Actions.Player.Attack.OnPerformedAsObservable()
