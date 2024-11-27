@@ -13,17 +13,12 @@ MonoBehaviour:
   m_Name: State.Attack0.Default
   m_EditorClassIdentifier: 
   sequences:
-  - rid: 895594615613948225
   - rid: 895594621889413198
   - rid: 895594615613948226
   - rid: 895594615613948227
   references:
     version: 2
     RefIds:
-    - rid: 895594615613948225
-      type: {class: Log, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
-      data:
-        message: Attack0
     - rid: 895594615613948226
       type: {class: Delay, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
       data:

@@ -3,12 +3,13 @@ using MH3.ActorControllers;
 using R3;
 using R3.Triggers;
 using UnityEngine;
+using UnitySequencerSystem;
 
 namespace MH3
 {
     public class PlayerController
     {
-        public static void Attach(Actor actor, InputController inputController)
+        public static void Attach(Actor actor, InputController inputController, ScriptableSequences attackSequence)
         {
             actor.UpdateAsObservable()
                 .Subscribe((actor, inputController.Actions), static (_, t) =>
@@ -20,7 +21,7 @@ namespace MH3
             inputController.Actions.Player.Attack.OnPerformedAsObservable()
                 .Subscribe(actor, (_, a) =>
                 {
-                    a.ActionController.Accept(ActorActionController.ActionType.Attack0);
+                    a.StateMachine.TryChangeState(attackSequence);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }

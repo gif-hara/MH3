@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequences:
   - rid: 895594621889413201
-  - rid: 895594615613948229
   - rid: 895594615613948206
   references:
     version: 2
@@ -36,18 +35,6 @@ MonoBehaviour:
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 1
-    - rid: 895594615613948229
-      type: {class: ActorSetActions, ns: MH3, asm: Assembly-CSharp}
-      data:
-        actorResolver:
-          rid: 895594615613948230
-        elements:
-        - type: 0
-          sequence: {fileID: 11400000, guid: 7c85d7cf216324d4b82bd50008e52174, type: 2}
-    - rid: 895594615613948230
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Actor
     - rid: 895594621889413201
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:

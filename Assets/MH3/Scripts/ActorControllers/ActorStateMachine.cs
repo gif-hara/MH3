@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
+using R3;
 using UnitySequencerSystem;
 
 namespace MH3.ActorControllers
@@ -14,10 +15,12 @@ namespace MH3.ActorControllers
         
         private ScriptableSequences stateSequences;
         
+        public readonly ReactiveProperty<bool> CanChangeState = new(true);
+        
         public ActorStateMachine(Actor actor, ScriptableSequences initialState)
         {
             this.actor = actor;
-            ChangeState(initialState);
+            TryChangeState(initialState);
         }
         
         public void Dispose()
@@ -25,10 +28,16 @@ namespace MH3.ActorControllers
             stateMachine?.Dispose();
         }
         
-        public void ChangeState(ScriptableSequences sequence)
+        public bool TryChangeState(ScriptableSequences sequence)
         {
+            if (!CanChangeState.Value)
+            {
+                return false;
+            }
+            
             stateSequences = sequence;
             stateMachine.Change(State);
+            return true;
         }
         
         private async UniTask State(CancellationToken scope)
