@@ -22,7 +22,7 @@ namespace MH3.ActorControllers
             return type switch
             {
                 BooleanStatusType.IsMoving => actor.MovementController.IsMoving,
-                _ => throw new ArgumentOutOfRangeException()
+                _ => throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}"),
             };
         }
     }
