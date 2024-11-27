@@ -32,9 +32,9 @@ namespace MH3.ActorControllers
                     else
                     {
                         a.transform.position += velocity * Time.deltaTime;
-                        velocity = Vector3.zero;
                         isMoving.Value = true;
                     }
+                    velocity = Vector3.zero;
 
                     if (rotation != Quaternion.identity)
                     {
