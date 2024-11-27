@@ -14,7 +14,6 @@ namespace MH3.ActorControllers
         
         private ScriptableSequences stateSequences;
         
-        
         public ActorStateMachine(Actor actor, ScriptableSequences initialState)
         {
             this.actor = actor;

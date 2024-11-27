@@ -14,11 +14,14 @@ namespace MH3.ActorControllers
         public ActorStateMachine StateMachine { get; private set; }
         
         public ActorStateProvider StateProvider { get; private set; }
+        
+        public ActorActionController ActionController { get; private set; }
 
         void Awake()
         {
             MovementController = new ActorMovementController();
             StateMachine = new ActorStateMachine(this, initialState);
+            ActionController = new ActorActionController(this);
             StateProvider = new ActorStateProvider(this);
             MovementController.Setup(this);
         }
