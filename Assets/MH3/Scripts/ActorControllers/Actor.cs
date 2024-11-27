@@ -19,6 +19,8 @@ namespace MH3.ActorControllers
         public ActorStateProvider StateProvider { get; private set; }
 
         public ActorSpecController SpecController { get; private set; }
+
+        public ActorAnimationController AnimationController { get; private set; }
         
         void Awake()
         {
@@ -26,6 +28,7 @@ namespace MH3.ActorControllers
             MovementController = new ActorMovementController();
             StateMachine = new ActorStateMachine(this, initialState);
             StateProvider = new ActorStateProvider(this);
+            AnimationController = new ActorAnimationController();
             MovementController.Setup(this);
         }
 
