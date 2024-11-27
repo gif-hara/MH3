@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequences:
   - rid: 895594615613948206
+  - rid: 8733972340067532888
   references:
     version: 2
     RefIds:
@@ -34,3 +35,24 @@ MonoBehaviour:
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
+    - rid: 8733972340067532888
+      type: {class: ActorAnimationCrossFade, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 8733972340067532889
+        stateNameResolver:
+          rid: 8733972340067532890
+        fadeLengthResolver:
+          rid: 8733972340067532891
+    - rid: 8733972340067532889
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 8733972340067532890
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Run
+    - rid: 8733972340067532891
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0.1
