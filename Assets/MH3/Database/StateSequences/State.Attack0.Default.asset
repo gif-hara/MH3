@@ -15,6 +15,7 @@ MonoBehaviour:
   sequences:
   - rid: 895594621889413198
   - rid: 8733972340067532868
+  - rid: 8733972348659564544
   - rid: 895594615613948226
   - rid: 895594615613948227
   references:
@@ -23,7 +24,7 @@ MonoBehaviour:
     - rid: 895594615613948226
       type: {class: Delay, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
       data:
-        seconds: 1
+        seconds: 0.75
     - rid: 895594615613948227
       type: {class: ActorStateChange, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -66,3 +67,24 @@ MonoBehaviour:
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
+    - rid: 8733972348659564544
+      type: {class: ActorAnimationCrossFade, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 8733972348659564545
+        stateNameResolver:
+          rid: 8733972348659564546
+        fadeLengthResolver:
+          rid: 8733972348659564547
+    - rid: 8733972348659564545
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 8733972348659564546
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Attack.0
+    - rid: 8733972348659564547
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0.05
