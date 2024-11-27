@@ -11,6 +11,9 @@ namespace MH3.ActorControllers
 
         [SerializeField]
         private ScriptableSequences initialState;
+
+        [SerializeField]
+        private SimpleAnimation simpleAnimation;
         
         public ActorMovementController MovementController { get; private set; }
         
@@ -28,7 +31,7 @@ namespace MH3.ActorControllers
             MovementController = new ActorMovementController();
             StateMachine = new ActorStateMachine(this, initialState);
             StateProvider = new ActorStateProvider(this);
-            AnimationController = new ActorAnimationController();
+            AnimationController = new ActorAnimationController(simpleAnimation);
             MovementController.Setup(this);
         }
 
