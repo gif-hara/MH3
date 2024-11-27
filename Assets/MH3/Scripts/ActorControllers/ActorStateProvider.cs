@@ -3,7 +3,7 @@ using R3;
 
 namespace MH3.ActorControllers
 {
-    public class ActorStatusProvider
+    public class ActorStateProvider
     {
         public enum BooleanStatusType
         {
@@ -12,7 +12,7 @@ namespace MH3.ActorControllers
 
         private readonly Actor actor;
         
-        public ActorStatusProvider(Actor actor)
+        public ActorStateProvider(Actor actor)
         {
             this.actor = actor;
         }

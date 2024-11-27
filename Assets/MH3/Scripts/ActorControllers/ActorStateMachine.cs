@@ -6,13 +6,13 @@ using R3;
 
 namespace MH3.ActorControllers
 {
-    public class ActorStateController : IDisposable
+    public class ActorStateMachine : IDisposable
     {
         private readonly TinyStateMachine stateMachine = new();
 
         private readonly Actor actor;
         
-        public ActorStateController(Actor actor)
+        public ActorStateMachine(Actor actor)
         {
             this.actor = actor;
             stateMachine.Change(StateIdle);
