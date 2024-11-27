@@ -9,6 +9,7 @@ namespace MH3.ActorControllers
         void Awake()
         {
             MovementController = new ActorMovementController();
+            MovementController.Setup(this);
         }
     }
 }
