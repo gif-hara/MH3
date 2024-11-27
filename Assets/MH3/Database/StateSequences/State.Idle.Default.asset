@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: State.Idle.Default
   m_EditorClassIdentifier: 
   sequences:
+  - rid: 895594621889413201
   - rid: 895594615613948229
   - rid: 895594615613948206
   references:
@@ -47,3 +48,19 @@ MonoBehaviour:
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor
+    - rid: 895594621889413201
+      type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 895594621889413202
+        type: 1
+        isTrueResolver:
+          rid: 895594621889413203
+    - rid: 895594621889413202
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 895594621889413203
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 1

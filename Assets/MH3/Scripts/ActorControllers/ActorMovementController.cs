@@ -10,13 +10,15 @@ namespace MH3.ActorControllers
         
         private readonly ReactiveProperty<bool> isMoving = new(false);
         public ReadOnlyReactiveProperty<bool> IsMoving => isMoving;
+        
+        public readonly ReactiveProperty<bool> CanMove = new(true);
 
         public void Setup(Actor actor)
         {
             actor.UpdateAsObservable()
                 .Subscribe(actor, (_, a) =>
                 {
-                    if (velocity == Vector3.zero)
+                    if (velocity == Vector3.zero || !CanMove.Value)
                     {
                         isMoving.Value = false;
                     }
