@@ -1,10 +1,14 @@
 using System;
 using UnityEngine;
+using UnitySequencerSystem;
 
 namespace MH3.ActorControllers
 {
     public class Actor : MonoBehaviour
     {
+        [SerializeField]
+        private ScriptableSequences initialState;
+        
         public ActorMovementController MovementController { get; private set; }
         
         public ActorStateMachine StateMachine { get; private set; }
@@ -14,7 +18,7 @@ namespace MH3.ActorControllers
         void Awake()
         {
             MovementController = new ActorMovementController();
-            StateMachine = new ActorStateMachine(this);
+            StateMachine = new ActorStateMachine(this, initialState);
             StateProvider = new ActorStateProvider(this);
             MovementController.Setup(this);
         }

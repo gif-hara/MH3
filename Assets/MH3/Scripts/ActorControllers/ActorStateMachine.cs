@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
-using R3;
+using UnitySequencerSystem;
 
 namespace MH3.ActorControllers
 {
@@ -12,10 +12,14 @@ namespace MH3.ActorControllers
 
         private readonly Actor actor;
         
-        public ActorStateMachine(Actor actor)
+        private ScriptableSequences currentStateSequence;
+        
+        private ScriptableSequences nextStateSequence;
+        
+        public ActorStateMachine(Actor actor, ScriptableSequences initialState)
         {
             this.actor = actor;
-            stateMachine.Change(StateIdle);
+            ChangeState(initialState);
         }
         
         public void Dispose()
@@ -23,32 +27,20 @@ namespace MH3.ActorControllers
             stateMachine?.Dispose();
         }
         
-        private UniTask StateIdle(CancellationToken scope)
+        public void ChangeState(ScriptableSequences sequence)
         {
-            actor.MovementController.IsMoving
-                .Subscribe(this, (x, _this) =>
-                {
-                    if (x)
-                    {
-                        _this.stateMachine.Change(StateRun);
-                    }
-                })
-                .RegisterTo(scope);
-            return UniTask.CompletedTask;
+            nextStateSequence = sequence;
+            stateMachine.Change(State);
         }
         
-        private UniTask StateRun(CancellationToken scope)
+        private async UniTask State(CancellationToken scope)
         {
-            actor.MovementController.IsMoving
-                .Subscribe(this, (x, _this) =>
-                {
-                    if (!x)
-                    {
-                        _this.stateMachine.Change(StateIdle);
-                    }
-                })
-                .RegisterTo(scope);
-            return UniTask.CompletedTask;
+            currentStateSequence = nextStateSequence;
+            var container = new Container();
+            container.Register("Actor", actor);
+            var sequencer = new Sequencer(container, currentStateSequence.Sequences);
+            await sequencer.PlayAsync(scope);
+            currentStateSequence = null;
         }
     }
 }
