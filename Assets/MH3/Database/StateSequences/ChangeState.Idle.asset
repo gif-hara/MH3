@@ -23,7 +23,13 @@ MonoBehaviour:
         actorResolver:
           rid: 895594615613948214
         stateSequence: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+        forceChangeResolver:
+          rid: 895594621889413233
     - rid: 895594615613948214
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor
+    - rid: 895594621889413233
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0

@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using MH3.UnitySequencerSystem.Resolvers;
 using UnityEngine;
 using UnitySequencerSystem;
+using UnitySequencerSystem.Resolvers;
 
 namespace MH3
 {
@@ -16,10 +17,14 @@ namespace MH3
         [SerializeField]
         private ScriptableSequences stateSequence;
         
+        [SerializeReference, SubclassSelector]
+        private BooleanResolver forceChangeResolver;
+        
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var actor = actorResolver.Resolve(container);
-            actor.StateMachine.TryChangeState(stateSequence);
+            var forceChange = forceChangeResolver.Resolve(container);
+            actor.StateMachine.TryChangeState(stateSequence, forceChange);
             return UniTask.CompletedTask;
         }
     }
