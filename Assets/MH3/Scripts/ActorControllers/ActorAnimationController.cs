@@ -3,6 +3,8 @@ namespace MH3.ActorControllers
     public class ActorAnimationController
     {
         private readonly SimpleAnimation simpleAnimation;
+        
+        private SimpleAnimation.State currentCrossFadeState;
 
         public ActorAnimationController(SimpleAnimation simpleAnimation)
         {
@@ -12,14 +14,11 @@ namespace MH3.ActorControllers
         public void CrossFade(string animationName, float fadeLength)
         {
             var state = simpleAnimation.GetState(animationName);
-            if(state.enabled)
+            if (!state.clip.isLooping)
             {
-                simpleAnimation.Rewind();
+                state.normalizedTime = 0;
             }
-            else
-            {
-                simpleAnimation.CrossFade(animationName, fadeLength);
-            }
+            simpleAnimation.CrossFade(animationName, fadeLength);
         }
     }
 }
