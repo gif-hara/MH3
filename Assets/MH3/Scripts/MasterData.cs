@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -7,8 +6,6 @@ using HK;
 using R3;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Assertions;
-using UnitySequencerSystem;
 
 namespace MH3
 {
@@ -45,6 +42,10 @@ namespace MH3
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
             );
             weaponSpecs.Set(JsonHelper.FromJson<WeaponSpec>(database[0]));
+            foreach (var weaponSpec in weaponSpecs.List)
+            {
+                weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.Id}.asset");
+            }
             EditorUtility.SetDirty(this);
             AssetDatabase.SaveAssets();
             Debug.Log("End MasterData Update");
@@ -58,6 +59,8 @@ namespace MH3
         public class WeaponSpec
         {
             public int Id;
+
+            public WeaponModelData ModelData;
 
             [Serializable]
             public class DictionaryList : DictionaryList<int, WeaponSpec>
