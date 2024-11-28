@@ -12,5 +12,9 @@ namespace MH3
         [SerializeField]
         private float rotationSpeed;
         public float RotationSpeed => rotationSpeed;
+
+        [SerializeField]
+        private int weaponId;
+        public int WeaponId => weaponId;
     }
 }
