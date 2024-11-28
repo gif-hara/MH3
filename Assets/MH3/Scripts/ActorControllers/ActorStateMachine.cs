@@ -3,7 +3,6 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using R3;
-using UnityEngine;
 using UnitySequencerSystem;
 
 namespace MH3.ActorControllers
@@ -17,6 +16,8 @@ namespace MH3.ActorControllers
         private ScriptableSequences stateSequences;
         
         public readonly ReactiveProperty<bool> CanChangeState = new(true);
+
+        private Action<Container> containerAction;
         
         public ActorStateMachine(Actor actor, ScriptableSequences initialState)
         {
@@ -29,7 +30,7 @@ namespace MH3.ActorControllers
             stateMachine?.Dispose();
         }
         
-        public bool TryChangeState(ScriptableSequences sequence, bool force = false)
+        public bool TryChangeState(ScriptableSequences sequence, bool force = false, Action<Container> containerAction = null)
         {
             if (!force && !CanChangeState.Value)
             {
@@ -37,6 +38,7 @@ namespace MH3.ActorControllers
             }
             
             stateSequences = sequence;
+            this.containerAction = containerAction;
             stateMachine.Change(State);
             return true;
         }
@@ -45,6 +47,8 @@ namespace MH3.ActorControllers
         {
             var container = new Container();
             container.Register("Actor", actor);
+            containerAction?.Invoke(container);
+            containerAction = null;
             var sequencer = new Sequencer(container, stateSequences.Sequences);
             await sequencer.PlayAsync(scope);
         }
