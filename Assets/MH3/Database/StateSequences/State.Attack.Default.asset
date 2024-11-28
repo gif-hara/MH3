@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
-  m_Name: State.Attack0.Default
+  m_Name: State.Attack.Default
   m_EditorClassIdentifier: 
   sequences:
   - rid: 895594621889413198
@@ -74,17 +74,9 @@ MonoBehaviour:
       type: {class: WaitForAnimationEndAsync, ns: MH3, asm: Assembly-CSharp}
       data:
         actorResolver:
-          rid: 895594621889413278
+          rid: 8733972360643739743
         stateNameResolver:
-          rid: 895594621889413279
-    - rid: 895594621889413278
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Actor
-    - rid: 895594621889413279
-      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: Attack.0
+          rid: 8733972360643739744
     - rid: 8733972340067532868
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -107,18 +99,26 @@ MonoBehaviour:
         actorResolver:
           rid: 8733972348659564545
         stateNameResolver:
-          rid: 8733972348659564546
+          rid: 8733972360643739741
         fadeLengthResolver:
           rid: 8733972348659564547
     - rid: 8733972348659564545
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor
-    - rid: 8733972348659564546
-      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: Attack.0
     - rid: 8733972348659564547
       type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0.05
+    - rid: 8733972360643739741
+      type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: AttackName
+    - rid: 8733972360643739743
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 8733972360643739744
+      type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: AttackName
