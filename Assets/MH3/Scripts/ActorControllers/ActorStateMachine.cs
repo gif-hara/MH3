@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using R3;
+using UnityEngine;
 using UnitySequencerSystem;
 
 namespace MH3.ActorControllers
@@ -28,9 +29,9 @@ namespace MH3.ActorControllers
             stateMachine?.Dispose();
         }
         
-        public bool TryChangeState(ScriptableSequences sequence)
+        public bool TryChangeState(ScriptableSequences sequence, bool force = false)
         {
-            if (!CanChangeState.Value)
+            if (!force && !CanChangeState.Value)
             {
                 return false;
             }
