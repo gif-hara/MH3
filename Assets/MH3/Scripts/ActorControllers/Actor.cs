@@ -31,7 +31,7 @@ namespace MH3.ActorControllers
             MovementController = new ActorMovementController();
             StateMachine = new ActorStateMachine(this, initialState);
             StateProvider = new ActorStateProvider(this);
-            AnimationController = new ActorAnimationController(simpleAnimation);
+            AnimationController = new ActorAnimationController(this, simpleAnimation);
             MovementController.Setup(this);
         }
 
