@@ -14,9 +14,12 @@ namespace MH3.ActorControllers
             var state = simpleAnimation.GetState(animationName);
             if(state.enabled)
             {
-                state.time = 0;
+                simpleAnimation.Rewind();
             }
-            simpleAnimation.CrossFade(animationName, fadeLength);
+            else
+            {
+                simpleAnimation.CrossFade(animationName, fadeLength);
+            }
         }
     }
 }
