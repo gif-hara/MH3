@@ -9,8 +9,9 @@ namespace MH3
 {
     public class PlayerController
     {
-        public static void Attach(Actor actor, InputController inputController, ScriptableSequences attackSequence)
+        public static void Attach(Actor actor, ScriptableSequences attackSequence)
         {
+            var inputController = TinyServiceLocator.Resolve<InputController>();
             actor.UpdateAsObservable()
                 .Subscribe((actor, inputController.Actions), static (_, t) =>
                 {

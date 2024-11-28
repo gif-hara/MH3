@@ -7,7 +7,7 @@ using UnityEngine.Assertions;
 
 namespace HK
 {
-    public class TinyServiceLocator
+    public static class TinyServiceLocator
     {
         private static readonly Dictionary<Type, (object service, CancellationTokenSource scope)> services = new();
 

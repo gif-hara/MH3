@@ -1,3 +1,4 @@
+using HK;
 using MH3.ActorControllers;
 using UnityEngine;
 using UnitySequencerSystem;
@@ -15,8 +16,8 @@ namespace MH3
         private void Start()
         {
             var player = Instantiate(playerPrefab);
-            var inputController = new InputController();
-            PlayerController.Attach(player, inputController, attackSequence);
+            TinyServiceLocator.RegisterAsync(new InputController(), destroyCancellationToken).Forget();
+            PlayerController.Attach(player, attackSequence);
         }
     }
 }
