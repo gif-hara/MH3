@@ -15,7 +15,8 @@ namespace MH3
             actor.SpecController.WeaponId
                 .Subscribe((this, actor), static (id, t) =>
                 {
-                    foreach (var weapon in t.Item1.weapons)
+                    var (@this, actor) = t;
+                    foreach (var weapon in @this.weapons)
                     {
                         Object.Destroy(weapon.gameObject);
                     }
@@ -28,10 +29,10 @@ namespace MH3
                     var weaponSpec = masterData.WeaponSpecs.Get(id);
                     foreach (var element in weaponSpec.ModelData.Elements)
                     {
-                        var weapon = Object.Instantiate(element.ModelPrefab, t.actor.LocatorHolder.Get(element.LocatorName));
+                        var weapon = Object.Instantiate(element.ModelPrefab, actor.LocatorHolder.Get(element.LocatorName));
                         weapon.transform.localPosition = Vector3.zero;
                         weapon.transform.localRotation = Quaternion.identity;
-                        t.Item1.weapons.Add(weapon);
+                        @this.weapons.Add(weapon);
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
