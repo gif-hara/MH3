@@ -12,11 +12,15 @@ namespace MH3
         
         [SerializeField]
         private ScriptableSequences attackSequence;
+
+        [SerializeField]
+        private MasterData masterData;
         
         private void Start()
         {
-            var player = Instantiate(playerPrefab);
             TinyServiceLocator.RegisterAsync(new InputController(), destroyCancellationToken).Forget();
+            TinyServiceLocator.RegisterAsync(masterData, destroyCancellationToken).Forget();
+            var player = Instantiate(playerPrefab);
             PlayerController.Attach(player, attackSequence);
         }
     }

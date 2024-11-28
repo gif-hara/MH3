@@ -14,6 +14,9 @@ namespace MH3.ActorControllers
 
         [SerializeField]
         private SimpleAnimation simpleAnimation;
+
+        [SerializeField]
+        private LocatorHolder locatorHolder;
         
         public ActorMovementController MovementController { get; private set; }
         
@@ -24,6 +27,10 @@ namespace MH3.ActorControllers
         public ActorSpecController SpecController { get; private set; }
 
         public ActorAnimationController AnimationController { get; private set; }
+
+        public ActorWeaponController WeaponController { get; private set; }
+
+        public LocatorHolder LocatorHolder => locatorHolder;
         
         void Awake()
         {
@@ -32,6 +39,7 @@ namespace MH3.ActorControllers
             StateMachine = new ActorStateMachine(this, initialState);
             StateProvider = new ActorStateProvider(this);
             AnimationController = new ActorAnimationController(this, simpleAnimation);
+            WeaponController = new ActorWeaponController(this);
             MovementController.Setup(this);
         }
 
