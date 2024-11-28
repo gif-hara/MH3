@@ -1,4 +1,5 @@
 using R3;
+using UnitySequencerSystem;
 
 namespace MH3
 {
@@ -19,5 +20,7 @@ namespace MH3
         public float RotationSpeed => spec.RotationSpeed;
 
         public ReadOnlyReactiveProperty<int> WeaponId => weaponId;
+
+        public ScriptableSequences AttackSequences => spec.AttackSequences;
     }
 }

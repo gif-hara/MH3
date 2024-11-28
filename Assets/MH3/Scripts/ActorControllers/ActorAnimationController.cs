@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using R3;
 using R3.Triggers;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MH3.ActorControllers
 {
@@ -24,6 +25,7 @@ namespace MH3.ActorControllers
         public void CrossFade(string stateName, float fadeLength)
         {
             var state = simpleAnimation.GetState(stateName);
+            Assert.IsNotNull(state, $"State {stateName} not found");
             if (!state.clip.isLooping)
             {
                 state.normalizedTime = 0;

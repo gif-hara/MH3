@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnitySequencerSystem;
 
 namespace MH3
 {
@@ -16,5 +17,9 @@ namespace MH3
         [SerializeField]
         private int weaponId;
         public int WeaponId => weaponId;
+
+        [SerializeField]
+        private ScriptableSequences attackSequences;
+        public ScriptableSequences AttackSequences => attackSequences;
     }
 }

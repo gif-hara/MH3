@@ -30,6 +30,8 @@ namespace MH3.ActorControllers
 
         public ActorWeaponController WeaponController { get; private set; }
 
+        public ActorAttackController AttackController { get; private set; }
+
         public LocatorHolder LocatorHolder => locatorHolder;
         
         void Awake()
@@ -40,6 +42,7 @@ namespace MH3.ActorControllers
             StateProvider = new ActorStateProvider(this);
             AnimationController = new ActorAnimationController(this, simpleAnimation);
             WeaponController = new ActorWeaponController(this);
+            AttackController = new ActorAttackController(this);
             MovementController.Setup(this);
         }
 
