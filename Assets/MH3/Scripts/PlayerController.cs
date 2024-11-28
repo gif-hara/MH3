@@ -25,7 +25,7 @@ namespace MH3
             inputController.Actions.Player.Attack.OnPerformedAsObservable()
                 .Subscribe(actor, (_, a) =>
                 {
-                    a.StateMachine.TryChangeState(attackSequence);
+                    EarlyInputHandler.Invoke(() => a.StateMachine.TryChangeState(attackSequence), 0.1f, a.destroyCancellationToken);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
