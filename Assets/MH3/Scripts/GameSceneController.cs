@@ -15,12 +15,17 @@ namespace MH3
 
         [SerializeField]
         private MasterData masterData;
+
+        [SerializeField]
+        private GameCameraController gameCameraControllerPrefab;
         
         private void Start()
         {
             TinyServiceLocator.RegisterAsync(new InputController(), destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(masterData, destroyCancellationToken).Forget();
             var player = Instantiate(playerPrefab);
+            var gameCameraController = Instantiate(gameCameraControllerPrefab);
+            gameCameraController.SetTrackingTarget(player.transform);
             PlayerController.Attach(player, attackSequence);
         }
     }
