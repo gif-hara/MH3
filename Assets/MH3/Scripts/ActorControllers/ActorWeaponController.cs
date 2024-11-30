@@ -33,6 +33,7 @@ namespace MH3
                         weapon.transform.localPosition = Vector3.zero;
                         weapon.transform.localRotation = Quaternion.identity;
                         @this.weapons.Add(weapon);
+                        weapon.AddCollider(actor).Forget();
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
