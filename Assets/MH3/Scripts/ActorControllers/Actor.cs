@@ -1,4 +1,6 @@
 using System;
+using R3;
+using R3.Triggers;
 using StandardAssets.Characters.Physics;
 using UnityEngine;
 using UnitySequencerSystem;
@@ -36,6 +38,8 @@ namespace MH3.ActorControllers
 
         public ActorAttackController AttackController { get; private set; }
 
+        public ActorColliderController ColliderController { get; private set; }
+
         public LocatorHolder LocatorHolder => locatorHolder;
         
         void Awake()
@@ -47,6 +51,7 @@ namespace MH3.ActorControllers
             AnimationController = new ActorAnimationController(this, simpleAnimation);
             AttackController = new ActorAttackController(this);
             WeaponController = new ActorWeaponController(this);
+            ColliderController = new ActorColliderController(this);
             MovementController.Setup(this, openCharacterController);
         }
 
