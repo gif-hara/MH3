@@ -11,8 +11,9 @@ namespace MH3
         [SerializeField]
         private List<ColliderElement> colliders = new();
 
-        public async UniTaskVoid AddCollider(Actor actor)
+        public async UniTaskVoid Setup(Actor actor)
         {
+            gameObject.SetLayerRecursively(actor.GetAttackLayer());
             foreach (var collider in colliders)
             {
                 actor.AttackController.AddCollider(collider.Name, collider.ColliderObject);
