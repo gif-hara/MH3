@@ -1409,14 +1409,14 @@ AnimationClip:
   m_Events:
   - time: 0.48333332
     functionName: ActiveAttackCollider
-    data: Default
-    objectReferenceParameter: {fileID: 0}
+    data: 
+    objectReferenceParameter: {fileID: 11400000, guid: 96e21cddefd516d40bd566704140df5a, type: 2}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.55
-    functionName: DeactiveAttackCollider
-    data: Default
+    functionName: DeactiveAllAttackCollider
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
