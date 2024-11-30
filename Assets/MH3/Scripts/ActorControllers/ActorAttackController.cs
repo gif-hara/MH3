@@ -11,6 +11,8 @@ namespace MH3.ActorControllers
 
         private readonly Dictionary<string, GameObject> colliders = new();
 
+        private AttackData attackData;
+
         private readonly string[] attackNames = new string[]
         {
             "Attack.0",
@@ -72,12 +74,29 @@ namespace MH3.ActorControllers
             }
         }
 
+        public void SetAttackData(AttackData attackData)
+        {
+            this.attackData = attackData;
+            SetActiveCollider(attackData.ColliderName, true);
+        }
+
         public void DeactiveAllAttackCollider()
         {
             foreach (var collider in colliders.Values)
             {
                 collider.SetActive(false);
             }
+        }
+
+        public void Attack(Actor target)
+        {
+            if (attackData == null)
+            {
+                Debug.LogError("AttackData is null.");
+                return;
+            }
+
+            Debug.Log($"{actor.name} attack {target.name} with {attackData.Power} power.");
         }
     }
 }

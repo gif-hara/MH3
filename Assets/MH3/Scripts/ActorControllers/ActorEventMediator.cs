@@ -15,7 +15,7 @@ namespace MH3
 
         public void ActiveAttackCollider(AttackData attackData)
         {
-            actor.AttackController.SetActiveCollider(attackData.ColliderName, true);
+            actor.AttackController.SetAttackData(attackData);
         }
 
         public void DeactiveAllAttackCollider()

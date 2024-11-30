@@ -6,13 +6,21 @@ using UnityEngine;
 
 namespace MH3
 {
-    public class Weapon : MonoBehaviour
+    public class Weapon : MonoBehaviour, IActorOnTriggerEnterEvent
     {
         [SerializeField]
         private List<ColliderElement> colliders = new();
 
+        private Actor actor;
+
+        public void Influence(Actor target)
+        {
+            actor.AttackController.Attack(target);
+        }
+
         public async UniTaskVoid Setup(Actor actor)
         {
+            this.actor = actor;
             gameObject.SetLayerRecursively(actor.GetAttackLayer());
             foreach (var collider in colliders)
             {
