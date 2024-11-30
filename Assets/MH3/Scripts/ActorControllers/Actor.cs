@@ -45,8 +45,8 @@ namespace MH3.ActorControllers
             StateMachine = new ActorStateMachine(this, initialState);
             StateProvider = new ActorStateProvider(this);
             AnimationController = new ActorAnimationController(this, simpleAnimation);
-            WeaponController = new ActorWeaponController(this);
             AttackController = new ActorAttackController(this);
+            WeaponController = new ActorWeaponController(this);
             MovementController.Setup(this, openCharacterController);
         }
 
