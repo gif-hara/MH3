@@ -8,9 +8,9 @@ namespace MH3
         [SerializeField]
         private Actor actor;
 
-        public void Test()
+        public void SetCanChangeState(int value)
         {
-            Debug.Log("Test " + actor.name);
+            actor.StateMachine.CanChangeState.Value = value == 1;
         }
     }
 }
