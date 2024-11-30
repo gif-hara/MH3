@@ -1,4 +1,5 @@
 using System;
+using StandardAssets.Characters.Physics;
 using UnityEngine;
 using UnitySequencerSystem;
 
@@ -17,6 +18,9 @@ namespace MH3.ActorControllers
 
         [SerializeField]
         private LocatorHolder locatorHolder;
+
+        [SerializeField]
+        private OpenCharacterController openCharacterController;
         
         public ActorMovementController MovementController { get; private set; }
         
@@ -43,7 +47,7 @@ namespace MH3.ActorControllers
             AnimationController = new ActorAnimationController(this, simpleAnimation);
             WeaponController = new ActorWeaponController(this);
             AttackController = new ActorAttackController(this);
-            MovementController.Setup(this);
+            MovementController.Setup(this, openCharacterController);
         }
 
         private void OnDestroy()

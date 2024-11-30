@@ -1,5 +1,6 @@
 using R3;
 using R3.Triggers;
+using StandardAssets.Characters.Physics;
 using UnityEngine;
 
 namespace MH3.ActorControllers
@@ -19,7 +20,7 @@ namespace MH3.ActorControllers
 
         public readonly ReactiveProperty<bool> CanRotate = new(true);
 
-        public void Setup(Actor actor)
+        public void Setup(Actor actor, OpenCharacterController openCharacterController)
         {
             SetRotationSpeed(actor.SpecController.RotationSpeed);
             actor.UpdateAsObservable()
@@ -31,7 +32,7 @@ namespace MH3.ActorControllers
                     }
                     else
                     {
-                        a.transform.position += velocity * Time.deltaTime;
+                        openCharacterController.Move(velocity * Time.deltaTime);
                         isMoving.Value = true;
                     }
                     velocity = Vector3.zero;
