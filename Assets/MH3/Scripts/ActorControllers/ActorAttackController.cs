@@ -52,6 +52,7 @@ namespace MH3.ActorControllers
         public void AddCollider(string name, GameObject collider)
         {
             colliders.Add(name, collider);
+            SetActiveCollider(name, false);
         }
 
         public void RemoveCollider(string name)
