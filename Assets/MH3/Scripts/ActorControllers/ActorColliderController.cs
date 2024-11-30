@@ -1,6 +1,5 @@
 using R3;
 using R3.Triggers;
-using UnityEngine;
 
 namespace MH3.ActorControllers
 {
@@ -11,7 +10,15 @@ namespace MH3.ActorControllers
             actor.OnTriggerEnterAsObservable()
                 .Subscribe(collider =>
                 {
-                    Debug.Log($"{actor.name}: OnTriggerEnter {collider.attachedRigidbody?.name}");
+                    var actorOnTriggerEnterEvents = collider.attachedRigidbody?.GetComponents<IActorOnTriggerEnterEvent>();
+                    if (actorOnTriggerEnterEvents == null)
+                    {
+                        return;
+                    }
+                    foreach (var triggerEnterEvent in actorOnTriggerEnterEvents)
+                    {
+                        triggerEnterEvent.Influence(actor);
+                    }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
