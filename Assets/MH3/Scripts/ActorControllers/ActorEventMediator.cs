@@ -12,5 +12,15 @@ namespace MH3
         {
             actor.StateMachine.CanChangeState.Value = value == 1;
         }
+
+        public void ActiveAttackCollider(string name)
+        {
+            actor.AttackController.SetActiveCollider(name, true);
+        }
+
+        public void DeactiveAttackCollider(string name)
+        {
+            actor.AttackController.SetActiveCollider(name, false);
+        }
     }
 }
