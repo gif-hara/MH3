@@ -13,14 +13,14 @@ namespace MH3
             actor.StateMachine.CanChangeState.Value = value == 1;
         }
 
-        public void ActiveAttackCollider(string name)
+        public void ActiveAttackCollider(AttackData attackData)
         {
-            actor.AttackController.SetActiveCollider(name, true);
+            actor.AttackController.SetActiveCollider(attackData.ColliderName, true);
         }
 
-        public void DeactiveAttackCollider(string name)
+        public void DeactiveAllAttackCollider()
         {
-            actor.AttackController.SetActiveCollider(name, false);
+            actor.AttackController.DeactiveAllAttackCollider();
         }
     }
 }

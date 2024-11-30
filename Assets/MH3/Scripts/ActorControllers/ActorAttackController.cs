@@ -71,5 +71,13 @@ namespace MH3.ActorControllers
                 Debug.LogError($"Collider {name} not found.");
             }
         }
+
+        public void DeactiveAllAttackCollider()
+        {
+            foreach (var collider in colliders.Values)
+            {
+                collider.SetActive(false);
+            }
+        }
     }
 }
