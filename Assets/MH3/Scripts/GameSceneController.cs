@@ -22,7 +22,7 @@ namespace MH3
             var player = Instantiate(playerPrefab);
             var gameCameraController = Instantiate(gameCameraControllerPrefab);
             gameCameraController.SetTrackingTarget(player.transform);
-            PlayerController.Attach(player);
+            PlayerController.Attach(player, gameCameraController.ControlledCamera.transform);
         }
     }
 }

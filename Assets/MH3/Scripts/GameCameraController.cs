@@ -7,6 +7,10 @@ namespace MH3
     {
         [SerializeField]
         private CinemachineCamera defaultCinemachineCamera;
+
+        [SerializeField]
+        private Camera controlledCamera;
+        public Camera ControlledCamera => controlledCamera;
         
         public void SetTrackingTarget(Transform target)
         {

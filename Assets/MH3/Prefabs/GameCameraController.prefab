@@ -249,6 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultCinemachineCamera: {fileID: 2426988143851789573}
+  controlledCamera: {fileID: 8161500156446236794}
 --- !u!1 &9030514970898818476
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +455,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         InputAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-        Gain: -180
+        Gain: -90
         LegacyInput: 
         LegacyGain: -200
         CancelDeltaTime: 0

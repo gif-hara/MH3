@@ -3,23 +3,30 @@ using MH3.ActorControllers;
 using R3;
 using R3.Triggers;
 using UnityEngine;
-using UnitySequencerSystem;
 
 namespace MH3
 {
     public class PlayerController
     {
-        public static void Attach(Actor actor)
+        public static void Attach(Actor actor, Transform cameraTransform)
         {
             var inputController = TinyServiceLocator.Resolve<InputController>();
             actor.UpdateAsObservable()
-                .Subscribe((actor, inputController.Actions), static (_, t) =>
+                .Subscribe((actor, inputController.Actions, cameraTransform), static (_, t) =>
                 {
-                    var velocity = t.Actions.Player.Move.ReadValue<Vector2>();
-                    t.actor.MovementController.Move(new Vector3(velocity.x, 0, velocity.y) * t.actor.SpecController.MoveSpeed);
+                    var (actor, actions, cameraTransform) = t;
+                    var velocity = actions.Player.Move.ReadValue<Vector2>();
+                    var cameraForward = cameraTransform.forward;
+                    var cameraRight = cameraTransform.right;
+                    cameraForward.y = 0;
+                    cameraRight.y = 0;
+                    cameraForward.Normalize();
+                    cameraRight.Normalize();
+                    var moveVector = (cameraForward.normalized * velocity.y + cameraRight.normalized * velocity.x).normalized;
+                    actor.MovementController.Move(moveVector * actor.SpecController.MoveSpeed);
                     if(velocity != Vector2.zero)
                     {
-                        t.actor.MovementController.Rotate(Quaternion.LookRotation(new Vector3(velocity.x, 0, velocity.y)));
+                        actor.MovementController.Rotate(Quaternion.LookRotation(moveVector));
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
