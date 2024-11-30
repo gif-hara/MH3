@@ -9,7 +9,7 @@ namespace MH3
 {
     public class PlayerController
     {
-        public static void Attach(Actor actor, ScriptableSequences attackSequence)
+        public static void Attach(Actor actor)
         {
             var inputController = TinyServiceLocator.Resolve<InputController>();
             actor.UpdateAsObservable()
@@ -24,9 +24,9 @@ namespace MH3
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             inputController.Actions.Player.Attack.OnPerformedAsObservable()
-                .Subscribe((actor, attackSequence), static (_, t) =>
+                .Subscribe(actor, static (_, a) =>
                 {
-                    EarlyInputHandler.Invoke(() => t.actor.AttackController.TryAttack(), 0.1f, t.actor.destroyCancellationToken);
+                    EarlyInputHandler.Invoke(() => a.AttackController.TryAttack(), 0.1f, a.destroyCancellationToken);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
