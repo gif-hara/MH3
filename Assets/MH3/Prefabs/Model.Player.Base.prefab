@@ -261,6 +261,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4121475287992394588, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       insertIndex: -1
       addedObject: {fileID: -440628249866343668}
+    - targetCorrespondingSourceObject: {fileID: 4121475287992394588, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4525374127623052361}
   m_SourcePrefab: {fileID: 100100000, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
 --- !u!1 &1982207067234915699 stripped
 GameObject:
@@ -285,6 +288,19 @@ MonoBehaviour:
       transform: {fileID: 3644040840677302296}
     - name: Hand.Left
       transform: {fileID: 8721640547018322125}
+--- !u!114 &4525374127623052361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982207067234915699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2069817689dec8a4ba1616b5b4608409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: {fileID: 0}
 --- !u!4 &5473082407950511954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7585212207849036157, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
