@@ -16,6 +16,8 @@ namespace MH3.ActorControllers
 
         private readonly ReactiveProperty<int> flinch = new(0);
 
+        public readonly ReactiveProperty<bool> CanAddFlinchDamage = new(true);
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -43,7 +45,10 @@ namespace MH3.ActorControllers
             var result = hitPoint.Value - data.Damage;
             result = result < 0 ? 0 : result;
             hitPoint.Value = result;
-            flinch.Value += data.FlinchDamage;
+            if (CanAddFlinchDamage.Value)
+            {
+                flinch.Value += data.FlinchDamage;
+            }
 
             if (result <= 0)
             {

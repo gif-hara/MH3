@@ -16,6 +16,7 @@ MonoBehaviour:
   - rid: 895594621889413198
   - rid: 8733972340067532868
   - rid: 895594621889413216
+  - rid: 1481063080126840968
   - rid: 8733972348659564544
   - rid: 895594621889413277
   - rid: 895594615613948227
@@ -77,6 +78,22 @@ MonoBehaviour:
           rid: 8733972360643739743
         stateNameResolver:
           rid: 8733972360643739744
+    - rid: 1481063080126840968
+      type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063080126840969
+        type: 4
+        isTrueResolver:
+          rid: 1481063080126840970
+    - rid: 1481063080126840969
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063080126840970
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
     - rid: 8733972340067532868
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:

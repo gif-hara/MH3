@@ -11,10 +11,11 @@ namespace MH3.ActorControllers
             CanMove,
             CanRotate,
             CanChangeState,
+            CanAddFlinchDamage,
         }
 
         private readonly Actor actor;
-        
+
         public ActorStateProvider(Actor actor)
         {
             this.actor = actor;
@@ -28,10 +29,11 @@ namespace MH3.ActorControllers
                 BooleanType.CanMove => actor.MovementController.CanMove,
                 BooleanType.CanRotate => actor.MovementController.CanRotate,
                 BooleanType.CanChangeState => actor.StateMachine.CanChangeState,
+                BooleanType.CanAddFlinchDamage => actor.SpecController.CanAddFlinchDamage,
                 _ => throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}"),
             };
         }
-        
+
         public void SetBoolean(BooleanType type, bool value)
         {
             switch (type)
@@ -44,6 +46,9 @@ namespace MH3.ActorControllers
                     break;
                 case BooleanType.CanChangeState:
                     actor.StateMachine.CanChangeState.Value = value;
+                    break;
+                case BooleanType.CanAddFlinchDamage:
+                    actor.SpecController.CanAddFlinchDamage.Value = value;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}");
