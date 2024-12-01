@@ -19,6 +19,10 @@ namespace MH3
         private WeaponSpec.DictionaryList weaponSpecs;
         public WeaponSpec.DictionaryList WeaponSpecs => weaponSpecs;
 
+        [SerializeField]
+        private AttackSpec.DictionaryList attackSpecs;
+        public AttackSpec.DictionaryList AttackSpecs => attackSpecs;
+
 #if UNITY_EDITOR
         [ContextMenu("Update")]
         private async void UpdateMasterData()
@@ -37,11 +41,13 @@ namespace MH3
             var masterDataNames = new[]
             {
                 "WeaponSpec",
+                "AttackSpec",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
             );
             weaponSpecs.Set(JsonHelper.FromJson<WeaponSpec>(database[0]));
+            attackSpecs.Set(JsonHelper.FromJson<AttackSpec>(database[1]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.Id}.asset");
@@ -64,6 +70,24 @@ namespace MH3
 
             [Serializable]
             public class DictionaryList : DictionaryList<int, WeaponSpec>
+            {
+                public DictionaryList() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class AttackSpec
+        {
+            public int Id;
+
+            public int Power;
+
+            public string ColliderName;
+
+            [Serializable]
+            public class DictionaryList : DictionaryList<int, AttackSpec>
             {
                 public DictionaryList() : base(x => x.Id)
                 {
