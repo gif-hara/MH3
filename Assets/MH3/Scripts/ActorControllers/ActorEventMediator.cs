@@ -32,5 +32,10 @@ namespace MH3
         {
             actor.SpecController.Invincible.Value = value == 1;
         }
+
+        public void SetRotateImmediateTargetRotation()
+        {
+            actor.MovementController.RotateImmediate(actor.MovementController.TargetRotation);
+        }
     }
 }

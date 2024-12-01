@@ -13,7 +13,7 @@ namespace MH3.ActorControllers
 
         private Vector3 velocityFromAnimator;
 
-        private Quaternion rotation;
+        public Quaternion TargetRotation { get; private set; }
 
         private float rotationSpeed;
 
@@ -45,7 +45,10 @@ namespace MH3.ActorControllers
                     velocity = Vector3.zero;
                     velocityFromAnimator = Vector3.zero;
 
-                    a.transform.rotation = Quaternion.Slerp(a.transform.rotation, rotation, rotationSpeed * deltaTime);
+                    if (CanRotate.Value)
+                    {
+                        a.transform.rotation = Quaternion.Slerp(a.transform.rotation, TargetRotation, rotationSpeed * deltaTime);
+                    }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
@@ -62,15 +65,12 @@ namespace MH3.ActorControllers
 
         public void Rotate(Quaternion rotation)
         {
-            if (CanRotate.Value)
-            {
-                this.rotation = rotation;
-            }
+            TargetRotation = rotation;
         }
 
         public void RotateImmediate(Quaternion rotation)
         {
-            this.rotation = rotation;
+            TargetRotation = rotation;
             actor.transform.rotation = rotation;
         }
 
