@@ -8,13 +8,13 @@ namespace MH3.ActorControllers
     {
         private readonly Actor actor;
 
-        private readonly ActorSpec spec;
+        private readonly MasterData.ActorSpec spec;
 
         private readonly ReactiveProperty<int> hitPoint = new(0);
 
         private readonly ReactiveProperty<int> weaponId = new(0);
 
-        public ActorSpecController(Actor actor, ActorSpec spec)
+        public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
             this.spec = spec;
@@ -38,7 +38,7 @@ namespace MH3.ActorControllers
             result = result < 0 ? 0 : result;
             hitPoint.Value = result;
 
-            if(result <= 0)
+            if (result <= 0)
             {
                 Object.Destroy(actor.gameObject);
             }

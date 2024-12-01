@@ -1,5 +1,4 @@
 using HK;
-using MH3.ActorControllers;
 using UnityEngine;
 
 namespace MH3
@@ -7,17 +6,17 @@ namespace MH3
     public class GameSceneController : MonoBehaviour
     {
         [SerializeField]
-        private Actor playerPrefab;
+        private int playerActorSpecId;
 
         [SerializeField]
         private Transform playerSpawnPoint;
 
         [SerializeField]
-        private Actor enemyPrefab;
+        private int enemyActorSpecId;
 
         [SerializeField]
         private Transform enemySpawnPoint;
-        
+
         [SerializeField]
         private MasterData masterData;
 
@@ -26,16 +25,16 @@ namespace MH3
 
         [SerializeField]
         private AudioManager audioManagerPrefab;
-        
+
         private void Start()
         {
             TinyServiceLocator.RegisterAsync(new InputController(), destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(masterData, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(Instantiate(audioManagerPrefab), destroyCancellationToken).Forget();
-            var player = Instantiate(playerPrefab);
+            var player = masterData.ActorSpecs.Get(playerActorSpecId).Spawn(playerSpawnPoint.position, playerSpawnPoint.rotation);
             player.transform.position = playerSpawnPoint.position;
             player.transform.rotation = playerSpawnPoint.rotation;
-            var enemy = Instantiate(enemyPrefab);
+            var enemy = masterData.ActorSpecs.Get(enemyActorSpecId).Spawn(enemySpawnPoint.position, enemySpawnPoint.rotation);
             enemy.transform.position = enemySpawnPoint.position;
             enemy.transform.rotation = enemySpawnPoint.rotation;
             var gameCameraController = Instantiate(gameCameraControllerPrefab);

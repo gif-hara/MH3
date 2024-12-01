@@ -62,7 +62,8 @@ namespace MH3
             }
             foreach (var actorSpec in actorSpecs.List)
             {
-                actorSpec.AttackSequence = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Attack.{actorSpec.AttackSequenceKey}.asset");
+                actorSpec.InitialStateSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.InitialStateKey}.asset");
+                actorSpec.AttackSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.AttackSequencesKey}.asset");
                 actorSpec.ActorPrefab = AssetDatabase.LoadAssetAtPath<Actor>($"Assets/MH3/Prefabs/Actor.{actorSpec.ActorPrefabKey}.prefab");
             }
             EditorUtility.SetDirty(this);
@@ -121,11 +122,15 @@ namespace MH3
 
             public int WeaponId;
 
-            public string AttackSequenceKey;
+            public string InitialStateKey;
+
+            public string AttackSequencesKey;
 
             public string ActorPrefabKey;
 
-            public ScriptableSequences AttackSequence;
+            public ScriptableSequences InitialStateSequences;
+
+            public ScriptableSequences AttackSequences;
 
             public Actor ActorPrefab;
 
@@ -135,6 +140,11 @@ namespace MH3
                 public DictionaryList() : base(x => x.Id)
                 {
                 }
+            }
+
+            public Actor Spawn(Vector3 position, Quaternion rotation)
+            {
+                return ActorPrefab.Spawn(position, rotation, this);
             }
         }
     }

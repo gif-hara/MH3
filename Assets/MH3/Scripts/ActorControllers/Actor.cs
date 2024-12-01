@@ -1,20 +1,10 @@
-using System;
-using R3;
-using R3.Triggers;
 using StandardAssets.Characters.Physics;
 using UnityEngine;
-using UnitySequencerSystem;
 
 namespace MH3.ActorControllers
 {
     public class Actor : MonoBehaviour
     {
-        [SerializeField]
-        private ActorSpec spec;
-
-        [SerializeField]
-        private ScriptableSequences initialState;
-
         [SerializeField]
         private SimpleAnimation simpleAnimation;
 
@@ -44,18 +34,20 @@ namespace MH3.ActorControllers
 
         public LocatorHolder LocatorHolder => locatorHolder;
 
-        void Awake()
+        public Actor Spawn(Vector3 position, Quaternion rotation, MasterData.ActorSpec actorSpec)
         {
-            SpecController = new ActorSpecController(this, spec);
-            TimeController = new ActorTimeController(this);
-            MovementController = new ActorMovementController();
-            StateMachine = new ActorStateMachine(this, initialState);
-            StateProvider = new ActorStateProvider(this);
-            AnimationController = new ActorAnimationController(this, simpleAnimation);
-            AttackController = new ActorAttackController(this);
-            WeaponController = new ActorWeaponController(this);
-            ColliderController = new ActorColliderController(this);
-            MovementController.Setup(this, openCharacterController);
+            var actor = Instantiate(this, position, rotation);
+            actor.SpecController = new ActorSpecController(actor, actorSpec);
+            actor.TimeController = new ActorTimeController(actor);
+            actor.MovementController = new ActorMovementController();
+            actor.StateMachine = new ActorStateMachine(actor, actorSpec.InitialStateSequences);
+            actor.StateProvider = new ActorStateProvider(actor);
+            actor.AnimationController = new ActorAnimationController(actor, actor.simpleAnimation);
+            actor.AttackController = new ActorAttackController(actor);
+            actor.WeaponController = new ActorWeaponController(actor);
+            actor.ColliderController = new ActorColliderController(actor);
+            actor.MovementController.Setup(actor, actor.openCharacterController);
+            return actor;
         }
 
         private void OnDestroy()

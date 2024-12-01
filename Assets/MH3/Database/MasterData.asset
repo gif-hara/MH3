@@ -28,16 +28,20 @@ MonoBehaviour:
       MoveSpeed: 5
       RotationSpeed: 10
       WeaponId: 10101
-      AttackSequenceKey: Default
+      InitialStateKey: Idle.Default
+      AttackSequencesKey: Attack.Default
       ActorPrefabKey: Player
-      AttackSequence: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
+      InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+      AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
     - Id: 10201
       HitPoint: 100
       MoveSpeed: 5
       RotationSpeed: 10
       WeaponId: 10101
-      AttackSequenceKey: Default
+      InitialStateKey: Idle.Default
+      AttackSequencesKey: Attack.Default
       ActorPrefabKey: Enemy
-      AttackSequence: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
+      InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+      AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
