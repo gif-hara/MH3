@@ -1,19 +1,28 @@
 using R3;
+using UnityEngine;
 using UnitySequencerSystem;
 
-namespace MH3
+namespace MH3.ActorControllers
 {
     public class ActorSpecController
     {
+        private readonly Actor actor;
+
         private readonly ActorSpec spec;
+
+        private readonly ReactiveProperty<int> hitPoint = new(0);
 
         private readonly ReactiveProperty<int> weaponId = new(0);
 
-        public ActorSpecController(ActorSpec spec)
+        public ActorSpecController(Actor actor, ActorSpec spec)
         {
+            this.actor = actor;
             this.spec = spec;
+            hitPoint.Value = spec.HitPoint;
             weaponId.Value = spec.WeaponId;
         }
+
+        public ReadOnlyReactiveProperty<int> HitPoint => hitPoint;
 
         public float MoveSpeed => spec.MoveSpeed;
 
@@ -22,5 +31,17 @@ namespace MH3
         public ReadOnlyReactiveProperty<int> WeaponId => weaponId;
 
         public ScriptableSequences AttackSequences => spec.AttackSequences;
+
+        public void TakeDamage(int damage)
+        {
+            var result = hitPoint.Value - damage;
+            result = result < 0 ? 0 : result;
+            hitPoint.Value = result;
+
+            if(result <= 0)
+            {
+                Object.Destroy(actor.gameObject);
+            }
+        }
     }
 }
