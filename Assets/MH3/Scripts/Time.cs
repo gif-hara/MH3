@@ -9,13 +9,13 @@ namespace HK
     public sealed class Time
     {
         public static readonly Time Root = new();
-        
+
         private readonly Time parent;
 
         private readonly List<Time> children = new();
 
         private float _timeScale = 1.0f;
-        
+
         public event Action UpdatedTimeScale;
 
         public float timeScale

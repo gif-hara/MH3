@@ -47,7 +47,7 @@ namespace MH3.ActorControllers
         void Awake()
         {
             SpecController = new ActorSpecController(this, spec);
-            TimeController = new ActorTimeController();
+            TimeController = new ActorTimeController(this);
             MovementController = new ActorMovementController();
             StateMachine = new ActorStateMachine(this, initialState);
             StateProvider = new ActorStateProvider(this);
