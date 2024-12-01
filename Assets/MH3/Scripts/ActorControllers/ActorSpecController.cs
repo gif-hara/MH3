@@ -18,6 +18,8 @@ namespace MH3.ActorControllers
 
         public readonly ReactiveProperty<bool> CanAddFlinchDamage = new(true);
 
+        public readonly ReactiveProperty<bool> Invincible = new(false);
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;

@@ -27,5 +27,10 @@ namespace MH3
         {
             actor.MovementController.CanRotate.Value = value == 1;
         }
+
+        public void SetInvinvible(int value)
+        {
+            actor.SpecController.Invincible.Value = value == 1;
+        }
     }
 }

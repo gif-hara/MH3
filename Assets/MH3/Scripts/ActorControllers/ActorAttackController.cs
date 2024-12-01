@@ -97,6 +97,10 @@ namespace MH3.ActorControllers
                 Debug.LogError("AttackSpec is null.");
                 return;
             }
+            if (target.SpecController.Invincible.Value)
+            {
+                return;
+            }
             var damageData = new DamageData(attackSpec.Power, attackSpec.FlinchDamage);
             target.SpecController.TakeDamage(damageData);
             actor.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleActor, attackSpec.HitStopDurationActor).Forget();
