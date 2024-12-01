@@ -28,20 +28,21 @@ namespace MH3.ActorControllers
             actor.UpdateAsObservable()
                 .Subscribe(actor, (_, a) =>
                 {
+                    var deltaTime = a.TimeController.Time.deltaTime;
                     if (velocity == Vector3.zero || !CanMove.Value)
                     {
                         isMoving.Value = false;
                     }
                     else
                     {
-                        openCharacterController.Move(velocity * Time.deltaTime);
+                        openCharacterController.Move(velocity * deltaTime);
                         isMoving.Value = true;
                     }
                     openCharacterController.Move(velocityFromAnimator);
                     velocity = Vector3.zero;
                     velocityFromAnimator = Vector3.zero;
 
-                    a.transform.rotation = Quaternion.Slerp(a.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+                    a.transform.rotation = Quaternion.Slerp(a.transform.rotation, rotation, rotationSpeed * deltaTime);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
