@@ -7,6 +7,10 @@ namespace MH3
     public class ActorSpec : ScriptableObject
     {
         [SerializeField]
+        private int hitPoint;
+        public int HitPoint => hitPoint;
+        
+        [SerializeField]
         private float moveSpeed;
         public float MoveSpeed => moveSpeed;
 
