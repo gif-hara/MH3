@@ -20,12 +20,14 @@ MonoBehaviour:
     list:
     - Id: 10101
       Power: 10
+      FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.1
   actorSpecs:
     list:
     - Id: 10101
       HitPoint: 100
+      FlinchThreshold: 0
       MoveSpeed: 5
       RotationSpeed: 10
       WeaponId: 10101
@@ -39,6 +41,7 @@ MonoBehaviour:
       ActorPrefab: {fileID: 963923653530722458, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
     - Id: 10201
       HitPoint: 100
+      FlinchThreshold: 30
       MoveSpeed: 5
       RotationSpeed: 10
       WeaponId: 10101

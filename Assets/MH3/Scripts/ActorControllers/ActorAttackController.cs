@@ -97,10 +97,14 @@ namespace MH3.ActorControllers
                 Debug.LogError("AttackSpec is null.");
                 return;
             }
-
-            target.SpecController.TakeDamage(attackSpec.Power);
+            var damageData = new DamageData(attackSpec.Power, attackSpec.FlinchDamage);
+            target.SpecController.TakeDamage(damageData);
             actor.TimeController.BeginHitStopAsync(0.01f, 0.2f).Forget();
-            target.StateMachine.TryChangeState(target.SpecController.FlinchSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));
+            if (target.SpecController.CanPlayFlinch())
+            {
+                target.StateMachine.TryChangeState(target.SpecController.FlinchSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));
+                target.SpecController.ResetFlinch();
+            }
         }
     }
 }

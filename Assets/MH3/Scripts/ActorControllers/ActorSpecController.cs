@@ -14,6 +14,8 @@ namespace MH3.ActorControllers
 
         private readonly ReactiveProperty<int> weaponId = new(0);
 
+        private readonly ReactiveProperty<int> flinch = new(0);
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -30,20 +32,33 @@ namespace MH3.ActorControllers
 
         public ReadOnlyReactiveProperty<int> WeaponId => weaponId;
 
+        public ReadOnlyReactiveProperty<int> Flinch => flinch;
+
         public ScriptableSequences AttackSequences => spec.AttackSequences;
 
         public ScriptableSequences FlinchSequences => spec.FlinchSequences;
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(DamageData data)
         {
-            var result = hitPoint.Value - damage;
+            var result = hitPoint.Value - data.Damage;
             result = result < 0 ? 0 : result;
             hitPoint.Value = result;
+            flinch.Value += data.FlinchDamage;
 
             if (result <= 0)
             {
                 Object.Destroy(actor.gameObject);
             }
+        }
+
+        public bool CanPlayFlinch()
+        {
+            return flinch.Value >= spec.FlinchThreshold;
+        }
+
+        public void ResetFlinch()
+        {
+            flinch.Value = 0;
         }
     }
 }

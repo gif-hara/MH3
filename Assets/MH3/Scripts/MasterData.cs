@@ -99,6 +99,8 @@ namespace MH3
 
             public int Power;
 
+            public int FlinchDamage;
+
             public string ColliderName;
 
             public string FlinchName;
@@ -118,6 +120,8 @@ namespace MH3
             public int Id;
 
             public int HitPoint;
+
+            public int FlinchThreshold;
 
             public float MoveSpeed;
 
