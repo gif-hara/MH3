@@ -13,6 +13,7 @@ namespace MH3.ActorControllers
             CanChangeState,
             CanAddFlinchDamage,
             Invincible,
+            IsGuard,
         }
 
         private readonly Actor actor;
@@ -32,6 +33,7 @@ namespace MH3.ActorControllers
                 BooleanType.CanChangeState => actor.StateMachine.CanChangeState,
                 BooleanType.CanAddFlinchDamage => actor.SpecController.CanAddFlinchDamage,
                 BooleanType.Invincible => actor.SpecController.Invincible,
+                BooleanType.IsGuard => actor.GuardController.IsGuard,
                 _ => throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}"),
             };
         }
@@ -54,6 +56,9 @@ namespace MH3.ActorControllers
                     break;
                 case BooleanType.Invincible:
                     actor.SpecController.Invincible.Value = value;
+                    break;
+                case BooleanType.IsGuard:
+                    actor.GuardController.IsGuard.Value = value;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}");
