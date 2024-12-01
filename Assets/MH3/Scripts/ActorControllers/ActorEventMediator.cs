@@ -13,9 +13,9 @@ namespace MH3
             actor.StateMachine.CanChangeState.Value = value == 1;
         }
 
-        public void ActiveAttackCollider(AttackData attackData)
+        public void SetAttackSpec(int attackSpecId)
         {
-            actor.AttackController.SetAttackData(attackData);
+            actor.AttackController.SetAttackSpec(attackSpecId);
         }
 
         public void DeactiveAllAttackCollider()

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using HK;
 using UnityEngine;
 
 namespace MH3.ActorControllers
@@ -11,7 +12,7 @@ namespace MH3.ActorControllers
 
         private readonly Dictionary<string, GameObject> colliders = new();
 
-        private AttackData attackData;
+        private MasterData.AttackSpec attackSpec;
 
         private readonly string[] attackNames = new string[]
         {
@@ -74,10 +75,10 @@ namespace MH3.ActorControllers
             }
         }
 
-        public void SetAttackData(AttackData attackData)
+        public void SetAttackSpec(int attackSpecId)
         {
-            this.attackData = attackData;
-            SetActiveCollider(attackData.ColliderName, true);
+            attackSpec = TinyServiceLocator.Resolve<MasterData>().AttackSpecs.Get(attackSpecId);
+            SetActiveCollider(attackSpec.ColliderName, true);
         }
 
         public void DeactiveAllAttackCollider()
@@ -90,13 +91,13 @@ namespace MH3.ActorControllers
 
         public void Attack(Actor target)
         {
-            if (attackData == null)
+            if (attackSpec == null)
             {
-                Debug.LogError("AttackData is null.");
+                Debug.LogError("AttackSpec is null.");
                 return;
             }
 
-            target.SpecController.TakeDamage(attackData.Power);
+            target.SpecController.TakeDamage(attackSpec.Power);
         }
     }
 }

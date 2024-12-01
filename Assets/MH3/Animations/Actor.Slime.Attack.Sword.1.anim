@@ -1624,11 +1624,11 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.48333332
-    functionName: ActiveAttackCollider
+    functionName: SetAttackSpec
     data: 
-    objectReferenceParameter: {fileID: 11400000, guid: 2f6b6da85c7483b4c89e969ce02f5e13, type: 2}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 10101
     messageOptions: 0
   - time: 0.55
     functionName: DeactiveAllAttackCollider
