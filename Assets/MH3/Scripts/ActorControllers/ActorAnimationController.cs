@@ -1,8 +1,6 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using R3;
-using R3.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -11,10 +9,8 @@ namespace MH3.ActorControllers
     public class ActorAnimationController
     {
         private readonly Actor actor;
-        
+
         private readonly SimpleAnimation simpleAnimation;
-        
-        private SimpleAnimation.State currentCrossFadeState;
 
         public ActorAnimationController(Actor actor, SimpleAnimation simpleAnimation)
         {
@@ -32,7 +28,7 @@ namespace MH3.ActorControllers
             }
             simpleAnimation.CrossFade(stateName, fadeLength);
         }
-        
+
         public async UniTask WaitForAnimationEndAsync(string stateName, CancellationToken cancellationToken)
         {
             try
