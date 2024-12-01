@@ -14,12 +14,13 @@ namespace MH3
                 return Disposable.Empty;
             }
 
+            var currentInputTime = inputTime;
             var newScopeSource = CancellationTokenSource.CreateLinkedTokenSource(scope);
             return Observable.EveryUpdate(scope)
-                .TakeWhile(_ => inputTime > 0)
-                .Subscribe((process, inputTime, newScopeSource), static (_, t) =>
+                .TakeWhile(_ => currentInputTime > 0)
+                .Subscribe((process, newScopeSource), (_, t) =>
                 {
-                    t.inputTime -= Time.deltaTime;
+                    currentInputTime -= Time.deltaTime;
                     if (t.process())
                     {
                         t.newScopeSource.Cancel();
