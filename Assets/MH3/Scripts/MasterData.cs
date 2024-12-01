@@ -64,6 +64,7 @@ namespace MH3
             {
                 actorSpec.InitialStateSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.InitialStateKey}.asset");
                 actorSpec.AttackSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.AttackSequencesKey}.asset");
+                actorSpec.FlinchSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.FlinchSequencesKey}.asset");
                 actorSpec.ActorPrefab = AssetDatabase.LoadAssetAtPath<Actor>($"Assets/MH3/Prefabs/Actor.{actorSpec.ActorPrefabKey}.prefab");
             }
             EditorUtility.SetDirty(this);
@@ -126,11 +127,15 @@ namespace MH3
 
             public string AttackSequencesKey;
 
+            public string FlinchSequencesKey;
+
             public string ActorPrefabKey;
 
             public ScriptableSequences InitialStateSequences;
 
             public ScriptableSequences AttackSequences;
+
+            public ScriptableSequences FlinchSequences;
 
             public Actor ActorPrefab;
 
