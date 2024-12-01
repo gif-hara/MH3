@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using R3;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -16,6 +17,16 @@ namespace MH3.ActorControllers
         {
             this.actor = actor;
             this.simpleAnimation = simpleAnimation;
+            actor.TimeController.UpdatedTimeScale
+                .Subscribe((actor, simpleAnimation), static (_, t) =>
+                {
+                    var (actor, simpleAnimation) = t;
+                    foreach (var state in simpleAnimation.GetStates())
+                    {
+                        state.speed = actor.TimeController.Time.totalTimeScale;
+                    }
+                })
+                .RegisterTo(actor.destroyCancellationToken);
         }
 
         public void CrossFade(string stateName, float fadeLength)

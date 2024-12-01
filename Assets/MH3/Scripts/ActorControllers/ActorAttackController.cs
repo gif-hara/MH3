@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using HK;
 using UnityEngine;
 
@@ -98,6 +99,7 @@ namespace MH3.ActorControllers
             }
 
             target.SpecController.TakeDamage(attackSpec.Power);
+            actor.TimeController.BeginHitStopAsync(0.01f, 0.2f).Forget();
         }
     }
 }
