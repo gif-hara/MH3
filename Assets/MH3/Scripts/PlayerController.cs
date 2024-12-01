@@ -42,6 +42,18 @@ namespace MH3
                     EarlyInputHandler.Invoke(() => a.DodgeController.TryDodge(), 0.5f, a.destroyCancellationToken);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
+            inputController.Actions.Player.Guard.OnPerformedAsObservable()
+                .Subscribe(actor, static (_, a) =>
+                {
+                    a.GuardController.IsGuard.Value = true;
+                })
+                .RegisterTo(actor.destroyCancellationToken);
+            inputController.Actions.Player.Guard.OnCanceledAsObservable()
+                .Subscribe(actor, static (_, a) =>
+                {
+                    a.GuardController.IsGuard.Value = false;
+                })
+                .RegisterTo(actor.destroyCancellationToken);
         }
     }
 }
