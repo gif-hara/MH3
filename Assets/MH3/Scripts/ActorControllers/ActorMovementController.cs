@@ -7,6 +7,8 @@ namespace MH3.ActorControllers
 {
     public class ActorMovementController
     {
+        private Actor actor;
+
         private Vector3 velocity;
 
         private Vector3 velocityFromAnimator;
@@ -24,6 +26,7 @@ namespace MH3.ActorControllers
 
         public void Setup(Actor actor, OpenCharacterController openCharacterController)
         {
+            this.actor = actor;
             SetRotationSpeed(actor.SpecController.RotationSpeed);
             actor.UpdateAsObservable()
                 .Subscribe(actor, (_, a) =>
@@ -63,6 +66,12 @@ namespace MH3.ActorControllers
             {
                 this.rotation = rotation;
             }
+        }
+
+        public void RotateImmediate(Quaternion rotation)
+        {
+            this.rotation = rotation;
+            actor.transform.rotation = rotation;
         }
 
         public void SetRotationSpeed(float rotationSpeed)
