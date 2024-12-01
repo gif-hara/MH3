@@ -9,13 +9,15 @@ namespace MH3.ActorControllers
     {
         private Vector3 velocity;
 
+        private Vector3 velocityFromAnimator;
+
         private Quaternion rotation;
 
         private float rotationSpeed;
-        
+
         private readonly ReactiveProperty<bool> isMoving = new(false);
         public ReadOnlyReactiveProperty<bool> IsMoving => isMoving;
-        
+
         public readonly ReactiveProperty<bool> CanMove = new(true);
 
         public readonly ReactiveProperty<bool> CanRotate = new(true);
@@ -26,30 +28,37 @@ namespace MH3.ActorControllers
             actor.UpdateAsObservable()
                 .Subscribe(actor, (_, a) =>
                 {
-                    if (velocity == Vector3.zero || !CanMove.Value)
+                    var totalVelocity = velocity + velocityFromAnimator;
+                    if (totalVelocity == Vector3.zero || !CanMove.Value)
                     {
                         isMoving.Value = false;
                     }
                     else
                     {
-                        openCharacterController.Move(velocity * Time.deltaTime);
+                        openCharacterController.Move(totalVelocity * Time.deltaTime);
                         isMoving.Value = true;
                     }
                     velocity = Vector3.zero;
+                    velocityFromAnimator = Vector3.zero;
 
                     a.transform.rotation = Quaternion.Slerp(a.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
-        
+
         public void Move(Vector3 velocity)
         {
             this.velocity = velocity;
         }
 
+        public void MoveFromAnimator(Vector3 velocity)
+        {
+            velocityFromAnimator = velocity;
+        }
+
         public void Rotate(Quaternion rotation)
         {
-            if(CanRotate.Value)
+            if (CanRotate.Value)
             {
                 this.rotation = rotation;
             }
