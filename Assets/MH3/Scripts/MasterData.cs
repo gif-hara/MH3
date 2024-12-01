@@ -101,6 +101,8 @@ namespace MH3
 
             public string ColliderName;
 
+            public string FlinchName;
+
             [Serializable]
             public class DictionaryList : DictionaryList<int, AttackSpec>
             {

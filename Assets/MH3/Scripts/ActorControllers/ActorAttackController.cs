@@ -100,6 +100,7 @@ namespace MH3.ActorControllers
 
             target.SpecController.TakeDamage(attackSpec.Power);
             actor.TimeController.BeginHitStopAsync(0.01f, 0.2f).Forget();
+            target.StateMachine.TryChangeState(target.SpecController.FlinchSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));
         }
     }
 }
