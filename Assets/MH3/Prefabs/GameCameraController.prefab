@@ -260,9 +260,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4690004406789821647}
   - component: {fileID: 2426988143851789573}
-  - component: {fileID: 2088357869701610367}
+  - component: {fileID: 6466190031477677931}
   - component: {fileID: 3253008386146704178}
-  - component: {fileID: 5920989322203289784}
   m_Layer: 0
   m_Name: Default
   m_TagString: Untagged
@@ -307,7 +306,7 @@ MonoBehaviour:
   Target:
     TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
-    CustomLookAtTarget: 0
+    CustomLookAtTarget: 1
   Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -328,7 +327,7 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!114 &2088357869701610367
+--- !u!114 &6466190031477677931
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,60 +336,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 9030514970898818476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b5d7c088409d9a40b7b09aa707777f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetOffset: {x: 0, y: 0, z: 0}
-  TrackerSettings:
-    BindingMode: 4
-    PositionDamping: {x: 1, y: 1, z: 1}
-    AngularDampingMode: 0
-    RotationDamping: {x: 1, y: 1, z: 1}
-    QuaternionDamping: 1
-  OrbitStyle: 1
-  Radius: 10
-  Orbits:
-    Top:
-      Radius: 4
-      Height: 9
-    Center:
-      Radius: 10
-      Height: 2.25
-    Bottom:
-      Radius: 4
-      Height: 0.1
-    SplineCurvature: 0.5
-  RecenteringTarget: 2
-  HorizontalAxis:
-    Value: 0
-    Center: 0
-    Range: {x: -180, y: 180}
-    Wrap: 1
-    Recentering:
+  CameraDistance: 10
+  DeadZoneDepth: 0
+  Composition:
+    ScreenPosition: {x: 0, y: 0}
+    DeadZone:
       Enabled: 0
-      Wait: 1
-      Time: 2
-    Restrictions: 0
-  VerticalAxis:
-    Value: 17.5
-    Center: 17.5
-    Range: {x: -10, y: 45}
-    Wrap: 0
-    Recentering:
+      Size: {x: 0.2, y: 0.2}
+    HardLimits:
       Enabled: 0
-      Wait: 1
-      Time: 2
-    Restrictions: 0
-  RadialAxis:
-    Value: 1
-    Center: 1
-    Range: {x: 1, y: 1}
-    Wrap: 0
-    Recentering:
-      Enabled: 0
-      Wait: 1
-      Time: 2
-    Restrictions: 0
+      Size: {x: 0.8, y: 0.8}
+      Offset: {x: 0, y: 0}
+  CenterOnActivate: 1
+  TargetOffset: {x: 0, y: 2, z: 0}
+  Damping: {x: 1, y: 1, z: 1}
+  Lookahead:
+    Enabled: 0
+    Time: 0
+    Smoothing: 0
+    IgnoreY: 0
 --- !u!114 &3253008386146704178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,68 +380,10 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 2.5, z: 0}
-  Damping: {x: 0.5, y: 0.5}
+  TargetOffset: {x: 0, y: 0.5, z: 0}
+  Damping: {x: 0.1, y: 0.1}
   Lookahead:
     Enabled: 0
     Time: 0
     Smoothing: 0
     IgnoreY: 0
---- !u!114 &5920989322203289784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030514970898818476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89875cdc57c54474a8a74efd9b2a3b5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScanRecursively: 1
-  SuppressInputWhileBlending: 1
-  IgnoreTimeScale: 1
-  m_ControllerManager:
-    Controllers:
-    - Name: Look Orbit X
-      Owner: {fileID: 2088357869701610367}
-      Enabled: 1
-      Input:
-        InputAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-        Gain: 180
-        LegacyInput: 
-        LegacyGain: 200
-        CancelDeltaTime: 0
-      InputValue: 0
-      Driver:
-        AccelTime: 0.2
-        DecelTime: 0.2
-    - Name: Look Orbit Y
-      Owner: {fileID: 2088357869701610367}
-      Enabled: 1
-      Input:
-        InputAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-        Gain: -90
-        LegacyInput: 
-        LegacyGain: -200
-        CancelDeltaTime: 0
-      InputValue: 0
-      Driver:
-        AccelTime: 0.2
-        DecelTime: 0.2
-    - Name: Orbit Scale
-      Owner: {fileID: 2088357869701610367}
-      Enabled: 0
-      Input:
-        InputAction: {fileID: 0}
-        Gain: 1
-        LegacyInput: Mouse ScrollWheel
-        LegacyGain: 200
-        CancelDeltaTime: 0
-      InputValue: 0
-      Driver:
-        AccelTime: 0
-        DecelTime: 0
-  PlayerIndex: -1
-  AutoEnableInputs: 0

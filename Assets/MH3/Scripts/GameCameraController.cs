@@ -11,10 +11,11 @@ namespace MH3
         [SerializeField]
         private Camera controlledCamera;
         public Camera ControlledCamera => controlledCamera;
-        
-        public void SetTrackingTarget(Transform target)
+
+        public void SetTrackingTarget(Transform tracking, Transform lookAt)
         {
-            defaultCinemachineCamera.Target.TrackingTarget = target;
+            defaultCinemachineCamera.Target.TrackingTarget = tracking;
+            defaultCinemachineCamera.Target.LookAtTarget = lookAt;
         }
     }
 }

@@ -38,9 +38,9 @@ namespace MH3
             enemy.transform.position = enemySpawnPoint.position;
             enemy.transform.rotation = enemySpawnPoint.rotation;
             var gameCameraController = Instantiate(gameCameraControllerPrefab);
-            gameCameraController.SetTrackingTarget(player.transform);
+            gameCameraController.SetTrackingTarget(player.transform, enemy.transform);
             PlayerController.Attach(player, gameCameraController.ControlledCamera.transform);
-            EnemyController.Attach(enemy, player);
+            // EnemyController.Attach(enemy, player);
         }
     }
 }
