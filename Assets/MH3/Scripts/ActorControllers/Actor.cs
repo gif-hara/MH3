@@ -32,6 +32,8 @@ namespace MH3.ActorControllers
 
         public ActorTimeController TimeController { get; private set; }
 
+        public ActorDodgeController DodgeController { get; private set; }
+
         public LocatorHolder LocatorHolder => locatorHolder;
 
         public Actor Spawn(Vector3 position, Quaternion rotation, MasterData.ActorSpec actorSpec)
@@ -46,6 +48,7 @@ namespace MH3.ActorControllers
             actor.AttackController = new ActorAttackController(actor);
             actor.WeaponController = new ActorWeaponController(actor);
             actor.ColliderController = new ActorColliderController(actor);
+            actor.DodgeController = new ActorDodgeController(actor);
             actor.MovementController.Setup(actor, actor.openCharacterController);
             return actor;
         }
