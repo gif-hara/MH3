@@ -23,11 +23,11 @@ namespace MH3.ActorControllers
 
         [SerializeField]
         private OpenCharacterController openCharacterController;
-        
+
         public ActorMovementController MovementController { get; private set; }
-        
+
         public ActorStateMachine StateMachine { get; private set; }
-        
+
         public ActorStateProvider StateProvider { get; private set; }
 
         public ActorSpecController SpecController { get; private set; }
@@ -40,11 +40,14 @@ namespace MH3.ActorControllers
 
         public ActorColliderController ColliderController { get; private set; }
 
+        public ActorTimeController TimeController { get; private set; }
+
         public LocatorHolder LocatorHolder => locatorHolder;
-        
+
         void Awake()
         {
             SpecController = new ActorSpecController(this, spec);
+            TimeController = new ActorTimeController();
             MovementController = new ActorMovementController();
             StateMachine = new ActorStateMachine(this, initialState);
             StateProvider = new ActorStateProvider(this);
