@@ -96,7 +96,7 @@ namespace MH3.ActorControllers
                 return;
             }
 
-            Debug.Log($"{actor.name} attack {target.name} with {attackData.Power} power.");
+            target.SpecController.TakeDamage(attackData.Power);
         }
     }
 }
