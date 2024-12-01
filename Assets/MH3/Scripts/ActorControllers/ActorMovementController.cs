@@ -28,16 +28,16 @@ namespace MH3.ActorControllers
             actor.UpdateAsObservable()
                 .Subscribe(actor, (_, a) =>
                 {
-                    var totalVelocity = velocity + velocityFromAnimator;
-                    if (totalVelocity == Vector3.zero || !CanMove.Value)
+                    if (velocity == Vector3.zero || !CanMove.Value)
                     {
                         isMoving.Value = false;
                     }
                     else
                     {
-                        openCharacterController.Move(totalVelocity * Time.deltaTime);
+                        openCharacterController.Move(velocity * Time.deltaTime);
                         isMoving.Value = true;
                     }
+                    openCharacterController.Move(velocityFromAnimator);
                     velocity = Vector3.zero;
                     velocityFromAnimator = Vector3.zero;
 
