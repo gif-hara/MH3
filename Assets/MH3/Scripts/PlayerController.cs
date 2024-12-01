@@ -24,7 +24,7 @@ namespace MH3
                     cameraRight.Normalize();
                     var moveVector = (cameraForward.normalized * velocity.y + cameraRight.normalized * velocity.x).normalized;
                     actor.MovementController.Move(moveVector * actor.SpecController.MoveSpeed);
-                    if(velocity != Vector2.zero)
+                    if (velocity != Vector2.zero)
                     {
                         actor.MovementController.Rotate(Quaternion.LookRotation(moveVector));
                     }
@@ -33,7 +33,13 @@ namespace MH3
             inputController.Actions.Player.Attack.OnPerformedAsObservable()
                 .Subscribe(actor, static (_, a) =>
                 {
-                    EarlyInputHandler.Invoke(() => a.AttackController.TryAttack(), 0.1f, a.destroyCancellationToken);
+                    EarlyInputHandler.Invoke(() => a.AttackController.TryAttack(), 0.5f, a.destroyCancellationToken);
+                })
+                .RegisterTo(actor.destroyCancellationToken);
+            inputController.Actions.Player.Dodge.OnPerformedAsObservable()
+                .Subscribe(actor, static (_, a) =>
+                {
+                    EarlyInputHandler.Invoke(() => a.DodgeController.TryDodge(), 0.5f, a.destroyCancellationToken);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
