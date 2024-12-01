@@ -23,6 +23,10 @@ MonoBehaviour:
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
   actorSpecs:
     list:
     - Id: 10101

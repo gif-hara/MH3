@@ -99,7 +99,8 @@ namespace MH3.ActorControllers
             }
             var damageData = new DamageData(attackSpec.Power, attackSpec.FlinchDamage);
             target.SpecController.TakeDamage(damageData);
-            actor.TimeController.BeginHitStopAsync(0.01f, 0.2f).Forget();
+            actor.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleActor, attackSpec.HitStopDurationActor).Forget();
+            target.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleTarget, attackSpec.HitStopDurationTarget).Forget();
             if (target.SpecController.CanPlayFlinch())
             {
                 target.StateMachine.TryChangeState(target.SpecController.FlinchSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));

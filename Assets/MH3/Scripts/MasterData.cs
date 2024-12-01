@@ -105,6 +105,14 @@ namespace MH3
 
             public string FlinchName;
 
+            public float HitStopTimeScaleActor;
+
+            public float HitStopDurationActor;
+
+            public float HitStopTimeScaleTarget;
+
+            public float HitStopDurationTarget;
+
             [Serializable]
             public class DictionaryList : DictionaryList<int, AttackSpec>
             {

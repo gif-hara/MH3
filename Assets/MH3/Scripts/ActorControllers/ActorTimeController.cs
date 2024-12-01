@@ -26,6 +26,10 @@ namespace MH3
 
         public async UniTask BeginHitStopAsync(float timeScale, float duration)
         {
+            if (duration <= 0)
+            {
+                return;
+            }
             PushTimeScale(timeScale);
             await UniTask.Delay(TimeSpan.FromSeconds(duration), cancellationToken: actor.destroyCancellationToken);
             PopTimeScale();
