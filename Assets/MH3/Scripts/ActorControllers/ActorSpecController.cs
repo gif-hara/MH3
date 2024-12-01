@@ -44,6 +44,8 @@ namespace MH3.ActorControllers
 
         public ScriptableSequences DodgeSequences => spec.DodgeSequences;
 
+        public ScriptableSequences GuardSequences => spec.GuardSequences;
+
         public void TakeDamage(DamageData data)
         {
             var result = hitPoint.Value - data.Damage;
