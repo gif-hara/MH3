@@ -22,5 +22,10 @@ namespace MH3
         {
             actor.AttackController.DeactiveAllAttackCollider();
         }
+
+        public void SetCanRotate(int value)
+        {
+            actor.MovementController.CanRotate.Value = value == 1;
+        }
     }
 }
