@@ -16,9 +16,9 @@ namespace MH3.ActorControllers
         private readonly MasterData.ActorSpec spec;
 
         private readonly ReactiveProperty<int> hitPoint = new(0);
-        
+
         private readonly ReactiveProperty<int> attack = new(0);
-        
+
         private readonly ReactiveProperty<float> physicalDamageCutRate = new(0.0f);
 
         private readonly ReactiveProperty<int> weaponId = new(0);
@@ -28,7 +28,7 @@ namespace MH3.ActorControllers
         public readonly ReactiveProperty<bool> CanAddFlinchDamage = new(true);
 
         public readonly ReactiveProperty<bool> Invincible = new(false);
-        
+
         public readonly List<string> ComboAnimationKeys = new();
 
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
@@ -46,10 +46,12 @@ namespace MH3.ActorControllers
             }
         }
 
+        public Define.ActorType ActorType => spec.ActorType;
+
         public ReadOnlyReactiveProperty<int> HitPoint => hitPoint;
-        
+
         public ReadOnlyReactiveProperty<int> Attack => attack;
-        
+
         public ReadOnlyReactiveProperty<float> PhysicalDamageCutRate => physicalDamageCutRate;
 
         public float MoveSpeed => spec.MoveSpeed;
@@ -67,7 +69,7 @@ namespace MH3.ActorControllers
         public ScriptableSequences DodgeSequences => spec.DodgeSequences;
 
         public ScriptableSequences GuardSequences => spec.GuardSequences;
-        
+
         public MasterData.WeaponSpec WeaponSpec => TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponId.Value);
 
         public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec)
@@ -81,6 +83,23 @@ namespace MH3.ActorControllers
             {
                 return;
             }
+
+#if DEBUG
+            if (actor.SpecController.ActorType == Define.ActorType.Player)
+            {
+                if (TinyServiceLocator.Resolve<GameDebugData>().InvinciblePlayer)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                if (TinyServiceLocator.Resolve<GameDebugData>().InvincibleEnemy)
+                {
+                    return;
+                }
+            }
+#endif
 
             var guardResult = actor.GuardController.GetGuardResult(actor.transform.position);
             var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult);
