@@ -21,7 +21,7 @@ namespace MH3
         [SerializeField]
         private WeaponSpec.DictionaryList weaponSpecs;
         public WeaponSpec.DictionaryList WeaponSpecs => weaponSpecs;
-        
+
         [SerializeField]
         private WeaponCombo.Group weaponCombos;
         public WeaponCombo.Group WeaponCombos => weaponCombos;
@@ -93,7 +93,7 @@ namespace MH3
             public int ComboId;
 
             public WeaponModelData ModelData;
-            
+
             [Serializable]
             public class DictionaryList : DictionaryList<int, WeaponSpec>
             {
@@ -148,9 +148,9 @@ namespace MH3
             public float ShakeStrength;
 
             public float ShakeDuration;
-            
+
             public int ShakeFrequency;
-            
+
             public float ShakeDampingRatio;
 
             [Serializable]
@@ -166,6 +166,8 @@ namespace MH3
         public class ActorSpec
         {
             public int Id;
+
+            public Define.ActorType ActorType;
 
             public int HitPoint;
 

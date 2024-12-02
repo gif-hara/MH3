@@ -47,6 +47,7 @@ MonoBehaviour:
   actorSpecs:
     list:
     - Id: 10101
+      ActorType: 0
       HitPoint: 100
       Attack: 100
       PhysicalDamageCutRate: 0
@@ -67,6 +68,7 @@ MonoBehaviour:
       GuardSequences: {fileID: 11400000, guid: 00f83183459bd704a9af1dcc204da93c, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
     - Id: 10201
+      ActorType: 1
       HitPoint: 100
       Attack: 100
       PhysicalDamageCutRate: 0
