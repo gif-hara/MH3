@@ -71,16 +71,11 @@ namespace MH3.ActorControllers
             }
 
             var successGuard = actor.GuardController.IsSuccessGuard(actor.transform.position);
-            var damage = attackSpec.Power;
-            if(successGuard)
-            {
-                damage = Mathf.FloorToInt(attackSpec.Power * TinyServiceLocator.Resolve<GameRules>().GuardSuccessDamageRate);
-            }
-            var damageData = new DamageData(damage, attackSpec.FlinchDamage);
+            var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, successGuard);
             var fixedHitPoint = hitPoint.Value - damageData.Damage;
             fixedHitPoint = fixedHitPoint < 0 ? 0 : fixedHitPoint;
             hitPoint.Value = fixedHitPoint;
-            if (CanAddFlinchDamage.Value && !successGuard)
+            if (CanAddFlinchDamage.Value)
             {
                 flinch.Value += damageData.FlinchDamage;
             }
@@ -89,8 +84,8 @@ namespace MH3.ActorControllers
             {
                 Object.Destroy(actor.gameObject);
             }
-            attacker.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleTarget, attackSpec.HitStopDurationTarget).Forget();
-            actor.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleActor, attackSpec.HitStopDurationActor).Forget();
+            attacker.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleActor, attackSpec.HitStopDurationActor).Forget();
+            actor.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleTarget, attackSpec.HitStopDurationTarget).Forget();
             if (actor.SpecController.CanPlayFlinch())
             {
                 var lookAt = attacker.transform.position - actor.transform.position;
