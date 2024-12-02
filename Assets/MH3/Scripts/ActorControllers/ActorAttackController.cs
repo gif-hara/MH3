@@ -14,15 +14,7 @@ namespace MH3.ActorControllers
         private readonly Dictionary<string, GameObject> colliders = new();
 
         private MasterData.AttackSpec attackSpec;
-
-        private readonly string[] attackNames = new string[]
-        {
-            "Attack.1",
-            "Attack.2",
-            "Attack.1",
-            "Attack.2",
-        };
-
+        
         public ActorAttackController(Actor actor)
         {
             this.actor = actor;
@@ -30,7 +22,7 @@ namespace MH3.ActorControllers
 
         public bool TryAttack()
         {
-            if (attackCount >= attackNames.Length)
+            if (attackCount >= actor.SpecController.ComboAnimationKeys.Count)
             {
                 return false;
             }
@@ -39,7 +31,7 @@ namespace MH3.ActorControllers
                 actor.SpecController.AttackSequences,
                 containerAction: c =>
                 {
-                    c.Register("AttackName", attackNames[attackCount++]);
+                    c.Register("AttackName", actor.SpecController.ComboAnimationKeys[attackCount++]);
                 }))
             {
                 return true;

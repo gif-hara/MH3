@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -99,6 +100,11 @@ namespace MH3
                 public DictionaryList() : base(x => x.Id)
                 {
                 }
+            }
+
+            public List<WeaponCombo> GetCombos()
+            {
+                return TinyServiceLocator.Resolve<MasterData>().WeaponCombos.Get(ComboId);
             }
         }
 
