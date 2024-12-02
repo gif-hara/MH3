@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6552548378911788165}
   - component: {fileID: -8448586338615814989}
   - component: {fileID: 2360148311099018462}
+  - component: {fileID: -1002714828873952109}
   m_Layer: 0
   m_Name: Model.Base
   m_TagString: Untagged
@@ -92,6 +93,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actor: {fileID: 0}
   animator: {fileID: 6552548378911788165}
+--- !u!114 &-1002714828873952109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4121475287992394588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b99920dd4c13364c88aed93db594ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elements:
+    list:
+    - name: Root
+      transform: {fileID: 7585212207849036157}
+    - name: Shake
+      transform: {fileID: 7179649145956326436}
 --- !u!1 &4511447503023513010
 GameObject:
   m_ObjectHideFlags: 0
