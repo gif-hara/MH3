@@ -15,14 +15,27 @@ MonoBehaviour:
   weaponSpecs:
     list:
     - Id: 10101
+      ComboId: 10101
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
+  weaponCombos:
+    list:
+    - Key: 10101
+      Value:
+      - Id: 10101
+        AnimationKey: Attack.1
+      - Id: 10101
+        AnimationKey: Attack.2
+      - Id: 10101
+        AnimationKey: Attack.1
+      - Id: 10101
+        AnimationKey: Attack.2
   attackSpecs:
     list:
     - Id: 10101
       Power: 10
       FlinchDamage: 10
       ColliderName: Default
-      FlinchName: Flinch.1
+      FlinchName: Flinch.Small
       HitStopTimeScaleActor: 0.01
       HitStopDurationActor: 0.2
       HitStopTimeScaleTarget: 0.01

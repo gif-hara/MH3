@@ -20,6 +20,10 @@ namespace MH3
         [SerializeField]
         private WeaponSpec.DictionaryList weaponSpecs;
         public WeaponSpec.DictionaryList WeaponSpecs => weaponSpecs;
+        
+        [SerializeField]
+        private WeaponCombo.Group weaponCombos;
+        public WeaponCombo.Group WeaponCombos => weaponCombos;
 
         [SerializeField]
         private AttackSpec.DictionaryList attackSpecs;
@@ -49,6 +53,7 @@ namespace MH3
                 "WeaponSpec",
                 "AttackSpec",
                 "ActorSpec",
+                "WeaponCombo",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -56,6 +61,7 @@ namespace MH3
             weaponSpecs.Set(JsonHelper.FromJson<WeaponSpec>(database[0]));
             attackSpecs.Set(JsonHelper.FromJson<AttackSpec>(database[1]));
             actorSpecs.Set(JsonHelper.FromJson<ActorSpec>(database[2]));
+            weaponCombos.Set(JsonHelper.FromJson<WeaponCombo>(database[3]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.Id}.asset");
@@ -83,12 +89,30 @@ namespace MH3
         {
             public int Id;
 
-            public WeaponModelData ModelData;
+            public int ComboId;
 
+            public WeaponModelData ModelData;
+            
             [Serializable]
             public class DictionaryList : DictionaryList<int, WeaponSpec>
             {
                 public DictionaryList() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class WeaponCombo
+        {
+            public int Id;
+
+            public string AnimationKey;
+
+            [Serializable]
+            public class Group : Group<int, WeaponCombo>
+            {
+                public Group() : base(x => x.Id)
                 {
                 }
             }
