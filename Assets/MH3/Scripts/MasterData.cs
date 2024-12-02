@@ -163,6 +163,8 @@ namespace MH3
 
             public int Attack;
 
+            public float PhysicalDamageCutRate;
+
             public int FlinchThreshold;
 
             public float MoveSpeed;
