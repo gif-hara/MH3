@@ -101,20 +101,7 @@ namespace MH3.ActorControllers
             }
 #endif
 
-            var guardResult = actor.GuardController.GetGuardResult(actor.transform.position);
-            var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult);
-            var fixedHitPoint = hitPoint.Value - damageData.Damage;
-            fixedHitPoint = fixedHitPoint < 0 ? 0 : fixedHitPoint;
-            hitPoint.Value = fixedHitPoint;
-            if (CanAddFlinchDamage.Value)
-            {
-                flinch.Value += damageData.FlinchDamage;
-            }
-
-            if (fixedHitPoint <= 0)
-            {
-                Object.Destroy(actor.gameObject);
-            }
+            var guardResult = actor.GuardController.GetGuardResult(attacker.transform.position);
             attacker.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleActor, attackSpec.HitStopDurationActor).Forget();
             actor.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleTarget, attackSpec.HitStopDurationTarget).Forget();
             LMotion.Shake.Create(Vector3.zero, Vector3.one * attackSpec.ShakeStrength, attackSpec.ShakeDuration)
@@ -122,14 +109,35 @@ namespace MH3.ActorControllers
                 .WithDampingRatio(attackSpec.ShakeDampingRatio)
                 .BindToLocalPosition(actor.LocatorHolder.Get("Shake"))
                 .AddTo(actor);
-            if (actor.SpecController.CanPlayFlinch())
+
+            if (guardResult == ActorGuardController.GuardResult.SuccessJustGuard)
             {
-                var lookAt = attacker.transform.position - actor.transform.position;
-                lookAt.y = 0.0f;
-                actor.MovementController.RotateImmediate(Quaternion.LookRotation(lookAt));
-                actor.MovementController.CanRotate.Value = false;
-                actor.StateMachine.TryChangeState(actor.SpecController.FlinchSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));
-                actor.SpecController.ResetFlinch();
+                Debug.Log("JustGuard");
+            }
+            else
+            {
+                var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult);
+                var fixedHitPoint = hitPoint.Value - damageData.Damage;
+                fixedHitPoint = fixedHitPoint < 0 ? 0 : fixedHitPoint;
+                hitPoint.Value = fixedHitPoint;
+                if (CanAddFlinchDamage.Value)
+                {
+                    flinch.Value += damageData.FlinchDamage;
+                }
+
+                if (fixedHitPoint <= 0)
+                {
+                    Object.Destroy(actor.gameObject);
+                }
+                if (actor.SpecController.CanPlayFlinch())
+                {
+                    var lookAt = attacker.transform.position - actor.transform.position;
+                    lookAt.y = 0.0f;
+                    actor.MovementController.RotateImmediate(Quaternion.LookRotation(lookAt));
+                    actor.MovementController.CanRotate.Value = false;
+                    actor.StateMachine.TryChangeState(actor.SpecController.FlinchSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));
+                    actor.SpecController.ResetFlinch();
+                }
             }
         }
 
