@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using HK;
+using LitMotion;
+using LitMotion.Extensions;
 using R3;
 using UnityEngine;
 using UnitySequencerSystem;
@@ -96,6 +98,11 @@ namespace MH3.ActorControllers
             }
             attacker.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleActor, attackSpec.HitStopDurationActor).Forget();
             actor.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleTarget, attackSpec.HitStopDurationTarget).Forget();
+            LMotion.Shake.Create(Vector3.zero, Vector3.one * attackSpec.ShakeStrength, attackSpec.ShakeDuration)
+                .WithFrequency(attackSpec.ShakeFrequency)
+                .WithDampingRatio(attackSpec.ShakeDampingRatio)
+                .BindToLocalPosition(actor.LocatorHolder.Get("Shake"))
+                .AddTo(actor);
             if (actor.SpecController.CanPlayFlinch())
             {
                 var lookAt = attacker.transform.position - actor.transform.position;

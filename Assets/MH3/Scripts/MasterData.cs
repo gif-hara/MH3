@@ -145,6 +145,14 @@ namespace MH3
 
             public float HitStopDurationTarget;
 
+            public float ShakeStrength;
+
+            public float ShakeDuration;
+            
+            public int ShakeFrequency;
+            
+            public float ShakeDampingRatio;
+
             [Serializable]
             public class DictionaryList : DictionaryList<int, AttackSpec>
             {
