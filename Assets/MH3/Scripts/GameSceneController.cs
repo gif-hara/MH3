@@ -19,6 +19,9 @@ namespace MH3
 
         [SerializeField]
         private MasterData masterData;
+        
+        [SerializeField]
+        private GameRules gameRules;
 
         [SerializeField]
         private GameCameraController gameCameraControllerPrefab;
@@ -30,6 +33,7 @@ namespace MH3
         {
             TinyServiceLocator.RegisterAsync(new InputController(), destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(masterData, destroyCancellationToken).Forget();
+            TinyServiceLocator.RegisterAsync(gameRules, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(Instantiate(audioManagerPrefab), destroyCancellationToken).Forget();
             var player = masterData.ActorSpecs.Get(playerActorSpecId).Spawn(playerSpawnPoint.position, playerSpawnPoint.rotation);
             player.transform.position = playerSpawnPoint.position;

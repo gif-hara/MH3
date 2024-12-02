@@ -33,13 +33,13 @@ namespace MH3
             inputController.Actions.Player.Attack.OnPerformedAsObservable()
                 .Subscribe(actor, static (_, a) =>
                 {
-                    EarlyInputHandler.Invoke(() => a.AttackController.TryAttack(), 0.5f, a.destroyCancellationToken);
+                    EarlyInputHandler.Invoke(() => a.AttackController.TryAttack(), TinyServiceLocator.Resolve<GameRules>().EarlyInputTime, a.destroyCancellationToken);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             inputController.Actions.Player.Dodge.OnPerformedAsObservable()
                 .Subscribe(actor, static (_, a) =>
                 {
-                    EarlyInputHandler.Invoke(() => a.DodgeController.TryDodge(), 0.5f, a.destroyCancellationToken);
+                    EarlyInputHandler.Invoke(() => a.DodgeController.TryDodge(), TinyServiceLocator.Resolve<GameRules>().EarlyInputTime, a.destroyCancellationToken);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             inputController.Actions.Player.Guard.OnPerformedAsObservable()
