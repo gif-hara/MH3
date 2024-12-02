@@ -21,22 +21,37 @@ namespace MH3.ActorControllers
 
         public bool TryAttack()
         {
-            if (attackCount >= actor.SpecController.ComboAnimationKeys.Count)
+            if (actor.GuardController.JustGuarding.Value)
             {
+                if (actor.StateMachine.TryChangeState(
+                    actor.SpecController.AttackSequences,
+                    containerAction: c =>
+                    {
+                        c.Register("AttackName", actor.SpecController.JustGuardAttackAnimationKey);
+                    }))
+                {
+                    return true;
+                }
                 return false;
             }
-
-            if (actor.StateMachine.TryChangeState(
-                actor.SpecController.AttackSequences,
-                containerAction: c =>
-                {
-                    c.Register("AttackName", actor.SpecController.ComboAnimationKeys[attackCount++]);
-                }))
+            else
             {
-                return true;
-            }
+                if (attackCount >= actor.SpecController.ComboAnimationKeys.Count)
+                {
+                    return false;
+                }
 
-            return false;
+                if (actor.StateMachine.TryChangeState(
+                    actor.SpecController.AttackSequences,
+                    containerAction: c =>
+                    {
+                        c.Register("AttackName", actor.SpecController.ComboAnimationKeys[attackCount++]);
+                    }))
+                {
+                    return true;
+                }
+                return false;
+            }
         }
 
         public void ResetAttackCount()

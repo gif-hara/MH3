@@ -9,9 +9,13 @@ namespace MH3.ActorControllers
     {
         private readonly Actor actor;
 
+        public readonly ReactiveProperty<bool> CanGuard = new(true);
+
         public readonly ReactiveProperty<bool> IsGuard = new(false);
 
         private readonly ReactiveProperty<float> beginGuardTime = new(0.0f);
+
+        public readonly ReactiveProperty<bool> JustGuarding = new(false);
 
         public enum GuardResult
         {
@@ -28,6 +32,10 @@ namespace MH3.ActorControllers
                 .Subscribe((this, actor), static (_, t) =>
                 {
                     var (@this, actor) = t;
+                    if (!@this.CanGuard.Value)
+                    {
+                        return;
+                    }
                     if (
                         @this.IsGuard.Value
                         && !actor.StateMachine.IsMatchState(actor.SpecController.GuardSequences)

@@ -31,6 +31,8 @@ namespace MH3.ActorControllers
 
         public readonly List<string> ComboAnimationKeys = new();
 
+        public string JustGuardAttackAnimationKey { get; private set; }
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -44,6 +46,7 @@ namespace MH3.ActorControllers
             {
                 ComboAnimationKeys.Add(combo.AnimationKey);
             }
+            JustGuardAttackAnimationKey = WeaponSpec.JustGuardAttackAnimationKey;
         }
 
         public Define.ActorType ActorType => spec.ActorType;
@@ -69,6 +72,8 @@ namespace MH3.ActorControllers
         public ScriptableSequences DodgeSequences => spec.DodgeSequences;
 
         public ScriptableSequences GuardSequences => spec.GuardSequences;
+
+        public ScriptableSequences SuccessJustGuardSequences => spec.SuccessJustGuardSequences;
 
         public MasterData.WeaponSpec WeaponSpec => TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponId.Value);
 
@@ -112,7 +117,7 @@ namespace MH3.ActorControllers
 
             if (guardResult == ActorGuardController.GuardResult.SuccessJustGuard)
             {
-                Debug.Log("JustGuard");
+                actor.StateMachine.TryChangeState(actor.SpecController.SuccessJustGuardSequences, force: true);
             }
             else
             {

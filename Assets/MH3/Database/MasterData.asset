@@ -16,6 +16,7 @@ MonoBehaviour:
     list:
     - Id: 10101
       ComboId: 10101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
   weaponCombos:
     list:
@@ -44,11 +45,24 @@ MonoBehaviour:
       ShakeDuration: 0.2
       ShakeFrequency: 6
       ShakeDampingRatio: 0
+    - Id: 10102
+      Power: 50
+      FlinchDamage: 50
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
   actorSpecs:
     list:
     - Id: 10101
       ActorType: 0
-      HitPoint: 100
+      HitPoint: 99999
       Attack: 100
       PhysicalDamageCutRate: 0
       FlinchThreshold: 1
@@ -60,16 +74,18 @@ MonoBehaviour:
       FlinchSequencesKey: Flinch.Default
       DodgeSequencesKey: Dodge.Default
       GuardSequencesKey: Guard.Default
+      SuccessJustGuardSequencesKey: SuccessJustGuard.Default
       ActorPrefabKey: Player
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
       FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
       DodgeSequences: {fileID: 11400000, guid: 382dc8b38b611744f879c2c1942dcdde, type: 2}
       GuardSequences: {fileID: 11400000, guid: 00f83183459bd704a9af1dcc204da93c, type: 2}
+      SuccessJustGuardSequences: {fileID: 11400000, guid: 94d370458b442564993fb0b876ce15ae, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
     - Id: 10201
       ActorType: 1
-      HitPoint: 100
+      HitPoint: 99999
       Attack: 100
       PhysicalDamageCutRate: 0
       FlinchThreshold: 30
@@ -81,10 +97,12 @@ MonoBehaviour:
       FlinchSequencesKey: Flinch.Default
       DodgeSequencesKey: Dodge.Default
       GuardSequencesKey: Guard.Default
+      SuccessJustGuardSequencesKey: SuccessJustGuard.Default
       ActorPrefabKey: Enemy
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
       FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
       DodgeSequences: {fileID: 11400000, guid: 382dc8b38b611744f879c2c1942dcdde, type: 2}
       GuardSequences: {fileID: 11400000, guid: 00f83183459bd704a9af1dcc204da93c, type: 2}
+      SuccessJustGuardSequences: {fileID: 11400000, guid: 94d370458b442564993fb0b876ce15ae, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
