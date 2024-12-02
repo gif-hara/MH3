@@ -28,6 +28,9 @@ namespace MH3
 
         [SerializeField]
         private AudioManager audioManagerPrefab;
+        
+        [SerializeField]
+        private EffectManager effectManagerPrefab;
 
         private void Start()
         {
@@ -35,6 +38,7 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(masterData, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(gameRules, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(Instantiate(audioManagerPrefab), destroyCancellationToken).Forget();
+            TinyServiceLocator.RegisterAsync(Instantiate(effectManagerPrefab), destroyCancellationToken).Forget();
             var player = masterData.ActorSpecs.Get(playerActorSpecId).Spawn(playerSpawnPoint.position, playerSpawnPoint.rotation);
             player.transform.position = playerSpawnPoint.position;
             player.transform.rotation = playerSpawnPoint.rotation;
