@@ -82,8 +82,8 @@ namespace MH3.ActorControllers
                 return;
             }
 
-            var successGuard = actor.GuardController.IsSuccessGuard(actor.transform.position);
-            var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, successGuard);
+            var guardResult = actor.GuardController.GetGuardResult(actor.transform.position);
+            var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult);
             var fixedHitPoint = hitPoint.Value - damageData.Damage;
             fixedHitPoint = fixedHitPoint < 0 ? 0 : fixedHitPoint;
             hitPoint.Value = fixedHitPoint;

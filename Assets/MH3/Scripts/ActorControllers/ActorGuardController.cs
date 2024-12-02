@@ -11,8 +11,18 @@ namespace MH3.ActorControllers
         private readonly Actor actor;
         
         public readonly ReactiveProperty<bool> IsGuard = new(false);
+        
+        private readonly ReactiveProperty<float> beginGuardTime = new(0.0f);
 
         private CancellationTokenSource guardCancellationTokenSource;
+
+        public enum GuardResult
+        {
+            NotGuard,
+            SuccessGuard,
+            FailedGuard,
+            SuccessJustGuard,
+        }
 
         public ActorGuardController(Actor actor)
         {
@@ -21,29 +31,42 @@ namespace MH3.ActorControllers
                 .Subscribe((this, actor), static (_, t) =>
                 {
                     var (@this, actor) = t;
-                    if (@this.IsGuard.Value && !actor.StateMachine.IsMatchState(actor.SpecController.GuardSequences))
+                    if (
+                        @this.IsGuard.Value
+                        && !actor.StateMachine.IsMatchState(actor.SpecController.GuardSequences)
+                        && actor.StateMachine.TryChangeState(actor.SpecController.GuardSequences))
                     {
-                        actor.StateMachine.TryChangeState(actor.SpecController.GuardSequences);
+                        @this.beginGuardTime.Value = UnityEngine.Time.time;
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
         
-        public bool IsSuccessGuard(Vector3 impactPosition)
+        public GuardResult GetGuardResult(Vector3 impactPosition)
         {
             if(!IsGuard.Value)
             {
-                return false;
+                return GuardResult.NotGuard;
             }
             
             var forward = actor.transform.forward;
             forward.y = 0.0f;
             forward.Normalize();
             impactPosition.y = 0.0f;
+            var gameRules = TinyServiceLocator.Resolve<GameRules>();
             var targetDirection = (impactPosition - actor.transform.position).normalized;
-            var guardRange = TinyServiceLocator.Resolve<GameRules>().GuardRange;
+            var guardRange = gameRules.GuardRange;
             var guardAngle = Vector3.Dot(forward, targetDirection) * -1;
-            return guardAngle > guardRange / 2.0f;
+            var successGuard = guardAngle > guardRange / 2.0f;
+            if (successGuard)
+            {
+                var guardTime = UnityEngine.Time.time - beginGuardTime.Value;
+                return guardTime <= gameRules.JustGuardTime ? GuardResult.SuccessJustGuard : GuardResult.SuccessGuard;
+            }
+            else
+            {
+                return GuardResult.FailedGuard;
+            }
         }
     }
 }

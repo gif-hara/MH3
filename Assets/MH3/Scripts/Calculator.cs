@@ -10,16 +10,21 @@ namespace MH3
             Actor attacker,
             Actor target,
             MasterData.AttackSpec attackSpec,
-            bool targetIsSuccessGuard
+            ActorGuardController.GuardResult targetGuardResult
             )
         {
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
             var damage = Mathf.FloorToInt(attacker.SpecController.Attack.CurrentValue * attackSpec.Power / 100.0f);
             damage = Mathf.FloorToInt(damage * (1.0f - target.SpecController.PhysicalDamageCutRate.CurrentValue));
             var flinchDamage = attackSpec.FlinchDamage;
-            if (targetIsSuccessGuard)
+            if (targetGuardResult == ActorGuardController.GuardResult.SuccessGuard)
             {
                 damage = Mathf.FloorToInt(damage * gameRules.GuardSuccessDamageRate);
+                flinchDamage = 0;
+            }
+            else if (targetGuardResult == ActorGuardController.GuardResult.SuccessJustGuard)
+            {
+                damage = 0;
                 flinchDamage = 0;
             }
             return new DamageData(damage, flinchDamage);

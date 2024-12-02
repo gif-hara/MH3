@@ -16,5 +16,9 @@ namespace MH3
         [SerializeField]
         private float guardSuccessDamageRate;
         public float GuardSuccessDamageRate => guardSuccessDamageRate;
+        
+        [SerializeField]
+        private float justGuardTime;
+        public float JustGuardTime => justGuardTime;
     }
 }
