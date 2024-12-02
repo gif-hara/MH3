@@ -41,7 +41,7 @@ namespace MH3.ActorControllers
 
         public GuardResult GetGuardResult(Vector3 impactPosition)
         {
-            if (!IsGuard.Value)
+            if (!IsGuard.Value || !actor.StateMachine.IsMatchState(actor.SpecController.GuardSequences))
             {
                 return GuardResult.NotGuard;
             }
