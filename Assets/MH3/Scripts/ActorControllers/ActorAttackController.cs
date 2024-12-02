@@ -84,35 +84,7 @@ namespace MH3.ActorControllers
 
         public void Attack(Actor target)
         {
-            if (attackSpec == null)
-            {
-                Debug.LogError("AttackSpec is null.");
-                return;
-            }
-            if (target.SpecController.Invincible.Value)
-            {
-                return;
-            }
-
-            var successGuard = target.GuardController.IsSuccessGuard(actor.transform.position);
-            var damage = attackSpec.Power;
-            if(successGuard)
-            {
-                damage = Mathf.FloorToInt(attackSpec.Power * TinyServiceLocator.Resolve<GameRules>().GuardSuccessDamageRate);
-            }
-            var damageData = new DamageData(damage, attackSpec.FlinchDamage);
-            target.SpecController.TakeDamage(damageData);
-            actor.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleActor, attackSpec.HitStopDurationActor).Forget();
-            target.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleTarget, attackSpec.HitStopDurationTarget).Forget();
-            if (target.SpecController.CanPlayFlinch())
-            {
-                var lookAt = actor.transform.position - target.transform.position;
-                lookAt.y = 0.0f;
-                target.MovementController.RotateImmediate(Quaternion.LookRotation(lookAt));
-                target.MovementController.CanRotate.Value = false;
-                target.StateMachine.TryChangeState(target.SpecController.FlinchSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));
-                target.SpecController.ResetFlinch();
-            }
+            target.SpecController.TakeDamage(actor, attackSpec);
         }
     }
 }

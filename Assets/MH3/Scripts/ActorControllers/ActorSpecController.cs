@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using HK;
 using R3;
 using UnityEngine;
@@ -57,19 +58,47 @@ namespace MH3.ActorControllers
         
         public MasterData.WeaponSpec WeaponSpec => TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponId.Value);
 
-        public void TakeDamage(DamageData data)
+        public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec)
         {
-            var result = hitPoint.Value - data.Damage;
-            result = result < 0 ? 0 : result;
-            hitPoint.Value = result;
-            if (CanAddFlinchDamage.Value)
+            if (attackSpec == null)
             {
-                flinch.Value += data.FlinchDamage;
+                Debug.LogError("AttackSpec is null.");
+                return;
+            }
+            if (actor.SpecController.Invincible.Value)
+            {
+                return;
             }
 
-            if (result <= 0)
+            var successGuard = actor.GuardController.IsSuccessGuard(actor.transform.position);
+            var damage = attackSpec.Power;
+            if(successGuard)
+            {
+                damage = Mathf.FloorToInt(attackSpec.Power * TinyServiceLocator.Resolve<GameRules>().GuardSuccessDamageRate);
+            }
+            var damageData = new DamageData(damage, attackSpec.FlinchDamage);
+            var fixedHitPoint = hitPoint.Value - damageData.Damage;
+            fixedHitPoint = fixedHitPoint < 0 ? 0 : fixedHitPoint;
+            hitPoint.Value = fixedHitPoint;
+            if (CanAddFlinchDamage.Value && !successGuard)
+            {
+                flinch.Value += damageData.FlinchDamage;
+            }
+
+            if (fixedHitPoint <= 0)
             {
                 Object.Destroy(actor.gameObject);
+            }
+            attacker.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleTarget, attackSpec.HitStopDurationTarget).Forget();
+            actor.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleActor, attackSpec.HitStopDurationActor).Forget();
+            if (actor.SpecController.CanPlayFlinch())
+            {
+                var lookAt = attacker.transform.position - actor.transform.position;
+                lookAt.y = 0.0f;
+                actor.MovementController.RotateImmediate(Quaternion.LookRotation(lookAt));
+                actor.MovementController.CanRotate.Value = false;
+                actor.StateMachine.TryChangeState(actor.SpecController.FlinchSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));
+                actor.SpecController.ResetFlinch();
             }
         }
 
