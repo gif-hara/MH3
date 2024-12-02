@@ -17,10 +17,10 @@ namespace MH3.ActorControllers
 
         private readonly string[] attackNames = new string[]
         {
-            "Attack.0",
             "Attack.1",
-            "Attack.0",
+            "Attack.2",
             "Attack.1",
+            "Attack.2",
         };
 
         public ActorAttackController(Actor actor)
