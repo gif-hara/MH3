@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
 using HK;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ namespace MH3.ActorControllers
         private readonly Dictionary<string, GameObject> colliders = new();
 
         private MasterData.AttackSpec attackSpec;
-        
+
         public ActorAttackController(Actor actor)
         {
             this.actor = actor;

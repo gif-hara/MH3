@@ -1,4 +1,3 @@
-using System.Threading;
 using HK;
 using R3;
 using R3.Triggers;
@@ -9,12 +8,10 @@ namespace MH3.ActorControllers
     public class ActorGuardController
     {
         private readonly Actor actor;
-        
-        public readonly ReactiveProperty<bool> IsGuard = new(false);
-        
-        private readonly ReactiveProperty<float> beginGuardTime = new(0.0f);
 
-        private CancellationTokenSource guardCancellationTokenSource;
+        public readonly ReactiveProperty<bool> IsGuard = new(false);
+
+        private readonly ReactiveProperty<float> beginGuardTime = new(0.0f);
 
         public enum GuardResult
         {
@@ -41,14 +38,14 @@ namespace MH3.ActorControllers
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
-        
+
         public GuardResult GetGuardResult(Vector3 impactPosition)
         {
-            if(!IsGuard.Value)
+            if (!IsGuard.Value)
             {
                 return GuardResult.NotGuard;
             }
-            
+
             var forward = actor.transform.forward;
             forward.y = 0.0f;
             forward.Normalize();
