@@ -15,6 +15,8 @@ namespace MH3.ActorControllers
 
         private ScriptableSequences stateSequences;
 
+        private ScriptableSequences nextStateSequences;
+
         public readonly ReactiveProperty<bool> CanChangeState = new(true);
 
         private Action<Container> containerAction;
@@ -32,12 +34,19 @@ namespace MH3.ActorControllers
 
         public bool TryChangeState(ScriptableSequences sequence, bool force = false, Action<Container> containerAction = null)
         {
-            if (!force && !CanChangeState.Value)
+            if (!force)
             {
-                return false;
+                if (nextStateSequences != null)
+                {
+                    return false;
+                }
+                if (!CanChangeState.Value)
+                {
+                    return false;
+                }
             }
 
-            stateSequences = sequence;
+            nextStateSequences = sequence;
             this.containerAction = containerAction;
             stateMachine.Change(State);
             return true;
@@ -45,6 +54,8 @@ namespace MH3.ActorControllers
 
         private async UniTask State(CancellationToken scope)
         {
+            stateSequences = nextStateSequences;
+            nextStateSequences = null;
             var container = new Container();
             container.Register("Actor", actor);
             containerAction?.Invoke(container);
