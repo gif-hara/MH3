@@ -44,6 +44,9 @@ namespace MH3.ActorControllers
                     openCharacterController.Move(velocityFromAnimator);
                     velocity = Vector3.zero;
                     velocityFromAnimator = Vector3.zero;
+                    var position = a.transform.position;
+                    position.y = 0.0f;
+                    a.transform.position = position;
 
                     if (CanRotate.Value)
                     {
