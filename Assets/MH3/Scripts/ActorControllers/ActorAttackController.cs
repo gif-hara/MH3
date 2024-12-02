@@ -101,7 +101,14 @@ namespace MH3.ActorControllers
             {
                 return;
             }
-            var damageData = new DamageData(attackSpec.Power, attackSpec.FlinchDamage);
+
+            var successGuard = target.GuardController.IsSuccessGuard(actor.transform.position);
+            var damage = attackSpec.Power;
+            if(successGuard)
+            {
+                damage = Mathf.FloorToInt(attackSpec.Power * TinyServiceLocator.Resolve<GameRules>().GuardSuccessDamageRate);
+            }
+            var damageData = new DamageData(damage, attackSpec.FlinchDamage);
             target.SpecController.TakeDamage(damageData);
             actor.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleActor, attackSpec.HitStopDurationActor).Forget();
             target.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleTarget, attackSpec.HitStopDurationTarget).Forget();

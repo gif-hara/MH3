@@ -13,7 +13,7 @@ namespace MH3
 
         private Actor actor;
 
-        public void Influence(Actor target)
+        public void Influence(Actor target, Collider collider)
         {
             actor.AttackController.Attack(target);
         }

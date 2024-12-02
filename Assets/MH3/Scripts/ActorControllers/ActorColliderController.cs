@@ -17,7 +17,7 @@ namespace MH3.ActorControllers
                     }
                     foreach (var triggerEnterEvent in actorOnTriggerEnterEvents)
                     {
-                        triggerEnterEvent.Influence(actor);
+                        triggerEnterEvent.Influence(actor, collider);
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
