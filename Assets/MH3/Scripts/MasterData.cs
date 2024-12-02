@@ -161,6 +161,8 @@ namespace MH3
 
             public int HitPoint;
 
+            public int Attack;
+
             public int FlinchThreshold;
 
             public float MoveSpeed;

@@ -44,7 +44,8 @@ MonoBehaviour:
     list:
     - Id: 10101
       HitPoint: 100
-      FlinchThreshold: 0
+      Attack: 100
+      FlinchThreshold: 1
       MoveSpeed: 7
       RotationSpeed: 10
       WeaponId: 10101
@@ -62,6 +63,7 @@ MonoBehaviour:
       ActorPrefab: {fileID: 963923653530722458, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
     - Id: 10201
       HitPoint: 100
+      Attack: 100
       FlinchThreshold: 30
       MoveSpeed: 7
       RotationSpeed: 10

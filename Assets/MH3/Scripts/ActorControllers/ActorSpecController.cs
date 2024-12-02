@@ -14,6 +14,8 @@ namespace MH3.ActorControllers
         private readonly MasterData.ActorSpec spec;
 
         private readonly ReactiveProperty<int> hitPoint = new(0);
+        
+        private readonly ReactiveProperty<int> attack = new(0);
 
         private readonly ReactiveProperty<int> weaponId = new(0);
 
@@ -30,6 +32,7 @@ namespace MH3.ActorControllers
             this.actor = actor;
             this.spec = spec;
             hitPoint.Value = spec.HitPoint;
+            attack.Value = spec.Attack;
             weaponId.Value = spec.WeaponId;
             ComboAnimationKeys.Clear();
             foreach (var combo in WeaponSpec.GetCombos())
@@ -39,6 +42,8 @@ namespace MH3.ActorControllers
         }
 
         public ReadOnlyReactiveProperty<int> HitPoint => hitPoint;
+        
+        public ReadOnlyReactiveProperty<int> Attack => attack;
 
         public float MoveSpeed => spec.MoveSpeed;
 
