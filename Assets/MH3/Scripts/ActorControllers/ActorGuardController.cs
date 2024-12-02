@@ -51,10 +51,12 @@ namespace MH3.ActorControllers
             forward.Normalize();
             impactPosition.y = 0.0f;
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
-            var targetDirection = (impactPosition - actor.transform.position).normalized;
+            var targetDirection = actor.transform.position - impactPosition;
+            targetDirection.y = 0.0f;
+            targetDirection.Normalize();
             var guardRange = gameRules.GuardRange;
-            var guardAngle = Vector3.Dot(forward, targetDirection) * -1;
-            var successGuard = guardAngle > guardRange / 2.0f;
+            var guardAngle = (1.0f - Vector3.Dot(forward, targetDirection) * -1) * 90.0f;
+            var successGuard = guardAngle < guardRange / 2.0f;
             if (successGuard)
             {
                 var guardTime = UnityEngine.Time.time - beginGuardTime.Value;
