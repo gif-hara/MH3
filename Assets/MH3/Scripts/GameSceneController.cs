@@ -1,5 +1,8 @@
 using HK;
+using R3;
+using R3.Triggers;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace MH3
 {
@@ -19,7 +22,7 @@ namespace MH3
 
         [SerializeField]
         private MasterData masterData;
-        
+
         [SerializeField]
         private GameRules gameRules;
 
@@ -28,7 +31,7 @@ namespace MH3
 
         [SerializeField]
         private AudioManager audioManagerPrefab;
-        
+
         [SerializeField]
         private EffectManager effectManagerPrefab;
 
@@ -49,6 +52,24 @@ namespace MH3
             gameCameraController.SetTrackingTarget(player.transform, enemy.transform);
             PlayerController.Attach(player, gameCameraController.ControlledCamera.transform);
             EnemyController.Attach(enemy, player);
+#if DEBUG
+            var debugData = new GameDebugData();
+            TinyServiceLocator.RegisterAsync(debugData, destroyCancellationToken).Forget();
+            this.UpdateAsObservable()
+                .Subscribe(_ =>
+                {
+                    if (Keyboard.current.f1Key.wasPressedThisFrame)
+                    {
+                        debugData.InvinciblePlayer = !debugData.InvinciblePlayer;
+                        Debug.Log($"InvinciblePlayer: {debugData.InvinciblePlayer}");
+                    }
+                    if (Keyboard.current.f2Key.wasPressedThisFrame)
+                    {
+                        debugData.InvincibleEnemy = !debugData.InvincibleEnemy;
+                        Debug.Log($"InvincibleEnemy: {debugData.InvincibleEnemy}");
+                    }
+                });
+#endif
         }
     }
 }
