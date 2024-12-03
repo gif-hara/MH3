@@ -77,7 +77,7 @@ namespace MH3.ActorControllers
 
         public MasterData.WeaponSpec WeaponSpec => TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponId.Value);
 
-        public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec)
+        public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)
         {
             if (attackSpec == null)
             {
@@ -159,6 +159,9 @@ namespace MH3.ActorControllers
                 {
                     TinyServiceLocator.Resolve<AudioManager>().PlaySfx(attackSpec.HitSfxKey);
                 }
+
+                var hitEffect = TinyServiceLocator.Resolve<EffectManager>().Rent(attackSpec.HitEffectKey);
+                hitEffect.transform.position = impactPosition;
             }
         }
 

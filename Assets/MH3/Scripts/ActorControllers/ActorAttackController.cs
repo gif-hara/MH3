@@ -96,9 +96,9 @@ namespace MH3.ActorControllers
             }
         }
 
-        public void Attack(Actor target)
+        public void Attack(Actor target, Vector3 impactPosition)
         {
-            target.SpecController.TakeDamage(actor, attackSpec);
+            target.SpecController.TakeDamage(actor, attackSpec, impactPosition);
         }
     }
 }

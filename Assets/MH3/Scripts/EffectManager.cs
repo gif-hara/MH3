@@ -12,12 +12,12 @@ namespace MH3
     {
         [SerializeField]
         private Element.DictionaryList elements;
-        
+
         private readonly Dictionary<string, ObjectPool<EffectObject>> pools = new();
 
         public EffectObject Rent(string key)
         {
-            if(!pools.TryGetValue(key, out var pool))
+            if (!pools.TryGetValue(key, out var pool))
             {
                 var element = elements.Get(key);
                 pool = new ObjectPool<EffectObject>(
@@ -28,12 +28,12 @@ namespace MH3
                 );
                 pools.Add(key, pool);
             }
-            
+
             var instance = pool.Get();
             ReturnAsync(pool, instance).Forget();
             return instance;
         }
-        
+
         private async UniTask ReturnAsync(ObjectPool<EffectObject> pool, EffectObject instance)
         {
             await instance.WaitUntilDeadAsync(destroyCancellationToken);
@@ -46,7 +46,7 @@ namespace MH3
             [SerializeField]
             private string key;
             public string Key => key;
-            
+
             [SerializeField]
             private EffectObject prefab;
             public EffectObject Prefab => prefab;

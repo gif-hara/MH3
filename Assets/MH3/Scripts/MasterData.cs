@@ -158,6 +158,8 @@ namespace MH3
 
             public string HitSfxKey;
 
+            public string HitEffectKey;
+
             [Serializable]
             public class DictionaryList : DictionaryList<int, AttackSpec>
             {

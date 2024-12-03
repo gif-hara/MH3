@@ -19,7 +19,8 @@ namespace MH3
 
         public void Influence(Actor target, Collider collider)
         {
-            actor.AttackController.Attack(target);
+            var impactPosition = collider.ClosestPointOnBounds(target.transform.position);
+            actor.AttackController.Attack(target, impactPosition);
         }
 
         public async UniTaskVoid Setup(Actor actor)
