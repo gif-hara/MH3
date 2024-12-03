@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequences:
   - rid: 1481063115200659530
+  - rid: 1481063132064121270
   references:
     version: 2
     RefIds:
@@ -23,6 +24,15 @@ MonoBehaviour:
         actorResolver:
           rid: 1481063115200659531
     - rid: 1481063115200659531
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063132064121270
+      type: {class: ActorDeactiveAllWeaponTrail, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063132064121271
+    - rid: 1481063132064121271
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor

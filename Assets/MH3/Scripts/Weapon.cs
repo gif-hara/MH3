@@ -52,6 +52,14 @@ namespace MH3
             }
         }
 
+        public void SetDeactiveAllTrail()
+        {
+            foreach (var trail in trails.List)
+            {
+                trail.Trail.Emit = false;
+            }
+        }
+
         [Serializable]
         public class ColliderElement
         {

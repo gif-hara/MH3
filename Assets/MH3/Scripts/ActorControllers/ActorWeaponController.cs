@@ -47,5 +47,13 @@ namespace MH3
                 weapon.SetActiveTrail(key, isActive);
             }
         }
+
+        public void SetDeactiveAllTrail()
+        {
+            foreach (var weapon in weapons)
+            {
+                weapon.SetDeactiveAllTrail();
+            }
+        }
     }
 }
