@@ -131,7 +131,7 @@ namespace MH3
         [Serializable]
         public class AttackSpec
         {
-            public int Id;
+            public string Id;
 
             public int Power;
 
@@ -162,7 +162,7 @@ namespace MH3
             public string HitEffectKey;
 
             [Serializable]
-            public class DictionaryList : DictionaryList<int, AttackSpec>
+            public class DictionaryList : DictionaryList<string, AttackSpec>
             {
                 public DictionaryList() : base(x => x.Id)
                 {

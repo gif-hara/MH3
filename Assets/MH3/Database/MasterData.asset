@@ -32,7 +32,7 @@ MonoBehaviour:
         AnimationKey: Attack.2
   attackSpecs:
     list:
-    - Id: 10101
+    - Id: Sword.Basic.1
       Power: 10
       FlinchDamage: 10
       ColliderName: Default
@@ -47,7 +47,22 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
-    - Id: 10102
+    - Id: Sword.Basic.2
+      Power: 10
+      FlinchDamage: 10
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+    - Id: Sword.JustGuard.1
       Power: 50
       FlinchDamage: 50
       ColliderName: Default

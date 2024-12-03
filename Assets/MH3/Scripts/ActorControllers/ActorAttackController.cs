@@ -84,7 +84,7 @@ namespace MH3.ActorControllers
             }
         }
 
-        public void SetAttackSpec(int attackSpecId)
+        public void SetAttackSpec(string attackSpecId)
         {
             attackedActors.Clear();
             attackSpec = TinyServiceLocator.Resolve<MasterData>().AttackSpecs.Get(attackSpecId);

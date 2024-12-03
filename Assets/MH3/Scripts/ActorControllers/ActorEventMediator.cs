@@ -14,7 +14,7 @@ namespace MH3
             actor.StateMachine.CanChangeState.Value = value == 1;
         }
 
-        public void SetAttackSpec(int attackSpecId)
+        public void SetAttackSpec(string attackSpecId)
         {
             actor.AttackController.SetAttackSpec(attackSpecId);
         }
