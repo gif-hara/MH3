@@ -14,6 +14,8 @@ namespace MH3.ActorControllers
 
         private MasterData.AttackSpec attackSpec;
 
+        private readonly HashSet<Actor> attackedActors = new();
+
         public ActorAttackController(Actor actor)
         {
             this.actor = actor;
@@ -84,6 +86,7 @@ namespace MH3.ActorControllers
 
         public void SetAttackSpec(int attackSpecId)
         {
+            attackedActors.Clear();
             attackSpec = TinyServiceLocator.Resolve<MasterData>().AttackSpecs.Get(attackSpecId);
             SetActiveCollider(attackSpec.ColliderName, true);
         }
@@ -98,7 +101,12 @@ namespace MH3.ActorControllers
 
         public void Attack(Actor target, Vector3 impactPosition)
         {
+            if (attackedActors.Contains(target))
+            {
+                return;
+            }
             target.SpecController.TakeDamage(actor, attackSpec, impactPosition);
+            attackedActors.Add(target);
         }
     }
 }
