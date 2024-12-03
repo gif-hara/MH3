@@ -9,6 +9,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 
 public class MeleeWeaponTrail : MonoBehaviour
@@ -333,7 +334,7 @@ public class MeleeWeaponTrail : MonoBehaviour
 			_trailMesh.vertices = newVertices;
 			_trailMesh.colors = newColors;
 			_trailMesh.uv = newUV;
-			_trailMesh.triangles = newTriangles;
+			_trailMesh.triangles = newTriangles.Concat(newTriangles.Reverse()).ToArray();
 		}
 	}
 
