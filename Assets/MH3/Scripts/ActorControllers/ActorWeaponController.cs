@@ -20,7 +20,8 @@ namespace MH3
                     {
                         Object.Destroy(weapon.gameObject);
                     }
-                    if(id == 0)
+                    @this.weapons.Clear();
+                    if (id == 0)
                     {
                         return;
                     }
@@ -37,6 +38,14 @@ namespace MH3
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
+        }
+
+        public void SetActiveTrail(string key, bool isActive)
+        {
+            foreach (var weapon in weapons)
+            {
+                weapon.SetActiveTrail(key, isActive);
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using HK;
 using MH3.ActorControllers;
 using UnityEngine;
 
@@ -10,6 +11,9 @@ namespace MH3
     {
         [SerializeField]
         private List<ColliderElement> colliders = new();
+
+        [SerializeField]
+        private TrailElement.DictionaryList trails = new();
 
         private Actor actor;
 
@@ -35,6 +39,14 @@ namespace MH3
             }
         }
 
+        public void SetActiveTrail(string key, bool isActive)
+        {
+            if (trails.TryGetValue(key, out var trail))
+            {
+                trail.Trail.Emit = isActive;
+            }
+        }
+
         [Serializable]
         public class ColliderElement
         {
@@ -45,6 +57,26 @@ namespace MH3
             [SerializeField]
             private GameObject colliderObject;
             public GameObject ColliderObject => colliderObject;
+        }
+
+        [Serializable]
+        public class TrailElement
+        {
+            [SerializeField]
+            private string key;
+            public string Key => key;
+
+            [SerializeField]
+            private MeleeWeaponTrail trail;
+            public MeleeWeaponTrail Trail => trail;
+
+            [Serializable]
+            public class DictionaryList : DictionaryList<string, TrailElement>
+            {
+                public DictionaryList() : base(x => x.Key)
+                {
+                }
+            }
         }
     }
 }
