@@ -84,18 +84,18 @@ namespace MH3.ActorControllers
                 Debug.LogError("AttackSpec is null.");
                 return;
             }
-            if (actor.SpecController.Invincible.Value)
+            if (Invincible.Value)
             {
                 return;
             }
 
 #if DEBUG
-            if (actor.SpecController.ActorType == Define.ActorType.Player &&
+            if (ActorType == Define.ActorType.Player &&
                 TinyServiceLocator.Resolve<GameDebugData>().InvinciblePlayer)
             {
                 return;
             }
-            else if (actor.SpecController.ActorType != Define.ActorType.Player &&
+            else if (ActorType != Define.ActorType.Player &&
                      TinyServiceLocator.Resolve<GameDebugData>().InvincibleEnemy)
             {
                 return;
@@ -113,17 +113,17 @@ namespace MH3.ActorControllers
 
             if (guardResult == ActorGuardController.GuardResult.SuccessJustGuard)
             {
-                actor.StateMachine.TryChangeState(actor.SpecController.SuccessJustGuardSequences, force: true);
+                actor.StateMachine.TryChangeState(SuccessJustGuardSequences, force: true);
             }
             else
             {
                 var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult);
 #if DEBUG
-                if (actor.SpecController.ActorType == Define.ActorType.Player && TinyServiceLocator.Resolve<GameDebugData>().DamageZeroPlayer)
+                if (ActorType == Define.ActorType.Player && TinyServiceLocator.Resolve<GameDebugData>().DamageZeroPlayer)
                 {
                     damageData.Damage = 0;
                 }
-                else if (actor.SpecController.ActorType == Define.ActorType.Enemy && TinyServiceLocator.Resolve<GameDebugData>().DamageZeroEnemy)
+                else if (ActorType == Define.ActorType.Enemy && TinyServiceLocator.Resolve<GameDebugData>().DamageZeroEnemy)
                 {
                     damageData.Damage = 0;
                 }
@@ -140,14 +140,14 @@ namespace MH3.ActorControllers
                 {
                     Object.Destroy(actor.gameObject);
                 }
-                if (actor.SpecController.CanPlayFlinch())
+                if (CanPlayFlinch())
                 {
                     var lookAt = attacker.transform.position - actor.transform.position;
                     lookAt.y = 0.0f;
                     actor.MovementController.RotateImmediate(Quaternion.LookRotation(lookAt));
                     actor.MovementController.CanRotate.Value = false;
-                    actor.StateMachine.TryChangeState(actor.SpecController.FlinchSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));
-                    actor.SpecController.ResetFlinch();
+                    actor.StateMachine.TryChangeState(FlinchSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));
+                    ResetFlinch();
                 }
             }
         }
