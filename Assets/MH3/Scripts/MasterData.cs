@@ -75,6 +75,7 @@ namespace MH3
                 actorSpec.DodgeSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.DodgeSequencesKey}.asset");
                 actorSpec.GuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.GuardSequencesKey}.asset");
                 actorSpec.SuccessJustGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.SuccessJustGuardSequencesKey}.asset");
+                actorSpec.SuccessGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.SuccessGuardSequencesKey}.asset");
                 actorSpec.ActorPrefab = AssetDatabase.LoadAssetAtPath<Actor>($"Assets/MH3/Prefabs/Actor.{actorSpec.ActorPrefabKey}.prefab");
             }
             EditorUtility.SetDirty(this);
@@ -202,6 +203,8 @@ namespace MH3
 
             public string SuccessJustGuardSequencesKey;
 
+            public string SuccessGuardSequencesKey;
+
             public string ActorPrefabKey;
 
             public ScriptableSequences InitialStateSequences;
@@ -215,6 +218,8 @@ namespace MH3
             public ScriptableSequences GuardSequences;
 
             public ScriptableSequences SuccessJustGuardSequences;
+
+            public ScriptableSequences SuccessGuardSequences;
 
             public Actor ActorPrefab;
 

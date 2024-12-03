@@ -79,6 +79,7 @@ MonoBehaviour:
       DodgeSequencesKey: Dodge.Default
       GuardSequencesKey: Guard.Default
       SuccessJustGuardSequencesKey: SuccessJustGuard.Default
+      SuccessGuardSequencesKey: SuccessGuard.Default
       ActorPrefabKey: Player
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
@@ -86,6 +87,7 @@ MonoBehaviour:
       DodgeSequences: {fileID: 11400000, guid: 382dc8b38b611744f879c2c1942dcdde, type: 2}
       GuardSequences: {fileID: 11400000, guid: 00f83183459bd704a9af1dcc204da93c, type: 2}
       SuccessJustGuardSequences: {fileID: 11400000, guid: 94d370458b442564993fb0b876ce15ae, type: 2}
+      SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
     - Id: 10201
       ActorType: 1
@@ -102,6 +104,7 @@ MonoBehaviour:
       DodgeSequencesKey: Dodge.Default
       GuardSequencesKey: Guard.Default
       SuccessJustGuardSequencesKey: SuccessJustGuard.Default
+      SuccessGuardSequencesKey: SuccessGuard.Default
       ActorPrefabKey: Enemy
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
@@ -109,4 +112,5 @@ MonoBehaviour:
       DodgeSequences: {fileID: 11400000, guid: 382dc8b38b611744f879c2c1942dcdde, type: 2}
       GuardSequences: {fileID: 11400000, guid: 00f83183459bd704a9af1dcc204da93c, type: 2}
       SuccessJustGuardSequences: {fileID: 11400000, guid: 94d370458b442564993fb0b876ce15ae, type: 2}
+      SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
