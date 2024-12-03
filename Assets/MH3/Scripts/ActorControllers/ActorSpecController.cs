@@ -149,6 +149,7 @@ namespace MH3.ActorControllers
                     actor.StateMachine.TryChangeState(FlinchSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));
                     ResetFlinch();
                 }
+                TinyServiceLocator.Resolve<AudioManager>().PlaySfx(attackSpec.HitSfxKey);
             }
         }
 
