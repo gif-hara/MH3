@@ -7,5 +7,12 @@ namespace MH3
             Player,
             Enemy,
         }
+
+        public enum FlinchType
+        {
+            None,
+            Small,
+            Large,
+        }
     }
 }

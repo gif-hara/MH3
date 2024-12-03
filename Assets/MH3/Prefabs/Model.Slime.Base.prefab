@@ -169,7 +169,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.size
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[1].clip
@@ -214,42 +214,58 @@ PrefabInstance:
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[6].clip
       value: 
-      objectReference: {fileID: 7400000, guid: 5305f2552f717c846990b2272ae2f96c, type: 2}
+      objectReference: {fileID: 7400000, guid: 56bb347b4e3376c46855cec8357c91e2, type: 2}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[6].name
-      value: Dodge
+      value: Flinch.Large
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[7].clip
       value: 
-      objectReference: {fileID: 7400000, guid: 7061462eca411704eb7cd776f78112eb, type: 2}
+      objectReference: {fileID: 7400000, guid: 5305f2552f717c846990b2272ae2f96c, type: 2}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[7].name
-      value: Guard
+      value: Dodge
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[8].clip
       value: 
-      objectReference: {fileID: 7400000, guid: 5ef3c0d538f440942879d4b32b3459c8, type: 2}
+      objectReference: {fileID: 7400000, guid: 7061462eca411704eb7cd776f78112eb, type: 2}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[8].name
-      value: SuccessJustGuard
+      value: Guard
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[9].clip
       value: 
-      objectReference: {fileID: 7400000, guid: d32031050ba914146900aec4fe0cf570, type: 2}
+      objectReference: {fileID: 7400000, guid: 5ef3c0d538f440942879d4b32b3459c8, type: 2}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[9].name
-      value: Attack.Sword.JustGuard.1
+      value: SuccessJustGuard
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[10].clip
       value: 
-      objectReference: {fileID: 7400000, guid: b29b8c5cff93039418924850e145904b, type: 2}
+      objectReference: {fileID: 7400000, guid: d32031050ba914146900aec4fe0cf570, type: 2}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[10].name
+      value: Attack.Sword.JustGuard.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 7400000, guid: b29b8c5cff93039418924850e145904b, type: 2}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[11].name
       value: SuccessGuard
+      objectReference: {fileID: 0}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[12].clip
+      value: 
+      objectReference: {fileID: 7400000, guid: 5e9374e45adce9346afcdd8e78c4444d, type: 2}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[12].name
+      value: Attack.Sword.Strong.1
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[1].defaultState

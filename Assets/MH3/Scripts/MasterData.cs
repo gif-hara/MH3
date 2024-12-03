@@ -65,7 +65,7 @@ namespace MH3
             weaponCombos.Set(JsonHelper.FromJson<WeaponCombo>(database[3]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
-                weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.Id}.asset");
+                weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
             }
             foreach (var actorSpec in actorSpecs.List)
             {
@@ -92,9 +92,13 @@ namespace MH3
         {
             public int Id;
 
+            public int ModelDataId;
+
             public int ComboId;
 
             public string JustGuardAttackAnimationKey;
+
+            public string StrongAttackAnimationKey;
 
             public WeaponModelData ModelData;
 
@@ -140,6 +144,10 @@ namespace MH3
             public string ColliderName;
 
             public string FlinchName;
+
+            public Define.FlinchType FlinchType;
+
+            public bool ForceFlinch;
 
             public float HitStopTimeScaleActor;
 

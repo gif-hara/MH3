@@ -21,8 +21,21 @@ namespace MH3.ActorControllers
             this.actor = actor;
         }
 
-        public bool TryAttack()
+        public bool TryAttack(Actor target)
         {
+            if (!string.IsNullOrEmpty(actor.SpecController.StrongAttackAnimationKey) && target.SpecController.FlinchType.CurrentValue == Define.FlinchType.Small)
+            {
+                if (actor.StateMachine.TryChangeState(
+                    actor.SpecController.AttackSequences,
+                    containerAction: c =>
+                    {
+                        c.Register("AttackName", actor.SpecController.StrongAttackAnimationKey);
+                    }))
+                {
+                    return true;
+                }
+                return false;
+            }
             if (actor.GuardController.JustGuarding.Value)
             {
                 if (actor.StateMachine.TryChangeState(

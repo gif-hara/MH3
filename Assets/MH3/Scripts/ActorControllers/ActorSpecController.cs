@@ -33,6 +33,12 @@ namespace MH3.ActorControllers
 
         public string JustGuardAttackAnimationKey { get; private set; }
 
+        public string StrongAttackAnimationKey { get; private set; }
+
+        public readonly ReactiveProperty<Actor> Target = new(null);
+
+        private readonly ReactiveProperty<Define.FlinchType> flinchType = new(Define.FlinchType.None);
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -47,6 +53,7 @@ namespace MH3.ActorControllers
                 ComboAnimationKeys.Add(combo.AnimationKey);
             }
             JustGuardAttackAnimationKey = WeaponSpec.JustGuardAttackAnimationKey;
+            StrongAttackAnimationKey = WeaponSpec.StrongAttackAnimationKey;
         }
 
         public Define.ActorType ActorType => spec.ActorType;
@@ -76,6 +83,8 @@ namespace MH3.ActorControllers
         public ScriptableSequences SuccessJustGuardSequences => spec.SuccessJustGuardSequences;
 
         public MasterData.WeaponSpec WeaponSpec => TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponId.Value);
+
+        public ReadOnlyReactiveProperty<Define.FlinchType> FlinchType => flinchType;
 
         public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)
         {
@@ -142,12 +151,13 @@ namespace MH3.ActorControllers
                 {
                     Object.Destroy(actor.gameObject);
                 }
-                if (CanPlayFlinch())
+                if (CanPlayFlinch() || attackSpec.ForceFlinch)
                 {
                     var lookAt = attacker.transform.position - actor.transform.position;
                     lookAt.y = 0.0f;
                     actor.MovementController.RotateImmediate(Quaternion.LookRotation(lookAt));
                     actor.MovementController.CanRotate.Value = false;
+                    flinchType.Value = attackSpec.FlinchType;
                     actor.StateMachine.TryChangeState(FlinchSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));
                     ResetFlinch();
                 }
@@ -175,6 +185,11 @@ namespace MH3.ActorControllers
         public void ResetFlinch()
         {
             flinch.Value = 0;
+        }
+
+        public void ResetFlinchType()
+        {
+            flinchType.Value = Define.FlinchType.None;
         }
     }
 }

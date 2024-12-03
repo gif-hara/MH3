@@ -16,7 +16,7 @@ namespace MH3
                     var lookAt = target.transform.position - actor.transform.position;
                     lookAt.y = 0.0f;
                     actor.MovementController.Rotate(Quaternion.LookRotation(lookAt));
-                    actor.AttackController.TryAttack();
+                    actor.AttackController.TryAttack(actor.SpecController.Target.Value);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }

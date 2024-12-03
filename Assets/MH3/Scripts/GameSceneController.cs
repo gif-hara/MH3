@@ -50,6 +50,8 @@ namespace MH3
             enemy.transform.rotation = enemySpawnPoint.rotation;
             var gameCameraController = Instantiate(gameCameraControllerPrefab);
             gameCameraController.SetTrackingTarget(player.transform, enemy.transform);
+            player.SpecController.Target.Value = enemy;
+            enemy.SpecController.Target.Value = player;
             PlayerController.Attach(player, gameCameraController.ControlledCamera.transform);
             EnemyController.Attach(enemy, player);
 #if DEBUG
