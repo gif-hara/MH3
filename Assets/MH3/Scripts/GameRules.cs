@@ -24,5 +24,9 @@ namespace MH3
         [SerializeField]
         private string successJustGuardSfxKey;
         public string SuccessJustGuardSfxKey => successJustGuardSfxKey;
+
+        [SerializeField]
+        private string successGuardSfxKey;
+        public string SuccessGuardSfxKey => successGuardSfxKey;
     }
 }
