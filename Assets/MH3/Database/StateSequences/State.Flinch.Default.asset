@@ -18,6 +18,7 @@ MonoBehaviour:
   - rid: 895594621889413216
   - rid: 1481063080126840968
   - rid: 8733972348659564544
+  - rid: 1481063132064121272
   - rid: 895594621889413277
   - rid: 895594615613948227
   references:
@@ -94,6 +95,10 @@ MonoBehaviour:
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
+    - rid: 1481063132064121272
+      type: {class: TakeUntilDisposeScopeObservable, ns: MH3, asm: Assembly-CSharp}
+      data:
+        subscribeSequence: {fileID: 11400000, guid: 3d86e63648bb76c47ac095a111cb6327, type: 2}
     - rid: 8733972340067532868
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
