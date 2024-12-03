@@ -45,6 +45,7 @@ MonoBehaviour:
       ShakeDuration: 0.2
       ShakeFrequency: 6
       ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
     - Id: 10102
       Power: 50
       FlinchDamage: 50
@@ -58,11 +59,12 @@ MonoBehaviour:
       ShakeDuration: 0.2
       ShakeFrequency: 6
       ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
   actorSpecs:
     list:
     - Id: 10101
       ActorType: 0
-      HitPoint: 99999
+      HitPoint: 100
       Attack: 100
       PhysicalDamageCutRate: 0
       FlinchThreshold: 1
@@ -85,7 +87,7 @@ MonoBehaviour:
       ActorPrefab: {fileID: 963923653530722458, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
     - Id: 10201
       ActorType: 1
-      HitPoint: 99999
+      HitPoint: 100
       Attack: 100
       PhysicalDamageCutRate: 0
       FlinchThreshold: 30

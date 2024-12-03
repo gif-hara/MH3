@@ -156,6 +156,8 @@ namespace MH3
 
             public float ShakeDampingRatio;
 
+            public string HitSfxKey;
+
             [Serializable]
             public class DictionaryList : DictionaryList<int, AttackSpec>
             {
