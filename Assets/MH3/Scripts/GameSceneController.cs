@@ -68,6 +68,16 @@ namespace MH3
                         debugData.InvincibleEnemy = !debugData.InvincibleEnemy;
                         Debug.Log($"InvincibleEnemy: {debugData.InvincibleEnemy}");
                     }
+                    if (Keyboard.current.f3Key.wasPressedThisFrame)
+                    {
+                        debugData.DamageZeroPlayer = !debugData.DamageZeroPlayer;
+                        Debug.Log($"DamageZeroPlayer: {debugData.DamageZeroPlayer}");
+                    }
+                    if (Keyboard.current.f4Key.wasPressedThisFrame)
+                    {
+                        debugData.DamageZeroEnemy = !debugData.DamageZeroEnemy;
+                        Debug.Log($"DamageZeroEnemy: {debugData.DamageZeroEnemy}");
+                    }
                 });
 #endif
         }

@@ -90,19 +90,15 @@ namespace MH3.ActorControllers
             }
 
 #if DEBUG
-            if (actor.SpecController.ActorType == Define.ActorType.Player)
+            if (actor.SpecController.ActorType == Define.ActorType.Player &&
+                TinyServiceLocator.Resolve<GameDebugData>().InvinciblePlayer)
             {
-                if (TinyServiceLocator.Resolve<GameDebugData>().InvinciblePlayer)
-                {
-                    return;
-                }
+                return;
             }
-            else
+            else if (actor.SpecController.ActorType != Define.ActorType.Player &&
+                     TinyServiceLocator.Resolve<GameDebugData>().InvincibleEnemy)
             {
-                if (TinyServiceLocator.Resolve<GameDebugData>().InvincibleEnemy)
-                {
-                    return;
-                }
+                return;
             }
 #endif
 
@@ -122,6 +118,16 @@ namespace MH3.ActorControllers
             else
             {
                 var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult);
+#if DEBUG
+                if (actor.SpecController.ActorType == Define.ActorType.Player && TinyServiceLocator.Resolve<GameDebugData>().DamageZeroPlayer)
+                {
+                    damageData.Damage = 0;
+                }
+                else if (actor.SpecController.ActorType == Define.ActorType.Enemy && TinyServiceLocator.Resolve<GameDebugData>().DamageZeroEnemy)
+                {
+                    damageData.Damage = 0;
+                }
+#endif
                 var fixedHitPoint = hitPoint.Value - damageData.Damage;
                 fixedHitPoint = fixedHitPoint < 0 ? 0 : fixedHitPoint;
                 hitPoint.Value = fixedHitPoint;
