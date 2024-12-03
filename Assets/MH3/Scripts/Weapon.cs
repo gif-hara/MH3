@@ -30,6 +30,10 @@ namespace MH3
             {
                 actor.AttackController.AddCollider(collider.Name, collider.ColliderObject);
             }
+            foreach (var trail in trails.List)
+            {
+                trail.Trail.Emit = false;
+            }
 
             await UniTask.WaitUntilCanceled(destroyCancellationToken, completeImmediately: true);
 

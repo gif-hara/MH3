@@ -37,5 +37,15 @@ namespace MH3
         {
             actor.MovementController.RotateImmediate(actor.MovementController.TargetRotation);
         }
+
+        public void SetActiveTrail(string key)
+        {
+            actor.WeaponController.SetActiveTrail(key, true);
+        }
+
+        public void SetDeactiveTrail(string key)
+        {
+            actor.WeaponController.SetActiveTrail(key, false);
+        }
     }
 }
