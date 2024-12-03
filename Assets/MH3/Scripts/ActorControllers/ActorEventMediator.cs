@@ -1,3 +1,4 @@
+using HK;
 using MH3.ActorControllers;
 using UnityEngine;
 
@@ -46,6 +47,11 @@ namespace MH3
         public void SetDeactiveTrail(string key)
         {
             actor.WeaponController.SetActiveTrail(key, false);
+        }
+
+        public void PlaySfx(string key)
+        {
+            TinyServiceLocator.Resolve<AudioManager>().PlaySfx(key);
         }
     }
 }

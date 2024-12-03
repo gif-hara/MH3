@@ -8,7 +8,7 @@ namespace MH3
         [SerializeField]
         private float earlyInputTime;
         public float EarlyInputTime => earlyInputTime;
-        
+
         [SerializeField]
         private float guardRange;
         public float GuardRange => guardRange;
@@ -16,9 +16,13 @@ namespace MH3
         [SerializeField]
         private float guardSuccessDamageRate;
         public float GuardSuccessDamageRate => guardSuccessDamageRate;
-        
+
         [SerializeField]
         private float justGuardTime;
         public float JustGuardTime => justGuardTime;
+
+        [SerializeField]
+        private string successJustGuardSfxKey;
+        public string SuccessJustGuardSfxKey => successJustGuardSfxKey;
     }
 }

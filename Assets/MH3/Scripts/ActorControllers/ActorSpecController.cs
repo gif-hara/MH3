@@ -114,6 +114,8 @@ namespace MH3.ActorControllers
             if (guardResult == ActorGuardController.GuardResult.SuccessJustGuard)
             {
                 actor.StateMachine.TryChangeState(SuccessJustGuardSequences, force: true);
+                var gameRules = TinyServiceLocator.Resolve<GameRules>();
+                TinyServiceLocator.Resolve<AudioManager>().PlaySfx(gameRules.SuccessJustGuardSfxKey);
             }
             else
             {
