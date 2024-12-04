@@ -53,5 +53,10 @@ namespace MH3
         {
             TinyServiceLocator.Resolve<AudioManager>().PlaySfx(key);
         }
+
+        public void Recovery()
+        {
+            actor.SpecController.RecoveryFromAnimation();
+        }
     }
 }
