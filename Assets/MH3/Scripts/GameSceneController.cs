@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using HK;
 using R3;
 using R3.Triggers;
@@ -35,6 +36,9 @@ namespace MH3
         [SerializeField]
         private EffectManager effectManagerPrefab;
 
+        [SerializeField]
+        private HKUIDocument playerStatusDocumentPrefab;
+
         private void Start()
         {
             TinyServiceLocator.RegisterAsync(new InputController(), destroyCancellationToken).Forget();
@@ -54,6 +58,7 @@ namespace MH3
             enemy.SpecController.Target.Value = player;
             PlayerController.Attach(player, gameCameraController.ControlledCamera.transform);
             EnemyController.Attach(enemy, player);
+            new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
 #if DEBUG
             var debugData = new GameDebugData();
             TinyServiceLocator.RegisterAsync(debugData, destroyCancellationToken).Forget();

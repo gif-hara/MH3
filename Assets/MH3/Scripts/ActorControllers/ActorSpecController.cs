@@ -15,6 +15,8 @@ namespace MH3.ActorControllers
 
         private readonly MasterData.ActorSpec spec;
 
+        private readonly ReactiveProperty<int> hitPointMax = new(0);
+
         private readonly ReactiveProperty<int> hitPoint = new(0);
 
         private readonly ReactiveProperty<int> attack = new(0);
@@ -43,6 +45,7 @@ namespace MH3.ActorControllers
         {
             this.actor = actor;
             this.spec = spec;
+            hitPointMax.Value = spec.HitPoint;
             hitPoint.Value = spec.HitPoint;
             attack.Value = spec.Attack;
             physicalDamageCutRate.Value = spec.PhysicalDamageCutRate;
@@ -57,6 +60,8 @@ namespace MH3.ActorControllers
         }
 
         public Define.ActorType ActorType => spec.ActorType;
+
+        public ReadOnlyReactiveProperty<int> HitPointMax => hitPointMax;
 
         public ReadOnlyReactiveProperty<int> HitPoint => hitPoint;
 
