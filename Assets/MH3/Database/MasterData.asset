@@ -31,13 +31,13 @@ MonoBehaviour:
     - Key: 10101
       Value:
       - Id: 10101
-        AnimationKey: Attack.1
+        AnimationKey: Attack.Sword.Basic.1
       - Id: 10101
-        AnimationKey: Attack.2
+        AnimationKey: Attack.Sword.Basic.2
       - Id: 10101
-        AnimationKey: Attack.1
+        AnimationKey: Attack.Sword.Basic.1
       - Id: 10101
-        AnimationKey: Attack.2
+        AnimationKey: Attack.Sword.Basic.2
   attackSpecs:
     list:
     - Id: Sword.Basic.1
@@ -79,7 +79,7 @@ MonoBehaviour:
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Large
-      FlinchType: 1
+      FlinchType: 2
       ForceFlinch: 1
       HitStopTimeScaleActor: 0.01
       HitStopDurationActor: 0.5
