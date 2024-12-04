@@ -17,6 +17,7 @@ MonoBehaviour:
   - rid: 8733972340067532868
   - rid: 895594621889413216
   - rid: 1481063080126840968
+  - rid: 1481063158688251979
   - rid: 8733972348659564544
   - rid: 1481063132064121272
   - rid: 895594621889413277
@@ -99,6 +100,15 @@ MonoBehaviour:
       type: {class: TakeUntilDisposeScopeObservable, ns: MH3, asm: Assembly-CSharp}
       data:
         subscribeSequence: {fileID: 11400000, guid: 3d86e63648bb76c47ac095a111cb6327, type: 2}
+    - rid: 1481063158688251979
+      type: {class: ActorResetAttackCount, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063158688251980
+    - rid: 1481063158688251980
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
     - rid: 8733972340067532868
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
