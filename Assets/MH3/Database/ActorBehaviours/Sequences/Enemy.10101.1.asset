@@ -16,6 +16,7 @@ MonoBehaviour:
   - rid: 8194410621298278722
   - rid: 8194410621298278542
   - rid: 1481063177779675230
+  - rid: 1481063179134173273
   references:
     version: 2
     RefIds:
@@ -37,6 +38,16 @@ MonoBehaviour:
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Target
+    - rid: 1481063179134173273
+      type: {class: WaitForStateAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063179134173274
+        stateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+    - rid: 1481063179134173274
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
     - rid: 8194410621298278542
       type: {class: ActorChaseAsync, ns: MH3, asm: Assembly-CSharp}
       data:

@@ -21,10 +21,17 @@ MonoBehaviour:
       type: {class: SelectorWithWeight, ns: MH3, asm: Assembly-CSharp}
       data:
         elements:
-        - weight: 100
+        - weight: 99999999
           sequenceResolver:
             rid: 1481063179134173265
+        - weight: 100
+          sequenceResolver:
+            rid: 1481063179134173267
     - rid: 1481063179134173265
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: {fileID: 11400000, guid: aeffb631b8012c54e9d040b1ae4e5989, type: 2}
+    - rid: 1481063179134173267
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: e0555dd20603fdf46967ef058e47c7eb, type: 2}

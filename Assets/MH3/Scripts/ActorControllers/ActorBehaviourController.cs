@@ -29,8 +29,27 @@ namespace MH3.ActorControllers
         {
             try
             {
+                if (behaviourScope != null)
+                {
+                    behaviourScope.Cancel();
+                    behaviourScope.Dispose();
+                }
                 this.data = data;
                 behaviourScope = CancellationTokenSource.CreateLinkedTokenSource(actor.destroyCancellationToken);
+                foreach (var i in this.data.TriggerElements)
+                {
+                    actor.StateProvider.GetTriggerAsObservable(i.TriggerType)
+                        .Subscribe((actor, i, behaviourScope), async static (_, t) =>
+                        {
+                            var (actor, i, behaviourScope) = t;
+                            var container = new Container();
+                            container.Register("Actor", actor);
+                            container.Register("Target", actor.SpecController.Target.Value);
+                            var sequencer = new Sequencer(container, i.Sequences.Sequences);
+                            await sequencer.PlayAsync(behaviourScope.Token);
+                        })
+                        .RegisterTo(behaviourScope.Token);
+                }
                 while (actor != null && !behaviourScope.IsCancellationRequested)
                 {
                     var container = new Container();
@@ -49,6 +68,11 @@ namespace MH3.ActorControllers
                 Debug.LogException(e);
                 throw;
             }
+        }
+
+        public void Reset()
+        {
+            Begin(data).Forget();
         }
     }
 }
