@@ -31,7 +31,7 @@ namespace MH3.ActorControllers
                     var container = new Container();
                     container.Register("Actor", actor);
                     container.Register("Target", actor.SpecController.Target.Value);
-                    var sequencer = new Sequencer(container, data.EntryPoint.Sequences);
+                    var sequencer = new Sequencer(container, this.data.EntryPoint.Sequences);
                     await sequencer.PlayAsync(actor.destroyCancellationToken);
                 }
             }
