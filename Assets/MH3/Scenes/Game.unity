@@ -119,37 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &25461082
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 25461083}
-  m_Layer: 0
-  m_Name: EnemySpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &25461083
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 25461082}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,37 +289,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1447340074
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1447340075}
-  m_Layer: 0
-  m_Name: PlayerSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1447340075
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1447340074}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1503901751
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,16 +398,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerActorSpecId: 10101
-  playerSpawnPoint: {fileID: 1447340075}
-  enemyActorSpecId: 10201
-  enemySpawnPoint: {fileID: 25461083}
-  defaultQuestSpecId: 
+  defaultQuestSpecId: Home
   masterData: {fileID: 11400000, guid: 6ee18a95a7224c142af8ea0e97a2e0a0, type: 2}
   gameRules: {fileID: 11400000, guid: 1faece5c6a63d496cbe61f12eab086ba, type: 2}
   gameCameraControllerPrefab: {fileID: -7428709017192480047, guid: 935bbac0b220b463da6e506d1d78f7c3, type: 3}
   audioManagerPrefab: {fileID: 1041980472979850873, guid: 71f5008bb1ad741aabc2186efb0abc3f, type: 3}
   effectManagerPrefab: {fileID: 4639104199410432536, guid: c331ef32ed05a46a2bc53e5d0d6be5ac, type: 3}
-  playerStatusDocumentPrefab: {fileID: 0}
+  playerStatusDocumentPrefab: {fileID: 6562501259230542608, guid: e9e90120085246944882cb2cfd4fc8fa, type: 3}
 --- !u!4 &1940853580
 Transform:
   m_ObjectHideFlags: 0
@@ -492,6 +427,4 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1940853580}
-  - {fileID: 1447340075}
-  - {fileID: 25461083}
   - {fileID: 1503901754}
