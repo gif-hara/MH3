@@ -14,5 +14,15 @@ namespace MH3
             Small,
             Large,
         }
+        
+        public enum ComparisonType
+        {
+            Equal,
+            NotEqual,
+            Greater,
+            Less,
+            GreaterOrEqual,
+            LessOrEqual,
+        }
     }
 }
