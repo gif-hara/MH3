@@ -25,6 +25,12 @@ MonoBehaviour:
         - weight: 100
           sequenceResolver:
             rid: 1481063179134173265
+        - weight: 50
+          sequenceResolver:
+            rid: 1481063179134173329
+        - weight: 50
+          sequenceResolver:
+            rid: 1481063179134173330
     - rid: 1481063179134173265
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
@@ -39,3 +45,11 @@ MonoBehaviour:
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor
+    - rid: 1481063179134173329
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: b29c4456964fd5b41975913175eea13d, type: 2}
+    - rid: 1481063179134173330
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 80d8a4bd57882284ca561d2723f0a9a2, type: 2}
