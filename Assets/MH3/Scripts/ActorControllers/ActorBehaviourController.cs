@@ -26,6 +26,7 @@ namespace MH3.ActorControllers
                 while (!actor.destroyCancellationToken.IsCancellationRequested)
                 {
                     var container = new Container();
+                    container.Register("Actor", actor);
                     var sequencer = new Sequencer(container, data.EntryPoint.Sequences);
                     await sequencer.PlayAsync(actor.destroyCancellationToken);
                 }
