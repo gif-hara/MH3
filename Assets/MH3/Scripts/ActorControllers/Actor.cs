@@ -35,7 +35,7 @@ namespace MH3.ActorControllers
         public ActorDodgeController DodgeController { get; private set; }
 
         public ActorGuardController GuardController { get; private set; }
-        
+
         public ActorBehaviourController BehaviourController { get; private set; }
 
         public LocatorHolder LocatorHolder => locatorHolder;
@@ -54,7 +54,7 @@ namespace MH3.ActorControllers
             actor.ColliderController = new ActorColliderController(actor);
             actor.DodgeController = new ActorDodgeController(actor);
             actor.GuardController = new ActorGuardController(actor);
-            actor.BehaviourController = new ActorBehaviourController(actor, actorSpec.Behaviour);
+            actor.BehaviourController = new ActorBehaviourController(actor);
             actor.MovementController.Setup(actor, actor.openCharacterController);
             return actor;
         }

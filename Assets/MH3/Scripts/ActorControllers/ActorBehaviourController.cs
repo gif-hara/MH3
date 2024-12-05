@@ -7,23 +7,25 @@ namespace MH3.ActorControllers
 {
     public class ActorBehaviourController
     {
+        private readonly Actor actor;
+
         private ActorBehaviourData data;
-        
-        public ActorBehaviourController(Actor actor, ActorBehaviourData data)
+
+        public ActorBehaviourController(Actor actor)
         {
-            this.data = data;
-            Begin(actor).Forget();
+            this.actor = actor;
         }
-        
+
         public void ChangeBehaviour(ActorBehaviourData newData)
         {
             data = newData;
         }
 
-        private async UniTaskVoid Begin(Actor actor)
+        public async UniTaskVoid Begin(ActorBehaviourData data)
         {
             try
             {
+                this.data = data;
                 while (!actor.destroyCancellationToken.IsCancellationRequested)
                 {
                     var container = new Container();

@@ -11,7 +11,7 @@ namespace MH3
     {
         [SerializeField]
         private int playerActorSpecId;
-        
+
         [SerializeField]
         private string defaultQuestSpecId;
 
@@ -46,7 +46,9 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(Instantiate(effectManagerPrefab), destroyCancellationToken).Forget();
             var gameCameraController = Instantiate(gameCameraControllerPrefab);
             TinyServiceLocator.RegisterAsync(gameCameraController, destroyCancellationToken).Forget();
-            var player = masterData.ActorSpecs.Get(playerActorSpecId).Spawn(Vector3.zero, Quaternion.identity);
+            var playerSpec = masterData.ActorSpecs.Get(playerActorSpecId);
+            var player = playerSpec.Spawn(Vector3.zero, Quaternion.identity);
+            player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
             SetupQuest(player, gameCameraController, defaultQuestSpecId);
             new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
 #if DEBUG
@@ -85,12 +87,12 @@ namespace MH3
             {
                 Destroy(enemy.gameObject);
             }
-            
-            if(stage != null)
+
+            if (stage != null)
             {
                 Destroy(stage.gameObject);
             }
-            
+
             var questSpec = TinyServiceLocator.Resolve<MasterData>().QuestSpecs.Get(questSpecId);
             stage = Object.Instantiate(questSpec.StagePrefab);
             var enemySpec = TinyServiceLocator.Resolve<MasterData>().ActorSpecs.Get(questSpec.EnemyActorSpecId);
@@ -99,6 +101,7 @@ namespace MH3
             player.transform.rotation = stage.PlayerSpawnPoint.rotation;
             player.SpecController.Target.Value = enemy;
             enemy.SpecController.Target.Value = player;
+            enemy.BehaviourController.Begin(enemySpec.Behaviour).Forget();
             gameCameraController.SetTrackingTarget(player.transform, enemy.transform);
         }
     }
