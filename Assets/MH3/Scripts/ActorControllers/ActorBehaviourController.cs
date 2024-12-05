@@ -1,5 +1,7 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
+using R3;
 using UnityEngine;
 using UnitySequencerSystem;
 
@@ -10,6 +12,8 @@ namespace MH3.ActorControllers
         private readonly Actor actor;
 
         private ActorBehaviourData data;
+
+        private CancellationTokenSource behaviourScope;
 
         public ActorBehaviourController(Actor actor)
         {
@@ -26,17 +30,20 @@ namespace MH3.ActorControllers
             try
             {
                 this.data = data;
-                while (actor != null && !actor.destroyCancellationToken.IsCancellationRequested)
+                behaviourScope = CancellationTokenSource.CreateLinkedTokenSource(actor.destroyCancellationToken);
+                while (actor != null && !behaviourScope.IsCancellationRequested)
                 {
                     var container = new Container();
                     container.Register("Actor", actor);
                     container.Register("Target", actor.SpecController.Target.Value);
                     var sequencer = new Sequencer(container, this.data.EntryPoint.Sequences);
-                    await sequencer.PlayAsync(actor.destroyCancellationToken);
+                    await sequencer.PlayAsync(behaviourScope.Token);
                 }
+                Debug.Log("ActorBehaviourController End");
             }
             catch (OperationCanceledException)
             {
+                Debug.Log("ActorBehaviourController Begin Canceled");
             }
             catch (Exception e)
             {
