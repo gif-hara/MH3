@@ -26,7 +26,7 @@ namespace MH3.ActorControllers
             try
             {
                 this.data = data;
-                while (!actor.destroyCancellationToken.IsCancellationRequested)
+                while (actor != null && !actor.destroyCancellationToken.IsCancellationRequested)
                 {
                     var container = new Container();
                     container.Register("Actor", actor);

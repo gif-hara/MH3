@@ -26,7 +26,10 @@ namespace MH3
 
         protected override void OnDispose()
         {
-            UnityEngine.Object.Destroy(document.gameObject);
+            if (document != null)
+            {
+                UnityEngine.Object.Destroy(document.gameObject);
+            }
         }
     }
 }
