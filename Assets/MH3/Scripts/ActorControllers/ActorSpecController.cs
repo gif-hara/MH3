@@ -41,6 +41,8 @@ namespace MH3.ActorControllers
 
         private readonly ReactiveProperty<Define.FlinchType> flinchType = new(Define.FlinchType.None);
 
+        private readonly Subject<Unit> onFlinch = new();
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -90,6 +92,8 @@ namespace MH3.ActorControllers
         public MasterData.WeaponSpec WeaponSpec => TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponId.Value);
 
         public ReadOnlyReactiveProperty<Define.FlinchType> FlinchType => flinchType;
+
+        public Observable<Unit> OnFlinch => onFlinch;
 
         public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)
         {
@@ -165,6 +169,7 @@ namespace MH3.ActorControllers
                     flinchType.Value = attackSpec.FlinchType;
                     actor.StateMachine.TryChangeState(FlinchSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));
                     ResetFlinch();
+                    onFlinch.OnNext(Unit.Default);
                 }
 
                 if (guardResult == ActorGuardController.GuardResult.SuccessGuard)
