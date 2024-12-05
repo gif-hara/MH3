@@ -46,13 +46,14 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(gameRules, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(Instantiate(audioManagerPrefab), destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(Instantiate(effectManagerPrefab), destroyCancellationToken).Forget();
+            var gameCameraController = Instantiate(gameCameraControllerPrefab);
+            TinyServiceLocator.RegisterAsync(gameCameraController, destroyCancellationToken).Forget();
             var player = masterData.ActorSpecs.Get(playerActorSpecId).Spawn(playerSpawnPoint.position, playerSpawnPoint.rotation);
             player.transform.position = playerSpawnPoint.position;
             player.transform.rotation = playerSpawnPoint.rotation;
             var enemy = masterData.ActorSpecs.Get(enemyActorSpecId).Spawn(enemySpawnPoint.position, enemySpawnPoint.rotation);
             enemy.transform.position = enemySpawnPoint.position;
             enemy.transform.rotation = enemySpawnPoint.rotation;
-            var gameCameraController = Instantiate(gameCameraControllerPrefab);
             gameCameraController.SetTrackingTarget(player.transform, enemy.transform);
             player.SpecController.Target.Value = enemy;
             enemy.SpecController.Target.Value = player;
