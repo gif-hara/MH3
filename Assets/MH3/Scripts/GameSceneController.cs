@@ -57,8 +57,6 @@ namespace MH3
             gameCameraController.SetTrackingTarget(player.transform, enemy.transform);
             player.SpecController.Target.Value = enemy;
             enemy.SpecController.Target.Value = player;
-            PlayerController.Attach(player, gameCameraController.ControlledCamera.transform);
-            EnemyController.Attach(enemy, player);
             new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
 #if DEBUG
             var debugData = new GameDebugData();
