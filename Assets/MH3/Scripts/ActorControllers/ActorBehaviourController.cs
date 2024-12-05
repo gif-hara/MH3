@@ -39,7 +39,6 @@ namespace MH3.ActorControllers
                     var sequencer = new Sequencer(container, this.data.EntryPoint.Sequences);
                     await sequencer.PlayAsync(behaviourScope.Token);
                 }
-                Debug.Log("ActorBehaviourController End");
             }
             catch (OperationCanceledException)
             {
