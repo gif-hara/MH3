@@ -170,3 +170,11 @@ MonoBehaviour:
       SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
       Behaviour: {fileID: 11400000, guid: ca96acd3027f6475d9c803bcb540c0d1, type: 2}
+  questSpecs:
+    list:
+    - Id: Home
+      StagePrefabKey: Home
+      EnemyActorSpecId: 10201
+    - Id: Quest.10101
+      StagePrefabKey: Battle
+      EnemyActorSpecId: 10201

@@ -33,6 +33,10 @@ namespace MH3
         [SerializeField]
         private ActorSpec.DictionaryList actorSpecs;
         public ActorSpec.DictionaryList ActorSpecs => actorSpecs;
+        
+        [SerializeField]
+        private QuestSpec.DictionaryList questSpecs;
+        public QuestSpec.DictionaryList QuestSpecs => questSpecs;
 
 #if UNITY_EDITOR
         [ContextMenu("Update")]
@@ -55,6 +59,7 @@ namespace MH3
                 "AttackSpec",
                 "ActorSpec",
                 "WeaponCombo",
+                "QuestSpec",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -63,6 +68,7 @@ namespace MH3
             attackSpecs.Set(JsonHelper.FromJson<AttackSpec>(database[1]));
             actorSpecs.Set(JsonHelper.FromJson<ActorSpec>(database[2]));
             weaponCombos.Set(JsonHelper.FromJson<WeaponCombo>(database[3]));
+            questSpecs.Set(JsonHelper.FromJson<QuestSpec>(database[4]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -247,6 +253,24 @@ namespace MH3
             public Actor Spawn(Vector3 position, Quaternion rotation)
             {
                 return ActorPrefab.Spawn(position, rotation, this);
+            }
+        }
+
+        [Serializable]
+        public class QuestSpec
+        {
+            public string Id;
+
+            public string StagePrefabKey;
+            
+            public int EnemyActorSpecId;
+            
+            [Serializable]
+            public class DictionaryList : DictionaryList<string, QuestSpec>
+            {
+                public DictionaryList() : base(x => x.Id)
+                {
+                }
             }
         }
     }
