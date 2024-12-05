@@ -18,6 +18,11 @@ namespace MH3.ActorControllers
             CanGuard,
         }
 
+        public enum TriggerType
+        {
+            OnFlinch,
+        }
+
         private readonly Actor actor;
 
         public ActorStateProvider(Actor actor)
@@ -38,6 +43,15 @@ namespace MH3.ActorControllers
                 BooleanType.IsGuard => actor.GuardController.IsGuard,
                 BooleanType.JustGuarding => actor.GuardController.JustGuarding,
                 BooleanType.CanGuard => actor.GuardController.CanGuard,
+                _ => throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}"),
+            };
+        }
+
+        public Observable<Unit> GetTriggerAsObservable(TriggerType type)
+        {
+            return type switch
+            {
+                TriggerType.OnFlinch => actor.SpecController.OnFlinch,
                 _ => throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}"),
             };
         }
