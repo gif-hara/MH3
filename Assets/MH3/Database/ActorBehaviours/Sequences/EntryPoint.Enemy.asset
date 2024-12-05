@@ -12,7 +12,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
   m_Name: EntryPoint.Enemy
   m_EditorClassIdentifier: 
-  sequences: []
+  sequences:
+  - rid: 8194410621298278722
+  - rid: 8194410621298278542
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8194410621298278542
+      type: {class: ActorChaseAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 8194410621298278727
+        targetResolver:
+          rid: 8194410621298278728
+        conditionResolver:
+          rid: 8194410621298278729
+    - rid: 8194410621298278722
+      type: {class: ContainerRegisterEvaluateActorDistance, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 8194410621298278723
+        targetResolver:
+          rid: 8194410621298278724
+        keyResolver:
+          rid: 8194410621298278725
+        comparisonType: 3
+        checkDistanceResolver:
+          rid: 8194410621298278726
+    - rid: 8194410621298278723
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 8194410621298278724
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Target
+    - rid: 8194410621298278725
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: TargetDistance
+    - rid: 8194410621298278726
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 10
+    - rid: 8194410621298278727
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 8194410621298278728
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Target
+    - rid: 8194410621298278729
+      type: {class: BooleanResolver/FuncBoolean, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: TargetDistance
