@@ -250,7 +250,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 1911741141
+      path: 2079662216
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -987,6 +987,13 @@ AnimationClip:
   - time: 0
     functionName: SetRotateImmediateTargetRotation
     data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
+    functionName: PlaySfx
+    data: Dodge.1
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
