@@ -12,6 +12,7 @@ namespace MH3.ActorControllers
         public ActorBehaviourController(Actor actor, ActorBehaviourData data)
         {
             this.data = data;
+            Begin(actor).Forget();
         }
         
         public void ChangeBehaviour(ActorBehaviourData newData)

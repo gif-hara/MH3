@@ -77,6 +77,7 @@ namespace MH3
                 actorSpec.SuccessJustGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.SuccessJustGuardSequencesKey}.asset");
                 actorSpec.SuccessGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.SuccessGuardSequencesKey}.asset");
                 actorSpec.ActorPrefab = AssetDatabase.LoadAssetAtPath<Actor>($"Assets/MH3/Prefabs/Actor.{actorSpec.ActorPrefabKey}.prefab");
+                actorSpec.Behaviour = AssetDatabase.LoadAssetAtPath<ActorBehaviourData>($"Assets/MH3/Database/ActorBehaviours/{actorSpec.BehaviourKey}.asset");
             }
             EditorUtility.SetDirty(this);
             AssetDatabase.SaveAssets();
@@ -215,6 +216,8 @@ namespace MH3
 
             public string ActorPrefabKey;
 
+            public string BehaviourKey;
+
             public ScriptableSequences InitialStateSequences;
 
             public ScriptableSequences AttackSequences;
@@ -230,6 +233,8 @@ namespace MH3
             public ScriptableSequences SuccessGuardSequences;
 
             public Actor ActorPrefab;
+
+            public ActorBehaviourData Behaviour;
 
             [Serializable]
             public class DictionaryList : DictionaryList<int, ActorSpec>
