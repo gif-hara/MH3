@@ -23,7 +23,7 @@ namespace MH3
                     cameraForward.Normalize();
                     cameraRight.Normalize();
                     var moveVector = (cameraForward.normalized * velocity.y + cameraRight.normalized * velocity.x).normalized;
-                    actor.MovementController.Move(moveVector * actor.SpecController.MoveSpeed);
+                    actor.MovementController.Move(moveVector);
                     if (velocity != Vector2.zero)
                     {
                         actor.MovementController.Rotate(Quaternion.LookRotation(moveVector));

@@ -38,7 +38,7 @@ namespace MH3.ActorControllers
                     }
                     else
                     {
-                        openCharacterController.Move(velocity * deltaTime);
+                        openCharacterController.Move(velocity * actor.SpecController.MoveSpeed * deltaTime);
                         isMoving.Value = true;
                     }
                     openCharacterController.Move(velocityFromAnimator);
