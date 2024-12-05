@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using HK;
+using MH3.ActorControllers;
 using R3;
 using R3.Triggers;
 using UnityEngine;
@@ -22,6 +23,9 @@ namespace MH3
         private Transform enemySpawnPoint;
 
         [SerializeField]
+        private string defaultQuestSpecId;
+
+        [SerializeField]
         private MasterData masterData;
 
         [SerializeField]
@@ -38,6 +42,10 @@ namespace MH3
 
         [SerializeField]
         private HKUIDocument playerStatusDocumentPrefab;
+
+        private Actor enemy;
+
+        private Stage stage;
 
         private void Start()
         {
@@ -86,6 +94,19 @@ namespace MH3
                     }
                 });
 #endif
+        }
+
+        private void SetupQuest(Actor player, string questSpecId)
+        {
+            if (enemy != null)
+            {
+                Destroy(enemy.gameObject);
+            }
+            
+            if(stage != null)
+            {
+                Destroy(stage.gameObject);
+            }
         }
     }
 }

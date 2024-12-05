@@ -688,9 +688,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5700343944882058174, guid: 45b90369b4ae24d148edcd0c95478375, type: 3}
+      propertyPath: enemySpawnPoint
+      value: 
+      objectReference: {fileID: 3256774642675469925}
+    - target: {fileID: 5700343944882058174, guid: 45b90369b4ae24d148edcd0c95478375, type: 3}
+      propertyPath: playerSpawnPoint
+      value: 
+      objectReference: {fileID: 164070012653940429}
     - target: {fileID: 8566044683758658113, guid: 45b90369b4ae24d148edcd0c95478375, type: 3}
       propertyPath: m_Name
-      value: Stage.Home
+      value: Stage.Battle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

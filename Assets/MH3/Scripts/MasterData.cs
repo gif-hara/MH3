@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
@@ -84,6 +83,10 @@ namespace MH3
                 actorSpec.SuccessGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.SuccessGuardSequencesKey}.asset");
                 actorSpec.ActorPrefab = AssetDatabase.LoadAssetAtPath<Actor>($"Assets/MH3/Prefabs/Actor.{actorSpec.ActorPrefabKey}.prefab");
                 actorSpec.Behaviour = AssetDatabase.LoadAssetAtPath<ActorBehaviourData>($"Assets/MH3/Database/ActorBehaviours/{actorSpec.BehaviourKey}.asset");
+            }
+            foreach (var questSpec in questSpecs.List)
+            {
+                questSpec.StagePrefab = AssetDatabase.LoadAssetAtPath<Stage>($"Assets/MH3/Prefabs/Stage.{questSpec.StagePrefabKey}.prefab");
             }
             EditorUtility.SetDirty(this);
             AssetDatabase.SaveAssets();
@@ -264,6 +267,8 @@ namespace MH3
             public string StagePrefabKey;
             
             public int EnemyActorSpecId;
+
+            public Stage StagePrefab;
             
             [Serializable]
             public class DictionaryList : DictionaryList<string, QuestSpec>
