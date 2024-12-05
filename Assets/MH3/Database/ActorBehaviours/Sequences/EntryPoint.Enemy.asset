@@ -15,9 +15,28 @@ MonoBehaviour:
   sequences:
   - rid: 8194410621298278722
   - rid: 8194410621298278542
+  - rid: 1481063177779675230
   references:
     version: 2
     RefIds:
+    - rid: 1481063177779675230
+      type: {class: ActorAttackTakeUntilCompleteAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063177779675231
+        targetResolver:
+          rid: 1481063177779675232
+        comboAnimationKeys:
+        - Attack.Sword.Opening.1
+        - Attack.Sword.Basic.1
+    - rid: 1481063177779675231
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063177779675232
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Target
     - rid: 8194410621298278542
       type: {class: ActorChaseAsync, ns: MH3, asm: Assembly-CSharp}
       data:

@@ -16,6 +16,8 @@ namespace MH3.ActorControllers
 
         private readonly HashSet<Actor> attackedActors = new();
 
+        public bool HasNextCombo => attackCount < actor.SpecController.ComboAnimationKeys.Count;
+
         public ActorAttackController(Actor actor)
         {
             this.actor = actor;
@@ -51,7 +53,7 @@ namespace MH3.ActorControllers
             }
             else
             {
-                if (attackCount >= actor.SpecController.ComboAnimationKeys.Count)
+                if (!HasNextCombo)
                 {
                     return false;
                 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using MH3.UnitySequencerSystem.Resolvers;
@@ -6,12 +7,11 @@ using R3;
 using R3.Triggers;
 using UnityEngine;
 using UnitySequencerSystem;
-using UnitySequencerSystem.Resolvers;
 
 namespace MH3
 {
     [Serializable]
-    public class ActorChaseAsync : Sequence
+    public class ActorAttackTakeUntilCompleteAsync : Sequence
     {
         [SerializeReference, SubclassSelector]
         private ActorResolver actorResolver;
@@ -19,27 +19,25 @@ namespace MH3
         [SerializeReference, SubclassSelector]
         private ActorResolver targetResolver;
 
-        [SerializeReference, SubclassSelector]
-        private BooleanResolver conditionResolver;
+        [SerializeField]
+        private List<string> comboAnimationKeys;
 
         public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
-            var chaseScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(cancellationToken));
+            var scope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(cancellationToken));
             var actor = actorResolver.Resolve(container);
             var target = targetResolver.Resolve(container);
+            actor.SpecController.ComboAnimationKeys.Clear();
+            actor.SpecController.ComboAnimationKeys.AddRange(comboAnimationKeys);
             actor.UpdateAsObservable()
                 .Subscribe((actor, target), static (_, t) =>
                 {
                     var (actor, target) = t;
-                    var direction = target.transform.position - actor.transform.position;
-                    direction.y = 0;
-                    direction.Normalize();
-                    actor.MovementController.Move(direction);
-                    actor.MovementController.Rotate(Quaternion.LookRotation(direction));
+                    actor.AttackController.TryAttack(target);
                 })
-                .RegisterTo(chaseScope.Token);
-            await UniTask.WaitUntil(() => conditionResolver.Resolve(container), PlayerLoopTiming.Update, cancellationToken);
-            chaseScope.Dispose();
+                .AddTo(scope.Token);
+            await UniTask.WaitUntil(() => !actor.AttackController.HasNextCombo, PlayerLoopTiming.Update, cancellationToken);
+            scope.Dispose();
         }
     }
 }
