@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Enemy.10101.1
   m_EditorClassIdentifier: 
   sequences:
+  - rid: 1481063179134173289
   - rid: 8194410621298278722
-  - rid: 8194410621298278542
+  - rid: 1481063179134173287
   - rid: 1481063177779675230
   - rid: 1481063179134173273
   references:
@@ -48,15 +49,30 @@ MonoBehaviour:
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor
-    - rid: 8194410621298278542
-      type: {class: ActorChaseAsync, ns: MH3, asm: Assembly-CSharp}
+    - rid: 1481063179134173287
+      type: {class: WaitUntil, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        conditionResolver:
+          rid: 1481063179134173288
+    - rid: 1481063179134173288
+      type: {class: BoolResolver/Func, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: TargetDistance
+    - rid: 1481063179134173289
+      type: {class: ActorChase, ns: MH3, asm: Assembly-CSharp}
       data:
         actorResolver:
-          rid: 8194410621298278727
+          rid: 1481063179134173290
         targetResolver:
-          rid: 8194410621298278728
-        conditionResolver:
-          rid: 8194410621298278729
+          rid: 1481063179134173291
+    - rid: 1481063179134173290
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063179134173291
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Target
     - rid: 8194410621298278722
       type: {class: ContainerRegisterEvaluateActorDistance, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -85,15 +101,3 @@ MonoBehaviour:
       type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 5
-    - rid: 8194410621298278727
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Actor
-    - rid: 8194410621298278728
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Target
-    - rid: 8194410621298278729
-      type: {class: BooleanResolver/FuncBoolean, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        name: TargetDistance
