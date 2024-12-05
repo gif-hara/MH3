@@ -15,16 +15,16 @@ namespace MH3
     {
         [SerializeReference, SubclassSelector]
         private ActorResolver actorResolver;
-        
+
         [SerializeReference, SubclassSelector]
         private ActorResolver targetResolver;
-        
+
         [SerializeReference, SubclassSelector]
         private BooleanResolver conditionResolver;
-        
-        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
-            using var chaseScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(cancellationToken));
+            var chaseScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(cancellationToken));
             var actor = actorResolver.Resolve(container);
             var target = targetResolver.Resolve(container);
             actor.UpdateAsObservable()
@@ -33,11 +33,13 @@ namespace MH3
                     var (actor, target) = t;
                     var direction = target.transform.position - actor.transform.position;
                     direction.y = 0;
+                    direction.Normalize();
                     actor.MovementController.Move(direction);
                     actor.MovementController.Rotate(Quaternion.LookRotation(direction));
                 })
                 .RegisterTo(chaseScope.Token);
-            return UniTask.WaitUntil(() => conditionResolver.Resolve(container), PlayerLoopTiming.Update, cancellationToken);
+            await UniTask.WaitUntil(() => !conditionResolver.Resolve(container), PlayerLoopTiming.Update, cancellationToken);
+            chaseScope.Dispose();
         }
     }
 }
