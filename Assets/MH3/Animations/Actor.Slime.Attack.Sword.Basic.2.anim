@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Actor.Slime.Attack.Sword.2
+  m_Name: Actor.Slime.Attack.Sword.Basic.2
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -1772,19 +1772,19 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.33333334
+    functionName: SetCanRotate
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0
   - time: 0.41666666
     functionName: SetActiveTrail
     data: Default
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
-    messageOptions: 0
-  - time: 0.41666666
-    functionName: SetCanRotate
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 1
     messageOptions: 0
   - time: 0.48333332
     functionName: SetAttackSpec

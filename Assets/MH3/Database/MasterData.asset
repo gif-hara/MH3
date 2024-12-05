@@ -22,7 +22,7 @@ MonoBehaviour:
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
     - Id: 19901
       ModelDataId: 10101
-      ComboId: 10101
+      ComboId: 19901
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: 
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
@@ -38,6 +38,12 @@ MonoBehaviour:
         AnimationKey: Attack.Sword.Basic.1
       - Id: 10101
         AnimationKey: Attack.Sword.Basic.2
+    - Key: 19901
+      Value:
+      - Id: 19901
+        AnimationKey: Attack.Sword.Opening.1
+      - Id: 19901
+        AnimationKey: Attack.Sword.Basic.1
   attackSpecs:
     list:
     - Id: Sword.Basic.1
