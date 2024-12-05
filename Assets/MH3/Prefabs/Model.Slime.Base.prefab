@@ -169,7 +169,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.size
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[1].clip
@@ -274,6 +274,22 @@ PrefabInstance:
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[13].name
       value: Attack.Sword.Opening.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[14].clip
+      value: 
+      objectReference: {fileID: 7400000, guid: c1b6315fcb4d6af4d9d2b826b0e4ca40, type: 2}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[14].name
+      value: Sway.Left.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[15].clip
+      value: 
+      objectReference: {fileID: 7400000, guid: b435b73d244c8554d884f2a0ce0ff912, type: 2}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[15].name
+      value: Sway.Right.1
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[1].defaultState
