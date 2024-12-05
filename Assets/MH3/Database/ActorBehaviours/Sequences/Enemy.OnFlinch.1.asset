@@ -13,21 +13,10 @@ MonoBehaviour:
   m_Name: Enemy.OnFlinch.1
   m_EditorClassIdentifier: 
   sequences:
-  - rid: 1481063179134173278
   - rid: 1481063179134173280
   references:
     version: 2
     RefIds:
-    - rid: 1481063179134173278
-      type: {class: WaitForStateAsync, ns: MH3, asm: Assembly-CSharp}
-      data:
-        actorResolver:
-          rid: 1481063179134173279
-        stateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
-    - rid: 1481063179134173279
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Actor
     - rid: 1481063179134173280
       type: {class: ActorResetBehaviour, ns: MH3, asm: Assembly-CSharp}
       data:

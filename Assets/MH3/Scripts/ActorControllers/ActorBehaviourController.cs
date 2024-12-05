@@ -50,7 +50,7 @@ namespace MH3.ActorControllers
                         })
                         .RegisterTo(behaviourScope.Token);
                 }
-                while (actor != null && !behaviourScope.IsCancellationRequested)
+                while (actor != null && behaviourScope != null && !behaviourScope.IsCancellationRequested)
                 {
                     var container = new Container();
                     container.Register("Actor", actor);
@@ -73,6 +73,16 @@ namespace MH3.ActorControllers
         public void Reset()
         {
             Begin(data).Forget();
+        }
+
+        public void Stop()
+        {
+            if (behaviourScope != null)
+            {
+                behaviourScope.Cancel();
+                behaviourScope.Dispose();
+            }
+            behaviourScope = null;
         }
     }
 }
