@@ -50,7 +50,7 @@ namespace MH3
             var player = playerSpec.Spawn(Vector3.zero, Quaternion.identity);
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
             SetupQuest(player, gameCameraController, defaultQuestSpecId);
-            new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
+            _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
 #if DEBUG
             var debugData = new GameDebugData();
             TinyServiceLocator.RegisterAsync(debugData, destroyCancellationToken).Forget();
