@@ -89,6 +89,7 @@ namespace MH3
             {
                 questSpec.StagePrefab = AssetDatabase.LoadAssetAtPath<Stage>($"Assets/MH3/Prefabs/Stage.{questSpec.StagePrefabKey}.prefab");
                 questSpec.QuestClearSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/QuestClearSequences/{questSpec.QuestClearSequencesKey}.asset");
+                questSpec.QuestFailedSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/QuestFailedSequences/{questSpec.QuestFailedSequencesKey}.asset");
             }
             EditorUtility.SetDirty(this);
             AssetDatabase.SaveAssets();
@@ -276,9 +277,13 @@ namespace MH3
 
             public string QuestClearSequencesKey;
 
+            public string QuestFailedSequencesKey;
+
             public Stage StagePrefab;
 
             public ScriptableSequences QuestClearSequences;
+
+            public ScriptableSequences QuestFailedSequences;
 
             [Serializable]
             public class DictionaryList : DictionaryList<string, QuestSpec>

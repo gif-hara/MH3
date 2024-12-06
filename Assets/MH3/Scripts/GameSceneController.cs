@@ -152,6 +152,12 @@ namespace MH3
             questClearContainer.Register("Enemy", enemy);
             var questClearSequencer = new Sequencer(questClearContainer, questSpec.QuestClearSequences.Sequences);
             questClearSequencer.PlayAsync(questScope.Token).Forget();
+            var questFailedContainer = new Container();
+            questFailedContainer.Register(this);
+            questFailedContainer.Register("Player", player);
+            questFailedContainer.Register("Enemy", enemy);
+            var questFailedSequencer = new Sequencer(questFailedContainer, questSpec.QuestFailedSequences.Sequences);
+            questFailedSequencer.PlayAsync(questScope.Token).Forget();
         }
 
         public void SetupHomeQuest()
