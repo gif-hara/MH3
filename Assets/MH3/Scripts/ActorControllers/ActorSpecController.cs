@@ -45,6 +45,8 @@ namespace MH3.ActorControllers
 
         private readonly Subject<DamageData> onTakeDamage = new();
 
+        private readonly Subject<Unit> onDead = new();
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -98,6 +100,8 @@ namespace MH3.ActorControllers
         public Observable<Unit> OnFlinch => onFlinch;
 
         public Observable<DamageData> OnTakeDamage => onTakeDamage;
+
+        public Observable<Unit> OnDead => onDead;
 
         public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)
         {
@@ -175,6 +179,7 @@ namespace MH3.ActorControllers
                 if (fixedHitPoint <= 0)
                 {
                     actor.StateMachine.TryChangeState(spec.DeadSequences, force: true);
+                    onDead.OnNext(Unit.Default);
                 }
                 else if (CanPlayFlinch() || attackSpec.ForceFlinch)
                 {
