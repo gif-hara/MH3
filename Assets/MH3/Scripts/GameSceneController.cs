@@ -1,9 +1,11 @@
+using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
 using R3;
 using R3.Triggers;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnitySequencerSystem;
 
 namespace MH3
 {
@@ -41,6 +43,8 @@ namespace MH3
         private Stage stage;
 
         private UIViewDamageLabel damageLabel;
+
+        private CancellationDisposable questScope;
 
         private void Start()
         {
@@ -99,6 +103,10 @@ namespace MH3
 
         private void SetupQuest(Actor player, GameCameraController gameCameraController, string questSpecId)
         {
+            if (questScope != null)
+            {
+                questScope.Dispose();
+            }
             if (enemy != null)
             {
                 Destroy(enemy.gameObject);
@@ -109,6 +117,7 @@ namespace MH3
                 Destroy(stage.gameObject);
             }
 
+            questScope = new CancellationDisposable();
             var questSpec = TinyServiceLocator.Resolve<MasterData>().QuestSpecs.Get(questSpecId);
             stage = Object.Instantiate(questSpec.StagePrefab);
             var enemySpec = TinyServiceLocator.Resolve<MasterData>().ActorSpecs.Get(questSpec.EnemyActorSpecId);
@@ -120,6 +129,9 @@ namespace MH3
             enemy.BehaviourController.Begin(enemySpec.Behaviour).Forget();
             gameCameraController.SetTrackingTarget(player.transform, enemy.transform);
             damageLabel.BeginObserve(enemy);
+            var questClearContainer = new Container();
+            var questClearSequencer = new Sequencer(questClearContainer, questSpec.QuestClearSequences.Sequences);
+            questClearSequencer.PlayAsync(questScope.Token).Forget();
         }
     }
 }
