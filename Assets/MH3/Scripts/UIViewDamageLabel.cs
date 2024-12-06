@@ -36,7 +36,7 @@ namespace MH3
         {
             var label = Object.Instantiate(
                 document.Q<HKUIDocument>("Prefab.Element"),
-                document.Q<RectTransform>("Label.Parent"),
+                document.Q<RectTransform>("Parent.Element"),
                 false
                 );
             label.Q<TMP_Text>("Label").text = damage.ToString();
@@ -47,7 +47,7 @@ namespace MH3
                     label.transform.position = RectTransformUtility.WorldToScreenPoint(camera, worldPosition);
                 })
                 .RegisterTo(label.destroyCancellationToken);
-            await label.Q<SimpleAnimation>("Animation").PlayAsync("In", document.destroyCancellationToken);
+            await label.Q<SimpleAnimation>("Animation").PlayAsync(document.destroyCancellationToken);
             Object.Destroy(label.gameObject);
         }
 
