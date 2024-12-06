@@ -222,6 +222,16 @@ namespace MH3.ActorControllers
             hitPoint.Value = result > spec.HitPoint ? spec.HitPoint : result;
         }
 
+        public void ResetAll()
+        {
+            hitPoint.Value = spec.HitPoint;
+            flinch.Value = 0;
+            flinchType.Value = Define.FlinchType.None;
+            CanAddFlinchDamage.Value = true;
+            Invincible.Value = false;
+            actor.StateMachine.TryChangeState(spec.InitialStateSequences, force: true);
+        }
+
 #if DEBUG
         public void SetHitPointDebug(int value)
         {

@@ -139,8 +139,9 @@ namespace MH3
             stage = Object.Instantiate(questSpec.StagePrefab);
             var enemySpec = TinyServiceLocator.Resolve<MasterData>().ActorSpecs.Get(questSpec.EnemyActorSpecId);
             enemy = enemySpec.Spawn(stage.EnemySpawnPoint.position, stage.EnemySpawnPoint.rotation);
+            player.SpecController.ResetAll();
             player.transform.position = stage.PlayerSpawnPoint.position;
-            player.transform.rotation = stage.PlayerSpawnPoint.rotation;
+            player.MovementController.RotateImmediate(stage.PlayerSpawnPoint.rotation);
             player.SpecController.Target.Value = enemy;
             enemy.SpecController.Target.Value = player;
             enemy.BehaviourController.Begin(enemySpec.Behaviour).Forget();
