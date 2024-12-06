@@ -88,6 +88,7 @@ namespace MH3
             foreach (var questSpec in questSpecs.List)
             {
                 questSpec.StagePrefab = AssetDatabase.LoadAssetAtPath<Stage>($"Assets/MH3/Prefabs/Stage.{questSpec.StagePrefabKey}.prefab");
+                questSpec.QuestClearSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/QuestClearSequences/{questSpec.QuestClearSequencesKey}.asset");
             }
             EditorUtility.SetDirty(this);
             AssetDatabase.SaveAssets();
@@ -273,7 +274,11 @@ namespace MH3
 
             public int EnemyActorSpecId;
 
+            public string QuestClearSequencesKey;
+
             public Stage StagePrefab;
+
+            public ScriptableSequences QuestClearSequences;
 
             [Serializable]
             public class DictionaryList : DictionaryList<string, QuestSpec>
