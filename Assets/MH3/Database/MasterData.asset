@@ -191,11 +191,40 @@ MonoBehaviour:
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
       Behaviour: {fileID: 11400000, guid: ca96acd3027f6475d9c803bcb540c0d1, type: 2}
+    - Id: 10202
+      ActorType: 1
+      HitPoint: 999999999
+      Attack: 100
+      PhysicalDamageCutRate: 0
+      FlinchThreshold: 100
+      MoveSpeed: 7
+      RotationSpeed: 10
+      WeaponId: 19901
+      InitialStateKey: Idle.Default
+      AttackSequencesKey: Attack.Default
+      FlinchSequencesKey: Flinch.Default
+      DodgeSequencesKey: Dodge.Default
+      GuardSequencesKey: Guard.Default
+      SuccessJustGuardSequencesKey: SuccessJustGuard.Default
+      SuccessGuardSequencesKey: SuccessGuard.Default
+      DeadSequencesKey: Dead.Default
+      ActorPrefabKey: Enemy
+      BehaviourKey: Enemy.10202
+      InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+      AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
+      FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
+      DodgeSequences: {fileID: 11400000, guid: 382dc8b38b611744f879c2c1942dcdde, type: 2}
+      GuardSequences: {fileID: 11400000, guid: 00f83183459bd704a9af1dcc204da93c, type: 2}
+      SuccessJustGuardSequences: {fileID: 11400000, guid: 94d370458b442564993fb0b876ce15ae, type: 2}
+      SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
+      DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
+      ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
+      Behaviour: {fileID: 11400000, guid: 01ea3ad737f58a9429b2ba8e26a241e9, type: 2}
   questSpecs:
     list:
     - Id: Home
       StagePrefabKey: Home
-      EnemyActorSpecId: 10201
+      EnemyActorSpecId: 10202
       QuestClearSequencesKey: None
       QuestFailedSequencesKey: PlayerDefeat
       StagePrefab: {fileID: 7216371262307075504, guid: 3ab8cee5f3eb94595bca35a1d3035d87, type: 3}
