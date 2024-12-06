@@ -15,7 +15,10 @@ namespace MH3
         private int playerActorSpecId;
 
         [SerializeField]
-        private string defaultQuestSpecId;
+        private string homeQuestSpecId;
+
+        [SerializeField]
+        private string initialQuestSpecId;
 
         [SerializeField]
         private MasterData masterData;
@@ -60,7 +63,7 @@ namespace MH3
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
-            SetupQuest(player, gameCameraController, defaultQuestSpecId);
+            SetupQuest(player, gameCameraController, initialQuestSpecId);
 #if DEBUG
             var debugData = new GameDebugData();
             TinyServiceLocator.RegisterAsync(debugData, destroyCancellationToken).Forget();
