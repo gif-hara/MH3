@@ -104,6 +104,16 @@ namespace MH3
                         enemy.SpecController.SetHitPointDebug(1);
                         Debug.Log($"Enemy HitPoint: {enemy.SpecController.HitPoint.CurrentValue}");
                     }
+                    if (Keyboard.current.f7Key.wasPressedThisFrame)
+                    {
+                        SetupQuest(homeQuestSpecId);
+                        Debug.Log("Setup Home Quest");
+                    }
+                    if (Keyboard.current.f8Key.wasPressedThisFrame)
+                    {
+                        SetupQuest(initialQuestSpecId);
+                        Debug.Log("Setup Initial Quest");
+                    }
                 });
 #endif
         }
