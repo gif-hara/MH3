@@ -130,6 +130,8 @@ namespace MH3
             gameCameraController.SetTrackingTarget(player.transform, enemy.transform);
             damageLabel.BeginObserve(enemy);
             var questClearContainer = new Container();
+            questClearContainer.Register("Player", player);
+            questClearContainer.Register("Enemy", enemy);
             var questClearSequencer = new Sequencer(questClearContainer, questSpec.QuestClearSequences.Sequences);
             questClearSequencer.PlayAsync(questScope.Token).Forget();
         }
