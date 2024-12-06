@@ -160,6 +160,12 @@ public partial class SimpleAnimation : MonoBehaviour
         return m_Playable.Play(stateName);
     }
 
+    public UniTask PlayAsync(CancellationToken scope)
+    {
+        Play();
+        return UniTask.WaitUntil(() => !isPlaying, cancellationToken: scope);
+    }
+
     public UniTask PlayAsync(string stateName, CancellationToken scope)
     {
         Play(stateName);
