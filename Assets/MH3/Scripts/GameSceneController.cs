@@ -32,10 +32,15 @@ namespace MH3
 
         [SerializeField]
         private HKUIDocument playerStatusDocumentPrefab;
+        
+        [SerializeField]
+        private HKUIDocument damageLabelDocumentPrefab;
 
         private Actor enemy;
 
         private Stage stage;
+        
+        private UIViewDamageLabel damageLabel;
 
         private void Start()
         {
@@ -51,6 +56,7 @@ namespace MH3
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
             SetupQuest(player, gameCameraController, defaultQuestSpecId);
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
+            damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
 #if DEBUG
             var debugData = new GameDebugData();
             TinyServiceLocator.RegisterAsync(debugData, destroyCancellationToken).Forget();
@@ -103,6 +109,7 @@ namespace MH3
             enemy.SpecController.Target.Value = player;
             enemy.BehaviourController.Begin(enemySpec.Behaviour).Forget();
             gameCameraController.SetTrackingTarget(player.transform, enemy.transform);
+            damageLabel.BeginObserve(enemy);
         }
     }
 }
