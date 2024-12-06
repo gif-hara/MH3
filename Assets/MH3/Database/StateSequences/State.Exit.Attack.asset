@@ -10,36 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
-  m_Name: Flinch.End
+  m_Name: State.Exit.Attack
   m_EditorClassIdentifier: 
   sequences:
-  - rid: 1481063132064121273
-  - rid: 1481063132064121303
+  - rid: 1481063115200659530
+  - rid: 1481063132064121270
   references:
     version: 2
     RefIds:
-    - rid: 1481063132064121273
-      type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
+    - rid: 1481063115200659530
+      type: {class: ActorDeactiveAllAttackCollider, ns: MH3, asm: Assembly-CSharp}
       data:
         actorResolver:
-          rid: 1481063132064121274
-        type: 4
-        isTrueResolver:
-          rid: 1481063132064121275
-    - rid: 1481063132064121274
+          rid: 1481063115200659531
+    - rid: 1481063115200659531
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor
-    - rid: 1481063132064121275
-      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: 1
-    - rid: 1481063132064121303
-      type: {class: ActorResetFlinchType, ns: MH3, asm: Assembly-CSharp}
+    - rid: 1481063132064121270
+      type: {class: ActorDeactiveAllWeaponTrail, ns: MH3, asm: Assembly-CSharp}
       data:
         actorResolver:
-          rid: 1481063132064121304
-    - rid: 1481063132064121304
+          rid: 1481063132064121271
+    - rid: 1481063132064121271
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor

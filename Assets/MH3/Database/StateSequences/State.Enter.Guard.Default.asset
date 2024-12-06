@@ -10,33 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
-  m_Name: State.Attack.Default
+  m_Name: State.Enter.Guard.Default
   m_EditorClassIdentifier: 
   sequences:
   - rid: 895594621889413198
   - rid: 8733972340067532868
-  - rid: 895594621889413216
   - rid: 1481063080126841025
   - rid: 8733972348659564544
-  - rid: 1481063115200659532
-  - rid: 895594621889413277
-  - rid: 1481063177779675234
-  - rid: 895594615613948227
+  - rid: 1481063080126841043
   references:
     version: 2
     RefIds:
-    - rid: 895594615613948227
-      type: {class: ActorStateChange, ns: MH3, asm: Assembly-CSharp}
-      data:
-        actorResolver:
-          rid: 895594615613948231
-        stateSequence: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
-        forceChangeResolver:
-          rid: 895594621889413231
-    - rid: 895594615613948231
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Actor
     - rid: 895594621889413198
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -53,33 +37,6 @@ MonoBehaviour:
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
-    - rid: 895594621889413216
-      type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
-      data:
-        actorResolver:
-          rid: 895594621889413217
-        type: 3
-        isTrueResolver:
-          rid: 895594621889413218
-    - rid: 895594621889413217
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Actor
-    - rid: 895594621889413218
-      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: 0
-    - rid: 895594621889413231
-      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: 0
-    - rid: 895594621889413277
-      type: {class: WaitForAnimationEndAsync, ns: MH3, asm: Assembly-CSharp}
-      data:
-        actorResolver:
-          rid: 8733972360643739743
-        stateNameResolver:
-          rid: 8733972360643739744
     - rid: 1481063080126841025
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -96,26 +53,27 @@ MonoBehaviour:
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
-    - rid: 1481063115200659532
-      type: {class: TakeUntilDisposeScopeObservable, ns: MH3, asm: Assembly-CSharp}
+    - rid: 1481063080126841037
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        subscribeSequence: {fileID: 11400000, guid: 5d5da4098ee1ad242b6df8f552874be2, type: 2}
-    - rid: 1481063177779675234
-      type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
+        value: Guard
+    - rid: 1481063080126841043
+      type: {class: ActorBooleanStateObservable, ns: MH3, asm: Assembly-CSharp}
       data:
         actorResolver:
-          rid: 1481063177779675235
-        type: 3
+          rid: 1481063080126841044
+        type: 6
         isTrueResolver:
-          rid: 1481063177779675236
-    - rid: 1481063177779675235
+          rid: 1481063080126841045
+        subscribeSequence: {fileID: 11400000, guid: c8b729808b8f3448b82df855bdb9f062, type: 2}
+    - rid: 1481063080126841044
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor
-    - rid: 1481063177779675236
+    - rid: 1481063080126841045
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: 1
+        value: 0
     - rid: 8733972340067532868
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -131,14 +89,14 @@ MonoBehaviour:
     - rid: 8733972340067532870
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: 0
+        value: 1
     - rid: 8733972348659564544
       type: {class: ActorAnimationCrossFade, ns: MH3, asm: Assembly-CSharp}
       data:
         actorResolver:
           rid: 8733972348659564545
         stateNameResolver:
-          rid: 8733972360643739741
+          rid: 1481063080126841037
         fadeLengthResolver:
           rid: 8733972348659564547
     - rid: 8733972348659564545
@@ -148,16 +106,4 @@ MonoBehaviour:
     - rid: 8733972348659564547
       type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: 0.1
-    - rid: 8733972360643739741
-      type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        name: AttackName
-    - rid: 8733972360643739743
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Actor
-    - rid: 8733972360643739744
-      type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        name: AttackName
+        value: 0.05

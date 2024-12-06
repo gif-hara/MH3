@@ -74,13 +74,13 @@ namespace MH3
             }
             foreach (var actorSpec in actorSpecs.List)
             {
-                actorSpec.InitialStateSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.InitialStateKey}.asset");
-                actorSpec.AttackSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.AttackSequencesKey}.asset");
-                actorSpec.FlinchSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.FlinchSequencesKey}.asset");
-                actorSpec.DodgeSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.DodgeSequencesKey}.asset");
-                actorSpec.GuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.GuardSequencesKey}.asset");
-                actorSpec.SuccessJustGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.SuccessJustGuardSequencesKey}.asset");
-                actorSpec.SuccessGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.{actorSpec.SuccessGuardSequencesKey}.asset");
+                actorSpec.InitialStateSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.InitialStateKey}.asset");
+                actorSpec.AttackSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.AttackSequencesKey}.asset");
+                actorSpec.FlinchSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.FlinchSequencesKey}.asset");
+                actorSpec.DodgeSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.DodgeSequencesKey}.asset");
+                actorSpec.GuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.GuardSequencesKey}.asset");
+                actorSpec.SuccessJustGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.SuccessJustGuardSequencesKey}.asset");
+                actorSpec.SuccessGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.SuccessGuardSequencesKey}.asset");
                 actorSpec.ActorPrefab = AssetDatabase.LoadAssetAtPath<Actor>($"Assets/MH3/Prefabs/Actor.{actorSpec.ActorPrefabKey}.prefab");
                 actorSpec.Behaviour = AssetDatabase.LoadAssetAtPath<ActorBehaviourData>($"Assets/MH3/Database/ActorBehaviours/{actorSpec.BehaviourKey}.asset");
             }

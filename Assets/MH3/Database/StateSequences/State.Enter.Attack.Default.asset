@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
-  m_Name: State.Dodge.Default
+  m_Name: State.Enter.Attack.Default
   m_EditorClassIdentifier: 
   sequences:
   - rid: 895594621889413198
   - rid: 8733972340067532868
   - rid: 895594621889413216
+  - rid: 1481063080126841025
   - rid: 8733972348659564544
+  - rid: 1481063115200659532
   - rid: 895594621889413277
+  - rid: 1481063177779675234
   - rid: 895594615613948227
   references:
     version: 2
@@ -69,7 +72,7 @@ MonoBehaviour:
     - rid: 895594621889413231
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: 1
+        value: 0
     - rid: 895594621889413277
       type: {class: WaitForAnimationEndAsync, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -77,6 +80,42 @@ MonoBehaviour:
           rid: 8733972360643739743
         stateNameResolver:
           rid: 8733972360643739744
+    - rid: 1481063080126841025
+      type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063080126841026
+        type: 5
+        isTrueResolver:
+          rid: 1481063080126841027
+    - rid: 1481063080126841026
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063080126841027
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
+    - rid: 1481063115200659532
+      type: {class: TakeUntilDisposeScopeObservable, ns: MH3, asm: Assembly-CSharp}
+      data:
+        subscribeSequence: {fileID: 11400000, guid: 5d5da4098ee1ad242b6df8f552874be2, type: 2}
+    - rid: 1481063177779675234
+      type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063177779675235
+        type: 3
+        isTrueResolver:
+          rid: 1481063177779675236
+    - rid: 1481063177779675235
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063177779675236
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 1
     - rid: 8733972340067532868
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -109,11 +148,11 @@ MonoBehaviour:
     - rid: 8733972348659564547
       type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: 0.05
+        value: 0.1
     - rid: 8733972360643739741
       type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        name: DodgeName
+        name: AttackName
     - rid: 8733972360643739743
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
@@ -121,4 +160,4 @@ MonoBehaviour:
     - rid: 8733972360643739744
       type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        name: DodgeName
+        name: AttackName

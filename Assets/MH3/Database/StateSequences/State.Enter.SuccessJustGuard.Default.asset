@@ -10,33 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
-  m_Name: State.Flinch.Default
+  m_Name: State.Enter.SuccessJustGuard.Default
   m_EditorClassIdentifier: 
   sequences:
   - rid: 895594621889413198
   - rid: 8733972340067532868
-  - rid: 895594621889413216
-  - rid: 1481063080126840968
-  - rid: 1481063158688251979
+  - rid: 1481063109574000757
+  - rid: 1481063109574000768
   - rid: 8733972348659564544
-  - rid: 1481063132064121272
-  - rid: 895594621889413277
-  - rid: 895594615613948227
+  - rid: 1481063109574000760
+  - rid: 1481063109574000738
+  - rid: 1481063109574000748
   references:
     version: 2
     RefIds:
-    - rid: 895594615613948227
-      type: {class: ActorStateChange, ns: MH3, asm: Assembly-CSharp}
-      data:
-        actorResolver:
-          rid: 895594615613948231
-        stateSequence: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
-        forceChangeResolver:
-          rid: 895594621889413231
-    - rid: 895594615613948231
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Actor
     - rid: 895594621889413198
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -53,62 +40,77 @@ MonoBehaviour:
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
-    - rid: 895594621889413216
-      type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
+    - rid: 1481063080126841037
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        actorResolver:
-          rid: 895594621889413217
-        type: 3
-        isTrueResolver:
-          rid: 895594621889413218
-    - rid: 895594621889413217
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Actor
-    - rid: 895594621889413218
-      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: 0
-    - rid: 895594621889413231
-      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: 1
-    - rid: 895594621889413277
+        value: SuccessJustGuard
+    - rid: 1481063109574000738
       type: {class: WaitForAnimationEndAsync, ns: MH3, asm: Assembly-CSharp}
       data:
         actorResolver:
-          rid: 8733972360643739743
+          rid: 1481063109574000740
         stateNameResolver:
-          rid: 8733972360643739744
-    - rid: 1481063080126840968
+          rid: 1481063109574000741
+    - rid: 1481063109574000740
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063109574000741
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: SuccessJustGuard
+    - rid: 1481063109574000748
+      type: {class: ActorStateChange, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063109574000749
+        stateSequence: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+        forceChangeResolver:
+          rid: 1481063109574000750
+    - rid: 1481063109574000749
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063109574000750
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 1
+    - rid: 1481063109574000757
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
         actorResolver:
-          rid: 1481063080126840969
-        type: 4
+          rid: 1481063109574000758
+        type: 7
         isTrueResolver:
-          rid: 1481063080126840970
-    - rid: 1481063080126840969
+          rid: 1481063109574000759
+    - rid: 1481063109574000758
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor
-    - rid: 1481063080126840970
+    - rid: 1481063109574000759
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 1
+    - rid: 1481063109574000760
+      type: {class: TakeUntilDisposeScopeObservable, ns: MH3, asm: Assembly-CSharp}
+      data:
+        subscribeSequence: {fileID: 11400000, guid: 0fd4f072484f88044a03687b99171dde, type: 2}
+    - rid: 1481063109574000768
+      type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063109574000769
+        type: 8
+        isTrueResolver:
+          rid: 1481063109574000770
+    - rid: 1481063109574000769
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063109574000770
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
-    - rid: 1481063132064121272
-      type: {class: TakeUntilDisposeScopeObservable, ns: MH3, asm: Assembly-CSharp}
-      data:
-        subscribeSequence: {fileID: 11400000, guid: 3d86e63648bb76c47ac095a111cb6327, type: 2}
-    - rid: 1481063158688251979
-      type: {class: ActorResetAttackCount, ns: MH3, asm: Assembly-CSharp}
-      data:
-        actorResolver:
-          rid: 1481063158688251980
-    - rid: 1481063158688251980
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Actor
     - rid: 8733972340067532868
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -131,7 +133,7 @@ MonoBehaviour:
         actorResolver:
           rid: 8733972348659564545
         stateNameResolver:
-          rid: 8733972360643739741
+          rid: 1481063080126841037
         fadeLengthResolver:
           rid: 8733972348659564547
     - rid: 8733972348659564545
@@ -142,15 +144,3 @@ MonoBehaviour:
       type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0.05
-    - rid: 8733972360643739741
-      type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        name: FlinchName
-    - rid: 8733972360643739743
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Actor
-    - rid: 8733972360643739744
-      type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        name: FlinchName
