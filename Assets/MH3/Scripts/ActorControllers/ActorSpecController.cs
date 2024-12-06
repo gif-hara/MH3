@@ -42,6 +42,8 @@ namespace MH3.ActorControllers
         private readonly ReactiveProperty<Define.FlinchType> flinchType = new(Define.FlinchType.None);
 
         private readonly Subject<Unit> onFlinch = new();
+        
+        private readonly Subject<DamageData> onTakeDamage = new();
 
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
@@ -94,6 +96,8 @@ namespace MH3.ActorControllers
         public ReadOnlyReactiveProperty<Define.FlinchType> FlinchType => flinchType;
 
         public Observable<Unit> OnFlinch => onFlinch;
+        
+        public Observable<DamageData> OnTakeDamage => onTakeDamage;
 
         public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)
         {
@@ -184,6 +188,7 @@ namespace MH3.ActorControllers
 
                 var hitEffect = TinyServiceLocator.Resolve<EffectManager>().Rent(attackSpec.HitEffectKey);
                 hitEffect.transform.position = impactPosition;
+                onTakeDamage.OnNext(damageData);
             }
         }
 
