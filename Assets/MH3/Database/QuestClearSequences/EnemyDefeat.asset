@@ -12,7 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
   m_Name: EnemyDefeat
   m_EditorClassIdentifier: 
-  sequences: []
+  sequences:
+  - rid: 1481063203388522578
+  - rid: 1481063203388522581
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 1481063203388522578
+      type: {class: WaitForActorTriggerAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063203388522580
+        triggerType: 2
+    - rid: 1481063203388522580
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Enemy
+    - rid: 1481063203388522581
+      type: {class: Log, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        message: Quest Clear!
