@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequences:
   - rid: 1481063203388522578
-  - rid: 1481063203388522581
+  - rid: 1481063203388522584
+  - rid: 1481063203388522585
   references:
     version: 2
     RefIds:
@@ -28,7 +29,10 @@ MonoBehaviour:
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Enemy
-    - rid: 1481063203388522581
-      type: {class: Log, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+    - rid: 1481063203388522584
+      type: {class: Delay, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
       data:
-        message: Quest Clear!
+        seconds: 5
+    - rid: 1481063203388522585
+      type: {class: SetupHomeQuest, ns: MH3, asm: Assembly-CSharp}
+      data: 

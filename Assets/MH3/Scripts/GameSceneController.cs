@@ -41,9 +41,13 @@ namespace MH3
         [SerializeField]
         private HKUIDocument damageLabelDocumentPrefab;
 
+        private Actor player;
+
         private Actor enemy;
 
         private Stage stage;
+
+        private GameCameraController gameCameraController;
 
         private UIViewDamageLabel damageLabel;
 
@@ -56,14 +60,14 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(gameRules, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(Instantiate(audioManagerPrefab), destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(Instantiate(effectManagerPrefab), destroyCancellationToken).Forget();
-            var gameCameraController = Instantiate(gameCameraControllerPrefab);
+            gameCameraController = Instantiate(gameCameraControllerPrefab);
             TinyServiceLocator.RegisterAsync(gameCameraController, destroyCancellationToken).Forget();
             var playerSpec = masterData.ActorSpecs.Get(playerActorSpecId);
-            var player = playerSpec.Spawn(Vector3.zero, Quaternion.identity);
+            player = playerSpec.Spawn(Vector3.zero, Quaternion.identity);
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
-            SetupQuest(player, gameCameraController, initialQuestSpecId);
+            SetupQuest(initialQuestSpecId);
 #if DEBUG
             var debugData = new GameDebugData();
             TinyServiceLocator.RegisterAsync(debugData, destroyCancellationToken).Forget();
@@ -104,7 +108,7 @@ namespace MH3
 #endif
         }
 
-        private void SetupQuest(Actor player, GameCameraController gameCameraController, string questSpecId)
+        private void SetupQuest(string questSpecId)
         {
             if (questScope != null)
             {
@@ -133,10 +137,16 @@ namespace MH3
             gameCameraController.SetTrackingTarget(player.transform, enemy.transform);
             damageLabel.BeginObserve(enemy);
             var questClearContainer = new Container();
+            questClearContainer.Register(this);
             questClearContainer.Register("Player", player);
             questClearContainer.Register("Enemy", enemy);
             var questClearSequencer = new Sequencer(questClearContainer, questSpec.QuestClearSequences.Sequences);
             questClearSequencer.PlayAsync(questScope.Token).Forget();
+        }
+
+        public void SetupHomeQuest()
+        {
+            SetupQuest(homeQuestSpecId);
         }
     }
 }
