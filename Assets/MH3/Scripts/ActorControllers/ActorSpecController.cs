@@ -221,5 +221,12 @@ namespace MH3.ActorControllers
             var result = hitPoint.Value + TinyServiceLocator.Resolve<GameRules>().RecoveryAmount;
             hitPoint.Value = result > spec.HitPoint ? spec.HitPoint : result;
         }
+
+#if DEBUG
+        public void SetHitPointDebug(int value)
+        {
+            hitPoint.Value = value;
+        }
+#endif
     }
 }

@@ -83,6 +83,16 @@ namespace MH3
                         debugData.DamageZeroEnemy = !debugData.DamageZeroEnemy;
                         Debug.Log($"DamageZeroEnemy: {debugData.DamageZeroEnemy}");
                     }
+                    if (Keyboard.current.f5Key.wasPressedThisFrame)
+                    {
+                        player.SpecController.SetHitPointDebug(1);
+                        Debug.Log($"Player HitPoint: {player.SpecController.HitPoint.CurrentValue}");
+                    }
+                    if (Keyboard.current.f6Key.wasPressedThisFrame)
+                    {
+                        enemy.SpecController.SetHitPointDebug(1);
+                        Debug.Log($"Enemy HitPoint: {enemy.SpecController.HitPoint.CurrentValue}");
+                    }
                 });
 #endif
         }
