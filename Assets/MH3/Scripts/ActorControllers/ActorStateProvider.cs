@@ -21,6 +21,8 @@ namespace MH3.ActorControllers
         public enum TriggerType
         {
             OnFlinch,
+            OnTakeDamage,
+            OnDead,
         }
 
         private readonly Actor actor;
@@ -52,6 +54,8 @@ namespace MH3.ActorControllers
             return type switch
             {
                 TriggerType.OnFlinch => actor.SpecController.OnFlinch,
+                TriggerType.OnTakeDamage => actor.SpecController.OnTakeDamage.Select(_ => Unit.Default),
+                TriggerType.OnDead => actor.SpecController.OnDead,
                 _ => throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}"),
             };
         }
