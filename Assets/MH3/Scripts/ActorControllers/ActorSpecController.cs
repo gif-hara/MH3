@@ -42,7 +42,7 @@ namespace MH3.ActorControllers
         private readonly ReactiveProperty<Define.FlinchType> flinchType = new(Define.FlinchType.None);
 
         private readonly Subject<Unit> onFlinch = new();
-        
+
         private readonly Subject<DamageData> onTakeDamage = new();
 
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
@@ -96,7 +96,7 @@ namespace MH3.ActorControllers
         public ReadOnlyReactiveProperty<Define.FlinchType> FlinchType => flinchType;
 
         public Observable<Unit> OnFlinch => onFlinch;
-        
+
         public Observable<DamageData> OnTakeDamage => onTakeDamage;
 
         public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)
@@ -142,16 +142,6 @@ namespace MH3.ActorControllers
             else
             {
                 var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult, impactPosition);
-#if DEBUG
-                if (ActorType == Define.ActorType.Player && TinyServiceLocator.Resolve<GameDebugData>().DamageZeroPlayer)
-                {
-                    damageData.Damage = 0;
-                }
-                else if (ActorType == Define.ActorType.Enemy && TinyServiceLocator.Resolve<GameDebugData>().DamageZeroEnemy)
-                {
-                    damageData.Damage = 0;
-                }
-#endif
                 if (guardResult == ActorGuardController.GuardResult.SuccessGuard)
                 {
                     TinyServiceLocator.Resolve<AudioManager>().PlaySfx(TinyServiceLocator.Resolve<GameRules>().SuccessGuardSfxKey);
@@ -163,11 +153,18 @@ namespace MH3.ActorControllers
                 var hitEffect = TinyServiceLocator.Resolve<EffectManager>().Rent(attackSpec.HitEffectKey);
                 hitEffect.transform.position = impactPosition;
 
-                if(hitPoint.Value <= 0)
+                if (hitPoint.Value <= 0)
                 {
                     return;
                 }
                 var fixedHitPoint = hitPoint.Value - damageData.Damage;
+#if DEBUG
+                if (ActorType == Define.ActorType.Player && TinyServiceLocator.Resolve<GameDebugData>().DamageZeroPlayer
+                || ActorType == Define.ActorType.Enemy && TinyServiceLocator.Resolve<GameDebugData>().DamageZeroEnemy)
+                {
+                    fixedHitPoint = hitPoint.Value + damageData.Damage;
+                }
+#endif
                 fixedHitPoint = fixedHitPoint < 0 ? 0 : fixedHitPoint;
                 hitPoint.Value = fixedHitPoint;
                 if (CanAddFlinchDamage.Value)
