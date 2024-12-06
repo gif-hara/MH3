@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -158,6 +160,12 @@ public partial class SimpleAnimation : MonoBehaviour
         return m_Playable.Play(stateName);
     }
 
+    public UniTask PlayAsync(string stateName, CancellationToken scope)
+    {
+        Play(stateName);
+        return UniTask.WaitUntil(() => !IsPlaying(stateName), cancellationToken: scope);
+    }
+    
     public void PlayQueued(string stateName, QueueMode queueMode)
     {
         m_Animator.enabled = true;
