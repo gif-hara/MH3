@@ -152,6 +152,21 @@ namespace MH3.ActorControllers
                     damageData.Damage = 0;
                 }
 #endif
+                if (guardResult == ActorGuardController.GuardResult.SuccessGuard)
+                {
+                    TinyServiceLocator.Resolve<AudioManager>().PlaySfx(TinyServiceLocator.Resolve<GameRules>().SuccessGuardSfxKey);
+                }
+                else
+                {
+                    TinyServiceLocator.Resolve<AudioManager>().PlaySfx(attackSpec.HitSfxKey);
+                }
+                var hitEffect = TinyServiceLocator.Resolve<EffectManager>().Rent(attackSpec.HitEffectKey);
+                hitEffect.transform.position = impactPosition;
+
+                if(hitPoint.Value <= 0)
+                {
+                    return;
+                }
                 var fixedHitPoint = hitPoint.Value - damageData.Damage;
                 fixedHitPoint = fixedHitPoint < 0 ? 0 : fixedHitPoint;
                 hitPoint.Value = fixedHitPoint;
@@ -178,16 +193,8 @@ namespace MH3.ActorControllers
 
                 if (guardResult == ActorGuardController.GuardResult.SuccessGuard)
                 {
-                    TinyServiceLocator.Resolve<AudioManager>().PlaySfx(TinyServiceLocator.Resolve<GameRules>().SuccessGuardSfxKey);
                     actor.StateMachine.TryChangeState(spec.SuccessGuardSequences, force: true);
                 }
-                else
-                {
-                    TinyServiceLocator.Resolve<AudioManager>().PlaySfx(attackSpec.HitSfxKey);
-                }
-
-                var hitEffect = TinyServiceLocator.Resolve<EffectManager>().Rent(attackSpec.HitEffectKey);
-                hitEffect.transform.position = impactPosition;
                 onTakeDamage.OnNext(damageData);
             }
         }
