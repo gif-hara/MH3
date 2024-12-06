@@ -10,7 +10,8 @@ namespace MH3
             Actor attacker,
             Actor target,
             MasterData.AttackSpec attackSpec,
-            ActorGuardController.GuardResult targetGuardResult
+            ActorGuardController.GuardResult targetGuardResult,
+            Vector3 impactPosition
             )
         {
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
@@ -27,7 +28,7 @@ namespace MH3
                 damage = 0;
                 flinchDamage = 0;
             }
-            return new DamageData(damage, flinchDamage);
+            return new DamageData(damage, flinchDamage, impactPosition);
         }
     }
 }

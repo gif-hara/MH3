@@ -7,11 +7,14 @@ namespace MH3
         public int Damage { get; set; }
 
         public int FlinchDamage { get; }
+        
+        public Vector3 DamagePosition { get; }
 
-        public DamageData(int damage, int flinchDamage)
+        public DamageData(int damage, int flinchDamage, Vector3 damagePosition)
         {
             Damage = damage;
             FlinchDamage = flinchDamage;
+            DamagePosition = damagePosition;
         }
     }
 }

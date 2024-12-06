@@ -141,7 +141,7 @@ namespace MH3.ActorControllers
             }
             else
             {
-                var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult);
+                var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult, impactPosition);
 #if DEBUG
                 if (ActorType == Define.ActorType.Player && TinyServiceLocator.Resolve<GameDebugData>().DamageZeroPlayer)
                 {
