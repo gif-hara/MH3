@@ -12,7 +12,7 @@ namespace MH3
     public class UIViewDamageLabel : UIView
     {
         private readonly HKUIDocument document;
-        
+
         private readonly Camera camera;
 
         public UIViewDamageLabel(HKUIDocument documentPrefab, Camera camera, CancellationToken scope)
@@ -47,7 +47,7 @@ namespace MH3
                     label.transform.position = RectTransformUtility.WorldToScreenPoint(camera, worldPosition);
                 })
                 .RegisterTo(label.destroyCancellationToken);
-            await label.Q<SimpleAnimation>("Animation").PlayAsync(document.destroyCancellationToken);
+            await label.Q<SimpleAnimation>("Animation").PlayAsync("Default", document.destroyCancellationToken);
             Object.Destroy(label.gameObject);
         }
 
