@@ -32,7 +32,7 @@ namespace MH3
         [SerializeField]
         private ActorSpec.DictionaryList actorSpecs;
         public ActorSpec.DictionaryList ActorSpecs => actorSpecs;
-        
+
         [SerializeField]
         private QuestSpec.DictionaryList questSpecs;
         public QuestSpec.DictionaryList QuestSpecs => questSpecs;
@@ -81,6 +81,7 @@ namespace MH3
                 actorSpec.GuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.GuardSequencesKey}.asset");
                 actorSpec.SuccessJustGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.SuccessJustGuardSequencesKey}.asset");
                 actorSpec.SuccessGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.SuccessGuardSequencesKey}.asset");
+                actorSpec.DeadSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.DeadSequencesKey}.asset");
                 actorSpec.ActorPrefab = AssetDatabase.LoadAssetAtPath<Actor>($"Assets/MH3/Prefabs/Actor.{actorSpec.ActorPrefabKey}.prefab");
                 actorSpec.Behaviour = AssetDatabase.LoadAssetAtPath<ActorBehaviourData>($"Assets/MH3/Database/ActorBehaviours/{actorSpec.BehaviourKey}.asset");
             }
@@ -223,6 +224,8 @@ namespace MH3
 
             public string SuccessGuardSequencesKey;
 
+            public string DeadSequencesKey;
+
             public string ActorPrefabKey;
 
             public string BehaviourKey;
@@ -240,6 +243,8 @@ namespace MH3
             public ScriptableSequences SuccessJustGuardSequences;
 
             public ScriptableSequences SuccessGuardSequences;
+
+            public ScriptableSequences DeadSequences;
 
             public Actor ActorPrefab;
 
@@ -265,11 +270,11 @@ namespace MH3
             public string Id;
 
             public string StagePrefabKey;
-            
+
             public int EnemyActorSpecId;
 
             public Stage StagePrefab;
-            
+
             [Serializable]
             public class DictionaryList : DictionaryList<string, QuestSpec>
             {

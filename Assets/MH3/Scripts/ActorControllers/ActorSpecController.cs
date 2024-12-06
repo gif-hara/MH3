@@ -174,9 +174,9 @@ namespace MH3.ActorControllers
 
                 if (fixedHitPoint <= 0)
                 {
-                    Object.Destroy(actor.gameObject);
+                    actor.StateMachine.TryChangeState(spec.DeadSequences, force: true);
                 }
-                if (CanPlayFlinch() || attackSpec.ForceFlinch)
+                else if (CanPlayFlinch() || attackSpec.ForceFlinch)
                 {
                     var lookAt = attacker.transform.position - actor.transform.position;
                     lookAt.y = 0.0f;
