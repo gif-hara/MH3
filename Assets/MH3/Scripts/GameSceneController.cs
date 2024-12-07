@@ -62,6 +62,8 @@ namespace MH3
 
         private CancellationDisposable questScope;
 
+        private MasterData.QuestSpec currentQuestSpec;
+
         private void Start()
         {
             var inputController = new InputController();
@@ -92,7 +94,7 @@ namespace MH3
             this.UpdateAsObservable()
                 .Subscribe(async _ =>
                 {
-                    if (Keyboard.current.escapeKey.wasPressedThisFrame && Keyboard.current.shiftKey.isPressed && !isOpenDebugMenu)
+                    if (Keyboard.current.f1Key.wasPressedThisFrame && !isOpenDebugMenu)
                     {
                         isOpenDebugMenu = true;
                         await UIViewDebugMenu.OpenAsync(
@@ -115,16 +117,9 @@ namespace MH3
             {
                 questScope.Dispose();
             }
-            if (enemy != null)
-            {
-                Destroy(enemy.gameObject);
-            }
 
-            if (stage != null)
-            {
-                Destroy(stage.gameObject);
-            }
-
+            enemy.DestroySafe();
+            stage.DestroySafe();
             questScope = new CancellationDisposable();
             var questSpec = TinyServiceLocator.Resolve<MasterData>().QuestSpecs.Get(questSpecId);
             stage = UnityEngine.Object.Instantiate(questSpec.StagePrefab);
