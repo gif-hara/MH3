@@ -12,5 +12,13 @@ namespace MH3
                 child.gameObject.SetLayerRecursively(layer);
             }
         }
+
+        public static void DestroySafe(this GameObject gameObject)
+        {
+            if (gameObject != null)
+            {
+                Object.Destroy(gameObject);
+            }
+        }
     }
 }
