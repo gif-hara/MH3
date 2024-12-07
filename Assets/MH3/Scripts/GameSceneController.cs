@@ -85,7 +85,7 @@ namespace MH3
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);
-            SetupQuestAsync(initialQuestSpecId).Forget();
+            SetupQuestAsync(initialQuestSpecId, immediate: true).Forget();
             inputController.Actions.Player.PauseMenu
                 .OnPerformedAsObservable()
                 .Subscribe(_ =>
@@ -124,14 +124,17 @@ namespace MH3
 #endif
         }
 
-        public async UniTask SetupQuestAsync(string questSpecId)
+        public async UniTask SetupQuestAsync(string questSpecId, bool immediate = false)
         {
             if (questScope != null)
             {
                 questScope.Dispose();
             }
 
-            await fade.BeginAnimation("In");
+            if (!immediate)
+            {
+                await fade.BeginAnimation("In");
+            }
 
             enemy.DestroySafe();
             stage.DestroySafe();
@@ -161,7 +164,11 @@ namespace MH3
             questFailedContainer.Register("Enemy", enemy);
             var questFailedSequencer = new Sequencer(questFailedContainer, questSpec.QuestFailedSequences.Sequences);
             questFailedSequencer.PlayAsync(questScope.Token).Forget();
-            await fade.BeginAnimation("Out");
+
+            if (!immediate)
+            {
+                await fade.BeginAnimation("Out");
+            }
         }
 
         public UniTask SetupHomeQuestAsync()
