@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
@@ -5,6 +7,7 @@ using R3;
 using R3.Triggers;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnitySequencerSystem;
 
 namespace MH3
@@ -40,6 +43,9 @@ namespace MH3
 
         [SerializeField]
         private HKUIDocument damageLabelDocumentPrefab;
+
+        [SerializeField]
+        private HKUIDocument listDocumentPrefab;
 
         private Actor player;
 
@@ -114,6 +120,25 @@ namespace MH3
                         SetupQuest(initialQuestSpecId);
                         Debug.Log("Setup Initial Quest");
                     }
+                    if (Keyboard.current.f9Key.wasPressedThisFrame)
+                    {
+                        var elements = new List<Action<HKUIDocument>>
+                        {
+                            document =>
+                            {
+                                UIViewList.ApplyAsSimpleElement(document, "Test1", _ => Debug.Log("Test1"));
+                            },
+                            document =>
+                            {
+                                UIViewList.ApplyAsSimpleElement(document, "Test2", _ => Debug.Log("Test2"));
+                            },
+                            document =>
+                            {
+                                UIViewList.ApplyAsSimpleElement(document, "Test3", _ => Debug.Log("Test3"));
+                            },
+                        };
+                        var list = UIViewList.CreateWithPages(listDocumentPrefab, elements, 0);
+                    }
                 });
 #endif
         }
@@ -136,7 +161,7 @@ namespace MH3
 
             questScope = new CancellationDisposable();
             var questSpec = TinyServiceLocator.Resolve<MasterData>().QuestSpecs.Get(questSpecId);
-            stage = Object.Instantiate(questSpec.StagePrefab);
+            stage = UnityEngine.Object.Instantiate(questSpec.StagePrefab);
             var enemySpec = TinyServiceLocator.Resolve<MasterData>().ActorSpecs.Get(questSpec.EnemyActorSpecId);
             enemy = enemySpec.Spawn(stage.EnemySpawnPoint.position, stage.EnemySpawnPoint.rotation);
             player.SpecController.ResetAll();
