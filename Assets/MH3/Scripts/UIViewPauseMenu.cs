@@ -1,19 +1,27 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
 using R3;
 using TMPro;
+using UnityEngine;
 
 namespace MH3
 {
     public class UIViewPauseMenu
     {
-        public static async UniTask OpenAsync(HKUIDocument headerDocumentPrefab, HKUIDocument listDocumentPrefab, Actor actor, CancellationToken scope)
+        public static async UniTask OpenAsync(
+            HKUIDocument headerDocumentPrefab,
+            HKUIDocument listDocumentPrefab,
+            Actor actor,
+            GameSceneController gameSceneController,
+            CancellationToken scope
+            )
         {
-            var homeMenuScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
+            var pauseMenuScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
             var header = UnityEngine.Object.Instantiate(headerDocumentPrefab);
             var stateMachine = new TinyStateMachine();
             var inputController = TinyServiceLocator.Resolve<InputController>();
@@ -22,14 +30,14 @@ namespace MH3
 
             // 待機
             {
-                await UniTask.WaitUntilCanceled(homeMenuScope.Token);
+                await UniTask.WaitUntilCanceled(pauseMenuScope.Token);
             }
 
             // 終了処理
             {
                 header.DestroySafe();
                 inputController.PopActionType();
-                homeMenuScope.Dispose();
+                pauseMenuScope.Dispose();
                 stateMachine.Dispose();
             }
 
@@ -46,14 +54,14 @@ namespace MH3
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "閉じる", _ => homeMenuScope.Dispose());
+                            UIViewList.ApplyAsSimpleElement(document, "閉じる", _ => pauseMenuScope.Dispose());
                         },
                     },
                     0
                 );
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
-                    .Subscribe(_ => homeMenuScope.Dispose())
+                    .Subscribe(_ => pauseMenuScope.Dispose())
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
@@ -64,13 +72,16 @@ namespace MH3
                 SetHeaderText("クエスト選択");
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
-                    new List<Action<HKUIDocument>>
-                    {
-                        document =>
+                    TinyServiceLocator.Resolve<MasterData>().QuestSpecs.List
+                        .Where(x => x.AvailableQuestList)
+                        .Select(x => new Action<HKUIDocument>(document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "TODO", _ => {});
-                        },
-                    },
+                            UIViewList.ApplyAsSimpleElement(document, x.Id, _ =>
+                            {
+                                gameSceneController.SetupQuest(x.Id);
+                                pauseMenuScope.Dispose();
+                            });
+                        })),
                     0
                 );
                 inputController.Actions.UI.Cancel

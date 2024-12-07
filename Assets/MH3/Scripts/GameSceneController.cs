@@ -84,7 +84,7 @@ namespace MH3
                 .OnPerformedAsObservable()
                 .Subscribe(_ =>
                 {
-                    UIViewPauseMenu.OpenAsync(headerDocumentPrefab, listDocumentPrefab, player, destroyCancellationToken).Forget();
+                    UIViewPauseMenu.OpenAsync(headerDocumentPrefab, listDocumentPrefab, player, this, destroyCancellationToken).Forget();
                 })
                 .RegisterTo(destroyCancellationToken);
 #if DEBUG
@@ -111,7 +111,7 @@ namespace MH3
 #endif
         }
 
-        private void SetupQuest(string questSpecId)
+        public void SetupQuest(string questSpecId)
         {
             if (questScope != null)
             {
