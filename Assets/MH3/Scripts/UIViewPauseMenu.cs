@@ -7,7 +7,7 @@ using TMPro;
 
 namespace MH3
 {
-    public class UIViewHomeMenu
+    public class UIViewPauseMenu
     {
         public static async UniTask OpenAsync(HKUIDocument headerDocumentPrefab, HKUIDocument listDocumentPrefab, Actor actor, CancellationToken scope)
         {
