@@ -64,6 +64,12 @@ namespace MH3
                     a.GuardController.IsGuard.Value = false;
                 })
                 .RegisterTo(actor.destroyCancellationToken);
+            inputController.Actions.Player.Recovery.OnPerformedAsObservable()
+                .Subscribe(actor, static (_, a) =>
+                {
+                    EarlyInputHandler.Invoke(() => a.SpecController.TryRecovery(), TinyServiceLocator.Resolve<GameRules>().EarlyInputTime, a.destroyCancellationToken);
+                })
+                .RegisterTo(actor.destroyCancellationToken);
             return UniTask.CompletedTask;
         }
     }
