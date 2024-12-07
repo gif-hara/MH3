@@ -30,8 +30,7 @@ namespace MH3
             var stateMachine = new TinyStateMachine();
             stateMachine.Change(StateRoot);
             var header = UnityEngine.Object.Instantiate(headerDocumentPrefab);
-            var headerTexts = new List<string>();
-            PushHeaderText("Debug Menu");
+            header.Q<TMP_Text>("Header").text = "Debug Menu";
 
             // 待機
             {
@@ -43,10 +42,7 @@ namespace MH3
                 inputController.PopActionType();
                 HK.Time.Root.timeScale = tempTimeScale;
                 stateMachine.Dispose();
-                if (header != null)
-                {
-                    UnityEngine.Object.Destroy(header.gameObject);
-                }
+                header.gameObject.DestroySafe();
             }
 
             async UniTask StateRoot(CancellationToken scope)
@@ -194,18 +190,6 @@ namespace MH3
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.gameObject.DestroySafe();
-            }
-
-            void PushHeaderText(string text)
-            {
-                headerTexts.Add(text);
-                header.Q<TMP_Text>("Header").text = string.Join("/", headerTexts);
-            }
-
-            void PopHeaderText()
-            {
-                headerTexts.RemoveAt(headerTexts.Count - 1);
-                header.Q<TMP_Text>("Header").text = string.Join("/", headerTexts);
             }
         }
     }
