@@ -106,9 +106,9 @@ namespace MH3
         {
             public int Id;
 
-            public int ModelDataId;
+            public string ModelDataId;
 
-            public int ComboId;
+            public string ComboId;
 
             public string JustGuardAttackAnimationKey;
 
@@ -133,12 +133,12 @@ namespace MH3
         [Serializable]
         public class WeaponCombo
         {
-            public int Id;
+            public string Id;
 
             public string AnimationKey;
 
             [Serializable]
-            public class Group : Group<int, WeaponCombo>
+            public class Group : Group<string, WeaponCombo>
             {
                 public Group() : base(x => x.Id)
                 {

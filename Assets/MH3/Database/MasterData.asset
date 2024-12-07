@@ -21,17 +21,23 @@ MonoBehaviour:
       StrongAttackAnimationKey: 
       ModelData: {fileID: 0}
     - Id: 10101
-      ModelDataId: 10101
+      ModelDataId: Sword.1
       ComboId: 10101
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: Attack.Sword.Strong.1
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
     - Id: 19901
-      ModelDataId: 10101
+      ModelDataId: Sword.1
       ComboId: 19901
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: 
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
+    - Id: 19902
+      ModelDataId: Training.1
+      ComboId: 19901
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: 
+      ModelData: {fileID: 11400000, guid: de818f0f8b8f4694f91f199a6e2c9bac, type: 2}
   weaponCombos:
     list:
     - Key: 0
@@ -213,7 +219,7 @@ MonoBehaviour:
       FlinchThreshold: 100
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 0
+      WeaponId: 19902
       InitialStateKey: Idle.Default
       AttackSequencesKey: Attack.Default
       FlinchSequencesKey: Flinch.Default
