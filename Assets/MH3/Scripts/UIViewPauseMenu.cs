@@ -18,6 +18,7 @@ namespace MH3
             HKUIDocument listDocumentPrefab,
             Actor actor,
             GameSceneController gameSceneController,
+            bool isHome,
             CancellationToken scope
             )
         {
@@ -26,7 +27,14 @@ namespace MH3
             var stateMachine = new TinyStateMachine();
             var inputController = TinyServiceLocator.Resolve<InputController>();
             inputController.PushActionType(InputController.InputActionType.UI);
-            stateMachine.Change(StateHomeRoot);
+            if (isHome)
+            {
+                stateMachine.Change(StateHomeRoot);
+            }
+            else
+            {
+                stateMachine.Change(StateQuestRoot);
+            }
 
             // 待機
             {
@@ -51,6 +59,36 @@ namespace MH3
                         document =>
                         {
                             UIViewList.ApplyAsSimpleElement(document, "クエスト選択", _ => stateMachine.Change(StateSelectQuest));
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "閉じる", _ => pauseMenuScope.Dispose());
+                        },
+                    },
+                    0
+                );
+                inputController.Actions.UI.Cancel
+                    .OnPerformedAsObservable()
+                    .Subscribe(_ => pauseMenuScope.Dispose())
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.DestroySafe();
+            }
+
+            async UniTask StateQuestRoot(CancellationToken scope)
+            {
+                SetHeaderText("クエストメニュー");
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    new List<Action<HKUIDocument>>
+                    {
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "ホームに戻る", _ =>
+                            {
+                                gameSceneController.SetupHomeQuest();
+                                pauseMenuScope.Dispose();
+                            });
                         },
                         document =>
                         {

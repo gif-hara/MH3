@@ -84,7 +84,14 @@ namespace MH3
                 .OnPerformedAsObservable()
                 .Subscribe(_ =>
                 {
-                    UIViewPauseMenu.OpenAsync(headerDocumentPrefab, listDocumentPrefab, player, this, destroyCancellationToken).Forget();
+                    UIViewPauseMenu.OpenAsync(
+                        headerDocumentPrefab,
+                        listDocumentPrefab,
+                        player,
+                        this,
+                        currentQuestSpec.Id == homeQuestSpecId,
+                        destroyCancellationToken
+                    ).Forget();
                 })
                 .RegisterTo(destroyCancellationToken);
 #if DEBUG
@@ -122,6 +129,7 @@ namespace MH3
             stage.DestroySafe();
             questScope = new CancellationDisposable();
             var questSpec = TinyServiceLocator.Resolve<MasterData>().QuestSpecs.Get(questSpecId);
+            currentQuestSpec = questSpec;
             stage = UnityEngine.Object.Instantiate(questSpec.StagePrefab);
             var enemySpec = TinyServiceLocator.Resolve<MasterData>().ActorSpecs.Get(questSpec.EnemyActorSpecId);
             enemy = enemySpec.Spawn(stage.EnemySpawnPoint.position, stage.EnemySpawnPoint.rotation);
