@@ -25,9 +25,9 @@ namespace MH3
         )
         {
             var document = Object.Instantiate(listDocumentPrefab);
-            var listParent = document.Q<RectTransform>("ListParent");
-            var layoutGroup = document.Q<VerticalLayoutGroup>("ListParent");
-            var listElementPrefab = document.Q<HKUIDocument>("ListElementPrefab");
+            var listParent = document.Q<RectTransform>("Parent.List");
+            var layoutGroup = document.Q<VerticalLayoutGroup>("Parent.List");
+            var listElementPrefab = document.Q<HKUIDocument>("Prefab.Element");
             var parentSize = listParent.rect.height - layoutGroup.padding.top - layoutGroup.padding.bottom;
             var elementSize = ((RectTransform)listElementPrefab.transform).rect.height + layoutGroup.spacing;
             var elementCount = Mathf.FloorToInt(parentSize / elementSize);
@@ -130,45 +130,6 @@ namespace MH3
                     document.Q<TMP_Text>("Text.Page").text = $"{index + 1}/{pageMax + 1}";
                 }
             }
-            return document;
-        }
-
-        public static HKUIDocument CreateAsCommand
-        (
-            HKUIDocument listDocumentPrefab,
-            IEnumerable<Action<HKUIDocument>> elementActivateActions,
-            int initialElementIndex
-        )
-        {
-            var document = Object.Instantiate(listDocumentPrefab);
-            var listParent = document.Q<RectTransform>("ListParent");
-            var listElementPrefab = document.Q<HKUIDocument>("ListElementPrefab");
-            var elementIndex = 0;
-            Selectable defaultSelectable = null;
-            foreach (var action in elementActivateActions)
-            {
-                var element = Object.Instantiate(listElementPrefab, listParent);
-                var button = element.Q<Button>("Button");
-                action(element);
-                if (elementIndex == initialElementIndex)
-                {
-                    EventSystem.current.SetSelectedGameObject(button.gameObject);
-                    defaultSelectable = button;
-                }
-                elementIndex++;
-            }
-            var inputController = TinyServiceLocator.Resolve<InputController>();
-            inputController.Actions.UI.Navigate
-                .OnPerformedAsObservable()
-                .Subscribe(x =>
-                {
-                    if (EventSystem.current.currentSelectedGameObject != null || defaultSelectable == null)
-                    {
-                        return;
-                    }
-                    EventSystem.current.SetSelectedGameObject(defaultSelectable.gameObject);
-                })
-                .RegisterTo(document.destroyCancellationToken);
             return document;
         }
 
