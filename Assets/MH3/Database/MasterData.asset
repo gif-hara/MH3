@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSpecs:
     list:
+    - Id: 0
+      ModelDataId: 0
+      ComboId: 0
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      ModelData: {fileID: 0}
     - Id: 10101
       ModelDataId: 10101
       ComboId: 10101
@@ -28,6 +34,10 @@ MonoBehaviour:
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
   weaponCombos:
     list:
+    - Key: 0
+      Value:
+      - Id: 0
+        AnimationKey: 
     - Key: 10101
       Value:
       - Id: 10101
@@ -203,7 +213,7 @@ MonoBehaviour:
       FlinchThreshold: 100
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 19901
+      WeaponId: 0
       InitialStateKey: Idle.Default
       AttackSequencesKey: Attack.Default
       FlinchSequencesKey: Flinch.Default
