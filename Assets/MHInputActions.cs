@@ -431,9 +431,18 @@ namespace MH3
             ""id"": ""272f6d14-89ba-496f-b7ff-215263d3219f"",
             ""actions"": [
                 {
-                    ""name"": ""Navigate"",
+                    ""name"": ""Navigate_"",
                     ""type"": ""PassThrough"",
                     ""id"": ""c95b2375-e6d9-4b88-9c4c-c5e76515df4b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Navigate"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""446ed490-3536-40dc-892b-1a756e6d90cc"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -529,7 +538,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -540,7 +549,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -551,7 +560,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -562,7 +571,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -573,7 +582,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -584,7 +593,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -595,7 +604,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -606,7 +615,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -617,7 +626,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -628,7 +637,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -639,7 +648,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -650,7 +659,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -661,7 +670,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -672,7 +681,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -683,7 +692,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -694,7 +703,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -705,7 +714,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -716,7 +725,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -727,7 +736,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -738,7 +747,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -749,7 +758,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -760,7 +769,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -771,7 +780,7 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""Navigate_"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -782,6 +791,116 @@ namespace MH3
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Navigate_"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""3dd5bb46-b4f3-4091-9bef-149bc657e5d5"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""5c3fdaaa-da74-45d1-8083-c416b097e775"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""91436447-7df0-4561-9a2c-1aef1f995a9c"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ff189190-a0d4-4668-84d3-14e48d2c0753"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""c6627f4a-7ca0-4c44-8dca-9658e9cde1fe"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""b6fc38e4-7b1f-4862-9fcd-e9919a872743"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""18a2fb7a-aef0-460a-b4fb-579e8daf5140"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""fe75943f-35c9-4522-a74c-5103ec1a461c"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""473f95ef-ff2f-4401-bafb-a51e44f34bba"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""46b495c0-8fe5-4b17-957e-8cd0716cea5a"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -1017,6 +1136,7 @@ namespace MH3
             m_Player_Recovery = m_Player.FindAction("Recovery", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+            m_UI_Navigate_ = m_UI.FindAction("Navigate_", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
             m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
             m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
@@ -1188,6 +1308,7 @@ namespace MH3
         // UI
         private readonly InputActionMap m_UI;
         private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
+        private readonly InputAction m_UI_Navigate_;
         private readonly InputAction m_UI_Navigate;
         private readonly InputAction m_UI_Submit;
         private readonly InputAction m_UI_Cancel;
@@ -1202,6 +1323,7 @@ namespace MH3
         {
             private @MHInputActions m_Wrapper;
             public UIActions(@MHInputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Navigate_ => m_Wrapper.m_UI_Navigate_;
             public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
             public InputAction @Submit => m_Wrapper.m_UI_Submit;
             public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
@@ -1221,6 +1343,9 @@ namespace MH3
             {
                 if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
+                @Navigate_.started += instance.OnNavigate_;
+                @Navigate_.performed += instance.OnNavigate_;
+                @Navigate_.canceled += instance.OnNavigate_;
                 @Navigate.started += instance.OnNavigate;
                 @Navigate.performed += instance.OnNavigate;
                 @Navigate.canceled += instance.OnNavigate;
@@ -1255,6 +1380,9 @@ namespace MH3
 
             private void UnregisterCallbacks(IUIActions instance)
             {
+                @Navigate_.started -= instance.OnNavigate_;
+                @Navigate_.performed -= instance.OnNavigate_;
+                @Navigate_.canceled -= instance.OnNavigate_;
                 @Navigate.started -= instance.OnNavigate;
                 @Navigate.performed -= instance.OnNavigate;
                 @Navigate.canceled -= instance.OnNavigate;
@@ -1359,6 +1487,7 @@ namespace MH3
         }
         public interface IUIActions
         {
+            void OnNavigate_(InputAction.CallbackContext context);
             void OnNavigate(InputAction.CallbackContext context);
             void OnSubmit(InputAction.CallbackContext context);
             void OnCancel(InputAction.CallbackContext context);
