@@ -232,6 +232,15 @@ namespace MH3.ActorControllers
             actor.StateMachine.TryChangeState(spec.InitialStateSequences, force: true);
         }
 
+        public bool TryRecovery()
+        {
+            if (hitPoint.Value >= spec.HitPoint)
+            {
+                return false;
+            }
+            return actor.StateMachine.TryChangeState(spec.RecoverySequences);
+        }
+
 #if DEBUG
         public void SetHitPointDebug(int value)
         {
