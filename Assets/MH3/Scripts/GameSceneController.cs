@@ -80,6 +80,10 @@ namespace MH3
             this.UpdateAsObservable()
                 .Subscribe(_ =>
                 {
+                    if (Keyboard.current.escapeKey.wasPressedThisFrame && Keyboard.current.shiftKey.isPressed)
+                    {
+                        UIViewDebugMenu.OpenAsync(listDocumentPrefab, destroyCancellationToken).Forget();
+                    }
                     if (Keyboard.current.f1Key.wasPressedThisFrame)
                     {
                         debugData.InvinciblePlayer = !debugData.InvinciblePlayer;
