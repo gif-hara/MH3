@@ -6,5 +6,10 @@ namespace MH3
     {
         private List<InstanceWeaponData> instanceWeaponDataList = new();
         public List<InstanceWeaponData> InstanceWeaponDataList => instanceWeaponDataList;
+
+        public void AddInstanceWeaponData(InstanceWeaponData instanceWeaponData)
+        {
+            instanceWeaponDataList.Add(instanceWeaponData);
+        }
     }
 }
