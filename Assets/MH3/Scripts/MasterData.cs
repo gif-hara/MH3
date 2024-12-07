@@ -82,6 +82,7 @@ namespace MH3
                 actorSpec.SuccessJustGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.SuccessJustGuardSequencesKey}.asset");
                 actorSpec.SuccessGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.SuccessGuardSequencesKey}.asset");
                 actorSpec.DeadSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.DeadSequencesKey}.asset");
+                actorSpec.RecoverySequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.RecoverySequencesKey}.asset");
                 actorSpec.ActorPrefab = AssetDatabase.LoadAssetAtPath<Actor>($"Assets/MH3/Prefabs/Actor.{actorSpec.ActorPrefabKey}.prefab");
                 actorSpec.Behaviour = AssetDatabase.LoadAssetAtPath<ActorBehaviourData>($"Assets/MH3/Database/ActorBehaviours/{actorSpec.BehaviourKey}.asset");
             }
@@ -228,6 +229,8 @@ namespace MH3
 
             public string DeadSequencesKey;
 
+            public string RecoverySequencesKey;
+
             public string ActorPrefabKey;
 
             public string BehaviourKey;
@@ -247,6 +250,8 @@ namespace MH3
             public ScriptableSequences SuccessGuardSequences;
 
             public ScriptableSequences DeadSequences;
+
+            public ScriptableSequences RecoverySequences;
 
             public Actor ActorPrefab;
 
