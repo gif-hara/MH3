@@ -150,7 +150,7 @@ namespace MH3
             player.SpecController.Target.Value = enemy;
             enemy.SpecController.Target.Value = player;
             enemy.BehaviourController.Begin(enemySpec.Behaviour).Forget();
-            gameCameraController.SetTrackingTarget(player.transform, enemy.transform);
+            gameCameraController.SetTrackingTarget(player.transform, enemy.LocatorHolder.Get("Root"));
             damageLabel.BeginObserve(enemy);
             var questClearContainer = new Container();
             questClearContainer.Register(this);
