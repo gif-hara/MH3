@@ -47,6 +47,9 @@ namespace MH3
         [SerializeField]
         private HKUIDocument listDocumentPrefab;
 
+        [SerializeField]
+        private HKUIDocument headerDocumentPrefab;
+
         private Actor player;
 
         private Actor enemy;
@@ -76,72 +79,23 @@ namespace MH3
             SetupQuest(initialQuestSpecId);
 #if DEBUG
             var debugData = new GameDebugData();
+            var isOpenDebugMenu = false;
             TinyServiceLocator.RegisterAsync(debugData, destroyCancellationToken).Forget();
             this.UpdateAsObservable()
-                .Subscribe(_ =>
+                .Subscribe(async _ =>
                 {
-                    if (Keyboard.current.escapeKey.wasPressedThisFrame && Keyboard.current.shiftKey.isPressed)
+                    if (Keyboard.current.escapeKey.wasPressedThisFrame && Keyboard.current.shiftKey.isPressed && !isOpenDebugMenu)
                     {
-                        UIViewDebugMenu.OpenAsync(listDocumentPrefab, destroyCancellationToken).Forget();
-                    }
-                    if (Keyboard.current.f1Key.wasPressedThisFrame)
-                    {
-                        debugData.InvinciblePlayer = !debugData.InvinciblePlayer;
-                        Debug.Log($"InvinciblePlayer: {debugData.InvinciblePlayer}");
-                    }
-                    if (Keyboard.current.f2Key.wasPressedThisFrame)
-                    {
-                        debugData.InvincibleEnemy = !debugData.InvincibleEnemy;
-                        Debug.Log($"InvincibleEnemy: {debugData.InvincibleEnemy}");
-                    }
-                    if (Keyboard.current.f3Key.wasPressedThisFrame)
-                    {
-                        debugData.DamageZeroPlayer = !debugData.DamageZeroPlayer;
-                        Debug.Log($"DamageZeroPlayer: {debugData.DamageZeroPlayer}");
-                    }
-                    if (Keyboard.current.f4Key.wasPressedThisFrame)
-                    {
-                        debugData.DamageZeroEnemy = !debugData.DamageZeroEnemy;
-                        Debug.Log($"DamageZeroEnemy: {debugData.DamageZeroEnemy}");
-                    }
-                    if (Keyboard.current.f5Key.wasPressedThisFrame)
-                    {
-                        player.SpecController.SetHitPointDebug(1);
-                        Debug.Log($"Player HitPoint: {player.SpecController.HitPoint.CurrentValue}");
-                    }
-                    if (Keyboard.current.f6Key.wasPressedThisFrame)
-                    {
-                        enemy.SpecController.SetHitPointDebug(1);
-                        Debug.Log($"Enemy HitPoint: {enemy.SpecController.HitPoint.CurrentValue}");
-                    }
-                    if (Keyboard.current.f7Key.wasPressedThisFrame)
-                    {
-                        SetupQuest(homeQuestSpecId);
-                        Debug.Log("Setup Home Quest");
-                    }
-                    if (Keyboard.current.f8Key.wasPressedThisFrame)
-                    {
-                        SetupQuest(initialQuestSpecId);
-                        Debug.Log("Setup Initial Quest");
-                    }
-                    if (Keyboard.current.f9Key.wasPressedThisFrame)
-                    {
-                        var elements = new List<Action<HKUIDocument>>
-                        {
-                            document =>
-                            {
-                                UIViewList.ApplyAsSimpleElement(document, "Test1", _ => Debug.Log("Test1"));
-                            },
-                            document =>
-                            {
-                                UIViewList.ApplyAsSimpleElement(document, "Test2", _ => Debug.Log("Test2"));
-                            },
-                            document =>
-                            {
-                                UIViewList.ApplyAsSimpleElement(document, "Test3", _ => Debug.Log("Test3"));
-                            },
-                        };
-                        var list = UIViewList.CreateWithPages(listDocumentPrefab, elements, 0);
+                        isOpenDebugMenu = true;
+                        await UIViewDebugMenu.OpenAsync(
+                            headerDocumentPrefab,
+                            listDocumentPrefab,
+                            this,
+                            player,
+                            enemy,
+                            destroyCancellationToken
+                            );
+                        isOpenDebugMenu = false;
                     }
                 });
 #endif
@@ -194,5 +148,12 @@ namespace MH3
         {
             SetupQuest(homeQuestSpecId);
         }
+
+#if DEBUG
+        public void SetupDefaultQuest()
+        {
+            SetupQuest(initialQuestSpecId);
+        }
+#endif
     }
 }
