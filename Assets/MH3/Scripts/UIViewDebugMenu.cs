@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
@@ -49,6 +50,43 @@ namespace MH3
             }
 
             async UniTask StateRoot(CancellationToken scope)
+            {
+                var debugData = TinyServiceLocator.Resolve<GameDebugData>();
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    new List<Action<HKUIDocument>>
+                    {
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "バトル",
+                                _ =>
+                                {
+                                    stateMachine.Change(StateBattle);
+                                });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "クエスト",
+                                _ =>
+                                {
+                                    stateMachine.Change(StateQuest);
+                                });
+                        },
+                    },
+                    0
+                );
+                inputController.Actions.UI.Cancel.OnPerformedAsObservable()
+                    .Subscribe(_ => debugMenuScope.Dispose())
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.gameObject.DestroySafe();
+            }
+
+            async UniTask StateBattle(CancellationToken scope)
             {
                 var debugData = TinyServiceLocator.Resolve<GameDebugData>();
                 var list = UIViewList.CreateWithPages(
@@ -121,41 +159,41 @@ namespace MH3
                                     Debug.Log($"Enemy HitPoint: {enemy.SpecController.HitPoint.CurrentValue}");
                                 });
                         },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(
-                                document,
-                                "クエスト.ホーム",
-                                _ =>
-                                {
-                                    gameSceneController.SetupHomeQuestAsync();
-                                    debugMenuScope.Dispose();
-                                    Debug.Log("Setup Home Quest");
-                                });
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(
-                                document,
-                                "クエスト.デフォルト",
-                                _ =>
-                                {
-                                    gameSceneController.SetupDefaultQuestAsync();
-                                    debugMenuScope.Dispose();
-                                    Debug.Log("Setup Default Quest");
-                                });
-                        },
                     },
                     0
                 );
                 inputController.Actions.UI.Cancel.OnPerformedAsObservable()
-                    .Subscribe(_ => debugMenuScope.Dispose())
+                    .Subscribe(_ => stateMachine.Change(StateRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                if (list != null)
-                {
-                    UnityEngine.Object.Destroy(list.gameObject);
-                }
+                list.gameObject.DestroySafe();
+            }
+
+            async UniTask StateQuest(CancellationToken scope)
+            {
+                var debugData = TinyServiceLocator.Resolve<GameDebugData>();
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    TinyServiceLocator.Resolve<MasterData>().QuestSpecs.List
+                        .Select(questSpec => new Action<HKUIDocument>(document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                questSpec.Id,
+                                _ =>
+                                {
+                                    gameSceneController.SetupQuestAsync(questSpec.Id).Forget();
+                                    debugMenuScope.Dispose();
+                                });
+                        }))
+                        .ToList(),
+                    0
+                );
+                inputController.Actions.UI.Cancel.OnPerformedAsObservable()
+                    .Subscribe(_ => stateMachine.Change(StateRoot))
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.gameObject.DestroySafe();
             }
 
             void PushHeaderText(string text)
