@@ -169,7 +169,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.size
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[1].clip
@@ -314,6 +314,14 @@ PrefabInstance:
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[18].name
       value: Recovery
+      objectReference: {fileID: 0}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[19].clip
+      value: 
+      objectReference: {fileID: 7400000, guid: e2318f889138bc64c9d0db27bd22f951, type: 2}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[19].name
+      value: Attack.Training.Basic.1
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[1].defaultState

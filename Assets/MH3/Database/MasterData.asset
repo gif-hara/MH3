@@ -147,6 +147,23 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
+    - Id: Training.Basic.1
+      Power: 0
+      FlinchDamage: 10
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 1
+      ForceFlinch: 0
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
   actorSpecs:
     list:
     - Id: 10101
@@ -229,7 +246,7 @@ MonoBehaviour:
       SuccessGuardSequencesKey: SuccessGuard.Default
       DeadSequencesKey: Dead.Default
       RecoverySequencesKey: Recovery.Default
-      ActorPrefabKey: Enemy
+      ActorPrefabKey: Training
       BehaviourKey: Enemy.10202
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
@@ -240,7 +257,7 @@ MonoBehaviour:
       SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
-      ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
+      ActorPrefab: {fileID: 963923653530722458, guid: d4f63c1f668169b4394ad500bc3badaa, type: 3}
       Behaviour: {fileID: 11400000, guid: 01ea3ad737f58a9429b2ba8e26a241e9, type: 2}
   questSpecs:
     list:

@@ -13,10 +13,74 @@ MonoBehaviour:
   m_Name: EntryPoint.Enemy.10202
   m_EditorClassIdentifier: 
   sequences:
-  - rid: 1481063204529373184
+  - rid: 1481063218132811949
+  - rid: 1481063218132811957
+  - rid: 1481063218132811959
+  - rid: 1481063218132811962
   references:
     version: 2
     RefIds:
-    - rid: 1481063204529373184
-      type: {class: Never, ns: MH3, asm: Assembly-CSharp}
-      data: 
+    - rid: 1481063218132811949
+      type: {class: ContainerRegisterEvaluateActorDistance, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063218132811953
+        targetResolver:
+          rid: 1481063218132811954
+        keyResolver:
+          rid: 1481063218132811955
+        comparisonType: 3
+        checkDistanceResolver:
+          rid: 1481063218132811956
+    - rid: 1481063218132811953
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063218132811954
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Target
+    - rid: 1481063218132811955
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: TargetDistance
+    - rid: 1481063218132811956
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 5
+    - rid: 1481063218132811957
+      type: {class: WaitUntil, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        conditionResolver:
+          rid: 1481063218132811958
+    - rid: 1481063218132811958
+      type: {class: BoolResolver/Func, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: TargetDistance
+    - rid: 1481063218132811959
+      type: {class: ActorAttackTakeUntilCompleteAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063218132811960
+        targetResolver:
+          rid: 1481063218132811961
+        comboAnimationKeys:
+        - Attack.Training.Basic.1
+    - rid: 1481063218132811960
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063218132811961
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Target
+    - rid: 1481063218132811962
+      type: {class: WaitForStateAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063218132811963
+        stateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+    - rid: 1481063218132811963
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
