@@ -77,7 +77,7 @@ MonoBehaviour:
         actorResolver:
           rid: 8733972360643739743
         stateNameResolver:
-          rid: 8733972360643739744
+          rid: 1481063212072566863
     - rid: 1481063080126841025
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -95,6 +95,10 @@ MonoBehaviour:
       data:
         value: 0
     - rid: 1481063212072566784
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Recovery
+    - rid: 1481063212072566863
       type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: Recovery
@@ -135,7 +139,3 @@ MonoBehaviour:
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor
-    - rid: 8733972360643739744
-      type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        name: AttackName
