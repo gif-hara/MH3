@@ -91,6 +91,15 @@ namespace MH3
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""8ca8c617-5efa-44c2-91eb-bd60083ea3e0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -421,6 +430,28 @@ namespace MH3
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Recovery"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bcb91034-66fb-4e95-803a-e2fbfc10b230"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28196a62-3af3-471a-902b-94af07803296"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""PauseMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1134,6 +1165,7 @@ namespace MH3
             m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
             m_Player_Guard = m_Player.FindAction("Guard", throwIfNotFound: true);
             m_Player_Recovery = m_Player.FindAction("Recovery", throwIfNotFound: true);
+            m_Player_PauseMenu = m_Player.FindAction("PauseMenu", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate_ = m_UI.FindAction("Navigate_", throwIfNotFound: true);
@@ -1221,6 +1253,7 @@ namespace MH3
         private readonly InputAction m_Player_Dodge;
         private readonly InputAction m_Player_Guard;
         private readonly InputAction m_Player_Recovery;
+        private readonly InputAction m_Player_PauseMenu;
         public struct PlayerActions
         {
             private @MHInputActions m_Wrapper;
@@ -1232,6 +1265,7 @@ namespace MH3
             public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
             public InputAction @Guard => m_Wrapper.m_Player_Guard;
             public InputAction @Recovery => m_Wrapper.m_Player_Recovery;
+            public InputAction @PauseMenu => m_Wrapper.m_Player_PauseMenu;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1262,6 +1296,9 @@ namespace MH3
                 @Recovery.started += instance.OnRecovery;
                 @Recovery.performed += instance.OnRecovery;
                 @Recovery.canceled += instance.OnRecovery;
+                @PauseMenu.started += instance.OnPauseMenu;
+                @PauseMenu.performed += instance.OnPauseMenu;
+                @PauseMenu.canceled += instance.OnPauseMenu;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1287,6 +1324,9 @@ namespace MH3
                 @Recovery.started -= instance.OnRecovery;
                 @Recovery.performed -= instance.OnRecovery;
                 @Recovery.canceled -= instance.OnRecovery;
+                @PauseMenu.started -= instance.OnPauseMenu;
+                @PauseMenu.performed -= instance.OnPauseMenu;
+                @PauseMenu.canceled -= instance.OnPauseMenu;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1484,6 +1524,7 @@ namespace MH3
             void OnDodge(InputAction.CallbackContext context);
             void OnGuard(InputAction.CallbackContext context);
             void OnRecovery(InputAction.CallbackContext context);
+            void OnPauseMenu(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
