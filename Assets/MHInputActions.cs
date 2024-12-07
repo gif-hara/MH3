@@ -82,6 +82,15 @@ namespace MH3
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Recovery"",
+                    ""type"": ""Button"",
+                    ""id"": ""ccaf9171-5b35-4166-b25d-3c66bde0e8a3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -390,6 +399,28 @@ namespace MH3
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Guard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""540afe26-fbef-49fa-ac92-b48155a879a1"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Recovery"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74204202-bfc6-42af-85d5-75283350fa5a"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Recovery"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -983,6 +1014,7 @@ namespace MH3
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
             m_Player_Guard = m_Player.FindAction("Guard", throwIfNotFound: true);
+            m_Player_Recovery = m_Player.FindAction("Recovery", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1068,6 +1100,7 @@ namespace MH3
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_Dodge;
         private readonly InputAction m_Player_Guard;
+        private readonly InputAction m_Player_Recovery;
         public struct PlayerActions
         {
             private @MHInputActions m_Wrapper;
@@ -1078,6 +1111,7 @@ namespace MH3
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
             public InputAction @Guard => m_Wrapper.m_Player_Guard;
+            public InputAction @Recovery => m_Wrapper.m_Player_Recovery;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1105,6 +1139,9 @@ namespace MH3
                 @Guard.started += instance.OnGuard;
                 @Guard.performed += instance.OnGuard;
                 @Guard.canceled += instance.OnGuard;
+                @Recovery.started += instance.OnRecovery;
+                @Recovery.performed += instance.OnRecovery;
+                @Recovery.canceled += instance.OnRecovery;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1127,6 +1164,9 @@ namespace MH3
                 @Guard.started -= instance.OnGuard;
                 @Guard.performed -= instance.OnGuard;
                 @Guard.canceled -= instance.OnGuard;
+                @Recovery.started -= instance.OnRecovery;
+                @Recovery.performed -= instance.OnRecovery;
+                @Recovery.canceled -= instance.OnRecovery;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1315,6 +1355,7 @@ namespace MH3
             void OnJump(InputAction.CallbackContext context);
             void OnDodge(InputAction.CallbackContext context);
             void OnGuard(InputAction.CallbackContext context);
+            void OnRecovery(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
