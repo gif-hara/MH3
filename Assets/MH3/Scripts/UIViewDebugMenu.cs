@@ -72,6 +72,16 @@ namespace MH3
                                     stateMachine.Change(StateQuest);
                                 });
                         },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "武器作成",
+                                _ =>
+                                {
+                                    stateMachine.Change(StateCreateInstanceWeapon);
+                                });
+                        },
                     },
                     0
                 );
@@ -180,6 +190,32 @@ namespace MH3
                                 {
                                     gameSceneController.SetupQuestAsync(questSpec.Id).Forget();
                                     debugMenuScope.Dispose();
+                                });
+                        }))
+                        .ToList(),
+                    0
+                );
+                inputController.Actions.UI.Cancel.OnPerformedAsObservable()
+                    .Subscribe(_ => stateMachine.Change(StateRoot))
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.gameObject.DestroySafe();
+            }
+            async UniTask StateCreateInstanceWeapon(CancellationToken scope)
+            {
+                var debugData = TinyServiceLocator.Resolve<GameDebugData>();
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.List
+                        .Select(x => new Action<HKUIDocument>(document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                x.Id.ToString(),
+                                _ =>
+                                {
+                                    TinyServiceLocator.Resolve<UserData>().AddInstanceWeaponData(InstanceWeaponFactory.Create(x.Id));
+                                    Debug.Log($"Create InstanceWeaponData: {x.Id}");
                                 });
                         }))
                         .ToList(),
