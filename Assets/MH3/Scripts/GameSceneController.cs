@@ -50,6 +50,9 @@ namespace MH3
         [SerializeField]
         private HKUIDocument headerDocumentPrefab;
 
+        [SerializeField]
+        private HKUIDocument fadeDocumentPrefab;
+
         private Actor player;
 
         private Actor enemy;
@@ -63,6 +66,8 @@ namespace MH3
         private CancellationDisposable questScope;
 
         private MasterData.QuestSpec currentQuestSpec;
+
+        private UIViewFade fade;
 
         private void Start()
         {
@@ -79,7 +84,8 @@ namespace MH3
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
-            SetupQuest(initialQuestSpecId);
+            fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);
+            SetupQuestAsync(initialQuestSpecId).Forget();
             inputController.Actions.Player.PauseMenu
                 .OnPerformedAsObservable()
                 .Subscribe(_ =>
@@ -118,12 +124,14 @@ namespace MH3
 #endif
         }
 
-        public void SetupQuest(string questSpecId)
+        public async UniTask SetupQuestAsync(string questSpecId)
         {
             if (questScope != null)
             {
                 questScope.Dispose();
             }
+
+            await fade.BeginAnimation("In");
 
             enemy.DestroySafe();
             stage.DestroySafe();
@@ -153,17 +161,18 @@ namespace MH3
             questFailedContainer.Register("Enemy", enemy);
             var questFailedSequencer = new Sequencer(questFailedContainer, questSpec.QuestFailedSequences.Sequences);
             questFailedSequencer.PlayAsync(questScope.Token).Forget();
+            await fade.BeginAnimation("Out");
         }
 
-        public void SetupHomeQuest()
+        public UniTask SetupHomeQuestAsync()
         {
-            SetupQuest(homeQuestSpecId);
+            return SetupQuestAsync(homeQuestSpecId);
         }
 
 #if DEBUG
-        public void SetupDefaultQuest()
+        public UniTask SetupDefaultQuestAsync()
         {
-            SetupQuest(initialQuestSpecId);
+            return SetupQuestAsync(initialQuestSpecId);
         }
 #endif
     }

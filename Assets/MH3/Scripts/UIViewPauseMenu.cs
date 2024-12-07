@@ -86,7 +86,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(document, "ホームに戻る", _ =>
                             {
-                                gameSceneController.SetupHomeQuest();
+                                gameSceneController.SetupHomeQuestAsync();
                                 pauseMenuScope.Dispose();
                             });
                         },
@@ -116,7 +116,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(document, x.Id, _ =>
                             {
-                                gameSceneController.SetupQuest(x.Id);
+                                gameSceneController.SetupQuestAsync(x.Id).Forget();
                                 pauseMenuScope.Dispose();
                             });
                         })),

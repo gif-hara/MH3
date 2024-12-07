@@ -10,7 +10,7 @@ namespace MH3
     {
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
-            container.Resolve<GameSceneController>().SetupHomeQuest();
+            container.Resolve<GameSceneController>().SetupHomeQuestAsync();
             return UniTask.CompletedTask;
         }
     }

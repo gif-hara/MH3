@@ -128,7 +128,7 @@ namespace MH3
                                 "クエスト.ホーム",
                                 _ =>
                                 {
-                                    gameSceneController.SetupHomeQuest();
+                                    gameSceneController.SetupHomeQuestAsync();
                                     debugMenuScope.Dispose();
                                     Debug.Log("Setup Home Quest");
                                 });
@@ -140,7 +140,7 @@ namespace MH3
                                 "クエスト.デフォルト",
                                 _ =>
                                 {
-                                    gameSceneController.SetupDefaultQuest();
+                                    gameSceneController.SetupDefaultQuestAsync();
                                     debugMenuScope.Dispose();
                                     Debug.Log("Setup Default Quest");
                                 });
