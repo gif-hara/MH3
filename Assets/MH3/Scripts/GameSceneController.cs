@@ -64,7 +64,8 @@ namespace MH3
 
         private void Start()
         {
-            TinyServiceLocator.RegisterAsync(new InputController(), destroyCancellationToken).Forget();
+            var inputController = new InputController();
+            TinyServiceLocator.RegisterAsync(inputController, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(masterData, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(gameRules, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(Instantiate(audioManagerPrefab), destroyCancellationToken).Forget();
@@ -77,6 +78,13 @@ namespace MH3
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             SetupQuest(initialQuestSpecId);
+            inputController.Actions.Player.PauseMenu
+                .OnPerformedAsObservable()
+                .Subscribe(_ =>
+                {
+                    UIViewPauseMenu.OpenAsync(headerDocumentPrefab, listDocumentPrefab, player, destroyCancellationToken).Forget();
+                })
+                .RegisterTo(destroyCancellationToken);
 #if DEBUG
             var debugData = new GameDebugData();
             var isOpenDebugMenu = false;
