@@ -284,6 +284,8 @@ namespace MH3
 
             public string QuestFailedSequencesKey;
 
+            public bool AvailableQuestList;
+
             public Stage StagePrefab;
 
             public ScriptableSequences QuestClearSequences;
