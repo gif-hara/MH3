@@ -86,6 +86,16 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
+                                "スキルコア作成",
+                                _ =>
+                                {
+                                    stateMachine.Change(StateCreateInstanceSkillCore);
+                                });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
                                 "閉じる",
                                 _ =>
                                 {
@@ -99,7 +109,7 @@ namespace MH3
                     .Subscribe(_ => debugMenuScope.Dispose())
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.gameObject.DestroySafe();
+                list.DestroySafe();
             }
 
             async UniTask StateBattle(CancellationToken scope)
@@ -182,7 +192,7 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.gameObject.DestroySafe();
+                list.DestroySafe();
             }
 
             async UniTask StateQuest(CancellationToken scope)
@@ -209,8 +219,9 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.gameObject.DestroySafe();
+                list.DestroySafe();
             }
+
             async UniTask StateCreateInstanceWeapon(CancellationToken scope)
             {
                 var debugData = TinyServiceLocator.Resolve<GameDebugData>();
@@ -226,6 +237,33 @@ namespace MH3
                                 {
                                     TinyServiceLocator.Resolve<UserData>().AddInstanceWeaponData(InstanceWeaponFactory.Create(x.Id));
                                     Debug.Log($"Create InstanceWeaponData: {x.Id}");
+                                });
+                        }))
+                        .ToList(),
+                    0
+                );
+                inputController.Actions.UI.Cancel.OnPerformedAsObservable()
+                    .Subscribe(_ => stateMachine.Change(StateRoot))
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.DestroySafe();
+            }
+
+            async UniTask StateCreateInstanceSkillCore(CancellationToken scope)
+            {
+                var debugData = TinyServiceLocator.Resolve<GameDebugData>();
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    TinyServiceLocator.Resolve<MasterData>().SkillCoreSpecs.List
+                        .Select(x => new Action<HKUIDocument>(document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                $"{x.Id}: {x.Name}",
+                                _ =>
+                                {
+                                    TinyServiceLocator.Resolve<UserData>().AddInstanceSkillCoreData(InstanceSkillCoreFactory.Create(x.Id));
+                                    Debug.Log($"Create InstanceSkillCoreData: {x.Id}");
                                 });
                         }))
                         .ToList(),
