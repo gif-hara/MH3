@@ -9,6 +9,7 @@ using R3;
 using TMPro;
 using UnityEngine;
 using UnitySequencerSystem;
+using static UnityEngine.InputSystem.InputAction;
 
 namespace MH3
 {
@@ -29,6 +30,9 @@ namespace MH3
             var stateMachine = new TinyStateMachine();
             var inputController = TinyServiceLocator.Resolve<InputController>();
             inputController.PushActionType(InputController.InputActionType.UI);
+            string selectInstanceWeaponHeader = "";
+            Action<InstanceWeaponData> selectInstanceWeaponOnClickAction = null;
+            Action<CallbackContext> selectInstanceWeaponOnCancelAction = null;
             if (isHome)
             {
                 stateMachine.Change(StateHomeRoot);
@@ -64,7 +68,16 @@ namespace MH3
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "武器変更", _ => stateMachine.Change(StateSelectInstanceWeapon));
+                            UIViewList.ApplyAsSimpleElement(document, "武器変更", _ =>
+                            {
+                                selectInstanceWeaponHeader = "武器変更";
+                                selectInstanceWeaponOnClickAction = x =>
+                                {
+                                    actor.SpecController.ChangeInstanceWeapon(x);
+                                };
+                                selectInstanceWeaponOnCancelAction = _ => stateMachine.Change(StateHomeRoot);
+                                stateMachine.Change(StateSelectInstanceWeapon);
+                            });
                         },
                         document =>
                         {
@@ -138,7 +151,7 @@ namespace MH3
 
             async UniTask StateSelectInstanceWeapon(CancellationToken scope)
             {
-                SetHeaderText("武器選択");
+                SetHeaderText(selectInstanceWeaponHeader);
                 var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
                 var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
                 var list = UIViewList.CreateWithPages(
@@ -148,7 +161,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.Name, _ =>
                             {
-                                actor.SpecController.ChangeInstanceWeapon(x);
+                                selectInstanceWeaponOnClickAction(x);
                             },
                             _ =>
                             {
@@ -161,7 +174,7 @@ namespace MH3
                 );
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
-                    .Subscribe(_ => stateMachine.Change(StateHomeRoot))
+                    .Subscribe(selectInstanceWeaponOnCancelAction)
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
