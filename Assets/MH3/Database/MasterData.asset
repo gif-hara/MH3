@@ -74,6 +74,20 @@ MonoBehaviour:
         Critical: 0.5
         RareType: 0
         Weight: 100
+  weaponSkillSlots:
+    list:
+    - Key: 10101
+      Value:
+      - Id: 10101
+        SkillSlot: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10102
+      Value:
+      - Id: 10102
+        SkillSlot: 1
+        RareType: 0
+        Weight: 100
   weaponCombos:
     list:
     - Key: 10101

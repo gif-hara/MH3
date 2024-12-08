@@ -30,6 +30,10 @@ namespace MH3
         public WeaponCritical.Group WeaponCriticals => weaponCriticals;
 
         [SerializeField]
+        private WeaponSkillSlot.Group weaponSkillSlots;
+        public WeaponSkillSlot.Group WeaponSkillSlots => weaponSkillSlots;
+
+        [SerializeField]
         private WeaponCombo.Group weaponCombos;
         public WeaponCombo.Group WeaponCombos => weaponCombos;
 
@@ -89,6 +93,7 @@ namespace MH3
                 "SkillCoreSpec",
                 "SkillCoreCount",
                 "SkillCoreEffect",
+                "WeaponSkillSlot",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -104,6 +109,7 @@ namespace MH3
             skillCoreSpecs.Set(JsonHelper.FromJson<SkillCoreSpec>(database[8]));
             skillCoreCounts.Set(JsonHelper.FromJson<SkillCoreCount>(database[9]));
             skillCoreEffects.Set(JsonHelper.FromJson<SkillCoreEffect>(database[10]));
+            weaponSkillSlots.Set(JsonHelper.FromJson<WeaponSkillSlot>(database[11]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -176,6 +182,11 @@ namespace MH3
             {
                 return TinyServiceLocator.Resolve<MasterData>().WeaponCombos.Get(ComboId);
             }
+
+            public List<WeaponSkillSlot> GetSkillSlots()
+            {
+                return TinyServiceLocator.Resolve<MasterData>().WeaponSkillSlots.Get(Id);
+            }
         }
 
         [Serializable]
@@ -211,6 +222,26 @@ namespace MH3
 
             [Serializable]
             public class Group : Group<int, WeaponCritical>
+            {
+                public Group() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class WeaponSkillSlot
+        {
+            public int Id;
+
+            public int SkillSlot;
+
+            public Define.RareType RareType;
+
+            public int Weight;
+
+            [Serializable]
+            public class Group : Group<int, WeaponSkillSlot>
             {
                 public Group() : base(x => x.Id)
                 {
