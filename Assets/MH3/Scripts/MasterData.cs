@@ -26,6 +26,10 @@ namespace MH3
         public WeaponAttack.Group WeaponAttacks => weaponAttacks;
 
         [SerializeField]
+        private WeaponCritical.Group weaponCriticals;
+        public WeaponCritical.Group WeaponCriticals => weaponCriticals;
+
+        [SerializeField]
         private WeaponCombo.Group weaponCombos;
         public WeaponCombo.Group WeaponCombos => weaponCombos;
 
@@ -69,6 +73,7 @@ namespace MH3
                 "QuestSpec",
                 "WeaponAttack",
                 "QuestReward",
+                "WeaponCritical",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -80,6 +85,7 @@ namespace MH3
             questSpecs.Set(JsonHelper.FromJson<QuestSpec>(database[4]));
             weaponAttacks.Set(JsonHelper.FromJson<WeaponAttack>(database[5]));
             questRewards.Set(JsonHelper.FromJson<QuestReward>(database[6]));
+            weaponCriticals.Set(JsonHelper.FromJson<WeaponCritical>(database[7]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -143,6 +149,11 @@ namespace MH3
                 return TinyServiceLocator.Resolve<MasterData>().WeaponAttacks.Get(Id);
             }
 
+            public List<WeaponCritical> GetCriticals()
+            {
+                return TinyServiceLocator.Resolve<MasterData>().WeaponCriticals.Get(Id);
+            }
+
             public List<WeaponCombo> GetCombos()
             {
                 return TinyServiceLocator.Resolve<MasterData>().WeaponCombos.Get(ComboId);
@@ -162,6 +173,26 @@ namespace MH3
 
             [Serializable]
             public class Group : Group<int, WeaponAttack>
+            {
+                public Group() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class WeaponCritical
+        {
+            public int Id;
+
+            public float Critical;
+
+            public Define.RareType RareType;
+
+            public int Weight;
+
+            [Serializable]
+            public class Group : Group<int, WeaponCritical>
             {
                 public Group() : base(x => x.Id)
                 {
