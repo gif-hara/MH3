@@ -7,6 +7,7 @@ using HK;
 using MH3.ActorControllers;
 using R3;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace MH3
@@ -59,6 +60,10 @@ namespace MH3
                         document =>
                         {
                             UIViewList.ApplyAsSimpleElement(document, "クエスト選択", _ => stateMachine.Change(StateSelectQuest));
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "武器変更", _ => stateMachine.Change(StateSelectInstanceWeapon));
                         },
                         document =>
                         {
@@ -118,6 +123,29 @@ namespace MH3
                             {
                                 gameSceneController.SetupQuestAsync(x.Id).Forget();
                                 pauseMenuScope.Dispose();
+                            });
+                        })),
+                    0
+                );
+                inputController.Actions.UI.Cancel
+                    .OnPerformedAsObservable()
+                    .Subscribe(_ => stateMachine.Change(StateHomeRoot))
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.DestroySafe();
+            }
+
+            async UniTask StateSelectInstanceWeapon(CancellationToken scope)
+            {
+                SetHeaderText("武器選択");
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    TinyServiceLocator.Resolve<UserData>().InstanceWeaponDataList
+                        .Select(x => new Action<HKUIDocument>(document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, x.WeaponId.ToString(), _ =>
+                            {
+                                actor.SpecController.ChangeInstanceWeapon(x);
                             });
                         })),
                     0
