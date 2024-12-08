@@ -235,7 +235,8 @@ namespace MH3
                                 $"{x.Id}: {x.Name}",
                                 _ =>
                                 {
-                                    TinyServiceLocator.Resolve<UserData>().AddInstanceWeaponData(InstanceWeaponFactory.Create(x.Id));
+                                    var userData = TinyServiceLocator.Resolve<UserData>();
+                                    userData.AddInstanceWeaponData(InstanceWeaponFactory.Create(userData, x.Id));
                                     Debug.Log($"Create InstanceWeaponData: {x.Id}");
                                 });
                         }))
@@ -262,7 +263,8 @@ namespace MH3
                                 $"{x.Id}: {x.Name}",
                                 _ =>
                                 {
-                                    TinyServiceLocator.Resolve<UserData>().AddInstanceSkillCoreData(InstanceSkillCoreFactory.Create(x.Id));
+                                    var userData = TinyServiceLocator.Resolve<UserData>();
+                                    userData.AddInstanceSkillCoreData(InstanceSkillCoreFactory.Create(userData, x.Id));
                                     Debug.Log($"Create InstanceSkillCoreData: {x.Id}");
                                 });
                         }))
