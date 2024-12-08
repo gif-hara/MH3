@@ -14,7 +14,7 @@ namespace MH3
             Small,
             Large,
         }
-        
+
         public enum ComparisonType
         {
             Equal,
@@ -23,6 +23,13 @@ namespace MH3
             Less,
             GreaterOrEqual,
             LessOrEqual,
+        }
+
+        public enum RareType
+        {
+            Common,
+            Rare,
+            Legend,
         }
     }
 }
