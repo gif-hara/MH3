@@ -5,6 +5,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
+using Mono.Cecil.Cil;
 using R3;
 using TMPro;
 using UnityEngine;
@@ -33,6 +34,11 @@ namespace MH3
             string selectInstanceWeaponHeader = "";
             Action<InstanceWeaponData> selectInstanceWeaponOnClickAction = null;
             Action<CallbackContext> selectInstanceWeaponOnCancelAction = null;
+            InstanceWeaponData selectedInstanceWeapon = null;
+            string selectInstanceSkillCoreHeader = "";
+            Action<InstanceSkillCore> selectInstanceSkillCoreOnClickAction = null;
+            Action<CallbackContext> selectInstanceSkillCoreOnCancelAction = null;
+
             if (isHome)
             {
                 stateMachine.Change(StateHomeRoot);
@@ -74,6 +80,27 @@ namespace MH3
                                 selectInstanceWeaponOnClickAction = x =>
                                 {
                                     actor.SpecController.ChangeInstanceWeapon(x);
+                                };
+                                selectInstanceWeaponOnCancelAction = _ => stateMachine.Change(StateHomeRoot);
+                                stateMachine.Change(StateSelectInstanceWeapon);
+                            });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "スキルコア装着", _ =>
+                            {
+                                selectInstanceWeaponHeader = "スキルコア装着";
+                                selectInstanceWeaponOnClickAction = x =>
+                                {
+                                    selectedInstanceWeapon = x;
+                                    selectInstanceSkillCoreHeader = "スキルコア選択";
+                                    selectInstanceSkillCoreOnClickAction = y =>
+                                    {
+                                        selectedInstanceWeapon.AddInstanceSkillCoreId(y.InstanceId);
+                                        stateMachine.Change(StateSelectInstanceWeapon);
+                                    };
+                                    selectInstanceSkillCoreOnCancelAction = _ => stateMachine.Change(StateSelectInstanceWeapon);
+                                    stateMachine.Change(StateSelectInstanceSkillCore);
                                 };
                                 selectInstanceWeaponOnCancelAction = _ => stateMachine.Change(StateHomeRoot);
                                 stateMachine.Change(StateSelectInstanceWeapon);
@@ -179,6 +206,32 @@ namespace MH3
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
                 instanceWeaponView.DestroySafe();
+            }
+
+            async UniTask StateSelectInstanceSkillCore(CancellationToken scope)
+            {
+                SetHeaderText(selectInstanceSkillCoreHeader);
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    TinyServiceLocator.Resolve<UserData>().InstanceSkillCoreList
+                        .Select(x => new Action<HKUIDocument>(document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, x.SkillCoreSpec.Name, _ =>
+                            {
+                                selectInstanceSkillCoreOnClickAction(x);
+                            },
+                            _ =>
+                            {
+                            });
+                        })),
+                    0
+                );
+                inputController.Actions.UI.Cancel
+                    .OnPerformedAsObservable()
+                    .Subscribe(selectInstanceSkillCoreOnCancelAction)
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.DestroySafe();
             }
 
             void SetHeaderText(string text)
