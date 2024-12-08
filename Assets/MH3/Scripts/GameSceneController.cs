@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
 using R3;
-using R3.Triggers;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using UnitySequencerSystem;
 
 namespace MH3
@@ -22,6 +17,9 @@ namespace MH3
 
         [SerializeField]
         private string initialQuestSpecId;
+
+        [SerializeField]
+        private int initialWeaponId;
 
         [SerializeField]
         private MasterData masterData;
@@ -84,6 +82,9 @@ namespace MH3
             var playerSpec = masterData.ActorSpecs.Get(playerActorSpecId);
             player = playerSpec.Spawn(Vector3.zero, Quaternion.identity);
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
+            var initialInstanceWeapon = InstanceWeaponFactory.Create(initialWeaponId);
+            userData.AddInstanceWeaponData(initialInstanceWeapon);
+            player.SpecController.ChangeInstanceWeapon(initialInstanceWeapon);
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);
