@@ -160,6 +160,7 @@ namespace MH3
             questClearContainer.Register(this);
             questClearContainer.Register("Player", player);
             questClearContainer.Register("Enemy", enemy);
+            questClearContainer.Register("QuestSpecId", questSpecId);
             var questClearSequencer = new Sequencer(questClearContainer, questSpec.QuestClearSequences.Sequences);
             questClearSequencer.PlayAsync(questScope.Token).Forget();
             var questFailedContainer = new Container();
