@@ -115,7 +115,7 @@ namespace MH3.ActorControllers
 
         public Observable<Unit> OnDead => onDead;
 
-        public void ChangeInstanceWeapon(InstanceWeaponData instanceWeaponData)
+        public void ChangeInstanceWeapon(InstanceWeapon instanceWeaponData)
         {
             attackInstanceWeapon.Value = instanceWeaponData.Attack;
             criticalInstanceWeapon.Value = instanceWeaponData.Critical;

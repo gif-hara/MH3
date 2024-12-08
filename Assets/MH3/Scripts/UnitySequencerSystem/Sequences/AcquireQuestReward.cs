@@ -20,7 +20,7 @@ namespace MH3
             var questSpecId = questSpecIdResolver.Resolve(container);
             var questSpec = TinyServiceLocator.Resolve<MasterData>().QuestSpecs.Get(questSpecId);
             var userData = TinyServiceLocator.Resolve<UserData>();
-            var instanceWeapons = new List<InstanceWeaponData>();
+            var instanceWeapons = new List<InstanceWeapon>();
             for (var i = 0; i < questSpec.RewardCount; i++)
             {
                 var reward = questSpec.GetRewards().Lottery(x => x.Weight);

@@ -14,7 +14,7 @@ namespace MH3
         public static UniTask OpenAsync(
             HKUIDocument listDocumentPrefab,
             HKUIDocument instanceWeaponViewDocumentPrefab,
-            Action<InstanceWeaponData> selectInstanceWeaponOnClickAction,
+            Action<InstanceWeapon> selectInstanceWeaponOnClickAction,
             Action<CallbackContext> selectInstanceWeaponOnCancelAction,
             CancellationToken scope
             )

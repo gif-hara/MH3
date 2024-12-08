@@ -18,7 +18,7 @@ namespace MH3
 
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
-            var instanceWeaponData = container.Resolve<InstanceWeaponData>(instanceWeaponDataKey);
+            var instanceWeaponData = container.Resolve<InstanceWeapon>(instanceWeaponDataKey);
             text.text = instanceWeaponData.WeaponSpec.Name;
             return UniTask.CompletedTask;
         }

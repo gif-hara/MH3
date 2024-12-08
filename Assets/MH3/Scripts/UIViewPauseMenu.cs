@@ -28,7 +28,7 @@ namespace MH3
             var stateMachine = new TinyStateMachine();
             var inputController = TinyServiceLocator.Resolve<InputController>();
             inputController.PushActionType(InputController.InputActionType.UI);
-            InstanceWeaponData selectedInstanceWeapon = null;
+            InstanceWeapon selectedInstanceWeapon = null;
 
             if (isHome)
             {

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace MH3
 {
     [Serializable]
-    public class InstanceWeaponData
+    public class InstanceWeapon
     {
         [SerializeField]
         private int instanceId;
@@ -46,7 +46,7 @@ namespace MH3
 
         public MasterData.WeaponSpec WeaponSpec => TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponId);
 
-        public InstanceWeaponData(
+        public InstanceWeapon(
             int instanceId,
             int weaponId,
             int attack,

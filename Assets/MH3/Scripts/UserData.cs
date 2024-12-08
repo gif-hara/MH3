@@ -8,8 +8,8 @@ namespace MH3
     public class UserData
     {
         [SerializeField]
-        private List<InstanceWeaponData> instanceWeaponDataList = new();
-        public List<InstanceWeaponData> InstanceWeaponDataList => instanceWeaponDataList;
+        private List<InstanceWeapon> instanceWeaponDataList = new();
+        public List<InstanceWeapon> InstanceWeaponDataList => instanceWeaponDataList;
 
         [SerializeField]
         private List<InstanceSkillCore> instanceSkillCoreList = new();
@@ -21,7 +21,7 @@ namespace MH3
         [SerializeField]
         private int createdInstanceSkillCoreCount;
 
-        public void AddInstanceWeaponData(InstanceWeaponData instanceWeaponData)
+        public void AddInstanceWeaponData(InstanceWeapon instanceWeaponData)
         {
             instanceWeaponDataList.Add(instanceWeaponData);
         }
