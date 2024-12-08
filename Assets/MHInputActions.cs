@@ -100,6 +100,15 @@ namespace MH3
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""51b9959a-056d-4a8e-ba1e-3da8f62034b2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -450,8 +459,30 @@ namespace MH3
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
+                    ""groups"": "";Gamepad"",
                     ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01c55f54-589f-44be-8911-b0a08420d071"",
+                    ""path"": ""<Keyboard>/f1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""DebugMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a655ff74-98ca-473a-882a-2933bf17d25b"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""DebugMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1166,6 +1197,7 @@ namespace MH3
             m_Player_Guard = m_Player.FindAction("Guard", throwIfNotFound: true);
             m_Player_Recovery = m_Player.FindAction("Recovery", throwIfNotFound: true);
             m_Player_PauseMenu = m_Player.FindAction("PauseMenu", throwIfNotFound: true);
+            m_Player_DebugMenu = m_Player.FindAction("DebugMenu", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate_ = m_UI.FindAction("Navigate_", throwIfNotFound: true);
@@ -1254,6 +1286,7 @@ namespace MH3
         private readonly InputAction m_Player_Guard;
         private readonly InputAction m_Player_Recovery;
         private readonly InputAction m_Player_PauseMenu;
+        private readonly InputAction m_Player_DebugMenu;
         public struct PlayerActions
         {
             private @MHInputActions m_Wrapper;
@@ -1266,6 +1299,7 @@ namespace MH3
             public InputAction @Guard => m_Wrapper.m_Player_Guard;
             public InputAction @Recovery => m_Wrapper.m_Player_Recovery;
             public InputAction @PauseMenu => m_Wrapper.m_Player_PauseMenu;
+            public InputAction @DebugMenu => m_Wrapper.m_Player_DebugMenu;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1299,6 +1333,9 @@ namespace MH3
                 @PauseMenu.started += instance.OnPauseMenu;
                 @PauseMenu.performed += instance.OnPauseMenu;
                 @PauseMenu.canceled += instance.OnPauseMenu;
+                @DebugMenu.started += instance.OnDebugMenu;
+                @DebugMenu.performed += instance.OnDebugMenu;
+                @DebugMenu.canceled += instance.OnDebugMenu;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1327,6 +1364,9 @@ namespace MH3
                 @PauseMenu.started -= instance.OnPauseMenu;
                 @PauseMenu.performed -= instance.OnPauseMenu;
                 @PauseMenu.canceled -= instance.OnPauseMenu;
+                @DebugMenu.started -= instance.OnDebugMenu;
+                @DebugMenu.performed -= instance.OnDebugMenu;
+                @DebugMenu.canceled -= instance.OnDebugMenu;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1525,6 +1565,7 @@ namespace MH3
             void OnGuard(InputAction.CallbackContext context);
             void OnRecovery(InputAction.CallbackContext context);
             void OnPauseMenu(InputAction.CallbackContext context);
+            void OnDebugMenu(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
