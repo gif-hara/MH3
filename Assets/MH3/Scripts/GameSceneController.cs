@@ -106,10 +106,11 @@ namespace MH3
             var debugData = new GameDebugData();
             var isOpenDebugMenu = false;
             TinyServiceLocator.RegisterAsync(debugData, destroyCancellationToken).Forget();
-            this.UpdateAsObservable()
+            inputController.Actions.Player.DebugMenu
+                .OnPerformedAsObservable()
                 .Subscribe(async _ =>
                 {
-                    if (Keyboard.current.f1Key.wasPressedThisFrame && !isOpenDebugMenu)
+                    if (!isOpenDebugMenu)
                     {
                         isOpenDebugMenu = true;
                         await UIViewDebugMenu.OpenAsync(
