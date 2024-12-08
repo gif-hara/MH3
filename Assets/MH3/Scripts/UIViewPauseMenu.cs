@@ -5,12 +5,9 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
-using Mono.Cecil.Cil;
 using R3;
 using TMPro;
 using UnityEngine;
-using UnitySequencerSystem;
-using static UnityEngine.InputSystem.InputAction;
 
 namespace MH3
 {
@@ -31,13 +28,7 @@ namespace MH3
             var stateMachine = new TinyStateMachine();
             var inputController = TinyServiceLocator.Resolve<InputController>();
             inputController.PushActionType(InputController.InputActionType.UI);
-            string selectInstanceWeaponHeader = "";
-            Action<InstanceWeaponData> selectInstanceWeaponOnClickAction = null;
-            Action<CallbackContext> selectInstanceWeaponOnCancelAction = null;
             InstanceWeaponData selectedInstanceWeapon = null;
-            string selectInstanceSkillCoreHeader = "";
-            Action<InstanceSkillCore> selectInstanceSkillCoreOnClickAction = null;
-            Action<CallbackContext> selectInstanceSkillCoreOnCancelAction = null;
 
             if (isHome)
             {
@@ -76,34 +67,14 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(document, "武器変更", _ =>
                             {
-                                selectInstanceWeaponHeader = "武器変更";
-                                selectInstanceWeaponOnClickAction = x =>
-                                {
-                                    actor.SpecController.ChangeInstanceWeapon(x);
-                                };
-                                selectInstanceWeaponOnCancelAction = _ => stateMachine.Change(StateHomeRoot);
-                                stateMachine.Change(StateSelectInstanceWeapon);
+                                stateMachine.Change(StateChangeInstanceWeapon);
                             });
                         },
                         document =>
                         {
                             UIViewList.ApplyAsSimpleElement(document, "スキルコア装着", _ =>
                             {
-                                selectInstanceWeaponHeader = "スキルコア装着";
-                                selectInstanceWeaponOnClickAction = x =>
-                                {
-                                    selectedInstanceWeapon = x;
-                                    selectInstanceSkillCoreHeader = "スキルコア選択";
-                                    selectInstanceSkillCoreOnClickAction = y =>
-                                    {
-                                        selectedInstanceWeapon.AddInstanceSkillCoreId(y.InstanceId);
-                                        stateMachine.Change(StateSelectInstanceWeapon);
-                                    };
-                                    selectInstanceSkillCoreOnCancelAction = _ => stateMachine.Change(StateSelectInstanceWeapon);
-                                    stateMachine.Change(StateSelectInstanceSkillCore);
-                                };
-                                selectInstanceWeaponOnCancelAction = _ => stateMachine.Change(StateHomeRoot);
-                                stateMachine.Change(StateSelectInstanceWeapon);
+                                stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
                             });
                         },
                         document =>
@@ -176,62 +147,74 @@ namespace MH3
                 list.DestroySafe();
             }
 
-            async UniTask StateSelectInstanceWeapon(CancellationToken scope)
+            UniTask StateChangeInstanceWeapon(CancellationToken scope)
             {
-                SetHeaderText(selectInstanceWeaponHeader);
-                var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
-                var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
-                var list = UIViewList.CreateWithPages(
+                SetHeaderText("武器変更");
+                var selectInstanceWeaponViewScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                return UIViewSelectInstanceWeapon.OpenAsync(
                     listDocumentPrefab,
-                    TinyServiceLocator.Resolve<UserData>().InstanceWeaponDataList
-                        .Select(x => new Action<HKUIDocument>(document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.Name, _ =>
-                            {
-                                selectInstanceWeaponOnClickAction(x);
-                            },
-                            _ =>
-                            {
-                                var container = new Container();
-                                container.Register("InstanceWeaponData", x);
-                                instanceWeaponSequences.PlayAsync(container, scope).Forget();
-                            });
-                        })),
-                    0
+                    instanceWeaponViewDocumentPrefab,
+                    x =>
+                    {
+                        actor.SpecController.ChangeInstanceWeapon(x);
+                        selectInstanceWeaponViewScope.Cancel();
+                        selectInstanceWeaponViewScope.Dispose();
+                        stateMachine.Change(StateHomeRoot);
+                    },
+                    _ =>
+                    {
+                        selectInstanceWeaponViewScope.Cancel();
+                        selectInstanceWeaponViewScope.Dispose();
+                        stateMachine.Change(StateHomeRoot);
+                    },
+                    selectInstanceWeaponViewScope.Token
                 );
-                inputController.Actions.UI.Cancel
-                    .OnPerformedAsObservable()
-                    .Subscribe(selectInstanceWeaponOnCancelAction)
-                    .RegisterTo(scope);
-                await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
-                instanceWeaponView.DestroySafe();
             }
 
-            async UniTask StateSelectInstanceSkillCore(CancellationToken scope)
+            UniTask StateAddInstanceSkillCoreSelectInstanceWeapon(CancellationToken scope)
             {
-                SetHeaderText(selectInstanceSkillCoreHeader);
-                var list = UIViewList.CreateWithPages(
+                SetHeaderText("スキルコア装着");
+                var selectInstanceWeaponViewScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                return UIViewSelectInstanceWeapon.OpenAsync(
                     listDocumentPrefab,
-                    TinyServiceLocator.Resolve<UserData>().InstanceSkillCoreList
-                        .Select(x => new Action<HKUIDocument>(document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, x.SkillCoreSpec.Name, _ =>
-                            {
-                                selectInstanceSkillCoreOnClickAction(x);
-                            },
-                            _ =>
-                            {
-                            });
-                        })),
-                    0
+                    instanceWeaponViewDocumentPrefab,
+                    x =>
+                    {
+                        selectedInstanceWeapon = x;
+                        stateMachine.Change(StateAddInstanceSkillCoreSelectSkillCore);
+                        selectInstanceWeaponViewScope.Cancel();
+                        selectInstanceWeaponViewScope.Dispose();
+                    },
+                    _ =>
+                    {
+                        selectInstanceWeaponViewScope.Cancel();
+                        selectInstanceWeaponViewScope.Dispose();
+                        stateMachine.Change(StateHomeRoot);
+                    },
+                    selectInstanceWeaponViewScope.Token
                 );
-                inputController.Actions.UI.Cancel
-                    .OnPerformedAsObservable()
-                    .Subscribe(selectInstanceSkillCoreOnCancelAction)
-                    .RegisterTo(scope);
-                await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+            }
+
+            UniTask StateAddInstanceSkillCoreSelectSkillCore(CancellationToken scope)
+            {
+                var selectInstanceSkillCoreViewScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                return UIViewSelectInstanceSkillCore.OpenAsync(
+                    listDocumentPrefab,
+                    x =>
+                    {
+                        selectedInstanceWeapon.AddInstanceSkillCoreId(x.InstanceId);
+                        stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
+                        selectInstanceSkillCoreViewScope.Cancel();
+                        selectInstanceSkillCoreViewScope.Dispose();
+                    },
+                    _ =>
+                    {
+                        selectInstanceSkillCoreViewScope.Cancel();
+                        selectInstanceSkillCoreViewScope.Dispose();
+                        stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
+                    },
+                    scope
+                );
             }
 
             void SetHeaderText(string text)
