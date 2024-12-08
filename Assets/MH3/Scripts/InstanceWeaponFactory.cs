@@ -8,7 +8,14 @@ namespace MH3
         {
             var weaponSpec = TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponSpecId);
             var weaponAttack = weaponSpec.GetAttacks().Lottery(x => x.Weight);
-            return new InstanceWeaponData(weaponSpecId, weaponAttack.Attack, weaponAttack.RareType);
+            var weaponCritical = weaponSpec.GetCriticals().Lottery(x => x.Weight);
+            return new InstanceWeaponData(
+                weaponSpecId,
+                weaponAttack.Attack,
+                weaponAttack.RareType,
+                weaponCritical.Critical,
+                weaponCritical.RareType
+                );
         }
     }
 }

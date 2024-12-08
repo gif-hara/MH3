@@ -19,13 +19,29 @@ namespace MH3
         private Define.RareType attackRareType;
         public Define.RareType AttackRareType => attackRareType;
 
+        [SerializeField]
+        private float critical;
+        public float Critical => critical;
+
+        [SerializeField]
+        private Define.RareType criticalRareType;
+        public Define.RareType CriticalRareType => criticalRareType;
+
         public MasterData.WeaponSpec WeaponSpec => TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponId);
 
-        public InstanceWeaponData(int weaponId, int attack, Define.RareType attackRareType)
+        public InstanceWeaponData(
+            int weaponId,
+            int attack,
+            Define.RareType attackRareType,
+            float critical,
+            Define.RareType criticalRareType
+            )
         {
             this.weaponId = weaponId;
             this.attack = attack;
             this.attackRareType = attackRareType;
+            this.critical = critical;
+            this.criticalRareType = criticalRareType;
         }
     }
 }
