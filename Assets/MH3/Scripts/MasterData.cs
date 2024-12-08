@@ -41,6 +41,10 @@ namespace MH3
         private QuestSpec.DictionaryList questSpecs;
         public QuestSpec.DictionaryList QuestSpecs => questSpecs;
 
+        [SerializeField]
+        private QuestReward.Group questRewards;
+        public QuestReward.Group QuestRewards => questRewards;
+
 #if UNITY_EDITOR
         [ContextMenu("Update")]
         private async void UpdateMasterData()
@@ -64,6 +68,7 @@ namespace MH3
                 "WeaponCombo",
                 "QuestSpec",
                 "WeaponAttack",
+                "QuestReward",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -74,6 +79,7 @@ namespace MH3
             weaponCombos.Set(JsonHelper.FromJson<WeaponCombo>(database[3]));
             questSpecs.Set(JsonHelper.FromJson<QuestSpec>(database[4]));
             weaponAttacks.Set(JsonHelper.FromJson<WeaponAttack>(database[5]));
+            questRewards.Set(JsonHelper.FromJson<QuestReward>(database[6]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -319,16 +325,43 @@ namespace MH3
 
             public bool AvailableQuestList;
 
+            public int RewardCount;
+
             public Stage StagePrefab;
 
             public ScriptableSequences QuestClearSequences;
 
             public ScriptableSequences QuestFailedSequences;
 
+            public List<QuestReward> GetRewards()
+            {
+                return TinyServiceLocator.Resolve<MasterData>().QuestRewards.Get(Id);
+            }
+
             [Serializable]
             public class DictionaryList : DictionaryList<string, QuestSpec>
             {
                 public DictionaryList() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class QuestReward
+        {
+            public string Id;
+
+            public Define.RewardType RewardType;
+
+            public int RewardId;
+
+            public int Weight;
+
+            [Serializable]
+            public class Group : Group<string, QuestReward>
+            {
+                public Group() : base(x => x.Id)
                 {
                 }
             }
