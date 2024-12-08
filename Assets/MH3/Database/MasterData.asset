@@ -21,6 +21,13 @@ MonoBehaviour:
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: Attack.Sword.Strong.1
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
+    - Id: 10102
+      Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u5263"
+      ModelDataId: Sword.1
+      ComboId: 10101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: Attack.Sword.Strong.1
+      ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
     - Id: 19901
       Name: "\u6575\u6B66\u5668"
       ModelDataId: Sword.1
@@ -43,6 +50,16 @@ MonoBehaviour:
         Attack: 100
         RareType: 0
         Weight: 100
+    - Key: 10102
+      Value:
+      - Id: 10102
+        Attack: 110
+        RareType: 0
+        Weight: 100
+      - Id: 10102
+        Attack: 120
+        RareType: 0
+        Weight: 80
   weaponCombos:
     list:
     - Key: 10101
@@ -170,7 +187,7 @@ MonoBehaviour:
     - Id: 10101
       ActorType: 0
       HitPoint: 100
-      Attack: 100
+      Attack: 0
       PhysicalDamageCutRate: 0
       FlinchThreshold: 1
       MoveSpeed: 7
@@ -288,5 +305,5 @@ MonoBehaviour:
       Value:
       - Id: Quest.10101
         RewardType: 0
-        RewardId: 10101
+        RewardId: 10102
         Weight: 100
