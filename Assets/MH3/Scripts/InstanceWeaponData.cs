@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using HK;
 using UnityEngine;
 
@@ -7,6 +8,10 @@ namespace MH3
     [Serializable]
     public class InstanceWeaponData
     {
+        [SerializeField]
+        private int instanceId;
+        public int InstanceId => instanceId;
+
         [SerializeField]
         private int weaponId;
         public int WeaponId => weaponId;
@@ -35,9 +40,14 @@ namespace MH3
         private Define.RareType skillSlotRareType;
         public Define.RareType SkillSlotRareType => skillSlotRareType;
 
+        [SerializeField]
+        private List<int> instanceSkillCoreIds = new();
+        public List<int> InstanceSkillCoreIds => instanceSkillCoreIds;
+
         public MasterData.WeaponSpec WeaponSpec => TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponId);
 
         public InstanceWeaponData(
+            int instanceId,
             int weaponId,
             int attack,
             Define.RareType attackRareType,
@@ -47,6 +57,7 @@ namespace MH3
             Define.RareType skillSlotRareType
             )
         {
+            this.instanceId = instanceId;
             this.weaponId = weaponId;
             this.attack = attack;
             this.attackRareType = attackRareType;
@@ -54,6 +65,11 @@ namespace MH3
             this.criticalRareType = criticalRareType;
             this.skillSlot = skillSlot;
             this.skillSlotRareType = skillSlotRareType;
+        }
+
+        public void AddInstanceSkillCoreId(int instanceSkillCoreId)
+        {
+            instanceSkillCoreIds.Add(instanceSkillCoreId);
         }
     }
 }

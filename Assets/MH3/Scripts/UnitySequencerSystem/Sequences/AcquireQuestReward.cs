@@ -27,7 +27,7 @@ namespace MH3
                 switch (reward.RewardType)
                 {
                     case Define.RewardType.InstanceWeapon:
-                        var instanceWeaponData = InstanceWeaponFactory.Create(reward.RewardId);
+                        var instanceWeaponData = InstanceWeaponFactory.Create(TinyServiceLocator.Resolve<UserData>(), reward.RewardId);
                         instanceWeapons.Add(instanceWeaponData);
                         userData.AddInstanceWeaponData(instanceWeaponData);
                         break;

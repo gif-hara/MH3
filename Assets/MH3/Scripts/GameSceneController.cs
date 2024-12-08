@@ -85,7 +85,7 @@ namespace MH3
             var playerSpec = masterData.ActorSpecs.Get(playerActorSpecId);
             player = playerSpec.Spawn(Vector3.zero, Quaternion.identity);
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
-            var initialInstanceWeapon = InstanceWeaponFactory.Create(initialWeaponId);
+            var initialInstanceWeapon = InstanceWeaponFactory.Create(userData, initialWeaponId);
             userData.AddInstanceWeaponData(initialInstanceWeapon);
             player.SpecController.ChangeInstanceWeapon(initialInstanceWeapon);
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);

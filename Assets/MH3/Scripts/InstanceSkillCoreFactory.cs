@@ -6,7 +6,7 @@ namespace MH3
 {
     public static class InstanceSkillCoreFactory
     {
-        public static InstanceSkillCore Create(int skillCoreSpecId)
+        public static InstanceSkillCore Create(UserData userData, int skillCoreSpecId)
         {
             var skillCoreSpec = TinyServiceLocator.Resolve<MasterData>().SkillCoreSpecs.Get(skillCoreSpecId);
             var skillCoreCount = skillCoreSpec.GetSkillCoreCounts().Lottery(x => x.Weight);
@@ -16,7 +16,12 @@ namespace MH3
                 var skillCoreEffect = skillCoreSpec.GetSkillCoreEffects().Lottery(x => x.Weight);
                 skills.Add(new InstanceSkill(skillCoreEffect.SkillType, skillCoreEffect.Level, skillCoreEffect.RareType));
             }
-            return new InstanceSkillCore(skillCoreSpecId, skills);
+            return new InstanceSkillCore(
+                userData.GetAndIncrementCreatedInstanceSkillCoreCount(),
+                skillCoreSpecId,
+                skillCoreSpec.Slot,
+                skills
+                );
         }
     }
 }
