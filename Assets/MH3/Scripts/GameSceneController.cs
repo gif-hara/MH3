@@ -51,6 +51,9 @@ namespace MH3
         [SerializeField]
         private HKUIDocument fadeDocumentPrefab;
 
+        [SerializeField]
+        private HKUIDocument instanceWeaponViewDocumentPrefab;
+
         private Actor player;
 
         private Actor enemy;
@@ -96,6 +99,7 @@ namespace MH3
                     UIViewPauseMenu.OpenAsync(
                         headerDocumentPrefab,
                         listDocumentPrefab,
+                        instanceWeaponViewDocumentPrefab,
                         player,
                         this,
                         currentQuestSpec.Id == homeQuestSpecId,

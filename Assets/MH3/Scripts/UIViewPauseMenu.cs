@@ -7,8 +7,8 @@ using HK;
 using MH3.ActorControllers;
 using R3;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnitySequencerSystem;
 
 namespace MH3
 {
@@ -17,6 +17,7 @@ namespace MH3
         public static async UniTask OpenAsync(
             HKUIDocument headerDocumentPrefab,
             HKUIDocument listDocumentPrefab,
+            HKUIDocument instanceWeaponViewDocumentPrefab,
             Actor actor,
             GameSceneController gameSceneController,
             bool isHome,
@@ -138,6 +139,8 @@ namespace MH3
             async UniTask StateSelectInstanceWeapon(CancellationToken scope)
             {
                 SetHeaderText("武器選択");
+                var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
+                var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     TinyServiceLocator.Resolve<UserData>().InstanceWeaponDataList
@@ -146,6 +149,12 @@ namespace MH3
                             UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.Name, _ =>
                             {
                                 actor.SpecController.ChangeInstanceWeapon(x);
+                            },
+                            _ =>
+                            {
+                                var container = new Container();
+                                container.Register("InstanceWeaponData", x);
+                                instanceWeaponSequences.PlayAsync(container, scope).Forget();
                             });
                         })),
                     0
@@ -155,7 +164,8 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateHomeRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.gameObject.DestroySafe();
+                instanceWeaponView.gameObject.DestroySafe();
             }
 
             void SetHeaderText(string text)
