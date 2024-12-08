@@ -23,6 +23,8 @@ namespace MH3.ActorControllers
 
         private readonly ReactiveProperty<int> attackInstanceWeapon = new(0);
 
+        private readonly ReactiveProperty<float> criticalInstanceWeapon = new(0);
+
         private readonly ReactiveProperty<float> cutRatePhysicalDamage = new(0.0f);
 
         private readonly ReactiveProperty<int> weaponId = new(0);
@@ -79,6 +81,8 @@ namespace MH3.ActorControllers
 
         public int AttackTotal => attack.Value + attackInstanceWeapon.Value;
 
+        public float CriticalTotal => criticalInstanceWeapon.Value;
+
         public ReadOnlyReactiveProperty<float> CutRatePhysicalDamage => cutRatePhysicalDamage;
 
         public float MoveSpeed => spec.MoveSpeed;
@@ -112,6 +116,7 @@ namespace MH3.ActorControllers
         public void ChangeInstanceWeapon(InstanceWeaponData instanceWeaponData)
         {
             attackInstanceWeapon.Value = instanceWeaponData.Attack;
+            criticalInstanceWeapon.Value = instanceWeaponData.Critical;
             weaponId.Value = instanceWeaponData.WeaponId;
         }
 
