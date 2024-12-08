@@ -45,6 +45,8 @@ namespace MH3.ActorControllers
 
         private readonly ReactiveProperty<Define.FlinchType> flinchType = new(Define.FlinchType.None);
 
+        private readonly List<ISkill> skills = new();
+
         private readonly Subject<Unit> onFlinch = new();
 
         private readonly Subject<DamageData> onTakeDamage = new();
@@ -118,6 +120,7 @@ namespace MH3.ActorControllers
             attackInstanceWeapon.Value = instanceWeaponData.Attack;
             criticalInstanceWeapon.Value = instanceWeaponData.Critical;
             weaponId.Value = instanceWeaponData.WeaponId;
+
         }
 
         public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)
