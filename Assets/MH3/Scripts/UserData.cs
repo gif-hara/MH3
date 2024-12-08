@@ -20,7 +20,7 @@ namespace MH3
             instanceWeaponDataList.Add(instanceWeaponData);
         }
 
-        public void AddInstanceSkillCore(InstanceSkillCore instanceSkillCore)
+        public void AddInstanceSkillCoreData(InstanceSkillCore instanceSkillCore)
         {
             instanceSkillCoreList.Add(instanceSkillCore);
         }
