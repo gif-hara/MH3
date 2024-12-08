@@ -21,6 +21,8 @@ namespace MH3.ActorControllers
 
         private readonly ReactiveProperty<int> attack = new(0);
 
+        private readonly ReactiveProperty<int> attackInstanceWeapon = new(0);
+
         private readonly ReactiveProperty<float> cutRatePhysicalDamage = new(0.0f);
 
         private readonly ReactiveProperty<int> weaponId = new(0);
@@ -72,6 +74,10 @@ namespace MH3.ActorControllers
         public ReadOnlyReactiveProperty<int> HitPoint => hitPoint;
 
         public ReadOnlyReactiveProperty<int> Attack => attack;
+
+        public ReadOnlyReactiveProperty<int> AttackInstanceWeapon => attackInstanceWeapon;
+
+        public int AttackTotal => attack.Value + attackInstanceWeapon.Value;
 
         public ReadOnlyReactiveProperty<float> CutRatePhysicalDamage => cutRatePhysicalDamage;
 
