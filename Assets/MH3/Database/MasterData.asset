@@ -14,12 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSpecs:
     list:
-    - Id: 0
-      ModelDataId: 0
-      ComboId: 0
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      ModelData: {fileID: 0}
     - Id: 10101
       ModelDataId: Sword.1
       ComboId: 10101
@@ -40,10 +34,6 @@ MonoBehaviour:
       ModelData: {fileID: 11400000, guid: de818f0f8b8f4694f91f199a6e2c9bac, type: 2}
   weaponCombos:
     list:
-    - Key: 0
-      Value:
-      - Id: 0
-        AnimationKey: 
     - Key: 10101
       Value:
       - Id: 10101
