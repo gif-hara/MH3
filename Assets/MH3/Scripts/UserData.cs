@@ -15,6 +15,12 @@ namespace MH3
         private List<InstanceSkillCore> instanceSkillCoreList = new();
         public List<InstanceSkillCore> InstanceSkillCoreList => instanceSkillCoreList;
 
+        [SerializeField]
+        private int createdInstanceWeaponCount;
+
+        [SerializeField]
+        private int createdInstanceSkillCoreCount;
+
         public void AddInstanceWeaponData(InstanceWeaponData instanceWeaponData)
         {
             instanceWeaponDataList.Add(instanceWeaponData);
@@ -23,6 +29,16 @@ namespace MH3
         public void AddInstanceSkillCoreData(InstanceSkillCore instanceSkillCore)
         {
             instanceSkillCoreList.Add(instanceSkillCore);
+        }
+
+        public int GetAndIncrementCreatedInstanceWeaponCount()
+        {
+            return createdInstanceWeaponCount++;
+        }
+
+        public int GetAndIncrementCreatedInstanceSkillCoreCount()
+        {
+            return createdInstanceSkillCoreCount++;
         }
     }
 }
