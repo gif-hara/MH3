@@ -49,6 +49,18 @@ namespace MH3
         private QuestReward.Group questRewards;
         public QuestReward.Group QuestRewards => questRewards;
 
+        [SerializeField]
+        private SkillCoreSpec.DictionaryList skillCoreSpecs;
+        public SkillCoreSpec.DictionaryList SkillCoreSpecs => skillCoreSpecs;
+
+        [SerializeField]
+        private SkillCoreCount.Group skillCoreCounts;
+        public SkillCoreCount.Group SkillCoreCounts => skillCoreCounts;
+
+        [SerializeField]
+        private SkillCoreEffect.Group skillCoreEffects;
+        public SkillCoreEffect.Group SkillCoreEffects => skillCoreEffects;
+
 #if UNITY_EDITOR
         [ContextMenu("Update")]
         private async void UpdateMasterData()
@@ -74,6 +86,9 @@ namespace MH3
                 "WeaponAttack",
                 "QuestReward",
                 "WeaponCritical",
+                "SkillCoreSpec",
+                "SkillCoreCount",
+                "SkillCoreEffect",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -86,6 +101,9 @@ namespace MH3
             weaponAttacks.Set(JsonHelper.FromJson<WeaponAttack>(database[5]));
             questRewards.Set(JsonHelper.FromJson<QuestReward>(database[6]));
             weaponCriticals.Set(JsonHelper.FromJson<WeaponCritical>(database[7]));
+            skillCoreSpecs.Set(JsonHelper.FromJson<SkillCoreSpec>(database[8]));
+            skillCoreCounts.Set(JsonHelper.FromJson<SkillCoreCount>(database[9]));
+            skillCoreEffects.Set(JsonHelper.FromJson<SkillCoreEffect>(database[10]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -391,6 +409,74 @@ namespace MH3
 
             [Serializable]
             public class Group : Group<string, QuestReward>
+            {
+                public Group() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class SkillCoreSpec
+        {
+            public int Id;
+
+            public int Slot;
+
+            public List<SkillCoreCount> GetSkillCoreCounts()
+            {
+                return TinyServiceLocator.Resolve<MasterData>().SkillCoreCounts.Get(Id);
+            }
+
+            public List<SkillCoreEffect> GetSkillCoreEffects()
+            {
+                return TinyServiceLocator.Resolve<MasterData>().SkillCoreEffects.Get(Id);
+            }
+
+            [Serializable]
+            public class DictionaryList : DictionaryList<int, SkillCoreSpec>
+            {
+                public DictionaryList() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class SkillCoreCount
+        {
+            public int Id;
+
+            public int Count;
+
+            public Define.RareType RareType;
+
+            public int Weight;
+
+            [Serializable]
+            public class Group : Group<int, SkillCoreCount>
+            {
+                public Group() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class SkillCoreEffect
+        {
+            public int Id;
+
+            public Define.SkillType SkillType;
+
+            public int Level;
+
+            public Define.RareType RareType;
+
+            public int Weight;
+
+            [Serializable]
+            public class Group : Group<int, SkillCoreEffect>
             {
                 public Group() : base(x => x.Id)
                 {

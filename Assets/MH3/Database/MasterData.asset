@@ -321,3 +321,24 @@ MonoBehaviour:
         RewardType: 0
         RewardId: 10102
         Weight: 100
+  skillCoreSpecs:
+    list:
+    - Id: 10101
+      Slot: 1
+  skillCoreCounts:
+    list:
+    - Key: 10101
+      Value:
+      - Id: 10101
+        Count: 1
+        RareType: 0
+        Weight: 100
+  skillCoreEffects:
+    list:
+    - Key: 10101
+      Value:
+      - Id: 10101
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 100
