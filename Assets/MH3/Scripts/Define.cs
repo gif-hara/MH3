@@ -36,5 +36,11 @@ namespace MH3
         {
             InstanceWeapon,
         }
+
+        public enum SkillType
+        {
+            Attack,
+            Critical,
+        }
     }
 }
