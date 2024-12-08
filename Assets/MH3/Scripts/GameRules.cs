@@ -32,5 +32,9 @@ namespace MH3
         [SerializeField]
         private int recoveryAmount;
         public int RecoveryAmount => recoveryAmount;
+
+        [SerializeField]
+        private float criticalDamageRate;
+        public float CriticalDamageRate => criticalDamageRate;
     }
 }
