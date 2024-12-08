@@ -16,6 +16,7 @@ MonoBehaviour:
   - rid: 1481063203388522578
   - rid: 1481063203388522584
   - rid: 1481063203388522585
+  - rid: 1481063233791983732
   references:
     version: 2
     RefIds:
@@ -36,3 +37,12 @@ MonoBehaviour:
     - rid: 1481063203388522585
       type: {class: SetupHomeQuest, ns: MH3, asm: Assembly-CSharp}
       data: 
+    - rid: 1481063233791983732
+      type: {class: AcquireQuestReward, ns: MH3, asm: Assembly-CSharp}
+      data:
+        questSpecIdResolver:
+          rid: 1481063233791983733
+    - rid: 1481063233791983733
+      type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: QuestSpecId
