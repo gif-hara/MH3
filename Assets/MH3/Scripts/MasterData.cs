@@ -421,6 +421,8 @@ namespace MH3
         {
             public int Id;
 
+            public string Name;
+
             public int Slot;
 
             public List<SkillCoreCount> GetSkillCoreCounts()
