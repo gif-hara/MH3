@@ -106,6 +106,8 @@ namespace MH3
         {
             public int Id;
 
+            public string Name;
+
             public string ModelDataId;
 
             public string ComboId;

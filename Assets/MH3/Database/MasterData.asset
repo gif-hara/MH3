@@ -15,18 +15,21 @@ MonoBehaviour:
   weaponSpecs:
     list:
     - Id: 10101
+      Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u5263"
       ModelDataId: Sword.1
       ComboId: 10101
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: Attack.Sword.Strong.1
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
     - Id: 19901
+      Name: "\u6575\u6B66\u5668"
       ModelDataId: Sword.1
       ComboId: 19901
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: 
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
     - Id: 19902
+      Name: "\u6575\u6B66\u5668"
       ModelDataId: Training.1
       ComboId: 19901
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
