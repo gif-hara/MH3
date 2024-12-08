@@ -21,7 +21,7 @@ namespace MH3.ActorControllers
 
         private readonly ReactiveProperty<int> attack = new(0);
 
-        private readonly ReactiveProperty<float> physicalDamageCutRate = new(0.0f);
+        private readonly ReactiveProperty<float> cutRatePhysicalDamage = new(0.0f);
 
         private readonly ReactiveProperty<int> weaponId = new(0);
 
@@ -54,7 +54,7 @@ namespace MH3.ActorControllers
             hitPointMax.Value = spec.HitPoint;
             hitPoint.Value = spec.HitPoint;
             attack.Value = spec.Attack;
-            physicalDamageCutRate.Value = spec.PhysicalDamageCutRate;
+            cutRatePhysicalDamage.Value = spec.PhysicalDamageCutRate;
             weaponId.Value = spec.WeaponId;
             ComboAnimationKeys.Clear();
             foreach (var combo in WeaponSpec.GetCombos())
@@ -73,7 +73,7 @@ namespace MH3.ActorControllers
 
         public ReadOnlyReactiveProperty<int> Attack => attack;
 
-        public ReadOnlyReactiveProperty<float> PhysicalDamageCutRate => physicalDamageCutRate;
+        public ReadOnlyReactiveProperty<float> CutRatePhysicalDamage => cutRatePhysicalDamage;
 
         public float MoveSpeed => spec.MoveSpeed;
 
