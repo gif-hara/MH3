@@ -35,6 +35,14 @@ MonoBehaviour:
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: 
       ModelData: {fileID: 11400000, guid: de818f0f8b8f4694f91f199a6e2c9bac, type: 2}
+  weaponAttacks:
+    list:
+    - Key: 10101
+      Value:
+      - Id: 10101
+        Attack: 100
+        RareType: 0
+        Weight: 100
   weaponCombos:
     list:
     - Key: 10101

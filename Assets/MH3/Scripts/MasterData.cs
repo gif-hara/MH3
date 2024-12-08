@@ -22,6 +22,10 @@ namespace MH3
         public WeaponSpec.DictionaryList WeaponSpecs => weaponSpecs;
 
         [SerializeField]
+        private WeaponAttack.Group weaponAttacks;
+        public WeaponAttack.Group WeaponAttacks => weaponAttacks;
+
+        [SerializeField]
         private WeaponCombo.Group weaponCombos;
         public WeaponCombo.Group WeaponCombos => weaponCombos;
 
@@ -59,6 +63,7 @@ namespace MH3
                 "ActorSpec",
                 "WeaponCombo",
                 "QuestSpec",
+                "WeaponAttack",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -68,6 +73,7 @@ namespace MH3
             actorSpecs.Set(JsonHelper.FromJson<ActorSpec>(database[2]));
             weaponCombos.Set(JsonHelper.FromJson<WeaponCombo>(database[3]));
             questSpecs.Set(JsonHelper.FromJson<QuestSpec>(database[4]));
+            weaponAttacks.Set(JsonHelper.FromJson<WeaponAttack>(database[5]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -126,9 +132,34 @@ namespace MH3
                 }
             }
 
+            public List<WeaponAttack> GetAttacks()
+            {
+                return TinyServiceLocator.Resolve<MasterData>().WeaponAttacks.Get(Id);
+            }
+
             public List<WeaponCombo> GetCombos()
             {
                 return TinyServiceLocator.Resolve<MasterData>().WeaponCombos.Get(ComboId);
+            }
+        }
+
+        [Serializable]
+        public class WeaponAttack
+        {
+            public int Id;
+
+            public int Attack;
+
+            public Define.RareType RareType;
+
+            public int Weight;
+
+            [Serializable]
+            public class Group : Group<int, WeaponAttack>
+            {
+                public Group() : base(x => x.Id)
+                {
+                }
             }
         }
 
