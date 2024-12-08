@@ -27,6 +27,14 @@ namespace MH3
         private Define.RareType criticalRareType;
         public Define.RareType CriticalRareType => criticalRareType;
 
+        [SerializeField]
+        private int skillSlot;
+        public int SkillSlot => skillSlot;
+
+        [SerializeField]
+        private Define.RareType skillSlotRareType;
+        public Define.RareType SkillSlotRareType => skillSlotRareType;
+
         public MasterData.WeaponSpec WeaponSpec => TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponId);
 
         public InstanceWeaponData(
@@ -34,7 +42,9 @@ namespace MH3
             int attack,
             Define.RareType attackRareType,
             float critical,
-            Define.RareType criticalRareType
+            Define.RareType criticalRareType,
+            int skillSlot,
+            Define.RareType skillSlotRareType
             )
         {
             this.weaponId = weaponId;
@@ -42,6 +52,8 @@ namespace MH3
             this.attackRareType = attackRareType;
             this.critical = critical;
             this.criticalRareType = criticalRareType;
+            this.skillSlot = skillSlot;
+            this.skillSlotRareType = skillSlotRareType;
         }
     }
 }
