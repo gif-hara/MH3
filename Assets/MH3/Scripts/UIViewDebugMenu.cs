@@ -211,7 +211,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                x.Id.ToString(),
+                                $"{x.Id}: {x.Name}",
                                 _ =>
                                 {
                                     TinyServiceLocator.Resolve<UserData>().AddInstanceWeaponData(InstanceWeaponFactory.Create(x.Id));

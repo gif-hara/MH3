@@ -143,7 +143,7 @@ namespace MH3
                     TinyServiceLocator.Resolve<UserData>().InstanceWeaponDataList
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, x.WeaponId.ToString(), _ =>
+                            UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.Name, _ =>
                             {
                                 actor.SpecController.ChangeInstanceWeapon(x);
                             });
