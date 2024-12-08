@@ -439,6 +439,7 @@ MonoBehaviour:
         - rid: 1481063233791983742
         - rid: 1481063233791983746
         - rid: 1481063233791983760
+        - rid: 1481063233791983784
     - rid: 1481063233791983742
       type: {class: InstanceWeaponViewWeaponName, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -454,6 +455,12 @@ MonoBehaviour:
       data:
         instanceWeaponDataKey: InstanceWeaponData
         text: {fileID: 852534605953154129}
+    - rid: 1481063233791983784
+      type: {class: InstanceWeaponViewSkillSlot, ns: MH3, asm: Assembly-CSharp}
+      data:
+        instanceWeaponDataKey: InstanceWeaponData
+        parent: {fileID: 7114358762800415632}
+        skillSlotDocumentPrefab: {fileID: -5975206734666703776, guid: 75e59304f2cc12c45bc2f2b8ce1279cd, type: 3}
 --- !u!1 &6644406956935404719
 GameObject:
   m_ObjectHideFlags: 0
