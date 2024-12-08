@@ -16,6 +16,10 @@ namespace MH3
         {
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
             var damage = Mathf.FloorToInt(attacker.SpecController.AttackTotal * attackSpec.Power / 100.0f);
+            if (attacker.SpecController.CriticalTotal > Random.value)
+            {
+                damage = Mathf.FloorToInt(damage * gameRules.CriticalDamageRate);
+            }
             damage = Mathf.FloorToInt(damage * (1.0f - target.SpecController.CutRatePhysicalDamage.CurrentValue));
             var flinchDamage = attackSpec.FlinchDamage;
             if (targetGuardResult == ActorGuardController.GuardResult.SuccessGuard)
