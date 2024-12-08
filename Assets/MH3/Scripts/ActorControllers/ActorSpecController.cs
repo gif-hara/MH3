@@ -109,6 +109,12 @@ namespace MH3.ActorControllers
 
         public Observable<Unit> OnDead => onDead;
 
+        public void ChangeInstanceWeapon(InstanceWeaponData instanceWeaponData)
+        {
+            attackInstanceWeapon.Value = instanceWeaponData.Attack;
+            weaponId.Value = instanceWeaponData.WeaponId;
+        }
+
         public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)
         {
             if (attackSpec == null)
