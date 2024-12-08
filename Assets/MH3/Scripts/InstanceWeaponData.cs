@@ -1,4 +1,5 @@
 using System;
+using HK;
 using UnityEngine;
 
 namespace MH3
@@ -13,6 +14,8 @@ namespace MH3
         [SerializeField]
         private int attack;
         public int Attack => attack;
+
+        public MasterData.WeaponSpec WeaponSpec => TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponId);
 
         public InstanceWeaponData(int weaponId, int attack)
         {
