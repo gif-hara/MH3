@@ -31,5 +31,10 @@ namespace MH3
             Rare,
             Legend,
         }
+
+        public enum RewardType
+        {
+            InstanceWeapon,
+        }
     }
 }
