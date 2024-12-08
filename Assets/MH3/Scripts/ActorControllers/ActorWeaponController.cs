@@ -18,6 +18,7 @@ namespace MH3
                     var (@this, actor) = t;
                     foreach (var weapon in @this.weapons)
                     {
+                        weapon.Dispose();
                         Object.Destroy(weapon.gameObject);
                     }
                     @this.weapons.Clear();
@@ -34,7 +35,7 @@ namespace MH3
                         weapon.transform.localPosition = Vector3.zero;
                         weapon.transform.localRotation = Quaternion.identity;
                         @this.weapons.Add(weapon);
-                        weapon.Setup(actor).Forget();
+                        weapon.Setup(actor);
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);

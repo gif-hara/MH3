@@ -23,7 +23,7 @@ namespace MH3
             actor.AttackController.Attack(target, impactPosition);
         }
 
-        public async UniTaskVoid Setup(Actor actor)
+        public void Setup(Actor actor)
         {
             this.actor = actor;
             gameObject.SetLayerRecursively(actor.GetAttackLayer());
@@ -35,9 +35,10 @@ namespace MH3
             {
                 trail.Trail.Emit = false;
             }
+        }
 
-            await UniTask.WaitUntilCanceled(destroyCancellationToken, completeImmediately: true);
-
+        public void Dispose()
+        {
             foreach (var collider in colliders)
             {
                 actor.AttackController.RemoveCollider(collider.Name);
