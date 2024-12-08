@@ -164,8 +164,8 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateHomeRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.gameObject.DestroySafe();
-                instanceWeaponView.gameObject.DestroySafe();
+                list.DestroySafe();
+                instanceWeaponView.DestroySafe();
             }
 
             void SetHeaderText(string text)
