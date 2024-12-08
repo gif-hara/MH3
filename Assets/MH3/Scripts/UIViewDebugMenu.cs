@@ -82,6 +82,16 @@ namespace MH3
                                     stateMachine.Change(StateCreateInstanceWeapon);
                                 });
                         },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "閉じる",
+                                _ =>
+                                {
+                                    debugMenuScope.Dispose();
+                                });
+                        },
                     },
                     0
                 );
