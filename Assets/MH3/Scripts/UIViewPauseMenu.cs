@@ -8,6 +8,7 @@ using MH3.ActorControllers;
 using R3;
 using TMPro;
 using UnityEngine;
+using UnitySequencerSystem;
 
 namespace MH3
 {
@@ -208,33 +209,63 @@ namespace MH3
                 );
             }
 
-            UniTask StateAddInstanceSkillCoreSelectSkillCore(CancellationToken scope)
+            async UniTask StateAddInstanceSkillCoreSelectSkillCore(CancellationToken scope)
             {
-                var selectInstanceSkillCoreViewScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
-                return UIViewSelectInstanceSkillCore.OpenAsync(
+                inputController.Actions.UI.Cancel
+                    .OnPerformedAsObservable()
+                    .Subscribe(_ =>
+                    {
+                        stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
+                    })
+                    .RegisterTo(scope);
+
+                var instanceSkillCoreView = UnityEngine.Object.Instantiate(instanceSkillCoreViewDocumentPrefab);
+                var instanceSkillCoreSequences = instanceSkillCoreView.Q<SequencesMonoBehaviour>("Sequences");
+                var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
-                    instanceSkillCoreViewDocumentPrefab,
-                    TinyServiceLocator.Resolve<UserData>().InstanceSkillCoreList.Where(x => !selectedInstanceWeapon.InstanceSkillCoreIds.Contains(x.InstanceId)),
-                    x =>
-                    {
-                        var userData = TinyServiceLocator.Resolve<UserData>();
-                        selectedInstanceWeapon.AddInstanceSkillCoreId(x.InstanceId);
-                        if (userData.EquippedInstanceWeaponId == selectedInstanceWeapon.InstanceId)
+                    TinyServiceLocator.Resolve<UserData>().InstanceSkillCoreList
+                        .OrderBy(x => selectedInstanceWeapon.InstanceSkillCoreIds.Contains(x.InstanceId) ? 0 : 1)
+                        .Select(x => new Action<HKUIDocument>(document =>
                         {
-                            actor.SpecController.ChangeInstanceWeapon(selectedInstanceWeapon, userData.InstanceSkillCoreList);
-                        }
-                        stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
-                        selectInstanceSkillCoreViewScope.Cancel();
-                        selectInstanceSkillCoreViewScope.Dispose();
-                    },
-                    _ =>
-                    {
-                        selectInstanceSkillCoreViewScope.Cancel();
-                        selectInstanceSkillCoreViewScope.Dispose();
-                        stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
-                    },
-                    selectInstanceSkillCoreViewScope.Token
+                            var header = selectedInstanceWeapon.InstanceSkillCoreIds.Contains(x.InstanceId)
+                                ? $"[E] {x.SkillCoreSpec.Name}"
+                                : x.SkillCoreSpec.Name;
+                            UIViewList.ApplyAsSimpleElement(document, header, _ =>
+                            {
+                                var userData = TinyServiceLocator.Resolve<UserData>();
+                                if (selectedInstanceWeapon.InstanceSkillCoreIds.Contains(x.InstanceId))
+                                {
+                                    selectedInstanceWeapon.RemoveInstanceSkillCoreId(x.InstanceId);
+                                }
+                                else
+                                {
+                                    if (selectedInstanceWeapon.GetUsingSlotCount(userData.InstanceSkillCoreList) + x.Slot > selectedInstanceWeapon.SkillSlot)
+                                    {
+                                        TinyServiceLocator.Resolve<UIViewNotificationCenter>().BeginOneShotAsync("スキルスロットが足りません").Forget();
+                                        return;
+                                    }
+                                    selectedInstanceWeapon.AddInstanceSkillCoreId(x.InstanceId);
+                                }
+                                if (userData.EquippedInstanceWeaponId == selectedInstanceWeapon.InstanceId)
+                                {
+                                    actor.SpecController.ChangeInstanceWeapon(selectedInstanceWeapon, userData.InstanceSkillCoreList);
+                                }
+                                stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
+                            },
+                            _ =>
+                            {
+                                var container = new Container();
+                                container.Register("InstanceSkillCore", x);
+                                instanceSkillCoreSequences.PlayAsync(container, scope).Forget();
+                            });
+                        })),
+                    0
                 );
+
+                await UniTask.WaitUntilCanceled(scope);
+
+                instanceSkillCoreView.DestroySafe();
+                list.DestroySafe();
             }
 
             void SetHeaderText(string text)

@@ -17,7 +17,6 @@ namespace MH3
             HKUIDocument instanceSkillCoreViewDocumentPrefab,
             IEnumerable<InstanceSkillCore> instanceSkillCores,
             Action<InstanceSkillCore> onClickAction,
-            Action<CallbackContext> onCancelAction,
             CancellationToken scope
             )
         {
@@ -43,10 +42,6 @@ namespace MH3
                     })),
                 0
             );
-            inputController.Actions.UI.Cancel
-                .OnPerformedAsObservable()
-                .Subscribe(onCancelAction)
-                .RegisterTo(scope);
             scope.RegisterWithoutCaptureExecutionContext(() =>
             {
                 instanceSkillCoreView.DestroySafe();

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using HK;
 using UnityEngine;
 
@@ -44,6 +45,8 @@ namespace MH3
         private List<int> instanceSkillCoreIds = new();
         public List<int> InstanceSkillCoreIds => instanceSkillCoreIds;
 
+        public int GetUsingSlotCount(List<InstanceSkillCore> instanceSkillCores) => instanceSkillCoreIds.Sum(x => instanceSkillCores.Find(y => y.InstanceId == x).Slot);
+
         public MasterData.WeaponSpec WeaponSpec => TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponId);
 
         public InstanceWeapon(
@@ -70,6 +73,11 @@ namespace MH3
         public void AddInstanceSkillCoreId(int instanceSkillCoreId)
         {
             instanceSkillCoreIds.Add(instanceSkillCoreId);
+        }
+
+        public void RemoveInstanceSkillCoreId(int instanceSkillCoreId)
+        {
+            instanceSkillCoreIds.Remove(instanceSkillCoreId);
         }
     }
 }
