@@ -157,6 +157,8 @@ namespace MH3
                     instanceWeaponViewDocumentPrefab,
                     x =>
                     {
+                        var userData = TinyServiceLocator.Resolve<UserData>();
+                        userData.EquippedInstanceWeaponId = x.InstanceId;
                         actor.SpecController.ChangeInstanceWeapon(x, TinyServiceLocator.Resolve<UserData>().InstanceSkillCoreList);
                         selectInstanceWeaponViewScope.Cancel();
                         selectInstanceWeaponViewScope.Dispose();
@@ -204,7 +206,12 @@ namespace MH3
                     instanceSkillCoreViewDocumentPrefab,
                     x =>
                     {
+                        var userData = TinyServiceLocator.Resolve<UserData>();
                         selectedInstanceWeapon.AddInstanceSkillCoreId(x.InstanceId);
+                        if (userData.EquippedInstanceWeaponId == selectedInstanceWeapon.InstanceId)
+                        {
+                            actor.SpecController.ChangeInstanceWeapon(selectedInstanceWeapon, userData.InstanceSkillCoreList);
+                        }
                         stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
                         selectInstanceSkillCoreViewScope.Cancel();
                         selectInstanceSkillCoreViewScope.Dispose();

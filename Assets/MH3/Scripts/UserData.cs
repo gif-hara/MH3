@@ -21,6 +21,10 @@ namespace MH3
         [SerializeField]
         private int createdInstanceSkillCoreCount;
 
+        [SerializeField]
+        private int equippedInstanceWeaponId;
+        public int EquippedInstanceWeaponId { get => equippedInstanceWeaponId; set => equippedInstanceWeaponId = value; }
+
         public void AddInstanceWeaponData(InstanceWeapon instanceWeaponData)
         {
             instanceWeaponDataList.Add(instanceWeaponData);
