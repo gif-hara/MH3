@@ -1,4 +1,4 @@
-namespace MH3
+namespace MH3.SkillSystems
 {
     public interface ISkill
     {

@@ -1,14 +1,13 @@
-namespace MH3
+namespace MH3.SkillSystems
 {
     public abstract class Skill : ISkill
     {
-        public Define.SkillType SkillType { get; }
+        public abstract Define.SkillType SkillType { get; }
 
         public int Level { get; private set; }
 
-        public Skill(Define.SkillType skillType, int level)
+        public Skill(int level)
         {
-            SkillType = skillType;
             Level = level;
         }
 
