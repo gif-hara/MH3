@@ -211,14 +211,6 @@ namespace MH3
 
             async UniTask StateAddInstanceSkillCoreSelectSkillCore(CancellationToken scope)
             {
-                inputController.Actions.UI.Cancel
-                    .OnPerformedAsObservable()
-                    .Subscribe(_ =>
-                    {
-                        stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
-                    })
-                    .RegisterTo(scope);
-
                 var instanceSkillCoreView = UnityEngine.Object.Instantiate(instanceSkillCoreViewDocumentPrefab);
                 var instanceSkillCoreSequences = instanceSkillCoreView.Q<SequencesMonoBehaviour>("Sequences");
                 var list = UIViewList.CreateWithPages(
@@ -261,6 +253,13 @@ namespace MH3
                         })),
                     0
                 );
+                inputController.Actions.UI.Cancel
+                    .OnPerformedAsObservable()
+                    .Subscribe(_ =>
+                    {
+                        stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
+                    })
+                    .RegisterTo(scope);
 
                 await UniTask.WaitUntilCanceled(scope);
 
