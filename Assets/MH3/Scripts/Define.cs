@@ -39,8 +39,8 @@ namespace MH3
 
         public enum SkillType
         {
-            Attack,
-            Critical,
+            AttackUp,
+            CriticalUp,
         }
     }
 }
