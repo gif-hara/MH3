@@ -83,7 +83,7 @@ namespace MH3.ActorControllers
 
         public ReadOnlyReactiveProperty<int> AttackInstanceWeapon => attackInstanceWeapon;
 
-        public int AttackTotal => attack.Value + attackInstanceWeapon.Value;
+        public int AttackTotal => attack.Value + attackInstanceWeapon.Value + skills.Sum(x => x.GetAttack());
 
         public float CriticalTotal => criticalInstanceWeapon.Value;
 
