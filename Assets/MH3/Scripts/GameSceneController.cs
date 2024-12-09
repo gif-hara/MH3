@@ -57,6 +57,9 @@ namespace MH3
         [SerializeField]
         private HKUIDocument instanceSkillCoreViewDocumentPrefab;
 
+        [SerializeField]
+        private HKUIDocument notificationCenterDocumentPrefab;
+
         private Actor player;
 
         private Actor enemy;
@@ -81,6 +84,7 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(gameRules, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(Instantiate(audioManagerPrefab), destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(Instantiate(effectManagerPrefab), destroyCancellationToken).Forget();
+            TinyServiceLocator.RegisterAsync(new UIViewNotificationCenter(notificationCenterDocumentPrefab, destroyCancellationToken), destroyCancellationToken).Forget();
             gameCameraController = Instantiate(gameCameraControllerPrefab);
             TinyServiceLocator.RegisterAsync(gameCameraController, destroyCancellationToken).Forget();
             var userData = new UserData();
