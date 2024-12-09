@@ -456,6 +456,10 @@ namespace MH3
 
             public int Slot;
 
+            public string ColorCode;
+
+            public Color Color => ColorUtility.TryParseHtmlString(ColorCode, out var color) ? color : Color.white;
+
             public List<SkillCoreCount> GetSkillCoreCounts()
             {
                 return TinyServiceLocator.Resolve<MasterData>().SkillCoreCounts.Get(Id);
