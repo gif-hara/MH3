@@ -213,7 +213,7 @@ namespace MH3
                         selectInstanceSkillCoreViewScope.Dispose();
                         stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
                     },
-                    scope
+                    selectInstanceSkillCoreViewScope.Token
                 );
             }
 
