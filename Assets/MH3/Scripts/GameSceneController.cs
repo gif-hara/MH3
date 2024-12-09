@@ -54,6 +54,9 @@ namespace MH3
         [SerializeField]
         private HKUIDocument instanceWeaponViewDocumentPrefab;
 
+        [SerializeField]
+        private HKUIDocument instanceSkillCoreViewDocumentPrefab;
+
         private Actor player;
 
         private Actor enemy;
@@ -100,6 +103,7 @@ namespace MH3
                         headerDocumentPrefab,
                         listDocumentPrefab,
                         instanceWeaponViewDocumentPrefab,
+                        instanceSkillCoreViewDocumentPrefab,
                         player,
                         this,
                         currentQuestSpec.Id == homeQuestSpecId,

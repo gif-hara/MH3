@@ -17,6 +17,7 @@ namespace MH3
             HKUIDocument headerDocumentPrefab,
             HKUIDocument listDocumentPrefab,
             HKUIDocument instanceWeaponViewDocumentPrefab,
+            HKUIDocument instanceSkillCoreViewDocumentPrefab,
             Actor actor,
             GameSceneController gameSceneController,
             bool isHome,
@@ -200,6 +201,7 @@ namespace MH3
                 var selectInstanceSkillCoreViewScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
                 return UIViewSelectInstanceSkillCore.OpenAsync(
                     listDocumentPrefab,
+                    instanceSkillCoreViewDocumentPrefab,
                     x =>
                     {
                         selectedInstanceWeapon.AddInstanceSkillCoreId(x.InstanceId);

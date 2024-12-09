@@ -4,6 +4,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using R3;
+using UnitySequencerSystem;
 using static UnityEngine.InputSystem.InputAction;
 
 namespace MH3
@@ -12,6 +13,7 @@ namespace MH3
     {
         public static UniTask OpenAsync(
             HKUIDocument listDocumentPrefab,
+            HKUIDocument instanceSkillCoreViewDocumentPrefab,
             Action<InstanceSkillCore> onClickAction,
             Action<CallbackContext> onCancelAction,
             CancellationToken scope
@@ -19,6 +21,8 @@ namespace MH3
         {
             var inputController = TinyServiceLocator.Resolve<InputController>();
             inputController.PushActionType(InputController.InputActionType.UI);
+            var instanceSkillCoreView = UnityEngine.Object.Instantiate(instanceSkillCoreViewDocumentPrefab);
+            var instanceSkillCoreSequences = instanceSkillCoreView.Q<SequencesMonoBehaviour>("Sequences");
             var list = UIViewList.CreateWithPages(
                 listDocumentPrefab,
                 TinyServiceLocator.Resolve<UserData>().InstanceSkillCoreList
@@ -30,6 +34,9 @@ namespace MH3
                         },
                         _ =>
                         {
+                            var container = new Container();
+                            container.Register("InstanceSkillCore", x);
+                            instanceSkillCoreSequences.PlayAsync(container, scope).Forget();
                         });
                     })),
                 0
@@ -40,6 +47,7 @@ namespace MH3
                 .RegisterTo(scope);
             scope.RegisterWithoutCaptureExecutionContext(() =>
             {
+                instanceSkillCoreView.DestroySafe();
                 list.DestroySafe();
                 inputController.PopActionType();
             });
