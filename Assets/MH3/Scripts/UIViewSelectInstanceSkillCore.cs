@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace MH3
         public static UniTask OpenAsync(
             HKUIDocument listDocumentPrefab,
             HKUIDocument instanceSkillCoreViewDocumentPrefab,
+            IEnumerable<InstanceSkillCore> instanceSkillCores,
             Action<InstanceSkillCore> onClickAction,
             Action<CallbackContext> onCancelAction,
             CancellationToken scope
@@ -25,7 +27,7 @@ namespace MH3
             var instanceSkillCoreSequences = instanceSkillCoreView.Q<SequencesMonoBehaviour>("Sequences");
             var list = UIViewList.CreateWithPages(
                 listDocumentPrefab,
-                TinyServiceLocator.Resolve<UserData>().InstanceSkillCoreList
+                instanceSkillCores
                     .Select(x => new Action<HKUIDocument>(document =>
                     {
                         UIViewList.ApplyAsSimpleElement(document, x.SkillCoreSpec.Name, _ =>

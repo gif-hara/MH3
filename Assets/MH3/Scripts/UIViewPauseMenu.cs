@@ -214,6 +214,7 @@ namespace MH3
                 return UIViewSelectInstanceSkillCore.OpenAsync(
                     listDocumentPrefab,
                     instanceSkillCoreViewDocumentPrefab,
+                    TinyServiceLocator.Resolve<UserData>().InstanceSkillCoreList.Where(x => !selectedInstanceWeapon.InstanceSkillCoreIds.Contains(x.InstanceId)),
                     x =>
                     {
                         var userData = TinyServiceLocator.Resolve<UserData>();
