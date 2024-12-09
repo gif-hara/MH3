@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using UnityEngine;
+using UnityEngine.UI;
 using UnitySequencerSystem;
 
 namespace MH3
@@ -29,7 +30,8 @@ namespace MH3
             }
             for (var i = 0; i < instanceSkillCore.Slot; i++)
             {
-                UnityEngine.Object.Instantiate(skillSlotDocumentPrefab, parent);
+                var skillSlotDocument = UnityEngine.Object.Instantiate(skillSlotDocumentPrefab, parent);
+                skillSlotDocument.Q<Image>("Image").color = instanceSkillCore.SkillCoreSpec.Color;
             }
             return UniTask.CompletedTask;
         }

@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using UnityEngine;
+using UnityEngine.UI;
 using UnitySequencerSystem;
 
 namespace MH3
@@ -27,7 +28,19 @@ namespace MH3
                 var child = parent.GetChild(i);
                 UnityEngine.Object.Destroy(child.gameObject);
             }
-            for (var i = 0; i < instanceWeaponData.SkillSlot; i++)
+            var userData = TinyServiceLocator.Resolve<UserData>();
+            var slotCount = 0;
+            foreach (var i in instanceWeaponData.InstanceSkillCoreIds)
+            {
+                var instanceSkillCore = userData.InstanceSkillCoreList.Find(x => x.InstanceId == i);
+                for (var j = 0; j < instanceSkillCore.Slot; j++)
+                {
+                    var skillSlotDocument = UnityEngine.Object.Instantiate(skillSlotDocumentPrefab, parent);
+                    skillSlotDocument.Q<Image>("Image").color = instanceSkillCore.SkillCoreSpec.Color;
+                }
+                slotCount += instanceSkillCore.Slot;
+            }
+            for (var i = slotCount; i < instanceWeaponData.SkillSlot; i++)
             {
                 UnityEngine.Object.Instantiate(skillSlotDocumentPrefab, parent);
             }
