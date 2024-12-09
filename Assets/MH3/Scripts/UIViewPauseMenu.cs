@@ -157,7 +157,7 @@ namespace MH3
                     instanceWeaponViewDocumentPrefab,
                     x =>
                     {
-                        actor.SpecController.ChangeInstanceWeapon(x);
+                        actor.SpecController.ChangeInstanceWeapon(x, TinyServiceLocator.Resolve<UserData>().InstanceSkillCoreList);
                         selectInstanceWeaponViewScope.Cancel();
                         selectInstanceWeaponViewScope.Dispose();
                         stateMachine.Change(StateHomeRoot);

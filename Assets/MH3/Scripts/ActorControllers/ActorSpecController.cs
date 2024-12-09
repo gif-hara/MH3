@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using HK;
 using LitMotion;
 using LitMotion.Extensions;
+using MH3.SkillSystems;
 using R3;
 using UnityEngine;
 using UnitySequencerSystem;
@@ -115,12 +117,16 @@ namespace MH3.ActorControllers
 
         public Observable<Unit> OnDead => onDead;
 
-        public void ChangeInstanceWeapon(InstanceWeapon instanceWeaponData)
+        public void ChangeInstanceWeapon(InstanceWeapon instanceWeaponData, List<InstanceSkillCore> instanceSkillCores)
         {
             attackInstanceWeapon.Value = instanceWeaponData.Attack;
             criticalInstanceWeapon.Value = instanceWeaponData.Critical;
             weaponId.Value = instanceWeaponData.WeaponId;
-
+            var instanceSkills = instanceWeaponData.InstanceSkillCoreIds
+                .Select(x => instanceSkillCores.Find(y => y.InstanceId == x))
+                .SelectMany(x => x.Skills);
+            skills.Clear();
+            skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
         }
 
         public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)

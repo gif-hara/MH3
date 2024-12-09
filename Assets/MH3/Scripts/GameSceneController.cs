@@ -90,7 +90,7 @@ namespace MH3
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
             var initialInstanceWeapon = InstanceWeaponFactory.Create(userData, initialWeaponId);
             userData.AddInstanceWeaponData(initialInstanceWeapon);
-            player.SpecController.ChangeInstanceWeapon(initialInstanceWeapon);
+            player.SpecController.ChangeInstanceWeapon(initialInstanceWeapon, userData.InstanceSkillCoreList);
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);
