@@ -158,6 +158,11 @@ namespace MH3
                     x =>
                     {
                         var userData = TinyServiceLocator.Resolve<UserData>();
+                        if (userData.EquippedInstanceWeaponId == x.InstanceId)
+                        {
+                            TinyServiceLocator.Resolve<UIViewNotificationCenter>().BeginOneShotAsync("既に装備しています").Forget();
+                            return;
+                        }
                         userData.EquippedInstanceWeaponId = x.InstanceId;
                         actor.SpecController.ChangeInstanceWeapon(x, TinyServiceLocator.Resolve<UserData>().InstanceSkillCoreList);
                         selectInstanceWeaponViewScope.Cancel();
@@ -183,6 +188,11 @@ namespace MH3
                     instanceWeaponViewDocumentPrefab,
                     x =>
                     {
+                        if (x.SkillSlot <= 0)
+                        {
+                            TinyServiceLocator.Resolve<UIViewNotificationCenter>().BeginOneShotAsync("スキルスロットがありません").Forget();
+                            return;
+                        }
                         selectedInstanceWeapon = x;
                         stateMachine.Change(StateAddInstanceSkillCoreSelectSkillCore);
                         selectInstanceWeaponViewScope.Cancel();
