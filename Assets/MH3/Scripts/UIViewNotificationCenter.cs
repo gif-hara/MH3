@@ -23,7 +23,13 @@ namespace MH3
         public UniTask BeginOneShotAsync(string message)
         {
             document.Q<TMP_Text>("Message").text = message;
-            return document.Q<SimpleAnimation>("Animation").PlayAsync("Default", document.destroyCancellationToken);
+            var animation = document.Q<SimpleAnimation>("Animation");
+            const string animationName = "Default";
+            if (animation.IsPlaying(animationName))
+            {
+                animation.Stop(animationName);
+            }
+            return animation.PlayAsync(animationName, document.destroyCancellationToken);
         }
     }
 }
