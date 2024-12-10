@@ -219,6 +219,13 @@ namespace MH3.ActorControllers
                     onFlinch.OnNext(Unit.Default);
                 }
 
+                if (attacker.SpecController.ActorType == Define.ActorType.Player && attackSpec.HitAdditionalSequencesPlayer != null)
+                {
+                    var container = new Container();
+                    var sequencer = new Sequencer(container, attackSpec.HitAdditionalSequencesPlayer.Sequences);
+                    sequencer.PlayAsync(actor.destroyCancellationToken).Forget();
+                }
+
                 if (guardResult == ActorGuardController.GuardResult.SuccessGuard)
                 {
                     actor.StateMachine.TryChangeState(spec.SuccessGuardSequences, force: true);
