@@ -67,10 +67,17 @@ namespace MH3
                 }
                 elements.Clear();
                 elementIndex = 0;
+                HKUIDocument firstElement = null;
+                HKUIDocument lastElement = null;
                 foreach (var action in elementActivateActions.Skip(pageIndex * elementCount).Take(elementCount))
                 {
                     var i = elementIndex;
                     var element = Object.Instantiate(listElementPrefab, listParent);
+                    if (firstElement == null)
+                    {
+                        firstElement = element;
+                    }
+                    lastElement = element;
                     elements.Add(element);
                     var button = element.Q<Button>("Button");
                     action(element);
@@ -110,6 +117,18 @@ namespace MH3
                         defaultSelectable = button;
                     }
                     elementIndex++;
+                }
+
+                if (firstElement != null && lastElement != null)
+                {
+                    var firstButton = firstElement.Q<Button>("Button");
+                    var lastButton = lastElement.Q<Button>("Button");
+                    var navigation = firstButton.navigation;
+                    navigation.selectOnUp = lastButton;
+                    firstButton.navigation = navigation;
+                    navigation = lastButton.navigation;
+                    navigation.selectOnDown = firstButton;
+                    lastButton.navigation = navigation;
                 }
                 UpdatePage(pageIndex);
             }
