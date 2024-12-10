@@ -89,6 +89,13 @@ namespace MH3
                         },
                         document =>
                         {
+                            UIViewList.ApplyAsSimpleElement(document, "スキルコア削除", _ =>
+                            {
+                                stateMachine.Change(StateRemoveInstanceSkillCore);
+                            });
+                        },
+                        document =>
+                        {
                             UIViewList.ApplyAsSimpleElement(document, "閉じる", _ => pauseMenuScope.Dispose());
                         },
                     },
@@ -217,7 +224,7 @@ namespace MH3
                                     var tempSelection = document.Q<Button>("Button");
                                     var dialogScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
                                     var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
-                                        "削除しますか？",
+                                        "本当に削除しますか？",
                                         new List<string> { "はい", "いいえ" },
                                         0,
                                         dialogScope.Token
@@ -276,6 +283,92 @@ namespace MH3
                     },
                     selectInstanceWeaponViewScope.Token
                 );
+            }
+
+            async UniTask StateRemoveInstanceSkillCore(CancellationToken scope)
+            {
+                SetHeaderText("スキルコア削除");
+                var userData = TinyServiceLocator.Resolve<UserData>();
+                var instanceSkillCoreView = UnityEngine.Object.Instantiate(instanceSkillCoreViewDocumentPrefab);
+                var instanceSkillCoreSequences = instanceSkillCoreView.Q<SequencesMonoBehaviour>("Sequences");
+                HKUIDocument list = null;
+                CreateList();
+                void CreateList()
+                {
+                    if (list != null)
+                    {
+                        list.DestroySafe();
+                    }
+                    list = UIViewList.CreateWithPages(
+                        listDocumentPrefab,
+                        userData.InstanceSkillCoreList
+                            .Select(x => new Action<HKUIDocument>(document =>
+                            {
+                                var header = x.SkillCoreSpec.Name;
+                                UIViewList.ApplyAsSimpleElement(document, header, async _ =>
+                                {
+                                    var tempSelection = document.Q<Button>("Button");
+                                    var dialogScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                    var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
+                                        "本当に削除しますか？",
+                                        new List<string> { "はい", "いいえ" },
+                                        0,
+                                        dialogScope.Token
+                                    );
+                                    dialogScope.Cancel();
+                                    dialogScope.Dispose();
+                                    if (result == 0)
+                                    {
+                                        if (userData.AnyAttachedSkillCore(x.InstanceId))
+                                        {
+                                            dialogScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                            result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
+                                                "武器に装着されてますが、本当に削除しますか？削除する場合、自動的に外れます",
+                                                new List<string> { "はい", "いいえ" },
+                                                0,
+                                                dialogScope.Token
+                                            );
+                                            if (result == 0)
+                                            {
+                                                userData.RemoveInstanceSkillCoreData(x);
+                                                CreateList();
+                                            }
+                                            else
+                                            {
+                                                tempSelection.Select();
+                                            }
+                                        }
+                                        else
+                                        {
+                                            userData.RemoveInstanceSkillCoreData(x);
+                                            CreateList();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        tempSelection.Select();
+                                    }
+                                },
+                                _ =>
+                                {
+                                    var container = new Container();
+                                    container.Register("InstanceSkillCore", x);
+                                    instanceSkillCoreSequences.PlayAsync(container, scope).Forget();
+                                });
+                            })),
+                        0
+                    );
+                }
+                inputController.Actions.UI.Cancel
+                    .OnPerformedAsObservable()
+                    .Subscribe(_ =>
+                    {
+                        stateMachine.Change(StateHomeRoot);
+                    })
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                instanceSkillCoreView.DestroySafe();
+                list.DestroySafe();
             }
 
             async UniTask StateAddInstanceSkillCoreSelectSkillCore(CancellationToken scope)
