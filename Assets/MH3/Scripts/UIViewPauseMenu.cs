@@ -8,6 +8,7 @@ using MH3.ActorControllers;
 using R3;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnitySequencerSystem;
 
 namespace MH3
@@ -77,6 +78,13 @@ namespace MH3
                             UIViewList.ApplyAsSimpleElement(document, "スキルコア装着", _ =>
                             {
                                 stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
+                            });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "武器削除", _ =>
+                            {
+                                stateMachine.Change(StateRemoveInstanceWeapon);
                             });
                         },
                         document =>
@@ -178,6 +186,67 @@ namespace MH3
                     },
                     selectInstanceWeaponViewScope.Token
                 );
+            }
+
+            async UniTask StateRemoveInstanceWeapon(CancellationToken scope)
+            {
+                SetHeaderText("武器削除");
+                var userData = TinyServiceLocator.Resolve<UserData>();
+                var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
+                var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
+                HKUIDocument list = null;
+                CreateList();
+                inputController.Actions.UI.Cancel
+                    .OnPerformedAsObservable()
+                    .Subscribe(_ => stateMachine.Change(StateHomeRoot))
+                    .RegisterTo(scope);
+                void CreateList()
+                {
+                    if (list != null)
+                    {
+                        list.DestroySafe();
+                    }
+                    list = UIViewList.CreateWithPages(
+                        listDocumentPrefab,
+                        userData.InstanceWeaponDataList
+                            .Where(x => x.InstanceId != userData.EquippedInstanceWeaponId)
+                            .Select(x => new Action<HKUIDocument>(document =>
+                            {
+                                UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.Name, async _ =>
+                                {
+                                    var tempSelection = document.Q<Button>("Button");
+                                    var dialogScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                    var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
+                                        "削除しますか？",
+                                        new List<string> { "はい", "いいえ" },
+                                        0,
+                                        dialogScope.Token
+                                    );
+                                    if (result == 0)
+                                    {
+                                        userData.RemoveInstanceWeaponData(x);
+                                        CreateList();
+                                    }
+                                    else
+                                    {
+                                        tempSelection.Select();
+                                    }
+                                    dialogScope.Cancel();
+                                    dialogScope.Dispose();
+                                },
+                                _ =>
+                                {
+                                    var container = new Container();
+                                    container.Register("InstanceWeaponData", x);
+                                    instanceWeaponSequences.PlayAsync(container, scope).Forget();
+                                });
+                            })),
+                        0
+                    );
+                }
+                await UniTask.WaitUntilCanceled(scope);
+                list.DestroySafe();
+                instanceWeaponView.DestroySafe();
             }
 
             UniTask StateAddInstanceSkillCoreSelectInstanceWeapon(CancellationToken scope)
