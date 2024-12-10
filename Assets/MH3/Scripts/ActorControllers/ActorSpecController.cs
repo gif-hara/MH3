@@ -229,6 +229,14 @@ namespace MH3.ActorControllers
 
         public bool CanPlayFlinch()
         {
+#if DEBUG
+            var debugData = TinyServiceLocator.Resolve<GameDebugData>();
+            if (ActorType == Define.ActorType.Player && debugData.ForceFlinchSmallPlayer
+            || ActorType == Define.ActorType.Enemy && debugData.ForceFlinchSmallEnemy)
+            {
+                return true;
+            }
+#endif
             return flinch.Value >= spec.FlinchThreshold;
         }
 

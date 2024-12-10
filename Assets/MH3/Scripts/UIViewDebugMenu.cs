@@ -185,6 +185,28 @@ namespace MH3
                                     Debug.Log($"Enemy HitPoint: {enemy.SpecController.HitPoint.CurrentValue}");
                                 });
                         },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "強制怯み.プレイヤー",
+                                _ =>
+                                {
+                                    debugData.ForceFlinchSmallPlayer = !debugData.ForceFlinchSmallPlayer;
+                                    Debug.Log($"ForceFlinchSmallPlayer: {debugData.ForceFlinchSmallPlayer}");
+                                });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "強制怯み.エネミー",
+                                _ =>
+                                {
+                                    debugData.ForceFlinchSmallEnemy = !debugData.ForceFlinchSmallEnemy;
+                                    Debug.Log($"ForceFlinchSmallEnemy: {debugData.ForceFlinchSmallEnemy}");
+                                });
+                        },
                     },
                     0
                 );
