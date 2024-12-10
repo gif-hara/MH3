@@ -134,6 +134,10 @@ namespace MH3
                 questSpec.QuestClearSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/QuestClearSequences/{questSpec.QuestClearSequencesKey}.asset");
                 questSpec.QuestFailedSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/QuestFailedSequences/{questSpec.QuestFailedSequencesKey}.asset");
             }
+            foreach (var attackSpec in attackSpecs.List)
+            {
+                attackSpec.HitAdditionalSequencesPlayer = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/HitAdditionalSequences/{attackSpec.HitAdditionalSequencesKeyPlayer}.asset");
+            }
             EditorUtility.SetDirty(this);
             AssetDatabase.SaveAssets();
             Debug.Log("End MasterData Update");
@@ -301,6 +305,10 @@ namespace MH3
             public string HitSfxKey;
 
             public string HitEffectKey;
+
+            public string HitAdditionalSequencesKeyPlayer;
+
+            public ScriptableSequences HitAdditionalSequencesPlayer;
 
             [Serializable]
             public class DictionaryList : DictionaryList<string, AttackSpec>

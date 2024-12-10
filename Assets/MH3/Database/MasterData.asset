@@ -125,6 +125,8 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.2
       Power: 10
       FlinchDamage: 10
@@ -142,6 +144,8 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.3
       Power: 10
       FlinchDamage: 10
@@ -159,6 +163,8 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Strong.1
       Power: 50
       FlinchDamage: 10
@@ -176,6 +182,8 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.2
       HitEffectKey: Hit.1
+      HitAdditionalSequencesKeyPlayer: Hit.Strong.Player.1
+      HitAdditionalSequencesPlayer: {fileID: 11400000, guid: 1b746f36630a9df49a3ed10c2aa58aa4, type: 2}
     - Id: Sword.JustGuard.1
       Power: 20
       FlinchDamage: 50
@@ -193,6 +201,8 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Training.Basic.1
       Power: 0
       FlinchDamage: 10
@@ -210,6 +220,8 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
   actorSpecs:
     list:
     - Id: 10101
