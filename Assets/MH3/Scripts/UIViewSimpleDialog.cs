@@ -14,10 +14,9 @@ namespace MH3
     {
         private readonly HKUIDocument documentPrefab;
 
-        public UIViewSimpleDialog(HKUIDocument documentPrefab, CancellationToken scope)
+        public UIViewSimpleDialog(HKUIDocument documentPrefab)
         {
             this.documentPrefab = documentPrefab;
-            scope.RegisterWithoutCaptureExecutionContext(() => documentPrefab.DestroySafe());
         }
 
         public async UniTask<int> OpenAsync(
