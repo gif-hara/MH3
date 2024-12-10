@@ -67,19 +67,14 @@ namespace MH3
                 }
                 elements.Clear();
                 elementIndex = 0;
-                HKUIDocument firstElement = null;
-                HKUIDocument lastElement = null;
+                var buttons = new List<Button>();
                 foreach (var action in elementActivateActions.Skip(pageIndex * elementCount).Take(elementCount))
                 {
                     var i = elementIndex;
                     var element = Object.Instantiate(listElementPrefab, listParent);
-                    if (firstElement == null)
-                    {
-                        firstElement = element;
-                    }
-                    lastElement = element;
                     elements.Add(element);
                     var button = element.Q<Button>("Button");
+                    buttons.Add(button);
                     action(element);
                     button.OnSelectAsObservable()
                         .Subscribe(_ =>
@@ -118,17 +113,27 @@ namespace MH3
                     }
                     elementIndex++;
                 }
-
-                if (firstElement != null && lastElement != null)
+                for (var i = 0; i < buttons.Count; i++)
                 {
-                    var firstButton = firstElement.Q<Button>("Button");
-                    var lastButton = lastElement.Q<Button>("Button");
-                    var navigation = firstButton.navigation;
-                    navigation.selectOnUp = lastButton;
-                    firstButton.navigation = navigation;
-                    navigation = lastButton.navigation;
-                    navigation.selectOnDown = firstButton;
-                    lastButton.navigation = navigation;
+                    var navigation = buttons[i].navigation;
+                    navigation.mode = Navigation.Mode.Explicit;
+                    if (i + 1 > buttons.Count - 1)
+                    {
+                        navigation.selectOnDown = buttons[0];
+                    }
+                    else
+                    {
+                        navigation.selectOnDown = buttons[i + 1];
+                    }
+                    if (i - 1 < 0)
+                    {
+                        navigation.selectOnUp = buttons[buttons.Count - 1];
+                    }
+                    else
+                    {
+                        navigation.selectOnUp = buttons[i - 1];
+                    }
+                    buttons[i].navigation = navigation;
                 }
                 UpdatePage(pageIndex);
             }
