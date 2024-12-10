@@ -30,9 +30,19 @@ namespace MH3
             instanceWeaponDataList.Add(instanceWeaponData);
         }
 
+        public void RemoveInstanceWeaponData(InstanceWeapon instanceWeaponData)
+        {
+            instanceWeaponDataList.Remove(instanceWeaponData);
+        }
+
         public void AddInstanceSkillCoreData(InstanceSkillCore instanceSkillCore)
         {
             instanceSkillCoreList.Add(instanceSkillCore);
+        }
+
+        public void RemoveInstanceSkillCoreData(InstanceSkillCore instanceSkillCore)
+        {
+            instanceSkillCoreList.Remove(instanceSkillCore);
         }
 
         public int GetAndIncrementCreatedInstanceWeaponCount()
