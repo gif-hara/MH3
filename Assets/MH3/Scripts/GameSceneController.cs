@@ -60,6 +60,9 @@ namespace MH3
         [SerializeField]
         private HKUIDocument notificationCenterDocumentPrefab;
 
+        [SerializeField]
+        private HKUIDocument simpleDialogDocumentPrefab;
+
         private Actor player;
 
         private Actor enemy;
@@ -89,6 +92,7 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(gameCameraController, destroyCancellationToken).Forget();
             var userData = new UserData();
             TinyServiceLocator.RegisterAsync(userData, destroyCancellationToken).Forget();
+            TinyServiceLocator.RegisterAsync(new UIViewSimpleDialog(simpleDialogDocumentPrefab, destroyCancellationToken), destroyCancellationToken).Forget();
             var playerSpec = masterData.ActorSpecs.Get(playerActorSpecId);
             player = playerSpec.Spawn(Vector3.zero, Quaternion.identity);
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
