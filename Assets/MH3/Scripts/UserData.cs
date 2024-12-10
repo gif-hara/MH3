@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MH3
@@ -42,7 +43,16 @@ namespace MH3
 
         public void RemoveInstanceSkillCoreData(InstanceSkillCore instanceSkillCore)
         {
+            foreach (var instanceWeaponData in instanceWeaponDataList)
+            {
+                instanceWeaponData.InstanceSkillCoreIds.Remove(instanceSkillCore.InstanceId);
+            }
             instanceSkillCoreList.Remove(instanceSkillCore);
+        }
+
+        public bool AnyAttachedSkillCore(int instanceSkillCoreId)
+        {
+            return instanceWeaponDataList.Any(x => x.InstanceSkillCoreIds.Any(y => y == instanceSkillCoreId));
         }
 
         public int GetAndIncrementCreatedInstanceWeaponCount()
