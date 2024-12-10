@@ -35,6 +35,7 @@ namespace MH3
         public enum RewardType
         {
             InstanceWeapon,
+            InstanceSkillCore
         }
 
         public enum SkillType
