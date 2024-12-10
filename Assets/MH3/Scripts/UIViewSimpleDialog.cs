@@ -60,7 +60,7 @@ namespace MH3
             }
 
             var result = await UniTask.WhenAny(
-                buttons.Select((x, i) => x.OnClickAsync())
+                buttons.Select((x, i) => x.OnClickAsync(cancellationToken: scope))
             );
 
             document.DestroySafe();
