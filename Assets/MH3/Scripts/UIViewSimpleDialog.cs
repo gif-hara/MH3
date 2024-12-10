@@ -22,6 +22,7 @@ namespace MH3
         public async UniTask<int> OpenAsync(
             string message,
             IEnumerable<string> options,
+            int initialSelectionIndex,
             CancellationToken scope
             )
         {
@@ -32,7 +33,7 @@ namespace MH3
             var buttons = options.Select(x =>
             {
                 var element = Object.Instantiate(elementPrefab, listParent);
-                element.Q<TMP_Text>("Text").text = x;
+                element.Q<TMP_Text>("Header").text = x;
                 return element.Q<Button>("Button");
             })
             .ToList();
@@ -58,6 +59,7 @@ namespace MH3
                 }
                 buttons[i].navigation = navigation;
             }
+            buttons[initialSelectionIndex].Select();
 
             var result = await UniTask.WhenAny(
                 buttons.Select((x, i) => x.OnClickAsync(cancellationToken: scope))
