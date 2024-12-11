@@ -15,6 +15,10 @@ namespace MH3
         public CinemachineCameraElement.DictionaryList CinemachineCameras => cinemachineCameras;
 
         [SerializeField]
+        private ImpulseSourceElement.DictionaryList impulseSources;
+        public ImpulseSourceElement.DictionaryList ImpulseSources => impulseSources;
+
+        [SerializeField]
         private Camera controlledCamera;
         public Camera ControlledCamera => controlledCamera;
 
@@ -28,6 +32,15 @@ namespace MH3
             defaultCinemachineCamera.Target.LookAtTarget = lookAt;
         }
 
+        public void BeginImpulseSource(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                return;
+            }
+            impulseSources.Get(name).ImpulseSource.GenerateImpulse();
+        }
+
         [Serializable]
         public class CinemachineCameraElement
         {
@@ -39,6 +52,22 @@ namespace MH3
             public class DictionaryList : DictionaryList<string, CinemachineCameraElement>
             {
                 public DictionaryList() : base(x => x.cinemachineCamera.name)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class ImpulseSourceElement
+        {
+            [SerializeField]
+            private CinemachineImpulseSource impulseSource;
+            public CinemachineImpulseSource ImpulseSource => impulseSource;
+
+            [Serializable]
+            public class DictionaryList : DictionaryList<string, ImpulseSourceElement>
+            {
+                public DictionaryList() : base(x => x.impulseSource.name)
                 {
                 }
             }
