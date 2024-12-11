@@ -183,6 +183,8 @@ namespace MH3.ActorControllers
                 var hitEffect = TinyServiceLocator.Resolve<EffectManager>().Rent(attackSpec.HitEffectKey);
                 hitEffect.transform.position = impactPosition;
 
+                TinyServiceLocator.Resolve<GameCameraController>().BeginImpulseSource(attackSpec.HitCameraImpulseSourceKey);
+
                 if (hitPoint.Value <= 0)
                 {
                     return;
