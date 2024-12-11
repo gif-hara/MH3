@@ -306,6 +306,8 @@ namespace MH3
 
             public string HitEffectKey;
 
+            public string HitCameraImpulseSourceKey;
+
             public string HitAdditionalSequencesKeyPlayer;
 
             public ScriptableSequences HitAdditionalSequencesPlayer;
