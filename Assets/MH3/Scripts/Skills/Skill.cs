@@ -8,7 +8,9 @@ namespace MH3.SkillSystems
     {
         public int Level { get; private set; }
 
-        private readonly Dictionary<Define.ActorParameterType, Func<Actor, Actor, float>> parameterSelectors = new();
+        private readonly Dictionary<Define.ActorParameterType, Func<Actor, float>> parameterOwnerOnlySelectors = new();
+
+        private readonly Dictionary<Define.ActorParameterType, Func<Actor, Actor, float>> parameterOwnerTargetSelectors = new();
 
         public Skill(int level)
         {
@@ -17,7 +19,7 @@ namespace MH3.SkillSystems
 
         public float GetParameter(Define.ActorParameterType type, Actor owner, Actor target)
         {
-            return parameterSelectors[type](owner, target);
+            return parameterOwnerTargetSelectors[type](owner, target);
         }
 
         public int GetParameterInt(Define.ActorParameterType type, Actor owner, Actor target)
@@ -25,9 +27,25 @@ namespace MH3.SkillSystems
             return (int)GetParameter(type, owner, target);
         }
 
+        public float GetParameter(Define.ActorParameterType type, Actor owner)
+        {
+            return parameterOwnerOnlySelectors[type](owner);
+        }
+
+        public int GetParameterInt(Define.ActorParameterType type, Actor owner)
+        {
+            return (int)GetParameter(type, owner);
+        }
+
         public ISkill RegisterParameterSelector(Define.ActorParameterType type, Func<Actor, Actor, float> selector)
         {
-            parameterSelectors[type] = selector;
+            parameterOwnerTargetSelectors[type] = selector;
+            return this;
+        }
+
+        public ISkill RegisterParameterSelector(Define.ActorParameterType type, Func<Actor, float> selector)
+        {
+            parameterOwnerOnlySelectors[type] = selector;
             return this;
         }
     }

@@ -22,7 +22,7 @@ namespace MH3.SkillSystems
             return skillType switch
             {
                 Define.SkillType.AttackUp => new Skill(level)
-                    .RegisterParameterSelector(Define.ActorParameterType.Attack, (_, _) => TinyServiceLocator.Resolve<MasterData>().SkillAttackUp.Get(level).Value),
+                    .RegisterParameterSelector(Define.ActorParameterType.Attack, (_) => TinyServiceLocator.Resolve<MasterData>().SkillAttackUp.Get(level).Value),
                 _ => throw new System.NotImplementedException($"SkillType {skillType} is not implemented."),
             };
         }
