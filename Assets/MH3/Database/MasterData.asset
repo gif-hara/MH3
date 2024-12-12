@@ -145,7 +145,7 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
-      HitCameraImpulseSourceKey: 
+      HitCameraImpulseSourceKey: Small
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.3
@@ -165,7 +165,7 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
-      HitCameraImpulseSourceKey: 
+      HitCameraImpulseSourceKey: Small
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Strong.1
@@ -185,7 +185,7 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.2
       HitEffectKey: Hit.1
-      HitCameraImpulseSourceKey: 
+      HitCameraImpulseSourceKey: Small
       HitAdditionalSequencesKeyPlayer: Hit.Strong.Player.1
       HitAdditionalSequencesPlayer: {fileID: 11400000, guid: 1b746f36630a9df49a3ed10c2aa58aa4, type: 2}
     - Id: Sword.JustGuard.1
@@ -205,7 +205,7 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
-      HitCameraImpulseSourceKey: 
+      HitCameraImpulseSourceKey: Small
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Training.Basic.1
@@ -225,7 +225,7 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
-      HitCameraImpulseSourceKey: 
+      HitCameraImpulseSourceKey: Small
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
   actorSpecs:
@@ -376,3 +376,67 @@ MonoBehaviour:
         Level: 1
         RareType: 0
         Weight: 100
+  skillAttackUp:
+    list:
+    - Level: 0
+      Value: 0
+    - Level: 1
+      Value: 4
+    - Level: 2
+      Value: 8
+    - Level: 3
+      Value: 12
+    - Level: 4
+      Value: 16
+    - Level: 5
+      Value: 20
+    - Level: 6
+      Value: 24
+    - Level: 7
+      Value: 28
+    - Level: 8
+      Value: 32
+    - Level: 9
+      Value: 36
+    - Level: 10
+      Value: 40
+    - Level: 11
+      Value: 44
+    - Level: 12
+      Value: 48
+    - Level: 13
+      Value: 52
+    - Level: 14
+      Value: 56
+    - Level: 15
+      Value: 60
+    - Level: 16
+      Value: 64
+    - Level: 17
+      Value: 68
+    - Level: 18
+      Value: 72
+    - Level: 19
+      Value: 76
+    - Level: 20
+      Value: 80
+    - Level: 21
+      Value: 84
+    - Level: 22
+      Value: 88
+    - Level: 23
+      Value: 92
+    - Level: 24
+      Value: 96
+    - Level: 25
+      Value: 100
+    - Level: 26
+      Value: 104
+    - Level: 27
+      Value: 108
+    - Level: 28
+      Value: 112
+    - Level: 29
+      Value: 116
+    - Level: 30
+      Value: 120

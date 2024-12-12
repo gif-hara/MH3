@@ -65,6 +65,10 @@ namespace MH3
         private SkillCoreEffect.Group skillCoreEffects;
         public SkillCoreEffect.Group SkillCoreEffects => skillCoreEffects;
 
+        [SerializeField]
+        private SkillLevelValue.DictionaryList skillAttackUp;
+        public SkillLevelValue.DictionaryList SkillAttackUp => skillAttackUp;
+
 #if UNITY_EDITOR
         [ContextMenu("Update")]
         private async void UpdateMasterData()
@@ -94,6 +98,7 @@ namespace MH3
                 "SkillCoreCount",
                 "SkillCoreEffect",
                 "WeaponSkillSlot",
+                "Skill.AttackUp",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -110,6 +115,7 @@ namespace MH3
             skillCoreCounts.Set(JsonHelper.FromJson<SkillCoreCount>(database[9]));
             skillCoreEffects.Set(JsonHelper.FromJson<SkillCoreEffect>(database[10]));
             weaponSkillSlots.Set(JsonHelper.FromJson<WeaponSkillSlot>(database[11]));
+            skillAttackUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[12]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -526,6 +532,22 @@ namespace MH3
             public class Group : Group<int, SkillCoreEffect>
             {
                 public Group() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class SkillLevelValue
+        {
+            public int Level;
+
+            public float Value;
+
+            [Serializable]
+            public class DictionaryList : DictionaryList<int, SkillLevelValue>
+            {
+                public DictionaryList() : base(x => x.Level)
                 {
                 }
             }
