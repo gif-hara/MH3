@@ -22,5 +22,15 @@ namespace MH3
                     return false;
             }
         }
+
+        public static string GetName(this Define.SkillType self)
+        {
+            return self switch
+            {
+                Define.SkillType.AttackUp => "攻撃力アップ",
+                Define.SkillType.CriticalUp => "会心率アップ",
+                _ => throw new System.NotImplementedException($"未対応のスキルタイプです {self}"),
+            };
+        }
     }
 }
