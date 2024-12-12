@@ -29,8 +29,9 @@ MonoBehaviour:
   - rid: 1481063336882209022
   - rid: 1481063336882209032
   - rid: 1481063203388522584
-  - rid: 1481063203388522585
   - rid: 1481063233791983732
+  - rid: 1481063336882209051
+  - rid: 1481063203388522585
   references:
     version: 2
     RefIds:
@@ -197,3 +198,9 @@ MonoBehaviour:
       type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: Medium
+    - rid: 1481063336882209051
+      type: {class: OpenUIViewAcquireRewardAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        documentPrefab: {fileID: 6562501259230542608, guid: e7c99a2dc020b334bbc37f1ea3aa9042, type: 3}
+        instanceWeaponsKey: AcquireInstanceWeapons
+        instanceSkillCoresKey: AcquireInstanceSkillCores
