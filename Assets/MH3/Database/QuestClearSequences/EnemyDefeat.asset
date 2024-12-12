@@ -14,6 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequences:
   - rid: 1481063203388522578
+  - rid: 1481063336882209037
+  - rid: 1481063336882209010
+  - rid: 1481063336882209016
+  - rid: 1481063336882209044
+  - rid: 1481063336882209022
+  - rid: 1481063336882209023
+  - rid: 1481063336882209019
+  - rid: 1481063336882209044
+  - rid: 1481063336882209022
+  - rid: 1481063336882209026
+  - rid: 1481063336882209029
+  - rid: 1481063336882209044
+  - rid: 1481063336882209022
+  - rid: 1481063336882209032
   - rid: 1481063203388522584
   - rid: 1481063203388522585
   - rid: 1481063233791983732
@@ -46,3 +60,140 @@ MonoBehaviour:
       type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         name: QuestSpecId
+    - rid: 1481063336882209010
+      type: {class: Forget, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        sequencesResolver:
+          rid: 1481063336882209011
+    - rid: 1481063336882209011
+      type: {class: SequencesResolver/List, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value:
+        - rid: 1481063336882209012
+    - rid: 1481063336882209012
+      type: {class: BeginHitStopRootAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        durationResolver:
+          rid: 1481063336882209013
+        timeScaleResolver:
+          rid: 1481063336882209014
+    - rid: 1481063336882209013
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 3
+    - rid: 1481063336882209014
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0.1
+    - rid: 1481063336882209016
+      type: {class: GameCameraSetActiveCinemachineCamera, ns: MH3, asm: Assembly-CSharp}
+      data:
+        cinemachineCameraNameResolver:
+          rid: 1481063336882209017
+        isActiveResolver:
+          rid: 1481063336882209018
+    - rid: 1481063336882209017
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Defeat.Enemy.1
+    - rid: 1481063336882209018
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 1
+    - rid: 1481063336882209019
+      type: {class: GameCameraSetActiveCinemachineCamera, ns: MH3, asm: Assembly-CSharp}
+      data:
+        cinemachineCameraNameResolver:
+          rid: 1481063336882209020
+        isActiveResolver:
+          rid: 1481063336882209021
+    - rid: 1481063336882209020
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Defeat.Enemy.2
+    - rid: 1481063336882209021
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 1
+    - rid: 1481063336882209022
+      type: {class: Delay, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        seconds: 0.5
+    - rid: 1481063336882209023
+      type: {class: GameCameraSetActiveCinemachineCamera, ns: MH3, asm: Assembly-CSharp}
+      data:
+        cinemachineCameraNameResolver:
+          rid: 1481063336882209024
+        isActiveResolver:
+          rid: 1481063336882209025
+    - rid: 1481063336882209024
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Defeat.Enemy.1
+    - rid: 1481063336882209025
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
+    - rid: 1481063336882209026
+      type: {class: GameCameraSetActiveCinemachineCamera, ns: MH3, asm: Assembly-CSharp}
+      data:
+        cinemachineCameraNameResolver:
+          rid: 1481063336882209027
+        isActiveResolver:
+          rid: 1481063336882209028
+    - rid: 1481063336882209027
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Defeat.Enemy.2
+    - rid: 1481063336882209028
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
+    - rid: 1481063336882209029
+      type: {class: GameCameraSetActiveCinemachineCamera, ns: MH3, asm: Assembly-CSharp}
+      data:
+        cinemachineCameraNameResolver:
+          rid: 1481063336882209030
+        isActiveResolver:
+          rid: 1481063336882209031
+    - rid: 1481063336882209030
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Defeat.Enemy.3
+    - rid: 1481063336882209031
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 1
+    - rid: 1481063336882209032
+      type: {class: GameCameraSetActiveCinemachineCamera, ns: MH3, asm: Assembly-CSharp}
+      data:
+        cinemachineCameraNameResolver:
+          rid: 1481063336882209033
+        isActiveResolver:
+          rid: 1481063336882209034
+    - rid: 1481063336882209033
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Defeat.Enemy.3
+    - rid: 1481063336882209034
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
+    - rid: 1481063336882209037
+      type: {class: PlaySfx, ns: MH3, asm: Assembly-CSharp}
+      data:
+        keyResolver:
+          rid: 1481063336882209038
+    - rid: 1481063336882209038
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Defeat.1
+    - rid: 1481063336882209044
+      type: {class: GameCameraBeginImpulseSource, ns: MH3, asm: Assembly-CSharp}
+      data:
+        impulseNameResolver:
+          rid: 1481063336882209045
+    - rid: 1481063336882209045
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Medium
