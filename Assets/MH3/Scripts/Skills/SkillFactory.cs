@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using HK;
 
 namespace MH3.SkillSystems
 {
@@ -21,7 +22,7 @@ namespace MH3.SkillSystems
             return skillType switch
             {
                 Define.SkillType.AttackUp => new Skill(level)
-                    .RegisterParameterSelector(Define.ActorParameterType.Attack, (_, _) => level * 10),
+                    .RegisterParameterSelector(Define.ActorParameterType.Attack, (_, _) => TinyServiceLocator.Resolve<MasterData>().SkillAttackUp.Get(level).Value),
                 _ => throw new System.NotImplementedException($"SkillType {skillType} is not implemented."),
             };
         }
