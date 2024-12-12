@@ -21,6 +21,7 @@ namespace MH3
             var questSpec = TinyServiceLocator.Resolve<MasterData>().QuestSpecs.Get(questSpecId);
             var userData = TinyServiceLocator.Resolve<UserData>();
             var instanceWeapons = new List<InstanceWeapon>();
+            var instanceSkillCores = new List<InstanceSkillCore>();
             for (var i = 0; i < questSpec.RewardCount; i++)
             {
                 var reward = questSpec.GetRewards().Lottery(x => x.Weight);
@@ -33,11 +34,13 @@ namespace MH3
                         break;
                     case Define.RewardType.InstanceSkillCore:
                         var instanceSkillCore = InstanceSkillCoreFactory.Create(userData, reward.RewardId);
+                        instanceSkillCores.Add(instanceSkillCore);
                         userData.AddInstanceSkillCoreData(instanceSkillCore);
                         break;
                 }
             }
             container.Register("AcquireInstanceWeapons", instanceWeapons);
+            container.Register("AcquireInstanceSkillCores", instanceSkillCores);
             return UniTask.CompletedTask;
         }
     }
