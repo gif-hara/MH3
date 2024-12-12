@@ -20,7 +20,8 @@ namespace MH3.SkillSystems
         {
             return skillType switch
             {
-                Define.SkillType.AttackUp => new AttackUp(level),
+                Define.SkillType.AttackUp => new Skill(level)
+                    .RegisterParameterSelector(Define.ActorParameterType.Attack, (_, _) => level * 10),
                 _ => throw new System.NotImplementedException($"SkillType {skillType} is not implemented."),
             };
         }

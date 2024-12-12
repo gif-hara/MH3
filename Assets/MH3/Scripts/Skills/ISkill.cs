@@ -1,15 +1,16 @@
+using System;
+using MH3.ActorControllers;
+
 namespace MH3.SkillSystems
 {
     public interface ISkill
     {
-        Define.SkillType SkillType { get; }
-
         int Level { get; }
 
-        void AddLevel(int level);
+        float GetParameter(Define.ActorParameterType type, Actor owner, Actor target);
 
-        int GetAttack();
+        int GetParameterInt(Define.ActorParameterType type, Actor owner, Actor target);
 
-        int GetCritical();
+        ISkill RegisterParameterSelector(Define.ActorParameterType type, Func<Actor, Actor, float> selector);
     }
 }

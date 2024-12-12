@@ -1,29 +1,34 @@
+using System;
+using System.Collections.Generic;
+using MH3.ActorControllers;
+
 namespace MH3.SkillSystems
 {
-    public abstract class Skill : ISkill
+    public sealed class Skill : ISkill
     {
-        public abstract Define.SkillType SkillType { get; }
-
         public int Level { get; private set; }
+
+        private readonly Dictionary<Define.ActorParameterType, Func<Actor, Actor, float>> parameterSelectors = new();
 
         public Skill(int level)
         {
             Level = level;
         }
 
-        public void AddLevel(int level)
+        public float GetParameter(Define.ActorParameterType type, Actor owner, Actor target)
         {
-            Level += level;
+            return parameterSelectors[type](owner, target);
         }
 
-        public virtual int GetAttack()
+        public int GetParameterInt(Define.ActorParameterType type, Actor owner, Actor target)
         {
-            return 0;
+            return (int)GetParameter(type, owner, target);
         }
 
-        public virtual int GetCritical()
+        public ISkill RegisterParameterSelector(Define.ActorParameterType type, Func<Actor, Actor, float> selector)
         {
-            return 0;
+            parameterSelectors[type] = selector;
+            return this;
         }
     }
 }

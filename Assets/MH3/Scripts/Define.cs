@@ -43,5 +43,11 @@ namespace MH3
             AttackUp,
             CriticalUp,
         }
+
+        public enum ActorParameterType
+        {
+            Attack,
+            Critical,
+        }
     }
 }
