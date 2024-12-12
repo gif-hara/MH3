@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using HK;
+using MH3.ActorControllers;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -9,6 +11,9 @@ namespace MH3
     {
         [SerializeField]
         private CinemachineCamera defaultCinemachineCamera;
+
+        [SerializeField]
+        private List<CinemachineCamera> defeatEnemyCinemachineCameras;
 
         [SerializeField]
         private CinemachineCameraElement.DictionaryList cinemachineCameras;
@@ -26,10 +31,15 @@ namespace MH3
 
         public Transform DefaultCinemachineCameraLookAtTarget => defaultCinemachineCamera.Target.LookAtTarget;
 
-        public void SetTrackingTarget(Transform tracking, Transform lookAt)
+        public void Setup(Actor player, Actor enemy)
         {
-            defaultCinemachineCamera.Target.TrackingTarget = tracking;
-            defaultCinemachineCamera.Target.LookAtTarget = lookAt;
+            defaultCinemachineCamera.Target.TrackingTarget = player.transform;
+            defaultCinemachineCamera.Target.LookAtTarget = enemy.LocatorHolder.Get("Root");
+            foreach (var defeatEnemyCinemachineCamera in defeatEnemyCinemachineCameras)
+            {
+                defeatEnemyCinemachineCamera.Target.TrackingTarget = enemy.transform;
+                defeatEnemyCinemachineCamera.Target.LookAtTarget = enemy.LocatorHolder.Get("Root");
+            }
         }
 
         public void BeginImpulseSource(string name)
