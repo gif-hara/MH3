@@ -40,5 +40,13 @@ namespace MH3
         [SerializeField]
         private int defenseRate;
         public int DefenseRate => defenseRate;
+
+        [SerializeField]
+        private float poisonInterval;
+        public float PoisonInterval => poisonInterval;
+
+        [SerializeField]
+        private int poisonDamage;
+        public int PoisonDamage => poisonDamage;
     }
 }
