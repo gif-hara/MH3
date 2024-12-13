@@ -20,6 +20,7 @@ namespace MH3
             HKUIDocument listDocumentPrefab,
             HKUIDocument instanceWeaponViewDocumentPrefab,
             HKUIDocument instanceSkillCoreViewDocumentPrefab,
+            HKUIDocument actorSpecStatusDocumentPrefab,
             Actor actor,
             GameSceneController gameSceneController,
             bool isHome,
@@ -58,6 +59,7 @@ namespace MH3
             async UniTask StateHomeRoot(CancellationToken scope)
             {
                 SetHeaderText("ホームメニュー");
+                var actorSpecStatusDocument = UnityEngine.Object.Instantiate(actorSpecStatusDocumentPrefab);
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     new List<Action<HKUIDocument>>
@@ -101,12 +103,19 @@ namespace MH3
                     },
                     0
                 );
+                var container = new Container();
+                container.Register("Actor", actor);
+                container.Register("InstanceWeapon", TinyServiceLocator.Resolve<UserData>().GetEquippedInstanceWeapon());
+                var sequences = actorSpecStatusDocument.Q<SequencesMonoBehaviour>("Sequences");
+                sequences.PlayAsync(container, scope).Forget();
+
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
                     .Subscribe(_ => pauseMenuScope.Dispose())
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
+                actorSpecStatusDocument.DestroySafe();
             }
 
             async UniTask StateQuestRoot(CancellationToken scope)
