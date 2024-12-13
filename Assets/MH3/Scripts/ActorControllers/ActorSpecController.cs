@@ -223,7 +223,10 @@ namespace MH3.ActorControllers
                 if(attacker.SpecController.AbnormalStatusAttackType != Define.AbnormalStatusType.None)
                 {
                     abnormalStatusValue[attacker.SpecController.AbnormalStatusAttackType].Value = attacker.SpecController.AbnormalStatusAttackTotal;
-                    // TODO
+                    if(abnormalStatusValue[attacker.SpecController.AbnormalStatusAttackType].Value >= abnormalStatusThreshold[attacker.SpecController.AbnormalStatusAttackType].Value)
+                    {
+                        Debug.Log($"{attacker.SpecController.AbnormalStatusAttackType} is activated.");
+                    }
                 }
 
                 if (fixedHitPoint <= 0)
