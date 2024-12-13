@@ -19,12 +19,14 @@ namespace MH3.SkillSystems
 
         private static ISkill CreateSkill(Define.SkillType skillType, int level)
         {
-            return skillType switch
+            var masterData = TinyServiceLocator.Resolve<MasterData>();
+            var result = new Skill();
+            foreach (var i in masterData.SkillTypeToParameters.Get(skillType))
             {
-                Define.SkillType.AttackUp => new Skill(level)
-                    .RegisterParameterSelector(Define.ActorParameterType.Attack, _ => TinyServiceLocator.Resolve<MasterData>().SkillAttackUp.Get(level).Value),
-                _ => throw new System.NotImplementedException($"SkillType {skillType} is not implemented."),
-            };
+                result.RegisterParameterSelector(i.ActorParameterType, _ => i.SkillLevelValueType.GetSkillLevelValue().Get(level).Value);
+            }
+
+            return result;
         }
     }
 }

@@ -6,16 +6,9 @@ namespace MH3.SkillSystems
 {
     public sealed class Skill : ISkill
     {
-        public int Level { get; private set; }
-
         private readonly Dictionary<Define.ActorParameterType, Func<Actor, float>> parameterOwnerOnlySelectors = new();
 
         private readonly Dictionary<Define.ActorParameterType, Func<Actor, Actor, float>> parameterOwnerTargetSelectors = new();
-
-        public Skill(int level)
-        {
-            Level = level;
-        }
 
         public float GetParameter(Define.ActorParameterType type, Actor owner, Actor target)
         {
