@@ -26,6 +26,11 @@ namespace MH3
         private int equippedInstanceWeaponId;
         public int EquippedInstanceWeaponId { get => equippedInstanceWeaponId; set => equippedInstanceWeaponId = value; }
 
+        public InstanceWeapon GetEquippedInstanceWeapon()
+        {
+            return instanceWeaponDataList.FirstOrDefault(x => x.InstanceId == equippedInstanceWeaponId);
+        }
+
         public void AddInstanceWeaponData(InstanceWeapon instanceWeaponData)
         {
             instanceWeaponDataList.Add(instanceWeaponData);
