@@ -20,6 +20,10 @@ namespace MH3
             {
                 damage = Mathf.FloorToInt(damage * gameRules.CriticalDamageRate);
             }
+            if (target.SpecController.ContainsAppliedAbnormalStatus(Define.AbnormalStatusType.Collapse))
+            {
+                damage = Mathf.FloorToInt(damage * gameRules.CollapseDamageRate);
+            }
 
             damage = Mathf.FloorToInt(damage * 1.0f - (float)target.SpecController.DefenseTotal / gameRules.DefenseRate);
             damage = Mathf.FloorToInt(damage * (1.0f - target.SpecController.CutRatePhysicalDamage.CurrentValue));
