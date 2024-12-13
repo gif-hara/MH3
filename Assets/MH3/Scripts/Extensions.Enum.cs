@@ -43,7 +43,7 @@ namespace MH3
                 _ => throw new System.NotImplementedException($"未対応のスキルタイプです {self}"),
             };
         }
-        
+
         public static MasterData.SkillLevelValue.DictionaryList GetSkillLevelValue(this Define.SkillLevelValueType self)
         {
             var m = TinyServiceLocator.Resolve<MasterData>();
@@ -52,6 +52,17 @@ namespace MH3
                 Define.SkillLevelValueType.AttackUp => m.SkillAttackUp,
                 Define.SkillLevelValueType.CriticalUp => m.SkillCriticalUp,
                 _ => throw new NotImplementedException($"未対応の値です. self: {self}")
+            };
+        }
+
+        public static string GetName(this Define.AbnormalStatusType self)
+        {
+            return self switch
+            {
+                Define.AbnormalStatusType.Poison => "毒",
+                Define.AbnormalStatusType.Paralysis => "麻痺",
+                Define.AbnormalStatusType.Collapse => "崩壊",
+                _ => throw new NotImplementedException($"未対応の異常状態です {self}"),
             };
         }
     }
