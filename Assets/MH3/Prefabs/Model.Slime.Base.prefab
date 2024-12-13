@@ -169,7 +169,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.size
-      value: 20
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[1].clip
@@ -322,6 +322,22 @@ PrefabInstance:
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[19].name
       value: Attack.Training.Basic.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[20].clip
+      value: 
+      objectReference: {fileID: 7400000, guid: 1cca2637e7240874bb7b4daecd9b67fa, type: 2}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[20].name
+      value: Paralysis.Begin
+      objectReference: {fileID: 0}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[21].clip
+      value: 
+      objectReference: {fileID: 7400000, guid: d05c8cc0bc611974b8dd8491e12f287c, type: 2}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[21].name
+      value: Paralysis.End
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[1].defaultState
