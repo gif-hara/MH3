@@ -64,6 +64,10 @@ namespace MH3
         [SerializeField]
         private SkillCoreEffect.Group skillCoreEffects;
         public SkillCoreEffect.Group SkillCoreEffects => skillCoreEffects;
+        
+        [SerializeField]
+        private SkillTypeToParameter.Group skillTypeToParameters;
+        public SkillTypeToParameter.Group SkillTypeToParameters => skillTypeToParameters;
 
         [SerializeField]
         private SkillLevelValue.DictionaryList skillAttackUp;
@@ -99,6 +103,7 @@ namespace MH3
                 "SkillCoreEffect",
                 "WeaponSkillSlot",
                 "Skill.AttackUp",
+                "SkillTypeToParameter",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -116,6 +121,7 @@ namespace MH3
             skillCoreEffects.Set(JsonHelper.FromJson<SkillCoreEffect>(database[10]));
             weaponSkillSlots.Set(JsonHelper.FromJson<WeaponSkillSlot>(database[11]));
             skillAttackUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[12]));
+            skillTypeToParameters.Set(JsonHelper.FromJson<SkillTypeToParameter>(database[13]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -548,6 +554,24 @@ namespace MH3
             public class DictionaryList : DictionaryList<int, SkillLevelValue>
             {
                 public DictionaryList() : base(x => x.Level)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class SkillTypeToParameter
+        {
+            public Define.SkillType SkillType;
+            
+            public Define.ActorParameterType ActorParameterType;
+            
+            public Define.SkillLevelValueType SkillLevelValueType;
+            
+            [Serializable]
+            public class Group : Group<Define.SkillType, SkillTypeToParameter>
+            {
+                public Group() : base(x => x.SkillType)
                 {
                 }
             }
