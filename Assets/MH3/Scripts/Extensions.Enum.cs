@@ -32,6 +32,14 @@ namespace MH3
             {
                 Define.SkillType.AttackUp => "攻撃力アップ",
                 Define.SkillType.CriticalUp => "会心率アップ",
+                Define.SkillType.DefenseUp => "防御力アップ",
+                Define.SkillType.AbnormalStatusUp => "状態異常値アップ",
+                Define.SkillType.FireElementAttackUp => "火属性値アップ",
+                Define.SkillType.WaterElementAttackUp => "水属性値アップ",
+                Define.SkillType.GrassElementAttackUp => "草属性値アップ",
+                Define.SkillType.HealthUp => "体力アップ",
+                Define.SkillType.RecoveryCommandCountUp => "回復回数アップ",
+                Define.SkillType.RewardUp => "報酬アップ",
                 _ => throw new System.NotImplementedException($"未対応のスキルタイプです {self}"),
             };
         }

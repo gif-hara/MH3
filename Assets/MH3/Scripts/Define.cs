@@ -43,6 +43,13 @@ namespace MH3
             AttackUp,
             CriticalUp,
             DefenseUp,
+            AbnormalStatusUp,
+            FireElementAttackUp,
+            WaterElementAttackUp,
+            GrassElementAttackUp,
+            HealthUp,
+            RecoveryCommandCountUp,
+            RewardUp,
         }
 
         public enum ActorParameterType
