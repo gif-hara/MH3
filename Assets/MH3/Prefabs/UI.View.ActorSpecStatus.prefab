@@ -707,6 +707,11 @@ MonoBehaviour:
         - rid: 1481063233791983760
         - rid: 1481063233791983784
         - rid: 1481063364369055820
+        - rid: 1481063364369055873
+        - rid: 1481063364369055876
+        - rid: 1481063364369055878
+        - rid: 1481063364369055880
+        - rid: 1481063364369055882
     - rid: 1481063233791983742
       type: {class: InstanceWeaponViewWeaponName, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -733,6 +738,56 @@ MonoBehaviour:
       data:
         instanceWeaponKey: InstanceWeapon
         text: {fileID: 1583888371950734737}
+    - rid: 1481063364369055873
+      type: {class: ActorSpecViewAbnormalStatus, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063364369055875
+        text: {fileID: 4752495122433392863}
+    - rid: 1481063364369055875
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063364369055876
+      type: {class: ActorSpecViewAttack, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063364369055877
+        text: {fileID: 8730985991505705351}
+    - rid: 1481063364369055877
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063364369055878
+      type: {class: ActorSpecViewCritical, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063364369055879
+        text: {fileID: 5652065578665511175}
+    - rid: 1481063364369055879
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063364369055880
+      type: {class: ActorSpecViewDefense, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063364369055881
+        text: {fileID: 3371437012393886713}
+    - rid: 1481063364369055881
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063364369055882
+      type: {class: ActorSpecViewHitPoint, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063364369055883
+        text: {fileID: 705306387719956797}
+    - rid: 1481063364369055883
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
 --- !u!1 &6644406956935404719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,6 +1399,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
+--- !u!114 &705306387719956797 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 597325667961532516, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
+  m_PrefabInstance: {fileID: 109178118187342169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &9102488645555943882 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9210259096726282387, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
@@ -2195,6 +2261,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
+--- !u!114 &3371437012393886713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 597325667961532516, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
+  m_PrefabInstance: {fileID: 2775308765074191261}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6436357758352118542 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9210259096726282387, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
@@ -2532,6 +2609,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9210259096726282387, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
   m_PrefabInstance: {fileID: 5060369453993425251}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5652065578665511175 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 597325667961532516, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
+  m_PrefabInstance: {fileID: 5060369453993425251}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5313791975659057339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2698,6 +2786,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9210259096726282387, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
   m_PrefabInstance: {fileID: 5313791975659057339}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4752495122433392863 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 597325667961532516, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
+  m_PrefabInstance: {fileID: 5313791975659057339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8169689185927170531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2856,6 +2955,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9210259096726282387, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
   m_PrefabInstance: {fileID: 8169689185927170531}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8730985991505705351 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 597325667961532516, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
+  m_PrefabInstance: {fileID: 8169689185927170531}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8634926996683513596
 PrefabInstance:
   m_ObjectHideFlags: 0
