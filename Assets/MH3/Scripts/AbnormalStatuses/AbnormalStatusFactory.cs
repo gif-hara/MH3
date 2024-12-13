@@ -8,6 +8,7 @@ namespace MH3.AbnormalStatusSystems
             {
                 Define.AbnormalStatusType.Poison => new Poison(),
                 Define.AbnormalStatusType.Paralysis => new Paralysis(),
+                Define.AbnormalStatusType.Collapse => new Collapse(),
                 _ => throw new System.NotImplementedException($"未対応の異常状態です {type}"),
             };
         }
