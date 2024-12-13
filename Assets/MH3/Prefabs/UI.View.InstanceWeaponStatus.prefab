@@ -440,6 +440,7 @@ MonoBehaviour:
         - rid: 1481063233791983746
         - rid: 1481063233791983760
         - rid: 1481063233791983784
+        - rid: 1481063364369055820
     - rid: 1481063233791983742
       type: {class: InstanceWeaponViewWeaponName, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -461,6 +462,11 @@ MonoBehaviour:
         instanceWeaponDataKey: InstanceWeaponData
         parent: {fileID: 7114358762800415632}
         skillSlotDocumentPrefab: {fileID: -5975206734666703776, guid: 75e59304f2cc12c45bc2f2b8ce1279cd, type: 3}
+    - rid: 1481063364369055820
+      type: {class: InstanceWeaponViewAbnormalStatus, ns: MH3, asm: Assembly-CSharp}
+      data:
+        instanceWeaponKey: InstanceWeaponData
+        text: {fileID: 1583888371950734737}
 --- !u!1 &6644406956935404719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3159775097620048980, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
       propertyPath: m_Name
-      value: UI.Element.Status.Critical
+      value: UI.Element.Status.AbnormalStatus
       objectReference: {fileID: 0}
     - target: {fileID: 7331306893394561608, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
       propertyPath: m_text
@@ -1227,6 +1233,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
+--- !u!114 &1583888371950734737 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 597325667961532516, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
+  m_PrefabInstance: {fileID: 2139555699467697653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7088757395442179430 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9210259096726282387, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
