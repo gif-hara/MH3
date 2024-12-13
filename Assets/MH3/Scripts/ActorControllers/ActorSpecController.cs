@@ -299,6 +299,11 @@ namespace MH3.ActorControllers
             onTakeDamage.OnNext(new DamageData(damage, 0, actor.LocatorHolder.Get("Spine").position + Random.insideUnitSphere));
         }
 
+        public bool ContainsAppliedAbnormalStatus(Define.AbnormalStatusType type)
+        {
+            return appliedAbnormalStatuses.Contains(type);
+        }
+
         public void RemoveAppliedAbnormalStatus(Define.AbnormalStatusType type)
         {
             appliedAbnormalStatuses.Remove(type);
