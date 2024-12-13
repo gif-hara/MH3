@@ -1,3 +1,6 @@
+using System;
+using HK;
+
 namespace MH3
 {
     public static partial class Extensions
@@ -30,6 +33,16 @@ namespace MH3
                 Define.SkillType.AttackUp => "攻撃力アップ",
                 Define.SkillType.CriticalUp => "会心率アップ",
                 _ => throw new System.NotImplementedException($"未対応のスキルタイプです {self}"),
+            };
+        }
+        
+        public static MasterData.SkillLevelValue.DictionaryList GetSkillLevelValue(this Define.SkillLevelValueType self)
+        {
+            var m = TinyServiceLocator.Resolve<MasterData>();
+            return self switch
+            {
+                Define.SkillLevelValueType.AttackUp => m.SkillAttackUp,
+                _ => throw new NotImplementedException($"未対応の値です. self: {self}")
             };
         }
     }
