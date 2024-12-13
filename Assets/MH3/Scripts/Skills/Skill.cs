@@ -12,7 +12,11 @@ namespace MH3.SkillSystems
 
         public float GetParameter(Define.ActorParameterType type, Actor owner, Actor target)
         {
-            return parameterOwnerTargetSelectors[type](owner, target);
+            if (parameterOwnerTargetSelectors.ContainsKey(type))
+            {
+                return parameterOwnerTargetSelectors[type](owner, target);
+            }
+            return 0.0f;
         }
 
         public int GetParameterInt(Define.ActorParameterType type, Actor owner, Actor target)
@@ -22,7 +26,11 @@ namespace MH3.SkillSystems
 
         public float GetParameter(Define.ActorParameterType type, Actor owner)
         {
-            return parameterOwnerOnlySelectors[type](owner);
+            if (parameterOwnerOnlySelectors.ContainsKey(type))
+            {
+                return parameterOwnerOnlySelectors[type](owner);
+            }
+            return 0.0f;
         }
 
         public int GetParameterInt(Define.ActorParameterType type, Actor owner)
