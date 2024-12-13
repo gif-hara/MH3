@@ -76,6 +76,10 @@ namespace MH3
         [SerializeField]
         private SkillLevelValue.DictionaryList skillCriticalUp;
         public SkillLevelValue.DictionaryList SkillCriticalUp => skillCriticalUp;
+        
+        [SerializeField]
+        private SkillLevelValue.DictionaryList skillDefenseUp;
+        public SkillLevelValue.DictionaryList SkillDefenseUp => skillDefenseUp;
 
 #if UNITY_EDITOR
         [ContextMenu("Update")]
@@ -109,6 +113,7 @@ namespace MH3
                 "Skill.AttackUp",
                 "SkillTypeToParameter",
                 "Skill.CriticalUp",
+                "Skill.DefenseUp",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -128,6 +133,7 @@ namespace MH3
             skillAttackUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[12]));
             skillTypeToParameters.Set(JsonHelper.FromJson<SkillTypeToParameter>(database[13]));
             skillCriticalUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[14]));
+            skillDefenseUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[15]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");

@@ -42,18 +42,21 @@ namespace MH3
         {
             AttackUp,
             CriticalUp,
+            DefenseUp,
         }
 
         public enum ActorParameterType
         {
             Attack,
             Critical,
+            Defense,
         }
 
         public enum SkillLevelValueType
         {
             AttackUp,
             CriticalUp,
+            DefenseUp,
         }
     }
 }
