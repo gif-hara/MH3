@@ -7,6 +7,7 @@ namespace MH3.AbnormalStatusSystems
             return type switch
             {
                 Define.AbnormalStatusType.Poison => new Poison(),
+                Define.AbnormalStatusType.Paralysis => new Paralysis(),
                 _ => throw new System.NotImplementedException($"未対応の異常状態です {type}"),
             };
         }
