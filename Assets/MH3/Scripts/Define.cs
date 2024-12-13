@@ -49,5 +49,11 @@ namespace MH3
             Attack,
             Critical,
         }
+
+        public enum SkillLevelValueType
+        {
+            AttackUp,
+            CriticalUp,
+        }
     }
 }
