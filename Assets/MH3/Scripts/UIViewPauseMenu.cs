@@ -224,7 +224,7 @@ namespace MH3
                     }
                     list = UIViewList.CreateWithPages(
                         listDocumentPrefab,
-                        userData.InstanceWeaponDataList
+                        userData.InstanceWeaponList
                             .Where(x => x.InstanceId != userData.EquippedInstanceWeaponId)
                             .Select(x => new Action<HKUIDocument>(document =>
                             {
@@ -240,7 +240,7 @@ namespace MH3
                                     );
                                     if (result == 0)
                                     {
-                                        userData.RemoveInstanceWeaponData(x);
+                                        userData.RemoveInstanceWeapon(x);
                                         CreateList();
                                     }
                                     else
@@ -253,7 +253,7 @@ namespace MH3
                                 _ =>
                                 {
                                     var container = new Container();
-                                    container.Register("InstanceWeaponData", x);
+                                    container.Register("InstanceWeapon", x);
                                     instanceWeaponSequences.PlayAsync(container, scope).Forget();
                                 });
                             })),

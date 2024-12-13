@@ -10,7 +10,7 @@ namespace MH3
     {
         [SerializeField]
         private List<InstanceWeapon> instanceWeaponDataList = new();
-        public List<InstanceWeapon> InstanceWeaponDataList => instanceWeaponDataList;
+        public List<InstanceWeapon> InstanceWeaponList => instanceWeaponDataList;
 
         [SerializeField]
         private List<InstanceSkillCore> instanceSkillCoreList = new();
@@ -36,7 +36,7 @@ namespace MH3
             instanceWeaponDataList.Add(instanceWeaponData);
         }
 
-        public void RemoveInstanceWeaponData(InstanceWeapon instanceWeaponData)
+        public void RemoveInstanceWeapon(InstanceWeapon instanceWeaponData)
         {
             instanceWeaponDataList.Remove(instanceWeaponData);
         }
