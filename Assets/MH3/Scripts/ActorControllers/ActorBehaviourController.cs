@@ -35,7 +35,7 @@ namespace MH3.ActorControllers
                     behaviourScope.Dispose();
                 }
                 this.data = data;
-                behaviourScope = CancellationTokenSource.CreateLinkedTokenSource(actor.destroyCancellationToken);
+                behaviourScope = CancellationTokenSource.CreateLinkedTokenSource(actor.destroyCancellationToken, actor.SpecController.DeadCancellationToken);
                 foreach (var i in this.data.TriggerElements)
                 {
                     actor.StateProvider.GetTriggerAsObservable(i.TriggerType)
