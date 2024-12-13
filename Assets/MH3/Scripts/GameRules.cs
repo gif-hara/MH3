@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnitySequencerSystem;
 
 namespace MH3
 {
@@ -48,5 +49,13 @@ namespace MH3
         [SerializeField]
         private int poisonDamage;
         public int PoisonDamage => poisonDamage;
+
+        [SerializeField]
+        private ScriptableSequences paralysisBeginSequence;
+        public ScriptableSequences ParalysisBeginSequence => paralysisBeginSequence;
+
+        [SerializeField]
+        private ScriptableSequences paralysisEndSequence;
+        public ScriptableSequences ParalysisEndSequence => paralysisEndSequence;
     }
 }
