@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using HK;
 using LitMotion;
 using LitMotion.Extensions;
+using MH3.AbnormalStatusSystems;
 using MH3.SkillSystems;
 using R3;
 using UnityEngine;
@@ -36,6 +37,8 @@ namespace MH3.ActorControllers
         private readonly Dictionary<Define.AbnormalStatusType, ReactiveProperty<int>> abnormalStatusThreshold = new();
 
         private readonly Dictionary<Define.AbnormalStatusType, ReactiveProperty<int>> abnormalStatusValues = new();
+
+        private readonly HashSet<Define.AbnormalStatusType> appliedAbnormalStatuses = new();
 
         private readonly ReactiveProperty<int> weaponId = new(0);
 
@@ -105,6 +108,12 @@ namespace MH3.ActorControllers
         public int DefenseTotal => skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Defense, actor));
 
         public ReadOnlyReactiveProperty<float> CutRatePhysicalDamage => cutRatePhysicalDamage;
+
+        public int PoisonDuration => spec.PoisonDuration;
+
+        public int ParalysisDuration => spec.ParalysisDuration;
+
+        public int CollapseDuration => spec.CollapseDuration;
 
         public float MoveSpeed => spec.MoveSpeed;
 
@@ -234,7 +243,9 @@ namespace MH3.ActorControllers
                     value.Value += attacker.SpecController.AbnormalStatusAttackTotal;
                     if (value.Value >= abnormalStatusThreshold[abnormalStatustype].Value)
                     {
-                        Debug.Log($"{abnormalStatustype} is activated.");
+                        appliedAbnormalStatuses.Add(abnormalStatustype);
+                        var abnormalStatus = AbnormalStatusFactory.Create(abnormalStatustype);
+                        abnormalStatus.Apply(actor);
                     }
                 }
 
@@ -268,6 +279,19 @@ namespace MH3.ActorControllers
                 }
                 onTakeDamage.OnNext(damageData);
             }
+        }
+
+        public void TakeDamageFromPoison(int damage)
+        {
+            var fixedHitPoint = hitPoint.Value - damage;
+            fixedHitPoint = fixedHitPoint < 1 ? 1 : fixedHitPoint;
+            hitPoint.Value = fixedHitPoint;
+            onTakeDamage.OnNext(new DamageData(damage, 0, actor.LocatorHolder.Get("Spine").position + Random.insideUnitSphere));
+        }
+
+        public void RemoveAppliedAbnormalStatus(Define.AbnormalStatusType type)
+        {
+            appliedAbnormalStatuses.Remove(type);
         }
 
         public bool CanPlayFlinch()
