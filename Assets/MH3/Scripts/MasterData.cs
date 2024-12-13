@@ -399,6 +399,12 @@ namespace MH3
 
             public int CollapseThreshold;
 
+            public int PoisonDuration;
+
+            public int ParalysisDuration;
+
+            public int CollapseDuration;
+
             public float MoveSpeed;
 
             public float RotationSpeed;

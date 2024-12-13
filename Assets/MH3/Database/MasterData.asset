@@ -101,7 +101,7 @@ MonoBehaviour:
       Value:
       - Id: 10102
         AbnormalStatusType: 1
-        Power: 20
+        Power: 100
         RareType: 0
         Weight: 100
   weaponCombos:
@@ -255,6 +255,9 @@ MonoBehaviour:
       PoisonThreshold: 100
       ParalysisThreshold: 100
       CollapseThreshold: 100
+      PoisonDuration: 30
+      ParalysisDuration: 10
+      CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
       WeaponId: 10101
@@ -289,6 +292,9 @@ MonoBehaviour:
       PoisonThreshold: 100
       ParalysisThreshold: 100
       CollapseThreshold: 100
+      PoisonDuration: 30
+      ParalysisDuration: 10
+      CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
       WeaponId: 19901
@@ -323,6 +329,9 @@ MonoBehaviour:
       PoisonThreshold: 100
       ParalysisThreshold: 100
       CollapseThreshold: 100
+      PoisonDuration: 30
+      ParalysisDuration: 10
+      CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
       WeaponId: 19902
