@@ -85,7 +85,7 @@ namespace MH3.ActorControllers
 
         public int AttackTotal => attack.Value + attackInstanceWeapon.Value + skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Attack, actor));
 
-        public float CriticalTotal => criticalInstanceWeapon.Value;
+        public float CriticalTotal => criticalInstanceWeapon.Value + skills.Sum(x => x.GetParameter(Define.ActorParameterType.Critical, actor));
 
         public ReadOnlyReactiveProperty<float> CutRatePhysicalDamage => cutRatePhysicalDamage;
 

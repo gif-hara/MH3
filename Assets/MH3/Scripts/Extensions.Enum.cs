@@ -42,6 +42,7 @@ namespace MH3
             return self switch
             {
                 Define.SkillLevelValueType.AttackUp => m.SkillAttackUp,
+                Define.SkillLevelValueType.CriticalUp => m.SkillCriticalUp,
                 _ => throw new NotImplementedException($"未対応の値です. self: {self}")
             };
         }

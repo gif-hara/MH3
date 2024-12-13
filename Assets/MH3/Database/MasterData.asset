@@ -383,6 +383,11 @@ MonoBehaviour:
       - SkillType: 0
         ActorParameterType: 0
         SkillLevelValueType: 0
+    - Key: 1
+      Value:
+      - SkillType: 1
+        ActorParameterType: 1
+        SkillLevelValueType: 1
   skillAttackUp:
     list:
     - Level: 0
@@ -447,3 +452,67 @@ MonoBehaviour:
       Value: 116
     - Level: 30
       Value: 120
+  skillCriticalUp:
+    list:
+    - Level: 0
+      Value: 0
+    - Level: 1
+      Value: 2
+    - Level: 2
+      Value: 4
+    - Level: 3
+      Value: 6
+    - Level: 4
+      Value: 8
+    - Level: 5
+      Value: 10
+    - Level: 6
+      Value: 12
+    - Level: 7
+      Value: 14
+    - Level: 8
+      Value: 16
+    - Level: 9
+      Value: 18
+    - Level: 10
+      Value: 20
+    - Level: 11
+      Value: 22
+    - Level: 12
+      Value: 24
+    - Level: 13
+      Value: 26
+    - Level: 14
+      Value: 28
+    - Level: 15
+      Value: 30
+    - Level: 16
+      Value: 32
+    - Level: 17
+      Value: 34
+    - Level: 18
+      Value: 36
+    - Level: 19
+      Value: 38
+    - Level: 20
+      Value: 40
+    - Level: 21
+      Value: 42
+    - Level: 22
+      Value: 44
+    - Level: 23
+      Value: 46
+    - Level: 24
+      Value: 48
+    - Level: 25
+      Value: 50
+    - Level: 26
+      Value: 52
+    - Level: 27
+      Value: 54
+    - Level: 28
+      Value: 56
+    - Level: 29
+      Value: 58
+    - Level: 30
+      Value: 60
