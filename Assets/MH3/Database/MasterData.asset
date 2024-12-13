@@ -88,6 +88,22 @@ MonoBehaviour:
         SkillSlot: 1
         RareType: 0
         Weight: 100
+  weaponAbnormalStatuses:
+    list:
+    - Key: 10101
+      Value:
+      - Id: 10101
+        AbnormalStatusType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10102
+      Value:
+      - Id: 10102
+        AbnormalStatusType: 1
+        Power: 20
+        RareType: 0
+        Weight: 100
   weaponCombos:
     list:
     - Key: 10101

@@ -65,5 +65,13 @@ namespace MH3
             CriticalUp,
             DefenseUp,
         }
+
+        public enum AbnormalStatusType
+        {
+            None,
+            Poison,
+            Paralysis,
+            Collapse,
+        }
     }
 }

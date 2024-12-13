@@ -32,6 +32,10 @@ namespace MH3
         [SerializeField]
         private WeaponSkillSlot.Group weaponSkillSlots;
         public WeaponSkillSlot.Group WeaponSkillSlots => weaponSkillSlots;
+        
+        [SerializeField]
+        private WeaponAbnormalStatus.Group weaponAbnormalStatuses;
+        public WeaponAbnormalStatus.Group WeaponAbnormalStatuses => weaponAbnormalStatuses;
 
         [SerializeField]
         private WeaponCombo.Group weaponCombos;
@@ -114,6 +118,7 @@ namespace MH3
                 "SkillTypeToParameter",
                 "Skill.CriticalUp",
                 "Skill.DefenseUp",
+                "WeaponAbnormalStatus",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -134,6 +139,7 @@ namespace MH3
             skillTypeToParameters.Set(JsonHelper.FromJson<SkillTypeToParameter>(database[13]));
             skillCriticalUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[14]));
             skillDefenseUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[15]));
+            weaponAbnormalStatuses.Set(JsonHelper.FromJson<WeaponAbnormalStatus>(database[16]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -215,6 +221,11 @@ namespace MH3
             {
                 return TinyServiceLocator.Resolve<MasterData>().WeaponSkillSlots.Get(Id);
             }
+            
+            public List<WeaponAbnormalStatus> GetAbnormalStatuses()
+            {
+                return TinyServiceLocator.Resolve<MasterData>().WeaponAbnormalStatuses.Get(Id);
+            }
         }
 
         [Serializable]
@@ -270,6 +281,28 @@ namespace MH3
 
             [Serializable]
             public class Group : Group<int, WeaponSkillSlot>
+            {
+                public Group() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class WeaponAbnormalStatus
+        {
+            public int Id;
+            
+            public Define.AbnormalStatusType AbnormalStatusType;
+
+            public int Power;
+            
+            public Define.RareType RareType;
+            
+            public int Weight;
+            
+            [Serializable]
+            public class Group : Group<int, WeaponAbnormalStatus>
             {
                 public Group() : base(x => x.Id)
                 {
