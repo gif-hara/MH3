@@ -20,6 +20,8 @@ namespace MH3
             {
                 damage = Mathf.FloorToInt(damage * gameRules.CriticalDamageRate);
             }
+
+            damage = Mathf.FloorToInt(damage * 1.0f - (float)target.SpecController.DefenseTotal / gameRules.DefenseRate);
             damage = Mathf.FloorToInt(damage * (1.0f - target.SpecController.CutRatePhysicalDamage.CurrentValue));
             var flinchDamage = attackSpec.FlinchDamage;
             if (targetGuardResult == ActorGuardController.GuardResult.SuccessGuard)

@@ -36,5 +36,9 @@ namespace MH3
         [SerializeField]
         private float criticalDamageRate;
         public float CriticalDamageRate => criticalDamageRate;
+
+        [SerializeField]
+        private int defenseRate;
+        public int DefenseRate => defenseRate;
     }
 }
