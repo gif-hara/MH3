@@ -28,14 +28,14 @@ namespace MH3.ActorControllers
         private readonly ReactiveProperty<float> criticalInstanceWeapon = new(0);
 
         private readonly ReactiveProperty<float> cutRatePhysicalDamage = new(0.0f);
-        
+
         private readonly ReactiveProperty<int> abnormalStatusAttackInstanceWeapon = new(0);
-        
+
         private readonly ReactiveProperty<Define.AbnormalStatusType> abnormalStatusAttackType = new(Define.AbnormalStatusType.None);
-        
+
         private readonly Dictionary<Define.AbnormalStatusType, ReactiveProperty<int>> abnormalStatusThreshold = new();
-        
-        private readonly Dictionary<Define.AbnormalStatusType, ReactiveProperty<int>> abnormalStatusValue = new();
+
+        private readonly Dictionary<Define.AbnormalStatusType, ReactiveProperty<int>> abnormalStatusValues = new();
 
         private readonly ReactiveProperty<int> weaponId = new(0);
 
@@ -79,6 +79,9 @@ namespace MH3.ActorControllers
             }
             JustGuardAttackAnimationKey = WeaponSpec.JustGuardAttackAnimationKey;
             StrongAttackAnimationKey = WeaponSpec.StrongAttackAnimationKey;
+            abnormalStatusThreshold.Add(Define.AbnormalStatusType.Poison, new ReactiveProperty<int>(spec.PoisonThreshold));
+            abnormalStatusThreshold.Add(Define.AbnormalStatusType.Paralysis, new ReactiveProperty<int>(spec.ParalysisThreshold));
+            abnormalStatusThreshold.Add(Define.AbnormalStatusType.Collapse, new ReactiveProperty<int>(spec.CollapseThreshold));
         }
 
         public Define.ActorType ActorType => spec.ActorType;
@@ -96,9 +99,9 @@ namespace MH3.ActorControllers
         public float CriticalTotal => criticalInstanceWeapon.Value + skills.Sum(x => x.GetParameter(Define.ActorParameterType.Critical, actor));
 
         public int AbnormalStatusAttackTotal => abnormalStatusAttackInstanceWeapon.Value;
-        
+
         public Define.AbnormalStatusType AbnormalStatusAttackType => abnormalStatusAttackType.Value;
-        
+
         public int DefenseTotal => skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Defense, actor));
 
         public ReadOnlyReactiveProperty<float> CutRatePhysicalDamage => cutRatePhysicalDamage;
@@ -219,13 +222,19 @@ namespace MH3.ActorControllers
                 {
                     flinch.Value += damageData.FlinchDamage;
                 }
-                
-                if(attacker.SpecController.AbnormalStatusAttackType != Define.AbnormalStatusType.None)
+
+                var abnormalStatustype = attacker.SpecController.AbnormalStatusAttackType;
+                if (abnormalStatustype != Define.AbnormalStatusType.None)
                 {
-                    abnormalStatusValue[attacker.SpecController.AbnormalStatusAttackType].Value = attacker.SpecController.AbnormalStatusAttackTotal;
-                    if(abnormalStatusValue[attacker.SpecController.AbnormalStatusAttackType].Value >= abnormalStatusThreshold[attacker.SpecController.AbnormalStatusAttackType].Value)
+                    if (!abnormalStatusValues.TryGetValue(abnormalStatustype, out var value))
                     {
-                        Debug.Log($"{attacker.SpecController.AbnormalStatusAttackType} is activated.");
+                        value = new ReactiveProperty<int>(0);
+                        abnormalStatusValues.Add(abnormalStatustype, value);
+                    }
+                    value.Value += attacker.SpecController.AbnormalStatusAttackTotal;
+                    if (value.Value >= abnormalStatusThreshold[abnormalStatustype].Value)
+                    {
+                        Debug.Log($"{abnormalStatustype} is activated.");
                     }
                 }
 
