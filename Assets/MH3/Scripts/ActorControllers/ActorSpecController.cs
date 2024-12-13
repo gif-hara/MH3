@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using LitMotion;
@@ -66,6 +67,8 @@ namespace MH3.ActorControllers
 
         private readonly Subject<Unit> onDead = new();
 
+        private readonly CancellationTokenSource deadCancellationTokenSource = new();
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -119,6 +122,8 @@ namespace MH3.ActorControllers
 
         public float RotationSpeed => spec.RotationSpeed;
 
+        public bool IsDead => hitPoint.Value <= 0;
+
         public ReadOnlyReactiveProperty<int> WeaponId => weaponId;
 
         public ReadOnlyReactiveProperty<int> Flinch => flinch;
@@ -142,6 +147,8 @@ namespace MH3.ActorControllers
         public Observable<DamageData> OnTakeDamage => onTakeDamage;
 
         public Observable<Unit> OnDead => onDead;
+
+        public CancellationToken DeadCancellationToken => deadCancellationTokenSource.Token;
 
         public void ChangeInstanceWeapon(InstanceWeapon instanceWeaponData, List<InstanceSkillCore> instanceSkillCores)
         {
@@ -233,7 +240,7 @@ namespace MH3.ActorControllers
                 }
 
                 var abnormalStatustype = attacker.SpecController.AbnormalStatusAttackType;
-                if (abnormalStatustype != Define.AbnormalStatusType.None)
+                if (abnormalStatustype != Define.AbnormalStatusType.None && !appliedAbnormalStatuses.Contains(abnormalStatustype) && !IsDead)
                 {
                     if (!abnormalStatusValues.TryGetValue(abnormalStatustype, out var value))
                     {
@@ -246,6 +253,7 @@ namespace MH3.ActorControllers
                         appliedAbnormalStatuses.Add(abnormalStatustype);
                         var abnormalStatus = AbnormalStatusFactory.Create(abnormalStatustype);
                         abnormalStatus.Apply(actor);
+                        value.Value = 0;
                     }
                 }
 
@@ -253,6 +261,8 @@ namespace MH3.ActorControllers
                 {
                     actor.StateMachine.TryChangeState(spec.DeadSequences, force: true);
                     onDead.OnNext(Unit.Default);
+                    deadCancellationTokenSource.Cancel();
+                    deadCancellationTokenSource.Dispose();
                 }
                 else if (CanPlayFlinch() || attackSpec.ForceFlinch)
                 {
@@ -304,6 +314,10 @@ namespace MH3.ActorControllers
                 return true;
             }
 #endif
+            if (appliedAbnormalStatuses.Contains(Define.AbnormalStatusType.Paralysis))
+            {
+                return false;
+            }
             return flinch.Value >= spec.FlinchThreshold;
         }
 
