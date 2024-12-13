@@ -45,7 +45,7 @@ namespace MH3.ActorControllers
             try
             {
                 var state = simpleAnimation.GetState(stateName);
-                while (state.normalizedTime < 1)
+                while (state.normalizedTime < 1 && state.enabled)
                 {
                     await UniTask.NextFrame(cancellationToken);
                 }
