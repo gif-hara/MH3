@@ -32,7 +32,7 @@ namespace MH3
         [SerializeField]
         private WeaponSkillSlot.Group weaponSkillSlots;
         public WeaponSkillSlot.Group WeaponSkillSlots => weaponSkillSlots;
-        
+
         [SerializeField]
         private WeaponAbnormalStatus.Group weaponAbnormalStatuses;
         public WeaponAbnormalStatus.Group WeaponAbnormalStatuses => weaponAbnormalStatuses;
@@ -68,7 +68,7 @@ namespace MH3
         [SerializeField]
         private SkillCoreEffect.Group skillCoreEffects;
         public SkillCoreEffect.Group SkillCoreEffects => skillCoreEffects;
-        
+
         [SerializeField]
         private SkillTypeToParameter.Group skillTypeToParameters;
         public SkillTypeToParameter.Group SkillTypeToParameters => skillTypeToParameters;
@@ -80,7 +80,7 @@ namespace MH3
         [SerializeField]
         private SkillLevelValue.DictionaryList skillCriticalUp;
         public SkillLevelValue.DictionaryList SkillCriticalUp => skillCriticalUp;
-        
+
         [SerializeField]
         private SkillLevelValue.DictionaryList skillDefenseUp;
         public SkillLevelValue.DictionaryList SkillDefenseUp => skillDefenseUp;
@@ -221,7 +221,7 @@ namespace MH3
             {
                 return TinyServiceLocator.Resolve<MasterData>().WeaponSkillSlots.Get(Id);
             }
-            
+
             public List<WeaponAbnormalStatus> GetAbnormalStatuses()
             {
                 return TinyServiceLocator.Resolve<MasterData>().WeaponAbnormalStatuses.Get(Id);
@@ -292,15 +292,15 @@ namespace MH3
         public class WeaponAbnormalStatus
         {
             public int Id;
-            
+
             public Define.AbnormalStatusType AbnormalStatusType;
 
             public int Power;
-            
+
             public Define.RareType RareType;
-            
+
             public int Weight;
-            
+
             [Serializable]
             public class Group : Group<int, WeaponAbnormalStatus>
             {
@@ -392,6 +392,12 @@ namespace MH3
             public float PhysicalDamageCutRate;
 
             public int FlinchThreshold;
+
+            public int PoisonThreshold;
+
+            public int ParalysisThreshold;
+
+            public int CollapseThreshold;
 
             public float MoveSpeed;
 
@@ -608,11 +614,11 @@ namespace MH3
         public class SkillTypeToParameter
         {
             public Define.SkillType SkillType;
-            
+
             public Define.ActorParameterType ActorParameterType;
-            
+
             public Define.SkillLevelValueType SkillLevelValueType;
-            
+
             [Serializable]
             public class Group : Group<Define.SkillType, SkillTypeToParameter>
             {
