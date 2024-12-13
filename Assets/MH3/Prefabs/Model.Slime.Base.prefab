@@ -329,7 +329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: elements.list.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: elements.list.Array.data[2].name
@@ -340,6 +340,10 @@ PrefabInstance:
       value: Hand.Right
       objectReference: {fileID: 0}
     - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: elements.list.Array.data[4].name
+      value: Spine
+      objectReference: {fileID: 0}
+    - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: elements.list.Array.data[2].transform
       value: 
       objectReference: {fileID: 8721640547018322125}
@@ -347,6 +351,10 @@ PrefabInstance:
       propertyPath: elements.list.Array.data[3].transform
       value: 
       objectReference: {fileID: 3644040840677302296}
+    - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: elements.list.Array.data[4].transform
+      value: 
+      objectReference: {fileID: 2348120624201772175}
     - target: {fileID: 482408102529570401, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
