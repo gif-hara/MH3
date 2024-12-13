@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MH3.AbnormalStatusSystems
 {
-    public class Poison : AbnormalStatus
+    public sealed class Poison : AbnormalStatus
     {
         public override async UniTaskVoid Apply(Actor target)
         {
