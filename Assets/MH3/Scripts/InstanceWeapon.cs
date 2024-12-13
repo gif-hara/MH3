@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HK;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MH3
 {
@@ -40,6 +41,18 @@ namespace MH3
         [SerializeField]
         private Define.RareType skillSlotRareType;
         public Define.RareType SkillSlotRareType => skillSlotRareType;
+        
+        [SerializeField]
+        private Define.AbnormalStatusType abnormalStatusType;
+        public Define.AbnormalStatusType AbnormalStatusType => abnormalStatusType;
+        
+        [SerializeField]
+        private int abnormalStatusAttack;
+        public int AbnormalStatusAttack => abnormalStatusAttack;
+        
+        [SerializeField]
+        private Define.RareType abnormalStatusAttackRareType;
+        public Define.RareType AbnormalStatusAttackRareType => abnormalStatusAttackRareType;
 
         [SerializeField]
         private List<int> instanceSkillCoreIds = new();
@@ -57,7 +70,10 @@ namespace MH3
             float critical,
             Define.RareType criticalRareType,
             int skillSlot,
-            Define.RareType skillSlotRareType
+            Define.RareType skillSlotRareType,
+            Define.AbnormalStatusType abnormalStatusType,
+            int abnormalStatusAttack,
+            Define.RareType abnormalStatusAttackRareType
             )
         {
             this.instanceId = instanceId;
@@ -68,6 +84,9 @@ namespace MH3
             this.criticalRareType = criticalRareType;
             this.skillSlot = skillSlot;
             this.skillSlotRareType = skillSlotRareType;
+            this.abnormalStatusType = abnormalStatusType;
+            this.abnormalStatusAttack = abnormalStatusAttack;
+            this.abnormalStatusAttackRareType = abnormalStatusAttackRareType;
         }
 
         public void AddInstanceSkillCoreId(int instanceSkillCoreId)
