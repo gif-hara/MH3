@@ -57,5 +57,9 @@ namespace MH3
         [SerializeField]
         private ScriptableSequences paralysisEndSequence;
         public ScriptableSequences ParalysisEndSequence => paralysisEndSequence;
+
+        [SerializeField]
+        private float collapseDamageRate;
+        public float CollapseDamageRate => collapseDamageRate;
     }
 }
