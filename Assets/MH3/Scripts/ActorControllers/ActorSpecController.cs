@@ -28,6 +28,14 @@ namespace MH3.ActorControllers
         private readonly ReactiveProperty<float> criticalInstanceWeapon = new(0);
 
         private readonly ReactiveProperty<float> cutRatePhysicalDamage = new(0.0f);
+        
+        private readonly ReactiveProperty<int> abnormalStatusAttackInstanceWeapon = new(0);
+        
+        private readonly ReactiveProperty<Define.AbnormalStatusType> abnormalStatusAttackType = new(Define.AbnormalStatusType.None);
+        
+        private readonly Dictionary<Define.AbnormalStatusType, ReactiveProperty<int>> abnormalStatusThreshold = new();
+        
+        private readonly Dictionary<Define.AbnormalStatusType, ReactiveProperty<int>> abnormalStatusValue = new();
 
         private readonly ReactiveProperty<int> weaponId = new(0);
 
@@ -86,6 +94,10 @@ namespace MH3.ActorControllers
         public int AttackTotal => attack.Value + attackInstanceWeapon.Value + skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Attack, actor));
 
         public float CriticalTotal => criticalInstanceWeapon.Value + skills.Sum(x => x.GetParameter(Define.ActorParameterType.Critical, actor));
+
+        public int AbnormalStatusAttackTotal => abnormalStatusAttackInstanceWeapon.Value;
+        
+        public Define.AbnormalStatusType AbnormalStatusAttackType => abnormalStatusAttackType.Value;
         
         public int DefenseTotal => skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Defense, actor));
 
@@ -123,6 +135,8 @@ namespace MH3.ActorControllers
         {
             attackInstanceWeapon.Value = instanceWeaponData.Attack;
             criticalInstanceWeapon.Value = instanceWeaponData.Critical;
+            abnormalStatusAttackInstanceWeapon.Value = instanceWeaponData.AbnormalStatusAttack;
+            abnormalStatusAttackType.Value = instanceWeaponData.AbnormalStatusType;
             weaponId.Value = instanceWeaponData.WeaponId;
             var instanceSkills = instanceWeaponData.InstanceSkillCoreIds
                 .Select(x => instanceSkillCores.Find(y => y.InstanceId == x))
@@ -204,6 +218,12 @@ namespace MH3.ActorControllers
                 if (CanAddFlinchDamage.Value)
                 {
                     flinch.Value += damageData.FlinchDamage;
+                }
+                
+                if(attacker.SpecController.AbnormalStatusAttackType != Define.AbnormalStatusType.None)
+                {
+                    abnormalStatusValue[attacker.SpecController.AbnormalStatusAttackType].Value = attacker.SpecController.AbnormalStatusAttackTotal;
+                    // TODO
                 }
 
                 if (fixedHitPoint <= 0)
