@@ -33,7 +33,9 @@ namespace MH3
                 Define.SkillType.AttackUp => "攻撃力アップ",
                 Define.SkillType.CriticalUp => "会心率アップ",
                 Define.SkillType.DefenseUp => "防御力アップ",
-                Define.SkillType.AbnormalStatusUp => "状態異常値アップ",
+                Define.SkillType.PoisonUp => "毒属性値アップ",
+                Define.SkillType.ParalysisUp => "麻痺属性値アップ",
+                Define.SkillType.CollapseUp => "崩壊属性値アップ",
                 Define.SkillType.FireElementAttackUp => "火属性値アップ",
                 Define.SkillType.WaterElementAttackUp => "水属性値アップ",
                 Define.SkillType.GrassElementAttackUp => "草属性値アップ",
@@ -52,6 +54,7 @@ namespace MH3
                 Define.SkillLevelValueType.AttackUp => m.SkillAttackUp,
                 Define.SkillLevelValueType.CriticalUp => m.SkillCriticalUp,
                 Define.SkillLevelValueType.DefenseUp => m.SkillDefenseUp,
+                Define.SkillLevelValueType.AbnormalStatusUp => m.SkillAbnormalStatusUp,
                 _ => throw new NotImplementedException($"未対応の値です. self: {self}")
             };
         }
@@ -75,6 +78,28 @@ namespace MH3
                 Define.ElementType.Water => "水",
                 Define.ElementType.Grass => "草",
                 _ => throw new NotImplementedException($"未対応の属性です {self}"),
+            };
+        }
+
+        public static Define.ActorParameterType ToActorParameterType(this Define.ElementType self)
+        {
+            return self switch
+            {
+                Define.ElementType.Fire => Define.ActorParameterType.FireElementAttack,
+                Define.ElementType.Water => Define.ActorParameterType.WaterElementAttack,
+                Define.ElementType.Grass => Define.ActorParameterType.GrassElementAttack,
+                _ => throw new NotImplementedException($"未対応の属性です {self}"),
+            };
+        }
+
+        public static Define.ActorParameterType ToActorParameterType(this Define.AbnormalStatusType self)
+        {
+            return self switch
+            {
+                Define.AbnormalStatusType.Poison => Define.ActorParameterType.PoisonAttack,
+                Define.AbnormalStatusType.Paralysis => Define.ActorParameterType.ParalysisAttack,
+                Define.AbnormalStatusType.Collapse => Define.ActorParameterType.CollapseAttack,
+                _ => throw new NotImplementedException($"未対応の異常状態です {self}"),
             };
         }
     }
