@@ -11,14 +11,13 @@ namespace MH3
             Actor target,
             MasterData.AttackSpec attackSpec,
             ActorGuardController.GuardResult targetGuardResult,
-            Vector3 impactPosition,
-            float powerRate
+            Vector3 impactPosition
             )
         {
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
-            var damage = Mathf.FloorToInt(attacker.SpecController.AttackTotal * attackSpec.Power / 100.0f);
-            damage = Mathf.FloorToInt(damage * powerRate);
-            if (attacker.SpecController.CriticalTotal > Random.value)
+            var attack = attacker.SpecController.GetAttackValue(attackSpec.ElementType);
+            var damage = Mathf.FloorToInt(attack * attackSpec.Power / 100.0f);
+            if (attackSpec.CanCritical && attacker.SpecController.CriticalTotal > Random.value)
             {
                 damage = Mathf.FloorToInt(damage * gameRules.CriticalDamageRate);
             }
@@ -28,7 +27,7 @@ namespace MH3
             }
 
             damage = Mathf.FloorToInt(damage * 1.0f - (float)target.SpecController.DefenseTotal / gameRules.DefenseRate);
-            damage = Mathf.FloorToInt(damage * (1.0f - target.SpecController.CutRatePhysicalDamage.CurrentValue));
+            damage = Mathf.FloorToInt(damage * (1.0f - target.SpecController.GetCutRate(attackSpec.ElementType).CurrentValue));
             var flinchDamage = attackSpec.FlinchDamage;
             if (targetGuardResult == ActorGuardController.GuardResult.SuccessGuard)
             {

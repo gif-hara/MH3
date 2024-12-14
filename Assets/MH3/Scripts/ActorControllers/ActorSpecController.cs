@@ -31,6 +31,12 @@ namespace MH3.ActorControllers
 
         private readonly ReactiveProperty<float> cutRatePhysicalDamage = new(0.0f);
 
+        private readonly ReactiveProperty<float> cutRateFireDamage = new(0.0f);
+
+        private readonly ReactiveProperty<float> cutRateWaterDamage = new(0.0f);
+
+        private readonly ReactiveProperty<float> cutRateGrassDamage = new(0.0f);
+
         private readonly ReactiveProperty<int> abnormalStatusAttackInstanceWeapon = new(0);
 
         private readonly ReactiveProperty<Define.AbnormalStatusType> abnormalStatusAttackType = new(Define.AbnormalStatusType.None);
@@ -81,6 +87,9 @@ namespace MH3.ActorControllers
             hitPoint.Value = spec.HitPoint;
             attack.Value = spec.Attack;
             cutRatePhysicalDamage.Value = spec.PhysicalDamageCutRate;
+            cutRateFireDamage.Value = spec.FireDamageCutRate;
+            cutRateWaterDamage.Value = spec.WaterDamageCutRate;
+            cutRateGrassDamage.Value = spec.GrassDamageCutRate;
             weaponId.Value = spec.WeaponId;
             ComboAnimationKeys.Clear();
             foreach (var combo in WeaponSpec.GetCombos())
@@ -120,6 +129,12 @@ namespace MH3.ActorControllers
 
         public ReadOnlyReactiveProperty<float> CutRatePhysicalDamage => cutRatePhysicalDamage;
 
+        public ReadOnlyReactiveProperty<float> CutRateFireDamage => cutRateFireDamage;
+
+        public ReadOnlyReactiveProperty<float> CutRateWaterDamage => cutRateWaterDamage;
+
+        public ReadOnlyReactiveProperty<float> CutRateGrassDamage => cutRateGrassDamage;
+
         public int PoisonDuration => spec.PoisonDuration;
 
         public int ParalysisDuration => spec.ParalysisDuration;
@@ -158,6 +173,30 @@ namespace MH3.ActorControllers
 
         public CancellationToken DeadCancellationToken => deadCancellationTokenSource.Token;
 
+        public int GetAttackValue(Define.ElementType elementType)
+        {
+            return elementType switch
+            {
+                Define.ElementType.None => AttackTotal,
+                Define.ElementType.Fire => ElementAttackTotal,
+                Define.ElementType.Water => ElementAttackTotal,
+                Define.ElementType.Grass => ElementAttackTotal,
+                _ => throw new System.NotImplementedException($"未対応の属性です {elementType}"),
+            };
+        }
+
+        public ReadOnlyReactiveProperty<float> GetCutRate(Define.ElementType elementType)
+        {
+            return elementType switch
+            {
+                Define.ElementType.None => CutRatePhysicalDamage,
+                Define.ElementType.Fire => CutRateFireDamage,
+                Define.ElementType.Water => CutRateWaterDamage,
+                Define.ElementType.Grass => CutRateGrassDamage,
+                _ => throw new System.NotImplementedException($"未対応の属性です {elementType}"),
+            };
+        }
+
         public void ChangeInstanceWeapon(InstanceWeapon instanceWeaponData, List<InstanceSkillCore> instanceSkillCores)
         {
             attackInstanceWeapon.Value = instanceWeaponData.Attack;
@@ -174,7 +213,7 @@ namespace MH3.ActorControllers
             skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
         }
 
-        public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition, float powerRate)
+        public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)
         {
             if (attackSpec == null)
             {
@@ -217,7 +256,7 @@ namespace MH3.ActorControllers
             }
             else
             {
-                var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult, impactPosition, powerRate);
+                var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult, impactPosition);
                 if (guardResult == ActorGuardController.GuardResult.SuccessGuard)
                 {
                     TinyServiceLocator.Resolve<AudioManager>().PlaySfx(TinyServiceLocator.Resolve<GameRules>().SuccessGuardSfxKey);

@@ -120,7 +120,7 @@ namespace MH3.ActorControllers
             {
                 return;
             }
-            target.SpecController.TakeDamage(actor, attackSpec, impactPosition, 1.0f);
+            target.SpecController.TakeDamage(actor, attackSpec, impactPosition);
             attackedActors.Add(target);
         }
     }

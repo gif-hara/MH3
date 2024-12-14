@@ -20,7 +20,7 @@ namespace MH3.ProjectileControllers
 
         public void Influence(Actor target, Collider collider)
         {
-            target.SpecController.TakeDamage(owner, attackSpec, collider.ClosestPoint(transform.position), 1.0f);
+            target.SpecController.TakeDamage(owner, attackSpec, collider.ClosestPoint(transform.position));
         }
     }
 }
