@@ -73,5 +73,13 @@ namespace MH3
             Paralysis,
             Collapse,
         }
+
+        public enum ElementType
+        {
+            None,
+            Fire,
+            Water,
+            Grass,
+        }
     }
 }
