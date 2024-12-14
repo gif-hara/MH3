@@ -69,10 +69,6 @@ namespace MH3
         private ElementProjectile.DictionaryList elementProjectiles;
         public ElementProjectile.DictionaryList ElementProjectiles => elementProjectiles;
 
-        [SerializeField]
-        private string elementAttackSpec;
-        public string ElementAttackSpecKey => elementAttackSpec;
-
         [Serializable]
         public class ElementProjectile
         {
@@ -83,6 +79,10 @@ namespace MH3
             [SerializeField]
             private Projectile projectilePrefab;
             public Projectile ProjectilePrefab => projectilePrefab;
+
+            [SerializeField]
+            private string attackSpecKey;
+            public string AttackSpecKey => attackSpecKey;
 
             [Serializable]
             public class DictionaryList : DictionaryList<Define.ElementType, ElementProjectile>

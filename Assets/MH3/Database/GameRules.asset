@@ -30,8 +30,10 @@ MonoBehaviour:
     list:
     - elementType: 1
       projectilePrefab: {fileID: 8149426423206855055, guid: a90c822ab5332a745a0fb3d72cc1dd82, type: 3}
+      attackSpecKey: Element.Fire
     - elementType: 2
       projectilePrefab: {fileID: 8149426423206855055, guid: 4cc253464c96b444fb103070da79da7a, type: 3}
+      attackSpecKey: Element.Water
     - elementType: 3
       projectilePrefab: {fileID: 8149426423206855055, guid: aaf3fdf937cd50b46bc388c30bfc4293, type: 3}
-  elementAttackSpec: ElementAttack
+      attackSpecKey: Element.Grass
