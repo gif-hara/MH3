@@ -1,5 +1,96 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1646261431437538017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5844833175994812166}
+  - component: {fileID: 4111030588905433328}
+  m_Layer: 0
+  m_Name: Sequences
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5844833175994812166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646261431437538017}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9027854827453453852}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4111030588905433328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646261431437538017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf7e9d8d7386d44eab912bc2ee1cf1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sequencesResolver:
+    rid: 1481063364369056125
+  playOnEnable: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 1481063364369056125
+      type: {class: SequencesResolver/List, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value:
+        - rid: 1481063364369056126
+        - rid: 1481063364369056129
+        - rid: 1481063364369056130
+    - rid: 1481063364369056126
+      type: {class: GameObjectSetActive, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 1481063364369056127
+        activeResolver:
+          rid: 1481063364369056128
+    - rid: 1481063364369056127
+      type: {class: GameObjectResolver/ReferenceGameObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        target: {fileID: 7539117692111233493}
+    - rid: 1481063364369056128
+      type: {class: BoolResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
+    - rid: 1481063364369056129
+      type: {class: Delay, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        seconds: 1
+    - rid: 1481063364369056130
+      type: {class: GameObjectSetActive, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 1481063364369056131
+        activeResolver:
+          rid: 1481063364369056132
+    - rid: 1481063364369056131
+      type: {class: GameObjectResolver/ReferenceGameObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        target: {fileID: 7539117692111233493}
+    - rid: 1481063364369056132
+      type: {class: BoolResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 1
 --- !u!1 &6232848144151190802
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +228,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &9094723466178129813
 PrefabInstance:
@@ -194,6 +285,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 252079448279251337, guid: d3a3c4b6cc501fb448dd838b70e2eb69, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5844833175994812166}
     - targetCorrespondingSourceObject: {fileID: 7339224952074178321, guid: d3a3c4b6cc501fb448dd838b70e2eb69, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7868046031412916884}
@@ -210,5 +304,15 @@ Transform:
 --- !u!4 &7483329479544623603 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1868099174118178406, guid: d3a3c4b6cc501fb448dd838b70e2eb69, type: 3}
+  m_PrefabInstance: {fileID: 9094723466178129813}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7539117692111233493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1627665708996611648, guid: d3a3c4b6cc501fb448dd838b70e2eb69, type: 3}
+  m_PrefabInstance: {fileID: 9094723466178129813}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9027854827453453852 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 252079448279251337, guid: d3a3c4b6cc501fb448dd838b70e2eb69, type: 3}
   m_PrefabInstance: {fileID: 9094723466178129813}
   m_PrefabAsset: {fileID: 0}
