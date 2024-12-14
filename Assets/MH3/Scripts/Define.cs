@@ -65,6 +65,7 @@ namespace MH3
             FireElementAttack,
             WaterElementAttack,
             GrassElementAttack,
+            Health,
         }
 
         public enum SkillLevelValueType
@@ -74,6 +75,7 @@ namespace MH3
             DefenseUp,
             AbnormalStatusUp,
             ElementAttackUp,
+            HealthUp,
         }
 
         public enum AbnormalStatusType
