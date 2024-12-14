@@ -73,6 +73,7 @@ namespace MH3
             CriticalUp,
             DefenseUp,
             AbnormalStatusUp,
+            ElementAttackUp,
         }
 
         public enum AbnormalStatusType
