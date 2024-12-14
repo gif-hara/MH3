@@ -208,6 +208,7 @@ namespace MH3.ActorControllers
                 .BindToLocalPosition(actor.LocatorHolder.Get("Shake"))
                 .AddTo(actor);
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
+            var masterData = TinyServiceLocator.Resolve<MasterData>();
 
             if (guardResult == ActorGuardController.GuardResult.SuccessJustGuard)
             {
@@ -273,8 +274,10 @@ namespace MH3.ActorControllers
                     var elementAttack = Mathf.FloorToInt(attacker.SpecController.ElementAttackTotal * attackSpec.ElementPower);
                     if (elementAttack > 0)
                     {
+                        var projectileData = gameRules.ElementProjectiles.Get(elementType);
                         var elementProjectilePrefab = gameRules.ElementProjectiles.Get(elementType).ProjectilePrefab;
-                        var elementProjectile = Object.Instantiate(elementProjectilePrefab, impactPosition, Quaternion.identity);
+                        var elementProjectile = projectileData.ProjectilePrefab.Spawn(attacker, masterData.AttackSpecs.Get(projectileData.AttackSpecKey), impactPosition, Quaternion.identity);
+                        elementProjectile.transform.SetParent(actor.transform);
                     }
                 }
 
