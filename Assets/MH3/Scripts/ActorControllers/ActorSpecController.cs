@@ -207,11 +207,11 @@ namespace MH3.ActorControllers
                 .WithDampingRatio(attackSpec.ShakeDampingRatio)
                 .BindToLocalPosition(actor.LocatorHolder.Get("Shake"))
                 .AddTo(actor);
+            var gameRules = TinyServiceLocator.Resolve<GameRules>();
 
             if (guardResult == ActorGuardController.GuardResult.SuccessJustGuard)
             {
                 actor.StateMachine.TryChangeState(SuccessJustGuardSequences, force: true);
-                var gameRules = TinyServiceLocator.Resolve<GameRules>();
                 TinyServiceLocator.Resolve<AudioManager>().PlaySfx(gameRules.SuccessJustGuardSfxKey);
             }
             else
@@ -264,6 +264,17 @@ namespace MH3.ActorControllers
                         var abnormalStatus = AbnormalStatusFactory.Create(abnormalStatustype);
                         abnormalStatus.Apply(actor);
                         value.Value = 0;
+                    }
+                }
+
+                var elementType = attacker.SpecController.ElementAttackType;
+                if (elementType != Define.ElementType.None && !IsDead)
+                {
+                    var elementAttack = Mathf.FloorToInt(attacker.SpecController.ElementAttackTotal * attackSpec.ElementPower);
+                    if (elementAttack > 0)
+                    {
+                        var elementProjectilePrefab = gameRules.ElementProjectiles.Get(elementType).ProjectilePrefab;
+                        var elementProjectile = Object.Instantiate(elementProjectilePrefab, impactPosition, Quaternion.identity);
                     }
                 }
 
