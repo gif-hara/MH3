@@ -761,7 +761,7 @@ MonoBehaviour:
     - Key: 10101
       Value:
       - Id: 10101
-        SkillType: 7
+        SkillType: 9
         Level: 1
         RareType: 0
         Weight: 100
@@ -812,6 +812,11 @@ MonoBehaviour:
       - SkillType: 8
         ActorParameterType: 8
         SkillLevelValueType: 4
+    - Key: 9
+      Value:
+      - SkillType: 9
+        ActorParameterType: 9
+        SkillLevelValueType: 5
   skillAttackUp:
     list:
     - Level: 0
@@ -1132,3 +1137,27 @@ MonoBehaviour:
       Value: 145
     - Level: 30
       Value: 150
+  skillHealthUp:
+    list:
+    - Level: 0
+      Value: 0
+    - Level: 1
+      Value: 5
+    - Level: 2
+      Value: 10
+    - Level: 3
+      Value: 15
+    - Level: 4
+      Value: 20
+    - Level: 5
+      Value: 25
+    - Level: 6
+      Value: 30
+    - Level: 7
+      Value: 35
+    - Level: 8
+      Value: 40
+    - Level: 9
+      Value: 45
+    - Level: 10
+      Value: 50
