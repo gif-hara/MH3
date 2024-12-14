@@ -164,7 +164,7 @@ namespace MH3.ActorControllers
             skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
         }
 
-        public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)
+        public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition, float powerRate)
         {
             if (attackSpec == null)
             {
@@ -206,7 +206,7 @@ namespace MH3.ActorControllers
             }
             else
             {
-                var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult, impactPosition);
+                var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult, impactPosition, powerRate);
                 if (guardResult == ActorGuardController.GuardResult.SuccessGuard)
                 {
                     TinyServiceLocator.Resolve<AudioManager>().PlaySfx(TinyServiceLocator.Resolve<GameRules>().SuccessGuardSfxKey);

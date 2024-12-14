@@ -11,11 +11,13 @@ namespace MH3
             Actor target,
             MasterData.AttackSpec attackSpec,
             ActorGuardController.GuardResult targetGuardResult,
-            Vector3 impactPosition
+            Vector3 impactPosition,
+            float powerRate
             )
         {
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
             var damage = Mathf.FloorToInt(attacker.SpecController.AttackTotal * attackSpec.Power / 100.0f);
+            damage = Mathf.FloorToInt(damage * powerRate);
             if (attacker.SpecController.CriticalTotal > Random.value)
             {
                 damage = Mathf.FloorToInt(damage * gameRules.CriticalDamageRate);
