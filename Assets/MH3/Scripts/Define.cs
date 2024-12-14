@@ -43,7 +43,9 @@ namespace MH3
             AttackUp,
             CriticalUp,
             DefenseUp,
-            AbnormalStatusUp,
+            PoisonUp,
+            ParalysisUp,
+            CollapseUp,
             FireElementAttackUp,
             WaterElementAttackUp,
             GrassElementAttackUp,
@@ -57,6 +59,12 @@ namespace MH3
             Attack,
             Critical,
             Defense,
+            PoisonAttack,
+            ParalysisAttack,
+            CollapseAttack,
+            FireElementAttack,
+            WaterElementAttack,
+            GrassElementAttack,
         }
 
         public enum SkillLevelValueType
@@ -64,6 +72,7 @@ namespace MH3
             AttackUp,
             CriticalUp,
             DefenseUp,
+            AbnormalStatusUp,
         }
 
         public enum AbnormalStatusType
