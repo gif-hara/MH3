@@ -380,6 +380,10 @@ namespace MH3
 
             public float ElementPower;
 
+            public Define.ElementType ElementType;
+
+            public bool CanCritical;
+
             public float HitStopTimeScaleActor;
 
             public float HitStopDurationActor;
@@ -427,6 +431,12 @@ namespace MH3
             public int Attack;
 
             public float PhysicalDamageCutRate;
+
+            public float FireDamageCutRate;
+
+            public float WaterDamageCutRate;
+
+            public float GrassDamageCutRate;
 
             public int FlinchThreshold;
 
