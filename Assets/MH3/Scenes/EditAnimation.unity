@@ -1292,7 +1292,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 9729a146f7da5104eb336957976a3b96, type: 2}
     - target: {fileID: 7165769102943821123, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
       propertyPath: m_States.Array.size
-      value: 23
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 7165769102943821123, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
       propertyPath: m_States.Array.data[5].clip
@@ -1437,6 +1437,14 @@ PrefabInstance:
     - target: {fileID: 7165769102943821123, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
       propertyPath: m_States.Array.data[22].name
       value: Attack.20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165769102943821123, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
+      propertyPath: m_States.Array.data[23].clip
+      value: 
+      objectReference: {fileID: 7400000, guid: b86f180ed94c2da40b703b82d7b5ef76, type: 2}
+    - target: {fileID: 7165769102943821123, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
+      propertyPath: m_States.Array.data[23].name
+      value: Attack.21
       objectReference: {fileID: 0}
     - target: {fileID: 8904807033693465980, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
       propertyPath: m_Name
