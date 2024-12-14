@@ -761,8 +761,8 @@ MonoBehaviour:
     - Key: 10101
       Value:
       - Id: 10101
-        SkillType: 2
-        Level: 30
+        SkillType: 3
+        Level: 1
         RareType: 0
         Weight: 100
   skillTypeToParameters:
@@ -782,6 +782,11 @@ MonoBehaviour:
       - SkillType: 2
         ActorParameterType: 2
         SkillLevelValueType: 2
+    - Key: 3
+      Value:
+      - SkillType: 3
+        ActorParameterType: 3
+        SkillLevelValueType: 3
   skillAttackUp:
     list:
     - Level: 0
@@ -974,3 +979,67 @@ MonoBehaviour:
       Value: 299
     - Level: 30
       Value: 300
+  skillAbnormalStatusUp:
+    list:
+    - Level: 0
+      Value: 0
+    - Level: 1
+      Value: 5
+    - Level: 2
+      Value: 10
+    - Level: 3
+      Value: 15
+    - Level: 4
+      Value: 20
+    - Level: 5
+      Value: 25
+    - Level: 6
+      Value: 30
+    - Level: 7
+      Value: 35
+    - Level: 8
+      Value: 40
+    - Level: 9
+      Value: 45
+    - Level: 10
+      Value: 50
+    - Level: 11
+      Value: 55
+    - Level: 12
+      Value: 60
+    - Level: 13
+      Value: 65
+    - Level: 14
+      Value: 70
+    - Level: 15
+      Value: 75
+    - Level: 16
+      Value: 80
+    - Level: 17
+      Value: 85
+    - Level: 18
+      Value: 90
+    - Level: 19
+      Value: 95
+    - Level: 20
+      Value: 100
+    - Level: 21
+      Value: 105
+    - Level: 22
+      Value: 110
+    - Level: 23
+      Value: 115
+    - Level: 24
+      Value: 120
+    - Level: 25
+      Value: 125
+    - Level: 26
+      Value: 130
+    - Level: 27
+      Value: 135
+    - Level: 28
+      Value: 140
+    - Level: 29
+      Value: 145
+    - Level: 30
+      Value: 150
