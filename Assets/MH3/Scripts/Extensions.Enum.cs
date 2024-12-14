@@ -66,5 +66,16 @@ namespace MH3
                 _ => throw new NotImplementedException($"未対応の異常状態です {self}"),
             };
         }
+
+        public static string GetName(this Define.ElementType self)
+        {
+            return self switch
+            {
+                Define.ElementType.Fire => "火",
+                Define.ElementType.Water => "水",
+                Define.ElementType.Grass => "草",
+                _ => throw new NotImplementedException($"未対応の属性です {self}"),
+            };
+        }
     }
 }
