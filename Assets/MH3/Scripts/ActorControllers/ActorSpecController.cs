@@ -112,6 +112,10 @@ namespace MH3.ActorControllers
 
         public Define.AbnormalStatusType AbnormalStatusAttackType => abnormalStatusAttackType.Value;
 
+        public int ElementAttackTotal => elementAttackInstanceWeapon.Value;
+
+        public Define.ElementType ElementAttackType => elementAttackType.Value;
+
         public int DefenseTotal => skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Defense, actor));
 
         public ReadOnlyReactiveProperty<float> CutRatePhysicalDamage => cutRatePhysicalDamage;

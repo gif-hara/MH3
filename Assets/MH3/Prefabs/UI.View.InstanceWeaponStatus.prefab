@@ -429,6 +429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequencesResolver:
     rid: 1481063233791983740
+  playOnEnable: 0
   references:
     version: 2
     RefIds:
@@ -441,6 +442,7 @@ MonoBehaviour:
         - rid: 1481063233791983760
         - rid: 1481063233791983784
         - rid: 1481063364369055820
+        - rid: 1481063364369056110
     - rid: 1481063233791983742
       type: {class: InstanceWeaponViewWeaponName, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -467,6 +469,11 @@ MonoBehaviour:
       data:
         instanceWeaponKey: InstanceWeapon
         text: {fileID: 1583888371950734737}
+    - rid: 1481063364369056110
+      type: {class: InstanceWeaponViewElement, ns: MH3, asm: Assembly-CSharp}
+      data:
+        instanceWeaponKey: InstanceWeapon
+        text: {fileID: 882701875557916575}
 --- !u!1 &6644406956935404719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,6 +1074,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
+--- !u!114 &882701875557916575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 597325667961532516, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
+  m_PrefabInstance: {fileID: 321405023137476603}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8909446021827563368 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9210259096726282387, guid: a5c650ac26eedcd4da4d4644797e5849, type: 3}
