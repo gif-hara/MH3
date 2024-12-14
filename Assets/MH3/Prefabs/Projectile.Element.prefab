@@ -57,6 +57,8 @@ MonoBehaviour:
         - rid: 1481063364369056126
         - rid: 1481063364369056129
         - rid: 1481063364369056130
+        - rid: 1481063364369056134
+        - rid: 1481063364369056135
     - rid: 1481063364369056126
       type: {class: GameObjectSetActive, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
       data:
@@ -91,6 +93,19 @@ MonoBehaviour:
       type: {class: BoolResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 1
+    - rid: 1481063364369056134
+      type: {class: Delay, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        seconds: 0.1
+    - rid: 1481063364369056135
+      type: {class: GameObjectDestroy, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 1481063364369056136
+    - rid: 1481063364369056136
+      type: {class: GameObjectResolver/ReferenceGameObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        target: {fileID: 7087145776378140248}
 --- !u!1 &6232848144151190802
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +314,11 @@ PrefabInstance:
 --- !u!4 &2012221710251876484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7339224952074178321, guid: d3a3c4b6cc501fb448dd838b70e2eb69, type: 3}
+  m_PrefabInstance: {fileID: 9094723466178129813}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7087145776378140248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2048129881951779277, guid: d3a3c4b6cc501fb448dd838b70e2eb69, type: 3}
   m_PrefabInstance: {fileID: 9094723466178129813}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7483329479544623603 stripped
