@@ -121,7 +121,7 @@ namespace MH3.ActorControllers
 
         public Define.AbnormalStatusType AbnormalStatusAttackType => abnormalStatusAttackType.Value;
 
-        public int ElementAttackTotal => elementAttackInstanceWeapon.Value;
+        public int ElementAttackTotal => elementAttackInstanceWeapon.Value + skills.Sum(x => x.GetParameterInt(ElementAttackType.ToActorParameterType(), actor));
 
         public Define.ElementType ElementAttackType => elementAttackType.Value;
 
