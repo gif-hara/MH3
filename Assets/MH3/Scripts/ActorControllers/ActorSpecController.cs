@@ -211,6 +211,8 @@ namespace MH3.ActorControllers
                 .SelectMany(x => x.Skills);
             skills.Clear();
             skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
+            hitPointMax.Value = spec.HitPoint + skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Health, actor));
+            hitPoint.Value = hitPointMax.Value;
         }
 
         public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)
