@@ -11,6 +11,7 @@ namespace MH3
             var weaponCritical = weaponSpec.GetCriticals().Lottery(x => x.Weight);
             var weaponSkillSlot = weaponSpec.GetSkillSlots().Lottery(x => x.Weight);
             var weaponAbnormalStatus = weaponSpec.GetAbnormalStatuses().Lottery(x => x.Weight);
+            var weaponElement = weaponSpec.GetElements().Lottery(x => x.Weight);
             return new InstanceWeapon(
                 userData.GetAndIncrementCreatedInstanceWeaponCount(),
                 weaponSpecId,
@@ -22,7 +23,10 @@ namespace MH3
                 weaponSkillSlot.RareType,
                 weaponAbnormalStatus.AbnormalStatusType,
                 weaponAbnormalStatus.Power,
-                weaponAbnormalStatus.RareType
+                weaponAbnormalStatus.RareType,
+                weaponElement.ElementType,
+                weaponElement.Power,
+                weaponElement.RareType
                 );
         }
     }

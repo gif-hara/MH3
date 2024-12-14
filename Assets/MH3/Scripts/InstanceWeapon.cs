@@ -41,18 +41,30 @@ namespace MH3
         [SerializeField]
         private Define.RareType skillSlotRareType;
         public Define.RareType SkillSlotRareType => skillSlotRareType;
-        
+
         [SerializeField]
         private Define.AbnormalStatusType abnormalStatusType;
         public Define.AbnormalStatusType AbnormalStatusType => abnormalStatusType;
-        
+
         [SerializeField]
         private int abnormalStatusAttack;
         public int AbnormalStatusAttack => abnormalStatusAttack;
-        
+
         [SerializeField]
         private Define.RareType abnormalStatusAttackRareType;
         public Define.RareType AbnormalStatusAttackRareType => abnormalStatusAttackRareType;
+
+        [SerializeField]
+        private Define.ElementType elementType;
+        public Define.ElementType ElementType => elementType;
+
+        [SerializeField]
+        private int elementAttack;
+        public int ElementAttack => elementAttack;
+
+        [SerializeField]
+        private Define.RareType elementAttackRareType;
+        public Define.RareType ElementAttackRareType => elementAttackRareType;
 
         [SerializeField]
         private List<int> instanceSkillCoreIds = new();
@@ -73,7 +85,10 @@ namespace MH3
             Define.RareType skillSlotRareType,
             Define.AbnormalStatusType abnormalStatusType,
             int abnormalStatusAttack,
-            Define.RareType abnormalStatusAttackRareType
+            Define.RareType abnormalStatusAttackRareType,
+            Define.ElementType elementType,
+            int elementAttack,
+            Define.RareType elementAttackRareType
             )
         {
             this.instanceId = instanceId;
@@ -87,6 +102,9 @@ namespace MH3
             this.abnormalStatusType = abnormalStatusType;
             this.abnormalStatusAttack = abnormalStatusAttack;
             this.abnormalStatusAttackRareType = abnormalStatusAttackRareType;
+            this.elementType = elementType;
+            this.elementAttack = elementAttack;
+            this.elementAttackRareType = elementAttackRareType;
         }
 
         public void AddInstanceSkillCoreId(int instanceSkillCoreId)
