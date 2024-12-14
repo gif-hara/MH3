@@ -38,6 +38,10 @@ namespace MH3
         public WeaponAbnormalStatus.Group WeaponAbnormalStatuses => weaponAbnormalStatuses;
 
         [SerializeField]
+        private WeaponElement.Group weaponElements;
+        public WeaponElement.Group WeaponElements => weaponElements;
+
+        [SerializeField]
         private WeaponCombo.Group weaponCombos;
         public WeaponCombo.Group WeaponCombos => weaponCombos;
 
@@ -119,6 +123,7 @@ namespace MH3
                 "Skill.CriticalUp",
                 "Skill.DefenseUp",
                 "WeaponAbnormalStatus",
+                "WeaponElement",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -140,6 +145,7 @@ namespace MH3
             skillCriticalUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[14]));
             skillDefenseUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[15]));
             weaponAbnormalStatuses.Set(JsonHelper.FromJson<WeaponAbnormalStatus>(database[16]));
+            weaponElements.Set(JsonHelper.FromJson<WeaponElement>(database[17]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -226,6 +232,11 @@ namespace MH3
             {
                 return TinyServiceLocator.Resolve<MasterData>().WeaponAbnormalStatuses.Get(Id);
             }
+
+            public List<WeaponElement> GetElements()
+            {
+                return TinyServiceLocator.Resolve<MasterData>().WeaponElements.Get(Id);
+            }
         }
 
         [Serializable]
@@ -303,6 +314,28 @@ namespace MH3
 
             [Serializable]
             public class Group : Group<int, WeaponAbnormalStatus>
+            {
+                public Group() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class WeaponElement
+        {
+            public int Id;
+
+            public Define.ElementType ElementType;
+
+            public int Power;
+
+            public Define.RareType RareType;
+
+            public int Weight;
+
+            [Serializable]
+            public class Group : Group<int, WeaponElement>
             {
                 public Group() : base(x => x.Id)
                 {

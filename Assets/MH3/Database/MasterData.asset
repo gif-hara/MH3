@@ -104,6 +104,22 @@ MonoBehaviour:
         Power: 100
         RareType: 0
         Weight: 100
+  weaponElements:
+    list:
+    - Key: 10101
+      Value:
+      - Id: 10101
+        ElementType: 0
+        Power: 20
+        RareType: 0
+        Weight: 100
+    - Key: 10102
+      Value:
+      - Id: 10102
+        ElementType: 1
+        Power: 20
+        RareType: 0
+        Weight: 100
   weaponCombos:
     list:
     - Key: 10101
