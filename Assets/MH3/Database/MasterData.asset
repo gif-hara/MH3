@@ -22,7 +22,49 @@ MonoBehaviour:
       StrongAttackAnimationKey: Attack.Sword.Strong.1
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
     - Id: 10102
-      Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u5263"
+      Name: "\u30C6\u30B9\u30C8\u306E\u5263"
+      ModelDataId: Sword.1
+      ComboId: 10101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: Attack.Sword.Strong.1
+      ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
+    - Id: 10103
+      Name: "\u706B\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
+      ModelDataId: Sword.1
+      ComboId: 10101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: Attack.Sword.Strong.1
+      ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
+    - Id: 10104
+      Name: "\u6C34\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
+      ModelDataId: Sword.1
+      ComboId: 10101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: Attack.Sword.Strong.1
+      ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
+    - Id: 10105
+      Name: "\u8349\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
+      ModelDataId: Sword.1
+      ComboId: 10101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: Attack.Sword.Strong.1
+      ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
+    - Id: 10106
+      Name: "\u6BD2\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
+      ModelDataId: Sword.1
+      ComboId: 10101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: Attack.Sword.Strong.1
+      ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
+    - Id: 10107
+      Name: "\u9EBB\u75FA\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
+      ModelDataId: Sword.1
+      ComboId: 10101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: Attack.Sword.Strong.1
+      ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
+    - Id: 10108
+      Name: "\u5D29\u58CA\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
       ModelDataId: Sword.1
       ComboId: 10101
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
@@ -60,6 +102,42 @@ MonoBehaviour:
         Attack: 120
         RareType: 0
         Weight: 80
+    - Key: 10103
+      Value:
+      - Id: 10103
+        Attack: 100
+        RareType: 0
+        Weight: 100
+    - Key: 10104
+      Value:
+      - Id: 10104
+        Attack: 100
+        RareType: 0
+        Weight: 100
+    - Key: 10105
+      Value:
+      - Id: 10105
+        Attack: 100
+        RareType: 0
+        Weight: 100
+    - Key: 10106
+      Value:
+      - Id: 10106
+        Attack: 100
+        RareType: 0
+        Weight: 100
+    - Key: 10107
+      Value:
+      - Id: 10107
+        Attack: 100
+        RareType: 0
+        Weight: 100
+    - Key: 10108
+      Value:
+      - Id: 10108
+        Attack: 100
+        RareType: 0
+        Weight: 100
   weaponCriticals:
     list:
     - Key: 10101
@@ -74,6 +152,42 @@ MonoBehaviour:
         Critical: 0.5
         RareType: 0
         Weight: 100
+    - Key: 10103
+      Value:
+      - Id: 10103
+        Critical: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10104
+      Value:
+      - Id: 10104
+        Critical: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10105
+      Value:
+      - Id: 10105
+        Critical: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10106
+      Value:
+      - Id: 10106
+        Critical: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10107
+      Value:
+      - Id: 10107
+        Critical: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10108
+      Value:
+      - Id: 10108
+        Critical: 0
+        RareType: 0
+        Weight: 100
   weaponSkillSlots:
     list:
     - Key: 10101
@@ -85,6 +199,42 @@ MonoBehaviour:
     - Key: 10102
       Value:
       - Id: 10102
+        SkillSlot: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10103
+      Value:
+      - Id: 10103
+        SkillSlot: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10104
+      Value:
+      - Id: 10104
+        SkillSlot: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10105
+      Value:
+      - Id: 10105
+        SkillSlot: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10106
+      Value:
+      - Id: 10106
+        SkillSlot: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10107
+      Value:
+      - Id: 10107
+        SkillSlot: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10108
+      Value:
+      - Id: 10108
         SkillSlot: 1
         RareType: 0
         Weight: 100
@@ -104,20 +254,104 @@ MonoBehaviour:
         Power: 0
         RareType: 0
         Weight: 100
+    - Key: 10103
+      Value:
+      - Id: 10103
+        AbnormalStatusType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10104
+      Value:
+      - Id: 10104
+        AbnormalStatusType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10105
+      Value:
+      - Id: 10105
+        AbnormalStatusType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10106
+      Value:
+      - Id: 10106
+        AbnormalStatusType: 1
+        Power: 50
+        RareType: 0
+        Weight: 100
+    - Key: 10107
+      Value:
+      - Id: 10107
+        AbnormalStatusType: 2
+        Power: 50
+        RareType: 0
+        Weight: 100
+    - Key: 10108
+      Value:
+      - Id: 10108
+        AbnormalStatusType: 3
+        Power: 50
+        RareType: 0
+        Weight: 100
   weaponElements:
     list:
     - Key: 10101
       Value:
       - Id: 10101
         ElementType: 0
-        Power: 20
+        Power: 0
         RareType: 0
         Weight: 100
     - Key: 10102
       Value:
       - Id: 10102
+        ElementType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10103
+      Value:
+      - Id: 10103
+        ElementType: 1
+        Power: 20
+        RareType: 0
+        Weight: 100
+    - Key: 10104
+      Value:
+      - Id: 10104
+        ElementType: 2
+        Power: 20
+        RareType: 0
+        Weight: 100
+    - Key: 10105
+      Value:
+      - Id: 10105
         ElementType: 3
         Power: 20
+        RareType: 0
+        Weight: 100
+    - Key: 10106
+      Value:
+      - Id: 10106
+        ElementType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10107
+      Value:
+      - Id: 10107
+        ElementType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10108
+      Value:
+      - Id: 10108
+        ElementType: 0
+        Power: 0
         RareType: 0
         Weight: 100
   weaponCombos:
