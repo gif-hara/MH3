@@ -406,8 +406,8 @@ MonoBehaviour:
     - Key: 10101
       Value:
       - Id: 10101
-        SkillType: 1
-        Level: 1
+        SkillType: 2
+        Level: 30
         RareType: 0
         Weight: 100
   skillTypeToParameters:
@@ -422,6 +422,11 @@ MonoBehaviour:
       - SkillType: 1
         ActorParameterType: 1
         SkillLevelValueType: 1
+    - Key: 2
+      Value:
+      - SkillType: 2
+        ActorParameterType: 2
+        SkillLevelValueType: 2
   skillAttackUp:
     list:
     - Level: 0

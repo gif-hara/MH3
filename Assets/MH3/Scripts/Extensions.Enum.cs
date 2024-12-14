@@ -51,6 +51,7 @@ namespace MH3
             {
                 Define.SkillLevelValueType.AttackUp => m.SkillAttackUp,
                 Define.SkillLevelValueType.CriticalUp => m.SkillCriticalUp,
+                Define.SkillLevelValueType.DefenseUp => m.SkillDefenseUp,
                 _ => throw new NotImplementedException($"未対応の値です. self: {self}")
             };
         }
