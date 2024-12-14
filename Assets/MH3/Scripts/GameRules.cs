@@ -1,3 +1,6 @@
+using System;
+using HK;
+using MH3.ProjectileControllers;
 using UnityEngine;
 using UnitySequencerSystem;
 
@@ -61,5 +64,29 @@ namespace MH3
         [SerializeField]
         private float collapseDamageRate;
         public float CollapseDamageRate => collapseDamageRate;
+
+        [SerializeField]
+        private ElementProjectile.DictionaryList elementProjectiles;
+        public ElementProjectile.DictionaryList ElementProjectiles => elementProjectiles;
+
+        [Serializable]
+        public class ElementProjectile
+        {
+            [SerializeField]
+            private Define.ElementType elementType;
+            public Define.ElementType ElementType => elementType;
+
+            [SerializeField]
+            private Projectile projectilePrefab;
+            public Projectile ProjectilePrefab => projectilePrefab;
+
+            [Serializable]
+            public class DictionaryList : DictionaryList<Define.ElementType, ElementProjectile>
+            {
+                public DictionaryList() : base(x => x.ElementType)
+                {
+                }
+            }
+        }
     }
 }

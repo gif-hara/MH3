@@ -26,3 +26,11 @@ MonoBehaviour:
   paralysisBeginSequence: {fileID: 11400000, guid: 079b213137dc20f499b5bf6aedee6f1f, type: 2}
   paralysisEndSequence: {fileID: 11400000, guid: c09085f6c9d21914aa4394b53ed095cb, type: 2}
   collapseDamageRate: 1.2
+  elementProjectiles:
+    list:
+    - elementType: 1
+      projectilePrefab: {fileID: 3468862848708174436, guid: 1a3b4ad389a5f3a459662296d0b5813a, type: 3}
+    - elementType: 2
+      projectilePrefab: {fileID: 3468862848708174436, guid: 255c0a3e509d791459d4ebe0a5bc1acf, type: 3}
+    - elementType: 3
+      projectilePrefab: {fileID: 3468862848708174436, guid: 9574ce42b6d9172479a3c11f1aeda026, type: 3}
