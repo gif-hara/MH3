@@ -9477,7 +9477,6 @@ GameObject:
   - component: {fileID: 4345744598136972}
   - component: {fileID: 198285461679219400}
   - component: {fileID: 199918857107935454}
-  - component: {fileID: 114814385591794408}
   m_Layer: 0
   m_Name: hit-red-1
   m_TagString: Untagged
@@ -14260,19 +14259,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &114814385591794408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347330118340980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5a92ec89de1aec4281ea738f0693ff1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selfdestruct_in: 1.11
 --- !u!1 &1476775018294866
 GameObject:
   m_ObjectHideFlags: 0
