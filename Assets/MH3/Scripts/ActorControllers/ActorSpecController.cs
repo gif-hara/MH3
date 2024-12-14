@@ -117,7 +117,7 @@ namespace MH3.ActorControllers
 
         public float CriticalTotal => criticalInstanceWeapon.Value + skills.Sum(x => x.GetParameter(Define.ActorParameterType.Critical, actor));
 
-        public int AbnormalStatusAttackTotal => abnormalStatusAttackInstanceWeapon.Value;
+        public int AbnormalStatusAttackTotal => abnormalStatusAttackInstanceWeapon.Value + skills.Sum(x => x.GetParameterInt(AbnormalStatusAttackType.ToActorParameterType(), actor));
 
         public Define.AbnormalStatusType AbnormalStatusAttackType => abnormalStatusAttackType.Value;
 
