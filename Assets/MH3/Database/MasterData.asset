@@ -100,7 +100,7 @@ MonoBehaviour:
     - Key: 10102
       Value:
       - Id: 10102
-        AbnormalStatusType: 3
+        AbnormalStatusType: 2
         Power: 100
         RareType: 0
         Weight: 100
@@ -131,6 +131,7 @@ MonoBehaviour:
       FlinchName: Flinch.Small
       FlinchType: 1
       ForceFlinch: 0
+      AbnormalStatusPower: 1
       HitStopTimeScaleActor: 0.01
       HitStopDurationActor: 0.2
       HitStopTimeScaleTarget: 0.01
@@ -151,6 +152,7 @@ MonoBehaviour:
       FlinchName: Flinch.Small
       FlinchType: 1
       ForceFlinch: 0
+      AbnormalStatusPower: 1
       HitStopTimeScaleActor: 0.01
       HitStopDurationActor: 0.2
       HitStopTimeScaleTarget: 0.01
@@ -171,6 +173,7 @@ MonoBehaviour:
       FlinchName: Flinch.Small
       FlinchType: 1
       ForceFlinch: 0
+      AbnormalStatusPower: 1
       HitStopTimeScaleActor: 0.01
       HitStopDurationActor: 0.2
       HitStopTimeScaleTarget: 0.01
@@ -191,6 +194,7 @@ MonoBehaviour:
       FlinchName: Flinch.Large
       FlinchType: 2
       ForceFlinch: 1
+      AbnormalStatusPower: 1
       HitStopTimeScaleActor: 0.01
       HitStopDurationActor: 0.5
       HitStopTimeScaleTarget: 0.01
@@ -211,6 +215,7 @@ MonoBehaviour:
       FlinchName: Flinch.Small
       FlinchType: 1
       ForceFlinch: 0
+      AbnormalStatusPower: 1
       HitStopTimeScaleActor: 0.01
       HitStopDurationActor: 0.2
       HitStopTimeScaleTarget: 0.01
@@ -231,6 +236,7 @@ MonoBehaviour:
       FlinchName: Flinch.Small
       FlinchType: 1
       ForceFlinch: 0
+      AbnormalStatusPower: 1
       HitStopTimeScaleActor: 0.01
       HitStopDurationActor: 0.2
       HitStopTimeScaleTarget: 0.01

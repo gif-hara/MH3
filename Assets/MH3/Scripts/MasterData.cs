@@ -343,6 +343,8 @@ namespace MH3
 
             public bool ForceFlinch;
 
+            public float AbnormalStatusPower;
+
             public float HitStopTimeScaleActor;
 
             public float HitStopDurationActor;

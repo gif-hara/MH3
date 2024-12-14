@@ -247,7 +247,7 @@ namespace MH3.ActorControllers
                         value = new ReactiveProperty<int>(0);
                         abnormalStatusValues.Add(abnormalStatustype, value);
                     }
-                    value.Value += attacker.SpecController.AbnormalStatusAttackTotal;
+                    value.Value += Mathf.FloorToInt(attacker.SpecController.AbnormalStatusAttackTotal * attackSpec.AbnormalStatusPower);
                     if (value.Value >= abnormalStatusThreshold[abnormalStatustype].Value)
                     {
                         appliedAbnormalStatuses.Add(abnormalStatustype);
