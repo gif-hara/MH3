@@ -378,6 +378,8 @@ namespace MH3
 
             public float AbnormalStatusPower;
 
+            public float ElementPower;
+
             public float HitStopTimeScaleActor;
 
             public float HitStopDurationActor;
