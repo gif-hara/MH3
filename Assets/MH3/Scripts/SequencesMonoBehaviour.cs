@@ -11,6 +11,17 @@ namespace MH3
         [SerializeReference, SubclassSelector]
         private SequencesResolver sequencesResolver;
 
+        [SerializeField]
+        private bool playOnEnable;
+
+        private void OnEnable()
+        {
+            if (playOnEnable)
+            {
+                PlayAsync(new Container(), destroyCancellationToken).Forget();
+            }
+        }
+
         public UniTask PlayAsync(Container container, CancellationToken scope)
         {
             var sequences = sequencesResolver.Resolve(container);
