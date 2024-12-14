@@ -35,6 +35,10 @@ namespace MH3.ActorControllers
 
         private readonly ReactiveProperty<Define.AbnormalStatusType> abnormalStatusAttackType = new(Define.AbnormalStatusType.None);
 
+        private readonly ReactiveProperty<int> elementAttackInstanceWeapon = new(0);
+
+        private readonly ReactiveProperty<Define.ElementType> elementAttackType = new(Define.ElementType.None);
+
         private readonly Dictionary<Define.AbnormalStatusType, ReactiveProperty<int>> abnormalStatusThreshold = new();
 
         private readonly Dictionary<Define.AbnormalStatusType, ReactiveProperty<int>> abnormalStatusValues = new();
@@ -156,6 +160,8 @@ namespace MH3.ActorControllers
             criticalInstanceWeapon.Value = instanceWeaponData.Critical;
             abnormalStatusAttackInstanceWeapon.Value = instanceWeaponData.AbnormalStatusAttack;
             abnormalStatusAttackType.Value = instanceWeaponData.AbnormalStatusType;
+            elementAttackInstanceWeapon.Value = instanceWeaponData.ElementAttack;
+            elementAttackType.Value = instanceWeaponData.ElementType;
             weaponId.Value = instanceWeaponData.WeaponId;
             var instanceSkills = instanceWeaponData.InstanceSkillCoreIds
                 .Select(x => instanceSkillCores.Find(y => y.InstanceId == x))
