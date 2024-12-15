@@ -53,6 +53,8 @@ namespace MH3.ActorControllers
 
         private readonly ReactiveProperty<int> recoveryCommandCount = new(0);
 
+        private readonly ReactiveProperty<int> rewardUp = new(0);
+
         private readonly ReactiveProperty<int> weaponId = new(0);
 
         private readonly ReactiveProperty<int> flinch = new(0);
@@ -158,6 +160,8 @@ namespace MH3.ActorControllers
 
         public ReadOnlyReactiveProperty<int> Flinch => flinch;
 
+        public ReadOnlyReactiveProperty<int> RewardUp => rewardUp;
+
         public ScriptableSequences AttackSequences => spec.AttackSequences;
 
         public ScriptableSequences FlinchSequences => spec.FlinchSequences;
@@ -221,6 +225,7 @@ namespace MH3.ActorControllers
             hitPointMax.Value = spec.HitPoint + skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Health, actor));
             hitPoint.Value = hitPointMax.Value;
             recoveryCommandCount.Value = spec.RecoveryCommandCount + skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.RecoveryCommandCount, actor));
+            rewardUp.Value = skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Reward, actor));
         }
 
         public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)

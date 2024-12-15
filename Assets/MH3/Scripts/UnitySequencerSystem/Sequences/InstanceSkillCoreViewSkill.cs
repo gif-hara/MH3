@@ -24,6 +24,10 @@ namespace MH3
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var instanceSkillCore = container.Resolve<InstanceSkillCore>(instanceSkillCoreKey);
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                UnityEngine.Object.Destroy(parent.GetChild(i).gameObject);
+            }
             foreach (var skill in instanceSkillCore.Skills)
             {
                 var document = UnityEngine.Object.Instantiate(skillDocumentPrefab, parent);
