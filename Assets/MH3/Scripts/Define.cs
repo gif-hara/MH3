@@ -67,6 +67,7 @@ namespace MH3
             WaterElementAttack,
             GrassElementAttack,
             Health,
+            RecoveryCommandCount,
         }
 
         public enum SkillLevelValueType
@@ -77,6 +78,7 @@ namespace MH3
             AbnormalStatusUp,
             ElementAttackUp,
             HealthUp,
+            RecoveryCommandCountUp,
         }
 
         public enum AbnormalStatusType

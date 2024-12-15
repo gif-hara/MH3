@@ -57,6 +57,7 @@ namespace MH3
                 Define.SkillLevelValueType.AbnormalStatusUp => m.SkillAbnormalStatusUp,
                 Define.SkillLevelValueType.ElementAttackUp => m.SkillElementAttackUp,
                 Define.SkillLevelValueType.HealthUp => m.SkillHealthUp,
+                Define.SkillLevelValueType.RecoveryCommandCountUp => m.SkillRecoveryCommandCountUp,
                 _ => throw new NotImplementedException($"未対応の値です. self: {self}")
             };
         }
