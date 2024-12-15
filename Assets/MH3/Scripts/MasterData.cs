@@ -179,6 +179,8 @@ namespace MH3
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
+                weaponSpec.GuardPerformedSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/ActionSequences/{weaponSpec.GuardPerformedSequencesKey}.asset");
+                weaponSpec.GuardCanceledSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/ActionSequences/{weaponSpec.GuardCanceledSequencesKey}.asset");
             }
             foreach (var actorSpec in actorSpecs.List)
             {
@@ -228,7 +230,15 @@ namespace MH3
 
             public string StrongAttackAnimationKey;
 
+            public string GuardPerformedSequencesKey;
+
+            public string GuardCanceledSequencesKey;
+
             public WeaponModelData ModelData;
+
+            public ScriptableSequences GuardPerformedSequences;
+
+            public ScriptableSequences GuardCanceledSequences;
 
             [Serializable]
             public class DictionaryList : DictionaryList<int, WeaponSpec>
