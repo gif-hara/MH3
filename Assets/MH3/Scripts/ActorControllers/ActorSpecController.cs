@@ -166,13 +166,13 @@ namespace MH3.ActorControllers
 
         public ReadOnlyReactiveProperty<int> RewardUp => rewardUp;
 
-        public ScriptableSequences AttackSequences => spec.AttackSequences;
+        public ScriptableSequences AttackStateSequences => spec.AttackSequences;
 
-        public ScriptableSequences FlinchSequences => spec.FlinchSequences;
+        public ScriptableSequences FlinchStateSequences => spec.FlinchSequences;
 
-        public ScriptableSequences DodgeSequences => spec.DodgeSequences;
+        public ScriptableSequences DodgeStateSequences => spec.DodgeSequences;
 
-        public ScriptableSequences GuardSequences => spec.GuardSequences;
+        public ScriptableSequences GuardStateSequences => spec.GuardSequences;
 
         public ScriptableSequences SuccessJustGuardSequences => spec.SuccessJustGuardSequences;
 
@@ -361,7 +361,7 @@ namespace MH3.ActorControllers
                     actor.MovementController.RotateImmediate(Quaternion.LookRotation(lookAt));
                     actor.MovementController.CanRotate.Value = false;
                     flinchType.Value = attackSpec.FlinchType;
-                    actor.StateMachine.TryChangeState(FlinchSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));
+                    actor.StateMachine.TryChangeState(FlinchStateSequences, force: true, containerAction: c => c.Register("FlinchName", attackSpec.FlinchName));
                     ResetFlinch();
                     onFlinch.OnNext(Unit.Default);
                 }

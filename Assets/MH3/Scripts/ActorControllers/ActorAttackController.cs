@@ -28,7 +28,7 @@ namespace MH3.ActorControllers
             if (!string.IsNullOrEmpty(actor.SpecController.StrongAttackAnimationKey) && target.SpecController.FlinchType.CurrentValue == Define.FlinchType.Small)
             {
                 if (actor.StateMachine.TryChangeState(
-                    actor.SpecController.AttackSequences,
+                    actor.SpecController.AttackStateSequences,
                     containerAction: c =>
                     {
                         c.Register("AttackName", actor.SpecController.StrongAttackAnimationKey);
@@ -41,7 +41,7 @@ namespace MH3.ActorControllers
             if (actor.ActionController.JustGuarding.Value)
             {
                 if (actor.StateMachine.TryChangeState(
-                    actor.SpecController.AttackSequences,
+                    actor.SpecController.AttackStateSequences,
                     containerAction: c =>
                     {
                         c.Register("AttackName", actor.SpecController.JustGuardAttackAnimationKey);
@@ -59,7 +59,7 @@ namespace MH3.ActorControllers
                 }
 
                 if (actor.StateMachine.TryChangeState(
-                    actor.SpecController.AttackSequences,
+                    actor.SpecController.AttackStateSequences,
                     containerAction: c =>
                     {
                         c.Register("AttackName", actor.SpecController.ComboAnimationKeys[attackCount++]);

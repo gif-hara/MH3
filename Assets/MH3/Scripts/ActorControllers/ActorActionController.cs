@@ -30,8 +30,8 @@ namespace MH3.ActorControllers
                     }
                     if (
                         @this.IsGuard.Value
-                        && !actor.StateMachine.IsMatchState(actor.SpecController.GuardSequences)
-                        && actor.StateMachine.TryChangeState(actor.SpecController.GuardSequences))
+                        && !actor.StateMachine.IsMatchState(actor.SpecController.GuardStateSequences)
+                        && actor.StateMachine.TryChangeState(actor.SpecController.GuardStateSequences))
                     {
                         @this.beginGuardTime.Value = UnityEngine.Time.time;
                     }
@@ -43,7 +43,7 @@ namespace MH3.ActorControllers
         public bool TryDodge()
         {
             return actor.StateMachine.TryChangeState(
-                actor.SpecController.DodgeSequences,
+                actor.SpecController.DodgeStateSequences,
                 containerAction: c =>
                 {
                     c.Register("DodgeName", "Dodge");
@@ -52,7 +52,7 @@ namespace MH3.ActorControllers
 
         public Define.GuardResult GetGuardResult(Vector3 impactPosition)
         {
-            if (!IsGuard.Value || !actor.StateMachine.IsMatchState(actor.SpecController.GuardSequences))
+            if (!IsGuard.Value || !actor.StateMachine.IsMatchState(actor.SpecController.GuardStateSequences))
             {
                 return Define.GuardResult.NotGuard;
             }
