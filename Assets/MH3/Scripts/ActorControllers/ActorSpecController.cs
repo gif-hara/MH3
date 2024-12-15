@@ -145,6 +145,8 @@ namespace MH3.ActorControllers
 
         public float RotationSpeed => spec.RotationSpeed;
 
+        public bool VisibleStatusUI => spec.VisibleStatusUI;
+
         public bool IsDead => hitPoint.Value <= 0;
 
         public ReadOnlyReactiveProperty<int> WeaponId => weaponId;
