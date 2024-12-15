@@ -27,7 +27,7 @@ namespace MH3
             actor.SpecController.OnTakeDamage
                 .Subscribe(this, static (x, t) =>
                 {
-                    t.CreateLabelAsync(x.Damage, x.DamagePosition).Forget();
+                    t.CreateLabelAsync(x.Damage, x.DamagePosition + Random.insideUnitSphere).Forget();
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
