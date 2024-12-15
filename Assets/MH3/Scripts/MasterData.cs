@@ -101,6 +101,10 @@ namespace MH3
         private SkillLevelValue.DictionaryList skillHealthUp;
         public SkillLevelValue.DictionaryList SkillHealthUp => skillHealthUp;
 
+        [SerializeField]
+        private SkillLevelValue.DictionaryList skillRecoveryCommandCountUp;
+        public SkillLevelValue.DictionaryList SkillRecoveryCommandCountUp => skillRecoveryCommandCountUp;
+
 #if UNITY_EDITOR
         [ContextMenu("Update")]
         private async void UpdateMasterData()
@@ -139,6 +143,7 @@ namespace MH3
                 "Skill.AbnormalStatusUp",
                 "Skill.ElementAttackUp",
                 "Skill.HealthUp",
+                "Skill.RecoveryCommandCountUp",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -164,6 +169,7 @@ namespace MH3
             skillAbnormalStatusUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[18]));
             skillElementAttackUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[19]));
             skillHealthUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[20]));
+            skillRecoveryCommandCountUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[21]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
