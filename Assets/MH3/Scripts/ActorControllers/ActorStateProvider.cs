@@ -42,9 +42,9 @@ namespace MH3.ActorControllers
                 BooleanType.CanChangeState => actor.StateMachine.CanChangeState,
                 BooleanType.CanAddFlinchDamage => actor.SpecController.CanAddFlinchDamage,
                 BooleanType.Invincible => actor.SpecController.Invincible,
-                BooleanType.IsGuard => actor.GuardController.IsGuard,
-                BooleanType.JustGuarding => actor.GuardController.JustGuarding,
-                BooleanType.CanGuard => actor.GuardController.CanGuard,
+                BooleanType.IsGuard => actor.ActionController.IsGuard,
+                BooleanType.JustGuarding => actor.ActionController.JustGuarding,
+                BooleanType.CanGuard => actor.ActionController.CanGuard,
                 _ => throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}"),
             };
         }
@@ -80,13 +80,13 @@ namespace MH3.ActorControllers
                     actor.SpecController.Invincible.Value = value;
                     break;
                 case BooleanType.IsGuard:
-                    actor.GuardController.IsGuard.Value = value;
+                    actor.ActionController.IsGuard.Value = value;
                     break;
                 case BooleanType.JustGuarding:
-                    actor.GuardController.JustGuarding.Value = value;
+                    actor.ActionController.JustGuarding.Value = value;
                     break;
                 case BooleanType.CanGuard:
-                    actor.GuardController.CanGuard.Value = value;
+                    actor.ActionController.CanGuard.Value = value;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}");

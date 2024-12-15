@@ -55,13 +55,13 @@ namespace MH3
             inputController.Actions.Player.Guard.OnPerformedAsObservable()
                 .Subscribe(actor, static (_, a) =>
                 {
-                    a.GuardController.IsGuard.Value = true;
+                    a.ActionController.IsGuard.Value = true;
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             inputController.Actions.Player.Guard.OnCanceledAsObservable()
                 .Subscribe(actor, static (_, a) =>
                 {
-                    a.GuardController.IsGuard.Value = false;
+                    a.ActionController.IsGuard.Value = false;
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             inputController.Actions.Player.Recovery.OnPerformedAsObservable()

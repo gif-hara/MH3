@@ -98,5 +98,13 @@ namespace MH3
             Water,
             Grass,
         }
+
+        public enum GuardResult
+        {
+            NotGuard,
+            SuccessGuard,
+            FailedGuard,
+            SuccessJustGuard,
+        }
     }
 }

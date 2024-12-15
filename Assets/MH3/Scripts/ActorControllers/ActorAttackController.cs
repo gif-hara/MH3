@@ -38,7 +38,7 @@ namespace MH3.ActorControllers
                 }
                 return false;
             }
-            if (actor.GuardController.JustGuarding.Value)
+            if (actor.ActionController.JustGuarding.Value)
             {
                 if (actor.StateMachine.TryChangeState(
                     actor.SpecController.AttackSequences,

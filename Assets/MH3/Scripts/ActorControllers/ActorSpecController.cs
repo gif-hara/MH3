@@ -253,7 +253,7 @@ namespace MH3.ActorControllers
             }
 #endif
 
-            var guardResult = actor.GuardController.GetGuardResult(attacker.transform.position);
+            var guardResult = actor.ActionController.GetGuardResult(attacker.transform.position);
             attacker.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleActor, attackSpec.HitStopDurationActor).Forget();
             actor.TimeController.BeginHitStopAsync(attackSpec.HitStopTimeScaleTarget, attackSpec.HitStopDurationTarget).Forget();
             LMotion.Shake.Create(Vector3.zero, Vector3.one * attackSpec.ShakeStrength, attackSpec.ShakeDuration)
@@ -264,7 +264,7 @@ namespace MH3.ActorControllers
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
             var masterData = TinyServiceLocator.Resolve<MasterData>();
 
-            if (guardResult == ActorGuardController.GuardResult.SuccessJustGuard)
+            if (guardResult == Define.GuardResult.SuccessJustGuard)
             {
                 actor.StateMachine.TryChangeState(SuccessJustGuardSequences, force: true);
                 TinyServiceLocator.Resolve<AudioManager>().PlaySfx(gameRules.SuccessJustGuardSfxKey);
@@ -272,7 +272,7 @@ namespace MH3.ActorControllers
             else
             {
                 var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult, impactPosition);
-                if (guardResult == ActorGuardController.GuardResult.SuccessGuard)
+                if (guardResult == Define.GuardResult.SuccessGuard)
                 {
                     TinyServiceLocator.Resolve<AudioManager>().PlaySfx(TinyServiceLocator.Resolve<GameRules>().SuccessGuardSfxKey);
                 }
@@ -361,7 +361,7 @@ namespace MH3.ActorControllers
                     sequencer.PlayAsync(actor.destroyCancellationToken).Forget();
                 }
 
-                if (guardResult == ActorGuardController.GuardResult.SuccessGuard)
+                if (guardResult == Define.GuardResult.SuccessGuard)
                 {
                     actor.StateMachine.TryChangeState(spec.SuccessGuardSequences, force: true);
                 }

@@ -10,7 +10,7 @@ namespace MH3
             Actor attacker,
             Actor target,
             MasterData.AttackSpec attackSpec,
-            ActorGuardController.GuardResult targetGuardResult,
+            Define.GuardResult targetGuardResult,
             Vector3 impactPosition
             )
         {
@@ -29,12 +29,12 @@ namespace MH3
             damage = Mathf.FloorToInt(damage * 1.0f - (float)target.SpecController.DefenseTotal / gameRules.DefenseRate);
             damage = Mathf.FloorToInt(damage * (1.0f - target.SpecController.GetCutRate(attackSpec.ElementType).CurrentValue));
             var flinchDamage = attackSpec.FlinchDamage;
-            if (targetGuardResult == ActorGuardController.GuardResult.SuccessGuard)
+            if (targetGuardResult == Define.GuardResult.SuccessGuard)
             {
                 damage = Mathf.FloorToInt(damage * gameRules.GuardSuccessDamageRate);
                 flinchDamage = 0;
             }
-            else if (targetGuardResult == ActorGuardController.GuardResult.SuccessJustGuard)
+            else if (targetGuardResult == Define.GuardResult.SuccessJustGuard)
             {
                 damage = 0;
                 flinchDamage = 0;
