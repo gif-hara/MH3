@@ -51,6 +51,8 @@ namespace MH3.ActorControllers
 
         private readonly HashSet<Define.AbnormalStatusType> appliedAbnormalStatuses = new();
 
+        private readonly ReactiveProperty<int> recoveryCommandCount = new(0);
+
         private readonly ReactiveProperty<int> weaponId = new(0);
 
         private readonly ReactiveProperty<int> flinch = new(0);
@@ -91,6 +93,7 @@ namespace MH3.ActorControllers
             cutRateWaterDamage.Value = spec.WaterDamageCutRate;
             cutRateGrassDamage.Value = spec.GrassDamageCutRate;
             weaponId.Value = spec.WeaponId;
+            recoveryCommandCount.Value = spec.RecoveryCommandCount;
             ComboAnimationKeys.Clear();
             foreach (var combo in WeaponSpec.GetCombos())
             {
@@ -134,6 +137,8 @@ namespace MH3.ActorControllers
         public ReadOnlyReactiveProperty<float> CutRateWaterDamage => cutRateWaterDamage;
 
         public ReadOnlyReactiveProperty<float> CutRateGrassDamage => cutRateGrassDamage;
+
+        public ReadOnlyReactiveProperty<int> RecoveryCommandCount => recoveryCommandCount;
 
         public int PoisonDuration => spec.PoisonDuration;
 
@@ -411,21 +416,27 @@ namespace MH3.ActorControllers
 
         public void ResetAll()
         {
-            hitPoint.Value = spec.HitPoint;
+            hitPoint.Value = hitPointMax.Value;
             flinch.Value = 0;
             flinchType.Value = Define.FlinchType.None;
             CanAddFlinchDamage.Value = true;
             Invincible.Value = false;
+            recoveryCommandCount.Value = spec.RecoveryCommandCount;
             actor.StateMachine.TryChangeState(spec.InitialStateSequences, force: true);
         }
 
         public bool TryRecovery()
         {
-            if (hitPoint.Value >= spec.HitPoint)
+            if (hitPoint.Value >= spec.HitPoint || recoveryCommandCount.Value <= 0)
             {
                 return false;
             }
             return actor.StateMachine.TryChangeState(spec.RecoverySequences);
+        }
+
+        public void AddRecoveryCommandCount(int value)
+        {
+            recoveryCommandCount.Value += value;
         }
 
 #if DEBUG
