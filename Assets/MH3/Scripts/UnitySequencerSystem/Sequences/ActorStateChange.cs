@@ -13,18 +13,25 @@ namespace MH3
     {
         [SerializeReference, SubclassSelector]
         private ActorResolver actorResolver;
-        
+
         [SerializeField]
         private ScriptableSequences stateSequence;
-        
+
         [SerializeReference, SubclassSelector]
         private BooleanResolver forceChangeResolver;
-        
+
+        [SerializeReference, SubclassSelector]
+        private StringResolver isSuccessKeyResolver;
+
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var actor = actorResolver.Resolve(container);
             var forceChange = forceChangeResolver.Resolve(container);
-            actor.StateMachine.TryChangeState(stateSequence, forceChange);
+            var isSuccess = actor.StateMachine.TryChangeState(stateSequence, forceChange);
+            if (isSuccessKeyResolver != null)
+            {
+                container.RegisterOrReplace(isSuccessKeyResolver.Resolve(container), isSuccess);
+            }
             return UniTask.CompletedTask;
         }
     }
