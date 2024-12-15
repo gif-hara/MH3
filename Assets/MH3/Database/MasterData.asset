@@ -389,7 +389,7 @@ MonoBehaviour:
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
-      FlinchType: 1
+      FlinchType: 2
       ForceFlinch: 0
       AbnormalStatusPower: 1
       ElementPower: 1
@@ -413,7 +413,7 @@ MonoBehaviour:
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
-      FlinchType: 1
+      FlinchType: 2
       ForceFlinch: 0
       AbnormalStatusPower: 1
       ElementPower: 1
@@ -437,7 +437,7 @@ MonoBehaviour:
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
-      FlinchType: 1
+      FlinchType: 2
       ForceFlinch: 0
       AbnormalStatusPower: 1
       ElementPower: 1
@@ -456,12 +456,60 @@ MonoBehaviour:
       HitCameraImpulseSourceKey: Small
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Sword.Basic.4.1
+      Power: 18
+      FlinchDamage: 10
+      ColliderName: Default
+      FlinchName: Flinch.VerySmall
+      FlinchType: 1
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0
+      HitStopDurationActor: 0
+      HitStopTimeScaleTarget: 0
+      HitStopDurationTarget: 0
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: Small
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Sword.Basic.4.2
+      Power: 24
+      FlinchDamage: 10
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0
+      HitStopDurationActor: 0
+      HitStopTimeScaleTarget: 0
+      HitStopDurationTarget: 0
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: Small
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.5
       Power: 14
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
-      FlinchType: 1
+      FlinchType: 2
       ForceFlinch: 0
       AbnormalStatusPower: 1
       ElementPower: 1
@@ -485,7 +533,7 @@ MonoBehaviour:
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
-      FlinchType: 1
+      FlinchType: 2
       ForceFlinch: 0
       AbnormalStatusPower: 1
       ElementPower: 1
@@ -505,11 +553,11 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Strong.1
-      Power: 50
+      Power: 58
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Large
-      FlinchType: 2
+      FlinchType: 3
       ForceFlinch: 1
       AbnormalStatusPower: 1
       ElementPower: 1
@@ -529,11 +577,11 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: Hit.Strong.Player.1
       HitAdditionalSequencesPlayer: {fileID: 11400000, guid: 1b746f36630a9df49a3ed10c2aa58aa4, type: 2}
     - Id: Sword.JustGuard.1
-      Power: 20
-      FlinchDamage: 50
+      Power: 24
+      FlinchDamage: 30
       ColliderName: Default
       FlinchName: Flinch.Small
-      FlinchType: 1
+      FlinchType: 2
       ForceFlinch: 0
       AbnormalStatusPower: 1
       ElementPower: 1
@@ -557,7 +605,7 @@ MonoBehaviour:
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
-      FlinchType: 1
+      FlinchType: 2
       ForceFlinch: 0
       AbnormalStatusPower: 1
       ElementPower: 1
@@ -581,7 +629,7 @@ MonoBehaviour:
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
-      FlinchType: 1
+      FlinchType: 2
       ForceFlinch: 0
       AbnormalStatusPower: 0
       ElementPower: 0
@@ -605,7 +653,7 @@ MonoBehaviour:
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
-      FlinchType: 1
+      FlinchType: 2
       ForceFlinch: 0
       AbnormalStatusPower: 0
       ElementPower: 0
@@ -629,7 +677,7 @@ MonoBehaviour:
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
-      FlinchType: 1
+      FlinchType: 2
       ForceFlinch: 0
       AbnormalStatusPower: 0
       ElementPower: 0
