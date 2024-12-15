@@ -66,6 +66,9 @@ namespace MH3
         [SerializeField]
         private HKUIDocument actorSpecStatusDocumentPrefab;
 
+        [SerializeField]
+        private HKUIDocument enemyStatusDocumentPrefab;
+
         private Actor player;
 
         private Actor enemy;
@@ -81,6 +84,8 @@ namespace MH3
         private MasterData.QuestSpec currentQuestSpec;
 
         private UIViewFade fade;
+
+        private UIViewEnemyStatus enemyStatus;
 
         private void Start()
         {
@@ -105,6 +110,7 @@ namespace MH3
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);
+            enemyStatus = new UIViewEnemyStatus(enemyStatusDocumentPrefab, destroyCancellationToken);
             SetupQuestAsync(initialQuestSpecId, immediate: true).Forget();
             inputController.Actions.Player.PauseMenu
                 .OnPerformedAsObservable()
@@ -176,6 +182,7 @@ namespace MH3
             enemy.BehaviourController.Begin(enemySpec.Behaviour).Forget();
             gameCameraController.Setup(player, enemy);
             damageLabel.BeginObserve(enemy);
+            enemyStatus.BeginObserve(enemy);
             var questClearContainer = new Container();
             questClearContainer.Register(this);
             questClearContainer.Register("Player", player);
