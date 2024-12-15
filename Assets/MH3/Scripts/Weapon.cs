@@ -10,7 +10,7 @@ namespace MH3
     public class Weapon : MonoBehaviour, IActorOnTriggerEnterEvent
     {
         [SerializeField]
-        private List<ColliderElement> colliders = new();
+        private List<GameObject> colliders = new();
 
         [SerializeField]
         private TrailElement.DictionaryList trails = new();
@@ -29,7 +29,7 @@ namespace MH3
             gameObject.SetLayerRecursively(actor.GetAttackLayer());
             foreach (var collider in colliders)
             {
-                actor.AttackController.AddCollider(collider.Name, collider.ColliderObject);
+                actor.AttackController.AddCollider(collider.name, collider);
             }
             foreach (var trail in trails.List)
             {
@@ -41,7 +41,7 @@ namespace MH3
         {
             foreach (var collider in colliders)
             {
-                actor.AttackController.RemoveCollider(collider.Name);
+                actor.AttackController.RemoveCollider(collider.name);
             }
         }
 
@@ -65,10 +65,6 @@ namespace MH3
         public class ColliderElement
         {
             [SerializeField]
-            private string name;
-            public string Name => name;
-
-            [SerializeField]
             private GameObject colliderObject;
             public GameObject ColliderObject => colliderObject;
         }
@@ -77,17 +73,13 @@ namespace MH3
         public class TrailElement
         {
             [SerializeField]
-            private string key;
-            public string Key => key;
-
-            [SerializeField]
             private MeleeWeaponTrail trail;
             public MeleeWeaponTrail Trail => trail;
 
             [Serializable]
             public class DictionaryList : DictionaryList<string, TrailElement>
             {
-                public DictionaryList() : base(x => x.Key)
+                public DictionaryList() : base(x => x.trail.name)
                 {
                 }
             }
