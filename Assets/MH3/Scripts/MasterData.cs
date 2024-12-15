@@ -478,6 +478,8 @@ namespace MH3
 
             public bool VisibleStatusUI;
 
+            public int RecoveryCommandCount;
+
             public string InitialStateKey;
 
             public string AttackSequencesKey;
