@@ -64,6 +64,10 @@ namespace MH3
             inputController.Actions.Player.Guard.OnCanceledAsObservable()
                 .Subscribe(actor, static (_, a) =>
                 {
+                    if (a.SpecController.GuardCanceledSequences == null)
+                    {
+                        return;
+                    }
                     var container = new Container();
                     container.Register("Actor", a);
                     var sequencer = new Sequencer(container, a.SpecController.GuardCanceledSequences.Sequences);
