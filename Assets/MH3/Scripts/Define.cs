@@ -11,6 +11,7 @@ namespace MH3
         public enum FlinchType
         {
             None,
+            VerySmall,
             Small,
             Large,
         }
