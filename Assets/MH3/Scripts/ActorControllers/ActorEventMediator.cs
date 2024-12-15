@@ -63,5 +63,10 @@ namespace MH3
         {
             actor.AttackController.ResetAttackCount();
         }
+
+        public void AddRecoveryCommandCount(int value)
+        {
+            actor.SpecController.AddRecoveryCommandCount(value);
+        }
     }
 }
