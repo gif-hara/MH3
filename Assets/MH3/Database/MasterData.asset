@@ -189,6 +189,12 @@ MonoBehaviour:
         Attack: 100
         RareType: 0
         Weight: 100
+    - Key: 10201
+      Value:
+      - Id: 10201
+        Attack: 100
+        RareType: 0
+        Weight: 100
   weaponCriticals:
     list:
     - Key: 10101
@@ -239,6 +245,12 @@ MonoBehaviour:
         Critical: 0
         RareType: 0
         Weight: 100
+    - Key: 10201
+      Value:
+      - Id: 10201
+        Critical: 0
+        RareType: 0
+        Weight: 100
   weaponSkillSlots:
     list:
     - Key: 10101
@@ -286,6 +298,12 @@ MonoBehaviour:
     - Key: 10108
       Value:
       - Id: 10108
+        SkillSlot: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10201
+      Value:
+      - Id: 10201
         SkillSlot: 1
         RareType: 0
         Weight: 100
@@ -343,6 +361,13 @@ MonoBehaviour:
     - Key: 10108
       Value:
       - Id: 10108
+        AbnormalStatusType: 3
+        Power: 50
+        RareType: 0
+        Weight: 100
+    - Key: 10201
+      Value:
+      - Id: 10201
         AbnormalStatusType: 3
         Power: 50
         RareType: 0
@@ -405,6 +430,13 @@ MonoBehaviour:
         Power: 0
         RareType: 0
         Weight: 100
+    - Key: 10201
+      Value:
+      - Id: 10201
+        ElementType: 1
+        Power: 8
+        RareType: 0
+        Weight: 100
   weaponCombos:
     list:
     - Key: 10101
@@ -433,6 +465,12 @@ MonoBehaviour:
         AnimationKey: Attack.Sword.Basic.5
       - Id: 10102
         AnimationKey: Attack.Sword.Basic.6
+    - Key: 10201
+      Value:
+      - Id: 10201
+        AnimationKey: Attack.DualSword.Basic.1
+      - Id: 10201
+        AnimationKey: Attack.DualSword.Basic.1
   attackSpecs:
     list:
     - Id: Sword.Basic.1
@@ -651,6 +689,54 @@ MonoBehaviour:
       HitCameraImpulseSourceKey: Small
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: DualSword.Basic.1.1
+      Power: 4
+      FlinchDamage: 1
+      ColliderName: Default.Right
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0
+      HitStopDurationActor: 0
+      HitStopTimeScaleTarget: 0
+      HitStopDurationTarget: 0
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: Small
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: DualSword.Basic.1.2
+      Power: 5
+      FlinchDamage: 1
+      ColliderName: Default.Left
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0
+      HitStopDurationActor: 0
+      HitStopTimeScaleTarget: 0
+      HitStopDurationTarget: 0
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: Small
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Training.Basic.1
       Power: 0
       FlinchDamage: 10
@@ -677,7 +763,7 @@ MonoBehaviour:
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Element.Fire
       Power: 100
-      FlinchDamage: 10
+      FlinchDamage: 0
       ColliderName: Default
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -696,12 +782,12 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
-      HitCameraImpulseSourceKey: Small
+      HitCameraImpulseSourceKey: 
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Element.Water
       Power: 100
-      FlinchDamage: 10
+      FlinchDamage: 0
       ColliderName: Default
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -720,12 +806,12 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
-      HitCameraImpulseSourceKey: Small
+      HitCameraImpulseSourceKey: 
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Element.Grass
       Power: 100
-      FlinchDamage: 10
+      FlinchDamage: 0
       ColliderName: Default
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -744,7 +830,7 @@ MonoBehaviour:
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
-      HitCameraImpulseSourceKey: Small
+      HitCameraImpulseSourceKey: 
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
   actorSpecs:
@@ -924,7 +1010,7 @@ MonoBehaviour:
     - Key: 10101
       Value:
       - Id: 10101
-        SkillType: 11
+        SkillType: 6
         Level: 1
         RareType: 0
         Weight: 100
