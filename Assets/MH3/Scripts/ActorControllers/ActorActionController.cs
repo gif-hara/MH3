@@ -1,10 +1,10 @@
 namespace MH3.ActorControllers
 {
-    public class ActorDodgeController
+    public class ActorActionController
     {
         private readonly Actor actor;
 
-        public ActorDodgeController(Actor actor)
+        public ActorActionController(Actor actor)
         {
             this.actor = actor;
         }
