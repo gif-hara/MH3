@@ -12,9 +12,9 @@ namespace MH3.ActorControllers
 
         private readonly Dictionary<string, GameObject> colliders = new();
 
-        private MasterData.AttackSpec attackSpec;
+        private readonly Dictionary<string, MasterData.AttackSpec> attackSpecs = new();
 
-        private readonly HashSet<Actor> attackedActors = new();
+        private readonly HashSet<(Actor actor, string colliderName)> attackedActors = new();
 
         public bool HasNextCombo => attackCount < actor.SpecController.ComboAnimationKeys.Count;
 
@@ -101,8 +101,8 @@ namespace MH3.ActorControllers
 
         public void SetAttackSpec(string attackSpecId)
         {
-            attackedActors.Clear();
-            attackSpec = TinyServiceLocator.Resolve<MasterData>().AttackSpecs.Get(attackSpecId);
+            var attackSpec = TinyServiceLocator.Resolve<MasterData>().AttackSpecs.Get(attackSpecId);
+            attackSpecs.Add(attackSpec.ColliderName, attackSpec);
             SetActiveCollider(attackSpec.ColliderName, true);
         }
 
@@ -112,16 +112,18 @@ namespace MH3.ActorControllers
             {
                 collider.SetActive(false);
             }
+            attackSpecs.Clear();
+            attackedActors.Clear();
         }
 
-        public void Attack(Actor target, Vector3 impactPosition)
+        public void Attack(Actor target, Vector3 impactPosition, string colliderName)
         {
-            if (attackedActors.Contains(target))
+            if (attackedActors.Contains((target, colliderName)))
             {
                 return;
             }
-            target.SpecController.TakeDamage(actor, attackSpec, impactPosition);
-            attackedActors.Add(target);
+            target.SpecController.TakeDamage(actor, attackSpecs[colliderName], impactPosition);
+            attackedActors.Add((target, colliderName));
         }
     }
 }
