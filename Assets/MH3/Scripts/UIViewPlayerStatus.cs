@@ -2,6 +2,7 @@ using System.Threading;
 using HK;
 using MH3.ActorControllers;
 using R3;
+using TMPro;
 using UnityEngine.UI;
 
 namespace MH3
@@ -15,11 +16,21 @@ namespace MH3
         {
             document = UnityEngine.Object.Instantiate(documentPrefab);
             actor.SpecController.HitPoint
-                .Subscribe(document, (_, d) =>
+                .Subscribe((document, actor), static (_, t) =>
                 {
-                    d.Q<HKUIDocument>("Slider.HitPoint")
+                    var (document, actor) = t;
+                    document.Q<HKUIDocument>("Slider.HitPoint")
                         .Q<Slider>("Slider")
                         .value = (float)actor.SpecController.HitPoint.CurrentValue / actor.SpecController.HitPointMax.CurrentValue;
+                })
+                .RegisterTo(scope);
+            actor.SpecController.RecoveryCommandCount
+                .Subscribe((document, actor), static (x, t) =>
+                {
+                    var (document, actor) = t;
+                    document.Q<HKUIDocument>("RecoveryCommandCount")
+                        .Q<TMP_Text>("Value")
+                        .text = x.ToString();
                 })
                 .RegisterTo(scope);
         }
