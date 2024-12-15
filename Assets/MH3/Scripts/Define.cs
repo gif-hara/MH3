@@ -68,6 +68,7 @@ namespace MH3
             GrassElementAttack,
             Health,
             RecoveryCommandCount,
+            Reward,
         }
 
         public enum SkillLevelValueType
@@ -79,6 +80,7 @@ namespace MH3
             ElementAttackUp,
             HealthUp,
             RecoveryCommandCountUp,
+            RewardUp,
         }
 
         public enum AbnormalStatusType
