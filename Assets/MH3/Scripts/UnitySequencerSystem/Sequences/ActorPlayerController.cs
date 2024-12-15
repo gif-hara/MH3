@@ -55,13 +55,19 @@ namespace MH3
             inputController.Actions.Player.Guard.OnPerformedAsObservable()
                 .Subscribe(actor, static (_, a) =>
                 {
-                    a.ActionController.IsGuard.Value = true;
+                    var container = new Container();
+                    container.Register("Actor", a);
+                    var sequencer = new Sequencer(container, a.SpecController.GuardPerformedSequences.Sequences);
+                    sequencer.PlayAsync(a.destroyCancellationToken).Forget();
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             inputController.Actions.Player.Guard.OnCanceledAsObservable()
                 .Subscribe(actor, static (_, a) =>
                 {
-                    a.ActionController.IsGuard.Value = false;
+                    var container = new Container();
+                    container.Register("Actor", a);
+                    var sequencer = new Sequencer(container, a.SpecController.GuardCanceledSequences.Sequences);
+                    sequencer.PlayAsync(a.destroyCancellationToken).Forget();
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             inputController.Actions.Player.Recovery.OnPerformedAsObservable()

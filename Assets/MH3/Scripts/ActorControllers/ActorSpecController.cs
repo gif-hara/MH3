@@ -83,6 +83,10 @@ namespace MH3.ActorControllers
 
         private readonly CancellationTokenSource deadCancellationTokenSource = new();
 
+        public ScriptableSequences GuardPerformedSequences { get; private set; }
+
+        public ScriptableSequences GuardCanceledSequences { get; private set; }
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -94,7 +98,7 @@ namespace MH3.ActorControllers
             cutRateFireDamage.Value = spec.FireDamageCutRate;
             cutRateWaterDamage.Value = spec.WaterDamageCutRate;
             cutRateGrassDamage.Value = spec.GrassDamageCutRate;
-            weaponId.Value = spec.WeaponId;
+            SetWeaponId(spec.WeaponId);
             recoveryCommandCount.Value = spec.RecoveryCommandCount;
             ComboAnimationKeys.Clear();
             foreach (var combo in WeaponSpec.GetCombos())
@@ -208,15 +212,23 @@ namespace MH3.ActorControllers
             };
         }
 
+        private void SetWeaponId(int value)
+        {
+            weaponId.Value = value;
+            var weaponSpec = WeaponSpec;
+            GuardPerformedSequences = weaponSpec.GuardPerformedSequences;
+            GuardCanceledSequences = weaponSpec.GuardCanceledSequences;
+        }
+
         public void ChangeInstanceWeapon(InstanceWeapon instanceWeaponData, List<InstanceSkillCore> instanceSkillCores)
         {
+            SetWeaponId(instanceWeaponData.WeaponId);
             attackInstanceWeapon.Value = instanceWeaponData.Attack;
             criticalInstanceWeapon.Value = instanceWeaponData.Critical;
             abnormalStatusAttackInstanceWeapon.Value = instanceWeaponData.AbnormalStatusAttack;
             abnormalStatusAttackType.Value = instanceWeaponData.AbnormalStatusType;
             elementAttackInstanceWeapon.Value = instanceWeaponData.ElementAttack;
             elementAttackType.Value = instanceWeaponData.ElementType;
-            weaponId.Value = instanceWeaponData.WeaponId;
             var instanceSkills = instanceWeaponData.InstanceSkillCoreIds
                 .Select(x => instanceSkillCores.Find(y => y.InstanceId == x))
                 .SelectMany(x => x.Skills);
