@@ -100,13 +100,6 @@ namespace MH3.ActorControllers
             cutRateGrassDamage.Value = spec.GrassDamageCutRate;
             SetWeaponId(spec.WeaponId);
             recoveryCommandCount.Value = spec.RecoveryCommandCount;
-            ComboAnimationKeys.Clear();
-            foreach (var combo in WeaponSpec.GetCombos())
-            {
-                ComboAnimationKeys.Add(combo.AnimationKey);
-            }
-            JustGuardAttackAnimationKey = WeaponSpec.JustGuardAttackAnimationKey;
-            StrongAttackAnimationKey = WeaponSpec.StrongAttackAnimationKey;
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Poison, new ReactiveProperty<int>(spec.PoisonThreshold));
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Paralysis, new ReactiveProperty<int>(spec.ParalysisThreshold));
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Collapse, new ReactiveProperty<int>(spec.CollapseThreshold));
@@ -218,6 +211,13 @@ namespace MH3.ActorControllers
             var weaponSpec = WeaponSpec;
             GuardPerformedSequences = weaponSpec.GuardPerformedSequences;
             GuardCanceledSequences = weaponSpec.GuardCanceledSequences;
+            JustGuardAttackAnimationKey = weaponSpec.JustGuardAttackAnimationKey;
+            StrongAttackAnimationKey = weaponSpec.StrongAttackAnimationKey;
+            ComboAnimationKeys.Clear();
+            foreach (var combo in weaponSpec.GetCombos())
+            {
+                ComboAnimationKeys.Add(combo.AnimationKey);
+            }
         }
 
         public void ChangeInstanceWeapon(InstanceWeapon instanceWeaponData, List<InstanceSkillCore> instanceSkillCores)
