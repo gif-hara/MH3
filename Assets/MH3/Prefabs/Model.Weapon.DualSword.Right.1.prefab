@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4995509436720629450}
   - component: {fileID: 2324263478330611221}
   m_Layer: 0
-  m_Name: Default
+  m_Name: Default.Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -432,12 +432,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1976346192919378102, guid: 0e82cc3799eb4c642bcddde07e2e767a, type: 3}
       propertyPath: colliders.Array.data[0].name
-      value: Default
+      value: Default.Right
       objectReference: {fileID: 0}
     - target: {fileID: -1976346192919378102, guid: 0e82cc3799eb4c642bcddde07e2e767a, type: 3}
       propertyPath: trails.list.Array.data[0].key
-      value: Default
+      value: Default.Right
       objectReference: {fileID: 0}
+    - target: {fileID: -1976346192919378102, guid: 0e82cc3799eb4c642bcddde07e2e767a, type: 3}
+      propertyPath: trails.list.Array.data[0].trail
+      value: 
+      objectReference: {fileID: 2324263478330611221}
+    - target: {fileID: -1976346192919378102, guid: 0e82cc3799eb4c642bcddde07e2e767a, type: 3}
+      propertyPath: colliders.Array.data[0].colliderObject
+      value: 
+      objectReference: {fileID: 1992937559358756444}
     - target: {fileID: 6888855480477335823, guid: 0e82cc3799eb4c642bcddde07e2e767a, type: 3}
       propertyPath: m_Name
       value: Model.Weapon.DualSword.Right.1
