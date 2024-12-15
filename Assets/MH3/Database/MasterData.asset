@@ -433,8 +433,8 @@ MonoBehaviour:
     - Key: 10201
       Value:
       - Id: 10201
-        ElementType: 1
-        Power: 8
+        ElementType: 0
+        Power: 0
         RareType: 0
         Weight: 100
   weaponCombos:
@@ -471,6 +471,8 @@ MonoBehaviour:
         AnimationKey: Attack.DualSword.Basic.1
       - Id: 10201
         AnimationKey: Attack.DualSword.Basic.2
+      - Id: 10201
+        AnimationKey: Attack.DualSword.Basic.3
   attackSpecs:
     list:
     - Id: Sword.Basic.1
@@ -763,6 +765,54 @@ MonoBehaviour:
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.2.2
       Power: 6
+      FlinchDamage: 1
+      ColliderName: Default.Left
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0
+      HitStopDurationActor: 0
+      HitStopTimeScaleTarget: 0
+      HitStopDurationTarget: 0
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: Small
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: DualSword.Basic.3.1
+      Power: 6
+      FlinchDamage: 1
+      ColliderName: Default.Right
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0
+      HitStopDurationActor: 0
+      HitStopTimeScaleTarget: 0
+      HitStopDurationTarget: 0
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: Small
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: DualSword.Basic.3.2
+      Power: 7
       FlinchDamage: 1
       ColliderName: Default.Left
       FlinchName: Flinch.Small
