@@ -55,6 +55,8 @@ MonoBehaviour:
     - rid: 1481063233791983732
       type: {class: AcquireQuestReward, ns: MH3, asm: Assembly-CSharp}
       data:
+        playerActorResolver:
+          rid: 1481063400376893517
         questSpecIdResolver:
           rid: 1481063233791983733
     - rid: 1481063233791983733
@@ -204,3 +206,7 @@ MonoBehaviour:
         documentPrefab: {fileID: 6562501259230542608, guid: e7c99a2dc020b334bbc37f1ea3aa9042, type: 3}
         instanceWeaponsKey: AcquireInstanceWeapons
         instanceSkillCoresKey: AcquireInstanceSkillCores
+    - rid: 1481063400376893517
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Player
