@@ -17,56 +17,56 @@ MonoBehaviour:
     - Id: 10101
       Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u5263"
       ModelDataId: Sword.1
-      ComboId: 10101
+      ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: Attack.Sword.Strong.1
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
     - Id: 10102
       Name: "\u30C6\u30B9\u30C8\u306E\u5263"
       ModelDataId: Sword.1
-      ComboId: 10101
+      ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: Attack.Sword.Strong.1
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
     - Id: 10103
       Name: "\u706B\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
       ModelDataId: Sword.1
-      ComboId: 10101
+      ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: Attack.Sword.Strong.1
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
     - Id: 10104
       Name: "\u6C34\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
       ModelDataId: Sword.1
-      ComboId: 10101
+      ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: Attack.Sword.Strong.1
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
     - Id: 10105
       Name: "\u8349\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
       ModelDataId: Sword.1
-      ComboId: 10101
+      ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: Attack.Sword.Strong.1
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
     - Id: 10106
       Name: "\u6BD2\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
       ModelDataId: Sword.1
-      ComboId: 10101
+      ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: Attack.Sword.Strong.1
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
     - Id: 10107
       Name: "\u9EBB\u75FA\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
       ModelDataId: Sword.1
-      ComboId: 10101
+      ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: Attack.Sword.Strong.1
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
     - Id: 10108
       Name: "\u5D29\u58CA\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
       ModelDataId: Sword.1
-      ComboId: 10101
+      ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: Attack.Sword.Strong.1
       ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
@@ -372,6 +372,16 @@ MonoBehaviour:
         AnimationKey: Attack.Sword.Opening.1
       - Id: 19901
         AnimationKey: Attack.Sword.Basic.1
+    - Key: 10102
+      Value:
+      - Id: 10102
+        AnimationKey: Attack.Sword.Basic.5
+      - Id: 10102
+        AnimationKey: Attack.Sword.Basic.6
+      - Id: 10102
+        AnimationKey: Attack.Sword.Basic.5
+      - Id: 10102
+        AnimationKey: Attack.Sword.Basic.6
   attackSpecs:
     list:
     - Id: Sword.Basic.1
@@ -437,6 +447,54 @@ MonoBehaviour:
       HitStopDurationActor: 0.2
       HitStopTimeScaleTarget: 0.01
       HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: Small
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Sword.Basic.5
+      Power: 14
+      FlinchDamage: 10
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 1
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0
+      HitStopDurationActor: 0
+      HitStopTimeScaleTarget: 0
+      HitStopDurationTarget: 0
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: Small
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Sword.Basic.6
+      Power: 16
+      FlinchDamage: 10
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 1
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0
+      HitStopDurationActor: 0
+      HitStopTimeScaleTarget: 0
+      HitStopDurationTarget: 0
       ShakeStrength: 0.4
       ShakeDuration: 0.2
       ShakeFrequency: 6
