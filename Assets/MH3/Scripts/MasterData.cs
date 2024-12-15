@@ -476,6 +476,8 @@ namespace MH3
 
             public int WeaponId;
 
+            public bool VisibleStatusUI;
+
             public string InitialStateKey;
 
             public string AttackSequencesKey;
