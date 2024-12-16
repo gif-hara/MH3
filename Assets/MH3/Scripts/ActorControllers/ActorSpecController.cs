@@ -23,7 +23,7 @@ namespace MH3.ActorControllers
 
         private readonly ReactiveProperty<int> hitPoint = new(0);
 
-        private readonly ReactiveProperty<int> attack = new(0);
+        private readonly Parameter attack = new();
 
         private readonly ReactiveProperty<int> attackInstanceWeapon = new(0);
 
@@ -95,7 +95,7 @@ namespace MH3.ActorControllers
             this.spec = spec;
             hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
             hitPoint.Value = spec.HitPoint;
-            attack.Value = spec.Attack;
+            attack.RegisterBasics("Spec", () => spec.Attack);
             cutRatePhysicalDamage.Value = spec.PhysicalDamageCutRate;
             cutRateFireDamage.Value = spec.FireDamageCutRate;
             cutRateWaterDamage.Value = spec.WaterDamageCutRate;
@@ -113,11 +113,9 @@ namespace MH3.ActorControllers
 
         public ReadOnlyReactiveProperty<int> HitPoint => hitPoint;
 
-        public ReadOnlyReactiveProperty<int> Attack => attack;
-
         public ReadOnlyReactiveProperty<int> AttackInstanceWeapon => attackInstanceWeapon;
 
-        public int AttackTotal => attack.Value + attackInstanceWeapon.Value + skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Attack, actor));
+        public int AttackTotal => attack.ValueFloorToInt;
 
         public float CriticalTotal => criticalInstanceWeapon.Value + skills.Sum(x => x.GetParameter(Define.ActorParameterType.Critical, actor));
 
@@ -241,6 +239,10 @@ namespace MH3.ActorControllers
             hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
             hitPointMax.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Health, actor)));
             hitPoint.Value = HitPointMax;
+            attack.ClearAll();
+            attack.RegisterBasics("Spec", () => spec.Attack);
+            attack.RegisterBasics("InstanceWeapon", () => attackInstanceWeapon.Value);
+            attack.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Attack, actor)));
             recoveryCommandCount.Value = spec.RecoveryCommandCount + skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.RecoveryCommandCount, actor));
             rewardUp.Value = skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Reward, actor));
         }
