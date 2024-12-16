@@ -19,7 +19,6 @@ namespace MH3
 
         public void Influence(Actor target, Collider collider)
         {
-            Debug.Log($"Collider = {collider}");
             var impactPosition = collider.ClosestPoint(transform.position);
             actor.AttackController.Attack(target, impactPosition, collider.name);
         }
