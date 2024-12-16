@@ -87,6 +87,8 @@ namespace MH3.ActorControllers
 
         public ScriptableSequences GuardCanceledSequences { get; private set; }
 
+        public ScriptableSequences DodgePerformedSequences { get; private set; }
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -211,6 +213,7 @@ namespace MH3.ActorControllers
             var weaponSpec = WeaponSpec;
             GuardPerformedSequences = weaponSpec.GuardPerformedSequences;
             GuardCanceledSequences = weaponSpec.GuardCanceledSequences;
+            DodgePerformedSequences = weaponSpec.DodgePerformedSequences;
             JustGuardAttackAnimationKey = weaponSpec.JustGuardAttackAnimationKey;
             StrongAttackAnimationKey = weaponSpec.StrongAttackAnimationKey;
             ComboAnimationKeys.Clear();

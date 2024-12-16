@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
+using MH3.ActorControllers;
 using MH3.UnitySequencerSystem.Resolvers;
 using R3;
 using R3.Triggers;
@@ -49,29 +50,19 @@ namespace MH3
             inputController.Actions.Player.Dodge.OnPerformedAsObservable()
                 .Subscribe(actor, static (_, a) =>
                 {
-                    EarlyInputHandler.Invoke(() => a.ActionController.TryDodge(), TinyServiceLocator.Resolve<GameRules>().EarlyInputTime, a.destroyCancellationToken);
+                    InvokeSequence(a, a.SpecController.DodgePerformedSequences);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             inputController.Actions.Player.Guard.OnPerformedAsObservable()
                 .Subscribe(actor, static (_, a) =>
                 {
-                    var container = new Container();
-                    container.Register("Actor", a);
-                    var sequencer = new Sequencer(container, a.SpecController.GuardPerformedSequences.Sequences);
-                    sequencer.PlayAsync(a.destroyCancellationToken).Forget();
+                    InvokeSequence(a, a.SpecController.GuardPerformedSequences);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             inputController.Actions.Player.Guard.OnCanceledAsObservable()
                 .Subscribe(actor, static (_, a) =>
                 {
-                    if (a.SpecController.GuardCanceledSequences == null)
-                    {
-                        return;
-                    }
-                    var container = new Container();
-                    container.Register("Actor", a);
-                    var sequencer = new Sequencer(container, a.SpecController.GuardCanceledSequences.Sequences);
-                    sequencer.PlayAsync(a.destroyCancellationToken).Forget();
+                    InvokeSequence(a, a.SpecController.GuardCanceledSequences);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             inputController.Actions.Player.Recovery.OnPerformedAsObservable()
@@ -81,6 +72,18 @@ namespace MH3
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             return UniTask.CompletedTask;
+
+            static void InvokeSequence(Actor actor, ScriptableSequences sequences)
+            {
+                if (sequences == null)
+                {
+                    return;
+                }
+                var container = new Container();
+                container.Register("Actor", actor);
+                var sequencer = new Sequencer(container, sequences.Sequences);
+                sequencer.PlayAsync(actor.destroyCancellationToken).Forget();
+            }
         }
     }
 }
