@@ -55,6 +55,7 @@ namespace MH3
 
         private void Register(Element.DictionaryList list, string key, Func<float> valueSelector)
         {
+            Debug.Log(list);
             if (list.TryGetValue(key, out var element))
             {
                 element.ValueSelector = valueSelector;
