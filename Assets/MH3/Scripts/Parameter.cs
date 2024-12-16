@@ -1,17 +1,21 @@
 using System;
 using System.Linq;
 using HK;
+using R3;
 using UnityEngine;
 
 namespace MH3
 {
-    public class Parameter
+    public sealed class Parameter
     {
         private readonly Element.DictionaryList basics = new();
         
         private readonly Element.DictionaryList adds = new();
         
         private readonly Element.DictionaryList multiplies = new();
+        
+        private readonly Subject<float> onValueChanged = new();
+        public Observable<float> OnValueChanged => onValueChanged;
         
         public float Value
         {
@@ -46,9 +50,10 @@ namespace MH3
             basics.Clear();
             adds.Clear();
             multiplies.Clear();
+            onValueChanged.OnNext(Value);
         }
 
-        private static void Register(Element.DictionaryList list, string key, float value)
+        private void Register(Element.DictionaryList list, string key, float value)
         {
             if (list.TryGetValue(key, out var element))
             {
@@ -58,6 +63,8 @@ namespace MH3
             {
                 list.Add(new Element { Key = key, Value = value });
             }
+            
+            onValueChanged.OnNext(Value);
         }
         
         [Serializable]
