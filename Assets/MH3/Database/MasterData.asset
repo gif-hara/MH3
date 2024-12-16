@@ -126,11 +126,11 @@ MonoBehaviour:
       StrongAttackAnimationKey: 
       GuardPerformedSequencesKey: Guard.Performed.Sharpen
       GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
+      DodgePerformedSequencesKey: Dodge.Performed.DualSword
       ModelData: {fileID: 11400000, guid: 3fea2e14e7fe110429c301f8832e04da, type: 2}
       GuardPerformedSequences: {fileID: 11400000, guid: ca6de69a7071aa343ab752314858b62d, type: 2}
       GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+      DodgePerformedSequences: {fileID: 11400000, guid: e66129db0694c7b468109aa6d6fe55da, type: 2}
     - Id: 19901
       Name: "\u6575\u6B66\u5668"
       ModelDataId: Sword.1
@@ -837,6 +837,54 @@ MonoBehaviour:
       Power: 7
       FlinchDamage: 1
       ColliderName: Default.Left
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0
+      HitStopDurationActor: 0
+      HitStopTimeScaleTarget: 0
+      HitStopDurationTarget: 0
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Dodge.DualSword.1.1
+      Power: 4
+      FlinchDamage: 1
+      ColliderName: Default.Left
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0
+      HitStopDurationActor: 0
+      HitStopTimeScaleTarget: 0
+      HitStopDurationTarget: 0
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Dodge.DualSword.1.2
+      Power: 4
+      FlinchDamage: 1
+      ColliderName: Default.Right
       FlinchName: Flinch.Small
       FlinchType: 2
       ForceFlinch: 0
