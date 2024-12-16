@@ -27,7 +27,7 @@ namespace MH3
         {
             var actor = actorResolver.Resolve(container);
             var forceChange = forceChangeResolver.Resolve(container);
-            var isSuccess = actor.StateMachine.TryChangeState(stateSequence, forceChange);
+            var isSuccess = actor.StateMachine.TryChangeState(stateSequence, forceChange, nextContainer: container);
             if (isSuccessKeyResolver != null)
             {
                 container.RegisterOrReplace(isSuccessKeyResolver.Resolve(container), isSuccess);
