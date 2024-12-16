@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dodge.Performed.Default
   m_EditorClassIdentifier: 
   sequences:
-  - rid: 1481063426879914076
+  - rid: 1481063426879914099
   - rid: 1481063400376893564
   references:
     version: 2
@@ -60,18 +60,18 @@ MonoBehaviour:
       type: {class: BooleanResolver/NameBoolean, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         name: IsSuccessChangeState
-    - rid: 1481063426879914076
-      type: {class: RegisterContainerString, ns: MH3, asm: Assembly-CSharp}
+    - rid: 1481063426879914099
+      type: {class: RegisterContainerDodgeAnimationName, ns: MH3, asm: Assembly-CSharp}
       data:
         keyResolver:
-          rid: 1481063426879914077
-        valueResolver:
-          rid: 1481063426879914078
-    - rid: 1481063426879914077
+          rid: 1481063426879914100
+        actorResolver:
+          rid: 1481063426879914101
+    - rid: 1481063426879914100
       type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: AnimationName
-    - rid: 1481063426879914078
-      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+    - rid: 1481063426879914101
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
-        value: Dodge
+        name: Actor
