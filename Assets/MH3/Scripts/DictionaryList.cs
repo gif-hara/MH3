@@ -9,19 +9,17 @@ namespace HK
     [Serializable]
     public sealed class DictionaryData<TKey, TValue>
     {
-        private Dictionary<TKey, TValue> dictionary;
+        private readonly Dictionary<TKey, TValue> dictionary = new();
 
         private readonly Func<TValue, TKey> idSelector;
 
         public DictionaryData(Func<TValue, TKey> idSelector)
         {
             this.idSelector = idSelector;
-            dictionary = null;
         }
 
         public void Set(IEnumerable<TValue> list)
         {
-            dictionary ??= new Dictionary<TKey, TValue>();
             dictionary.Clear();
             foreach (var item in list)
             {
