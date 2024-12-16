@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
 using UnityEngine;
@@ -67,6 +68,11 @@ namespace MH3
         public void AddRecoveryCommandCount(int value)
         {
             actor.SpecController.AddRecoveryCommandCount(value);
+        }
+
+        public void BeginDualSwordDodgeMode()
+        {
+            actor.ActionController.BeginDualSwordDodgeModeAsync().Forget();
         }
     }
 }
