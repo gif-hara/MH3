@@ -1,3 +1,5 @@
+using System;
+using Cysharp.Threading.Tasks;
 using HK;
 using R3;
 using R3.Triggers;
@@ -16,6 +18,10 @@ namespace MH3.ActorControllers
         private readonly ReactiveProperty<float> beginGuardTime = new(0.0f);
 
         public readonly ReactiveProperty<bool> JustGuarding = new(false);
+
+        private CancellationDisposable DualSwordDodgeDisposable = null;
+
+        public string OverrideDodgeAnimationName { get; private set; }
 
         public ActorActionController(Actor actor)
         {
@@ -37,7 +43,6 @@ namespace MH3.ActorControllers
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
-
         }
 
         public bool TryDodge()
@@ -48,6 +53,39 @@ namespace MH3.ActorControllers
                 {
                     c.Register("DodgeName", "Dodge");
                 });
+        }
+
+        public async UniTask BeginDualSwordDodgeModeAsync()
+        {
+            try
+            {
+                var gameRules = TinyServiceLocator.Resolve<GameRules>();
+                DualSwordDodgeDisposable?.Dispose();
+                DualSwordDodgeDisposable = new CancellationDisposable();
+                OverrideDodgeAnimationName = gameRules.DualSwordDodgeAnimationName;
+                await UniTask.Delay(TimeSpan.FromSeconds(gameRules.DualSwordDodgeTime), cancellationToken: DualSwordDodgeDisposable.Token, cancelImmediately: true);
+            }
+            catch (OperationCanceledException)
+            {
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+            }
+            finally
+            {
+                if (!DualSwordDodgeDisposable.IsDisposed)
+                {
+                    DualSwordDodgeDisposable.Dispose();
+                }
+                DualSwordDodgeDisposable = null;
+                OverrideDodgeAnimationName = null;
+            }
+        }
+
+        public string GetDodgeAnimationName()
+        {
+            return OverrideDodgeAnimationName ?? TinyServiceLocator.Resolve<GameRules>().DefaultDodgeAnimationName;
         }
 
         public Define.GuardResult GetGuardResult(Vector3 impactPosition)
