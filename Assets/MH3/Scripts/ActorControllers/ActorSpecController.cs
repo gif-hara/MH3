@@ -19,7 +19,7 @@ namespace MH3.ActorControllers
 
         private readonly MasterData.ActorSpec spec;
 
-        private readonly ReactiveProperty<int> hitPointMax = new(0);
+        private readonly Parameter hitPointMax = new();
 
         private readonly ReactiveProperty<int> hitPoint = new(0);
 
@@ -91,7 +91,7 @@ namespace MH3.ActorControllers
         {
             this.actor = actor;
             this.spec = spec;
-            hitPointMax.Value = spec.HitPoint;
+            hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
             hitPoint.Value = spec.HitPoint;
             attack.Value = spec.Attack;
             cutRatePhysicalDamage.Value = spec.PhysicalDamageCutRate;
@@ -107,7 +107,7 @@ namespace MH3.ActorControllers
 
         public Define.ActorType ActorType => spec.ActorType;
 
-        public ReadOnlyReactiveProperty<int> HitPointMax => hitPointMax;
+        public int HitPointMax => hitPointMax.ValueFloorToInt;
 
         public ReadOnlyReactiveProperty<int> HitPoint => hitPoint;
 
@@ -234,8 +234,10 @@ namespace MH3.ActorControllers
                 .SelectMany(x => x.Skills);
             skills.Clear();
             skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
-            hitPointMax.Value = spec.HitPoint + skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Health, actor));
-            hitPoint.Value = hitPointMax.Value;
+            hitPointMax.ClearAll();
+            hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
+            hitPointMax.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Health, actor)));
+            hitPoint.Value = HitPointMax;
             recoveryCommandCount.Value = spec.RecoveryCommandCount + skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.RecoveryCommandCount, actor));
             rewardUp.Value = skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Reward, actor));
         }
@@ -434,7 +436,7 @@ namespace MH3.ActorControllers
 
         public void ResetAll()
         {
-            hitPoint.Value = hitPointMax.Value;
+            hitPoint.Value = HitPointMax;
             flinch.Value = 0;
             flinchType.Value = Define.FlinchType.None;
             CanAddFlinchDamage.Value = true;

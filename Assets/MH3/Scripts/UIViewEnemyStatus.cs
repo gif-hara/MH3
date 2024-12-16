@@ -28,7 +28,7 @@ namespace MH3
                 {
                     d.Q<HKUIDocument>("Slider.HitPoint")
                         .Q<Slider>("Slider")
-                        .value = (float)actor.SpecController.HitPoint.CurrentValue / actor.SpecController.HitPointMax.CurrentValue;
+                        .value = (float)actor.SpecController.HitPoint.CurrentValue / actor.SpecController.HitPointMax;
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
