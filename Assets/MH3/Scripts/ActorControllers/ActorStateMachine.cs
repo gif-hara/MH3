@@ -21,6 +21,8 @@ namespace MH3.ActorControllers
 
         private Action<Container> containerAction;
 
+        private Container nextContainer;
+
         public ActorStateMachine(Actor actor, ScriptableSequences initialState)
         {
             this.actor = actor;
@@ -32,7 +34,7 @@ namespace MH3.ActorControllers
             stateMachine?.Dispose();
         }
 
-        public bool TryChangeState(ScriptableSequences sequence, bool force = false, Action<Container> containerAction = null)
+        public bool TryChangeState(ScriptableSequences sequence, bool force = false, Action<Container> containerAction = null, Container nextContainer = null)
         {
             if (!force)
             {
@@ -47,6 +49,7 @@ namespace MH3.ActorControllers
             }
 
             nextStateSequences = sequence;
+            this.nextContainer = nextContainer;
             this.containerAction = containerAction;
             stateMachine.Change(State);
             return true;
@@ -56,8 +59,9 @@ namespace MH3.ActorControllers
         {
             stateSequences = nextStateSequences;
             nextStateSequences = null;
-            var container = new Container();
-            container.Register("Actor", actor);
+            var container = this.nextContainer ?? new Container();
+            nextContainer = null;
+            container.RegisterOrReplace("Actor", actor);
             containerAction?.Invoke(container);
             containerAction = null;
             var sequencer = new Sequencer(container, stateSequences.Sequences);
