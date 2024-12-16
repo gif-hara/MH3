@@ -181,6 +181,7 @@ namespace MH3
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
                 weaponSpec.GuardPerformedSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/ActionSequences/{weaponSpec.GuardPerformedSequencesKey}.asset");
                 weaponSpec.GuardCanceledSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/ActionSequences/{weaponSpec.GuardCanceledSequencesKey}.asset");
+                weaponSpec.DodgePerformedSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/ActionSequences/{weaponSpec.DodgePerformedSequencesKey}.asset");
             }
             foreach (var actorSpec in actorSpecs.List)
             {
@@ -234,11 +235,15 @@ namespace MH3
 
             public string GuardCanceledSequencesKey;
 
+            public string DodgePerformedSequencesKey;
+
             public WeaponModelData ModelData;
 
             public ScriptableSequences GuardPerformedSequences;
 
             public ScriptableSequences GuardCanceledSequences;
+
+            public ScriptableSequences DodgePerformedSequences;
 
             [Serializable]
             public class DictionaryList : DictionaryList<int, WeaponSpec>
