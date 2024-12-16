@@ -76,7 +76,7 @@ namespace HK
     public abstract class DictionaryList<TKey, TValue>
     {
         [SerializeField]
-        private List<TValue> list;
+        private List<TValue> list = new();
         public IReadOnlyList<TValue> List => list;
 
         private readonly DictionaryData<TKey, TValue> dictionaryData;
