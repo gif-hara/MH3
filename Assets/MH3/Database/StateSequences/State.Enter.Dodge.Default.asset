@@ -22,6 +22,8 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 895594615613948227
       type: {class: ActorStateChange, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -30,6 +32,8 @@ MonoBehaviour:
         stateSequence: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
         forceChangeResolver:
           rid: 895594621889413231
+        isSuccessKeyResolver:
+          rid: -2
     - rid: 895594615613948231
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
@@ -113,7 +117,7 @@ MonoBehaviour:
     - rid: 8733972360643739741
       type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        name: DodgeName
+        name: AnimationName
     - rid: 8733972360643739743
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
@@ -121,4 +125,4 @@ MonoBehaviour:
     - rid: 8733972360643739744
       type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        name: DodgeName
+        name: AnimationName
