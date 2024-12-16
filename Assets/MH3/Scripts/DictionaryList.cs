@@ -64,9 +64,9 @@ namespace HK
             return dictionary.TryGetValue(key, out value);
         }
 
-        public bool IsNull()
+        public bool IsNullOrEmpty()
         {
-            return dictionary == null;
+            return dictionary == null || dictionary.Count == 0;
         }
     }
 
@@ -132,7 +132,7 @@ namespace HK
 #if UNITY_EDITOR
             dictionaryData.Set(list);
 #else
-            if (dictionaryData.IsNull())
+            if (dictionaryData.IsNullOrEmpty())
             {
                 dictionaryData.Set(list);
             }
@@ -228,11 +228,11 @@ namespace HK
             dictionaryData1.Set(list);
             dictionaryData2.Set(list);
 #else
-            if (dictionaryData1.IsNull())
+            if (dictionaryData1.IsNullOrEmpty())
             {
                 dictionaryData1.Set(list);
             }
-            if (dictionaryData2.IsNull())
+            if (dictionaryData2.IsNullOrEmpty())
             {
                 dictionaryData2.Set(list);
             }
