@@ -2280,6 +2280,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.083333336
+    functionName: PlaySfx
+    data: Attack.1
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.13333334
     functionName: SetAttackSpec
     data: Dodge.DualSword.1.1
@@ -2304,6 +2311,13 @@ AnimationClip:
   - time: 0.25
     functionName: SetActiveTrail
     data: Default.Right
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.25
+    functionName: PlaySfx
+    data: Attack.1
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
