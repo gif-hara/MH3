@@ -69,6 +69,18 @@ namespace MH3
         private ElementProjectile.DictionaryList elementProjectiles;
         public ElementProjectile.DictionaryList ElementProjectiles => elementProjectiles;
 
+        [SerializeField]
+        private string defaultDodgeAnimationName;
+        public string DefaultDodgeAnimationName => defaultDodgeAnimationName;
+
+        [SerializeField]
+        private string dualSwordDodgeAnimationName;
+        public string DualSwordDodgeAnimationName => dualSwordDodgeAnimationName;
+
+        [SerializeField]
+        private float dualSwordDodgeTime;
+        public float DualSwordDodgeTime => dualSwordDodgeTime;
+
         [Serializable]
         public class ElementProjectile
         {
