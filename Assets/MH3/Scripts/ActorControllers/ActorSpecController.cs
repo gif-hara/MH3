@@ -25,8 +25,6 @@ namespace MH3.ActorControllers
 
         private readonly Parameter attack = new();
 
-        private readonly ReactiveProperty<int> attackInstanceWeapon = new(0);
-
         private readonly ReactiveProperty<float> criticalInstanceWeapon = new(0);
 
         private readonly ReactiveProperty<float> cutRatePhysicalDamage = new(0.0f);
@@ -112,8 +110,6 @@ namespace MH3.ActorControllers
         public int HitPointMax => hitPointMax.ValueFloorToInt;
 
         public ReadOnlyReactiveProperty<int> HitPoint => hitPoint;
-
-        public ReadOnlyReactiveProperty<int> AttackInstanceWeapon => attackInstanceWeapon;
 
         public int AttackTotal => attack.ValueFloorToInt;
 
@@ -221,16 +217,15 @@ namespace MH3.ActorControllers
             }
         }
 
-        public void ChangeInstanceWeapon(InstanceWeapon instanceWeaponData, List<InstanceSkillCore> instanceSkillCores)
+        public void ChangeInstanceWeapon(InstanceWeapon instanceWeapon, List<InstanceSkillCore> instanceSkillCores)
         {
-            SetWeaponId(instanceWeaponData.WeaponId);
-            attackInstanceWeapon.Value = instanceWeaponData.Attack;
-            criticalInstanceWeapon.Value = instanceWeaponData.Critical;
-            abnormalStatusAttackInstanceWeapon.Value = instanceWeaponData.AbnormalStatusAttack;
-            abnormalStatusAttackType.Value = instanceWeaponData.AbnormalStatusType;
-            elementAttackInstanceWeapon.Value = instanceWeaponData.ElementAttack;
-            elementAttackType.Value = instanceWeaponData.ElementType;
-            var instanceSkills = instanceWeaponData.InstanceSkillCoreIds
+            SetWeaponId(instanceWeapon.WeaponId);
+            criticalInstanceWeapon.Value = instanceWeapon.Critical;
+            abnormalStatusAttackInstanceWeapon.Value = instanceWeapon.AbnormalStatusAttack;
+            abnormalStatusAttackType.Value = instanceWeapon.AbnormalStatusType;
+            elementAttackInstanceWeapon.Value = instanceWeapon.ElementAttack;
+            elementAttackType.Value = instanceWeapon.ElementType;
+            var instanceSkills = instanceWeapon.InstanceSkillCoreIds
                 .Select(x => instanceSkillCores.Find(y => y.InstanceId == x))
                 .SelectMany(x => x.Skills);
             skills.Clear();
@@ -241,7 +236,7 @@ namespace MH3.ActorControllers
             hitPoint.Value = HitPointMax;
             attack.ClearAll();
             attack.RegisterBasics("Spec", () => spec.Attack);
-            attack.RegisterBasics("InstanceWeapon", () => attackInstanceWeapon.Value);
+            attack.RegisterBasics("InstanceWeapon", () => instanceWeapon.Attack);
             attack.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Attack, actor)));
             recoveryCommandCount.Value = spec.RecoveryCommandCount + skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.RecoveryCommandCount, actor));
             rewardUp.Value = skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Reward, actor));
