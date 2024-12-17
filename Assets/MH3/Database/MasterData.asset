@@ -131,6 +131,19 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: ca6de69a7071aa343ab752314858b62d, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 10301
+      Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u5927\u5263"
+      ModelDataId: Blade.1
+      ComboId: 10301
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 3eff6415dc612f14aadbb594f8a7f21d, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 19901
       Name: "\u6575\u6B66\u5668"
       ModelDataId: Sword.1
@@ -217,6 +230,12 @@ MonoBehaviour:
         Attack: 100
         RareType: 0
         Weight: 100
+    - Key: 10301
+      Value:
+      - Id: 10301
+        Attack: 100
+        RareType: 0
+        Weight: 100
   weaponCriticals:
     list:
     - Key: 10101
@@ -273,6 +292,12 @@ MonoBehaviour:
         Critical: 0
         RareType: 0
         Weight: 100
+    - Key: 10301
+      Value:
+      - Id: 10301
+        Critical: 0
+        RareType: 0
+        Weight: 100
   weaponSkillSlots:
     list:
     - Key: 10101
@@ -326,6 +351,12 @@ MonoBehaviour:
     - Key: 10201
       Value:
       - Id: 10201
+        SkillSlot: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10301
+      Value:
+      - Id: 10301
         SkillSlot: 1
         RareType: 0
         Weight: 100
@@ -390,8 +421,15 @@ MonoBehaviour:
     - Key: 10201
       Value:
       - Id: 10201
-        AbnormalStatusType: 3
-        Power: 50
+        AbnormalStatusType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10301
+      Value:
+      - Id: 10301
+        AbnormalStatusType: 0
+        Power: 0
         RareType: 0
         Weight: 100
   weaponElements:
@@ -456,7 +494,14 @@ MonoBehaviour:
       Value:
       - Id: 10201
         ElementType: 1
-        Power: 8
+        Power: 9
+        RareType: 0
+        Weight: 100
+    - Key: 10301
+      Value:
+      - Id: 10301
+        ElementType: 0
+        Power: 0
         RareType: 0
         Weight: 100
   weaponCombos:
@@ -495,6 +540,10 @@ MonoBehaviour:
         AnimationKey: Attack.DualSword.Basic.2
       - Id: 10201
         AnimationKey: Attack.DualSword.Basic.3
+    - Key: 10301
+      Value:
+      - Id: 10301
+        AnimationKey: Attack.Blade.Basic.1
   attackSpecs:
     list:
     - Id: Sword.Basic.1
@@ -618,7 +667,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.5
-      Power: 14
+      Power: 15
       FlinchDamage: 2
       ColliderName: Default
       FlinchName: Flinch.Small
@@ -642,7 +691,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.6
-      Power: 16
+      Power: 17
       FlinchDamage: 3
       ColliderName: Default
       FlinchName: Flinch.Small
@@ -666,7 +715,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Strong.1
-      Power: 102
+      Power: 156
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Large
@@ -690,7 +739,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: Hit.Strong.Player.1
       HitAdditionalSequencesPlayer: {fileID: 11400000, guid: 1b746f36630a9df49a3ed10c2aa58aa4, type: 2}
     - Id: Sword.JustGuard.1
-      Power: 24
+      Power: 30
       FlinchDamage: 30
       ColliderName: Default
       FlinchName: Flinch.Small
@@ -762,7 +811,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.2.1
-      Power: 5
+      Power: 4
       FlinchDamage: 1
       ColliderName: Default.Right
       FlinchName: Flinch.Small
@@ -786,7 +835,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.2.2
-      Power: 6
+      Power: 5
       FlinchDamage: 1
       ColliderName: Default.Left
       FlinchName: Flinch.Small
@@ -810,7 +859,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.3.1
-      Power: 6
+      Power: 7
       FlinchDamage: 1
       ColliderName: Default.Right
       FlinchName: Flinch.Small
@@ -899,6 +948,30 @@ MonoBehaviour:
       ShakeStrength: 0.4
       ShakeDuration: 0.1
       ShakeFrequency: 3
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Blade.Basic.1
+      Power: 40
+      FlinchDamage: 10
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
       ShakeDampingRatio: 0
       HitSfxKey: Hit.1
       HitEffectKey: Hit.1
