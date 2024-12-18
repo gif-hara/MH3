@@ -590,7 +590,7 @@ MonoBehaviour:
   attackSpecs:
     list:
     - Id: Sword.Basic.1
-      Power: 10
+      Power: 20
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
@@ -614,7 +614,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.2
-      Power: 10
+      Power: 20
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
@@ -638,7 +638,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.3
-      Power: 10
+      Power: 18
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
@@ -998,8 +998,8 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Blade.Basic.1
-      Power: 33
-      FlinchDamage: 10
+      Power: 28
+      FlinchDamage: 8
       ColliderName: Default
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -1022,8 +1022,8 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Blade.Basic.2
-      Power: 40
-      FlinchDamage: 10
+      Power: 38
+      FlinchDamage: 8
       ColliderName: Default
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -1046,7 +1046,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Blade.Basic.3
-      Power: 100
+      Power: 102
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
