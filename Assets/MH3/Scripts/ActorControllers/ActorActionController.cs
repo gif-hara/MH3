@@ -21,6 +21,8 @@ namespace MH3.ActorControllers
 
         private CancellationDisposable DualSwordDodgeDisposable = null;
 
+        private CancellationDisposable BladeEnduranceDisposable = null;
+
         public string OverrideDodgeAnimationName { get; private set; }
 
         public ActorActionController(Actor actor)
@@ -80,6 +82,34 @@ namespace MH3.ActorControllers
                 }
                 DualSwordDodgeDisposable = null;
                 OverrideDodgeAnimationName = null;
+            }
+        }
+
+        public async UniTask BeginBladeEnduranceAsync()
+        {
+            try
+            {
+                var gameRules = TinyServiceLocator.Resolve<GameRules>();
+                BladeEnduranceDisposable?.Dispose();
+                BladeEnduranceDisposable = new CancellationDisposable();
+                actor.SpecController.SetSuperArmor(1);
+                await UniTask.Delay(TimeSpan.FromSeconds(gameRules.BladeSuperArmorTime), cancellationToken: BladeEnduranceDisposable.Token, cancelImmediately: true);
+            }
+            catch (OperationCanceledException)
+            {
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+            }
+            finally
+            {
+                if (!BladeEnduranceDisposable.IsDisposed)
+                {
+                    BladeEnduranceDisposable.Dispose();
+                }
+                BladeEnduranceDisposable = null;
+                actor.SpecController.SetSuperArmor(0);
             }
         }
 
