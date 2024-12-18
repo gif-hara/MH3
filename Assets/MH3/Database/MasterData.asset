@@ -144,6 +144,45 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20101
+      Name: "\u6575\u6B66\u5668\uFF08\u76F4\u5263\uFF09"
+      ModelDataId: Sword.1
+      ComboId: 20101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20201
+      Name: "\u6575\u6B66\u5668\uFF08\u4E21\u624B\u5263\uFF09"
+      ModelDataId: DualSword.1
+      ComboId: 20201
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 3fea2e14e7fe110429c301f8832e04da, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20301
+      Name: "\u6575\u6B66\u5668\uFF08\u5927\u5263\uFF09"
+      ModelDataId: Blade.1
+      ComboId: 20301
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 3eff6415dc612f14aadbb594f8a7f21d, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 19901
       Name: "\u6575\u6B66\u5668"
       ModelDataId: Sword.1
@@ -160,7 +199,7 @@ MonoBehaviour:
     - Id: 19902
       Name: "\u6575\u6B66\u5668"
       ModelDataId: Training.1
-      ComboId: 19901
+      ComboId: 20101
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: 
       GuardPerformedSequencesKey: Guard.Performed.Default
@@ -516,11 +555,11 @@ MonoBehaviour:
         AnimationKey: Attack.Sword.Basic.1
       - Id: 10101
         AnimationKey: Attack.Sword.Basic.2
-    - Key: 19901
+    - Key: 20101
       Value:
-      - Id: 19901
+      - Id: 20101
         AnimationKey: Attack.Sword.Opening.1
-      - Id: 19901
+      - Id: 20101
         AnimationKey: Attack.Sword.Basic.1
     - Key: 10102
       Value:
@@ -546,6 +585,8 @@ MonoBehaviour:
         AnimationKey: Attack.Blade.Basic.1
       - Id: 10301
         AnimationKey: Attack.Blade.Basic.2
+      - Id: 10301
+        AnimationKey: Attack.Blade.Basic.3
   attackSpecs:
     list:
     - Id: Sword.Basic.1
@@ -669,7 +710,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.5
-      Power: 15
+      Power: 17
       FlinchDamage: 2
       ColliderName: Default
       FlinchName: Flinch.Small
@@ -693,7 +734,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.6
-      Power: 17
+      Power: 19
       FlinchDamage: 3
       ColliderName: Default
       FlinchName: Flinch.Small
@@ -717,7 +758,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Strong.1
-      Power: 156
+      Power: 159
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Large
@@ -741,7 +782,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: Hit.Strong.Player.1
       HitAdditionalSequencesPlayer: {fileID: 11400000, guid: 1b746f36630a9df49a3ed10c2aa58aa4, type: 2}
     - Id: Sword.JustGuard.1
-      Power: 30
+      Power: 32
       FlinchDamage: 30
       ColliderName: Default
       FlinchName: Flinch.Small
@@ -765,7 +806,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.1.1
-      Power: 4
+      Power: 5
       FlinchDamage: 1
       ColliderName: Default.Right
       FlinchName: Flinch.Small
@@ -789,7 +830,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.1.2
-      Power: 5
+      Power: 7
       FlinchDamage: 1
       ColliderName: Default.Left
       FlinchName: Flinch.Small
@@ -813,7 +854,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.2.1
-      Power: 4
+      Power: 5
       FlinchDamage: 1
       ColliderName: Default.Right
       FlinchName: Flinch.Small
@@ -837,7 +878,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.2.2
-      Power: 5
+      Power: 7
       FlinchDamage: 1
       ColliderName: Default.Left
       FlinchName: Flinch.Small
@@ -861,7 +902,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.3.1
-      Power: 7
+      Power: 8
       FlinchDamage: 1
       ColliderName: Default.Right
       FlinchName: Flinch.Small
@@ -885,7 +926,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.3.2
-      Power: 7
+      Power: 8
       FlinchDamage: 1
       ColliderName: Default.Left
       FlinchName: Flinch.Small
@@ -957,7 +998,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Blade.Basic.1
-      Power: 40
+      Power: 33
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
@@ -981,7 +1022,31 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Blade.Basic.2
-      Power: 52
+      Power: 40
+      FlinchDamage: 10
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Blade.Basic.3
+      Power: 100
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
@@ -1103,6 +1168,7 @@ MonoBehaviour:
   actorSpecs:
     list:
     - Id: 10101
+      Name: 
       ActorType: 0
       HitPoint: 100
       Attack: 0
@@ -1144,12 +1210,13 @@ MonoBehaviour:
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
       Behaviour: {fileID: 11400000, guid: 0eb2c248160b64a83ab6fcbc39217c07, type: 2}
-    - Id: 10201
+    - Id: 20101
+      Name: "\u5929\u99C6\u3051\u308B\u9BAE\u8840\u3001\u30A6\u30A9\u30ED\u30FC\u30DC\u30C3\u30C8"
       ActorType: 1
-      HitPoint: 840
+      HitPoint: 1020
       Attack: 100
       PhysicalDamageCutRate: 0
-      FireDamageCutRate: 0
+      FireDamageCutRate: 0.2
       WaterDamageCutRate: 0
       GrassDamageCutRate: 0
       FlinchThreshold: 30
@@ -1161,7 +1228,7 @@ MonoBehaviour:
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 19901
+      WeaponId: 20301
       VisibleStatusUI: 1
       RecoveryCommandCount: 0
       InitialStateKey: Idle.Default
@@ -1186,7 +1253,94 @@ MonoBehaviour:
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
       Behaviour: {fileID: 11400000, guid: ca96acd3027f6475d9c803bcb540c0d1, type: 2}
-    - Id: 10202
+    - Id: 20102
+      Name: "\u96E8\u9727\u306E\u6563\u5175\u3001\u30DF\u30B9\u30C8\u30EA\u30FC\u30D1\u30FC"
+      ActorType: 1
+      HitPoint: 1020
+      Attack: 100
+      PhysicalDamageCutRate: 0
+      FireDamageCutRate: 0
+      WaterDamageCutRate: 0.2
+      GrassDamageCutRate: 0
+      FlinchThreshold: 30
+      PoisonThreshold: 100
+      ParalysisThreshold: 100
+      CollapseThreshold: 100
+      PoisonDuration: 30
+      ParalysisDuration: 10
+      CollapseDuration: 30
+      MoveSpeed: 7
+      RotationSpeed: 10
+      WeaponId: 20201
+      VisibleStatusUI: 1
+      RecoveryCommandCount: 0
+      InitialStateKey: Idle.Default
+      AttackSequencesKey: Attack.Default
+      FlinchSequencesKey: Flinch.Default
+      DodgeSequencesKey: Dodge.Default
+      GuardSequencesKey: Guard.Default
+      SuccessJustGuardSequencesKey: SuccessJustGuard.Default
+      SuccessGuardSequencesKey: SuccessGuard.Default
+      DeadSequencesKey: Dead.Default
+      RecoverySequencesKey: Recovery.Default
+      ActorPrefabKey: Enemy
+      BehaviourKey: Enemy
+      InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+      AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
+      FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
+      DodgeSequences: {fileID: 11400000, guid: 382dc8b38b611744f879c2c1942dcdde, type: 2}
+      GuardSequences: {fileID: 11400000, guid: 00f83183459bd704a9af1dcc204da93c, type: 2}
+      SuccessJustGuardSequences: {fileID: 11400000, guid: 94d370458b442564993fb0b876ce15ae, type: 2}
+      SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
+      DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
+      RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
+      ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
+      Behaviour: {fileID: 11400000, guid: ca96acd3027f6475d9c803bcb540c0d1, type: 2}
+    - Id: 20103
+      Name: "\u68EE\u7F85\u306E\u6EF4\u3001\u30D5\u30A9\u30EC\u30B9\u30C8\u30A2\u30FC\u30AF"
+      ActorType: 1
+      HitPoint: 1020
+      Attack: 100
+      PhysicalDamageCutRate: 0
+      FireDamageCutRate: 0
+      WaterDamageCutRate: 0
+      GrassDamageCutRate: 0.2
+      FlinchThreshold: 30
+      PoisonThreshold: 100
+      ParalysisThreshold: 100
+      CollapseThreshold: 100
+      PoisonDuration: 30
+      ParalysisDuration: 10
+      CollapseDuration: 30
+      MoveSpeed: 7
+      RotationSpeed: 10
+      WeaponId: 20101
+      VisibleStatusUI: 1
+      RecoveryCommandCount: 0
+      InitialStateKey: Idle.Default
+      AttackSequencesKey: Attack.Default
+      FlinchSequencesKey: Flinch.Default
+      DodgeSequencesKey: Dodge.Default
+      GuardSequencesKey: Guard.Default
+      SuccessJustGuardSequencesKey: SuccessJustGuard.Default
+      SuccessGuardSequencesKey: SuccessGuard.Default
+      DeadSequencesKey: Dead.Default
+      RecoverySequencesKey: Recovery.Default
+      ActorPrefabKey: Enemy
+      BehaviourKey: Enemy
+      InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+      AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
+      FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
+      DodgeSequences: {fileID: 11400000, guid: 382dc8b38b611744f879c2c1942dcdde, type: 2}
+      GuardSequences: {fileID: 11400000, guid: 00f83183459bd704a9af1dcc204da93c, type: 2}
+      SuccessJustGuardSequences: {fileID: 11400000, guid: 94d370458b442564993fb0b876ce15ae, type: 2}
+      SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
+      DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
+      RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
+      ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
+      Behaviour: {fileID: 11400000, guid: ca96acd3027f6475d9c803bcb540c0d1, type: 2}
+    - Id: 29901
+      Name: "\u30C8\u30EC\u30FC\u30CB\u30F3\u30B0\u30C0\u30DF\u30FC\u541B"
       ActorType: 1
       HitPoint: 999999999
       Attack: 100
@@ -1232,7 +1386,7 @@ MonoBehaviour:
     list:
     - Id: Home
       StagePrefabKey: Home
-      EnemyActorSpecId: 10202
+      EnemyActorSpecId: 29901
       QuestClearSequencesKey: None
       QuestFailedSequencesKey: PlayerDefeat
       AvailableQuestList: 0
@@ -1242,7 +1396,7 @@ MonoBehaviour:
       QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
     - Id: Quest.10101
       StagePrefabKey: Battle
-      EnemyActorSpecId: 10201
+      EnemyActorSpecId: 20103
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
       AvailableQuestList: 1
