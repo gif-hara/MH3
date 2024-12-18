@@ -87,6 +87,8 @@ namespace MH3.ActorControllers
 
         public ScriptableSequences DodgePerformedSequences { get; private set; }
 
+        public int SuperArmorCount { get; private set; } = 0;
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -242,6 +244,11 @@ namespace MH3.ActorControllers
             rewardUp.Value = skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Reward, actor));
         }
 
+        public void SetSuperArmor(int value)
+        {
+            SuperArmorCount = value;
+        }
+
         public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)
         {
             if (attackSpec == null)
@@ -368,6 +375,12 @@ namespace MH3.ActorControllers
                     onFlinch.OnNext(Unit.Default);
                 }
 
+                if (SuperArmorCount > 0)
+                {
+                    TinyServiceLocator.Resolve<AudioManager>().PlaySfx(gameRules.SuperArmorHitSfxKey);
+                }
+                SuperArmorCount--;
+
                 if (attacker.SpecController.ActorType == Define.ActorType.Player && attackSpec.HitAdditionalSequencesPlayer != null)
                 {
                     var container = new Container();
@@ -411,6 +424,10 @@ namespace MH3.ActorControllers
                 return true;
             }
 #endif
+            if (SuperArmorCount > 0)
+            {
+                return false;
+            }
             if (appliedAbnormalStatuses.Contains(Define.AbnormalStatusType.Paralysis))
             {
                 return false;
