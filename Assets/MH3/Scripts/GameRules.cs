@@ -89,6 +89,10 @@ namespace MH3
         private string superArmorHitSfxKey;
         public string SuperArmorHitSfxKey => superArmorHitSfxKey;
 
+        [SerializeField]
+        private float bladeSuperArmorTime;
+        public float BladeSuperArmorTime => bladeSuperArmorTime;
+
         [Serializable]
         public class ElementProjectile
         {
