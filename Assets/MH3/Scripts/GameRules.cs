@@ -81,6 +81,14 @@ namespace MH3
         private float dualSwordDodgeTime;
         public float DualSwordDodgeTime => dualSwordDodgeTime;
 
+        [SerializeField]
+        private float superArmorDamageRate;
+        public float SuperArmorDamageRate => superArmorDamageRate;
+
+        [SerializeField]
+        private string superArmorHitSfxKey;
+        public string SuperArmorHitSfxKey => superArmorHitSfxKey;
+
         [Serializable]
         public class ElementProjectile
         {
