@@ -102,6 +102,11 @@ namespace MH3.ActorControllers
         public void SetAttackSpec(string attackSpecId)
         {
             var attackSpec = TinyServiceLocator.Resolve<MasterData>().AttackSpecs.Get(attackSpecId);
+            if (attackSpecs.ContainsKey(attackSpec.ColliderName))
+            {
+                attackSpecs.Remove(attackSpec.ColliderName);
+                colliders[attackSpec.ColliderName].SetActive(false);
+            }
             attackSpecs.Add(attackSpec.ColliderName, attackSpec);
             SetActiveCollider(attackSpec.ColliderName, true);
         }
