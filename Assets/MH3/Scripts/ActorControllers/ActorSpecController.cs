@@ -361,7 +361,6 @@ namespace MH3.ActorControllers
                     actor.StateMachine.TryChangeState(spec.DeadSequences, force: true);
                     onDead.OnNext(Unit.Default);
                     deadCancellationTokenSource.Cancel();
-                    deadCancellationTokenSource.Dispose();
                 }
                 else if (CanPlayFlinch() || attackSpec.ForceFlinch)
                 {
