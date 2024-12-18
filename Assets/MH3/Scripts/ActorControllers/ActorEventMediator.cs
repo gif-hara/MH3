@@ -74,5 +74,10 @@ namespace MH3
         {
             actor.ActionController.BeginDualSwordDodgeModeAsync().Forget();
         }
+
+        public void SetSuperArmor(int value)
+        {
+            actor.SpecController.SetSuperArmor(value);
+        }
     }
 }
