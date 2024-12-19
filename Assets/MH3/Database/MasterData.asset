@@ -1389,7 +1389,8 @@ MonoBehaviour:
       EnemyActorSpecId: 29901
       QuestClearSequencesKey: None
       QuestFailedSequencesKey: PlayerDefeat
-      AvailableQuestList: 0
+      NeedAvailableContentKey: Never
+      AddWhenQuestClearContentKey: 
       RewardCount: 1
       StagePrefab: {fileID: 7216371262307075504, guid: 3ab8cee5f3eb94595bca35a1d3035d87, type: 3}
       QuestClearSequences: {fileID: 11400000, guid: 5b76b8d3343c89041b6c1bc8e84c5e5b, type: 2}
@@ -1399,7 +1400,8 @@ MonoBehaviour:
       EnemyActorSpecId: 20103
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      AvailableQuestList: 1
+      NeedAvailableContentKey: FirstPlay
+      AddWhenQuestClearContentKey: 
       RewardCount: 1
       StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
       QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
