@@ -580,7 +580,9 @@ namespace MH3
 
             public string QuestFailedSequencesKey;
 
-            public bool AvailableQuestList;
+            public string NeedAvailableContentKey;
+            
+            public string AddWhenQuestClearContentKey;
 
             public int RewardCount;
 
