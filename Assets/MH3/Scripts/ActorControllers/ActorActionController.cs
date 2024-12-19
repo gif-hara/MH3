@@ -68,6 +68,7 @@ namespace MH3.ActorControllers
                 DualSwordDodgeDisposable?.Dispose();
                 DualSwordDodgeDisposable = new CancellationDisposable();
                 OverrideDodgeAnimationName = gameRules.DualSwordDodgeAnimationName;
+                onBeginDualSwordDodgeMode.OnNext((gameRules.DualSwordDodgeTime, DualSwordDodgeDisposable));
                 await UniTask.Delay(TimeSpan.FromSeconds(gameRules.DualSwordDodgeTime), cancellationToken: DualSwordDodgeDisposable.Token, cancelImmediately: true);
             }
             catch (OperationCanceledException)
