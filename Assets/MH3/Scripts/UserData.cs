@@ -25,6 +25,10 @@ namespace MH3
         [SerializeField]
         private int equippedInstanceWeaponId;
         public int EquippedInstanceWeaponId { get => equippedInstanceWeaponId; set => equippedInstanceWeaponId = value; }
+        
+        [SerializeField]
+        private AvailableContents availableContents = new();
+        public AvailableContents AvailableContents => availableContents;
 
         public InstanceWeapon GetEquippedInstanceWeapon()
         {
