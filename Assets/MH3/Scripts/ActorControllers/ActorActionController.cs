@@ -22,12 +22,12 @@ namespace MH3.ActorControllers
         private readonly Subject<(float duration, CancellationDisposable scope)> onBeginDualSwordDodgeMode = new();
         public Observable<(float duration, CancellationDisposable scope)> OnBeginDualSwordDodgeMode => onBeginDualSwordDodgeMode;
         
-        private readonly Subject<(float duration, CancellationDisposable scope)> onBeginBladeEndurance = new();
-        public Observable<(float duration, CancellationDisposable scope)> OnBeginBladeEndurance => onBeginBladeEndurance;
+        private readonly Subject<(float duration, CancellationDisposable scope)> onBeginBladeEnduranceMode = new();
+        public Observable<(float duration, CancellationDisposable scope)> OnBeginBladeEnduranceMode => onBeginBladeEnduranceMode;
 
-        private CancellationDisposable DualSwordDodgeDisposable = null;
+        private CancellationDisposable DualSwordDodgeModeDisposable = null;
 
-        private CancellationDisposable BladeEnduranceDisposable = null;
+        private CancellationDisposable BladeEnduranceModeDisposable = null;
 
         public string OverrideDodgeAnimationName { get; private set; }
 
@@ -68,11 +68,11 @@ namespace MH3.ActorControllers
             try
             {
                 var gameRules = TinyServiceLocator.Resolve<GameRules>();
-                DualSwordDodgeDisposable?.Dispose();
-                DualSwordDodgeDisposable = new CancellationDisposable();
+                DualSwordDodgeModeDisposable?.Dispose();
+                DualSwordDodgeModeDisposable = new CancellationDisposable();
                 OverrideDodgeAnimationName = gameRules.DualSwordDodgeAnimationName;
-                onBeginDualSwordDodgeMode.OnNext((gameRules.DualSwordDodgeTime, DualSwordDodgeDisposable));
-                await UniTask.Delay(TimeSpan.FromSeconds(gameRules.DualSwordDodgeTime), cancellationToken: DualSwordDodgeDisposable.Token, cancelImmediately: true);
+                onBeginDualSwordDodgeMode.OnNext((gameRules.DualSwordDodgeTime, DualSwordDodgeModeDisposable));
+                await UniTask.Delay(TimeSpan.FromSeconds(gameRules.DualSwordDodgeTime), cancellationToken: DualSwordDodgeModeDisposable.Token, cancelImmediately: true);
             }
             catch (OperationCanceledException)
             {
@@ -83,25 +83,25 @@ namespace MH3.ActorControllers
             }
             finally
             {
-                if (!DualSwordDodgeDisposable.IsDisposed)
+                if (!DualSwordDodgeModeDisposable.IsDisposed)
                 {
-                    DualSwordDodgeDisposable.Dispose();
+                    DualSwordDodgeModeDisposable.Dispose();
                 }
-                DualSwordDodgeDisposable = null;
+                DualSwordDodgeModeDisposable = null;
                 OverrideDodgeAnimationName = null;
             }
         }
 
-        public async UniTask BeginBladeEnduranceAsync()
+        public async UniTask BeginBladeEnduranceModeAsync()
         {
             try
             {
                 var gameRules = TinyServiceLocator.Resolve<GameRules>();
-                BladeEnduranceDisposable?.Dispose();
-                BladeEnduranceDisposable = new CancellationDisposable();
+                BladeEnduranceModeDisposable?.Dispose();
+                BladeEnduranceModeDisposable = new CancellationDisposable();
                 actor.SpecController.SetSuperArmor(1);
-                onBeginBladeEndurance.OnNext((gameRules.BladeSuperArmorTime, BladeEnduranceDisposable));
-                await UniTask.Delay(TimeSpan.FromSeconds(gameRules.BladeSuperArmorTime), cancellationToken: BladeEnduranceDisposable.Token, cancelImmediately: true);
+                onBeginBladeEnduranceMode.OnNext((gameRules.BladeSuperArmorTime, BladeEnduranceModeDisposable));
+                await UniTask.Delay(TimeSpan.FromSeconds(gameRules.BladeSuperArmorTime), cancellationToken: BladeEnduranceModeDisposable.Token, cancelImmediately: true);
             }
             catch (OperationCanceledException)
             {
@@ -112,11 +112,11 @@ namespace MH3.ActorControllers
             }
             finally
             {
-                if (!BladeEnduranceDisposable.IsDisposed)
+                if (!BladeEnduranceModeDisposable.IsDisposed)
                 {
-                    BladeEnduranceDisposable.Dispose();
+                    BladeEnduranceModeDisposable.Dispose();
                 }
-                BladeEnduranceDisposable = null;
+                BladeEnduranceModeDisposable = null;
                 actor.SpecController.SetSuperArmor(0);
             }
         }

@@ -60,7 +60,7 @@ namespace MH3
                 .RegisterTo(scope);
             
             var bladeEnduranceDocument = document.Q<HKUIDocument>("Area.BladeEndurance");
-            actor.ActionController.OnBeginBladeEndurance
+            actor.ActionController.OnBeginBladeEnduranceMode
                 .Subscribe((actor, bladeEnduranceDocument), static (x, t) =>
                 {
                     var (actor, bladeEnduranceDocument) = t;

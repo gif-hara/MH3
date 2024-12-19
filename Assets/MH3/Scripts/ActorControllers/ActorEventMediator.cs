@@ -80,9 +80,9 @@ namespace MH3
             actor.SpecController.SetSuperArmor(value);
         }
 
-        public void BeginBladeEndurance()
+        public void BeginBladeEnduranceMode()
         {
-            actor.ActionController.BeginBladeEnduranceAsync().Forget();
+            actor.ActionController.BeginBladeEnduranceModeAsync().Forget();
         }
     }
 }
