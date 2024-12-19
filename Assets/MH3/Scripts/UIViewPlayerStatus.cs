@@ -1,8 +1,11 @@
 using System.Threading;
+using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
 using R3;
+using R3.Triggers;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace MH3
@@ -31,6 +34,27 @@ namespace MH3
                     document.Q<HKUIDocument>("RecoveryCommandCount")
                         .Q<TMP_Text>("Value")
                         .text = x.ToString();
+                })
+                .RegisterTo(scope);
+            
+            var dualSwordDodgeModeDocument = document.Q<HKUIDocument>("Area.DualSwordDodgeMode");
+            actor.ActionController.OnBeginDualSwordDodgeMode
+                .Subscribe(x =>
+                {
+                    dualSwordDodgeModeDocument.gameObject.SetActive(true);
+                    var beginTime = UnityEngine.Time.time;
+                    actor.UpdateAsObservable()
+                        .TakeUntil(_ => UnityEngine.Time.time - beginTime >= x.duration)
+                        .Subscribe(_ =>
+                            {
+                                dualSwordDodgeModeDocument.Q<Slider>("Slider")
+                                    .value = 1.0f - (UnityEngine.Time.time - beginTime) / x.duration;
+                            },
+                            _ =>
+                            {
+                                dualSwordDodgeModeDocument.gameObject.SetActive(false);
+                            })
+                        .RegisterTo(x.scope.Token);
                 })
                 .RegisterTo(scope);
         }

@@ -18,6 +18,9 @@ namespace MH3.ActorControllers
         private readonly ReactiveProperty<float> beginGuardTime = new(0.0f);
 
         public readonly ReactiveProperty<bool> JustGuarding = new(false);
+        
+        private readonly Subject<(float duration, CancellationDisposable scope)> onBeginDualSwordDodgeMode = new();
+        public Observable<(float duration, CancellationDisposable scope)> OnBeginDualSwordDodgeMode => onBeginDualSwordDodgeMode;
 
         private CancellationDisposable DualSwordDodgeDisposable = null;
 
