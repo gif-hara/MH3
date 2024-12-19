@@ -100,6 +100,7 @@ namespace MH3
             gameCameraController = Instantiate(gameCameraControllerPrefab);
             TinyServiceLocator.RegisterAsync(gameCameraController, destroyCancellationToken).Forget();
             var userData = new UserData();
+            userData.AvailableContents.Add("FirstPlay");
             TinyServiceLocator.RegisterAsync(userData, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(new UIViewSimpleDialog(simpleDialogDocumentPrefab), destroyCancellationToken).Forget();
             var playerSpec = masterData.ActorSpecs.Get(playerActorSpecId);
