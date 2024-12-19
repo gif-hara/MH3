@@ -36,8 +36,9 @@ namespace MH3
                         .text = x.ToString();
                 })
                 .RegisterTo(scope);
-            
+
             var dualSwordDodgeModeDocument = document.Q<HKUIDocument>("Area.DualSwordDodgeMode");
+            dualSwordDodgeModeDocument.gameObject.SetActive(false);
             actor.ActionController.OnBeginDualSwordDodgeMode
                 .Subscribe((actor, dualSwordDodgeModeDocument), static (x, t) =>
                 {
@@ -50,16 +51,17 @@ namespace MH3
                             {
                                 dualSwordDodgeModeDocument.Q<Slider>("Slider")
                                     .value = 1.0f - (UnityEngine.Time.time - beginTime) / x.duration;
-                            },
-                            _ =>
-                            {
-                                dualSwordDodgeModeDocument.gameObject.SetActive(false);
                             })
                         .RegisterTo(x.scope.Token);
+                    x.scope.Token.RegisterWithoutCaptureExecutionContext(() =>
+                    {
+                        dualSwordDodgeModeDocument.gameObject.SetActive(false);
+                    });
                 })
                 .RegisterTo(scope);
-            
-            var bladeEnduranceDocument = document.Q<HKUIDocument>("Area.BladeEndurance");
+
+            var bladeEnduranceDocument = document.Q<HKUIDocument>("Area.BladeEnduranceMode");
+            bladeEnduranceDocument.gameObject.SetActive(false);
             actor.ActionController.OnBeginBladeEnduranceMode
                 .Subscribe((actor, bladeEnduranceDocument), static (x, t) =>
                 {
@@ -73,12 +75,12 @@ namespace MH3
                             {
                                 bladeEnduranceDocument.Q<Slider>("Slider")
                                     .value = 1.0f - (UnityEngine.Time.time - beginTime) / x.duration;
-                            },
-                            _ =>
-                            {
-                                bladeEnduranceDocument.gameObject.SetActive(false);
                             })
                         .RegisterTo(x.scope.Token);
+                    x.scope.Token.RegisterWithoutCaptureExecutionContext(() =>
+                    {
+                        bladeEnduranceDocument.gameObject.SetActive(false);
+                    });
                 })
                 .RegisterTo(scope);
         }
