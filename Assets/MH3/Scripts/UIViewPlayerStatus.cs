@@ -39,8 +39,9 @@ namespace MH3
             
             var dualSwordDodgeModeDocument = document.Q<HKUIDocument>("Area.DualSwordDodgeMode");
             actor.ActionController.OnBeginDualSwordDodgeMode
-                .Subscribe(x =>
+                .Subscribe((actor, dualSwordDodgeModeDocument), static (x, t) =>
                 {
+                    var (actor, dualSwordDodgeModeDocument) = t;
                     dualSwordDodgeModeDocument.gameObject.SetActive(true);
                     var beginTime = UnityEngine.Time.time;
                     actor.UpdateAsObservable()
@@ -53,6 +54,29 @@ namespace MH3
                             _ =>
                             {
                                 dualSwordDodgeModeDocument.gameObject.SetActive(false);
+                            })
+                        .RegisterTo(x.scope.Token);
+                })
+                .RegisterTo(scope);
+            
+            var bladeEnduranceDocument = document.Q<HKUIDocument>("Area.BladeEndurance");
+            actor.ActionController.OnBeginBladeEndurance
+                .Subscribe((actor, bladeEnduranceDocument), static (x, t) =>
+                {
+                    var (actor, bladeEnduranceDocument) = t;
+                    bladeEnduranceDocument.gameObject.SetActive(true);
+                    var beginTime = UnityEngine.Time.time;
+                    actor.UpdateAsObservable()
+                        .TakeUntil(_ => UnityEngine.Time.time - beginTime >= x.duration)
+                        .TakeUntil(actor.SpecController.SuperArmorCount.Where(y => y <= 0))
+                        .Subscribe(_ =>
+                            {
+                                bladeEnduranceDocument.Q<Slider>("Slider")
+                                    .value = 1.0f - (UnityEngine.Time.time - beginTime) / x.duration;
+                            },
+                            _ =>
+                            {
+                                bladeEnduranceDocument.gameObject.SetActive(false);
                             })
                         .RegisterTo(x.scope.Token);
                 })
