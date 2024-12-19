@@ -18,10 +18,10 @@ namespace MH3.ActorControllers
         private readonly ReactiveProperty<float> beginGuardTime = new(0.0f);
 
         public readonly ReactiveProperty<bool> JustGuarding = new(false);
-        
+
         private readonly Subject<(float duration, CancellationDisposable scope)> onBeginDualSwordDodgeMode = new();
         public Observable<(float duration, CancellationDisposable scope)> OnBeginDualSwordDodgeMode => onBeginDualSwordDodgeMode;
-        
+
         private readonly Subject<(float duration, CancellationDisposable scope)> onBeginBladeEnduranceMode = new();
         public Observable<(float duration, CancellationDisposable scope)> OnBeginBladeEnduranceMode => onBeginBladeEnduranceMode;
 
@@ -101,6 +101,17 @@ namespace MH3.ActorControllers
                 BladeEnduranceModeDisposable = new CancellationDisposable();
                 actor.SpecController.SetSuperArmor(1);
                 onBeginBladeEnduranceMode.OnNext((gameRules.BladeSuperArmorTime, BladeEnduranceModeDisposable));
+                actor.SpecController.SuperArmorCount
+                    .Where(x => x <= 0)
+                    .Take(1)
+                    .Subscribe(_ =>
+                    {
+                        if (BladeEnduranceModeDisposable != null && !BladeEnduranceModeDisposable.IsDisposed)
+                        {
+                            BladeEnduranceModeDisposable.Dispose();
+                        }
+                    })
+                    .AddTo(actor.destroyCancellationToken);
                 await UniTask.Delay(TimeSpan.FromSeconds(gameRules.BladeSuperArmorTime), cancellationToken: BladeEnduranceModeDisposable.Token, cancelImmediately: true);
             }
             catch (OperationCanceledException)
