@@ -29,6 +29,7 @@ MonoBehaviour:
   - rid: 1481063336882209022
   - rid: 1481063336882209032
   - rid: 1481063203388522584
+  - rid: 8194411010602303565
   - rid: 1481063233791983732
   - rid: 1481063336882209051
   - rid: 1481063203388522585
@@ -210,3 +211,12 @@ MonoBehaviour:
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Player
+    - rid: 8194411010602303565
+      type: {class: AddAvailableContentWhenQuestClear, ns: MH3, asm: Assembly-CSharp}
+      data:
+        questSpecIdResolver:
+          rid: 8194411010602303566
+    - rid: 8194411010602303566
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: QuestSpecId
