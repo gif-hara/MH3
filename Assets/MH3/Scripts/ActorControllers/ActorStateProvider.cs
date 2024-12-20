@@ -16,6 +16,7 @@ namespace MH3.ActorControllers
             IsGuard,
             JustGuarding,
             CanGuard,
+            CanMoveFromEvent,
         }
 
         public enum TriggerType
@@ -45,6 +46,7 @@ namespace MH3.ActorControllers
                 BooleanType.IsGuard => actor.ActionController.IsGuard,
                 BooleanType.JustGuarding => actor.ActionController.JustGuarding,
                 BooleanType.CanGuard => actor.ActionController.CanGuard,
+                BooleanType.CanMoveFromEvent => actor.MovementController.CanMoveFromEvent,
                 _ => throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}"),
             };
         }

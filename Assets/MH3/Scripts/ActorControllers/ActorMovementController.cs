@@ -22,6 +22,8 @@ namespace MH3.ActorControllers
 
         public readonly ReactiveProperty<bool> CanMove = new(true);
 
+        public readonly ReactiveProperty<bool> CanMoveFromEvent = new(true);
+
         public readonly ReactiveProperty<bool> CanRotate = new(true);
 
         public void Setup(Actor actor, OpenCharacterController openCharacterController)
@@ -32,7 +34,7 @@ namespace MH3.ActorControllers
                 .Subscribe(actor, (_, a) =>
                 {
                     var deltaTime = a.TimeController.Time.deltaTime;
-                    if (velocity == Vector3.zero || !CanMove.Value)
+                    if (velocity == Vector3.zero || !CanMove.Value || !CanMoveFromEvent.Value)
                     {
                         isMoving.Value = false;
                     }
