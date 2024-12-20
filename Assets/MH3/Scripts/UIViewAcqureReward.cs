@@ -71,28 +71,43 @@ namespace MH3
             var document = Object.Instantiate(documentPrefab);
             var elementParent = document.Q<RectTransform>("Parent.Element");
             var selectable = new List<Selectable>();
+            var source = new UniTaskCompletionSource<int>();
             foreach (var reward in rewards)
             {
                 switch (reward)
                 {
                     case InstanceWeapon instanceWeapon:
-                    {
-                        var element = Object.Instantiate(document.Q<HKUIDocument>("Prefab.InstanceWeapon"), elementParent);
-                        var container = new Container();
-                        container.Register("InstanceWeapon", instanceWeapon);
-                        element.Q<SequencesMonoBehaviour>("Sequences").PlayAsync(container, scope).Forget();
-                        selectable.Add(element.Q<Button>("Button"));
-                        break;
-                    }
+                        {
+                            var element = Object.Instantiate(document.Q<HKUIDocument>("Prefab.InstanceWeapon"), elementParent);
+                            var container = new Container();
+                            container.Register("InstanceWeapon", instanceWeapon);
+                            element.Q<SequencesMonoBehaviour>("Sequences").PlayAsync(container, scope).Forget();
+                            var button = element.Q<Button>("Button");
+                            button.OnClickAsObservable()
+                                .Subscribe(_ =>
+                                {
+                                    source.TrySetResult(selectable.IndexOf(button));
+                                })
+                                .RegisterTo(document.destroyCancellationToken);
+                            selectable.Add(button);
+                            break;
+                        }
                     case InstanceSkillCore instanceSkillCore:
-                    {
-                        var element = Object.Instantiate(document.Q<HKUIDocument>("Prefab.InstanceSkillCore"), elementParent);
-                        var container = new Container();
-                        container.Register("InstanceSkillCore", instanceSkillCore);
-                        element.Q<SequencesMonoBehaviour>("Sequences").PlayAsync(container, scope).Forget();
-                        selectable.Add(element.Q<Button>("Button"));
-                        break;
-                    }
+                        {
+                            var element = Object.Instantiate(document.Q<HKUIDocument>("Prefab.InstanceSkillCore"), elementParent);
+                            var container = new Container();
+                            container.Register("InstanceSkillCore", instanceSkillCore);
+                            element.Q<SequencesMonoBehaviour>("Sequences").PlayAsync(container, scope).Forget();
+                            var button = element.Q<Button>("Button");
+                            button.OnClickAsObservable()
+                                .Subscribe(_ =>
+                                {
+                                    source.TrySetResult(selectable.IndexOf(button));
+                                })
+                                .RegisterTo(document.destroyCancellationToken);
+                            selectable.Add(button);
+                            break;
+                        }
                     default:
                         throw new System.NotImplementedException($"未対応のIRewardです {reward.GetType()}");
                 }
@@ -104,41 +119,17 @@ namespace MH3
                 navigation.mode = Navigation.Mode.Explicit;
                 navigation.selectOnLeft = selectable[((i - 1) % selectable.Count + selectable.Count) % selectable.Count];
                 navigation.selectOnRight = selectable[(i + 1) % selectable.Count];
+                selectable[i].navigation = navigation;
             }
-            
+
             var inputController = TinyServiceLocator.Resolve<InputController>();
             inputController.PushActionType(InputController.InputActionType.UI);
             var defaultSelectable = selectable.First();
             EventSystem.current.SetSelectedGameObject(defaultSelectable.gameObject);
-            var index = 0;
-            inputController.Actions.UI.Navigate.OnPerformedAsObservable()
-                .Subscribe(x =>
-                {
-                    if (selectable.Count == 1)
-                    {
-                        return;
-                    }
-                    var direction = x.ReadValue<Vector2>();
-                    if (direction.x == 0)
-                    {
-                        return;
-                    }
-                    if (direction.x > 0)
-                    {
-                        index = (index + 1) % selectable.Count;
-                        EventSystem.current.SetSelectedGameObject(selectable[index].gameObject);
-                    }
-                    else if (direction.x < 0)
-                    {
-                        index = index == 0 ? selectable.Count - 1 : index - 1;
-                        EventSystem.current.SetSelectedGameObject(selectable[index].gameObject);
-                    }
-                })
-                .RegisterTo(scope);
-            await inputController.Actions.UI.Submit.OnPerformedAsObservable().FirstAsync(scope).AsUniTask();
+            var result = await source.Task;
             inputController.PopActionType();
             document.DestroySafe();
-            return index;
+            return result;
         }
     }
 }
