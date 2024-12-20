@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 namespace MH3
 {
     [Serializable]
-    public class InstanceWeapon
+    public class InstanceWeapon : IReward
     {
         [SerializeField]
         private int instanceId;

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace MH3
 {
     [Serializable]
-    public class InstanceSkillCore
+    public class InstanceSkillCore : IReward
     {
         [SerializeField]
         private int instanceId;
