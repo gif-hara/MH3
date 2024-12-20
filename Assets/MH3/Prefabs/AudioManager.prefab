@@ -50,7 +50,11 @@ MonoBehaviour:
   sfxSource: {fileID: 1193820129548460352}
   audioMixer: {fileID: 0}
   bgm:
-    list: []
+    list:
+    - key: Home.1
+      clip: {fileID: 8300000, guid: 73ced70ee72a5dd4b91ef65086f62d6d, type: 3}
+    - key: Quest.1
+      clip: {fileID: 8300000, guid: b3bb677e38ae6d64487546e5ad5533fd, type: 3}
   sfx:
     list:
     - key: Hit.1
