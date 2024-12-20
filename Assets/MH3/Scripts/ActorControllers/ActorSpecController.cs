@@ -410,6 +410,10 @@ namespace MH3.ActorControllers
 
         public void TakeDamageFromPoison(int damage)
         {
+            if (IsDead || Target.Value.SpecController.IsDead)
+            {
+                return;
+            }
             var fixedHitPoint = hitPoint.Value - damage;
             fixedHitPoint = fixedHitPoint < 1 ? 1 : fixedHitPoint;
             hitPoint.Value = fixedHitPoint;
