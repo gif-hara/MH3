@@ -31,5 +31,16 @@ namespace MH3
             }
             return animation.PlayAsync(animationName, document.destroyCancellationToken);
         }
+
+        public UniTask BeginOneShotAsync()
+        {
+            var animation = document.Q<SimpleAnimation>("Animation");
+            const string animationName = "Default";
+            if (animation.IsPlaying(animationName))
+            {
+                animation.Stop(animationName);
+            }
+            return animation.PlayAsync(animationName, document.destroyCancellationToken);
+        }
     }
 }
