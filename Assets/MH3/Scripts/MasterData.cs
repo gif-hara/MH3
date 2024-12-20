@@ -202,6 +202,7 @@ namespace MH3
                 questSpec.StagePrefab = AssetDatabase.LoadAssetAtPath<Stage>($"Assets/MH3/Prefabs/Stage.{questSpec.StagePrefabKey}.prefab");
                 questSpec.QuestClearSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/QuestClearSequences/{questSpec.QuestClearSequencesKey}.asset");
                 questSpec.QuestFailedSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/QuestFailedSequences/{questSpec.QuestFailedSequencesKey}.asset");
+                questSpec.BeginQuestSequences = AssetDatabase.LoadAssetAtPath<ScriptableObject>($"Assets/MH3/Database/BeginQuestSequences/{questSpec.BeginQuestSequencesKey}.asset");
             }
             foreach (var attackSpec in attackSpecs.List)
             {
@@ -581,16 +582,20 @@ namespace MH3
             public string QuestFailedSequencesKey;
 
             public string NeedAvailableContentKey;
-            
+
             public string AddWhenQuestClearContentKey;
 
             public int RewardCount;
+
+            public string BeginQuestSequencesKey;
 
             public Stage StagePrefab;
 
             public ScriptableSequences QuestClearSequences;
 
             public ScriptableSequences QuestFailedSequences;
+
+            public ScriptableObject BeginQuestSequences;
 
             public List<QuestReward> GetRewards()
             {
