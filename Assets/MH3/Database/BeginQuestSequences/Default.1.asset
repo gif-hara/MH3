@@ -15,12 +15,14 @@ MonoBehaviour:
   sequences:
   - rid: 1481063520193740887
   - rid: 1481063520193740891
-  - rid: 1481063520193740896
+  - rid: 1481063520193740930
   - rid: 1481063520193740897
   - rid: 1481063520193740901
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 1481063520193740887
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -53,10 +55,6 @@ MonoBehaviour:
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 1
-    - rid: 1481063520193740896
-      type: {class: Delay, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
-      data:
-        seconds: 3
     - rid: 1481063520193740897
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -89,3 +87,9 @@ MonoBehaviour:
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
+    - rid: 1481063520193740930
+      type: {class: BeginNotificationCenterOneShotAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        documentPrefab: {fileID: 6562501259230542608, guid: 921907e0c6d6f4a49ad870657b180977, type: 3}
+        messageResolver:
+          rid: -2
