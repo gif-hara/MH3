@@ -7,6 +7,8 @@ using HK;
 using R3;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using UnitySequencerSystem;
 
 namespace MH3
@@ -57,6 +59,86 @@ namespace MH3
 
             inputController.PopActionType();
             document.DestroySafe();
+        }
+
+        public static async UniTask<int> OpenAsync(HKUIDocument documentPrefab, List<IReward> rewards, CancellationToken scope)
+        {
+            if (!rewards.Any())
+            {
+                return -1;
+            }
+
+            var document = Object.Instantiate(documentPrefab);
+            var elementParent = document.Q<RectTransform>("Parent.Element");
+            var selectable = new List<Selectable>();
+            foreach (var reward in rewards)
+            {
+                switch (reward)
+                {
+                    case InstanceWeapon instanceWeapon:
+                    {
+                        var element = Object.Instantiate(document.Q<HKUIDocument>("Prefab.InstanceWeapon"), elementParent);
+                        var container = new Container();
+                        container.Register("InstanceWeapon", instanceWeapon);
+                        element.Q<SequencesMonoBehaviour>("Sequences").PlayAsync(container, scope).Forget();
+                        selectable.Add(element.Q<Button>("Button"));
+                        break;
+                    }
+                    case InstanceSkillCore instanceSkillCore:
+                    {
+                        var element = Object.Instantiate(document.Q<HKUIDocument>("Prefab.InstanceSkillCore"), elementParent);
+                        var container = new Container();
+                        container.Register("InstanceSkillCore", instanceSkillCore);
+                        element.Q<SequencesMonoBehaviour>("Sequences").PlayAsync(container, scope).Forget();
+                        selectable.Add(element.Q<Button>("Button"));
+                        break;
+                    }
+                    default:
+                        throw new System.NotImplementedException($"未対応のIRewardです {reward.GetType()}");
+                }
+            }
+
+            for (var i = 0; i < selectable.Count; i++)
+            {
+                var navigation = selectable[i].navigation;
+                navigation.mode = Navigation.Mode.Explicit;
+                navigation.selectOnLeft = selectable[((i - 1) % selectable.Count + selectable.Count) % selectable.Count];
+                navigation.selectOnRight = selectable[(i + 1) % selectable.Count];
+            }
+            
+            var inputController = TinyServiceLocator.Resolve<InputController>();
+            inputController.PushActionType(InputController.InputActionType.UI);
+            var defaultSelectable = selectable.First();
+            EventSystem.current.SetSelectedGameObject(defaultSelectable.gameObject);
+            var index = 0;
+            inputController.Actions.UI.Navigate.OnPerformedAsObservable()
+                .Subscribe(x =>
+                {
+                    if (selectable.Count == 1)
+                    {
+                        return;
+                    }
+                    var direction = x.ReadValue<Vector2>();
+                    if (direction.x == 0)
+                    {
+                        return;
+                    }
+                    if (direction.x > 0)
+                    {
+                        index = (index + 1) % selectable.Count;
+                        EventSystem.current.SetSelectedGameObject(selectable[index].gameObject);
+                    }
+                    else if (direction.x < 0)
+                    {
+                        index = index == 0 ? selectable.Count - 1 : index - 1;
+                        EventSystem.current.SetSelectedGameObject(selectable[index].gameObject);
+                    }
+                })
+                .RegisterTo(scope);
+            await inputController.Actions.UI.Submit.OnPerformedAsObservable().FirstAsync(scope).AsUniTask();
+            inputController.PopActionType();
+            document.DestroySafe();
+            return index;
         }
     }
 }
