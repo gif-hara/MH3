@@ -26,14 +26,14 @@ namespace MH3.ActorControllers
         private readonly Parameter attack = new();
         
         private readonly Parameter critical = new();
-
-        private readonly ReactiveProperty<float> cutRatePhysicalDamage = new(0.0f);
-
-        private readonly ReactiveProperty<float> cutRateFireDamage = new(0.0f);
-
-        private readonly ReactiveProperty<float> cutRateWaterDamage = new(0.0f);
-
-        private readonly ReactiveProperty<float> cutRateGrassDamage = new(0.0f);
+        
+        private readonly Parameter cutRatePhysicalDamage = new();
+        
+        private readonly Parameter cutRateFireDamage = new();
+        
+        private readonly Parameter cutRateWaterDamage = new();
+        
+        private readonly Parameter cutRateGrassDamage = new();
 
         private readonly ReactiveProperty<int> abnormalStatusAttackInstanceWeapon = new(0);
 
@@ -97,10 +97,10 @@ namespace MH3.ActorControllers
             hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
             hitPoint.Value = spec.HitPoint;
             attack.RegisterBasics("Spec", () => spec.Attack);
-            cutRatePhysicalDamage.Value = spec.PhysicalDamageCutRate;
-            cutRateFireDamage.Value = spec.FireDamageCutRate;
-            cutRateWaterDamage.Value = spec.WaterDamageCutRate;
-            cutRateGrassDamage.Value = spec.GrassDamageCutRate;
+            cutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
+            cutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);
+            cutRateWaterDamage.RegisterBasics("Spec", () => spec.WaterDamageCutRate);
+            cutRateGrassDamage.RegisterBasics("Spec", () => spec.GrassDamageCutRate);
             SetWeaponId(spec.WeaponId);
             recoveryCommandCount.Value = spec.RecoveryCommandCount;
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Poison, new ReactiveProperty<int>(spec.PoisonThreshold));
@@ -127,15 +127,7 @@ namespace MH3.ActorControllers
         public Define.ElementType ElementAttackType => elementAttackType.Value;
 
         public int DefenseTotal => skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Defense, actor));
-
-        public ReadOnlyReactiveProperty<float> CutRatePhysicalDamage => cutRatePhysicalDamage;
-
-        public ReadOnlyReactiveProperty<float> CutRateFireDamage => cutRateFireDamage;
-
-        public ReadOnlyReactiveProperty<float> CutRateWaterDamage => cutRateWaterDamage;
-
-        public ReadOnlyReactiveProperty<float> CutRateGrassDamage => cutRateGrassDamage;
-
+        
         public ReadOnlyReactiveProperty<int> RecoveryCommandCount => recoveryCommandCount;
 
         public int PoisonDuration => spec.PoisonDuration;
@@ -192,14 +184,14 @@ namespace MH3.ActorControllers
             };
         }
 
-        public ReadOnlyReactiveProperty<float> GetCutRate(Define.ElementType elementType)
+        public float GetCutRate(Define.ElementType elementType)
         {
             return elementType switch
             {
-                Define.ElementType.None => CutRatePhysicalDamage,
-                Define.ElementType.Fire => CutRateFireDamage,
-                Define.ElementType.Water => CutRateWaterDamage,
-                Define.ElementType.Grass => CutRateGrassDamage,
+                Define.ElementType.None => cutRatePhysicalDamage.Value,
+                Define.ElementType.Fire => cutRateFireDamage.Value,
+                Define.ElementType.Water => cutRateWaterDamage.Value,
+                Define.ElementType.Grass => cutRateGrassDamage.Value,
                 _ => throw new System.NotImplementedException($"未対応の属性です {elementType}"),
             };
         }
@@ -223,18 +215,26 @@ namespace MH3.ActorControllers
         public void ChangeInstanceWeapon(InstanceWeapon instanceWeapon, List<InstanceSkillCore> instanceSkillCores)
         {
             SetWeaponId(instanceWeapon.WeaponId);
-            critical.ClearAll();
-            critical.RegisterBasics("InstanceWeapon", () => instanceWeapon.Critical);
-            critical.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Critical, actor)));
-            abnormalStatusAttackInstanceWeapon.Value = instanceWeapon.AbnormalStatusAttack;
-            abnormalStatusAttackType.Value = instanceWeapon.AbnormalStatusType;
-            elementAttackInstanceWeapon.Value = instanceWeapon.ElementAttack;
-            elementAttackType.Value = instanceWeapon.ElementType;
             var instanceSkills = instanceWeapon.InstanceSkillCoreIds
                 .Select(x => instanceSkillCores.Find(y => y.InstanceId == x))
                 .SelectMany(x => x.Skills);
             skills.Clear();
             skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
+            critical.ClearAll();
+            critical.RegisterBasics("InstanceWeapon", () => instanceWeapon.Critical);
+            critical.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Critical, actor)));
+            cutRatePhysicalDamage.ClearAll();
+            cutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
+            cutRateFireDamage.ClearAll();
+            cutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);
+            cutRateWaterDamage.ClearAll();
+            cutRateWaterDamage.RegisterBasics("Spec", () => spec.WaterDamageCutRate);
+            cutRateGrassDamage.ClearAll();
+            cutRateGrassDamage.RegisterBasics("Spec", () => spec.GrassDamageCutRate);
+            abnormalStatusAttackInstanceWeapon.Value = instanceWeapon.AbnormalStatusAttack;
+            abnormalStatusAttackType.Value = instanceWeapon.AbnormalStatusType;
+            elementAttackInstanceWeapon.Value = instanceWeapon.ElementAttack;
+            elementAttackType.Value = instanceWeapon.ElementType;
             hitPointMax.ClearAll();
             hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
             hitPointMax.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Health, actor)));
