@@ -24,15 +24,15 @@ namespace MH3.ActorControllers
         private readonly ReactiveProperty<int> hitPoint = new(0);
 
         private readonly Parameter attack = new();
-        
+
         private readonly Parameter critical = new();
-        
+
         private readonly Parameter cutRatePhysicalDamage = new();
-        
+
         private readonly Parameter cutRateFireDamage = new();
-        
+
         private readonly Parameter cutRateWaterDamage = new();
-        
+
         private readonly Parameter cutRateGrassDamage = new();
 
         private readonly Parameter abnormalStatusAttack = new();
@@ -50,7 +50,7 @@ namespace MH3.ActorControllers
         private readonly HashSet<Define.AbnormalStatusType> appliedAbnormalStatuses = new();
 
         private readonly Parameter recoveryCommandCountMax = new();
-        
+
         private readonly ReactiveProperty<int> recoveryCommandCount = new();
 
         private readonly ReactiveProperty<int> rewardUp = new(0);
@@ -92,6 +92,8 @@ namespace MH3.ActorControllers
         private readonly ReactiveProperty<int> superArmorCount = new(0);
         public ReadOnlyReactiveProperty<int> SuperArmorCount => superArmorCount;
 
+        public readonly ReactiveProperty<bool> IsEventStop = new(false);
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -130,7 +132,7 @@ namespace MH3.ActorControllers
         public Define.ElementType ElementAttackType => elementAttackType.Value;
 
         public int DefenseTotal => skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Defense, actor));
-        
+
         public ReadOnlyReactiveProperty<int> RecoveryCommandCount => recoveryCommandCount;
 
         public int PoisonDuration => spec.PoisonDuration;

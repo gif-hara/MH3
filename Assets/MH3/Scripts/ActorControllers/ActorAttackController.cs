@@ -25,6 +25,10 @@ namespace MH3.ActorControllers
 
         public bool TryAttack(Actor target)
         {
+            if (actor.SpecController.IsEventStop.Value)
+            {
+                return false;
+            }
             if (!string.IsNullOrEmpty(actor.SpecController.StrongAttackAnimationKey) && target.SpecController.FlinchType.CurrentValue == Define.FlinchType.Small)
             {
                 if (actor.StateMachine.TryChangeState(

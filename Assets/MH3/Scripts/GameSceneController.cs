@@ -180,6 +180,11 @@ namespace MH3
             player.transform.position = stage.PlayerSpawnPoint.position;
             player.MovementController.RotateImmediate(stage.PlayerSpawnPoint.rotation);
             player.SpecController.Target.Value = enemy;
+            var beginQuestContainer = new Container();
+            beginQuestContainer.Register("Player", player);
+            beginQuestContainer.Register("Enemy", enemy);
+            var beginQuestSequencer = new Sequencer(beginQuestContainer, questSpec.BeginQuestSequences.Sequences);
+            beginQuestSequencer.PlayAsync(questScope.Token).Forget();
             enemy.SpecController.Target.Value = player;
             enemy.BehaviourController.Begin(enemySpec.Behaviour).Forget();
             gameCameraController.Setup(player, enemy);
@@ -198,15 +203,10 @@ namespace MH3
             questFailedContainer.Register("Enemy", enemy);
             var questFailedSequencer = new Sequencer(questFailedContainer, questSpec.QuestFailedSequences.Sequences);
             questFailedSequencer.PlayAsync(questScope.Token).Forget();
-
             if (!immediate)
             {
                 await fade.BeginAnimation("Out");
             }
-
-            var beginQuestContainer = new Container();
-            var beginQuestSequencer = new Sequencer(beginQuestContainer, questSpec.BeginQuestSequences.Sequences);
-            await beginQuestSequencer.PlayAsync(questScope.Token);
         }
 
         public UniTask SetupHomeQuestAsync()

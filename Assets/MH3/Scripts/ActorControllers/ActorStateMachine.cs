@@ -46,6 +46,10 @@ namespace MH3.ActorControllers
                 {
                     return false;
                 }
+                if (actor.SpecController.IsEventStop.Value)
+                {
+                    return false;
+                }
             }
 
             nextStateSequences = sequence;

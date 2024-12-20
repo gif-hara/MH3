@@ -26,6 +26,8 @@ namespace MH3.ActorControllers
 
         public readonly ReactiveProperty<bool> CanRotate = new(true);
 
+        public readonly ReactiveProperty<bool> CanRotateFromEvent = new(true);
+
         public void Setup(Actor actor, OpenCharacterController openCharacterController)
         {
             this.actor = actor;
@@ -34,7 +36,7 @@ namespace MH3.ActorControllers
                 .Subscribe(actor, (_, a) =>
                 {
                     var deltaTime = a.TimeController.Time.deltaTime;
-                    if (velocity == Vector3.zero || !CanMove.Value || !CanMoveFromEvent.Value)
+                    if (velocity == Vector3.zero || !CanMove.Value || actor.SpecController.IsEventStop.Value)
                     {
                         isMoving.Value = false;
                     }
@@ -50,7 +52,7 @@ namespace MH3.ActorControllers
                     position.y = 0.0f;
                     a.transform.position = position;
 
-                    if (CanRotate.Value)
+                    if (CanRotate.Value && !actor.SpecController.IsEventStop.Value)
                     {
                         a.transform.rotation = Quaternion.Slerp(a.transform.rotation, TargetRotation, rotationSpeed * deltaTime);
                     }

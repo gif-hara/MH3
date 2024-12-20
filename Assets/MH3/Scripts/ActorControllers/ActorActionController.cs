@@ -55,6 +55,10 @@ namespace MH3.ActorControllers
 
         public bool TryDodge()
         {
+            if (actor.SpecController.IsEventStop.Value)
+            {
+                return false;
+            }
             return actor.StateMachine.TryChangeState(
                 actor.SpecController.DodgeStateSequences,
                 containerAction: c =>
