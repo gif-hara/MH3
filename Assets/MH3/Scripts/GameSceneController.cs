@@ -203,6 +203,7 @@ namespace MH3
             questFailedContainer.Register("Enemy", enemy);
             var questFailedSequencer = new Sequencer(questFailedContainer, questSpec.QuestFailedSequences.Sequences);
             questFailedSequencer.PlayAsync(questScope.Token).Forget();
+            TinyServiceLocator.Resolve<AudioManager>().PlayBgm(questSpec.BgmKey);
             if (!immediate)
             {
                 await fade.BeginAnimation("Out");
