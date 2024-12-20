@@ -29,12 +29,15 @@ MonoBehaviour:
   - rid: 1481063336882209022
   - rid: 1481063336882209032
   - rid: 1481063203388522584
+  - rid: 1481063520193740933
   - rid: 8194411010602303565
   - rid: 1481063233791983732
   - rid: 1481063203388522585
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 1481063203388522578
       type: {class: WaitForActorTriggerAsync, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -48,7 +51,7 @@ MonoBehaviour:
     - rid: 1481063203388522584
       type: {class: Delay, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
       data:
-        seconds: 5
+        seconds: 4
     - rid: 1481063203388522585
       type: {class: SetupHomeQuest, ns: MH3, asm: Assembly-CSharp}
       data: 
@@ -209,6 +212,12 @@ MonoBehaviour:
       type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         name: QuestSpecId
+    - rid: 1481063520193740933
+      type: {class: BeginNotificationCenterOneShotAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        documentPrefab: {fileID: 6562501259230542608, guid: dee48875c5c13c249925c55f5d72c380, type: 3}
+        messageResolver:
+          rid: -2
     - rid: 8194411010602303565
       type: {class: AddAvailableContentWhenQuestClear, ns: MH3, asm: Assembly-CSharp}
       data:
