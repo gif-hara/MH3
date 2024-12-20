@@ -33,9 +33,9 @@ namespace MH3
                 switch (reward.RewardType)
                 {
                     case Define.RewardType.InstanceWeapon:
-                        var instanceWeaponData = InstanceWeaponFactory.Create(userData, reward.RewardId);
-                        instanceWeapons.Add(instanceWeaponData);
-                        userData.AddInstanceWeaponData(instanceWeaponData);
+                        var instanceWeapon = InstanceWeaponFactory.Create(userData, reward.RewardId);
+                        instanceWeapons.Add(instanceWeapon);
+                        userData.AddInstanceWeaponData(instanceWeapon);
                         break;
                     case Define.RewardType.InstanceSkillCore:
                         var instanceSkillCore = InstanceSkillCoreFactory.Create(userData, reward.RewardId);
