@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequences:
   - rid: 1481063203388522578
+  - rid: 1481063520193740937
   - rid: 1481063336882209037
   - rid: 1481063336882209010
   - rid: 1481063336882209016
@@ -31,6 +32,7 @@ MonoBehaviour:
   - rid: 1481063203388522584
   - rid: 1481063520193740933
   - rid: 8194411010602303565
+  - rid: 1481063520193740939
   - rid: 1481063233791983732
   - rid: 1481063203388522585
   references:
@@ -218,6 +220,18 @@ MonoBehaviour:
         documentPrefab: {fileID: 6562501259230542608, guid: dee48875c5c13c249925c55f5d72c380, type: 3}
         messageResolver:
           rid: -2
+    - rid: 1481063520193740937
+      type: {class: StopBgm, ns: MH3, asm: Assembly-CSharp}
+      data: 
+    - rid: 1481063520193740939
+      type: {class: PlayBgm, ns: MH3, asm: Assembly-CSharp}
+      data:
+        keyResolver:
+          rid: 1481063520193740940
+    - rid: 1481063520193740940
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: AcquireReward.1
     - rid: 8194411010602303565
       type: {class: AddAvailableContentWhenQuestClear, ns: MH3, asm: Assembly-CSharp}
       data:
