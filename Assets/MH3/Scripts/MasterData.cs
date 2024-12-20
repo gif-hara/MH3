@@ -589,6 +589,8 @@ namespace MH3
 
             public string BeginQuestSequencesKey;
 
+            public string BgmKey;
+
             public Stage StagePrefab;
 
             public ScriptableSequences QuestClearSequences;
