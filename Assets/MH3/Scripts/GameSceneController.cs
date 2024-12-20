@@ -203,6 +203,10 @@ namespace MH3
             {
                 await fade.BeginAnimation("Out");
             }
+
+            var beginQuestContainer = new Container();
+            var beginQuestSequencer = new Sequencer(beginQuestContainer, questSpec.BeginQuestSequences.Sequences);
+            await beginQuestSequencer.PlayAsync(questScope.Token);
         }
 
         public UniTask SetupHomeQuestAsync()
