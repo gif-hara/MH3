@@ -35,11 +35,11 @@ namespace MH3.ActorControllers
         
         private readonly Parameter cutRateGrassDamage = new();
 
-        private readonly ReactiveProperty<int> abnormalStatusAttackInstanceWeapon = new(0);
+        private readonly Parameter abnormalStatusAttack = new();
 
         private readonly ReactiveProperty<Define.AbnormalStatusType> abnormalStatusAttackType = new(Define.AbnormalStatusType.None);
 
-        private readonly ReactiveProperty<int> elementAttackInstanceWeapon = new(0);
+        private readonly Parameter elementAttack = new();
 
         private readonly ReactiveProperty<Define.ElementType> elementAttackType = new(Define.ElementType.None);
 
@@ -49,7 +49,9 @@ namespace MH3.ActorControllers
 
         private readonly HashSet<Define.AbnormalStatusType> appliedAbnormalStatuses = new();
 
-        private readonly ReactiveProperty<int> recoveryCommandCount = new(0);
+        private readonly Parameter recoveryCommandCountMax = new();
+        
+        private readonly ReactiveProperty<int> recoveryCommandCount = new();
 
         private readonly ReactiveProperty<int> rewardUp = new(0);
 
@@ -101,8 +103,9 @@ namespace MH3.ActorControllers
             cutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);
             cutRateWaterDamage.RegisterBasics("Spec", () => spec.WaterDamageCutRate);
             cutRateGrassDamage.RegisterBasics("Spec", () => spec.GrassDamageCutRate);
+            recoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
+            recoveryCommandCount.Value = recoveryCommandCountMax.ValueFloorToInt;
             SetWeaponId(spec.WeaponId);
-            recoveryCommandCount.Value = spec.RecoveryCommandCount;
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Poison, new ReactiveProperty<int>(spec.PoisonThreshold));
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Paralysis, new ReactiveProperty<int>(spec.ParalysisThreshold));
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Collapse, new ReactiveProperty<int>(spec.CollapseThreshold));
@@ -118,11 +121,11 @@ namespace MH3.ActorControllers
 
         public float CriticalTotal => critical.Value;
 
-        public int AbnormalStatusAttackTotal => abnormalStatusAttackInstanceWeapon.Value + skills.Sum(x => x.GetParameterInt(AbnormalStatusAttackType.ToActorParameterType(), actor));
+        public int AbnormalStatusAttackTotal => abnormalStatusAttack.ValueFloorToInt;
 
         public Define.AbnormalStatusType AbnormalStatusAttackType => abnormalStatusAttackType.Value;
 
-        public int ElementAttackTotal => elementAttackInstanceWeapon.Value + skills.Sum(x => x.GetParameterInt(ElementAttackType.ToActorParameterType(), actor));
+        public int ElementAttackTotal => elementAttack.ValueFloorToInt;
 
         public Define.ElementType ElementAttackType => elementAttackType.Value;
 
@@ -231,9 +234,13 @@ namespace MH3.ActorControllers
             cutRateWaterDamage.RegisterBasics("Spec", () => spec.WaterDamageCutRate);
             cutRateGrassDamage.ClearAll();
             cutRateGrassDamage.RegisterBasics("Spec", () => spec.GrassDamageCutRate);
-            abnormalStatusAttackInstanceWeapon.Value = instanceWeapon.AbnormalStatusAttack;
+            abnormalStatusAttack.ClearAll();
+            abnormalStatusAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.AbnormalStatusAttack);
+            abnormalStatusAttack.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(abnormalStatusAttackType.Value.ToActorParameterType(), actor)));
             abnormalStatusAttackType.Value = instanceWeapon.AbnormalStatusType;
-            elementAttackInstanceWeapon.Value = instanceWeapon.ElementAttack;
+            elementAttack.ClearAll();
+            elementAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.ElementAttack);
+            elementAttack.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(elementAttackType.Value.ToActorParameterType(), actor)));
             elementAttackType.Value = instanceWeapon.ElementType;
             hitPointMax.ClearAll();
             hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
@@ -243,7 +250,10 @@ namespace MH3.ActorControllers
             attack.RegisterBasics("Spec", () => spec.Attack);
             attack.RegisterBasics("InstanceWeapon", () => instanceWeapon.Attack);
             attack.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Attack, actor)));
-            recoveryCommandCount.Value = spec.RecoveryCommandCount + skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.RecoveryCommandCount, actor));
+            recoveryCommandCountMax.ClearAll();
+            recoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
+            recoveryCommandCountMax.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.RecoveryCommandCount, actor)));
+            recoveryCommandCount.Value = recoveryCommandCountMax.ValueFloorToInt;
             rewardUp.Value = skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Reward, actor));
         }
 
@@ -460,13 +470,14 @@ namespace MH3.ActorControllers
             flinchType.Value = Define.FlinchType.None;
             CanAddFlinchDamage.Value = true;
             Invincible.Value = false;
-            recoveryCommandCount.Value = spec.RecoveryCommandCount;
+            appliedAbnormalStatuses.Clear();
+            recoveryCommandCount.Value = recoveryCommandCountMax.ValueFloorToInt;
             actor.StateMachine.TryChangeState(spec.InitialStateSequences, force: true);
         }
 
         public bool TryRecovery()
         {
-            if (hitPoint.Value >= spec.HitPoint || recoveryCommandCount.Value <= 0)
+            if (hitPoint.Value >= spec.HitPoint || recoveryCommandCountMax.Value <= 0)
             {
                 return false;
             }
