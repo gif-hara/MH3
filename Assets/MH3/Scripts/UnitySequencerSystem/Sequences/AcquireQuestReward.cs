@@ -13,40 +13,43 @@ namespace MH3
     [Serializable]
     public class AcquireQuestReward : Sequence
     {
+        [SerializeField]
+        private HKUIDocument documentPrefab;
+        
         [SerializeReference, SubclassSelector]
         private ActorResolver playerActorResolver;
 
         [SerializeReference, SubclassSelector]
         private StringResolver questSpecIdResolver;
 
-        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var questSpecId = questSpecIdResolver.Resolve(container);
             var questSpec = TinyServiceLocator.Resolve<MasterData>().QuestSpecs.Get(questSpecId);
             var userData = TinyServiceLocator.Resolve<UserData>();
-            var instanceWeapons = new List<InstanceWeapon>();
-            var instanceSkillCores = new List<InstanceSkillCore>();
             var player = playerActorResolver.Resolve(container);
+            var gameRules = TinyServiceLocator.Resolve<GameRules>();
             for (var i = 0; i < questSpec.RewardCount + player.SpecController.RewardUp.CurrentValue; i++)
             {
-                var reward = questSpec.GetRewards().Lottery(x => x.Weight);
-                switch (reward.RewardType)
+                var rewards = new List<IReward>();
+                for (var k = 0; k < gameRules.RewardOptionNumber; k++)
                 {
-                    case Define.RewardType.InstanceWeapon:
-                        var instanceWeapon = InstanceWeaponFactory.Create(userData, reward.RewardId);
-                        instanceWeapons.Add(instanceWeapon);
-                        userData.AddInstanceWeaponData(instanceWeapon);
-                        break;
-                    case Define.RewardType.InstanceSkillCore:
-                        var instanceSkillCore = InstanceSkillCoreFactory.Create(userData, reward.RewardId);
-                        instanceSkillCores.Add(instanceSkillCore);
-                        userData.AddInstanceSkillCoreData(instanceSkillCore);
-                        break;
+                    var reward = questSpec.GetRewards().Lottery(x => x.Weight);
+                    switch (reward.RewardType)
+                    {
+                        case Define.RewardType.InstanceWeapon:
+                            rewards.Add(InstanceWeaponFactory.Create(userData, reward.RewardId));
+                            break;
+                        case Define.RewardType.InstanceSkillCore:
+                            rewards.Add(InstanceSkillCoreFactory.Create(userData, reward.RewardId));
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException($"未対応のRewardTypeです {reward.RewardType}");
+                    }
                 }
+                var index = await UIViewAcquireReward.OpenAsync(documentPrefab, rewards, cancellationToken);
+                rewards[index].Acquire(userData);
             }
-            container.Register("AcquireInstanceWeapons", instanceWeapons);
-            container.Register("AcquireInstanceSkillCores", instanceSkillCores);
-            return UniTask.CompletedTask;
         }
     }
 }

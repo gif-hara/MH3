@@ -93,6 +93,10 @@ namespace MH3
         private float bladeSuperArmorTime;
         public float BladeSuperArmorTime => bladeSuperArmorTime;
 
+        [SerializeField]
+        private int rewardOptionNumber;
+        public int RewardOptionNumber => rewardOptionNumber;
+
         [Serializable]
         public class ElementProjectile
         {
