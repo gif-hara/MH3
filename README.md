@@ -5,3 +5,5 @@
     - https://dova-s.jp/bgm/play21229.html
     - https://dova-s.jp/bgm/play20727.html
     - https://dova-s.jp/bgm/play20630.html
+- 有料アセット
+    - https://yurinchi2525.booth.pm/items/5740481
