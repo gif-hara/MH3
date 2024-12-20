@@ -24,8 +24,8 @@ namespace MH3.ActorControllers
         private readonly ReactiveProperty<int> hitPoint = new(0);
 
         private readonly Parameter attack = new();
-
-        private readonly ReactiveProperty<float> criticalInstanceWeapon = new(0);
+        
+        private readonly Parameter critical = new();
 
         private readonly ReactiveProperty<float> cutRatePhysicalDamage = new(0.0f);
 
@@ -116,7 +116,7 @@ namespace MH3.ActorControllers
 
         public int AttackTotal => attack.ValueFloorToInt;
 
-        public float CriticalTotal => criticalInstanceWeapon.Value + skills.Sum(x => x.GetParameter(Define.ActorParameterType.Critical, actor));
+        public float CriticalTotal => critical.Value;
 
         public int AbnormalStatusAttackTotal => abnormalStatusAttackInstanceWeapon.Value + skills.Sum(x => x.GetParameterInt(AbnormalStatusAttackType.ToActorParameterType(), actor));
 
@@ -223,7 +223,9 @@ namespace MH3.ActorControllers
         public void ChangeInstanceWeapon(InstanceWeapon instanceWeapon, List<InstanceSkillCore> instanceSkillCores)
         {
             SetWeaponId(instanceWeapon.WeaponId);
-            criticalInstanceWeapon.Value = instanceWeapon.Critical;
+            critical.ClearAll();
+            critical.RegisterBasics("InstanceWeapon", () => instanceWeapon.Critical);
+            critical.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Critical, actor)));
             abnormalStatusAttackInstanceWeapon.Value = instanceWeapon.AbnormalStatusAttack;
             abnormalStatusAttackType.Value = instanceWeapon.AbnormalStatusType;
             elementAttackInstanceWeapon.Value = instanceWeapon.ElementAttack;
