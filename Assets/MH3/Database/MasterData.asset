@@ -974,7 +974,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Dodge.DualSword.1.2
-      Power: 4
+      Power: 5
       FlinchDamage: 1
       ColliderName: Default.Right
       FlinchName: Flinch.Small
@@ -1327,7 +1327,7 @@ MonoBehaviour:
       DeadSequencesKey: Dead.Default
       RecoverySequencesKey: Recovery.Default
       ActorPrefabKey: Enemy
-      BehaviourKey: Enemy
+      BehaviourKey: Enemy.20103
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
       FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
@@ -1338,7 +1338,7 @@ MonoBehaviour:
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
-      Behaviour: {fileID: 11400000, guid: ca96acd3027f6475d9c803bcb540c0d1, type: 2}
+      Behaviour: {fileID: 11400000, guid: 9266d92255e2e594baf28167a4d7d058, type: 2}
     - Id: 29901
       Name: "\u30C8\u30EC\u30FC\u30CB\u30F3\u30B0\u30C0\u30DF\u30FC\u541B"
       ActorType: 1
