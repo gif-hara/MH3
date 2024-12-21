@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
+  m_Name: EntryPoint.Enemy.20102
+  m_EditorClassIdentifier: 
+  sequences:
+  - rid: 1481063179134173322
+  - rid: 1481063179134173264
+  references:
+    version: 2
+    RefIds:
+    - rid: 1481063179134173264
+      type: {class: SelectorWithWeight, ns: MH3, asm: Assembly-CSharp}
+      data:
+        elements:
+        - weight: 100
+          sequenceResolver:
+            rid: 1481063179134173265
+        - weight: 10
+          sequenceResolver:
+            rid: 1481063179134173329
+        - weight: 10
+          sequenceResolver:
+            rid: 1481063179134173330
+    - rid: 1481063179134173265
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 99d0ded83db67834f9824d239b23e1b5, type: 2}
+    - rid: 1481063179134173322
+      type: {class: WaitForStateAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063179134173323
+        stateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+    - rid: 1481063179134173323
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063179134173329
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: b29c4456964fd5b41975913175eea13d, type: 2}
+    - rid: 1481063179134173330
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 80d8a4bd57882284ca561d2723f0a9a2, type: 2}
