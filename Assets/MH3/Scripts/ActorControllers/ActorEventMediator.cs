@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
 using UnityEngine;
+using UnitySequencerSystem;
 
 namespace MH3
 {
@@ -83,6 +84,14 @@ namespace MH3
         public void BeginBladeEnduranceMode()
         {
             actor.ActionController.BeginBladeEnduranceModeAsync().Forget();
+        }
+
+        public void PlaySequences(ScriptableSequences sequences)
+        {
+            var container = new Container();
+            container.Register("Actor", actor);
+            var sequencer = new Sequencer(container, sequences.Sequences);
+            sequencer.PlayAsync(destroyCancellationToken).Forget();
         }
     }
 }
