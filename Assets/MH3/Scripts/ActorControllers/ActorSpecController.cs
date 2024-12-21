@@ -165,6 +165,8 @@ namespace MH3.ActorControllers
 
         public ScriptableSequences SuccessJustGuardSequences => spec.SuccessJustGuardSequences;
 
+        public ScriptableSequences SuccessGuardSequences => spec.SuccessGuardSequences;
+
         public MasterData.WeaponSpec WeaponSpec => TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponId.Value);
 
         public ReadOnlyReactiveProperty<Define.FlinchType> FlinchType => flinchType;
