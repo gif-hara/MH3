@@ -2198,13 +2198,20 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
+    functionName: PlaySequences
+    data: 
+    objectReferenceParameter: {fileID: 11400000, guid: 8ca81080848c6ca4f97270f75775bbc2, type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
     functionName: PlaySfx
     data: Attack.Opening.1
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.33333334
+  - time: 0.16666667
     functionName: SetCanRotate
     data: 
     objectReferenceParameter: {fileID: 0}
