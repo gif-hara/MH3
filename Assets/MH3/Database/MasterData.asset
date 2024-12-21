@@ -561,6 +561,14 @@ MonoBehaviour:
         AnimationKey: Attack.Sword.Opening.1
       - Id: 20101
         AnimationKey: Attack.Sword.Basic.1
+    - Key: 20201
+      Value:
+      - Id: 20201
+        AnimationKey: Attack.DualSword.Basic.1
+    - Key: 20301
+      Value:
+      - Id: 20301
+        AnimationKey: Attack.Blade.Basic.1
     - Key: 10102
       Value:
       - Id: 10102
@@ -949,6 +957,30 @@ MonoBehaviour:
       HitCameraImpulseSourceKey: VerySmall
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: DualSword.Basic.4
+      Power: 19
+      FlinchDamage: 1
+      ColliderName: Default.Left
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Dodge.DualSword.1.1
       Power: 5
       FlinchDamage: 1
@@ -1211,7 +1243,7 @@ MonoBehaviour:
       ActorPrefab: {fileID: 963923653530722458, guid: b6b099700ed36a041a0ff65f8ecddbf1, type: 3}
       Behaviour: {fileID: 11400000, guid: 0eb2c248160b64a83ab6fcbc39217c07, type: 2}
     - Id: 20101
-      Name: "\u5929\u99C6\u3051\u308B\u9BAE\u8840\u3001\u30A6\u30A9\u30ED\u30FC\u30DC\u30C3\u30C8"
+      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
       HitPoint: 1020
       Attack: 100
@@ -1240,7 +1272,7 @@ MonoBehaviour:
       SuccessGuardSequencesKey: SuccessGuard.Default
       DeadSequencesKey: Dead.Default
       RecoverySequencesKey: Recovery.Default
-      ActorPrefabKey: Enemy
+      ActorPrefabKey: Enemy.Red
       BehaviourKey: Enemy
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
@@ -1254,7 +1286,7 @@ MonoBehaviour:
       ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
       Behaviour: {fileID: 11400000, guid: ca96acd3027f6475d9c803bcb540c0d1, type: 2}
     - Id: 20102
-      Name: "\u96E8\u9727\u306E\u6563\u5175\u3001\u30DF\u30B9\u30C8\u30EA\u30FC\u30D1\u30FC"
+      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
       HitPoint: 1020
       Attack: 100
@@ -1283,8 +1315,8 @@ MonoBehaviour:
       SuccessGuardSequencesKey: SuccessGuard.Default
       DeadSequencesKey: Dead.Default
       RecoverySequencesKey: Recovery.Default
-      ActorPrefabKey: Enemy
-      BehaviourKey: Enemy
+      ActorPrefabKey: Enemy.Blue
+      BehaviourKey: Enemy.20102
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
       FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
@@ -1294,10 +1326,10 @@ MonoBehaviour:
       SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
-      ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
-      Behaviour: {fileID: 11400000, guid: ca96acd3027f6475d9c803bcb540c0d1, type: 2}
+      ActorPrefab: {fileID: 963923653530722458, guid: 9b87f1f2f1832244a9f6cecb09fed9b5, type: 3}
+      Behaviour: {fileID: 11400000, guid: 2b6010e8fecd3d645a0952b41fc3c62d, type: 2}
     - Id: 20103
-      Name: "\u68EE\u7F85\u306E\u6EF4\u3001\u30D5\u30A9\u30EC\u30B9\u30C8\u30A2\u30FC\u30AF"
+      Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
       HitPoint: 1020
       Attack: 100
@@ -1326,7 +1358,7 @@ MonoBehaviour:
       SuccessGuardSequencesKey: SuccessGuard.Default
       DeadSequencesKey: Dead.Default
       RecoverySequencesKey: Recovery.Default
-      ActorPrefabKey: Enemy
+      ActorPrefabKey: Enemy.Green
       BehaviourKey: Enemy.20103
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
@@ -1337,7 +1369,7 @@ MonoBehaviour:
       SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
-      ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
+      ActorPrefab: {fileID: 963923653530722458, guid: 3f43d0dbd817c974a88930c72ab359fa, type: 3}
       Behaviour: {fileID: 11400000, guid: 9266d92255e2e594baf28167a4d7d058, type: 2}
     - Id: 29901
       Name: "\u30C8\u30EC\u30FC\u30CB\u30F3\u30B0\u30C0\u30DF\u30FC\u541B"
@@ -1401,6 +1433,20 @@ MonoBehaviour:
     - Id: Quest.10101
       StagePrefabKey: Battle
       EnemyActorSpecId: 20103
+      QuestClearSequencesKey: EnemyDefeat
+      QuestFailedSequencesKey: PlayerDefeat
+      NeedAvailableContentKey: FirstPlay
+      AddWhenQuestClearContentKey: 
+      RewardCount: 1
+      BeginQuestSequencesKey: Default.1
+      BgmKey: Quest.1
+      StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
+      QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
+      QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
+      BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
+    - Id: Quest.10102
+      StagePrefabKey: Battle
+      EnemyActorSpecId: 20102
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
       NeedAvailableContentKey: FirstPlay
