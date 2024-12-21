@@ -112,6 +112,7 @@ namespace MH3
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);
+            TinyServiceLocator.RegisterAsync(fade, destroyCancellationToken).Forget();
             enemyStatus = new UIViewEnemyStatus(enemyStatusDocumentPrefab, destroyCancellationToken);
             SetupQuestAsync(initialQuestSpecId, immediate: true).Forget();
             inputController.Actions.Player.PauseMenu
