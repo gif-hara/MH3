@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
+  m_Name: SuccessJustGuard.1
+  m_EditorClassIdentifier: 
+  sequences:
+  - rid: 1481063527478198571
+  - rid: 1481063527478198574
+  - rid: 1481063527478198580
+  references:
+    version: 2
+    RefIds:
+    - rid: 1481063527478198571
+      type: {class: SpawnEffect, ns: MH3, asm: Assembly-CSharp}
+      data:
+        effectKeyResolver:
+          rid: 1481063527478198572
+        registerKeyResolver:
+          rid: 1481063527478198573
+    - rid: 1481063527478198572
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: SuccessJustGuard.1
+    - rid: 1481063527478198573
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Effect
+    - rid: 1481063527478198574
+      type: {class: SyncTransformFromLocator, ns: MH3, asm: Assembly-CSharp}
+      data:
+        targetTransformResolver:
+          rid: 1481063527478198575
+        actorResolver:
+          rid: 1481063527478198576
+        locatorKeyResolver:
+          rid: 1481063527478198577
+    - rid: 1481063527478198575
+      type: {class: TransformResolver/Name, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Effect
+    - rid: 1481063527478198576
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063527478198577
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: SuccessJustGuardEffect.1
+    - rid: 1481063527478198580
+      type: {class: BeginFadeAnimation, ns: MH3, asm: Assembly-CSharp}
+      data:
+        animationKeyResolver:
+          rid: 1481063527478198581
+    - rid: 1481063527478198581
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: SuccessJustGuard.1
