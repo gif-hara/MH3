@@ -16,6 +16,7 @@ MonoBehaviour:
   - rid: 895594621889413198
   - rid: 8733972340067532868
   - rid: 1481063080126841025
+  - rid: 1481063527478198582
   - rid: 8733972348659564544
   - rid: 1481063080126841043
   references:
@@ -74,6 +75,15 @@ MonoBehaviour:
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
+    - rid: 1481063527478198582
+      type: {class: PlaySfx, ns: MH3, asm: Assembly-CSharp}
+      data:
+        keyResolver:
+          rid: 1481063527478198584
+    - rid: 1481063527478198584
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: BeginGuard.1
     - rid: 8733972340067532868
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
