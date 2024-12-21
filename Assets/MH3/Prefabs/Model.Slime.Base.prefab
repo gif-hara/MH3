@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1010582919051174120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3741586587114609927}
+  m_Layer: 0
+  m_Name: SuccessJustGuardEffect.1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3741586587114609927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010582919051174120}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2348120624201772175}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1741394218570770752
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +125,7 @@ Transform:
   m_Children:
   - {fileID: 6842883062816948906}
   - {fileID: 6512467387604763864}
+  - {fileID: 3741586587114609927}
   m_Father: {fileID: 4689199357322455563}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5680581291998855000
@@ -457,7 +489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: elements.list.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: elements.list.Array.data[2].name
@@ -472,6 +504,10 @@ PrefabInstance:
       value: Spine
       objectReference: {fileID: 0}
     - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: elements.list.Array.data[5].name
+      value: SuccessJustGuardEffect.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: elements.list.Array.data[2].transform
       value: 
       objectReference: {fileID: 8721640547018322125}
@@ -483,6 +519,10 @@ PrefabInstance:
       propertyPath: elements.list.Array.data[4].transform
       value: 
       objectReference: {fileID: 2348120624201772175}
+    - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: elements.list.Array.data[5].transform
+      value: 
+      objectReference: {fileID: 3741586587114609927}
     - target: {fileID: 482408102529570401, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
