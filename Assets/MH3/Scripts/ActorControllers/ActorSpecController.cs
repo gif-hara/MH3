@@ -238,11 +238,13 @@ namespace MH3.ActorControllers
             cutRateGrassDamage.RegisterBasics("Spec", () => spec.GrassDamageCutRate);
             abnormalStatusAttack.ClearAll();
             abnormalStatusAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.AbnormalStatusAttack);
-            abnormalStatusAttack.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(abnormalStatusAttackType.Value.ToActorParameterType(), actor)));
+            abnormalStatusAttack.RegisterAdds("Skills", () => skills.Sum(x =>
+                abnormalStatusAttackType.Value == Define.AbnormalStatusType.None ? 0 : x.GetParameter(abnormalStatusAttackType.Value.ToActorParameterType(), actor)));
             abnormalStatusAttackType.Value = instanceWeapon.AbnormalStatusType;
             elementAttack.ClearAll();
             elementAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.ElementAttack);
-            elementAttack.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(elementAttackType.Value.ToActorParameterType(), actor)));
+            elementAttack.RegisterAdds("Skills", () => skills.Sum(x =>
+                elementAttackType.Value == Define.ElementType.None ? 0 : x.GetParameter(elementAttackType.Value.ToActorParameterType(), actor)));
             elementAttackType.Value = instanceWeapon.ElementType;
             hitPointMax.ClearAll();
             hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
