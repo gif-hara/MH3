@@ -961,8 +961,56 @@ MonoBehaviour:
       Power: 19
       FlinchDamage: 1
       ColliderName: Default.Left
-      FlinchName: Flinch.Small
-      FlinchType: 2
+      FlinchName: Flinch.VerySmall
+      FlinchType: 1
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: DualSword.Basic.5.1
+      Power: 11
+      FlinchDamage: 1
+      ColliderName: Default.Left
+      FlinchName: Flinch.VerySmall
+      FlinchType: 1
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: DualSword.Basic.5.2
+      Power: 11
+      FlinchDamage: 1
+      ColliderName: Default.Right
+      FlinchName: Flinch.VerySmall
+      FlinchType: 1
       ForceFlinch: 0
       AbnormalStatusPower: 1
       ElementPower: 1
