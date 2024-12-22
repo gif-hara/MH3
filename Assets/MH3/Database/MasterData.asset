@@ -1221,6 +1221,54 @@ MonoBehaviour:
       HitCameraImpulseSourceKey: VerySmall
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Blade.Basic.4
+      Power: 31
+      FlinchDamage: 10
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Blade.Basic.5
+      Power: 42
+      FlinchDamage: 10
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Training.Basic.1
       Power: 0
       FlinchDamage: 10
@@ -1393,7 +1441,7 @@ MonoBehaviour:
       DeadSequencesKey: Dead.Default
       RecoverySequencesKey: Recovery.Default
       ActorPrefabKey: Enemy.Red
-      BehaviourKey: Enemy
+      BehaviourKey: Enemy.20101
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
       FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
@@ -1404,7 +1452,7 @@ MonoBehaviour:
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
-      Behaviour: {fileID: 11400000, guid: ca96acd3027f6475d9c803bcb540c0d1, type: 2}
+      Behaviour: {fileID: 11400000, guid: 149a3b5dc3df4be419e41b4e029ae45b, type: 2}
     - Id: 20102
       Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
@@ -1578,6 +1626,20 @@ MonoBehaviour:
       QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
       QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
       BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
+    - Id: Quest.10103
+      StagePrefabKey: Battle
+      EnemyActorSpecId: 20101
+      QuestClearSequencesKey: EnemyDefeat
+      QuestFailedSequencesKey: PlayerDefeat
+      NeedAvailableContentKey: FirstPlay
+      AddWhenQuestClearContentKey: 
+      RewardCount: 1
+      BeginQuestSequencesKey: Default.1
+      BgmKey: Quest.1
+      StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
+      QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
+      QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
+      BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
   questRewards:
     list:
     - Key: Quest.10101
@@ -1600,6 +1662,16 @@ MonoBehaviour:
         RewardType: 0
         RewardId: 10201
         Weight: 100
+    - Key: Quest.10103
+      Value:
+      - Id: Quest.10103
+        RewardType: 1
+        RewardId: 10103
+        Weight: 100
+      - Id: Quest.10103
+        RewardType: 0
+        RewardId: 10301
+        Weight: 100
   skillCoreSpecs:
     list:
     - Id: 10101
@@ -1610,6 +1682,10 @@ MonoBehaviour:
       Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
       ColorCode: '#0000FF'
+    - Id: 10103
+      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+      Slot: 1
+      ColorCode: '#FF0000'
   skillCoreCounts:
     list:
     - Key: 10101
@@ -1621,6 +1697,12 @@ MonoBehaviour:
     - Key: 10102
       Value:
       - Id: 10102
+        Count: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10103
+      Value:
+      - Id: 10103
         Count: 1
         RareType: 0
         Weight: 100
@@ -1637,6 +1719,13 @@ MonoBehaviour:
       Value:
       - Id: 10102
         SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10103
+      Value:
+      - Id: 10103
+        SkillType: 1
         Level: 1
         RareType: 0
         Weight: 100
