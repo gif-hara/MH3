@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using HK;
 using MH3.ProjectileControllers;
 using UnityEngine;
@@ -96,6 +97,10 @@ namespace MH3
         [SerializeField]
         private int rewardOptionNumber;
         public int RewardOptionNumber => rewardOptionNumber;
+
+        [SerializeField]
+        private List<int> initialWeaponIds;
+        public List<int> InitialWeaponIds => initialWeaponIds;
 
         [Serializable]
         public class ElementProjectile

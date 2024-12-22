@@ -19,9 +19,6 @@ namespace MH3
         private string initialQuestSpecId;
 
         [SerializeField]
-        private int initialWeaponId;
-
-        [SerializeField]
         private MasterData masterData;
 
         [SerializeField]
@@ -106,9 +103,12 @@ namespace MH3
             var playerSpec = masterData.ActorSpecs.Get(playerActorSpecId);
             player = playerSpec.Spawn(Vector3.zero, Quaternion.identity);
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
-            var initialInstanceWeapon = InstanceWeaponFactory.Create(userData, initialWeaponId);
-            userData.AddInstanceWeaponData(initialInstanceWeapon);
-            player.SpecController.ChangeInstanceWeapon(initialInstanceWeapon, userData.InstanceSkillCoreList);
+            foreach (var i in gameRules.InitialWeaponIds)
+            {
+                var instanceWeapon = InstanceWeaponFactory.Create(userData, i);
+                userData.AddInstanceWeaponData(instanceWeapon);
+            }
+            player.SpecController.ChangeInstanceWeapon(userData.InstanceWeaponList[0], userData.InstanceSkillCoreList);
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);
