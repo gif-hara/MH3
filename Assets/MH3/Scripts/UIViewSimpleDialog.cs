@@ -27,47 +27,51 @@ namespace MH3
             )
         {
             var document = Object.Instantiate(documentPrefab);
-            document.Q<TMP_Text>("Message").text = message;
-            var listParent = document.Q<RectTransform>("Parent.List");
-            var elementPrefab = document.Q<HKUIDocument>("Prefab.Element");
-            var buttons = options.Select(x =>
+            try
             {
-                var element = Object.Instantiate(elementPrefab, listParent);
-                element.Q<TMP_Text>("Header").text = x;
-                return element.Q<Button>("Button");
-            })
-            .ToList();
-            for (var i = 0; i < buttons.Count; i++)
-            {
-                var navigation = buttons[i].navigation;
-                navigation.mode = Navigation.Mode.Explicit;
-                if (i + 1 > buttons.Count - 1)
+                document.Q<TMP_Text>("Message").text = message;
+                var listParent = document.Q<RectTransform>("Parent.List");
+                var elementPrefab = document.Q<HKUIDocument>("Prefab.Element");
+                var buttons = options.Select(x =>
                 {
-                    navigation.selectOnRight = buttons[0];
-                }
-                else
+                    var element = Object.Instantiate(elementPrefab, listParent);
+                    element.Q<TMP_Text>("Header").text = x;
+                    return element.Q<Button>("Button");
+                })
+                .ToList();
+                for (var i = 0; i < buttons.Count; i++)
                 {
-                    navigation.selectOnRight = buttons[i + 1];
+                    var navigation = buttons[i].navigation;
+                    navigation.mode = Navigation.Mode.Explicit;
+                    if (i + 1 > buttons.Count - 1)
+                    {
+                        navigation.selectOnRight = buttons[0];
+                    }
+                    else
+                    {
+                        navigation.selectOnRight = buttons[i + 1];
+                    }
+                    if (i - 1 < 0)
+                    {
+                        navigation.selectOnLeft = buttons[buttons.Count - 1];
+                    }
+                    else
+                    {
+                        navigation.selectOnLeft = buttons[i - 1];
+                    }
+                    buttons[i].navigation = navigation;
                 }
-                if (i - 1 < 0)
-                {
-                    navigation.selectOnLeft = buttons[buttons.Count - 1];
-                }
-                else
-                {
-                    navigation.selectOnLeft = buttons[i - 1];
-                }
-                buttons[i].navigation = navigation;
+                buttons[initialSelectionIndex].Select();
+
+                var result = await UniTask.WhenAny(
+                    buttons.Select((x, i) => x.OnClickAsync(cancellationToken: scope))
+                );
+                return result;
             }
-            buttons[initialSelectionIndex].Select();
-
-            var result = await UniTask.WhenAny(
-                buttons.Select((x, i) => x.OnClickAsync(cancellationToken: scope))
-            );
-
-            document.DestroySafe();
-
-            return result;
+            finally
+            {
+                document.DestroySafe();
+            }
         }
     }
 }
