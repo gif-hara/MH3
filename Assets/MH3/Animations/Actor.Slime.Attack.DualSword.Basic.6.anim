@@ -2257,7 +2257,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Shake/Spine/Shoulder.Right/Hand
+    path: Root
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2269,7 +2269,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Shake/Spine/Shoulder.Right/Hand
+    path: Root
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2281,7 +2281,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/Shake/Spine/Shoulder.Right/Hand
+    path: Root
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2293,7 +2293,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root
+    path: Root/Shake/Spine/Shoulder.Left/Hand
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2305,7 +2305,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root
+    path: Root/Shake/Spine/Shoulder.Left/Hand
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2317,7 +2317,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root
+    path: Root/Shake/Spine/Shoulder.Left/Hand
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2401,7 +2401,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Root/Shake/Spine/Shoulder.Left/Hand
+    path: Root/Shake/Spine/Shoulder.Right/Hand
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2413,7 +2413,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Shake/Spine/Shoulder.Left/Hand
+    path: Root/Shake/Spine/Shoulder.Right/Hand
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2425,7 +2425,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Shake/Spine/Shoulder.Left/Hand
+    path: Root/Shake/Spine/Shoulder.Right/Hand
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2516,7 +2516,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.8333334
+  - time: 2
     functionName: SetCanChangeState
     data: 
     objectReferenceParameter: {fileID: 0}
