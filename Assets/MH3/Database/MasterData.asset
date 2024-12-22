@@ -1590,17 +1590,37 @@ MonoBehaviour:
         RewardType: 0
         RewardId: 10101
         Weight: 100
+    - Key: Quest.10102
+      Value:
+      - Id: Quest.10102
+        RewardType: 1
+        RewardId: 10102
+        Weight: 100
+      - Id: Quest.10102
+        RewardType: 0
+        RewardId: 10201
+        Weight: 100
   skillCoreSpecs:
     list:
     - Id: 10101
-      Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+      Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
-      ColorCode: '#FF0000'
+      ColorCode: '#00FF00'
+    - Id: 10102
+      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+      Slot: 1
+      ColorCode: '#0000FF'
   skillCoreCounts:
     list:
     - Key: 10101
       Value:
       - Id: 10101
+        Count: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10102
+      Value:
+      - Id: 10102
         Count: 1
         RareType: 0
         Weight: 100
@@ -1610,7 +1630,14 @@ MonoBehaviour:
       Value:
       - Id: 10101
         SkillType: 0
-        Level: 5
+        Level: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10102
+      Value:
+      - Id: 10102
+        SkillType: 2
+        Level: 1
         RareType: 0
         Weight: 100
   skillTypeToParameters:
