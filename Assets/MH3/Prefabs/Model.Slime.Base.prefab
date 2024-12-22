@@ -233,7 +233,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.size
-      value: 38
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[1].clip
@@ -530,6 +530,14 @@ PrefabInstance:
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[37].name
       value: Attack.DualSword.Basic.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[38].clip
+      value: 
+      objectReference: {fileID: 7400000, guid: ff1fc7a97a29f1f46becd77bbebd2681, type: 2}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[38].name
+      value: Attack.DualSword.Basic.6
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[1].defaultState
