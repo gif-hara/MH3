@@ -1077,6 +1077,30 @@ MonoBehaviour:
       HitCameraImpulseSourceKey: VerySmall
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: DualSword.Basic.7.1
+      Power: 18
+      FlinchDamage: 1
+      ColliderName: Default.Right
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Dodge.DualSword.1.1
       Power: 5
       FlinchDamage: 1
