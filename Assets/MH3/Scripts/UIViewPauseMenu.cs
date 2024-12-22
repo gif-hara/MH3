@@ -211,11 +211,25 @@ namespace MH3
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
                 var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
+                CancellationDisposable dialogScope = null;
+                Selectable tempSelection = null;
                 HKUIDocument list = null;
                 CreateList();
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
-                    .Subscribe(_ => stateMachine.Change(StateHomeRoot))
+                    .Subscribe(_ =>
+                    {
+                        if (dialogScope != null)
+                        {
+                            dialogScope.Dispose();
+                            dialogScope = null;
+                            tempSelection.Select();
+                        }
+                        else
+                        {
+                            stateMachine.Change(StateHomeRoot);
+                        }
+                    })
                     .RegisterTo(scope);
                 void CreateList()
                 {
@@ -231,25 +245,41 @@ namespace MH3
                             {
                                 UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.Name, async _ =>
                                 {
-                                    var tempSelection = document.Q<Button>("Button");
-                                    var dialogScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
-                                    var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
-                                        "本当に削除しますか？",
-                                        new List<string> { "はい", "いいえ" },
-                                        0,
-                                        dialogScope.Token
-                                    );
-                                    if (result == 0)
+                                    tempSelection = document.Q<Selectable>("Button");
+                                    dialogScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
+                                    try
                                     {
-                                        userData.RemoveInstanceWeapon(x);
-                                        CreateList();
+                                        var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
+                                            "本当に削除しますか？",
+                                            new List<string> { "はい", "いいえ" },
+                                            0,
+                                            dialogScope.Token
+                                        );
+                                        if (result == 0)
+                                        {
+                                            userData.RemoveInstanceWeapon(x);
+                                            CreateList();
+                                        }
+                                        else
+                                        {
+                                            tempSelection.Select();
+                                        }
+                                        if (!dialogScope.IsDisposed)
+                                        {
+                                            dialogScope.Dispose();
+
+                                        }
+                                        dialogScope = null;
                                     }
-                                    else
+                                    catch (OperationCanceledException)
                                     {
-                                        tempSelection.Select();
+                                        if (!dialogScope.IsDisposed)
+                                        {
+                                            dialogScope.Dispose();
+
+                                        }
+                                        dialogScope = null;
                                     }
-                                    dialogScope.Cancel();
-                                    dialogScope.Dispose();
                                 },
                                 _ =>
                                 {
