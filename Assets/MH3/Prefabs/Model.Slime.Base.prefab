@@ -233,7 +233,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.size
-      value: 41
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[1].clip
@@ -554,6 +554,22 @@ PrefabInstance:
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[40].name
       value: Attack.DualSword.Ending.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[41].clip
+      value: 
+      objectReference: {fileID: 7400000, guid: ca8ba6f1f89866a4b8433492790073c7, type: 2}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[41].name
+      value: Attack.Blade.Basic.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[42].clip
+      value: 
+      objectReference: {fileID: 7400000, guid: 04a635613f0e3be4996bafc4d8180c8a, type: 2}
+    - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: m_States.Array.data[42].name
+      value: Attack.Blade.Ending.1
       objectReference: {fileID: 0}
     - target: {fileID: -8448586338615814989, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_States.Array.data[1].defaultState
