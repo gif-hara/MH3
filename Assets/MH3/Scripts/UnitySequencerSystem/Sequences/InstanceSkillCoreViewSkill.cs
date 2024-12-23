@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
@@ -28,11 +29,12 @@ namespace MH3
             {
                 UnityEngine.Object.Destroy(parent.GetChild(i).gameObject);
             }
-            foreach (var skill in instanceSkillCore.Skills)
+            var skills = instanceSkillCore.Skills.GroupBy(x => x.SkillType);
+            foreach (var skill in skills.OrderBy(x => x.Key))
             {
                 var document = UnityEngine.Object.Instantiate(skillDocumentPrefab, parent);
-                document.Q<TMP_Text>("Header").text = skill.SkillType.GetName();
-                document.Q<TMP_Text>("Value").text = $"Lv.{skill.Level}";
+                document.Q<TMP_Text>("Header").text = skill.Key.GetName();
+                document.Q<TMP_Text>("Value").text = $"Lv.{skill.Sum(x => x.Level)}";
             }
             return UniTask.CompletedTask;
         }
