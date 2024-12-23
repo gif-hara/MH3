@@ -18,6 +18,7 @@ MonoBehaviour:
   - rid: 1481063520193740930
   - rid: 1481063520193740897
   - rid: 1481063520193740901
+  - rid: 1481063587024470118
   references:
     version: 2
     RefIds:
@@ -93,3 +94,6 @@ MonoBehaviour:
         documentPrefab: {fileID: 6562501259230542608, guid: 921907e0c6d6f4a49ad870657b180977, type: 3}
         messageResolver:
           rid: -2
+    - rid: 1481063587024470118
+      type: {class: BeginQuestTimer, ns: MH3, asm: Assembly-CSharp}
+      data: 

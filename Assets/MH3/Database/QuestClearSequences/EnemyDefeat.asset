@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequences:
   - rid: 1481063203388522578
+  - rid: 1481063587024470119
   - rid: 1481063520193740937
   - rid: 1481063336882209037
   - rid: 1481063336882209010
@@ -232,6 +233,9 @@ MonoBehaviour:
       type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: AcquireReward.1
+    - rid: 1481063587024470119
+      type: {class: EndQuestTimer, ns: MH3, asm: Assembly-CSharp}
+      data: 
     - rid: 8194411010602303565
       type: {class: AddAvailableContentWhenQuestClear, ns: MH3, asm: Assembly-CSharp}
       data:
