@@ -84,6 +84,10 @@ namespace MH3
 
         private UIViewEnemyStatus enemyStatus;
 
+        private float beginQuestTime;
+
+        public float ElapsedQuestTime { get; private set; }
+
         private void Start()
         {
             HK.Time.Root.timeScale = 1.0f;
@@ -184,6 +188,7 @@ namespace MH3
             var beginQuestContainer = new Container();
             beginQuestContainer.Register("Player", player);
             beginQuestContainer.Register("Enemy", enemy);
+            beginQuestContainer.Register(this);
             var beginQuestSequencer = new Sequencer(beginQuestContainer, questSpec.BeginQuestSequences.Sequences);
             beginQuestSequencer.PlayAsync(questScope.Token).Forget();
             enemy.SpecController.Target.Value = player;
@@ -196,6 +201,7 @@ namespace MH3
             questClearContainer.Register("Player", player);
             questClearContainer.Register("Enemy", enemy);
             questClearContainer.Register("QuestSpecId", questSpecId);
+            questClearContainer.Register(this);
             var questClearSequencer = new Sequencer(questClearContainer, questSpec.QuestClearSequences.Sequences);
             questClearSequencer.PlayAsync(questScope.Token).Forget();
             var questFailedContainer = new Container();
@@ -209,6 +215,16 @@ namespace MH3
             {
                 await fade.BeginAnimation("Out");
             }
+        }
+
+        public void BeginQuestTimer()
+        {
+            beginQuestTime = UnityEngine.Time.time;
+        }
+
+        public void EndQuestTimer()
+        {
+            ElapsedQuestTime = UnityEngine.Time.time - beginQuestTime;
         }
 
         public UniTask SetupHomeQuestAsync()
