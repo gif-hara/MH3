@@ -64,6 +64,8 @@ MonoBehaviour:
         documentPrefab: {fileID: 6562501259230542608, guid: e7c99a2dc020b334bbc37f1ea3aa9042, type: 3}
         playerActorResolver:
           rid: 1481063400376893517
+        enemyActorResolver:
+          rid: 1481063587024470122
         questSpecIdResolver:
           rid: 1481063233791983733
     - rid: 1481063233791983733
@@ -236,6 +238,10 @@ MonoBehaviour:
     - rid: 1481063587024470119
       type: {class: EndQuestTimer, ns: MH3, asm: Assembly-CSharp}
       data: 
+    - rid: 1481063587024470122
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Enemy
     - rid: 8194411010602303565
       type: {class: AddAvailableContentWhenQuestClear, ns: MH3, asm: Assembly-CSharp}
       data:

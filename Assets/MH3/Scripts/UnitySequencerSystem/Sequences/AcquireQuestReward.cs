@@ -15,9 +15,12 @@ namespace MH3
     {
         [SerializeField]
         private HKUIDocument documentPrefab;
-        
+
         [SerializeReference, SubclassSelector]
         private ActorResolver playerActorResolver;
+
+        [SerializeReference, SubclassSelector]
+        private ActorResolver enemyActorResolver;
 
         [SerializeReference, SubclassSelector]
         private StringResolver questSpecIdResolver;
@@ -28,7 +31,10 @@ namespace MH3
             var questSpec = TinyServiceLocator.Resolve<MasterData>().QuestSpecs.Get(questSpecId);
             var userData = TinyServiceLocator.Resolve<UserData>();
             var player = playerActorResolver.Resolve(container);
+            var enemy = enemyActorResolver.Resolve(container);
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
+            var gameSceneController = container.Resolve<GameSceneController>();
+
             for (var i = 0; i < questSpec.RewardCount + player.SpecController.RewardUp.CurrentValue; i++)
             {
                 var rewards = new List<IReward>();
@@ -47,7 +53,7 @@ namespace MH3
                             throw new ArgumentOutOfRangeException($"未対応のRewardTypeです {reward.RewardType}");
                     }
                 }
-                var index = await UIViewAcquireReward.OpenAsync(documentPrefab, rewards, cancellationToken);
+                var index = await UIViewAcquireReward.OpenAsync(documentPrefab, rewards, gameSceneController.ElapsedQuestTime, enemy.SpecController.Name, cancellationToken);
                 rewards[index].Acquire(userData);
             }
         }

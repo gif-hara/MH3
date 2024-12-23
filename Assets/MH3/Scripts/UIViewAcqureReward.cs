@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.Linq;
 using HK;
 using R3;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -14,7 +15,7 @@ namespace MH3
 {
     public class UIViewAcquireReward
     {
-        public static async UniTask<int> OpenAsync(HKUIDocument documentPrefab, List<IReward> rewards, CancellationToken scope)
+        public static async UniTask<int> OpenAsync(HKUIDocument documentPrefab, List<IReward> rewards, float elapsedTime, string enemyName, CancellationToken scope)
         {
             if (!rewards.Any())
             {
@@ -25,6 +26,9 @@ namespace MH3
             var elementParent = document.Q<RectTransform>("Parent.Element");
             var selectable = new List<Selectable>();
             var source = new UniTaskCompletionSource<int>();
+            document.Q<TMP_Text>("EnemyName").text = enemyName;
+            var timeSpan = System.TimeSpan.FromSeconds(elapsedTime);
+            document.Q<TMP_Text>("ClearTime").text = $"{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}:{timeSpan.Milliseconds:D3}";
             foreach (var reward in rewards)
             {
                 switch (reward)

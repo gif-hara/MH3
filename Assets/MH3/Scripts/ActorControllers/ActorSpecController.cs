@@ -113,6 +113,8 @@ namespace MH3.ActorControllers
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Collapse, new ReactiveProperty<int>(spec.CollapseThreshold));
         }
 
+        public string Name => spec.Name;
+
         public Define.ActorType ActorType => spec.ActorType;
 
         public int HitPointMax => hitPointMax.ValueFloorToInt;

@@ -186,9 +186,9 @@ namespace MH3
             player.MovementController.RotateImmediate(stage.PlayerSpawnPoint.rotation);
             player.SpecController.Target.Value = enemy;
             var beginQuestContainer = new Container();
+            beginQuestContainer.Register(this);
             beginQuestContainer.Register("Player", player);
             beginQuestContainer.Register("Enemy", enemy);
-            beginQuestContainer.Register(this);
             var beginQuestSequencer = new Sequencer(beginQuestContainer, questSpec.BeginQuestSequences.Sequences);
             beginQuestSequencer.PlayAsync(questScope.Token).Forget();
             enemy.SpecController.Target.Value = player;
@@ -201,7 +201,6 @@ namespace MH3
             questClearContainer.Register("Player", player);
             questClearContainer.Register("Enemy", enemy);
             questClearContainer.Register("QuestSpecId", questSpecId);
-            questClearContainer.Register(this);
             var questClearSequencer = new Sequencer(questClearContainer, questSpec.QuestClearSequences.Sequences);
             questClearSequencer.PlayAsync(questScope.Token).Forget();
             var questFailedContainer = new Container();
