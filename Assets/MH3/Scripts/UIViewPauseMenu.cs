@@ -161,6 +161,7 @@ namespace MH3
                             UIViewList.ApplyAsSimpleElement(document, x.Id, _ =>
                             {
                                 gameSceneController.SetupQuestAsync(x.Id).Forget();
+                                TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.BeginQuest.1");
                                 pauseMenuScope.Dispose();
                             });
                         })),
