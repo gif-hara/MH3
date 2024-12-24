@@ -217,18 +217,10 @@ namespace MH3
                 CreateList();
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
+                    .Where(_ => dialogScope == null)
                     .Subscribe(_ =>
                     {
-                        if (dialogScope != null)
-                        {
-                            dialogScope.Dispose();
-                            dialogScope = null;
-                            tempSelection.Select();
-                        }
-                        else
-                        {
-                            stateMachine.Change(StateHomeRoot);
-                        }
+                        stateMachine.Change(StateHomeRoot);
                     })
                     .RegisterTo(scope);
                 void CreateList()
@@ -247,38 +239,23 @@ namespace MH3
                                 {
                                     tempSelection = document.Q<Selectable>("Button");
                                     dialogScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
-                                    try
+                                    var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
+                                        "本当に削除しますか？",
+                                        new List<string> { "はい", "いいえ" },
+                                        0,
+                                        1,
+                                        dialogScope.Token
+                                    );
+                                    dialogScope.Dispose();
+                                    dialogScope = null;
+                                    if (result == 0)
                                     {
-                                        var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
-                                            "本当に削除しますか？",
-                                            new List<string> { "はい", "いいえ" },
-                                            0,
-                                            dialogScope.Token
-                                        );
-                                        if (result == 0)
-                                        {
-                                            userData.RemoveInstanceWeapon(x);
-                                            CreateList();
-                                        }
-                                        else
-                                        {
-                                            tempSelection.Select();
-                                        }
-                                        if (!dialogScope.IsDisposed)
-                                        {
-                                            dialogScope.Dispose();
-
-                                        }
-                                        dialogScope = null;
+                                        userData.RemoveInstanceWeapon(x);
+                                        CreateList();
                                     }
-                                    catch (OperationCanceledException)
+                                    else
                                     {
-                                        if (!dialogScope.IsDisposed)
-                                        {
-                                            dialogScope.Dispose();
-
-                                        }
-                                        dialogScope = null;
+                                        tempSelection.Select();
                                     }
                                 },
                                 _ =>
@@ -331,6 +308,7 @@ namespace MH3
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var instanceSkillCoreView = UnityEngine.Object.Instantiate(instanceSkillCoreViewDocumentPrefab);
                 var instanceSkillCoreSequences = instanceSkillCoreView.Q<SequencesMonoBehaviour>("Sequences");
+                CancellationDisposable dialogScope = null;
                 HKUIDocument list = null;
                 CreateList();
                 void CreateList()
@@ -348,26 +326,30 @@ namespace MH3
                                 UIViewList.ApplyAsSimpleElement(document, header, async _ =>
                                 {
                                     var tempSelection = document.Q<Button>("Button");
-                                    var dialogScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                    dialogScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
                                     var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
                                         "本当に削除しますか？",
                                         new List<string> { "はい", "いいえ" },
                                         0,
+                                        1,
                                         dialogScope.Token
                                     );
-                                    dialogScope.Cancel();
                                     dialogScope.Dispose();
+                                    dialogScope = null;
                                     if (result == 0)
                                     {
                                         if (userData.AnyAttachedSkillCore(x.InstanceId))
                                         {
-                                            dialogScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                            dialogScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
                                             result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
                                                 "武器に装着されてますが、本当に削除しますか？削除する場合、自動的に外れます",
                                                 new List<string> { "はい", "いいえ" },
                                                 0,
+                                                1,
                                                 dialogScope.Token
                                             );
+                                            dialogScope.Dispose();
+                                            dialogScope = null;
                                             if (result == 0)
                                             {
                                                 userData.RemoveInstanceSkillCoreData(x);
@@ -401,6 +383,7 @@ namespace MH3
                 }
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
+                    .Where(_ => dialogScope == null)
                     .Subscribe(_ =>
                     {
                         stateMachine.Change(StateHomeRoot);

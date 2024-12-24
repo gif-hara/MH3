@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
+using R3;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,22 +24,39 @@ namespace MH3
             string message,
             IEnumerable<string> options,
             int initialSelectionIndex,
+            int cancelIndex,
             CancellationToken scope
             )
         {
             var document = Object.Instantiate(documentPrefab);
+            var inputController = TinyServiceLocator.Resolve<InputController>();
             try
             {
                 document.Q<TMP_Text>("Message").text = message;
                 var listParent = document.Q<RectTransform>("Parent.List");
                 var elementPrefab = document.Q<HKUIDocument>("Prefab.Element");
-                var buttons = options.Select(x =>
+                var source = new UniTaskCompletionSource<int>();
+                var buttons = options.Select((x, index) =>
                 {
                     var element = Object.Instantiate(elementPrefab, listParent);
                     element.Q<TMP_Text>("Header").text = x;
-                    return element.Q<Button>("Button");
+                    var button = element.Q<Button>("Button");
+                    button.OnClickAsObservable()
+                        .Subscribe((source, index), static (_, t) =>
+                        {
+                            var (source, index) = t;
+                            source.TrySetResult(index);
+                        });
+                    return button;
                 })
                 .ToList();
+                inputController.PushActionType(InputController.InputActionType.UI);
+                inputController.Actions.UI.Cancel.OnPerformedAsObservable()
+                    .Subscribe(_ =>
+                    {
+                        source.TrySetResult(cancelIndex);
+                    })
+                    .RegisterTo(scope);
                 for (var i = 0; i < buttons.Count; i++)
                 {
                     var navigation = buttons[i].navigation;
@@ -63,14 +81,12 @@ namespace MH3
                 }
                 buttons[initialSelectionIndex].Select();
 
-                var result = await UniTask.WhenAny(
-                    buttons.Select((x, i) => x.OnClickAsync(cancellationToken: scope))
-                );
-                return result;
+                return await source.Task;
             }
             finally
             {
                 document.DestroySafe();
+                inputController.PopActionType();
             }
         }
     }
