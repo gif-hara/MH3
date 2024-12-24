@@ -110,6 +110,7 @@ namespace MH3.ActorControllers
             {
                 attackSpecs.Remove(attackSpec.ColliderName);
                 colliders[attackSpec.ColliderName].SetActive(false);
+                attackedActors.RemoveWhere(x => x.colliderName == attackSpec.ColliderName);
             }
             attackSpecs.Add(attackSpec.ColliderName, attackSpec);
             SetActiveCollider(attackSpec.ColliderName, true);
