@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
 using R3;
+using TMPro;
 using UnityEngine.UI;
 
 namespace MH3
@@ -31,6 +32,7 @@ namespace MH3
                         .value = (float)actor.SpecController.HitPoint.CurrentValue / actor.SpecController.HitPointMax;
                 })
                 .RegisterTo(actor.destroyCancellationToken);
+            document.Q<TMP_Text>("Name").text = actor.SpecController.Name;
         }
     }
 }
