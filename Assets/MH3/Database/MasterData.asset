@@ -890,7 +890,7 @@ MonoBehaviour:
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.5
       Power: 17
-      FlinchDamage: 1
+      FlinchDamage: 8
       ColliderName: Default
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -914,7 +914,7 @@ MonoBehaviour:
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.6
       Power: 19
-      FlinchDamage: 2
+      FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -962,7 +962,7 @@ MonoBehaviour:
       HitAdditionalSequencesPlayer: {fileID: 11400000, guid: 1b746f36630a9df49a3ed10c2aa58aa4, type: 2}
     - Id: Sword.JustGuard.1
       Power: 32
-      FlinchDamage: 30
+      FlinchDamage: 100
       ColliderName: Default
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -986,7 +986,7 @@ MonoBehaviour:
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.1.1
       Power: 7
-      FlinchDamage: 1
+      FlinchDamage: 3
       ColliderName: Default.Right
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -1010,7 +1010,7 @@ MonoBehaviour:
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.1.2
       Power: 8
-      FlinchDamage: 1
+      FlinchDamage: 3
       ColliderName: Default.Left
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -1034,7 +1034,7 @@ MonoBehaviour:
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.2.1
       Power: 8
-      FlinchDamage: 1
+      FlinchDamage: 3
       ColliderName: Default.Right
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -1058,7 +1058,7 @@ MonoBehaviour:
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.2.2
       Power: 9
-      FlinchDamage: 1
+      FlinchDamage: 3
       ColliderName: Default.Left
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -1082,7 +1082,7 @@ MonoBehaviour:
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.3.1
       Power: 11
-      FlinchDamage: 1
+      FlinchDamage: 3
       ColliderName: Default.Right
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -1106,7 +1106,7 @@ MonoBehaviour:
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: DualSword.Basic.3.2
       Power: 11
-      FlinchDamage: 1
+      FlinchDamage: 3
       ColliderName: Default.Left
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -1321,8 +1321,8 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Blade.Basic.1
-      Power: 28
-      FlinchDamage: 8
+      Power: 30
+      FlinchDamage: 15
       ColliderName: Default
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -1346,7 +1346,7 @@ MonoBehaviour:
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Blade.Basic.2
       Power: 38
-      FlinchDamage: 8
+      FlinchDamage: 20
       ColliderName: Default
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -1369,8 +1369,8 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Blade.Basic.3
-      Power: 124
-      FlinchDamage: 10
+      Power: 132
+      FlinchDamage: 50
       ColliderName: Default
       FlinchName: Flinch.Small
       FlinchType: 2
@@ -1614,7 +1614,7 @@ MonoBehaviour:
       FireDamageCutRate: 0.2
       WaterDamageCutRate: 0
       GrassDamageCutRate: 0
-      FlinchThreshold: 30
+      FlinchThreshold: 100
       PoisonThreshold: 100
       ParalysisThreshold: 100
       CollapseThreshold: 100
@@ -1657,7 +1657,7 @@ MonoBehaviour:
       FireDamageCutRate: 0
       WaterDamageCutRate: 0.2
       GrassDamageCutRate: 0
-      FlinchThreshold: 21
+      FlinchThreshold: 68
       PoisonThreshold: 100
       ParalysisThreshold: 100
       CollapseThreshold: 100
@@ -1700,7 +1700,7 @@ MonoBehaviour:
       FireDamageCutRate: 0
       WaterDamageCutRate: 0
       GrassDamageCutRate: 0.2
-      FlinchThreshold: 30
+      FlinchThreshold: 80
       PoisonThreshold: 100
       ParalysisThreshold: 100
       CollapseThreshold: 100
@@ -2161,65 +2161,65 @@ MonoBehaviour:
     - Level: 0
       Value: 0
     - Level: 1
-      Value: 19
+      Value: 9
     - Level: 2
-      Value: 38
+      Value: 18
     - Level: 3
-      Value: 57
+      Value: 28
     - Level: 4
-      Value: 74
+      Value: 37
     - Level: 5
-      Value: 91
+      Value: 46
     - Level: 6
-      Value: 108
+      Value: 55
     - Level: 7
-      Value: 123
+      Value: 64
     - Level: 8
-      Value: 138
+      Value: 73
     - Level: 9
-      Value: 153
+      Value: 81
     - Level: 10
-      Value: 166
+      Value: 90
     - Level: 11
-      Value: 179
+      Value: 98
     - Level: 12
-      Value: 192
+      Value: 105
     - Level: 13
-      Value: 203
+      Value: 113
     - Level: 14
-      Value: 214
+      Value: 120
     - Level: 15
-      Value: 225
+      Value: 127
     - Level: 16
-      Value: 234
+      Value: 133
     - Level: 17
-      Value: 243
+      Value: 139
     - Level: 18
-      Value: 252
+      Value: 145
     - Level: 19
-      Value: 259
+      Value: 150
     - Level: 20
-      Value: 266
+      Value: 155
     - Level: 21
-      Value: 273
+      Value: 160
     - Level: 22
-      Value: 278
+      Value: 164
     - Level: 23
-      Value: 283
+      Value: 168
     - Level: 24
-      Value: 288
+      Value: 171
     - Level: 25
-      Value: 291
+      Value: 173
     - Level: 26
-      Value: 294
+      Value: 176
     - Level: 27
-      Value: 297
+      Value: 177
     - Level: 28
-      Value: 298
+      Value: 179
     - Level: 29
-      Value: 299
+      Value: 179
     - Level: 30
-      Value: 300
+      Value: 180
   skillAbnormalStatusUp:
     list:
     - Level: 0
