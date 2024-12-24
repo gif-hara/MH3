@@ -17,7 +17,8 @@ namespace MH3
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
             var attack = attacker.SpecController.GetAttackValue(attackSpec.ElementType);
             var damage = Mathf.FloorToInt(attack * attackSpec.Power / 100.0f);
-            if (attackSpec.CanCritical && attacker.SpecController.CriticalTotal > Random.value)
+            var isCritical = attackSpec.CanCritical && attacker.SpecController.CriticalTotal > Random.value;
+            if (isCritical)
             {
                 damage = Mathf.FloorToInt(damage * gameRules.CriticalDamageRate);
             }
@@ -44,7 +45,7 @@ namespace MH3
                 damage = 0;
                 flinchDamage = 0;
             }
-            return new DamageData(damage, flinchDamage, impactPosition);
+            return new DamageData(damage, flinchDamage, impactPosition, isCritical);
         }
     }
 }

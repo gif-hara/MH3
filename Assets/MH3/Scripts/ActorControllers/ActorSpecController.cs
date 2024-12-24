@@ -305,6 +305,7 @@ namespace MH3.ActorControllers
                 .AddTo(actor);
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
             var masterData = TinyServiceLocator.Resolve<MasterData>();
+            var audioManager = TinyServiceLocator.Resolve<AudioManager>();
 
             if (guardResult == Define.GuardResult.SuccessJustGuard)
             {
@@ -316,14 +317,20 @@ namespace MH3.ActorControllers
                 var damageData = Calculator.GetDefaultDamage(attacker, actor, attackSpec, guardResult, impactPosition);
                 if (guardResult == Define.GuardResult.SuccessGuard)
                 {
-                    TinyServiceLocator.Resolve<AudioManager>().PlaySfx(TinyServiceLocator.Resolve<GameRules>().SuccessGuardSfxKey);
+                    audioManager.PlaySfx(TinyServiceLocator.Resolve<GameRules>().SuccessGuardSfxKey);
                 }
                 else
                 {
-                    TinyServiceLocator.Resolve<AudioManager>().PlaySfx(attackSpec.HitSfxKey);
+                    audioManager.PlaySfx(attackSpec.HitSfxKey);
                 }
                 var hitEffect = TinyServiceLocator.Resolve<EffectManager>().Rent(attackSpec.HitEffectKey);
                 hitEffect.transform.position = impactPosition;
+                if (damageData.IsCritical)
+                {
+                    var criticalEffect = TinyServiceLocator.Resolve<EffectManager>().Rent(gameRules.CriticalHitEffectKey);
+                    criticalEffect.transform.position = impactPosition;
+                    audioManager.PlaySfx(gameRules.CriticalHitSfxKey);
+                }
 
                 TinyServiceLocator.Resolve<GameCameraController>().BeginImpulseSource(attackSpec.HitCameraImpulseSourceKey);
 
@@ -425,7 +432,7 @@ namespace MH3.ActorControllers
             var fixedHitPoint = hitPoint.Value - damage;
             fixedHitPoint = fixedHitPoint < 1 ? 1 : fixedHitPoint;
             hitPoint.Value = fixedHitPoint;
-            onTakeDamage.OnNext(new DamageData(damage, 0, actor.LocatorHolder.Get("Spine").position + Random.insideUnitSphere));
+            onTakeDamage.OnNext(new DamageData(damage, 0, actor.LocatorHolder.Get("Spine").position + Random.insideUnitSphere, false));
         }
 
         public bool ContainsAppliedAbnormalStatus(Define.AbnormalStatusType type)
