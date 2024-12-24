@@ -21,6 +21,7 @@ namespace MH3
             HKUIDocument instanceWeaponViewDocumentPrefab,
             HKUIDocument instanceSkillCoreViewDocumentPrefab,
             HKUIDocument actorSpecStatusDocumentPrefab,
+            HKUIDocument questSpecStatusDocumentPrefab,
             Actor actor,
             GameSceneController gameSceneController,
             bool isHome,
@@ -151,6 +152,7 @@ namespace MH3
             async UniTask StateSelectQuest(CancellationToken scope)
             {
                 var userData = TinyServiceLocator.Resolve<UserData>();
+                var questSpecStatusDocument = UnityEngine.Object.Instantiate(questSpecStatusDocumentPrefab);
                 SetHeaderText("クエスト選択");
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
@@ -158,11 +160,21 @@ namespace MH3
                         .Where(x => userData.AvailableContents.Contains(x.NeedAvailableContentKey))
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, x.Id, _ =>
-                            {
-                                gameSceneController.SetupQuestAsync(x.Id).Forget();
-                                pauseMenuScope.Dispose();
-                            });
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                x.Id,
+                                _ =>
+                                {
+                                    gameSceneController.SetupQuestAsync(x.Id).Forget();
+                                    pauseMenuScope.Dispose();
+                                },
+                                _ =>
+                                {
+                                    var container = new Container();
+                                    container.Register("QuestSpec", x);
+                                    questSpecStatusDocument.Q<SequencesMonoBehaviour>("Sequences")
+                                        .PlayAsync(container, scope).Forget();
+                                });
                         })),
                     0
                 );
