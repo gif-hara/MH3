@@ -202,7 +202,7 @@ namespace MH3
                             return;
                         }
                         userData.EquippedInstanceWeaponId = x.InstanceId;
-                        actor.SpecController.ChangeInstanceWeapon(x, TinyServiceLocator.Resolve<UserData>().InstanceSkillCores);
+                        actor.SpecController.ChangeInstanceWeapon(x);
                         TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.Equipment.1");
                         stateMachine.Change(StateHomeRoot);
                     },
@@ -435,7 +435,7 @@ namespace MH3
                                 }
                                 if (userData.EquippedInstanceWeaponId == selectedInstanceWeapon.InstanceId)
                                 {
-                                    actor.SpecController.ChangeInstanceWeapon(selectedInstanceWeapon, userData.InstanceSkillCores);
+                                    actor.SpecController.ChangeInstanceWeapon(selectedInstanceWeapon);
                                 }
                                 stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
                             },

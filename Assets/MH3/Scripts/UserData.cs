@@ -33,6 +33,18 @@ namespace MH3
         [SerializeField]
         private int equippedInstanceWeaponId;
         public int EquippedInstanceWeaponId { get => equippedInstanceWeaponId; set => equippedInstanceWeaponId = value; }
+
+        [SerializeField]
+        private int equippedInstanceArmorHeadId;
+        public int EquippedInstanceArmorHeadId { get => equippedInstanceArmorHeadId; set => equippedInstanceArmorHeadId = value; }
+        
+        [SerializeField]
+        private int equippedInstanceArmorArmsId;
+        public int EquippedInstanceArmorArmsId { get => equippedInstanceArmorArmsId; set => equippedInstanceArmorArmsId = value; }
+        
+        [SerializeField]
+        private int equippedInstanceArmorBodyId;
+        public int EquippedInstanceArmorBodyId { get => equippedInstanceArmorBodyId; set => equippedInstanceArmorBodyId = value; }
         
         [SerializeField]
         private AvailableContents availableContents = new();
@@ -41,6 +53,21 @@ namespace MH3
         public InstanceWeapon GetEquippedInstanceWeapon()
         {
             return instanceWeapons.FirstOrDefault(x => x.InstanceId == equippedInstanceWeaponId);
+        }
+        
+        public InstanceArmor GetEquippedInstanceArmorHead()
+        {
+            return instanceArmors.FirstOrDefault(x => x.InstanceId == equippedInstanceArmorHeadId);
+        }
+        
+        public InstanceArmor GetEquippedInstanceArmorArms()
+        {
+            return instanceArmors.FirstOrDefault(x => x.InstanceId == equippedInstanceArmorArmsId);
+        }
+        
+        public InstanceArmor GetEquippedInstanceArmorBody()
+        {
+            return instanceArmors.FirstOrDefault(x => x.InstanceId == equippedInstanceArmorBodyId);
         }
 
         public void AddInstanceWeaponData(InstanceWeapon instanceWeaponData)

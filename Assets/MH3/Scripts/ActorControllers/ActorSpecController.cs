@@ -223,12 +223,19 @@ namespace MH3.ActorControllers
             }
         }
 
-        public void ChangeInstanceWeapon(InstanceWeapon instanceWeapon, List<InstanceSkillCore> instanceSkillCores)
+        public void ChangeInstanceWeapon(InstanceWeapon instanceWeapon)
         {
             SetWeaponId(instanceWeapon.WeaponId);
-            var instanceSkills = instanceWeapon.InstanceSkillCoreIds
-                .Select(x => instanceSkillCores.Find(y => y.InstanceId == x))
-                .SelectMany(x => x.Skills);
+            BuildStatuses();
+        }
+
+        public void BuildStatuses()
+        {
+            var userData = TinyServiceLocator.Resolve<UserData>();
+            var instanceWeapon = userData.GetEquippedInstanceWeapon();
+            var instanceSkills = userData.GetEquippedInstanceWeapon().InstanceSkillCores
+                .SelectMany(x => x.Skills)
+                .ToList();
             skills.Clear();
             skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
             critical.ClearAll();

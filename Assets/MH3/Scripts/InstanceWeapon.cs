@@ -73,6 +73,8 @@ namespace MH3
         public int GetUsingSlotCount(List<InstanceSkillCore> instanceSkillCores) => instanceSkillCoreIds.Sum(x => instanceSkillCores.Find(y => y.InstanceId == x).Slot);
 
         public MasterData.WeaponSpec WeaponSpec => TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(weaponId);
+        
+        public IEnumerable<InstanceSkillCore> InstanceSkillCores => TinyServiceLocator.Resolve<UserData>().InstanceSkillCores.Where(x => instanceSkillCoreIds.Contains(x.InstanceId));
 
         public InstanceWeapon(
             int instanceId,

@@ -125,7 +125,7 @@ namespace MH3
                 var instanceWeapon = InstanceWeaponFactory.Create(userData, i);
                 userData.AddInstanceWeaponData(instanceWeapon);
             }
-            player.SpecController.ChangeInstanceWeapon(userData.InstanceWeapons[0], userData.InstanceSkillCores);
+            player.SpecController.ChangeInstanceWeapon(userData.InstanceWeapons[0]);
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);
