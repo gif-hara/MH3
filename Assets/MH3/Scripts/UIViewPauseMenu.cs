@@ -280,7 +280,7 @@ namespace MH3
                 );
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
-                    .Subscribe(_ => stateMachine.Change(StateChangeInstanceArmor))
+                    .Subscribe(_ => stateMachine.Change(StateChangeInstanceArmorRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
