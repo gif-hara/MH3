@@ -111,6 +111,19 @@ namespace MH3
         
         [SerializeField]
         private ArmorSpec.DictionaryList armorSpecs;
+        public ArmorSpec.DictionaryList ArmorSpecs => armorSpecs;
+        
+        [SerializeField]
+        private ArmorDefense.Group armorDefenses;
+        public ArmorDefense.Group ArmorDefenses => armorDefenses;
+        
+        [SerializeField]
+        private ArmorSkillCount.Group armorSkillCounts;
+        public ArmorSkillCount.Group ArmorSkillCounts => armorSkillCounts;
+        
+        [SerializeField]
+        private ArmorSkill.Group armorSkills;
+        public ArmorSkill.Group ArmorSkills => armorSkills;
 
 #if UNITY_EDITOR
         [ContextMenu("Update")]
@@ -153,6 +166,9 @@ namespace MH3
                 "Skill.RecoveryCommandCountUp",
                 "Skill.RewardUp",
                 "ArmorSpec",
+                "ArmorDefense",
+                "ArmorSkillCount",
+                "ArmorSkill",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -181,6 +197,9 @@ namespace MH3
             skillRecoveryCommandCountUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[21]));
             skillRewardUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[22]));
             armorSpecs.Set(JsonHelper.FromJson<ArmorSpec>(database[23]));
+            armorDefenses.Set(JsonHelper.FromJson<ArmorDefense>(database[24]));
+            armorSkillCounts.Set(JsonHelper.FromJson<ArmorSkillCount>(database[25]));
+            armorSkills.Set(JsonHelper.FromJson<ArmorSkill>(database[26]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -766,10 +785,90 @@ namespace MH3
             
             public ArmorModelData ModelData;
             
+            public List<ArmorDefense> GetDefenses()
+            {
+                TinyServiceLocator.Resolve<MasterData>().ArmorDefenses.TryGetValue(Id, out var defenses);
+                return defenses;
+            }
+            
+            public List<ArmorSkillCount> GetSkillCounts()
+            {
+                TinyServiceLocator.Resolve<MasterData>().ArmorSkillCounts.TryGetValue(Id, out var skillCounts);
+                return skillCounts;
+            }
+            
+            public List<ArmorSkill> GetSkills()
+            {
+                TinyServiceLocator.Resolve<MasterData>().ArmorSkills.TryGetValue(Id, out var skills);
+                return skills;
+            }
+            
             [Serializable]
             public class DictionaryList : DictionaryList<int, ArmorSpec>
             {
                 public DictionaryList() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class ArmorDefense
+        {
+            public int Id;
+
+            public int Defense;
+            
+            public Define.RareType RareType;
+            
+            public int Weight;
+            
+            [Serializable]
+            public class Group : Group<int, ArmorDefense>
+            {
+                public Group() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class ArmorSkillCount
+        {
+            public int Id;
+
+            public int Count;
+            
+            public Define.RareType RareType;
+            
+            public int Weight;
+            
+            [Serializable]
+            public class Group : Group<int, ArmorSkillCount>
+            {
+                public Group() : base(x => x.Id)
+                {
+                }
+            }
+        }
+        
+        [Serializable]
+        public class ArmorSkill
+        {
+            public int Id;
+
+            public Define.SkillType SkillType;
+            
+            public int Level;
+            
+            public Define.RareType RareType;
+            
+            public int Weight;
+            
+            [Serializable]
+            public class Group : Group<int, ArmorSkill>
+            {
+                public Group() : base(x => x.Id)
                 {
                 }
             }
