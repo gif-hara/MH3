@@ -31,27 +31,8 @@ namespace HK
         /// </remarks>
         public static T Lottery<T>(this IList<T> self, Func<T, int> weightSelector, Func<int, int> randomSelector)
         {
-            var max = 0;
-            foreach (var i in self)
-            {
-                max += weightSelector(i);
-            }
-
-            var current = 0;
-            var random = randomSelector(max);
-            foreach (var i in self)
-            {
-                var w = weightSelector(i);
-                if (random >= current && random < current + w)
-                {
-                    return i;
-                }
-
-                current += w;
-            }
-
-            Assert.IsTrue(false, "未定義の動作です");
-            return default;
+            var index = self.LotteryIndex(weightSelector, randomSelector);
+            return index == -1 ? default : self[index];
         }
 
         /// <summary>
@@ -62,6 +43,10 @@ namespace HK
         /// </remarks>
         public static int LotteryIndex<T>(this IList<T> self, Func<T, int> weightSelector, Func<int, int> randomSelector)
         {
+            if(self == null || self.Count == 0)
+            {
+                return -1;
+            }
             var max = 0;
             foreach (var i in self)
             {
