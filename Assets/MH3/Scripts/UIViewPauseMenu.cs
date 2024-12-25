@@ -78,7 +78,7 @@ namespace MH3
                                 stateMachine.Change(StateChangeInstanceWeapon);
                             });
                         },
-                        document => 
+                        document =>
                         {
                             UIViewList.ApplyAsSimpleElement(document, "防具変更", _ =>
                             {
@@ -99,7 +99,7 @@ namespace MH3
                                 stateMachine.Change(StateRemoveInstanceWeapon);
                             });
                         },
-                        document => 
+                        document =>
                         {
                             UIViewList.ApplyAsSimpleElement(document, "防具削除", _ =>
                             {
@@ -201,6 +201,7 @@ namespace MH3
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
+                questSpecStatusDocument.DestroySafe();
             }
 
             async UniTask StateChangeInstanceWeapon(CancellationToken scope)
@@ -247,7 +248,7 @@ namespace MH3
                 instanceWeaponView.DestroySafe();
                 inputController.PopActionType();
             }
-            
+
             async UniTask StateChangeInstanceArmorRoot(CancellationToken scope)
             {
                 SetHeaderText("防具変更");
@@ -280,7 +281,7 @@ namespace MH3
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
             }
-            
+
             async UniTask StateChangeInstanceArmor(CancellationToken scope)
             {
                 var userData = TinyServiceLocator.Resolve<UserData>();
@@ -389,7 +390,7 @@ namespace MH3
                 list.DestroySafe();
                 instanceWeaponView.DestroySafe();
             }
-            
+
             async UniTask StateRemoveInstanceArmor(CancellationToken scope)
             {
                 SetHeaderText("防具削除");
