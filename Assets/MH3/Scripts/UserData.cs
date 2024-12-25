@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace MH3
 {
@@ -16,7 +15,7 @@ namespace MH3
         [SerializeField]
         private List<InstanceSkillCore> instanceSkillCores = new();
         public List<InstanceSkillCore> InstanceSkillCores => instanceSkillCores;
-        
+
         [SerializeField]
         private List<InstanceArmor> instanceArmors = new();
         public List<InstanceArmor> InstanceArmors => instanceArmors;
@@ -37,39 +36,43 @@ namespace MH3
         [SerializeField]
         private int equippedInstanceArmorHeadId;
         public int EquippedInstanceArmorHeadId { get => equippedInstanceArmorHeadId; set => equippedInstanceArmorHeadId = value; }
-        
+
         [SerializeField]
         private int equippedInstanceArmorArmsId;
         public int EquippedInstanceArmorArmsId { get => equippedInstanceArmorArmsId; set => equippedInstanceArmorArmsId = value; }
-        
+
         [SerializeField]
         private int equippedInstanceArmorBodyId;
         public int EquippedInstanceArmorBodyId { get => equippedInstanceArmorBodyId; set => equippedInstanceArmorBodyId = value; }
-        
+
         [SerializeField]
         private AvailableContents availableContents = new();
         public AvailableContents AvailableContents => availableContents;
+
+        [SerializeField]
+        private Stats stats = new();
+        public Stats Stats => stats;
 
         public InstanceWeapon GetEquippedInstanceWeapon()
         {
             return instanceWeapons.FirstOrDefault(x => x.InstanceId == equippedInstanceWeaponId);
         }
-        
+
         public InstanceArmor GetEquippedInstanceArmorHead()
         {
             return instanceArmors.FirstOrDefault(x => x.InstanceId == equippedInstanceArmorHeadId);
         }
-        
+
         public InstanceArmor GetEquippedInstanceArmorArms()
         {
             return instanceArmors.FirstOrDefault(x => x.InstanceId == equippedInstanceArmorArmsId);
         }
-        
+
         public InstanceArmor GetEquippedInstanceArmorBody()
         {
             return instanceArmors.FirstOrDefault(x => x.InstanceId == equippedInstanceArmorBodyId);
         }
-        
+
         public InstanceArmor GetEquippedInstanceArmor(Define.ArmorType armorType)
         {
             return armorType switch
@@ -80,7 +83,7 @@ namespace MH3
                 _ => throw new ArgumentOutOfRangeException($"Not found armor type {armorType}")
             };
         }
-        
+
         public void SetEquippedInstanceArmor(Define.ArmorType armorType, int instanceArmorId)
         {
             switch (armorType)
@@ -124,13 +127,13 @@ namespace MH3
             }
             instanceSkillCores.Remove(instanceSkillCore);
         }
-        
+
         public void AddInstanceArmor(InstanceArmor instanceArmor)
         {
             instanceArmors.Add(instanceArmor);
             AvailableContents.Add(AvailableContents.Key.GetAcquireArmor(instanceArmor.InstanceId));
         }
-        
+
         public void RemoveInstanceArmor(InstanceArmor instanceArmor)
         {
             instanceArmors.Remove(instanceArmor);
@@ -150,7 +153,7 @@ namespace MH3
         {
             return createdInstanceSkillCoreCount++;
         }
-        
+
         public int GetAndIncrementCreatedInstanceArmorCount()
         {
             return createdInstanceArmorCount++;
