@@ -41,6 +41,7 @@ namespace MH3
                 for (var k = 0; k < gameRules.RewardOptionNumber; k++)
                 {
                     var reward = questSpec.GetRewards().Lottery(x => x.Weight);
+                    userData.AvailableContents.Add(reward.GetSeenKey());
                     switch (reward.RewardType)
                     {
                         case Define.RewardType.InstanceWeapon:

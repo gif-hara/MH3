@@ -31,8 +31,8 @@ namespace MH3
             foreach (var reward in questSpec.GetRewards())
             {
                 var document = UnityEngine.Object.Instantiate(labelDocumentPrefab, parent);
-                var isAcquired = userData.AvailableContents.Contains(reward.GetAvailableContentsAcquireKey());
-                document.Q<TMP_Text>("Text").text = isAcquired ? reward.GetName() : "?????";
+                var isSeen = userData.AvailableContents.Contains(reward.GetSeenKey());
+                document.Q<TMP_Text>("Text").text = isSeen ? reward.GetName() : "?????";
             }
             return UniTask.CompletedTask;
         }

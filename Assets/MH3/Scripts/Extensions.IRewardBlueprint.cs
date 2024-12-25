@@ -19,13 +19,13 @@ namespace MH3
             };
         }
 
-        public static string GetAvailableContentsAcquireKey(this IRewardBlueprint self)
+        public static string GetSeenKey(this IRewardBlueprint self)
         {
             return self.Type switch
             {
-                Define.RewardType.InstanceWeapon => AvailableContents.Key.GetAcquireWeapon(self.Id),
-                Define.RewardType.InstanceSkillCore => AvailableContents.Key.GetAcquireSkillCore(self.Id),
-                Define.RewardType.InstanceArmor => AvailableContents.Key.GetAcquireArmor(self.Id),
+                Define.RewardType.InstanceWeapon => AvailableContents.Key.GetSeenWeapon(self.Id),
+                Define.RewardType.InstanceSkillCore => AvailableContents.Key.GetSeenSkillCore(self.Id),
+                Define.RewardType.InstanceArmor => AvailableContents.Key.GetSeenArmor(self.Id),
                 _ => throw new ArgumentOutOfRangeException($"未対応のタイプです {self.Type}")
             };
         }
