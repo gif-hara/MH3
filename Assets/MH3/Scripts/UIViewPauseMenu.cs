@@ -262,15 +262,9 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(document, x.ArmorSpec.Name, _ =>
                                 {
-                                    if (userData.GetEquippedInstanceArmor(selectedArmorType)?.InstanceId ==
-                                        x.InstanceId)
-                                    {
-                                        TinyServiceLocator.Resolve<UIViewNotificationCenter>()
-                                            .BeginOneShotAsync("既に装備しています").Forget();
-                                        return;
-                                    }
-
-                                    userData.SetEquippedInstanceArmor(selectedArmorType, x.InstanceId);
+                                    var instanceId = userData.GetEquippedInstanceArmor(selectedArmorType)?.InstanceId ==
+                                                     x.InstanceId ? 0 : x.InstanceId;
+                                    userData.SetEquippedInstanceArmor(selectedArmorType, instanceId);
                                     actor.SpecController.BuildStatuses();
                                     TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.Equipment.1");
                                     stateMachine.Change(StateChangeInstanceArmorRoot);
