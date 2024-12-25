@@ -65,6 +65,22 @@ namespace MH3
                             selectable.Add(button);
                             break;
                         }
+                    case InstanceArmor instanceArmor:
+                        {
+                            var element = Object.Instantiate(document.Q<HKUIDocument>("Prefab.InstanceArmor"), elementParent);
+                            var container = new Container();
+                            container.Register("InstanceArmor", instanceArmor);
+                            element.Q<SequencesMonoBehaviour>("Sequences").PlayAsync(container, scope).Forget();
+                            var button = element.Q<Button>("Button");
+                            button.OnClickAsObservable()
+                                .Subscribe(_ =>
+                                {
+                                    source.TrySetResult(selectable.IndexOf(button));
+                                })
+                                .RegisterTo(document.destroyCancellationToken);
+                            selectable.Add(button);
+                            break;
+                        }
                     default:
                         throw new System.NotImplementedException($"未対応のIRewardです {reward.GetType()}");
                 }
