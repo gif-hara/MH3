@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c0b7f4a7b974ad999f56c87502f06e, type: 3}
   m_Name: Arms.1
   m_EditorClassIdentifier: 
-  elements: []
+  elements:
+  - locatorName: Hand.Right
+    modelPrefab: {fileID: 4414766313245481874, guid: cde9f0eb12f7c234fb3ae1063cd0c51a, type: 3}
+  - locatorName: Hand.Left
+    modelPrefab: {fileID: 4414766313245481874, guid: 152dc9984017d14489cb8e3c2c7e939e, type: 3}
