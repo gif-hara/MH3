@@ -23,6 +23,9 @@ namespace MH3
         private int createdInstanceSkillCoreCount;
 
         [SerializeField]
+        private int createdInstanceArmorCount;
+
+        [SerializeField]
         private int equippedInstanceWeaponId;
         public int EquippedInstanceWeaponId { get => equippedInstanceWeaponId; set => equippedInstanceWeaponId = value; }
         
@@ -72,6 +75,11 @@ namespace MH3
         public int GetAndIncrementCreatedInstanceSkillCoreCount()
         {
             return createdInstanceSkillCoreCount++;
+        }
+        
+        public int GetAndIncrementCreatedInstanceArmorCount()
+        {
+            return createdInstanceArmorCount++;
         }
     }
 }
