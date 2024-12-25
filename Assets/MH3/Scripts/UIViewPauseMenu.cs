@@ -257,18 +257,27 @@ namespace MH3
                     {
                         document =>
                         {
-                            selectedArmorType = Define.ArmorType.Head;
-                            UIViewList.ApplyAsSimpleElement(document, "頭", _ => stateMachine.Change(StateChangeInstanceArmor));
+                            UIViewList.ApplyAsSimpleElement(document, "頭", _ =>
+                            {
+                                selectedArmorType = Define.ArmorType.Head;
+                                stateMachine.Change(StateChangeInstanceArmor);
+                            });
                         },
                         document =>
                         {
-                            selectedArmorType = Define.ArmorType.Arms;
-                            UIViewList.ApplyAsSimpleElement(document, "腕", _ => stateMachine.Change(StateChangeInstanceArmor));
+                            UIViewList.ApplyAsSimpleElement(document, "腕", _ =>
+                            {
+                                selectedArmorType = Define.ArmorType.Arms;
+                                stateMachine.Change(StateChangeInstanceArmor);
+                            });
                         },
                         document =>
                         {
-                            selectedArmorType = Define.ArmorType.Body;
-                            UIViewList.ApplyAsSimpleElement(document, "胴", _ => stateMachine.Change(StateChangeInstanceArmor));
+                            UIViewList.ApplyAsSimpleElement(document, "胴", _ =>
+                            {
+                                selectedArmorType = Define.ArmorType.Body;
+                                stateMachine.Change(StateChangeInstanceArmor);
+                            });
                         },
                     },
                     0
