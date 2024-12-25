@@ -647,7 +647,7 @@ namespace MH3
         }
 
         [Serializable]
-        public class QuestReward
+        public class QuestReward : IRewardBlueprint
         {
             public string Id;
 
@@ -664,6 +664,10 @@ namespace MH3
                 {
                 }
             }
+
+            int IRewardBlueprint.Id => RewardId;
+            
+            Define.RewardType IRewardBlueprint.Type => RewardType;
         }
 
         [Serializable]
