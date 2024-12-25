@@ -17,9 +17,8 @@ namespace MH3
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var questSpecId = questSpecIdResolver.Resolve(container);
-            var questSpec = TinyServiceLocator.Resolve<MasterData>().QuestSpecs.Get(questSpecId);
             var userData = TinyServiceLocator.Resolve<UserData>();
-            userData.AvailableContents.Add(questSpec.AddWhenQuestClearContentKey);
+            userData.AvailableContents.Add(AvailableContents.Key.GetQuestClear(questSpecId));
             return UniTask.CompletedTask;
         }
     }

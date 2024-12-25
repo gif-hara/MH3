@@ -35,5 +35,15 @@ namespace MH3
         {
             newContents.Remove(content);
         }
+        
+        public static class Key
+        {
+            public const string FirstPlay = "FirstPlay";
+            
+            public static string GetQuestClear(string questSpecId)
+            {
+                return $"Clear.Quest.{questSpecId}";
+            }
+        }
     }
 }
