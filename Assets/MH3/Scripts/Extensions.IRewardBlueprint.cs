@@ -18,5 +18,16 @@ namespace MH3
                 _ => throw new ArgumentOutOfRangeException($"未対応のタイプです {self.Type}")
             };
         }
+
+        public static string GetAvailableContentsAcquireKey(this IRewardBlueprint self)
+        {
+            return self.Type switch
+            {
+                Define.RewardType.InstanceWeapon => AvailableContents.Key.GetAcquireWeapon(self.Id),
+                Define.RewardType.InstanceSkillCore => AvailableContents.Key.GetAcquireSkillCore(self.Id),
+                Define.RewardType.InstanceArmor => AvailableContents.Key.GetAcquireArmor(self.Id),
+                _ => throw new ArgumentOutOfRangeException($"未対応のタイプです {self.Type}")
+            };
+        }
     }
 }

@@ -44,6 +44,21 @@ namespace MH3
             {
                 return $"Clear.Quest.{questSpecId}";
             }
+            
+            public static string GetAcquireWeapon(int weaponSpecId)
+            {
+                return $"Acquire.Weapon.{weaponSpecId}";
+            }
+            
+            public static string GetAcquireArmor(int armorSpecId)
+            {
+                return $"Acquire.Armor.{armorSpecId}";
+            }
+            
+            public static string GetAcquireSkillCore(int skillCoreSpecId)
+            {
+                return $"Acquire.SkillCore.{skillCoreSpecId}";
+            }
         }
     }
 }

@@ -23,6 +23,7 @@ namespace MH3
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var questSpec = container.Resolve<MasterData.QuestSpec>(questSpecKey);
+            var userData = TinyServiceLocator.Resolve<UserData>();
             for (int i = 0; i < parent.childCount; i++)
             {
                 UnityEngine.Object.Destroy(parent.GetChild(i).gameObject);
@@ -30,7 +31,8 @@ namespace MH3
             foreach (var reward in questSpec.GetRewards())
             {
                 var document = UnityEngine.Object.Instantiate(labelDocumentPrefab, parent);
-                document.Q<TMP_Text>("Label").text = reward.GetName();
+                var isAcquired = userData.AvailableContents.Contains(reward.GetAvailableContentsAcquireKey());
+                document.Q<TMP_Text>("Label").text = isAcquired ? reward.GetName() : "?????";
             }
             return UniTask.CompletedTask;
         }
