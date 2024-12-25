@@ -69,6 +69,35 @@ namespace MH3
         {
             return instanceArmors.FirstOrDefault(x => x.InstanceId == equippedInstanceArmorBodyId);
         }
+        
+        public InstanceArmor GetEquippedInstanceArmor(Define.ArmorType armorType)
+        {
+            return armorType switch
+            {
+                Define.ArmorType.Head => GetEquippedInstanceArmorHead(),
+                Define.ArmorType.Arms => GetEquippedInstanceArmorArms(),
+                Define.ArmorType.Body => GetEquippedInstanceArmorBody(),
+                _ => throw new ArgumentOutOfRangeException($"Not found armor type {armorType}")
+            };
+        }
+        
+        public void SetEquippedInstanceArmor(Define.ArmorType armorType, int instanceArmorId)
+        {
+            switch (armorType)
+            {
+                case Define.ArmorType.Head:
+                    equippedInstanceArmorHeadId = instanceArmorId;
+                    break;
+                case Define.ArmorType.Arms:
+                    equippedInstanceArmorArmsId = instanceArmorId;
+                    break;
+                case Define.ArmorType.Body:
+                    equippedInstanceArmorBodyId = instanceArmorId;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException($"Not found armor type {armorType}");
+            }
+        }
 
         public void AddInstanceWeaponData(InstanceWeapon instanceWeaponData)
         {

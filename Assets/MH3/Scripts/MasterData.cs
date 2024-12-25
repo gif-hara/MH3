@@ -783,6 +783,8 @@ namespace MH3
 
             public string ModelDataId;
             
+            public Define.ArmorType ArmorType;
+            
             public ArmorModelData ModelData;
             
             public List<ArmorDefense> GetDefenses()

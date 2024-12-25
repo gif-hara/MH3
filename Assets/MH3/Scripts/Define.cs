@@ -107,5 +107,12 @@ namespace MH3
             FailedGuard,
             SuccessJustGuard,
         }
+
+        public enum ArmorType
+        {
+            Head,
+            Arms,
+            Body,
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace MH3
             HKUIDocument headerDocumentPrefab,
             HKUIDocument listDocumentPrefab,
             HKUIDocument instanceWeaponViewDocumentPrefab,
+            HKUIDocument instanceArmorViewDocumentPrefab,
             HKUIDocument instanceSkillCoreViewDocumentPrefab,
             HKUIDocument actorSpecStatusDocumentPrefab,
             HKUIDocument questSpecStatusDocumentPrefab,
@@ -34,6 +35,7 @@ namespace MH3
             var inputController = TinyServiceLocator.Resolve<InputController>();
             inputController.PushActionType(InputController.InputActionType.UI);
             InstanceWeapon selectedInstanceWeapon = null;
+            Define.ArmorType selectedArmorType = Define.ArmorType.Head;
 
             if (isHome)
             {
@@ -212,6 +214,83 @@ namespace MH3
                     },
                     scope
                 );
+            }
+            
+            async UniTask StateChangeInstanceArmorRoot(CancellationToken scope)
+            {
+                SetHeaderText("防具変更");
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    new List<Action<HKUIDocument>>
+                    {
+                        document =>
+                        {
+                            selectedArmorType = Define.ArmorType.Head;
+                            UIViewList.ApplyAsSimpleElement(document, "頭", _ => stateMachine.Change(StateChangeInstanceArmor));
+                        },
+                        document =>
+                        {
+                            selectedArmorType = Define.ArmorType.Arms;
+                            UIViewList.ApplyAsSimpleElement(document, "腕", _ => stateMachine.Change(StateChangeInstanceArmor));
+                        },
+                        document =>
+                        {
+                            selectedArmorType = Define.ArmorType.Body;
+                            UIViewList.ApplyAsSimpleElement(document, "胴", _ => stateMachine.Change(StateChangeInstanceArmor));
+                        },
+                    },
+                    0
+                );
+                inputController.Actions.UI.Cancel
+                    .OnPerformedAsObservable()
+                    .Subscribe(_ => stateMachine.Change(StateHomeRoot))
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.DestroySafe();
+            }
+            
+            async UniTask StateChangeInstanceArmor(CancellationToken scope)
+            {
+                var userData = TinyServiceLocator.Resolve<UserData>();
+                var instanceArmorView = UnityEngine.Object.Instantiate(instanceArmorViewDocumentPrefab);
+                var instanceArmorSequences = instanceArmorView.Q<SequencesMonoBehaviour>("Sequences");
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    userData.InstanceArmors
+                        .Where(x => x.ArmorSpec.ArmorType == selectedArmorType)
+                        .Select(x => new Action<HKUIDocument>(document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, x.ArmorSpec.Name, _ =>
+                                {
+                                    if (userData.GetEquippedInstanceArmor(selectedArmorType)?.InstanceId ==
+                                        x.InstanceId)
+                                    {
+                                        TinyServiceLocator.Resolve<UIViewNotificationCenter>()
+                                            .BeginOneShotAsync("既に装備しています").Forget();
+                                        return;
+                                    }
+
+                                    userData.SetEquippedInstanceArmor(selectedArmorType, x.InstanceId);
+                                    actor.SpecController.BuildStatuses();
+                                    TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.Equipment.1");
+                                    stateMachine.Change(StateChangeInstanceArmorRoot);
+                                },
+                                _ =>
+                                {
+                                    var container = new Container();
+                                    container.Register("InstanceArmor", x);
+                                    instanceArmorSequences.PlayAsync(container, scope).Forget();
+                                });
+                        })),
+                    0
+                );
+                inputController.Actions.UI.Cancel
+                    .OnPerformedAsObservable()
+                    .Subscribe(_ => stateMachine.Change(StateChangeInstanceArmor))
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.DestroySafe();
+                instanceArmorView.DestroySafe();
             }
 
             async UniTask StateRemoveInstanceWeapon(CancellationToken scope)

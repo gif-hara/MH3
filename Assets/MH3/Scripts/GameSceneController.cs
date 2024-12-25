@@ -54,6 +54,9 @@ namespace MH3
 
         [SerializeField]
         private HKUIDocument instanceWeaponViewDocumentPrefab;
+        
+        [SerializeField]
+        private HKUIDocument instanceArmorViewDocumentPrefab;
 
         [SerializeField]
         private HKUIDocument instanceSkillCoreViewDocumentPrefab;
@@ -140,6 +143,7 @@ namespace MH3
                         headerDocumentPrefab,
                         listDocumentPrefab,
                         instanceWeaponViewDocumentPrefab,
+                        instanceArmorViewDocumentPrefab,
                         instanceSkillCoreViewDocumentPrefab,
                         actorSpecStatusDocumentPrefab,
                         questSpecStatusDocumentPrefab,
