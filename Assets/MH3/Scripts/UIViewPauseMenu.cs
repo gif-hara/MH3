@@ -312,7 +312,9 @@ namespace MH3
                                 {
                                     var instanceId = userData.GetEquippedInstanceArmor(selectedArmorType)?.InstanceId ==
                                                      x.InstanceId ? 0 : x.InstanceId;
+                                    var instanceArmor = userData.InstanceArmors.FirstOrDefault(y => y.InstanceId == instanceId);
                                     userData.SetEquippedInstanceArmor(selectedArmorType, instanceId);
+                                    actor.SpecController.SetArmorId(selectedArmorType, instanceArmor?.ArmorSpec.Id ?? 0);
                                     actor.SpecController.BuildStatuses();
                                     TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.Equipment.1");
                                     stateMachine.Change(StateChangeInstanceArmorRoot);

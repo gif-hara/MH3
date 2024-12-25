@@ -242,6 +242,25 @@ namespace MH3.ActorControllers
             BuildStatuses();
         }
 
+        public void SetArmorId(Define.ArmorType armorType, int armorId)
+        {
+            Debug.Log($"SetArmorId {armorType} {armorId}");
+            switch (armorType)
+            {
+                case Define.ArmorType.Head:
+                    armorHeadId.Value = armorId;
+                    break;
+                case Define.ArmorType.Arms:
+                    armorArmsId.Value = armorId;
+                    break;
+                case Define.ArmorType.Body:
+                    armorBodyId.Value = armorId;
+                    break;
+                default:
+                    throw new System.NotImplementedException($"未対応のArmorTypeです {armorType}");
+            }
+        }
+
         public void BuildStatuses()
         {
             var userData = TinyServiceLocator.Resolve<UserData>();
