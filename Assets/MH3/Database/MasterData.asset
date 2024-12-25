@@ -361,7 +361,7 @@ MonoBehaviour:
     - Key: 10101
       Value:
       - Id: 10101
-        Critical: 1
+        Critical: 0
         RareType: 0
         Weight: 100
     - Key: 10102
@@ -2396,3 +2396,29 @@ MonoBehaviour:
       Value: 1
     - Level: 2
       Value: 2
+  armorSpecs:
+    list:
+    - Id: 10101
+      Name: "\u767D\u3044\u306F\u3061\u307E\u304D"
+      ModelDataId: Head.1
+      ModelData: {fileID: 11400000, guid: e340a0baec3094bc69b4b4ad12058de7, type: 2}
+    - Id: 10201
+      Name: "\u767D\u3044\u30B0\u30ED\u30FC\u30D6"
+      ModelDataId: Arms.1
+      ModelData: {fileID: 11400000, guid: f012a285ccf8b49f3bd4da4263ed4b38, type: 2}
+    - Id: 10301
+      Name: "\u767D\u3044\u30DE\u30F3\u30C8"
+      ModelDataId: Body.1
+      ModelData: {fileID: 11400000, guid: c09603c65c8344ad2972c0409e636af0, type: 2}
+    - Id: 20101
+      Name: "\u6575\u9632\u5177\uFF08\u982D\uFF09"
+      ModelDataId: Head.1
+      ModelData: {fileID: 11400000, guid: e340a0baec3094bc69b4b4ad12058de7, type: 2}
+    - Id: 20201
+      Name: "\u6575\u9632\u5177\uFF08\u8155\uFF09"
+      ModelDataId: Arms.1
+      ModelData: {fileID: 11400000, guid: f012a285ccf8b49f3bd4da4263ed4b38, type: 2}
+    - Id: 20301
+      Name: "\u6575\u9632\u5177\uFF08\u80F4\uFF09"
+      ModelDataId: Body.1
+      ModelData: {fileID: 11400000, guid: c09603c65c8344ad2972c0409e636af0, type: 2}

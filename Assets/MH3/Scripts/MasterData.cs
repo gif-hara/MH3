@@ -108,6 +108,9 @@ namespace MH3
         [SerializeField]
         private SkillLevelValue.DictionaryList skillRewardUp;
         public SkillLevelValue.DictionaryList SkillRewardUp => skillRewardUp;
+        
+        [SerializeField]
+        private ArmorSpec.DictionaryList armorSpecs;
 
 #if UNITY_EDITOR
         [ContextMenu("Update")]
@@ -149,6 +152,7 @@ namespace MH3
                 "Skill.HealthUp",
                 "Skill.RecoveryCommandCountUp",
                 "Skill.RewardUp",
+                "ArmorSpec",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -176,6 +180,7 @@ namespace MH3
             skillHealthUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[20]));
             skillRecoveryCommandCountUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[21]));
             skillRewardUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[22]));
+            armorSpecs.Set(JsonHelper.FromJson<ArmorSpec>(database[23]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -207,6 +212,10 @@ namespace MH3
             foreach (var attackSpec in attackSpecs.List)
             {
                 attackSpec.HitAdditionalSequencesPlayer = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/HitAdditionalSequences/{attackSpec.HitAdditionalSequencesKeyPlayer}.asset");
+            }
+            foreach (var armorSpec in armorSpecs.List)
+            {
+                armorSpec.ModelData = AssetDatabase.LoadAssetAtPath<ArmorModelData>($"Assets/MH3/Database/ArmorModelData/{armorSpec.ModelDataId}.asset");Assets/MH3/Scripts/MasterData.cs
             }
             EditorUtility.SetDirty(this);
             AssetDatabase.SaveAssets();
@@ -741,6 +750,26 @@ namespace MH3
             public class Group : Group<Define.SkillType, SkillTypeToParameter>
             {
                 public Group() : base(x => x.SkillType)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class ArmorSpec
+        {
+            public int Id;
+            
+            public string Name;
+
+            public string ModelDataId;
+            
+            public ArmorModelData ModelData;
+            
+            [Serializable]
+            public class DictionaryList : DictionaryList<int, ArmorSpec>
+            {
+                public DictionaryList() : base(x => x.Id)
                 {
                 }
             }
