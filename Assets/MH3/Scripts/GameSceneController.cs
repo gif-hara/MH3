@@ -117,7 +117,7 @@ namespace MH3
             var uiViewTransition = new UIViewTransition(transitionDocumentPrefab, destroyCancellationToken);
             TinyServiceLocator.RegisterAsync(uiViewTransition, destroyCancellationToken).Forget();
             var userData = new UserData();
-            userData.AvailableContents.Add("FirstPlay");
+            userData.AvailableContents.Add(AvailableContents.Key.FirstPlay);
             TinyServiceLocator.RegisterAsync(userData, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(new UIViewSimpleDialog(simpleDialogDocumentPrefab), destroyCancellationToken).Forget();
             var playerSpec = masterData.ActorSpecs.Get(playerActorSpecId);
