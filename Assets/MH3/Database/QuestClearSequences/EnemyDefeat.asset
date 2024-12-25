@@ -15,6 +15,7 @@ MonoBehaviour:
   sequences:
   - rid: 1481063203388522578
   - rid: 1481063587024470119
+  - rid: 1481063630267220052
   - rid: 1481063520193740937
   - rid: 1481063336882209037
   - rid: 1481063336882209010
@@ -242,6 +243,11 @@ MonoBehaviour:
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Enemy
+    - rid: 1481063630267220052
+      type: {class: QuestClearProcess, ns: MH3, asm: Assembly-CSharp}
+      data:
+        questSpecIdResolver:
+          rid: -2
     - rid: 8194411010602303565
       type: {class: AddAvailableContentWhenQuestClear, ns: MH3, asm: Assembly-CSharp}
       data:
