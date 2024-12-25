@@ -86,6 +86,16 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
+                                "防具作成",
+                                _ =>
+                                {
+                                    stateMachine.Change(StateCreateInstanceArmor);
+                                });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
                                 "スキルコア作成",
                                 _ =>
                                 {
@@ -270,6 +280,34 @@ namespace MH3
                                     var userData = TinyServiceLocator.Resolve<UserData>();
                                     userData.AddInstanceWeaponData(InstanceWeaponFactory.Create(userData, x.Id));
                                     Debug.Log($"Create InstanceWeaponData: {x.Id}");
+                                });
+                        }))
+                        .ToList(),
+                    0
+                );
+                inputController.Actions.UI.Cancel.OnPerformedAsObservable()
+                    .Subscribe(_ => stateMachine.Change(StateRoot))
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.DestroySafe();
+            }
+            
+            async UniTask StateCreateInstanceArmor(CancellationToken scope)
+            {
+                var debugData = TinyServiceLocator.Resolve<GameDebugData>();
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    TinyServiceLocator.Resolve<MasterData>().ArmorSpecs.List
+                        .Select(x => new Action<HKUIDocument>(document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                $"{x.Id}: {x.Name}",
+                                _ =>
+                                {
+                                    var userData = TinyServiceLocator.Resolve<UserData>();
+                                    userData.AddInstanceArmor(InstanceArmorFactory.Create(userData, x.Id));
+                                    Debug.Log($"Create InstanceArmorData: {x.Id}");
                                 });
                         }))
                         .ToList(),
