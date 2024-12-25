@@ -32,7 +32,7 @@ namespace MH3
             {
                 var document = UnityEngine.Object.Instantiate(labelDocumentPrefab, parent);
                 var isAcquired = userData.AvailableContents.Contains(reward.GetAvailableContentsAcquireKey());
-                document.Q<TMP_Text>("Label").text = isAcquired ? reward.GetName() : "?????";
+                document.Q<TMP_Text>("Text").text = isAcquired ? reward.GetName() : "?????";
             }
             return UniTask.CompletedTask;
         }
