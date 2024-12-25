@@ -14,7 +14,7 @@ namespace MH3
         [SerializeReference, SubclassSelector]
         private StringResolver questSpecIdResolver;
 
-        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var questSpecId = questSpecIdResolver.Resolve(container);
             var questSpec = TinyServiceLocator.Resolve<MasterData>().QuestSpecs.Get(questSpecId);
@@ -28,6 +28,7 @@ namespace MH3
             }
             var defeatEnemyCount = userData.Stats.GetOrDefault(Stats.Key.GetDefeatEnemyCount(questSpec.EnemyActorSpecId));
             userData.Stats.AddOrUpdate(Stats.Key.GetDefeatEnemyCount(questSpec.EnemyActorSpecId), defeatEnemyCount + 1);
+            return UniTask.CompletedTask;
         }
     }
 }
