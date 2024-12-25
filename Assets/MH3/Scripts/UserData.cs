@@ -22,13 +22,13 @@ namespace MH3
         public List<InstanceArmor> InstanceArmors => instanceArmors;
 
         [SerializeField]
-        private int createdInstanceWeaponCount;
+        private int createdInstanceWeaponCount = 1;
 
         [SerializeField]
-        private int createdInstanceSkillCoreCount;
+        private int createdInstanceSkillCoreCount = 1;
 
         [SerializeField]
-        private int createdInstanceArmorCount;
+        private int createdInstanceArmorCount = 1;
 
         [SerializeField]
         private int equippedInstanceWeaponId;

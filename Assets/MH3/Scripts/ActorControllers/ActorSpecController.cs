@@ -233,8 +233,19 @@ namespace MH3.ActorControllers
         {
             var userData = TinyServiceLocator.Resolve<UserData>();
             var instanceWeapon = userData.GetEquippedInstanceWeapon();
-            var instanceSkills = userData.GetEquippedInstanceWeapon().InstanceSkillCores
+            var instanceArmorHead = userData.GetEquippedInstanceArmorHead();
+            var instanceArmorArms = userData.GetEquippedInstanceArmorArms();
+            var instanceArmorBody = userData.GetEquippedInstanceArmorBody();
+            var instanceWeaponSkills = instanceWeapon.InstanceSkillCores
                 .SelectMany(x => x.Skills)
+                .ToList();
+            var instanceArmorHeadSkills = instanceArmorHead?.Skills ?? new List<InstanceSkill>();
+            var instanceArmorArmsSkills = instanceArmorArms?.Skills ?? new List<InstanceSkill>();
+            var instanceArmorBodySkills = instanceArmorBody?.Skills ?? new List<InstanceSkill>();
+            var instanceSkills = instanceWeaponSkills
+                .Concat(instanceArmorHeadSkills)
+                .Concat(instanceArmorArmsSkills)
+                .Concat(instanceArmorBodySkills)
                 .ToList();
             skills.Clear();
             skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
@@ -268,6 +279,9 @@ namespace MH3.ActorControllers
             attack.RegisterBasics("InstanceWeapon", () => instanceWeapon.Attack);
             attack.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Attack, actor)));
             defense.ClearAll();
+            defense.RegisterBasics("InstanceArmorHead", () => instanceArmorHead?.Defense ?? 0);
+            defense.RegisterBasics("InstanceArmorArms", () => instanceArmorArms?.Defense ?? 0);
+            defense.RegisterBasics("InstanceArmorBody", () => instanceArmorBody?.Defense ?? 0);
             defense.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Defense, actor)));
             recoveryCommandCountMax.ClearAll();
             recoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
