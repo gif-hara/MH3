@@ -50,10 +50,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4121475287992394588, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_Name
-      value: Model.Base
+      value: Model.Armor.Base
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4121475287992394588, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8869413074740463387}
   m_SourcePrefab: {fileID: 100100000, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+--- !u!1 &7405095239237198974 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4121475287992394588, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+  m_PrefabInstance: {fileID: 6914790224807397154}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8869413074740463387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7405095239237198974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b020153289a4875aa5f794db2d8263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
