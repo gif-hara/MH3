@@ -54,7 +54,7 @@ namespace MH3
 
         [SerializeField]
         private HKUIDocument instanceWeaponViewDocumentPrefab;
-        
+
         [SerializeField]
         private HKUIDocument instanceArmorViewDocumentPrefab;
 
@@ -72,7 +72,7 @@ namespace MH3
 
         [SerializeField]
         private HKUIDocument enemyStatusDocumentPrefab;
-        
+
         [SerializeField]
         private HKUIDocument questSpecStatusDocumentPrefab;
 
@@ -128,6 +128,7 @@ namespace MH3
                 var instanceWeapon = InstanceWeaponFactory.Create(userData, i);
                 userData.AddInstanceWeaponData(instanceWeapon);
             }
+            userData.EquippedInstanceWeaponId = userData.InstanceWeapons[0].InstanceId;
             player.SpecController.ChangeInstanceWeapon(userData.InstanceWeapons[0]);
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
