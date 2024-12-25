@@ -1847,6 +1847,10 @@ MonoBehaviour:
         RewardType: 0
         RewardId: 10109
         Weight: 100
+      - Id: Quest.10101
+        RewardType: 2
+        RewardId: 10101
+        Weight: 100
     - Key: Quest.10102
       Value:
       - Id: Quest.10102
@@ -1857,6 +1861,10 @@ MonoBehaviour:
         RewardType: 0
         RewardId: 10202
         Weight: 100
+      - Id: Quest.10102
+        RewardType: 2
+        RewardId: 10201
+        Weight: 100
     - Key: Quest.10103
       Value:
       - Id: Quest.10103
@@ -1866,6 +1874,10 @@ MonoBehaviour:
       - Id: Quest.10103
         RewardType: 0
         RewardId: 10302
+        Weight: 100
+      - Id: Quest.10103
+        RewardType: 2
+        RewardId: 10301
         Weight: 100
   skillCoreSpecs:
     list:
@@ -2401,26 +2413,32 @@ MonoBehaviour:
     - Id: 10101
       Name: "\u767D\u3044\u306F\u3061\u307E\u304D"
       ModelDataId: Head.1
+      ArmorType: 0
       ModelData: {fileID: 11400000, guid: e340a0baec3094bc69b4b4ad12058de7, type: 2}
     - Id: 10201
       Name: "\u767D\u3044\u30B0\u30ED\u30FC\u30D6"
       ModelDataId: Arms.1
+      ArmorType: 1
       ModelData: {fileID: 11400000, guid: f012a285ccf8b49f3bd4da4263ed4b38, type: 2}
     - Id: 10301
       Name: "\u767D\u3044\u30DE\u30F3\u30C8"
       ModelDataId: Body.1
+      ArmorType: 2
       ModelData: {fileID: 11400000, guid: c09603c65c8344ad2972c0409e636af0, type: 2}
     - Id: 20101
       Name: "\u6575\u9632\u5177\uFF08\u982D\uFF09"
       ModelDataId: Head.1
+      ArmorType: 0
       ModelData: {fileID: 11400000, guid: e340a0baec3094bc69b4b4ad12058de7, type: 2}
     - Id: 20201
       Name: "\u6575\u9632\u5177\uFF08\u8155\uFF09"
       ModelDataId: Arms.1
+      ArmorType: 1
       ModelData: {fileID: 11400000, guid: f012a285ccf8b49f3bd4da4263ed4b38, type: 2}
     - Id: 20301
       Name: "\u6575\u9632\u5177\uFF08\u80F4\uFF09"
       ModelDataId: Body.1
+      ArmorType: 2
       ModelData: {fileID: 11400000, guid: c09603c65c8344ad2972c0409e636af0, type: 2}
   armorDefenses:
     list:
