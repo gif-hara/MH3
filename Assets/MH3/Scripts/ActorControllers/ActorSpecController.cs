@@ -83,7 +83,7 @@ namespace MH3.ActorControllers
 
         private readonly ReactiveProperty<Define.FlinchType> flinchType = new(Define.FlinchType.None);
 
-        private readonly List<ISkill> skills = new();
+        public readonly List<ISkill> Skills = new();
 
         private readonly Subject<Unit> onFlinch = new();
 
@@ -260,11 +260,11 @@ namespace MH3.ActorControllers
                 .Concat(instanceArmorArmsSkills)
                 .Concat(instanceArmorBodySkills)
                 .ToList();
-            skills.Clear();
-            skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
+            Skills.Clear();
+            Skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
             critical.ClearAll();
             critical.RegisterBasics("InstanceWeapon", () => instanceWeapon.Critical);
-            critical.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Critical, actor)));
+            critical.RegisterAdds("Skills", () => Skills.Sum(x => x.GetParameter(Define.ActorParameterType.Critical, actor)));
             cutRatePhysicalDamage.ClearAll();
             cutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
             cutRateFireDamage.ClearAll();
@@ -275,32 +275,32 @@ namespace MH3.ActorControllers
             cutRateGrassDamage.RegisterBasics("Spec", () => spec.GrassDamageCutRate);
             abnormalStatusAttack.ClearAll();
             abnormalStatusAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.AbnormalStatusAttack);
-            abnormalStatusAttack.RegisterAdds("Skills", () => skills.Sum(x =>
+            abnormalStatusAttack.RegisterAdds("Skills", () => Skills.Sum(x =>
                 abnormalStatusAttackType.Value == Define.AbnormalStatusType.None ? 0 : x.GetParameter(abnormalStatusAttackType.Value.ToActorParameterType(), actor)));
             abnormalStatusAttackType.Value = instanceWeapon.AbnormalStatusType;
             elementAttack.ClearAll();
             elementAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.ElementAttack);
-            elementAttack.RegisterAdds("Skills", () => skills.Sum(x =>
+            elementAttack.RegisterAdds("Skills", () => Skills.Sum(x =>
                 elementAttackType.Value == Define.ElementType.None ? 0 : x.GetParameter(elementAttackType.Value.ToActorParameterType(), actor)));
             elementAttackType.Value = instanceWeapon.ElementType;
             hitPointMax.ClearAll();
             hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
-            hitPointMax.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Health, actor)));
+            hitPointMax.RegisterAdds("Skills", () => Skills.Sum(x => x.GetParameter(Define.ActorParameterType.Health, actor)));
             hitPoint.Value = HitPointMax;
             attack.ClearAll();
             attack.RegisterBasics("Spec", () => spec.Attack);
             attack.RegisterBasics("InstanceWeapon", () => instanceWeapon.Attack);
-            attack.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Attack, actor)));
+            attack.RegisterAdds("Skills", () => Skills.Sum(x => x.GetParameter(Define.ActorParameterType.Attack, actor)));
             defense.ClearAll();
             defense.RegisterBasics("InstanceArmorHead", () => instanceArmorHead?.Defense ?? 0);
             defense.RegisterBasics("InstanceArmorArms", () => instanceArmorArms?.Defense ?? 0);
             defense.RegisterBasics("InstanceArmorBody", () => instanceArmorBody?.Defense ?? 0);
-            defense.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Defense, actor)));
+            defense.RegisterAdds("Skills", () => Skills.Sum(x => x.GetParameter(Define.ActorParameterType.Defense, actor)));
             recoveryCommandCountMax.ClearAll();
             recoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
-            recoveryCommandCountMax.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.RecoveryCommandCount, actor)));
+            recoveryCommandCountMax.RegisterAdds("Skills", () => Skills.Sum(x => x.GetParameter(Define.ActorParameterType.RecoveryCommandCount, actor)));
             recoveryCommandCount.Value = recoveryCommandCountMax.ValueFloorToInt;
-            rewardUp.Value = skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Reward, actor));
+            rewardUp.Value = Skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Reward, actor));
         }
 
         public void SetSuperArmor(int value)
