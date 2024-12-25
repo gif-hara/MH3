@@ -364,6 +364,8 @@ MonoBehaviour:
         value:
         - rid: 1481063630267220046
         - rid: 1481063630267220047
+        - rid: 1481063630267220055
+        - rid: 1481063630267220056
     - rid: 1481063630267220046
       type: {class: QuestSpecViewEnemyName, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -375,6 +377,16 @@ MonoBehaviour:
         questSpecKey: QuestSpec
         parent: {fileID: 4772372485348955137}
         labelDocumentPrefab: {fileID: 4080751120777818859, guid: 79cab3631766dc646a981eefdba61b63, type: 3}
+    - rid: 1481063630267220055
+      type: {class: QuestSpecViewClearTime, ns: MH3, asm: Assembly-CSharp}
+      data:
+        questSpecKey: QuestSpec
+        text: {fileID: 4276853072133023898}
+    - rid: 1481063630267220056
+      type: {class: QuestSpecViewDefeatEnemyCount, ns: MH3, asm: Assembly-CSharp}
+      data:
+        questSpecKey: QuestSpec
+        text: {fileID: 2093122942742514643}
 --- !u!1001 &1139909107131815956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -721,6 +733,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ed54c2abaa9cc4459d3537800a60168, type: 3}
+--- !u!114 &4276853072133023898 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3303634951450439200, guid: 9ed54c2abaa9cc4459d3537800a60168, type: 3}
+  m_PrefabInstance: {fileID: 1622053746081154746}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6118314193883040858 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4785689361731767008, guid: 9ed54c2abaa9cc4459d3537800a60168, type: 3}
@@ -927,6 +950,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ed54c2abaa9cc4459d3537800a60168, type: 3}
+--- !u!114 &2093122942742514643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3303634951450439200, guid: 9ed54c2abaa9cc4459d3537800a60168, type: 3}
+  m_PrefabInstance: {fileID: 3518606834953348595}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8268245356782071571 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4785689361731767008, guid: 9ed54c2abaa9cc4459d3537800a60168, type: 3}
