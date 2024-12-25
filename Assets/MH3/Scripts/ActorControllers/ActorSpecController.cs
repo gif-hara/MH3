@@ -19,12 +19,14 @@ namespace MH3.ActorControllers
 
         private readonly MasterData.ActorSpec spec;
 
+        private string actorName;
+
         private readonly Parameter hitPointMax = new();
 
         private readonly ReactiveProperty<int> hitPoint = new(0);
 
         private readonly Parameter attack = new();
-        
+
         private readonly Parameter defense = new();
 
         private readonly Parameter critical = new();
@@ -58,11 +60,11 @@ namespace MH3.ActorControllers
         private readonly ReactiveProperty<int> rewardUp = new(0);
 
         private readonly ReactiveProperty<int> weaponId = new(0);
-        
+
         private readonly ReactiveProperty<int> armorHeadId = new(0);
-        
+
         private readonly ReactiveProperty<int> armorArmsId = new(0);
-        
+
         private readonly ReactiveProperty<int> armorBodyId = new(0);
 
         private readonly ReactiveProperty<int> flinch = new(0);
@@ -106,6 +108,7 @@ namespace MH3.ActorControllers
         {
             this.actor = actor;
             this.spec = spec;
+            actorName = spec.Name;
             hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
             hitPoint.Value = spec.HitPoint;
             attack.RegisterBasics("Spec", () => spec.Attack);
@@ -121,7 +124,7 @@ namespace MH3.ActorControllers
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Collapse, new ReactiveProperty<int>(spec.CollapseThreshold));
         }
 
-        public string Name => spec.Name;
+        public string ActorName => actorName;
 
         public Define.ActorType ActorType => spec.ActorType;
 
@@ -160,11 +163,11 @@ namespace MH3.ActorControllers
         public bool IsDead => hitPoint.Value <= 0;
 
         public ReadOnlyReactiveProperty<int> WeaponId => weaponId;
-        
+
         public ReadOnlyReactiveProperty<int> ArmorHeadId => armorHeadId;
-        
+
         public ReadOnlyReactiveProperty<int> ArmorArmsId => armorArmsId;
-        
+
         public ReadOnlyReactiveProperty<int> ArmorBodyId => armorBodyId;
 
         public ReadOnlyReactiveProperty<int> Flinch => flinch;

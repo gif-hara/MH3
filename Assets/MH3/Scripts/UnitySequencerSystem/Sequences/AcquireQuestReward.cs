@@ -57,7 +57,7 @@ namespace MH3
                             throw new ArgumentOutOfRangeException($"未対応のRewardTypeです {reward.RewardType}");
                     }
                 }
-                var index = await UIViewAcquireReward.OpenAsync(documentPrefab, rewards, gameSceneController.ElapsedQuestTime, enemy.SpecController.Name, cancellationToken);
+                var index = await UIViewAcquireReward.OpenAsync(documentPrefab, rewards, gameSceneController.ElapsedQuestTime, enemy.SpecController.ActorName, cancellationToken);
                 rewards[index].Acquire(userData);
             }
         }

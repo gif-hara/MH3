@@ -32,7 +32,7 @@ namespace MH3
                         .value = (float)actor.SpecController.HitPoint.CurrentValue / actor.SpecController.HitPointMax;
                 })
                 .RegisterTo(actor.destroyCancellationToken);
-            document.Q<TMP_Text>("Name").text = actor.SpecController.Name;
+            document.Q<TMP_Text>("Name").text = actor.SpecController.ActorName;
         }
     }
 }
