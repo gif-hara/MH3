@@ -25,6 +25,8 @@ namespace MH3.ActorControllers
         public ActorAnimationController AnimationController { get; private set; }
 
         public ActorWeaponController WeaponController { get; private set; }
+        
+        public ActorArmorController ArmorController { get; private set; }
 
         public ActorAttackController AttackController { get; private set; }
 
@@ -49,6 +51,7 @@ namespace MH3.ActorControllers
             actor.AnimationController = new ActorAnimationController(actor, actor.simpleAnimation);
             actor.AttackController = new ActorAttackController(actor);
             actor.WeaponController = new ActorWeaponController(actor);
+            actor.ArmorController = new ActorArmorController(actor);
             actor.ColliderController = new ActorColliderController(actor);
             actor.BehaviourController = new ActorBehaviourController(actor);
             actor.ActionController = new ActorActionController(actor);
