@@ -32,7 +32,7 @@ namespace MH3
             var slotCount = 0;
             foreach (var i in instanceWeaponData.InstanceSkillCoreIds)
             {
-                var instanceSkillCore = userData.InstanceSkillCoreList.Find(x => x.InstanceId == i);
+                var instanceSkillCore = userData.InstanceSkillCores.Find(x => x.InstanceId == i);
                 for (var j = 0; j < instanceSkillCore.Slot; j++)
                 {
                     var skillSlotDocument = UnityEngine.Object.Instantiate(skillSlotDocumentPrefab, parent);

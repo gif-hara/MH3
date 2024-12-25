@@ -32,7 +32,7 @@ namespace MH3
             }
             var userData = TinyServiceLocator.Resolve<UserData>();
             var skills = instanceWeapon.InstanceSkillCoreIds
-                .Select(x => userData.InstanceSkillCoreList.Find(y => y.InstanceId == x))
+                .Select(x => userData.InstanceSkillCores.Find(y => y.InstanceId == x))
                 .SelectMany(x => x.Skills)
                 .GroupBy(x => x.SkillType);
             foreach (var i in skills.OrderBy(x => x.Key))

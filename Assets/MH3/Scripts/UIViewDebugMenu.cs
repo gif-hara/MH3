@@ -296,7 +296,7 @@ namespace MH3
                                 _ =>
                                 {
                                     var userData = TinyServiceLocator.Resolve<UserData>();
-                                    userData.AddInstanceSkillCoreData(InstanceSkillCoreFactory.Create(userData, x.Id));
+                                    userData.AddInstanceSkillCore(InstanceSkillCoreFactory.Create(userData, x.Id));
                                     Debug.Log($"Create InstanceSkillCoreData: {x.Id}");
                                 });
                         }))

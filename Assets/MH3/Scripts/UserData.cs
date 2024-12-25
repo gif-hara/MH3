@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MH3
 {
@@ -9,12 +10,16 @@ namespace MH3
     public class UserData
     {
         [SerializeField]
-        private List<InstanceWeapon> instanceWeaponDataList = new();
-        public List<InstanceWeapon> InstanceWeaponList => instanceWeaponDataList;
+        private List<InstanceWeapon> instanceWeapons = new();
+        public List<InstanceWeapon> InstanceWeapons => instanceWeapons;
 
         [SerializeField]
-        private List<InstanceSkillCore> instanceSkillCoreList = new();
-        public List<InstanceSkillCore> InstanceSkillCoreList => instanceSkillCoreList;
+        private List<InstanceSkillCore> instanceSkillCores = new();
+        public List<InstanceSkillCore> InstanceSkillCores => instanceSkillCores;
+        
+        [SerializeField]
+        private List<InstanceArmor> instanceArmors = new();
+        public List<InstanceArmor> InstanceArmors => instanceArmors;
 
         [SerializeField]
         private int createdInstanceWeaponCount;
@@ -35,36 +40,46 @@ namespace MH3
 
         public InstanceWeapon GetEquippedInstanceWeapon()
         {
-            return instanceWeaponDataList.FirstOrDefault(x => x.InstanceId == equippedInstanceWeaponId);
+            return instanceWeapons.FirstOrDefault(x => x.InstanceId == equippedInstanceWeaponId);
         }
 
         public void AddInstanceWeaponData(InstanceWeapon instanceWeaponData)
         {
-            instanceWeaponDataList.Add(instanceWeaponData);
+            instanceWeapons.Add(instanceWeaponData);
         }
 
         public void RemoveInstanceWeapon(InstanceWeapon instanceWeaponData)
         {
-            instanceWeaponDataList.Remove(instanceWeaponData);
+            instanceWeapons.Remove(instanceWeaponData);
         }
 
-        public void AddInstanceSkillCoreData(InstanceSkillCore instanceSkillCore)
+        public void AddInstanceSkillCore(InstanceSkillCore instanceSkillCore)
         {
-            instanceSkillCoreList.Add(instanceSkillCore);
+            instanceSkillCores.Add(instanceSkillCore);
         }
 
-        public void RemoveInstanceSkillCoreData(InstanceSkillCore instanceSkillCore)
+        public void RemoveInstanceSkillCore(InstanceSkillCore instanceSkillCore)
         {
-            foreach (var instanceWeaponData in instanceWeaponDataList)
+            foreach (var instanceWeaponData in instanceWeapons)
             {
                 instanceWeaponData.InstanceSkillCoreIds.Remove(instanceSkillCore.InstanceId);
             }
-            instanceSkillCoreList.Remove(instanceSkillCore);
+            instanceSkillCores.Remove(instanceSkillCore);
+        }
+        
+        public void AddInstanceArmor(InstanceArmor instanceArmor)
+        {
+            instanceArmors.Add(instanceArmor);
+        }
+        
+        public void RemoveInstanceArmor(InstanceArmor instanceArmor)
+        {
+            instanceArmors.Remove(instanceArmor);
         }
 
         public bool AnyAttachedSkillCore(int instanceSkillCoreId)
         {
-            return instanceWeaponDataList.Any(x => x.InstanceSkillCoreIds.Any(y => y == instanceSkillCoreId));
+            return instanceWeapons.Any(x => x.InstanceSkillCoreIds.Any(y => y == instanceSkillCoreId));
         }
 
         public int GetAndIncrementCreatedInstanceWeaponCount()

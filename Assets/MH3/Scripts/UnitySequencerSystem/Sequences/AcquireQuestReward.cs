@@ -49,6 +49,9 @@ namespace MH3
                         case Define.RewardType.InstanceSkillCore:
                             rewards.Add(InstanceSkillCoreFactory.Create(userData, reward.RewardId));
                             break;
+                        case Define.RewardType.InstanceArmor:
+                            rewards.Add(InstanceArmorFactory.Create(userData, reward.RewardId));
+                            break;
                         default:
                             throw new ArgumentOutOfRangeException($"未対応のRewardTypeです {reward.RewardType}");
                     }

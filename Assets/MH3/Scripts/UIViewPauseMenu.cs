@@ -202,7 +202,7 @@ namespace MH3
                             return;
                         }
                         userData.EquippedInstanceWeaponId = x.InstanceId;
-                        actor.SpecController.ChangeInstanceWeapon(x, TinyServiceLocator.Resolve<UserData>().InstanceSkillCoreList);
+                        actor.SpecController.ChangeInstanceWeapon(x, TinyServiceLocator.Resolve<UserData>().InstanceSkillCores);
                         TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.Equipment.1");
                         stateMachine.Change(StateHomeRoot);
                     },
@@ -240,7 +240,7 @@ namespace MH3
                     }
                     list = UIViewList.CreateWithPages(
                         listDocumentPrefab,
-                        userData.InstanceWeaponList
+                        userData.InstanceWeapons
                             .Where(x => x.InstanceId != userData.EquippedInstanceWeaponId)
                             .Select(x => new Action<HKUIDocument>(document =>
                             {
@@ -328,7 +328,7 @@ namespace MH3
                     }
                     list = UIViewList.CreateWithPages(
                         listDocumentPrefab,
-                        userData.InstanceSkillCoreList
+                        userData.InstanceSkillCores
                             .Select(x => new Action<HKUIDocument>(document =>
                             {
                                 var header = x.SkillCoreSpec.Name;
@@ -361,7 +361,7 @@ namespace MH3
                                             dialogScope = null;
                                             if (result == 0)
                                             {
-                                                userData.RemoveInstanceSkillCoreData(x);
+                                                userData.RemoveInstanceSkillCore(x);
                                                 CreateList();
                                             }
                                             else
@@ -371,7 +371,7 @@ namespace MH3
                                         }
                                         else
                                         {
-                                            userData.RemoveInstanceSkillCoreData(x);
+                                            userData.RemoveInstanceSkillCore(x);
                                             CreateList();
                                         }
                                     }
@@ -409,7 +409,7 @@ namespace MH3
                 var instanceSkillCoreSequences = instanceSkillCoreView.Q<SequencesMonoBehaviour>("Sequences");
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
-                    TinyServiceLocator.Resolve<UserData>().InstanceSkillCoreList
+                    TinyServiceLocator.Resolve<UserData>().InstanceSkillCores
                         .OrderBy(x => selectedInstanceWeapon.InstanceSkillCoreIds.Contains(x.InstanceId) ? 0 : 1)
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
@@ -425,7 +425,7 @@ namespace MH3
                                 }
                                 else
                                 {
-                                    if (selectedInstanceWeapon.GetUsingSlotCount(userData.InstanceSkillCoreList) + x.Slot > selectedInstanceWeapon.SkillSlot)
+                                    if (selectedInstanceWeapon.GetUsingSlotCount(userData.InstanceSkillCores) + x.Slot > selectedInstanceWeapon.SkillSlot)
                                     {
                                         TinyServiceLocator.Resolve<UIViewNotificationCenter>().BeginOneShotAsync("スキルスロットが足りません").Forget();
                                         return;
@@ -435,7 +435,7 @@ namespace MH3
                                 }
                                 if (userData.EquippedInstanceWeaponId == selectedInstanceWeapon.InstanceId)
                                 {
-                                    actor.SpecController.ChangeInstanceWeapon(selectedInstanceWeapon, userData.InstanceSkillCoreList);
+                                    actor.SpecController.ChangeInstanceWeapon(selectedInstanceWeapon, userData.InstanceSkillCores);
                                 }
                                 stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
                             },

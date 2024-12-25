@@ -25,7 +25,7 @@ namespace MH3
             var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
             var list = UIViewList.CreateWithPages(
                 listDocumentPrefab,
-                TinyServiceLocator.Resolve<UserData>().InstanceWeaponList
+                TinyServiceLocator.Resolve<UserData>().InstanceWeapons
                     .Select(x => new Action<HKUIDocument>(document =>
                     {
                         UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.Name, _ =>

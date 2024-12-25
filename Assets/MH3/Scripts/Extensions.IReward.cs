@@ -10,7 +10,10 @@ namespace MH3
                     userData.AddInstanceWeaponData(instanceWeapon);
                     break;
                 case InstanceSkillCore instanceSkillCore:
-                    userData.AddInstanceSkillCoreData(instanceSkillCore);
+                    userData.AddInstanceSkillCore(instanceSkillCore);
+                    break;
+                case InstanceArmor instanceArmor:
+                    userData.AddInstanceArmor(instanceArmor);
                     break;
             }
         }
