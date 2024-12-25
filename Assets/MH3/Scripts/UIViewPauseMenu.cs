@@ -120,9 +120,13 @@ namespace MH3
                     },
                     0
                 );
+                var userData = TinyServiceLocator.Resolve<UserData>();
                 var container = new Container();
                 container.Register("Actor", actor);
-                container.Register("InstanceWeapon", TinyServiceLocator.Resolve<UserData>().GetEquippedInstanceWeapon());
+                container.Register("InstanceWeapon", userData.GetEquippedInstanceWeapon());
+                container.Register("InstanceArmorHead", userData.GetEquippedInstanceArmor(Define.ArmorType.Head));
+                container.Register("InstanceArmorArms", userData.GetEquippedInstanceArmor(Define.ArmorType.Arms));
+                container.Register("InstanceArmorBody", userData.GetEquippedInstanceArmor(Define.ArmorType.Body));
                 var sequences = actorSpecStatusDocument.Q<SequencesMonoBehaviour>("Sequences");
                 sequences.PlayAsync(container, scope).Forget();
 

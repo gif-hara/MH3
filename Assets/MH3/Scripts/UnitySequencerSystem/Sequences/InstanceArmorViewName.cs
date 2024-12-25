@@ -19,7 +19,7 @@ namespace MH3
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var instanceArmor = container.Resolve<InstanceArmor>(instanceArmorKey);
-            text.text = instanceArmor.ArmorSpec.Name;
+            text.text = instanceArmor == null ? "なし" : instanceArmor.ArmorSpec.Name;
             return UniTask.CompletedTask;
         }
     }
