@@ -247,7 +247,11 @@ MonoBehaviour:
       type: {class: QuestClearProcess, ns: MH3, asm: Assembly-CSharp}
       data:
         questSpecIdResolver:
-          rid: -2
+          rid: 1481063630267220059
+    - rid: 1481063630267220059
+      type: {class: StringResolver/NameString, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: QuestSpecId
     - rid: 8194411010602303565
       type: {class: AddAvailableContentWhenQuestClear, ns: MH3, asm: Assembly-CSharp}
       data:
