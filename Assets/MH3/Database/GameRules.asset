@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earlyInputTime: 0.5
   guardRange: 180
-  guardSuccessDamageRate: 0.1
+  guardSuccessDamageRate: 0.4
   justGuardTime: 0.1333333
   successJustGuardSfxKey: SuccessJustGuard.1
   successGuardSfxKey: SuccessGuard.1
@@ -45,3 +45,5 @@ MonoBehaviour:
   bladeSuperArmorTime: 2
   rewardOptionNumber: 3
   initialWeaponIds: 75270000d92700003d280000
+  criticalHitSfxKey: CriticalHit.1
+  criticalHitEffectKey: CriticalHit.1

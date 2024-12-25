@@ -102,6 +102,14 @@ namespace MH3
         private List<int> initialWeaponIds;
         public List<int> InitialWeaponIds => initialWeaponIds;
 
+        [SerializeField]
+        private string criticalHitSfxKey;
+        public string CriticalHitSfxKey => criticalHitSfxKey;
+
+        [SerializeField]
+        private string criticalHitEffectKey;
+        public string CriticalHitEffectKey => criticalHitEffectKey;
+
         [Serializable]
         public class ElementProjectile
         {

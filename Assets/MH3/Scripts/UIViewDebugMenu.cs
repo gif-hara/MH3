@@ -96,6 +96,16 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
+                                "チェック",
+                                _ =>
+                                {
+                                    stateMachine.Change(StateCheck);
+                                });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
                                 "閉じる",
                                 _ =>
                                 {
@@ -298,6 +308,33 @@ namespace MH3
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.gameObject.DestroySafe();
+            }
+
+            async UniTask StateCheck(CancellationToken scope)
+            {
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    new List<Action<HKUIDocument>>
+                    {
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "Print UserData Json",
+                                _ =>
+                                {
+                                    var json = JsonUtility.ToJson(TinyServiceLocator.Resolve<UserData>(), true);
+                                    Debug.Log(json);
+                                });
+                        },
+                    },
+                    0
+                );
+                inputController.Actions.UI.Cancel.OnPerformedAsObservable()
+                    .Subscribe(_ => stateMachine.Change(StateRoot))
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.DestroySafe();
             }
         }
     }

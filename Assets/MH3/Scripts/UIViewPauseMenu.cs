@@ -166,6 +166,7 @@ namespace MH3
                                 _ =>
                                 {
                                     gameSceneController.SetupQuestAsync(x.Id).Forget();
+                                    TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.BeginQuest.1");
                                     pauseMenuScope.Dispose();
                                 },
                                 _ =>
@@ -189,7 +190,6 @@ namespace MH3
             UniTask StateChangeInstanceWeapon(CancellationToken scope)
             {
                 SetHeaderText("武器変更");
-                var selectInstanceWeaponViewScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
                 return UIViewSelectInstanceWeapon.OpenAsync(
                     listDocumentPrefab,
                     instanceWeaponViewDocumentPrefab,
@@ -203,17 +203,14 @@ namespace MH3
                         }
                         userData.EquippedInstanceWeaponId = x.InstanceId;
                         actor.SpecController.ChangeInstanceWeapon(x, TinyServiceLocator.Resolve<UserData>().InstanceSkillCoreList);
-                        selectInstanceWeaponViewScope.Cancel();
-                        selectInstanceWeaponViewScope.Dispose();
+                        TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.Equipment.1");
                         stateMachine.Change(StateHomeRoot);
                     },
                     _ =>
                     {
-                        selectInstanceWeaponViewScope.Cancel();
-                        selectInstanceWeaponViewScope.Dispose();
                         stateMachine.Change(StateHomeRoot);
                     },
-                    selectInstanceWeaponViewScope.Token
+                    scope
                 );
             }
 
@@ -434,6 +431,7 @@ namespace MH3
                                         return;
                                     }
                                     selectedInstanceWeapon.AddInstanceSkillCoreId(x.InstanceId);
+                                    TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.Equipment.1");
                                 }
                                 if (userData.EquippedInstanceWeaponId == selectedInstanceWeapon.InstanceId)
                                 {

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2395748848372041264}
-  - component: {fileID: 1041980472979850873}
+  - component: {fileID: 6187137768499150664}
   m_Layer: 0
-  m_Name: AudioManager
+  m_Name: MaterialManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 5078435781007031915}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1041980472979850873
+--- !u!114 &6187137768499150664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,70 +43,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 296543268620256961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 459259ca97ffd4f4e88a156efe7f996d, type: 3}
+  m_Script: {fileID: 11500000, guid: e01a561dc65750d47b3d68587f6970b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmSource: {fileID: 5052492754862017472}
-  sfxSource: {fileID: 1193820129548460352}
-  audioMixer: {fileID: 0}
-  bgm:
+  elements:
     list:
-    - key: Home.1
-      clip: {fileID: 8300000, guid: 73ced70ee72a5dd4b91ef65086f62d6d, type: 3}
-    - key: Quest.1
-      clip: {fileID: 8300000, guid: b3bb677e38ae6d64487546e5ad5533fd, type: 3}
-    - key: AcquireReward.1
-      clip: {fileID: 8300000, guid: 2340f11bd93af0d44b166714664caa39, type: 3}
-  sfx:
-    list:
-    - key: Hit.1
-      clip: {fileID: 8300000, guid: e6c0960ab608e0041a8f626e194c5ab9, type: 3}
-    - key: Hit.2
-      clip: {fileID: 8300000, guid: 48e7b7fccf8929545958874b0b9c0fa5, type: 3}
-    - key: SuccessJustGuard.1
-      clip: {fileID: 8300000, guid: 3455d9af77bed5241a14da192f7f1b21, type: 3}
-    - key: SuccessGuard.1
-      clip: {fileID: 8300000, guid: 040bbc92bbc71374c88e583571eb7d15, type: 3}
-    - key: Slime.1
-      clip: {fileID: 8300000, guid: 9d51a9708b7ef19449f256958a1ad10c, type: 3}
-    - key: Attack.Opening.1
-      clip: {fileID: 8300000, guid: 508c16d31975b8848b40967d5bdb65f8, type: 3}
-    - key: Run.1
-      clip: {fileID: 8300000, guid: df16e3b4b7cf3db4d8eacc32c62229be, type: 3}
-    - key: Attack.1
-      clip: {fileID: 8300000, guid: 87a3c56db2145aa4dbf144c685c4e02f, type: 3}
-    - key: Dodge.1
-      clip: {fileID: 8300000, guid: 2a6fded9b2e4d7744a7bb6e838cbe6c8, type: 3}
-    - key: Recovery.1
-      clip: {fileID: 8300000, guid: 2e681856c559faa4394e33d53a5a488c, type: 3}
-    - key: Defeat.1
-      clip: {fileID: 8300000, guid: 78cbbc71af1d49f4bbdce1a5f667b691, type: 3}
-    - key: Defeat.2
-      clip: {fileID: 8300000, guid: 54e010a84f0253e4283049cc13d9e767, type: 3}
-    - key: Attack.2
-      clip: {fileID: 8300000, guid: 08b10b39b509f1640a6d2d59dd576044, type: 3}
-    - key: Endurance.1
-      clip: {fileID: 8300000, guid: d946d9e70bb0d604ca3e664022e11226, type: 3}
-    - key: Endurance.2
-      clip: {fileID: 8300000, guid: 19546a8967f07564a85fc94859a4430a, type: 3}
-    - key: BeginQuest.1
-      clip: {fileID: 8300000, guid: b9eb302f22660e744bfbfa7d3c1f142f, type: 3}
-    - key: QuestClear.1
-      clip: {fileID: 8300000, guid: 7547e9bbe207d874ebc378dee245c78e, type: 3}
-    - key: QuestFailed.1
-      clip: {fileID: 8300000, guid: eea0a2ea5c23f0b458714e015b201c6c, type: 3}
-    - key: UI.Select.1
-      clip: {fileID: 8300000, guid: 7a83dd6c63a168248971e84baf0e58a9, type: 3}
-    - key: BeginGuard.1
-      clip: {fileID: 8300000, guid: 8a93bbb695f218447b25ba3484d30e2d, type: 3}
-    - key: Flinch.1
-      clip: {fileID: 8300000, guid: faad1a2790e1b774dbb6e8bd82fe7588, type: 3}
-    - key: CriticalHit.1
-      clip: {fileID: 8300000, guid: 61f484a2643f89f479b942160ded1bd1, type: 3}
-    - key: UI.Equipment.1
-      clip: {fileID: 8300000, guid: 28f2bc6891878c442ba6feae3653d9fa, type: 3}
-    - key: UI.BeginQuest.1
-      clip: {fileID: 8300000, guid: 0334ad19af5e7434ca235f04e8fe7d08, type: 3}
+    - material: {fileID: 2100000, guid: 4c8c9b72f7b0ae140b33dfdf154c8025, type: 2}
+    - material: {fileID: 2100000, guid: dcdd845270ef43b4abb849a9321020aa, type: 2}
 --- !u!1 &2576864941498265121
 GameObject:
   m_ObjectHideFlags: 0

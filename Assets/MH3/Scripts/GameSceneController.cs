@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using HK;
+using LitMotion;
 using MH3.ActorControllers;
 using R3;
 using UnityEngine;
@@ -32,6 +33,9 @@ namespace MH3
 
         [SerializeField]
         private EffectManager effectManagerPrefab;
+
+        [SerializeField]
+        private MaterialManager materialManagerPrefab;
 
         [SerializeField]
         private HKUIDocument playerStatusDocumentPrefab;
@@ -69,6 +73,9 @@ namespace MH3
         [SerializeField]
         private HKUIDocument questSpecStatusDocumentPrefab;
 
+        [SerializeField]
+        private HKUIDocument transitionDocumentPrefab;
+
         private Actor player;
 
         private Actor enemy;
@@ -100,9 +107,12 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(gameRules, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(Instantiate(audioManagerPrefab), destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(Instantiate(effectManagerPrefab), destroyCancellationToken).Forget();
+            TinyServiceLocator.RegisterAsync(Instantiate(materialManagerPrefab), destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(new UIViewNotificationCenter(notificationCenterDocumentPrefab, destroyCancellationToken), destroyCancellationToken).Forget();
             gameCameraController = Instantiate(gameCameraControllerPrefab);
             TinyServiceLocator.RegisterAsync(gameCameraController, destroyCancellationToken).Forget();
+            var uiViewTransition = new UIViewTransition(transitionDocumentPrefab, destroyCancellationToken);
+            TinyServiceLocator.RegisterAsync(uiViewTransition, destroyCancellationToken).Forget();
             var userData = new UserData();
             userData.AvailableContents.Add("FirstPlay");
             TinyServiceLocator.RegisterAsync(userData, destroyCancellationToken).Forget();
@@ -174,7 +184,10 @@ namespace MH3
 
             if (!immediate)
             {
-                await fade.BeginAnimation("In");
+                await TinyServiceLocator.Resolve<UIViewTransition>()
+                    .Build()
+                    .SetMaterial("Transition.2")
+                    .BeginAsync(LMotion.Create(0.0f, 1.0f, 0.4f));
             }
 
             enemy.DestroySafe();
@@ -216,7 +229,9 @@ namespace MH3
             TinyServiceLocator.Resolve<AudioManager>().PlayBgm(questSpec.BgmKey);
             if (!immediate)
             {
-                await fade.BeginAnimation("Out");
+                await TinyServiceLocator.Resolve<UIViewTransition>()
+                    .Build()
+                    .BeginAsync(LMotion.Create(1.0f, 0.0f, 0.4f));
             }
         }
 
