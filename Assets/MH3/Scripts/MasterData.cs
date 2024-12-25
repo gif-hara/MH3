@@ -215,7 +215,7 @@ namespace MH3
             }
             foreach (var armorSpec in armorSpecs.List)
             {
-                armorSpec.ModelData = AssetDatabase.LoadAssetAtPath<ArmorModelData>($"Assets/MH3/Database/ArmorModelData/{armorSpec.ModelDataId}.asset");Assets/MH3/Scripts/MasterData.cs
+                armorSpec.ModelData = AssetDatabase.LoadAssetAtPath<ArmorModelData>($"Assets/MH3/Database/ArmorModelData/{armorSpec.ModelDataId}.asset");
             }
             EditorUtility.SetDirty(this);
             AssetDatabase.SaveAssets();
