@@ -24,6 +24,8 @@ namespace MH3.ActorControllers
         private readonly ReactiveProperty<int> hitPoint = new(0);
 
         private readonly Parameter attack = new();
+        
+        private readonly Parameter defense = new();
 
         private readonly Parameter critical = new();
 
@@ -133,7 +135,7 @@ namespace MH3.ActorControllers
 
         public Define.ElementType ElementAttackType => elementAttackType.Value;
 
-        public int DefenseTotal => skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Defense, actor));
+        public int DefenseTotal => defense.ValueFloorToInt;
 
         public ReadOnlyReactiveProperty<int> RecoveryCommandCount => recoveryCommandCount;
 
@@ -258,6 +260,8 @@ namespace MH3.ActorControllers
             attack.RegisterBasics("Spec", () => spec.Attack);
             attack.RegisterBasics("InstanceWeapon", () => instanceWeapon.Attack);
             attack.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Attack, actor)));
+            defense.ClearAll();
+            defense.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.Defense, actor)));
             recoveryCommandCountMax.ClearAll();
             recoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
             recoveryCommandCountMax.RegisterAdds("Skills", () => skills.Sum(x => x.GetParameter(Define.ActorParameterType.RecoveryCommandCount, actor)));
