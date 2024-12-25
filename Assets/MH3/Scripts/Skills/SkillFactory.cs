@@ -20,7 +20,7 @@ namespace MH3.SkillSystems
         private static ISkill CreateSkill(Define.SkillType skillType, int level)
         {
             var masterData = TinyServiceLocator.Resolve<MasterData>();
-            var result = new Skill();
+            var result = new Skill(skillType, level);
             foreach (var i in masterData.SkillTypeToParameters.Get(skillType))
             {
                 result.RegisterParameterSelector(i.ActorParameterType, _ => i.SkillLevelValueType.GetSkillLevelValue().Get(level).Value);

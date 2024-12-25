@@ -5,6 +5,10 @@ namespace MH3.SkillSystems
 {
     public interface ISkill
     {
+        Define.SkillType SkillType { get; }
+
+        int Level { get; }
+
         float GetParameter(Define.ActorParameterType type, Actor owner, Actor target);
 
         int GetParameterInt(Define.ActorParameterType type, Actor owner, Actor target);

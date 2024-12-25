@@ -10,6 +10,16 @@ namespace MH3.SkillSystems
 
         private readonly Dictionary<Define.ActorParameterType, Func<Actor, Actor, float>> parameterOwnerTargetSelectors = new();
 
+        public Define.SkillType SkillType { get; private set; }
+
+        public int Level { get; private set; }
+
+        public Skill(Define.SkillType skillType, int level)
+        {
+            SkillType = skillType;
+            Level = level;
+        }
+
         public float GetParameter(Define.ActorParameterType type, Actor owner, Actor target)
         {
             if (parameterOwnerTargetSelectors.ContainsKey(type))
