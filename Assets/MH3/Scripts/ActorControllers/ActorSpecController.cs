@@ -19,7 +19,7 @@ namespace MH3.ActorControllers
 
         private readonly MasterData.ActorSpec spec;
 
-        private string actorName;
+        public string ActorName { get; set; }
 
         private readonly Parameter hitPointMax = new();
 
@@ -108,7 +108,7 @@ namespace MH3.ActorControllers
         {
             this.actor = actor;
             this.spec = spec;
-            actorName = spec.Name;
+            ActorName = spec.Name;
             hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
             hitPoint.Value = spec.HitPoint;
             attack.RegisterBasics("Spec", () => spec.Attack);
@@ -123,8 +123,6 @@ namespace MH3.ActorControllers
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Paralysis, new ReactiveProperty<int>(spec.ParalysisThreshold));
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Collapse, new ReactiveProperty<int>(spec.CollapseThreshold));
         }
-
-        public string ActorName => actorName;
 
         public Define.ActorType ActorType => spec.ActorType;
 

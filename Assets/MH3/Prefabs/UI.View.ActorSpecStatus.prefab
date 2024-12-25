@@ -506,6 +506,7 @@ MonoBehaviour:
         - rid: 1481063364369055882
         - rid: 1481063364369056113
         - rid: 1481063587024470097
+        - rid: 1481063630267220073
     - rid: 1481063364369055873
       type: {class: ActorSpecViewAbnormalStatus, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -571,6 +572,16 @@ MonoBehaviour:
       data:
         instanceWeaponDataKey: InstanceWeapon
         text: {fileID: 4975347405384461318}
+    - rid: 1481063630267220073
+      type: {class: ActorSpecViewActorName, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063630267220074
+        text: {fileID: 9212526634194134180}
+    - rid: 1481063630267220074
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
 --- !u!1 &6745995790315765764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,7 +1146,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 503949975516646942, guid: 4722e683fd86d5e4f9c67071d354d036, type: 3}
       propertyPath: m_Name
-      value: UI.Element.Header.1
+      value: UI.Element.Header.1.ActorName
       objectReference: {fileID: 0}
     - target: {fileID: 692006848546203997, guid: 4722e683fd86d5e4f9c67071d354d036, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1243,7 +1254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4599375088124427366, guid: 4722e683fd86d5e4f9c67071d354d036, type: 3}
       propertyPath: m_text
-      value: "\u30B9\u30C6\u30FC\u30BF\u30B9"
+      value: ActorName
       objectReference: {fileID: 0}
     - target: {fileID: 4599375088124427366, guid: 4722e683fd86d5e4f9c67071d354d036, type: 3}
       propertyPath: m_sharedMaterial
@@ -1259,6 +1270,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4063136773244164040, guid: 4722e683fd86d5e4f9c67071d354d036, type: 3}
   m_PrefabInstance: {fileID: 4615410544383924418}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9212526634194134180 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4599375088124427366, guid: 4722e683fd86d5e4f9c67071d354d036, type: 3}
+  m_PrefabInstance: {fileID: 4615410544383924418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5048840365872128659
 PrefabInstance:
   m_ObjectHideFlags: 0

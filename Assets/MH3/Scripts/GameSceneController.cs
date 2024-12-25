@@ -38,6 +38,9 @@ namespace MH3
         private MaterialManager materialManagerPrefab;
 
         [SerializeField]
+        private string playerName;
+
+        [SerializeField]
         private HKUIDocument playerStatusDocumentPrefab;
 
         [SerializeField]
@@ -122,6 +125,7 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(new UIViewSimpleDialog(simpleDialogDocumentPrefab), destroyCancellationToken).Forget();
             var playerSpec = masterData.ActorSpecs.Get(playerActorSpecId);
             player = playerSpec.Spawn(Vector3.zero, Quaternion.identity);
+            player.SpecController.ActorName = playerName;
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
             foreach (var i in gameRules.InitialWeaponIds)
             {
