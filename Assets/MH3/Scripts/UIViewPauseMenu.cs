@@ -78,6 +78,13 @@ namespace MH3
                                 stateMachine.Change(StateChangeInstanceWeapon);
                             });
                         },
+                        document => 
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "防具変更", _ =>
+                            {
+                                stateMachine.Change(StateChangeInstanceArmorRoot);
+                            });
+                        },
                         document =>
                         {
                             UIViewList.ApplyAsSimpleElement(document, "スキルコア装着", _ =>
@@ -90,6 +97,13 @@ namespace MH3
                             UIViewList.ApplyAsSimpleElement(document, "武器削除", _ =>
                             {
                                 stateMachine.Change(StateRemoveInstanceWeapon);
+                            });
+                        },
+                        document => 
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "防具削除", _ =>
+                            {
+                                stateMachine.Change(StateRemoveInstanceArmor);
                             });
                         },
                         document =>
@@ -260,7 +274,10 @@ namespace MH3
                         .Where(x => x.ArmorSpec.ArmorType == selectedArmorType)
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, x.ArmorSpec.Name, _ =>
+                            var header = userData.GetEquippedInstanceArmor(selectedArmorType)?.InstanceId == x.InstanceId
+                                ? $"[E] {x.ArmorSpec.Name}"
+                                : x.ArmorSpec.Name;
+                            UIViewList.ApplyAsSimpleElement(document, header, _ =>
                                 {
                                     var instanceId = userData.GetEquippedInstanceArmor(selectedArmorType)?.InstanceId ==
                                                      x.InstanceId ? 0 : x.InstanceId;
@@ -353,6 +370,81 @@ namespace MH3
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
                 instanceWeaponView.DestroySafe();
+            }
+            
+            async UniTask StateRemoveInstanceArmor(CancellationToken scope)
+            {
+                SetHeaderText("防具削除");
+                var userData = TinyServiceLocator.Resolve<UserData>();
+                var instanceArmorView = UnityEngine.Object.Instantiate(instanceArmorViewDocumentPrefab);
+                var instanceArmorSequences = instanceArmorView.Q<SequencesMonoBehaviour>("Sequences");
+                CancellationDisposable dialogScope = null;
+                Selectable tempSelection = null;
+                HKUIDocument list = null;
+                CreateList();
+                inputController.Actions.UI.Cancel
+                    .OnPerformedAsObservable()
+                    .Where(_ => dialogScope == null)
+                    .Subscribe(_ =>
+                    {
+                        stateMachine.Change(StateHomeRoot);
+                    })
+                    .RegisterTo(scope);
+                void CreateList()
+                {
+                    if (list != null)
+                    {
+                        list.DestroySafe();
+                    }
+                    list = UIViewList.CreateWithPages(
+                        listDocumentPrefab,
+                        userData.InstanceArmors
+                            .Where(x => x.ArmorSpec.ArmorType == selectedArmorType)
+                            .Select(x => new Action<HKUIDocument>(document =>
+                            {
+                                UIViewList.ApplyAsSimpleElement(document, x.ArmorSpec.Name, async _ =>
+                                {
+                                    tempSelection = document.Q<Selectable>("Button");
+                                    dialogScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
+                                    var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
+                                        "本当に削除しますか？",
+                                        new List<string> { "はい", "いいえ" },
+                                        0,
+                                        1,
+                                        dialogScope.Token
+                                    );
+                                    dialogScope.Dispose();
+                                    dialogScope = null;
+                                    if (result == 0)
+                                    {
+                                        var armorSpec = x.ArmorSpec;
+                                        if (userData.GetEquippedInstanceArmor(armorSpec.ArmorType).InstanceId ==
+                                            x.InstanceId)
+                                        {
+                                            userData.SetEquippedInstanceArmor(armorSpec.ArmorType, 0);
+                                            actor.SpecController.BuildStatuses();
+                                        }
+                                        userData.RemoveInstanceArmor(x);
+                                        CreateList();
+                                    }
+                                    else
+                                    {
+                                        tempSelection.Select();
+                                    }
+                                },
+                                _ =>
+                                {
+                                    var container = new Container();
+                                    container.Register("InstanceArmor", x);
+                                    instanceArmorSequences.PlayAsync(container, scope).Forget();
+                                });
+                            })),
+                        0
+                    );
+                }
+                await UniTask.WaitUntilCanceled(scope);
+                list.DestroySafe();
+                instanceArmorView.DestroySafe();
             }
 
             UniTask StateAddInstanceSkillCoreSelectInstanceWeapon(CancellationToken scope)
