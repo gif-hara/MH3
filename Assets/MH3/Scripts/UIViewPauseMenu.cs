@@ -214,7 +214,10 @@ namespace MH3
                     userData.InstanceWeapons
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.Name, _ =>
+                            var header = userData.EquippedInstanceWeaponId == x.InstanceId
+                                ? $"[E] {x.WeaponSpec.Name}"
+                                : x.WeaponSpec.Name;
+                            UIViewList.ApplyAsSimpleElement(document, header, _ =>
                                 {
                                     if (userData.EquippedInstanceWeaponId == x.InstanceId)
                                     {
@@ -465,7 +468,6 @@ namespace MH3
             async UniTask StateAddInstanceSkillCoreSelectInstanceWeapon(CancellationToken scope)
             {
                 SetHeaderText("スキルコア装着");
-                var selectInstanceWeaponViewScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
                 var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
                 var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
                 var list = UIViewList.CreateWithPages(
@@ -482,8 +484,6 @@ namespace MH3
                                 }
                                 selectedInstanceWeapon = x;
                                 stateMachine.Change(StateAddInstanceSkillCoreSelectSkillCore);
-                                selectInstanceWeaponViewScope.Cancel();
-                                selectInstanceWeaponViewScope.Dispose();
                             },
                             _ =>
                             {
