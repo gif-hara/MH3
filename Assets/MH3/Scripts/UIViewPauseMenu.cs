@@ -246,7 +246,6 @@ namespace MH3
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
                 instanceWeaponView.DestroySafe();
-                inputController.PopActionType();
             }
 
             async UniTask StateChangeInstanceArmorRoot(CancellationToken scope)
