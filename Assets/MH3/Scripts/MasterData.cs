@@ -603,6 +603,11 @@ namespace MH3
             {
                 return TinyServiceLocator.Resolve<MasterData>().QuestRewards.Get(Id);
             }
+            
+            public ActorSpec GetEnemyActorSpec()
+            {
+                return TinyServiceLocator.Resolve<MasterData>().ActorSpecs.Get(EnemyActorSpecId);
+            }
 
             [Serializable]
             public class DictionaryList : DictionaryList<string, QuestSpec>
