@@ -11,6 +11,7 @@ using UnityEngine;
 
 namespace MH3
 {
+#if DEBUG
     public class UIViewDebugMenu
     {
         public static async UniTask OpenAsync(
@@ -409,4 +410,5 @@ namespace MH3
             }
         }
     }
+#endif
 }
