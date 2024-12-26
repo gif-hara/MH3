@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
+  m_Name: Dodge.2
+  m_EditorClassIdentifier: 
+  sequences:
+  - rid: 1481063527478198571
+  - rid: 1481063653782847572
+  references:
+    version: 2
+    RefIds:
+    - rid: 1481063527478198571
+      type: {class: SpawnEffect, ns: MH3, asm: Assembly-CSharp}
+      data:
+        effectKeyResolver:
+          rid: 1481063527478198572
+        registerKeyResolver:
+          rid: 1481063527478198573
+    - rid: 1481063527478198572
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Run.1
+    - rid: 1481063527478198573
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Effect
+    - rid: 1481063653782847572
+      type: {class: SyncTransformFromLocator, ns: MH3, asm: Assembly-CSharp}
+      data:
+        targetTransformResolver:
+          rid: 1481063653782847573
+        actorResolver:
+          rid: 1481063653782847574
+        locatorKeyResolver:
+          rid: 1481063653782847575
+    - rid: 1481063653782847573
+      type: {class: TransformResolver/Name, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Effect
+    - rid: 1481063653782847574
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063653782847575
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Root
