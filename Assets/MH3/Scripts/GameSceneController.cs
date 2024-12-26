@@ -82,6 +82,9 @@ namespace MH3
         [SerializeField]
         private HKUIDocument transitionDocumentPrefab;
 
+        [SerializeField]
+        private HKUIDocument optionsSoundsDocumentPrefab;
+
         private Actor player;
 
         private Actor enemy;
@@ -111,7 +114,8 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(inputController, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(masterData, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(gameRules, destroyCancellationToken).Forget();
-            TinyServiceLocator.RegisterAsync(Instantiate(audioManagerPrefab), destroyCancellationToken).Forget();
+            var audioManager = Instantiate(audioManagerPrefab);
+            TinyServiceLocator.RegisterAsync(audioManager, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(Instantiate(effectManagerPrefab), destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(Instantiate(materialManagerPrefab), destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(new UIViewNotificationCenter(notificationCenterDocumentPrefab, destroyCancellationToken), destroyCancellationToken).Forget();
@@ -119,8 +123,19 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(gameCameraController, destroyCancellationToken).Forget();
             var uiViewTransition = new UIViewTransition(transitionDocumentPrefab, destroyCancellationToken);
             TinyServiceLocator.RegisterAsync(uiViewTransition, destroyCancellationToken).Forget();
-            var saveData = SaveSystem.Contains(SaveData.Path) ? SaveSystem.Load<SaveData>(SaveData.Path) : new SaveData();
+            var containsSaveData = SaveSystem.Contains(SaveData.Path);
+            var saveData = containsSaveData ? SaveSystem.Load<SaveData>(SaveData.Path) : new SaveData();
+            if (!containsSaveData)
+            {
+                saveData.SystemData.MasterVolume = 1.0f;
+                saveData.SystemData.BgmVolume = 0.4f;
+                saveData.SystemData.SfxVolume = 1.0f;
+                SaveSystem.Save(saveData, SaveData.Path);
+            }
             TinyServiceLocator.RegisterAsync(saveData, destroyCancellationToken).Forget();
+            audioManager.SetVolumeMaster(saveData.SystemData.MasterVolume);
+            audioManager.SetVolumeBgm(saveData.SystemData.BgmVolume);
+            audioManager.SetVolumeSfx(saveData.SystemData.SfxVolume);
             var userData = saveData.UserData;
             if (!userData.AvailableContents.Contains(AvailableContents.Key.FirstPlay))
             {
@@ -160,6 +175,7 @@ namespace MH3
                         instanceSkillCoreViewDocumentPrefab,
                         actorSpecStatusDocumentPrefab,
                         questSpecStatusDocumentPrefab,
+                        optionsSoundsDocumentPrefab,
                         player,
                         this,
                         currentQuestSpec.Id == homeQuestSpecId,
