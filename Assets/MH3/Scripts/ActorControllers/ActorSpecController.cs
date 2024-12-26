@@ -244,7 +244,6 @@ namespace MH3.ActorControllers
 
         public void SetArmorId(Define.ArmorType armorType, int armorId)
         {
-            Debug.Log($"SetArmorId {armorType} {armorId}");
             switch (armorType)
             {
                 case Define.ArmorType.Head:
