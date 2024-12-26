@@ -1,7 +1,7 @@
 using System.IO;
 using UnityEngine;
 
-namespace SoulRPG
+namespace MH3
 {
     /// <summary>
     /// 
