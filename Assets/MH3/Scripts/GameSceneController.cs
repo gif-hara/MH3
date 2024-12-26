@@ -119,21 +119,26 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(gameCameraController, destroyCancellationToken).Forget();
             var uiViewTransition = new UIViewTransition(transitionDocumentPrefab, destroyCancellationToken);
             TinyServiceLocator.RegisterAsync(uiViewTransition, destroyCancellationToken).Forget();
-            var userData = new UserData();
-            userData.AvailableContents.Add(AvailableContents.Key.FirstPlay);
-            TinyServiceLocator.RegisterAsync(userData, destroyCancellationToken).Forget();
+            var saveData = SaveSystem.Contains(SaveData.Path) ? SaveSystem.Load<SaveData>(SaveData.Path) : new SaveData();
+            TinyServiceLocator.RegisterAsync(saveData, destroyCancellationToken).Forget();
+            var userData = saveData.UserData;
+            if (!userData.AvailableContents.Contains(AvailableContents.Key.FirstPlay))
+            {
+                userData.AvailableContents.Add(AvailableContents.Key.FirstPlay);
+                foreach (var i in gameRules.InitialWeaponIds)
+                {
+                    var instanceWeapon = InstanceWeaponFactory.Create(userData, i);
+                    userData.AddInstanceWeaponData(instanceWeapon);
+                }
+                userData.EquippedInstanceWeaponId = userData.InstanceWeapons[0].InstanceId;
+            }
+            TinyServiceLocator.RegisterAsync(saveData.UserData, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(new UIViewSimpleDialog(simpleDialogDocumentPrefab), destroyCancellationToken).Forget();
             var playerSpec = masterData.ActorSpecs.Get(playerActorSpecId);
             player = playerSpec.Spawn(Vector3.zero, Quaternion.identity);
             player.SpecController.ActorName = playerName;
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
-            foreach (var i in gameRules.InitialWeaponIds)
-            {
-                var instanceWeapon = InstanceWeaponFactory.Create(userData, i);
-                userData.AddInstanceWeaponData(instanceWeapon);
-            }
-            userData.EquippedInstanceWeaponId = userData.InstanceWeapons[0].InstanceId;
-            player.SpecController.ChangeInstanceWeapon(userData.InstanceWeapons[0]);
+            player.SpecController.ChangeInstanceWeapon(userData.GetEquippedInstanceWeapon());
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);
