@@ -139,6 +139,9 @@ namespace MH3
             player.SpecController.ActorName = playerName;
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
             player.SpecController.ChangeInstanceWeapon(userData.GetEquippedInstanceWeapon());
+            player.SpecController.SetArmorId(Define.ArmorType.Head, userData.GetEquippedInstanceArmor(Define.ArmorType.Head)?.ArmorId ?? 0);
+            player.SpecController.SetArmorId(Define.ArmorType.Arms, userData.GetEquippedInstanceArmor(Define.ArmorType.Arms)?.ArmorId ?? 0);
+            player.SpecController.SetArmorId(Define.ArmorType.Body, userData.GetEquippedInstanceArmor(Define.ArmorType.Body)?.ArmorId ?? 0);
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);
