@@ -5,6 +5,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
+using Mono.Cecil.Cil;
 using R3;
 using TMPro;
 using UnityEngine;
@@ -291,7 +292,7 @@ namespace MH3
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
             }
-            
+
             async UniTask StateCreateInstanceArmor(CancellationToken scope)
             {
                 var debugData = TinyServiceLocator.Resolve<GameDebugData>();
@@ -363,6 +364,39 @@ namespace MH3
                                 {
                                     var json = JsonUtility.ToJson(TinyServiceLocator.Resolve<UserData>(), true);
                                     Debug.Log(json);
+                                });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "Print SaveData Json",
+                                _ =>
+                                {
+                                    var json = JsonUtility.ToJson(TinyServiceLocator.Resolve<SaveData>(), true);
+                                    Debug.Log(json);
+                                });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "Save",
+                                _ =>
+                                {
+                                    SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
+                                    Debug.Log("Save");
+                                });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "Delete",
+                                _ =>
+                                {
+                                    SaveSystem.Delete(SaveData.Path);
+                                    Debug.Log("Delete");
                                 });
                         },
                     },
