@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace MH3
 {
+    [Serializable]
     public class SystemData
     {
         [SerializeField]
