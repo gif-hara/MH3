@@ -5,9 +5,12 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
+using Mono.Cecil.Cil;
 using R3;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnitySequencerSystem;
 
@@ -23,6 +26,7 @@ namespace MH3
             HKUIDocument instanceSkillCoreViewDocumentPrefab,
             HKUIDocument actorSpecStatusDocumentPrefab,
             HKUIDocument questSpecStatusDocumentPrefab,
+            HKUIDocument optionsSoundsDocumentPrefab,
             Actor actor,
             GameSceneController gameSceneController,
             bool isHome,
@@ -36,6 +40,9 @@ namespace MH3
             inputController.PushActionType(InputController.InputActionType.UI);
             InstanceWeapon selectedInstanceWeapon = null;
             Define.ArmorType selectedArmorType = Define.ArmorType.Head;
+            HKUIDocument optionsListDocument = null;
+            Selectable optionsListSelection = null;
+            HKUIDocument optionsDocument = null;
 
             if (isHome)
             {
@@ -111,6 +118,13 @@ namespace MH3
                             UIViewList.ApplyAsSimpleElement(document, "スキルコア削除", _ =>
                             {
                                 stateMachine.Change(StateRemoveInstanceSkillCore);
+                            });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "オプション", _ =>
+                            {
+                                stateMachine.Change(StateOptionsRoot);
                             });
                         },
                         document =>
@@ -672,9 +686,196 @@ namespace MH3
                 list.DestroySafe();
             }
 
+            async UniTask StateOptionsRoot(CancellationToken scope)
+            {
+                SetHeaderText("オプション");
+                if (optionsListDocument == null)
+                {
+                    optionsListDocument = UIViewList.CreateWithPages(
+                        listDocumentPrefab,
+                        new List<Action<HKUIDocument>>
+                        {
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "サウンド", _ =>
+                            {
+                                optionsListSelection = document.Q<Selectable>("Button");
+                                stateMachine.Change(StateOptionsSounds);
+                            },
+                            _ =>
+                            {
+                                CreateOptionsDocument(optionsSoundsDocumentPrefab);
+                                var saveData = TinyServiceLocator.Resolve<SaveData>();
+                                var masterVolumeSlider = optionsDocument
+                                    .Q<HKUIDocument>("MasterVolume")
+                                    .Q<HKUIDocument>("Area.Slider")
+                                    .Q<HKUIDocument>("Element.Slider")
+                                    .Q<Slider>("Slider")
+                                    .value = saveData.SystemData.MasterVolume;
+                                var bgmVolumeSlider = optionsDocument
+                                    .Q<HKUIDocument>("BgmVolume")
+                                    .Q<HKUIDocument>("Area.Slider")
+                                    .Q<HKUIDocument>("Element.Slider")
+                                    .Q<Slider>("Slider")
+                                    .value = saveData.SystemData.BgmVolume;
+                                var sfxVolumeSlider = optionsDocument
+                                    .Q<HKUIDocument>("SfxVolume")
+                                    .Q<HKUIDocument>("Area.Slider")
+                                    .Q<HKUIDocument>("Element.Slider")
+                                    .Q<Slider>("Slider")
+                                    .value = saveData.SystemData.SfxVolume;
+                            });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "戻る",
+                                _ =>
+                                {
+                                    optionsListDocument.DestroySafe();
+                                    stateMachine.Change(StateHomeRoot);
+                                },
+                                _ => optionsDocument.DestroySafe()
+                            );
+                        },
+                        },
+                        0
+                    );
+                }
+                else
+                {
+                    optionsListSelection.Select();
+                }
+                inputController.Actions.UI.Cancel
+                    .OnPerformedAsObservable()
+                    .Subscribe(_ =>
+                    {
+                        optionsDocument.DestroySafe();
+                        optionsListDocument.DestroySafe();
+                        stateMachine.Change(StateHomeRoot);
+                    })
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+            }
+
+            async UniTask StateOptionsSounds(CancellationToken scope)
+            {
+                SetHeaderText("サウンド設定");
+                var saveData = TinyServiceLocator.Resolve<SaveData>();
+                var audioManager = TinyServiceLocator.Resolve<AudioManager>();
+                var masterVolumeDocument = optionsDocument.Q<HKUIDocument>("MasterVolume");
+                var masterVolumeSelection = masterVolumeDocument
+                    .Q<HKUIDocument>("Area.Button")
+                    .Q<Selectable>("Button");
+                var masterVolumeSlider = masterVolumeDocument
+                    .Q<HKUIDocument>("Area.Slider")
+                    .Q<HKUIDocument>("Element.Slider")
+                    .Q<Slider>("Slider");
+                var bgmVolumeDocument = optionsDocument.Q<HKUIDocument>("BgmVolume");
+                var bgmVolumeSelection = bgmVolumeDocument
+                    .Q<HKUIDocument>("Area.Button")
+                    .Q<Selectable>("Button");
+                var bgmVolumeSlider = bgmVolumeDocument
+                    .Q<HKUIDocument>("Area.Slider")
+                    .Q<HKUIDocument>("Element.Slider")
+                    .Q<Slider>("Slider");
+                var sfxVolumeDocument = optionsDocument.Q<HKUIDocument>("SfxVolume");
+                var sfxVolumeSelection = sfxVolumeDocument
+                    .Q<HKUIDocument>("Area.Button")
+                    .Q<Selectable>("Button");
+                var sfxVolumeSlider = sfxVolumeDocument
+                    .Q<HKUIDocument>("Area.Slider")
+                    .Q<HKUIDocument>("Element.Slider")
+                    .Q<Slider>("Slider");
+                new[]
+                {
+                    masterVolumeSelection,
+                    bgmVolumeSelection,
+                    sfxVolumeSelection,
+                }.SetNavigationVertical();
+                masterVolumeSelection.Select();
+
+                masterVolumeSlider.value = saveData.SystemData.MasterVolume;
+                bgmVolumeSlider.value = saveData.SystemData.BgmVolume;
+                sfxVolumeSlider.value = saveData.SystemData.SfxVolume;
+
+                inputController.Actions.UI.Navigate.OnPerformedAsObservable()
+                    .Subscribe(_ =>
+                    {
+                        var value = _.ReadValue<Vector2>();
+                        if (value.x == 0)
+                        {
+                            return;
+                        }
+                        if (value.x > 0)
+                        {
+                            switch (EventSystem.current.currentSelectedGameObject)
+                            {
+                                case var x when x == masterVolumeSelection.gameObject:
+                                    saveData.SystemData.MasterVolume = Mathf.Clamp(saveData.SystemData.MasterVolume + 0.1f, 0, 1);
+                                    masterVolumeSlider.value = saveData.SystemData.MasterVolume;
+                                    audioManager.SetVolumeMaster(saveData.SystemData.MasterVolume);
+                                    SaveSystem.Save(saveData, SaveData.Path);
+                                    break;
+                                case var x when x == bgmVolumeSelection.gameObject:
+                                    saveData.SystemData.BgmVolume = Mathf.Clamp(saveData.SystemData.BgmVolume + 0.1f, 0, 1);
+                                    bgmVolumeSlider.value = saveData.SystemData.BgmVolume;
+                                    audioManager.SetVolumeBgm(saveData.SystemData.BgmVolume);
+                                    SaveSystem.Save(saveData, SaveData.Path);
+                                    break;
+                                case var x when x == sfxVolumeSelection.gameObject:
+                                    saveData.SystemData.SfxVolume = Mathf.Clamp(saveData.SystemData.SfxVolume + 0.1f, 0, 1);
+                                    sfxVolumeSlider.value = saveData.SystemData.SfxVolume;
+                                    audioManager.SetVolumeSfx(saveData.SystemData.SfxVolume);
+                                    SaveSystem.Save(saveData, SaveData.Path);
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            switch (EventSystem.current.currentSelectedGameObject)
+                            {
+                                case var x when x == masterVolumeSelection.gameObject:
+                                    saveData.SystemData.MasterVolume = Mathf.Clamp(saveData.SystemData.MasterVolume - 0.1f, 0, 1);
+                                    masterVolumeSlider.value = saveData.SystemData.MasterVolume;
+                                    audioManager.SetVolumeMaster(saveData.SystemData.MasterVolume);
+                                    SaveSystem.Save(saveData, SaveData.Path);
+                                    break;
+                                case var x when x == bgmVolumeSelection.gameObject:
+                                    saveData.SystemData.BgmVolume = Mathf.Clamp(saveData.SystemData.BgmVolume - 0.1f, 0, 1);
+                                    bgmVolumeSlider.value = saveData.SystemData.BgmVolume;
+                                    audioManager.SetVolumeBgm(saveData.SystemData.BgmVolume);
+                                    SaveSystem.Save(saveData, SaveData.Path);
+                                    break;
+                                case var x when x == sfxVolumeSelection.gameObject:
+                                    saveData.SystemData.SfxVolume = Mathf.Clamp(saveData.SystemData.SfxVolume - 0.1f, 0, 1);
+                                    sfxVolumeSlider.value = saveData.SystemData.SfxVolume;
+                                    audioManager.SetVolumeSfx(saveData.SystemData.SfxVolume);
+                                    SaveSystem.Save(saveData, SaveData.Path);
+                                    break;
+                            }
+                        }
+                    })
+                    .RegisterTo(scope);
+
+                inputController.Actions.UI.Cancel
+                    .OnPerformedAsObservable()
+                    .Subscribe(_ => stateMachine.Change(StateOptionsRoot))
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+            }
+
             void SetHeaderText(string text)
             {
                 header.Q<TMP_Text>("Header").text = text;
+            }
+
+            void CreateOptionsDocument(HKUIDocument optionsDocumentPrefab)
+            {
+                if (optionsDocument != null)
+                {
+                    optionsDocument.DestroySafe();
+                }
+                optionsDocument = UnityEngine.Object.Instantiate(optionsDocumentPrefab);
             }
         }
     }
