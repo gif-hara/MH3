@@ -11,5 +11,9 @@ namespace MH3
         [SerializeField]
         private UserData userData = new();
         public UserData UserData => userData;
+
+        [SerializeField]
+        private SystemData systemData = new();
+        public SystemData SystemData => systemData;
     }
 }
