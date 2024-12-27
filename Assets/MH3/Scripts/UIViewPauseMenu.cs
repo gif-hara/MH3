@@ -705,19 +705,19 @@ namespace MH3
                             {
                                 CreateOptionsDocument(optionsSoundsDocumentPrefab);
                                 var saveData = TinyServiceLocator.Resolve<SaveData>();
-                                var masterVolumeSlider = optionsDocument
+                                optionsDocument
                                     .Q<HKUIDocument>("MasterVolume")
                                     .Q<HKUIDocument>("Area.Slider")
                                     .Q<HKUIDocument>("Element.Slider")
                                     .Q<Slider>("Slider")
                                     .value = saveData.SystemData.MasterVolume;
-                                var bgmVolumeSlider = optionsDocument
+                                optionsDocument
                                     .Q<HKUIDocument>("BgmVolume")
                                     .Q<HKUIDocument>("Area.Slider")
                                     .Q<HKUIDocument>("Element.Slider")
                                     .Q<Slider>("Slider")
                                     .value = saveData.SystemData.BgmVolume;
-                                var sfxVolumeSlider = optionsDocument
+                                optionsDocument
                                     .Q<HKUIDocument>("SfxVolume")
                                     .Q<HKUIDocument>("Area.Slider")
                                     .Q<HKUIDocument>("Element.Slider")
