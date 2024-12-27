@@ -114,5 +114,12 @@ namespace MH3
             Arms,
             Body,
         }
+
+        public enum WeaponType
+        {
+            Sword,
+            DualSword,
+            Blade,
+        }
     }
 }

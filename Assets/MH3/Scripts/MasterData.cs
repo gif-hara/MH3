@@ -108,19 +108,19 @@ namespace MH3
         [SerializeField]
         private SkillLevelValue.DictionaryList skillRewardUp;
         public SkillLevelValue.DictionaryList SkillRewardUp => skillRewardUp;
-        
+
         [SerializeField]
         private ArmorSpec.DictionaryList armorSpecs;
         public ArmorSpec.DictionaryList ArmorSpecs => armorSpecs;
-        
+
         [SerializeField]
         private ArmorDefense.Group armorDefenses;
         public ArmorDefense.Group ArmorDefenses => armorDefenses;
-        
+
         [SerializeField]
         private ArmorSkillCount.Group armorSkillCounts;
         public ArmorSkillCount.Group ArmorSkillCounts => armorSkillCounts;
-        
+
         [SerializeField]
         private ArmorSkill.Group armorSkills;
         public ArmorSkill.Group ArmorSkills => armorSkills;
@@ -251,8 +251,10 @@ namespace MH3
             public int Id;
 
             public string Name;
-            
+
             public string LocalizedName => Name.Localized();
+
+            public Define.WeaponType WeaponType;
 
             public string ModelDataId;
 
@@ -635,7 +637,7 @@ namespace MH3
             {
                 return TinyServiceLocator.Resolve<MasterData>().QuestRewards.Get(Id);
             }
-            
+
             public ActorSpec GetEnemyActorSpec()
             {
                 return TinyServiceLocator.Resolve<MasterData>().ActorSpecs.Get(EnemyActorSpecId);
@@ -670,7 +672,7 @@ namespace MH3
             }
 
             int IRewardBlueprint.Id => RewardId;
-            
+
             Define.RewardType IRewardBlueprint.Type => RewardType;
         }
 
@@ -680,7 +682,7 @@ namespace MH3
             public int Id;
 
             public string Name;
-            
+
             public string LocalizedName => Name.Localized();
 
             public int Slot;
@@ -788,35 +790,35 @@ namespace MH3
         public class ArmorSpec
         {
             public int Id;
-            
+
             public string Name;
-            
+
             public string LocalizedName => Name.Localized();
 
             public string ModelDataId;
-            
+
             public Define.ArmorType ArmorType;
-            
+
             public ArmorModelData ModelData;
-            
+
             public List<ArmorDefense> GetDefenses()
             {
                 TinyServiceLocator.Resolve<MasterData>().ArmorDefenses.TryGetValue(Id, out var defenses);
                 return defenses;
             }
-            
+
             public List<ArmorSkillCount> GetSkillCounts()
             {
                 TinyServiceLocator.Resolve<MasterData>().ArmorSkillCounts.TryGetValue(Id, out var skillCounts);
                 return skillCounts;
             }
-            
+
             public List<ArmorSkill> GetSkills()
             {
                 TinyServiceLocator.Resolve<MasterData>().ArmorSkills.TryGetValue(Id, out var skills);
                 return skills;
             }
-            
+
             [Serializable]
             public class DictionaryList : DictionaryList<int, ArmorSpec>
             {
@@ -832,11 +834,11 @@ namespace MH3
             public int Id;
 
             public int Defense;
-            
+
             public Define.RareType RareType;
-            
+
             public int Weight;
-            
+
             [Serializable]
             public class Group : Group<int, ArmorDefense>
             {
@@ -852,11 +854,11 @@ namespace MH3
             public int Id;
 
             public int Count;
-            
+
             public Define.RareType RareType;
-            
+
             public int Weight;
-            
+
             [Serializable]
             public class Group : Group<int, ArmorSkillCount>
             {
@@ -865,20 +867,20 @@ namespace MH3
                 }
             }
         }
-        
+
         [Serializable]
         public class ArmorSkill
         {
             public int Id;
 
             public Define.SkillType SkillType;
-            
+
             public int Level;
-            
+
             public Define.RareType RareType;
-            
+
             public int Weight;
-            
+
             [Serializable]
             public class Group : Group<int, ArmorSkill>
             {
