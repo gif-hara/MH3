@@ -280,6 +280,31 @@ MonoBehaviour:
     m_GlyphIndex: 39
     m_Scale: 1
     m_Name: DualShockGamepad-start
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 40
+    m_Scale: 1
+    m_Name: DualShockGamepad-leftStick
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 41
+    m_Scale: 1
+    m_Name: TMP_Sprite_0
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 42
+    m_Scale: 1
+    m_Name: TMP_Sprite_1
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 43
+    m_Scale: 1
+    m_Name: XInputController-leftStick
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 44
+    m_Scale: 1
+    m_Name: XInputController-start
   m_GlyphTable:
   - m_Index: 0
     m_Metrics:
@@ -786,7 +811,7 @@ MonoBehaviour:
       m_HorizontalAdvance: 128
     m_GlyphRect:
       m_X: 128
-      m_Y: 1536
+      m_Y: 1537
       m_Width: 128
       m_Height: 128
     m_Scale: 1
@@ -850,7 +875,7 @@ MonoBehaviour:
       m_HorizontalAdvance: 128
     m_GlyphRect:
       m_X: 640
-      m_Y: 1536
+      m_Y: 1537
       m_Width: 128
       m_Height: 128
     m_Scale: 1
@@ -921,5 +946,85 @@ MonoBehaviour:
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
     sprite: {fileID: 1181752254, guid: f252ef72559fa634dae0b9f1403686a5, type: 3}
+  - m_Index: 40
+    m_Metrics:
+      m_Width: 128
+      m_Height: 128
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 128
+    m_GlyphRect:
+      m_X: 1280
+      m_Y: 1792
+      m_Width: 128
+      m_Height: 128
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: 243383791, guid: f252ef72559fa634dae0b9f1403686a5, type: 3}
+  - m_Index: 41
+    m_Metrics:
+      m_Width: 128
+      m_Height: 128
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 128
+    m_GlyphRect:
+      m_X: 1152
+      m_Y: 1536
+      m_Width: 128
+      m_Height: 128
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -1347529824, guid: f252ef72559fa634dae0b9f1403686a5, type: 3}
+  - m_Index: 42
+    m_Metrics:
+      m_Width: 128
+      m_Height: 128
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 128
+    m_GlyphRect:
+      m_X: 1280
+      m_Y: 1536
+      m_Width: 128
+      m_Height: 128
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -2039965876, guid: f252ef72559fa634dae0b9f1403686a5, type: 3}
+  - m_Index: 43
+    m_Metrics:
+      m_Width: 128
+      m_Height: 128
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 128
+    m_GlyphRect:
+      m_X: 1280
+      m_Y: 1664
+      m_Width: 128
+      m_Height: 128
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: 2073132886, guid: f252ef72559fa634dae0b9f1403686a5, type: 3}
+  - m_Index: 44
+    m_Metrics:
+      m_Width: 128
+      m_Height: 128
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 100
+      m_HorizontalAdvance: 128
+    m_GlyphRect:
+      m_X: 1152
+      m_Y: 1664
+      m_Width: 128
+      m_Height: 128
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -1723701282, guid: f252ef72559fa634dae0b9f1403686a5, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []

@@ -680,7 +680,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 1536
+        y: 1537
         width: 128
         height: 128
       alignment: 0
@@ -768,7 +768,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 1536
+        y: 1537
         width: 128
         height: 128
       alignment: 0
@@ -992,7 +992,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1001,6 +1001,116 @@ TextureImporter:
       bones: []
       spriteID: 02926ef42c4dabc49805c2069e4d3876
       internalID: 1181752254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: XInputController-start
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1664
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc983a06daee997499b27cd1d5735ffe
+      internalID: -1723701282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualShockGamepad-leftStick
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61db6e9c79ff5ee44b729ef32a37fc90
+      internalID: 243383791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: XInputController-leftStick
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1664
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02f9e3aee57c14d47ace8c8ab9fe1fde
+      internalID: 2073132886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TMP_Sprite_0
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1536
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bcdcf12d89610a45867811afa66b1ef
+      internalID: -1347529824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TMP_Sprite_1
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 464a4c9b86cad8844803f6a6466f7e35
+      internalID: -2039965876
       vertices: []
       indices: 
       edges: []
@@ -1028,6 +1138,7 @@ TextureImporter:
       DualShockGamepad-dpad-right: -838916897
       DualShockGamepad-dpad-up: -1291347943
       DualShockGamepad-leftShoulder: -1249346701
+      DualShockGamepad-leftStick: 243383791
       DualShockGamepad-rightShoulder: -1720497351
       DualShockGamepad-start: 1181752254
       Keyboard-backspace: 1855201776
@@ -1043,6 +1154,8 @@ TextureImporter:
       Keyboard-t: 110181661
       Keyboard-upArrow: 871192529
       SwitchProController-buttonSouth: -2039786858
+      TMP_Sprite_0: -1347529824
+      TMP_Sprite_1: -2039965876
       TMP_Sprite_21: -208855279
       TMP_Sprite_22: -1337858512
       TMP_Sprite_23: -175046112
@@ -1058,7 +1171,9 @@ TextureImporter:
       XInputController-dpad-right: -60466587
       XInputController-dpad-up: 1125502780
       XInputController-leftShoulder: -188314015
+      XInputController-leftStick: 2073132886
       XInputController-rightShoulder: 138978868
+      XInputController-start: -1723701282
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
