@@ -85,6 +85,9 @@ namespace MH3
         [SerializeField]
         private HKUIDocument optionsSoundsDocumentPrefab;
 
+        [SerializeField]
+        private HKUIDocument inputGuideDocumentPrefab;
+
         private Actor player;
 
         private Actor enemy;
@@ -121,8 +124,11 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(new UIViewNotificationCenter(notificationCenterDocumentPrefab, destroyCancellationToken), destroyCancellationToken).Forget();
             gameCameraController = Instantiate(gameCameraControllerPrefab);
             TinyServiceLocator.RegisterAsync(gameCameraController, destroyCancellationToken).Forget();
+            TinyServiceLocator.RegisterAsync(new InputScheme(destroyCancellationToken), destroyCancellationToken).Forget();
             var uiViewTransition = new UIViewTransition(transitionDocumentPrefab, destroyCancellationToken);
             TinyServiceLocator.RegisterAsync(uiViewTransition, destroyCancellationToken).Forget();
+            var uiViewInputGuide = new UIViewInputGuide(inputGuideDocumentPrefab, destroyCancellationToken);
+            TinyServiceLocator.RegisterAsync(uiViewInputGuide, destroyCancellationToken).Forget();
             var containsSaveData = SaveSystem.Contains(SaveData.Path);
             var saveData = containsSaveData ? SaveSystem.Load<SaveData>(SaveData.Path) : new SaveData();
             if (!containsSaveData)
@@ -154,6 +160,12 @@ namespace MH3
             player.SpecController.ActorName = playerName;
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
             player.SpecController.ChangeInstanceWeapon(userData.GetEquippedInstanceWeapon());
+            uiViewInputGuide.Push(() => string.Format(
+                "{0}:攻撃 {1}:回避 {2}:メニュー",
+                InputSprite.GetTag(inputController.Actions.Player.Attack),
+                InputSprite.GetTag(inputController.Actions.Player.Dodge),
+                InputSprite.GetTag(inputController.Actions.Player.PauseMenu)
+                ), destroyCancellationToken);
             player.SpecController.SetArmorId(Define.ArmorType.Head, userData.GetEquippedInstanceArmor(Define.ArmorType.Head)?.ArmorId ?? 0);
             player.SpecController.SetArmorId(Define.ArmorType.Arms, userData.GetEquippedInstanceArmor(Define.ArmorType.Arms)?.ArmorId ?? 0);
             player.SpecController.SetArmorId(Define.ArmorType.Body, userData.GetEquippedInstanceArmor(Define.ArmorType.Body)?.ArmorId ?? 0);
