@@ -161,7 +161,8 @@ namespace MH3
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
             player.SpecController.ChangeInstanceWeapon(userData.GetEquippedInstanceWeapon());
             uiViewInputGuide.Push(() => string.Format(
-                "{0}:攻撃 {1}:回避 {2}:メニュー",
+                "{0}:移動 {1}:攻撃 {2}:回避 {3}:メニュー".Localized(),
+                InputSprite.GetTag(inputController.Actions.Player.Move),
                 InputSprite.GetTag(inputController.Actions.Player.Attack),
                 InputSprite.GetTag(inputController.Actions.Player.Dodge),
                 InputSprite.GetTag(inputController.Actions.Player.PauseMenu)
