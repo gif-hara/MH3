@@ -680,7 +680,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 1537
+        y: 1536
         width: 128
         height: 128
       alignment: 0
@@ -1014,7 +1014,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1036,7 +1036,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1058,7 +1058,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1080,7 +1080,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1102,7 +1102,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1111,6 +1111,138 @@ TextureImporter:
       bones: []
       spriteID: 464a4c9b86cad8844803f6a6466f7e35
       internalID: -2039965876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keyboard-w
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1920
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 467f38e2a63f73e44a98b0af5cbdfd84
+      internalID: -682623457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keyboard-a
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1920
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29e5e2a27703ac24393bd839176e92fa
+      internalID: 1722181907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keyboard-s
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1920
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9338630f6a29ad74cb9446fcd7710e2b
+      internalID: -443404574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keyboard-d
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1920
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4840d88c22ab6aa4ea2c7f35bdf3f2e5
+      internalID: -1321517653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mouse-leftButton
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1408
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e40ceee24a46e4ca781e4fb0979a91
+      internalID: -1874922145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keyboard-space
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1408
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c539e5407594686488163d56266d2d0c
+      internalID: -390378071
       vertices: []
       indices: 
       edges: []
@@ -1141,7 +1273,9 @@ TextureImporter:
       DualShockGamepad-leftStick: 243383791
       DualShockGamepad-rightShoulder: -1720497351
       DualShockGamepad-start: 1181752254
+      Keyboard-a: 1722181907
       Keyboard-backspace: 1855201776
+      Keyboard-d: -1321517653
       Keyboard-downArrow: 1523266417
       Keyboard-e: 960335720
       Keyboard-enter: 1191674108
@@ -1150,9 +1284,13 @@ TextureImporter:
       Keyboard-m: 184501723
       Keyboard-q: -585007666
       Keyboard-rightArrow: -447656018
+      Keyboard-s: -443404574
       Keyboard-shift: 955303962
+      Keyboard-space: -390378071
       Keyboard-t: 110181661
       Keyboard-upArrow: 871192529
+      Keyboard-w: -682623457
+      Mouse-leftButton: -1874922145
       SwitchProController-buttonSouth: -2039786858
       TMP_Sprite_0: -1347529824
       TMP_Sprite_1: -2039965876
