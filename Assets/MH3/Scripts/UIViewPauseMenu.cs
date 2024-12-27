@@ -36,6 +36,13 @@ namespace MH3
             var stateMachine = new TinyStateMachine();
             var inputController = TinyServiceLocator.Resolve<InputController>();
             inputController.PushActionType(InputController.InputActionType.UI);
+            var uiViewInputGuide = TinyServiceLocator.Resolve<UIViewInputGuide>();
+            uiViewInputGuide.Push(() => string.Format(
+                "{0}:選択 {1}:決定 {2}:キャンセル",
+                InputSprite.GetTag(inputController.Actions.UI.Navigate),
+                InputSprite.GetTag(inputController.Actions.UI.Submit),
+                InputSprite.GetTag(inputController.Actions.UI.Cancel)
+                ).Localized(), pauseMenuScope.Token);
             InstanceWeapon selectedInstanceWeapon = null;
             Define.ArmorType selectedArmorType = Define.ArmorType.Head;
             HKUIDocument optionsListDocument = null;
@@ -795,7 +802,7 @@ namespace MH3
                 masterVolumeSlider.value = saveData.SystemData.MasterVolume;
                 bgmVolumeSlider.value = saveData.SystemData.BgmVolume;
                 sfxVolumeSlider.value = saveData.SystemData.SfxVolume;
-                
+
                 inputController.Actions.UI.Navigate.OnPerformedAsObservable()
                     .Subscribe(context =>
                     {
