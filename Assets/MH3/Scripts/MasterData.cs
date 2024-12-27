@@ -251,6 +251,8 @@ namespace MH3
             public int Id;
 
             public string Name;
+            
+            public string LocalizedName => Name.Localized();
 
             public string ModelDataId;
 
@@ -500,6 +502,8 @@ namespace MH3
 
             public string Name;
 
+            public string LocalizedName => Name.Localized();
+
             public Define.ActorType ActorType;
 
             public int HitPoint;
@@ -676,6 +680,8 @@ namespace MH3
             public int Id;
 
             public string Name;
+            
+            public string LocalizedName => Name.Localized();
 
             public int Slot;
 
@@ -784,6 +790,8 @@ namespace MH3
             public int Id;
             
             public string Name;
+            
+            public string LocalizedName => Name.Localized();
 
             public string ModelDataId;
             

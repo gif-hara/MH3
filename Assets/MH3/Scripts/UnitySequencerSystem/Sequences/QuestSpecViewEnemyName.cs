@@ -20,7 +20,7 @@ namespace MH3
         {
             var questSpec = container.Resolve<MasterData.QuestSpec>(questSpecKey);
             var actorSpec = questSpec.GetEnemyActorSpec();
-            text.text = actorSpec.Name;
+            text.text = actorSpec.LocalizedName;
             return UniTask.CompletedTask;
         }
     }

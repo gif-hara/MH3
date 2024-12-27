@@ -22,7 +22,7 @@ namespace MH3
             var actor = actorResolver.Resolve(container);
             if (actor.SpecController.ElementAttackType == Define.ElementType.None)
             {
-                text.text = "なし";
+                text.text = "なし".Localized();
             }
             else
             {

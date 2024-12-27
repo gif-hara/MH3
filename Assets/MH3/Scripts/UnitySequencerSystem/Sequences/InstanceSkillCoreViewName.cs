@@ -19,7 +19,7 @@ namespace MH3
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var instanceSkillCore = container.Resolve<InstanceSkillCore>(instanceSkillCoreKey);
-            text.text = instanceSkillCore.SkillCoreSpec.Name;
+            text.text = instanceSkillCore.SkillCoreSpec.LocalizedName;
             return UniTask.CompletedTask;
         }
     }

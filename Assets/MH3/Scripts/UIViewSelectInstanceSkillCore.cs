@@ -29,7 +29,7 @@ namespace MH3
                 instanceSkillCores
                     .Select(x => new Action<HKUIDocument>(document =>
                     {
-                        UIViewList.ApplyAsSimpleElement(document, x.SkillCoreSpec.Name, _ =>
+                        UIViewList.ApplyAsSimpleElement(document, x.SkillCoreSpec.LocalizedName, _ =>
                         {
                             onClickAction(x);
                         },

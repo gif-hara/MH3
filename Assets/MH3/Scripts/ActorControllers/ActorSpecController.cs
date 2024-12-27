@@ -108,7 +108,7 @@ namespace MH3.ActorControllers
         {
             this.actor = actor;
             this.spec = spec;
-            ActorName = spec.Name;
+            ActorName = spec.LocalizedName;
             hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
             hitPoint.Value = spec.HitPoint;
             attack.RegisterBasics("Spec", () => spec.Attack);

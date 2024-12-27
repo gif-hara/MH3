@@ -21,7 +21,7 @@ namespace MH3
             var instanceWeapon = container.Resolve<InstanceWeapon>(instanceWeaponKey);
             if (instanceWeapon.ElementType == Define.ElementType.None)
             {
-                text.text = "なし";
+                text.text = "なし".Localized();
             }
             else
             {

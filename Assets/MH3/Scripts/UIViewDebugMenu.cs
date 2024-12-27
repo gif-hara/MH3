@@ -67,7 +67,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                "クエスト",
+                                "クエスト".Localized(),
                                 _ =>
                                 {
                                     stateMachine.Change(StateQuest);
@@ -77,7 +77,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                "武器作成",
+                                "武器作成".Localized(),
                                 _ =>
                                 {
                                     stateMachine.Change(StateCreateInstanceWeapon);
@@ -87,7 +87,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                "防具作成",
+                                "防具作成".Localized(),
                                 _ =>
                                 {
                                     stateMachine.Change(StateCreateInstanceArmor);
@@ -97,7 +97,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                "スキルコア作成",
+                                "スキルコア作成".Localized(),
                                 _ =>
                                 {
                                     stateMachine.Change(StateCreateInstanceSkillCore);
@@ -107,7 +107,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                "チェック",
+                                "チェック".Localized(),
                                 _ =>
                                 {
                                     stateMachine.Change(StateCheck);
@@ -117,7 +117,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                "閉じる",
+                                "閉じる".Localized(),
                                 _ =>
                                 {
                                     debugMenuScope.Dispose();
@@ -144,7 +144,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                "無敵トグル.プレイヤー",
+                                "無敵トグル.プレイヤー".Localized(),
                                 _ =>
                                 {
                                     debugData.InvinciblePlayer = !debugData.InvinciblePlayer;
@@ -155,7 +155,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                "無敵トグル.エネミー",
+                                "無敵トグル.エネミー".Localized(),
                                 _ =>
                                 {
                                     debugData.InvincibleEnemy = !debugData.InvincibleEnemy;
@@ -166,7 +166,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                "ダメージゼロ.プレイヤー",
+                                "ダメージゼロ.プレイヤー".Localized(),
                                 _ =>
                                 {
                                     debugData.DamageZeroPlayer = !debugData.DamageZeroPlayer;
@@ -177,7 +177,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                "ダメージゼロ.エネミー",
+                                "ダメージゼロ.エネミー".Localized(),
                                 _ =>
                                 {
                                     debugData.DamageZeroEnemy = !debugData.DamageZeroEnemy;
@@ -188,7 +188,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                "瀕死.プレイヤー",
+                                "瀕死.プレイヤー".Localized(),
                                 _ =>
                                 {
                                     player.SpecController.SetHitPointDebug(1);
@@ -199,7 +199,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                "瀕死.エネミー",
+                                "瀕死.エネミー".Localized(),
                                 _ =>
                                 {
                                     enemy.SpecController.SetHitPointDebug(1);
@@ -210,7 +210,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                "強制怯み.プレイヤー",
+                                "強制怯み.プレイヤー".Localized(),
                                 _ =>
                                 {
                                     debugData.ForceFlinchSmallPlayer = !debugData.ForceFlinchSmallPlayer;
@@ -221,7 +221,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                "強制怯み.エネミー",
+                                "強制怯み.エネミー".Localized(),
                                 _ =>
                                 {
                                     debugData.ForceFlinchSmallEnemy = !debugData.ForceFlinchSmallEnemy;
@@ -275,7 +275,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                $"{x.Id}: {x.Name}",
+                                $"{x.Id}: {x.LocalizedName}",
                                 _ =>
                                 {
                                     var userData = TinyServiceLocator.Resolve<UserData>();
@@ -303,7 +303,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                $"{x.Id}: {x.Name}",
+                                $"{x.Id}: {x.LocalizedName}",
                                 _ =>
                                 {
                                     var userData = TinyServiceLocator.Resolve<UserData>();
@@ -331,7 +331,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                $"{x.Id}: {x.Name}",
+                                $"{x.Id}: {x.LocalizedName}",
                                 _ =>
                                 {
                                     var userData = TinyServiceLocator.Resolve<UserData>();

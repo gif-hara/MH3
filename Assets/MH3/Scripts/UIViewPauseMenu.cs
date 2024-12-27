@@ -6,7 +6,6 @@ using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
 using R3;
-using R3.Triggers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -67,7 +66,7 @@ namespace MH3
 
             async UniTask StateHomeRoot(CancellationToken scope)
             {
-                SetHeaderText("ホームメニュー");
+                SetHeaderText("ホームメニュー".Localized());
                 var actorSpecStatusDocument = UnityEngine.Object.Instantiate(actorSpecStatusDocumentPrefab);
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
@@ -75,60 +74,60 @@ namespace MH3
                     {
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "クエスト選択", _ => stateMachine.Change(StateSelectQuest));
+                            UIViewList.ApplyAsSimpleElement(document, "クエスト選択".Localized(), _ => stateMachine.Change(StateSelectQuest));
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "武器変更", _ =>
+                            UIViewList.ApplyAsSimpleElement(document, "武器変更".Localized(), _ =>
                             {
                                 stateMachine.Change(StateChangeInstanceWeapon);
                             });
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "防具変更", _ =>
+                            UIViewList.ApplyAsSimpleElement(document, "防具変更".Localized(), _ =>
                             {
                                 stateMachine.Change(StateChangeInstanceArmorRoot);
                             });
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "スキルコア装着", _ =>
+                            UIViewList.ApplyAsSimpleElement(document, "スキルコア装着".Localized(), _ =>
                             {
                                 stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
                             });
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "武器削除", _ =>
+                            UIViewList.ApplyAsSimpleElement(document, "武器削除".Localized(), _ =>
                             {
                                 stateMachine.Change(StateRemoveInstanceWeapon);
                             });
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "防具削除", _ =>
+                            UIViewList.ApplyAsSimpleElement(document, "防具削除".Localized(), _ =>
                             {
                                 stateMachine.Change(StateRemoveInstanceArmor);
                             });
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "スキルコア削除", _ =>
+                            UIViewList.ApplyAsSimpleElement(document, "スキルコア削除".Localized(), _ =>
                             {
                                 stateMachine.Change(StateRemoveInstanceSkillCore);
                             });
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "オプション", _ =>
+                            UIViewList.ApplyAsSimpleElement(document, "オプション".Localized(), _ =>
                             {
                                 stateMachine.Change(StateOptionsRoot);
                             });
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "閉じる", _ => pauseMenuScope.Dispose());
+                            UIViewList.ApplyAsSimpleElement(document, "閉じる".Localized(), _ => pauseMenuScope.Dispose());
                         },
                     },
                     0
@@ -154,14 +153,14 @@ namespace MH3
 
             async UniTask StateQuestRoot(CancellationToken scope)
             {
-                SetHeaderText("クエストメニュー");
+                SetHeaderText("クエストメニュー".Localized());
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     new List<Action<HKUIDocument>>
                     {
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "ホームに戻る", _ =>
+                            UIViewList.ApplyAsSimpleElement(document, "ホームに戻る".Localized(), _ =>
                             {
                                 gameSceneController.SetupHomeQuestAsync();
                                 pauseMenuScope.Dispose();
@@ -169,7 +168,7 @@ namespace MH3
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "閉じる", _ => pauseMenuScope.Dispose());
+                            UIViewList.ApplyAsSimpleElement(document, "閉じる".Localized(), _ => pauseMenuScope.Dispose());
                         },
                     },
                     0
@@ -186,7 +185,7 @@ namespace MH3
             {
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var questSpecStatusDocument = UnityEngine.Object.Instantiate(questSpecStatusDocumentPrefab);
-                SetHeaderText("クエスト選択");
+                SetHeaderText("クエスト選択".Localized());
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     TinyServiceLocator.Resolve<MasterData>().QuestSpecs.List
@@ -223,7 +222,7 @@ namespace MH3
 
             async UniTask StateChangeInstanceWeapon(CancellationToken scope)
             {
-                SetHeaderText("武器変更");
+                SetHeaderText("武器変更".Localized());
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
                 var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
@@ -233,13 +232,13 @@ namespace MH3
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
                             var header = userData.EquippedInstanceWeaponId == x.InstanceId
-                                ? $"[E] {x.WeaponSpec.Name}"
-                                : x.WeaponSpec.Name;
+                                ? $"[E] {x.WeaponSpec.LocalizedName}"
+                                : x.WeaponSpec.LocalizedName;
                             UIViewList.ApplyAsSimpleElement(document, header, _ =>
                                 {
                                     if (userData.EquippedInstanceWeaponId == x.InstanceId)
                                     {
-                                        TinyServiceLocator.Resolve<UIViewNotificationCenter>().BeginOneShotAsync("既に装備しています").Forget();
+                                        TinyServiceLocator.Resolve<UIViewNotificationCenter>().BeginOneShotAsync("既に装備しています".Localized()).Forget();
                                         return;
                                     }
                                     userData.EquippedInstanceWeaponId = x.InstanceId;
@@ -267,14 +266,14 @@ namespace MH3
 
             async UniTask StateChangeInstanceArmorRoot(CancellationToken scope)
             {
-                SetHeaderText("防具変更");
+                SetHeaderText("防具変更".Localized());
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     new List<Action<HKUIDocument>>
                     {
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "頭", _ =>
+                            UIViewList.ApplyAsSimpleElement(document, "頭".Localized(), _ =>
                             {
                                 selectedArmorType = Define.ArmorType.Head;
                                 stateMachine.Change(StateChangeInstanceArmor);
@@ -282,7 +281,7 @@ namespace MH3
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "腕", _ =>
+                            UIViewList.ApplyAsSimpleElement(document, "腕".Localized(), _ =>
                             {
                                 selectedArmorType = Define.ArmorType.Arms;
                                 stateMachine.Change(StateChangeInstanceArmor);
@@ -290,7 +289,7 @@ namespace MH3
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "胴", _ =>
+                            UIViewList.ApplyAsSimpleElement(document, "胴".Localized(), _ =>
                             {
                                 selectedArmorType = Define.ArmorType.Body;
                                 stateMachine.Change(StateChangeInstanceArmor);
@@ -319,8 +318,8 @@ namespace MH3
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
                             var header = userData.GetEquippedInstanceArmor(selectedArmorType)?.InstanceId == x.InstanceId
-                                ? $"[E] {x.ArmorSpec.Name}"
-                                : x.ArmorSpec.Name;
+                                ? $"[E] {x.ArmorSpec.LocalizedName}"
+                                : x.ArmorSpec.LocalizedName;
                             UIViewList.ApplyAsSimpleElement(document, header, _ =>
                                 {
                                     var instanceId = userData.GetEquippedInstanceArmor(selectedArmorType)?.InstanceId ==
@@ -352,7 +351,7 @@ namespace MH3
 
             async UniTask StateRemoveInstanceWeapon(CancellationToken scope)
             {
-                SetHeaderText("武器削除");
+                SetHeaderText("武器削除".Localized());
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
                 var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
@@ -380,13 +379,13 @@ namespace MH3
                             .Where(x => x.InstanceId != userData.EquippedInstanceWeaponId)
                             .Select(x => new Action<HKUIDocument>(document =>
                             {
-                                UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.Name, async _ =>
+                                UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.LocalizedName, async _ =>
                                 {
                                     tempSelection = document.Q<Selectable>("Button");
                                     dialogScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
                                     var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
-                                        "本当に削除しますか？",
-                                        new List<string> { "はい", "いいえ" },
+                                        "本当に削除しますか？".Localized(),
+                                        new List<string> { "はい".Localized(), "いいえ".Localized() },
                                         0,
                                         1,
                                         dialogScope.Token
@@ -420,7 +419,7 @@ namespace MH3
 
             async UniTask StateRemoveInstanceArmor(CancellationToken scope)
             {
-                SetHeaderText("防具削除");
+                SetHeaderText("防具削除".Localized());
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var instanceArmorView = UnityEngine.Object.Instantiate(instanceArmorViewDocumentPrefab);
                 var instanceArmorSequences = instanceArmorView.Q<SequencesMonoBehaviour>("Sequences");
@@ -448,13 +447,13 @@ namespace MH3
                             .Where(x => x.ArmorSpec.ArmorType == selectedArmorType)
                             .Select(x => new Action<HKUIDocument>(document =>
                             {
-                                UIViewList.ApplyAsSimpleElement(document, x.ArmorSpec.Name, async _ =>
+                                UIViewList.ApplyAsSimpleElement(document, x.ArmorSpec.LocalizedName, async _ =>
                                 {
                                     tempSelection = document.Q<Selectable>("Button");
                                     dialogScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
                                     var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
-                                        "本当に削除しますか？",
-                                        new List<string> { "はい", "いいえ" },
+                                        "本当に削除しますか？".Localized(),
+                                        new List<string> { "はい".Localized(), "いいえ".Localized() },
                                         0,
                                         1,
                                         dialogScope.Token
@@ -495,7 +494,7 @@ namespace MH3
 
             async UniTask StateAddInstanceSkillCoreSelectInstanceWeapon(CancellationToken scope)
             {
-                SetHeaderText("スキルコア装着");
+                SetHeaderText("スキルコア装着".Localized());
                 var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
                 var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
                 var list = UIViewList.CreateWithPages(
@@ -503,11 +502,11 @@ namespace MH3
                     TinyServiceLocator.Resolve<UserData>().InstanceWeapons
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.Name, _ =>
+                            UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.LocalizedName, _ =>
                             {
                                 if (x.SkillSlot <= 0)
                                 {
-                                    TinyServiceLocator.Resolve<UIViewNotificationCenter>().BeginOneShotAsync("スキルスロットがありません").Forget();
+                                    TinyServiceLocator.Resolve<UIViewNotificationCenter>().BeginOneShotAsync("スキルスロットがありません".Localized()).Forget();
                                     return;
                                 }
                                 selectedInstanceWeapon = x;
@@ -536,7 +535,7 @@ namespace MH3
 
             async UniTask StateRemoveInstanceSkillCore(CancellationToken scope)
             {
-                SetHeaderText("スキルコア削除");
+                SetHeaderText("スキルコア削除".Localized());
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var instanceSkillCoreView = UnityEngine.Object.Instantiate(instanceSkillCoreViewDocumentPrefab);
                 var instanceSkillCoreSequences = instanceSkillCoreView.Q<SequencesMonoBehaviour>("Sequences");
@@ -554,14 +553,14 @@ namespace MH3
                         userData.InstanceSkillCores
                             .Select(x => new Action<HKUIDocument>(document =>
                             {
-                                var header = x.SkillCoreSpec.Name;
+                                var header = x.SkillCoreSpec.LocalizedName;
                                 UIViewList.ApplyAsSimpleElement(document, header, async _ =>
                                 {
                                     var tempSelection = document.Q<Button>("Button");
                                     dialogScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
                                     var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
-                                        "本当に削除しますか？",
-                                        new List<string> { "はい", "いいえ" },
+                                        "本当に削除しますか？".Localized(),
+                                        new List<string> { "はい".Localized(), "いいえ".Localized() },
                                         0,
                                         1,
                                         dialogScope.Token
@@ -574,8 +573,8 @@ namespace MH3
                                         {
                                             dialogScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
                                             result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
-                                                "武器に装着されてますが、本当に削除しますか？削除する場合、自動的に外れます",
-                                                new List<string> { "はい", "いいえ" },
+                                                "武器に装着されてますが、本当に削除しますか？削除する場合、自動的に外れます".Localized(),
+                                                new List<string> { "はい".Localized(), "いいえ".Localized() },
                                                 0,
                                                 1,
                                                 dialogScope.Token
@@ -637,8 +636,8 @@ namespace MH3
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
                             var header = selectedInstanceWeapon.InstanceSkillCoreIds.Contains(x.InstanceId)
-                                ? $"[E] {x.SkillCoreSpec.Name}"
-                                : x.SkillCoreSpec.Name;
+                                ? $"[E] {x.SkillCoreSpec.LocalizedName}"
+                                : x.SkillCoreSpec.LocalizedName;
                             UIViewList.ApplyAsSimpleElement(document, header, _ =>
                             {
                                 var userData = TinyServiceLocator.Resolve<UserData>();
@@ -650,7 +649,7 @@ namespace MH3
                                 {
                                     if (selectedInstanceWeapon.GetUsingSlotCount(userData.InstanceSkillCores) + x.Slot > selectedInstanceWeapon.SkillSlot)
                                     {
-                                        TinyServiceLocator.Resolve<UIViewNotificationCenter>().BeginOneShotAsync("スキルスロットが足りません").Forget();
+                                        TinyServiceLocator.Resolve<UIViewNotificationCenter>().BeginOneShotAsync("スキルスロットが足りません".Localized()).Forget();
                                         return;
                                     }
                                     selectedInstanceWeapon.AddInstanceSkillCoreId(x.InstanceId);
@@ -687,7 +686,7 @@ namespace MH3
 
             async UniTask StateOptionsRoot(CancellationToken scope)
             {
-                SetHeaderText("オプション");
+                SetHeaderText("オプション".Localized());
                 if (optionsListDocument == null)
                 {
                     optionsListDocument = UIViewList.CreateWithPages(
@@ -696,7 +695,7 @@ namespace MH3
                         {
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "サウンド", _ =>
+                            UIViewList.ApplyAsSimpleElement(document, "サウンド".Localized(), _ =>
                             {
                                 optionsListSelection = document.Q<Selectable>("Button");
                                 stateMachine.Change(StateOptionsSounds);
@@ -727,7 +726,7 @@ namespace MH3
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "戻る",
+                            UIViewList.ApplyAsSimpleElement(document, "戻る".Localized(),
                                 _ =>
                                 {
                                     optionsListDocument.DestroySafe();
@@ -758,7 +757,7 @@ namespace MH3
 
             async UniTask StateOptionsSounds(CancellationToken scope)
             {
-                SetHeaderText("サウンド設定");
+                SetHeaderText("サウンド設定".Localized());
                 var saveData = TinyServiceLocator.Resolve<SaveData>();
                 var audioManager = TinyServiceLocator.Resolve<AudioManager>();
                 var masterVolumeDocument = optionsDocument.Q<HKUIDocument>("MasterVolume");

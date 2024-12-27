@@ -30,18 +30,18 @@ namespace MH3
         {
             return self switch
             {
-                Define.SkillType.AttackUp => "攻撃力アップ",
-                Define.SkillType.CriticalUp => "会心率アップ",
-                Define.SkillType.DefenseUp => "防御力アップ",
-                Define.SkillType.PoisonUp => "毒属性値アップ",
-                Define.SkillType.ParalysisUp => "麻痺属性値アップ",
-                Define.SkillType.CollapseUp => "崩壊属性値アップ",
-                Define.SkillType.FireElementAttackUp => "火属性値アップ",
-                Define.SkillType.WaterElementAttackUp => "水属性値アップ",
-                Define.SkillType.GrassElementAttackUp => "草属性値アップ",
-                Define.SkillType.HealthUp => "体力アップ",
-                Define.SkillType.RecoveryCommandCountUp => "回復回数アップ",
-                Define.SkillType.RewardUp => "報酬アップ",
+                Define.SkillType.AttackUp => "攻撃力アップ".Localized(),
+                Define.SkillType.CriticalUp => "会心率アップ".Localized(),
+                Define.SkillType.DefenseUp => "防御力アップ".Localized(),
+                Define.SkillType.PoisonUp => "毒属性値アップ".Localized(),
+                Define.SkillType.ParalysisUp => "麻痺属性値アップ".Localized(),
+                Define.SkillType.CollapseUp => "崩壊属性値アップ".Localized(),
+                Define.SkillType.FireElementAttackUp => "火属性値アップ".Localized(),
+                Define.SkillType.WaterElementAttackUp => "水属性値アップ".Localized(),
+                Define.SkillType.GrassElementAttackUp => "草属性値アップ".Localized(),
+                Define.SkillType.HealthUp => "体力アップ".Localized(),
+                Define.SkillType.RecoveryCommandCountUp => "回復回数アップ".Localized(),
+                Define.SkillType.RewardUp => "報酬アップ".Localized(),
                 _ => throw new System.NotImplementedException($"未対応のスキルタイプです {self}"),
             };
         }
@@ -67,9 +67,9 @@ namespace MH3
         {
             return self switch
             {
-                Define.AbnormalStatusType.Poison => "毒",
-                Define.AbnormalStatusType.Paralysis => "麻痺",
-                Define.AbnormalStatusType.Collapse => "崩壊",
+                Define.AbnormalStatusType.Poison => "毒".Localized(),
+                Define.AbnormalStatusType.Paralysis => "麻痺".Localized(),
+                Define.AbnormalStatusType.Collapse => "崩壊".Localized(),
                 _ => throw new NotImplementedException($"未対応の異常状態です {self}"),
             };
         }
@@ -78,9 +78,9 @@ namespace MH3
         {
             return self switch
             {
-                Define.ElementType.Fire => "火",
-                Define.ElementType.Water => "水",
-                Define.ElementType.Grass => "草",
+                Define.ElementType.Fire => "火".Localized(),
+                Define.ElementType.Water => "水".Localized(),
+                Define.ElementType.Grass => "草".Localized(),
                 _ => throw new NotImplementedException($"未対応の属性です {self}"),
             };
         }

@@ -10,11 +10,11 @@ namespace MH3
             return self.Type switch
             {
                 Define.RewardType.InstanceWeapon =>
-                    TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(self.Id).Name,
+                    TinyServiceLocator.Resolve<MasterData>().WeaponSpecs.Get(self.Id).LocalizedName,
                 Define.RewardType.InstanceSkillCore =>
-                    TinyServiceLocator.Resolve<MasterData>().SkillCoreSpecs.Get(self.Id).Name,
+                    TinyServiceLocator.Resolve<MasterData>().SkillCoreSpecs.Get(self.Id).LocalizedName,
                 Define.RewardType.InstanceArmor =>
-                    TinyServiceLocator.Resolve<MasterData>().ArmorSpecs.Get(self.Id).Name,
+                    TinyServiceLocator.Resolve<MasterData>().ArmorSpecs.Get(self.Id).LocalizedName,
                 _ => throw new ArgumentOutOfRangeException($"未対応のタイプです {self.Type}")
             };
         }
