@@ -16,6 +16,7 @@ MonoBehaviour:
     list:
     - Id: 10101
       Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u5263"
+      WeaponType: 0
       ModelDataId: Sword.1
       ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
@@ -29,6 +30,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10102
       Name: "\u30C6\u30B9\u30C8\u306E\u5263"
+      WeaponType: 0
       ModelDataId: Sword.1
       ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
@@ -42,6 +44,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10103
       Name: "\u706B\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
+      WeaponType: 0
       ModelDataId: Sword.1
       ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
@@ -55,6 +58,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10104
       Name: "\u6C34\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
+      WeaponType: 0
       ModelDataId: Sword.1
       ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
@@ -68,6 +72,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10105
       Name: "\u8349\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
+      WeaponType: 0
       ModelDataId: Sword.1
       ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
@@ -81,6 +86,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10106
       Name: "\u6BD2\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
+      WeaponType: 0
       ModelDataId: Sword.1
       ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
@@ -94,6 +100,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10107
       Name: "\u9EBB\u75FA\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
+      WeaponType: 0
       ModelDataId: Sword.1
       ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
@@ -107,6 +114,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10108
       Name: "\u5D29\u58CA\u5C5E\u6027\u30C6\u30B9\u30C8\u306E\u5263"
+      WeaponType: 0
       ModelDataId: Sword.1
       ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
@@ -120,6 +128,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10109
       Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0\u306E\u5263"
+      WeaponType: 0
       ModelDataId: Sword.1
       ComboId: 10102
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
@@ -133,6 +142,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10201
       Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u4E21\u624B\u5263"
+      WeaponType: 1
       ModelDataId: DualSword.1
       ComboId: 10201
       JustGuardAttackAnimationKey: 
@@ -146,6 +156,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10202
       Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0\u306E\u4E21\u624B\u5263"
+      WeaponType: 1
       ModelDataId: DualSword.1
       ComboId: 10201
       JustGuardAttackAnimationKey: 
@@ -159,6 +170,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10301
       Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u5927\u5263"
+      WeaponType: 2
       ModelDataId: Blade.1
       ComboId: 10301
       JustGuardAttackAnimationKey: 
@@ -172,6 +184,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10302
       Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0\u306E\u5927\u5263"
+      WeaponType: 2
       ModelDataId: Blade.1
       ComboId: 10301
       JustGuardAttackAnimationKey: 
@@ -185,6 +198,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20101
       Name: "\u6575\u6B66\u5668\uFF08\u76F4\u5263\uFF09"
+      WeaponType: 0
       ModelDataId: Sword.1
       ComboId: 20101
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
@@ -198,6 +212,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20201
       Name: "\u6575\u6B66\u5668\uFF08\u4E21\u624B\u5263\uFF09"
+      WeaponType: 1
       ModelDataId: DualSword.1
       ComboId: 20201
       JustGuardAttackAnimationKey: 
@@ -211,6 +226,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20301
       Name: "\u6575\u6B66\u5668\uFF08\u5927\u5263\uFF09"
+      WeaponType: 2
       ModelDataId: Blade.1
       ComboId: 20301
       JustGuardAttackAnimationKey: 
@@ -224,6 +240,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 19901
       Name: "\u6575\u6B66\u5668"
+      WeaponType: 0
       ModelDataId: Sword.1
       ComboId: 19901
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
@@ -237,6 +254,7 @@ MonoBehaviour:
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 19902
       Name: "\u6575\u6B66\u5668"
+      WeaponType: 0
       ModelDataId: Training.1
       ComboId: 20101
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
