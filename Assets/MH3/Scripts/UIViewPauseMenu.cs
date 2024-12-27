@@ -6,6 +6,7 @@ using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
 using R3;
+using R3.Triggers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -761,7 +762,7 @@ namespace MH3
                 var saveData = TinyServiceLocator.Resolve<SaveData>();
                 var audioManager = TinyServiceLocator.Resolve<AudioManager>();
                 var masterVolumeDocument = optionsDocument.Q<HKUIDocument>("MasterVolume");
-                var masterVolumeSelection = masterVolumeDocument
+                var masterVolumeSelectable = masterVolumeDocument
                     .Q<HKUIDocument>("Area.Button")
                     .Q<Selectable>("Button");
                 var masterVolumeSlider = masterVolumeDocument
@@ -769,7 +770,7 @@ namespace MH3
                     .Q<HKUIDocument>("Element.Slider")
                     .Q<Slider>("Slider");
                 var bgmVolumeDocument = optionsDocument.Q<HKUIDocument>("BgmVolume");
-                var bgmVolumeSelection = bgmVolumeDocument
+                var bgmVolumeSelectable = bgmVolumeDocument
                     .Q<HKUIDocument>("Area.Button")
                     .Q<Selectable>("Button");
                 var bgmVolumeSlider = bgmVolumeDocument
@@ -777,7 +778,7 @@ namespace MH3
                     .Q<HKUIDocument>("Element.Slider")
                     .Q<Slider>("Slider");
                 var sfxVolumeDocument = optionsDocument.Q<HKUIDocument>("SfxVolume");
-                var sfxVolumeSelection = sfxVolumeDocument
+                var sfxVolumeSelectable = sfxVolumeDocument
                     .Q<HKUIDocument>("Area.Button")
                     .Q<Selectable>("Button");
                 var sfxVolumeSlider = sfxVolumeDocument
@@ -786,16 +787,16 @@ namespace MH3
                     .Q<Slider>("Slider");
                 new[]
                 {
-                    masterVolumeSelection,
-                    bgmVolumeSelection,
-                    sfxVolumeSelection,
+                    masterVolumeSelectable,
+                    bgmVolumeSelectable,
+                    sfxVolumeSelectable,
                 }.SetNavigationVertical();
-                masterVolumeSelection.Select();
+                masterVolumeSelectable.Select();
 
                 masterVolumeSlider.value = saveData.SystemData.MasterVolume;
                 bgmVolumeSlider.value = saveData.SystemData.BgmVolume;
                 sfxVolumeSlider.value = saveData.SystemData.SfxVolume;
-
+                
                 inputController.Actions.UI.Navigate.OnPerformedAsObservable()
                     .Subscribe(context =>
                     {
@@ -807,19 +808,19 @@ namespace MH3
                         var addValue = value.x > 0 ? 0.1f : -0.1f;
                         switch (EventSystem.current.currentSelectedGameObject)
                         {
-                            case var x when x == masterVolumeSelection.gameObject:
+                            case var x when x == masterVolumeSelectable.gameObject:
                                 saveData.SystemData.MasterVolume = Mathf.Clamp(saveData.SystemData.MasterVolume + addValue, 0, 1);
                                 masterVolumeSlider.value = saveData.SystemData.MasterVolume;
                                 audioManager.SetVolumeMaster(saveData.SystemData.MasterVolume);
                                 SaveSystem.Save(saveData, SaveData.Path);
                                 break;
-                            case var x when x == bgmVolumeSelection.gameObject:
+                            case var x when x == bgmVolumeSelectable.gameObject:
                                 saveData.SystemData.BgmVolume = Mathf.Clamp(saveData.SystemData.BgmVolume + addValue, 0, 1);
                                 bgmVolumeSlider.value = saveData.SystemData.BgmVolume;
                                 audioManager.SetVolumeBgm(saveData.SystemData.BgmVolume);
                                 SaveSystem.Save(saveData, SaveData.Path);
                                 break;
-                            case var x when x == sfxVolumeSelection.gameObject:
+                            case var x when x == sfxVolumeSelectable.gameObject:
                                 saveData.SystemData.SfxVolume = Mathf.Clamp(saveData.SystemData.SfxVolume + addValue, 0, 1);
                                 sfxVolumeSlider.value = saveData.SystemData.SfxVolume;
                                 audioManager.SetVolumeSfx(saveData.SystemData.SfxVolume);
