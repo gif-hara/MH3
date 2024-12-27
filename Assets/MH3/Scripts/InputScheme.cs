@@ -1,4 +1,5 @@
 using System.Threading;
+using Cysharp.Threading.Tasks;
 using R3;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
@@ -35,7 +36,7 @@ namespace HK
         public InputScheme(CancellationToken scope)
         {
             InputSystem.onEvent += OnEvent;
-            scope.Register(() => InputSystem.onEvent -= OnEvent);
+            scope.RegisterWithoutCaptureExecutionContext(() => InputSystem.onEvent -= OnEvent);
         }
 
         private void OnEvent(InputEventPtr inputEventPtr, InputDevice inputDevice)
