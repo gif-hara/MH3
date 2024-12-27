@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
@@ -19,6 +20,11 @@ namespace MH3
             }
         }
 
+        public static void SetNavigationVertical(this IList<Button> self)
+        {
+            SetNavigationVertical((IList<Selectable>)self);
+        }
+
         public static void SetNavigationHorizontal(this IList<Selectable> self)
         {
             for (var i = 0; i < self.Count; i++)
@@ -31,6 +37,11 @@ namespace MH3
                 n.selectOnRight = right < self.Count ? self[right] : self[0];
                 self[i].navigation = n;
             }
+        }
+        
+        public static void SetNavigationHorizontal(this IList<Button> self)
+        {
+            SetNavigationHorizontal((IList<Selectable>)self);
         }
     }
 }

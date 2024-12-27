@@ -113,28 +113,7 @@ namespace MH3
                     }
                     elementIndex++;
                 }
-                for (var i = 0; i < buttons.Count; i++)
-                {
-                    var navigation = buttons[i].navigation;
-                    navigation.mode = Navigation.Mode.Explicit;
-                    if (i + 1 > buttons.Count - 1)
-                    {
-                        navigation.selectOnDown = buttons[0];
-                    }
-                    else
-                    {
-                        navigation.selectOnDown = buttons[i + 1];
-                    }
-                    if (i - 1 < 0)
-                    {
-                        navigation.selectOnUp = buttons[buttons.Count - 1];
-                    }
-                    else
-                    {
-                        navigation.selectOnUp = buttons[i - 1];
-                    }
-                    buttons[i].navigation = navigation;
-                }
+                buttons.SetNavigationVertical();
                 UpdatePage(pageIndex);
             }
             void UpdatePage(int index)
