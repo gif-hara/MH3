@@ -40,6 +40,10 @@ namespace MH3
                 })
                 .RegisterTo(inputSchemeScope.Token);
             }
+            else
+            {
+                document.Q<TMP_Text>("Text").text = textSelector();
+            }
             scope.RegisterWithoutCaptureExecutionContext(() =>
             {
                 textSelectors.Pop();
@@ -48,6 +52,10 @@ namespace MH3
                     inputSchemeScope.Dispose();
                     inputSchemeScope = null;
                     document.gameObject.SetActive(false);
+                }
+                else
+                {
+                    document.Q<TMP_Text>("Text").text = textSelectors.Peek()();
                 }
             });
         }
