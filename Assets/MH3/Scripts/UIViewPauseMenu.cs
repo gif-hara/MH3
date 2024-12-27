@@ -797,60 +797,34 @@ namespace MH3
                 sfxVolumeSlider.value = saveData.SystemData.SfxVolume;
 
                 inputController.Actions.UI.Navigate.OnPerformedAsObservable()
-                    .Subscribe(_ =>
+                    .Subscribe(context =>
                     {
-                        var value = _.ReadValue<Vector2>();
+                        var value = context.ReadValue<Vector2>();
                         if (value.x == 0)
                         {
                             return;
                         }
-                        if (value.x > 0)
+                        var addValue = value.x > 0 ? 0.1f : -0.1f;
+                        switch (EventSystem.current.currentSelectedGameObject)
                         {
-                            switch (EventSystem.current.currentSelectedGameObject)
-                            {
-                                case var x when x == masterVolumeSelection.gameObject:
-                                    saveData.SystemData.MasterVolume = Mathf.Clamp(saveData.SystemData.MasterVolume + 0.1f, 0, 1);
-                                    masterVolumeSlider.value = saveData.SystemData.MasterVolume;
-                                    audioManager.SetVolumeMaster(saveData.SystemData.MasterVolume);
-                                    SaveSystem.Save(saveData, SaveData.Path);
-                                    break;
-                                case var x when x == bgmVolumeSelection.gameObject:
-                                    saveData.SystemData.BgmVolume = Mathf.Clamp(saveData.SystemData.BgmVolume + 0.1f, 0, 1);
-                                    bgmVolumeSlider.value = saveData.SystemData.BgmVolume;
-                                    audioManager.SetVolumeBgm(saveData.SystemData.BgmVolume);
-                                    SaveSystem.Save(saveData, SaveData.Path);
-                                    break;
-                                case var x when x == sfxVolumeSelection.gameObject:
-                                    saveData.SystemData.SfxVolume = Mathf.Clamp(saveData.SystemData.SfxVolume + 0.1f, 0, 1);
-                                    sfxVolumeSlider.value = saveData.SystemData.SfxVolume;
-                                    audioManager.SetVolumeSfx(saveData.SystemData.SfxVolume);
-                                    SaveSystem.Save(saveData, SaveData.Path);
-                                    break;
-                            }
-                        }
-                        else
-                        {
-                            switch (EventSystem.current.currentSelectedGameObject)
-                            {
-                                case var x when x == masterVolumeSelection.gameObject:
-                                    saveData.SystemData.MasterVolume = Mathf.Clamp(saveData.SystemData.MasterVolume - 0.1f, 0, 1);
-                                    masterVolumeSlider.value = saveData.SystemData.MasterVolume;
-                                    audioManager.SetVolumeMaster(saveData.SystemData.MasterVolume);
-                                    SaveSystem.Save(saveData, SaveData.Path);
-                                    break;
-                                case var x when x == bgmVolumeSelection.gameObject:
-                                    saveData.SystemData.BgmVolume = Mathf.Clamp(saveData.SystemData.BgmVolume - 0.1f, 0, 1);
-                                    bgmVolumeSlider.value = saveData.SystemData.BgmVolume;
-                                    audioManager.SetVolumeBgm(saveData.SystemData.BgmVolume);
-                                    SaveSystem.Save(saveData, SaveData.Path);
-                                    break;
-                                case var x when x == sfxVolumeSelection.gameObject:
-                                    saveData.SystemData.SfxVolume = Mathf.Clamp(saveData.SystemData.SfxVolume - 0.1f, 0, 1);
-                                    sfxVolumeSlider.value = saveData.SystemData.SfxVolume;
-                                    audioManager.SetVolumeSfx(saveData.SystemData.SfxVolume);
-                                    SaveSystem.Save(saveData, SaveData.Path);
-                                    break;
-                            }
+                            case var x when x == masterVolumeSelection.gameObject:
+                                saveData.SystemData.MasterVolume = Mathf.Clamp(saveData.SystemData.MasterVolume + addValue, 0, 1);
+                                masterVolumeSlider.value = saveData.SystemData.MasterVolume;
+                                audioManager.SetVolumeMaster(saveData.SystemData.MasterVolume);
+                                SaveSystem.Save(saveData, SaveData.Path);
+                                break;
+                            case var x when x == bgmVolumeSelection.gameObject:
+                                saveData.SystemData.BgmVolume = Mathf.Clamp(saveData.SystemData.BgmVolume + addValue, 0, 1);
+                                bgmVolumeSlider.value = saveData.SystemData.BgmVolume;
+                                audioManager.SetVolumeBgm(saveData.SystemData.BgmVolume);
+                                SaveSystem.Save(saveData, SaveData.Path);
+                                break;
+                            case var x when x == sfxVolumeSelection.gameObject:
+                                saveData.SystemData.SfxVolume = Mathf.Clamp(saveData.SystemData.SfxVolume + addValue, 0, 1);
+                                sfxVolumeSlider.value = saveData.SystemData.SfxVolume;
+                                audioManager.SetVolumeSfx(saveData.SystemData.SfxVolume);
+                                SaveSystem.Save(saveData, SaveData.Path);
+                                break;
                         }
                     })
                     .RegisterTo(scope);
