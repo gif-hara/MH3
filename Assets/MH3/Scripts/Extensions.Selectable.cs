@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.UI;
 
 namespace MH3
@@ -22,7 +23,7 @@ namespace MH3
 
         public static void SetNavigationVertical(this IList<Button> self)
         {
-            SetNavigationVertical((IList<Selectable>)self);
+            SetNavigationVertical(self.Cast<Selectable>().ToList());
         }
 
         public static void SetNavigationHorizontal(this IList<Selectable> self)
@@ -38,7 +39,7 @@ namespace MH3
                 self[i].navigation = n;
             }
         }
-        
+
         public static void SetNavigationHorizontal(this IList<Button> self)
         {
             SetNavigationHorizontal((IList<Selectable>)self);
