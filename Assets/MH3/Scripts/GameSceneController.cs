@@ -162,7 +162,6 @@ namespace MH3
             player.SpecController.ChangeInstanceWeapon(userData.GetEquippedInstanceWeapon());
             uiViewInputGuide.Push(() =>
             {
-                Debug.Log(player.SpecController.WeaponSpec.WeaponType);
                 return player.SpecController.WeaponSpec.WeaponType switch
                 {
                     Define.WeaponType.Sword => string.Format(
