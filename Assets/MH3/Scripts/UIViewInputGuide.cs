@@ -51,7 +51,10 @@ namespace MH3
                 {
                     inputSchemeScope.Dispose();
                     inputSchemeScope = null;
-                    document.gameObject.SetActive(false);
+                    if (document != null)
+                    {
+                        document.gameObject.SetActive(false);
+                    }
                 }
                 else
                 {
