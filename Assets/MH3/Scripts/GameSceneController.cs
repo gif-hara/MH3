@@ -160,13 +160,38 @@ namespace MH3
             player.SpecController.ActorName = playerName;
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
             player.SpecController.ChangeInstanceWeapon(userData.GetEquippedInstanceWeapon());
-            uiViewInputGuide.Push(() => string.Format(
-                "{0}:移動 {1}:攻撃 {2}:回避 {3}:メニュー".Localized(),
-                InputSprite.GetTag(inputController.Actions.Player.Move),
-                InputSprite.GetTag(inputController.Actions.Player.Attack),
-                InputSprite.GetTag(inputController.Actions.Player.Dodge),
-                InputSprite.GetTag(inputController.Actions.Player.PauseMenu)
-                ), destroyCancellationToken);
+            uiViewInputGuide.Push(() =>
+            {
+                Debug.Log(player.SpecController.WeaponSpec.WeaponType);
+                return player.SpecController.WeaponSpec.WeaponType switch
+                {
+                    Define.WeaponType.Sword => string.Format(
+                        "{0}:移動 {1}:攻撃 {2}:回避 {3}:ガード {4}:メニュー".Localized(),
+                        InputSprite.GetTag(inputController.Actions.Player.Move),
+                        InputSprite.GetTag(inputController.Actions.Player.Attack),
+                        InputSprite.GetTag(inputController.Actions.Player.Dodge),
+                        InputSprite.GetTag(inputController.Actions.Player.Guard),
+                        InputSprite.GetTag(inputController.Actions.Player.PauseMenu)
+                        ),
+                    Define.WeaponType.DualSword => string.Format(
+                        "{0}:移動 {1}:攻撃 {2}:回避 {3}:研ぎ {4}:メニュー".Localized(),
+                        InputSprite.GetTag(inputController.Actions.Player.Move),
+                        InputSprite.GetTag(inputController.Actions.Player.Attack),
+                        InputSprite.GetTag(inputController.Actions.Player.Dodge),
+                        InputSprite.GetTag(inputController.Actions.Player.Guard),
+                        InputSprite.GetTag(inputController.Actions.Player.PauseMenu)
+                        ),
+                    Define.WeaponType.Blade => string.Format(
+                        "{0}:移動 {1}:攻撃 {2}:回避 {3}:我慢 {4}:メニュー".Localized(),
+                        InputSprite.GetTag(inputController.Actions.Player.Move),
+                        InputSprite.GetTag(inputController.Actions.Player.Attack),
+                        InputSprite.GetTag(inputController.Actions.Player.Dodge),
+                        InputSprite.GetTag(inputController.Actions.Player.Guard),
+                        InputSprite.GetTag(inputController.Actions.Player.PauseMenu)
+                        ),
+                    _ => string.Empty,
+                };
+            }, destroyCancellationToken);
             player.SpecController.SetArmorId(Define.ArmorType.Head, userData.GetEquippedInstanceArmor(Define.ArmorType.Head)?.ArmorId ?? 0);
             player.SpecController.SetArmorId(Define.ArmorType.Arms, userData.GetEquippedInstanceArmor(Define.ArmorType.Arms)?.ArmorId ?? 0);
             player.SpecController.SetArmorId(Define.ArmorType.Body, userData.GetEquippedInstanceArmor(Define.ArmorType.Body)?.ArmorId ?? 0);
