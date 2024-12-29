@@ -461,6 +461,7 @@ namespace MH3
                                     if (result == 0)
                                     {
                                         userData.RemoveInstanceWeapon(x);
+                                        SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                         CreateList();
                                     }
                                     else
@@ -540,6 +541,7 @@ namespace MH3
                                             actor.SpecController.BuildStatuses();
                                         }
                                         userData.RemoveInstanceArmor(x);
+                                        SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                         CreateList();
                                     }
                                     else
@@ -660,6 +662,7 @@ namespace MH3
                                             if (result == 0)
                                             {
                                                 userData.RemoveInstanceSkillCore(x);
+                                                SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                                 CreateList();
                                             }
                                             else
@@ -670,6 +673,7 @@ namespace MH3
                                         else
                                         {
                                             userData.RemoveInstanceSkillCore(x);
+                                            SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                             CreateList();
                                         }
                                     }
