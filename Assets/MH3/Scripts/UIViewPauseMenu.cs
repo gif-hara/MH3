@@ -270,11 +270,12 @@ namespace MH3
             {
                 SetHeaderText("武器変更".Localized());
                 var userData = TinyServiceLocator.Resolve<UserData>();
+                var instanceWeapons = userData.InstanceWeapons;
                 var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
                 var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
-                    userData.InstanceWeapons
+                    instanceWeapons
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
                             var header = userData.EquippedInstanceWeaponId == x.InstanceId
@@ -305,6 +306,8 @@ namespace MH3
                     .OnPerformedAsObservable()
                     .Subscribe(_ => stateMachine.Change(StateChangeEquipmentTypeRoot))
                     .RegisterTo(scope);
+                instanceWeaponView.Q("Area.Default").SetActive(instanceWeapons.Count > 0);
+                instanceWeaponView.Q("Area.Empty").SetActive(instanceWeapons.Count <= 0);
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
                 instanceWeaponView.DestroySafe();
@@ -315,10 +318,11 @@ namespace MH3
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var instanceArmorView = UnityEngine.Object.Instantiate(instanceArmorViewDocumentPrefab);
                 var instanceArmorSequences = instanceArmorView.Q<SequencesMonoBehaviour>("Sequences");
+                var instanceArmors = userData.InstanceArmors
+                    .Where(x => x.ArmorSpec.ArmorType == selectedArmorType);
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
-                    userData.InstanceArmors
-                        .Where(x => x.ArmorSpec.ArmorType == selectedArmorType)
+                    instanceArmors
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
                             var header = userData.GetEquippedInstanceArmor(selectedArmorType)?.InstanceId == x.InstanceId
@@ -348,6 +352,8 @@ namespace MH3
                     .OnPerformedAsObservable()
                     .Subscribe(_ => stateMachine.Change(StateChangeEquipmentTypeRoot))
                     .RegisterTo(scope);
+                instanceArmorView.Q("Area.Default").SetActive(instanceArmors.Any());
+                instanceArmorView.Q("Area.Empty").SetActive(!instanceArmors.Any());
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
                 instanceArmorView.DestroySafe();
@@ -431,10 +437,10 @@ namespace MH3
                     {
                         list.DestroySafe();
                     }
+                    var instanceWeapons = userData.InstanceWeapons.Where(x => x.InstanceId != userData.EquippedInstanceWeaponId);
                     list = UIViewList.CreateWithPages(
                         listDocumentPrefab,
-                        userData.InstanceWeapons
-                            .Where(x => x.InstanceId != userData.EquippedInstanceWeaponId)
+                        instanceWeapons
                             .Select(x => new Action<HKUIDocument>(document =>
                             {
                                 UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.LocalizedName, async _ =>
@@ -469,6 +475,8 @@ namespace MH3
                             })),
                         0
                     );
+                    instanceWeaponView.Q("Area.Default").SetActive(instanceWeapons.Any());
+                    instanceWeaponView.Q("Area.Empty").SetActive(!instanceWeapons.Any());
                 }
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
@@ -499,6 +507,8 @@ namespace MH3
                     {
                         list.DestroySafe();
                     }
+                    var instanceArmors = userData.InstanceArmors
+                        .Where(x => x.ArmorSpec.ArmorType == selectedArmorType);
                     list = UIViewList.CreateWithPages(
                         listDocumentPrefab,
                         userData.InstanceArmors
@@ -544,6 +554,8 @@ namespace MH3
                             })),
                         0
                     );
+                    instanceArmorView.Q("Area.Default").SetActive(instanceArmors.Any());
+                    instanceArmorView.Q("Area.Empty").SetActive(!instanceArmors.Any());
                 }
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
@@ -555,9 +567,10 @@ namespace MH3
                 SetHeaderText("スキルコア装着".Localized());
                 var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
                 var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
+                var instanceWeapons = TinyServiceLocator.Resolve<UserData>().InstanceWeapons;
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
-                    TinyServiceLocator.Resolve<UserData>().InstanceWeapons
+                    instanceWeapons
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
                             UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.LocalizedName, _ =>
@@ -586,6 +599,8 @@ namespace MH3
                         stateMachine.Change(StateHomeRoot);
                     })
                     .RegisterTo(scope);
+                instanceWeaponView.Q("Area.Default").SetActive(instanceWeapons.Any());
+                instanceWeaponView.Q("Area.Empty").SetActive(!instanceWeapons.Any());
                 await UniTask.WaitUntilCanceled(scope);
                 instanceWeaponView.DestroySafe();
                 list.DestroySafe();
@@ -606,9 +621,10 @@ namespace MH3
                     {
                         list.DestroySafe();
                     }
+                    var instanceSkillCores = userData.InstanceSkillCores;
                     list = UIViewList.CreateWithPages(
                         listDocumentPrefab,
-                        userData.InstanceSkillCores
+                        instanceSkillCores
                             .Select(x => new Action<HKUIDocument>(document =>
                             {
                                 var header = x.SkillCoreSpec.LocalizedName;
@@ -669,6 +685,8 @@ namespace MH3
                             })),
                         0
                     );
+                    instanceSkillCoreView.Q("Area.Default").SetActive(instanceSkillCores.Any());
+                    instanceSkillCoreView.Q("Area.Empty").SetActive(!instanceSkillCores.Any());
                 }
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
