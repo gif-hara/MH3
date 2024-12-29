@@ -705,9 +705,10 @@ namespace MH3
             {
                 var instanceSkillCoreView = UnityEngine.Object.Instantiate(instanceSkillCoreViewDocumentPrefab);
                 var instanceSkillCoreSequences = instanceSkillCoreView.Q<SequencesMonoBehaviour>("Sequences");
+                var instanceSkillCores = TinyServiceLocator.Resolve<UserData>().InstanceSkillCores;
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
-                    TinyServiceLocator.Resolve<UserData>().InstanceSkillCores
+                    instanceSkillCores
                         .OrderBy(x => selectedInstanceWeapon.InstanceSkillCoreIds.Contains(x.InstanceId) ? 0 : 1)
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
@@ -753,6 +754,8 @@ namespace MH3
                         stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
                     })
                     .RegisterTo(scope);
+                instanceSkillCoreView.Q("Area.Default").SetActive(instanceSkillCores.Any());
+                instanceSkillCoreView.Q("Area.Empty").SetActive(!instanceSkillCores.Any());
 
                 await UniTask.WaitUntilCanceled(scope);
 
