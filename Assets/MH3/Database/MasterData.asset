@@ -765,9 +765,7 @@ MonoBehaviour:
       - Id: 10102
         AnimationKey: Attack.Sword.Basic.6
       - Id: 10102
-        AnimationKey: Attack.Sword.Basic.5
-      - Id: 10102
-        AnimationKey: Attack.Sword.Basic.6
+        AnimationKey: Attack.Sword.Basic.7
     - Key: 10201
       Value:
       - Id: 10201
@@ -907,7 +905,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.5
-      Power: 17
+      Power: 16
       FlinchDamage: 8
       ColliderName: Default
       FlinchName: Flinch.Small
@@ -931,7 +929,31 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.6
-      Power: 19
+      Power: 18
+      FlinchDamage: 10
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0
+      HitStopDurationActor: 0
+      HitStopTimeScaleTarget: 0
+      HitStopDurationTarget: 0
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: Small
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Sword.Basic.7
+      Power: 40
       FlinchDamage: 10
       ColliderName: Default
       FlinchName: Flinch.Small
