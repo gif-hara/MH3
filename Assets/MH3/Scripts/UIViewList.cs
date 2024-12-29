@@ -123,7 +123,7 @@ namespace MH3
                 {
                     return;
                 }
-                if (pageMax == 0)
+                if (pageMax <= 0)
                 {
                     pageArea.SetActive(false);
                 }
