@@ -59,6 +59,7 @@ namespace MH3
                 }
                 var index = await UIViewAcquireReward.OpenAsync(documentPrefab, rewards, gameSceneController.ElapsedQuestTime, enemy.SpecController.ActorName, cancellationToken);
                 rewards[index].Acquire(userData);
+                SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
             }
         }
     }
