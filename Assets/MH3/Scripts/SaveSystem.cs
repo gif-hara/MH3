@@ -14,6 +14,9 @@ namespace MH3
             var encryptedJson = EncryptionUtility.Encrypt(json);
             path = Application.persistentDataPath + "/" + path;
             File.WriteAllText(path, encryptedJson);
+#if UNITY_WEBGL && !UNITY_EDITOR
+            NativeCaller.SyncFile();
+#endif
         }
 
         public static T Load<T>(string path)
