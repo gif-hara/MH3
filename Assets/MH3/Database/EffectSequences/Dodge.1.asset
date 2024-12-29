@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequences:
   - rid: 1481063527478198571
-  - rid: 1481063653782847568
+  - rid: 1481063722320920653
   references:
     version: 2
     RefIds:
@@ -33,24 +33,36 @@ MonoBehaviour:
       type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: Effect
-    - rid: 1481063653782847568
-      type: {class: SetParentFromLocator, ns: MH3, asm: Assembly-CSharp}
+    - rid: 1481063722320920653
+      type: {class: SetParentFromActor, ns: MH3, asm: Assembly-CSharp}
       data:
         targetTransformResolver:
-          rid: 1481063653782847569
+          rid: 1481063722320920654
         actorResolver:
-          rid: 1481063653782847570
-        locatorKeyResolver:
-          rid: 1481063653782847571
-    - rid: 1481063653782847569
+          rid: 1481063722320920655
+        positionResolver:
+          rid: 1481063722320920656
+        rotationResolver:
+          rid: 1481063722320920657
+        scaleResolver:
+          rid: 1481063722320920658
+    - rid: 1481063722320920654
       type: {class: TransformResolver/Name, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         name: Effect
-    - rid: 1481063653782847570
+    - rid: 1481063722320920655
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor
-    - rid: 1481063653782847571
-      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+    - rid: 1481063722320920656
+      type: {class: Vector3Resolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: Root
+        value: {x: 0, y: 0, z: 0}
+    - rid: 1481063722320920657
+      type: {class: QuaternionResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 0, y: 0, z: 0, w: 0}
+    - rid: 1481063722320920658
+      type: {class: Vector3Resolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 1, y: 1, z: 1}
