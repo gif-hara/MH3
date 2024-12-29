@@ -99,16 +99,9 @@ namespace MH3
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "武器削除".Localized(), _ =>
+                            UIViewList.ApplyAsSimpleElement(document, "装備削除".Localized(), _ =>
                             {
-                                stateMachine.Change(StateRemoveInstanceWeapon);
-                            });
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, "防具削除".Localized(), _ =>
-                            {
-                                stateMachine.Change(StateRemoveInstanceArmor);
+                                stateMachine.Change(StateRemoveEquipment);
                             });
                         },
                         document =>
@@ -360,6 +353,60 @@ namespace MH3
                 instanceArmorView.DestroySafe();
             }
 
+            async UniTask StateRemoveEquipment(CancellationToken scope)
+            {
+                SetHeaderText("装備削除".Localized());
+                var userData = TinyServiceLocator.Resolve<UserData>();
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    new List<Action<HKUIDocument>>
+                    {
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "武器".Localized(), _ =>
+                            {
+                                stateMachine.Change(StateRemoveInstanceWeapon);
+                            });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "頭".Localized(), _ =>
+                            {
+                                selectedArmorType = Define.ArmorType.Head;
+                                stateMachine.Change(StateRemoveInstanceArmor);
+                            });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "腕".Localized(), _ =>
+                            {
+                                selectedArmorType = Define.ArmorType.Arms;
+                                stateMachine.Change(StateRemoveInstanceArmor);
+                            });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "胴".Localized(), _ =>
+                            {
+                                selectedArmorType = Define.ArmorType.Body;
+                                stateMachine.Change(StateRemoveInstanceArmor);
+                            });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "戻る".Localized(), _ => stateMachine.Change(StateHomeRoot));
+                        },
+                    },
+                    0
+                );
+                inputController.Actions.UI.Cancel
+                    .OnPerformedAsObservable()
+                    .Subscribe(_ => stateMachine.Change(StateHomeRoot))
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.DestroySafe();
+            }
+
             async UniTask StateRemoveInstanceWeapon(CancellationToken scope)
             {
                 SetHeaderText("武器削除".Localized());
@@ -375,7 +422,7 @@ namespace MH3
                     .Where(_ => dialogScope == null)
                     .Subscribe(_ =>
                     {
-                        stateMachine.Change(StateHomeRoot);
+                        stateMachine.Change(StateRemoveEquipment);
                     })
                     .RegisterTo(scope);
                 void CreateList()
