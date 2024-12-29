@@ -39,7 +39,7 @@ namespace MH3
                             var container = new Container();
                             container.Register("InstanceWeapon", instanceWeapon);
                             element.Q<SequencesMonoBehaviour>("Sequences").PlayAsync(container, scope).Forget();
-                            var button = element.Q<Button>("Button");
+                            var button = element.Q<HKUIDocument>("Element.Button").Q<Button>("Button");
                             button.OnClickAsObservable()
                                 .Subscribe(_ =>
                                 {
@@ -55,7 +55,7 @@ namespace MH3
                             var container = new Container();
                             container.Register("InstanceSkillCore", instanceSkillCore);
                             element.Q<SequencesMonoBehaviour>("Sequences").PlayAsync(container, scope).Forget();
-                            var button = element.Q<Button>("Button");
+                            var button = element.Q<HKUIDocument>("Element.Button").Q<Button>("Button");
                             button.OnClickAsObservable()
                                 .Subscribe(_ =>
                                 {
@@ -71,7 +71,7 @@ namespace MH3
                             var container = new Container();
                             container.Register("InstanceArmor", instanceArmor);
                             element.Q<SequencesMonoBehaviour>("Sequences").PlayAsync(container, scope).Forget();
-                            var button = element.Q<Button>("Button");
+                            var button = element.Q<HKUIDocument>("Element.Button").Q<Button>("Button");
                             button.OnClickAsObservable()
                                 .Subscribe(_ =>
                                 {
