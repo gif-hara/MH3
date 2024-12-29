@@ -290,6 +290,7 @@ namespace MH3
                                     }
                                     userData.EquippedInstanceWeaponId = x.InstanceId;
                                     actor.SpecController.ChangeInstanceWeapon(x);
+                                    SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                     TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.Equipment.1");
                                     stateMachine.Change(StateHomeRoot);
                                 },
@@ -336,6 +337,7 @@ namespace MH3
                                     userData.SetEquippedInstanceArmor(selectedArmorType, instanceId);
                                     actor.SpecController.SetArmorId(selectedArmorType, instanceArmor?.ArmorSpec.Id ?? 0);
                                     actor.SpecController.BuildStatuses();
+                                    SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                     TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.Equipment.1");
                                     stateMachine.Change(StateChangeEquipmentTypeRoot);
                                 },
@@ -736,6 +738,7 @@ namespace MH3
                                 {
                                     actor.SpecController.ChangeInstanceWeapon(selectedInstanceWeapon);
                                 }
+                                SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                 stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
                             },
                             _ =>
