@@ -567,7 +567,7 @@ namespace MH3
                 SetHeaderText("スキルコア装着".Localized());
                 var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
                 var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
-                var instanceWeapons = TinyServiceLocator.Resolve<UserData>().InstanceWeapons;
+                var instanceWeapons = TinyServiceLocator.Resolve<UserData>().InstanceWeapons.Where(x => x.SkillSlot > 0);
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     instanceWeapons
