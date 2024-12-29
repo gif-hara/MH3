@@ -85,16 +85,9 @@ namespace MH3
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "武器変更".Localized(), _ =>
+                            UIViewList.ApplyAsSimpleElement(document, "装備変更".Localized(), _ =>
                             {
-                                stateMachine.Change(StateChangeInstanceWeapon);
-                            });
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, "防具変更".Localized(), _ =>
-                            {
-                                stateMachine.Change(StateChangeInstanceArmorRoot);
+                                stateMachine.Change(StateChangeEquipmentTypeRoot);
                             });
                         },
                         document =>
@@ -227,6 +220,59 @@ namespace MH3
                 questSpecStatusDocument.DestroySafe();
             }
 
+            async UniTask StateChangeEquipmentTypeRoot(CancellationToken scope)
+            {
+                SetHeaderText("装備変更".Localized());
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    new List<Action<HKUIDocument>>
+                    {
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "武器".Localized(), _ =>
+                            {
+                                stateMachine.Change(StateChangeInstanceWeapon);
+                            });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "頭".Localized(), _ =>
+                            {
+                                selectedArmorType = Define.ArmorType.Head;
+                                stateMachine.Change(StateChangeInstanceArmor);
+                            });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "腕".Localized(), _ =>
+                            {
+                                selectedArmorType = Define.ArmorType.Head;
+                                stateMachine.Change(StateChangeInstanceArmor);
+                            });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "胴".Localized(), _ =>
+                            {
+                                selectedArmorType = Define.ArmorType.Head;
+                                stateMachine.Change(StateChangeInstanceArmor);
+                            });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(document, "戻る".Localized(), _ => stateMachine.Change(StateHomeRoot));
+                        },
+                    },
+                    0
+                );
+                inputController.Actions.UI.Cancel
+                    .OnPerformedAsObservable()
+                    .Subscribe(_ => stateMachine.Change(StateHomeRoot))
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.DestroySafe();
+            }
+
             async UniTask StateChangeInstanceWeapon(CancellationToken scope)
             {
                 SetHeaderText("武器変更".Localized());
@@ -264,53 +310,11 @@ namespace MH3
                 );
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
-                    .Subscribe(_ => stateMachine.Change(StateHomeRoot))
+                    .Subscribe(_ => stateMachine.Change(StateChangeEquipmentTypeRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
                 instanceWeaponView.DestroySafe();
-            }
-
-            async UniTask StateChangeInstanceArmorRoot(CancellationToken scope)
-            {
-                SetHeaderText("防具変更".Localized());
-                var list = UIViewList.CreateWithPages(
-                    listDocumentPrefab,
-                    new List<Action<HKUIDocument>>
-                    {
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, "頭".Localized(), _ =>
-                            {
-                                selectedArmorType = Define.ArmorType.Head;
-                                stateMachine.Change(StateChangeInstanceArmor);
-                            });
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, "腕".Localized(), _ =>
-                            {
-                                selectedArmorType = Define.ArmorType.Arms;
-                                stateMachine.Change(StateChangeInstanceArmor);
-                            });
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, "胴".Localized(), _ =>
-                            {
-                                selectedArmorType = Define.ArmorType.Body;
-                                stateMachine.Change(StateChangeInstanceArmor);
-                            });
-                        },
-                    },
-                    0
-                );
-                inputController.Actions.UI.Cancel
-                    .OnPerformedAsObservable()
-                    .Subscribe(_ => stateMachine.Change(StateHomeRoot))
-                    .RegisterTo(scope);
-                await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
             }
 
             async UniTask StateChangeInstanceArmor(CancellationToken scope)
@@ -336,7 +340,7 @@ namespace MH3
                                     actor.SpecController.SetArmorId(selectedArmorType, instanceArmor?.ArmorSpec.Id ?? 0);
                                     actor.SpecController.BuildStatuses();
                                     TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.Equipment.1");
-                                    stateMachine.Change(StateChangeInstanceArmorRoot);
+                                    stateMachine.Change(StateChangeEquipmentTypeRoot);
                                 },
                                 _ =>
                                 {
@@ -349,7 +353,7 @@ namespace MH3
                 );
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
-                    .Subscribe(_ => stateMachine.Change(StateChangeInstanceArmorRoot))
+                    .Subscribe(_ => stateMachine.Change(StateChangeEquipmentTypeRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
