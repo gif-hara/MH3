@@ -12,7 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
   m_Name: Blank
   m_EditorClassIdentifier: 
-  sequences: []
+  sequences:
+  - rid: 1481063734313222223
+  - rid: 1481063734313222226
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 1481063734313222223
+      type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063734313222225
+        type: 9
+        isTrueResolver:
+          rid: 1481063734313222224
+    - rid: 1481063734313222224
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
+    - rid: 1481063734313222225
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Player
+    - rid: 1481063734313222226
+      type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063734313222228
+        type: 9
+        isTrueResolver:
+          rid: 1481063734313222229
+    - rid: 1481063734313222228
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Enemy
+    - rid: 1481063734313222229
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
