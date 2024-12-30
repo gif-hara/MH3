@@ -42,18 +42,34 @@ namespace MH3
 
         public enum SkillType
         {
+            /// <summary>攻撃力アップ</summary>
             AttackUp,
+            /// <summary>会心率アップ</summary>
             CriticalUp,
+            /// <summary>防御力アップ</summary>
             DefenseUp,
+            /// <summary>毒属性アップ</summary>
             PoisonUp,
+            /// <summary>麻痺属性アップ</summary>
             ParalysisUp,
+            /// <summary>崩壊属性アップ</summary>
             CollapseUp,
+            /// <summary>火属性アップ</summary>
             FireElementAttackUp,
+            /// <summary>水属性アップ</summary>
             WaterElementAttackUp,
+            /// <summary>草属性アップ</summary>
             GrassElementAttackUp,
+            /// <summary>体力アップ</summary>
             HealthUp,
+            /// <summary>回復コマンド回数アップ</summary>
             RecoveryCommandCountUp,
+            /// <summary>報酬アップ</summary>
             RewardUp,
+            /// <summary>怯み値アップ</summary>
+            FlinchUp,
+            /// <summary>回復量アップ</summary>
+            RecoveryAmountUp,
         }
 
         public enum ActorParameterType
