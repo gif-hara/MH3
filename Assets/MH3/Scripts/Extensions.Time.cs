@@ -39,5 +39,29 @@ namespace MH3
                 time.timeScale = stack.Peek();
             }
         }
+
+        public static void PushTimeScale(this HK.Time time, float timeScale)
+        {
+            if (!timeScaleStacks.TryGetValue(time, out var stack))
+            {
+                stack = new Stack<float>();
+                stack.Push(1.0f);
+                timeScaleStacks.Add(time, stack);
+            }
+
+            stack.Push(timeScale);
+            time.timeScale = timeScale;
+        }
+
+        public static void PopTimeScale(this HK.Time time)
+        {
+            if (!timeScaleStacks.TryGetValue(time, out var stack))
+            {
+                return;
+            }
+
+            stack.Pop();
+            time.timeScale = stack.Peek();
+        }
     }
 }
