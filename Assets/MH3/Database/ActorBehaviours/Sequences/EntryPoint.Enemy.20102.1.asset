@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
-  m_Name: EntryPoint.Enemy.20101
+  m_Name: EntryPoint.Enemy.20102.1
   m_EditorClassIdentifier: 
   sequences:
   - rid: 1481063179134173322
@@ -27,10 +27,10 @@ MonoBehaviour:
             rid: 1481063179134173265
         - weight: 100
           sequenceResolver:
-            rid: 1481063553013383194
+            rid: 1481063553013383168
         - weight: 100
           sequenceResolver:
-            rid: 1953366480956948480
+            rid: 1481063553013383169
         - weight: 25
           sequenceResolver:
             rid: 1481063179134173329
@@ -40,7 +40,7 @@ MonoBehaviour:
     - rid: 1481063179134173265
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: {fileID: 11400000, guid: 1d91f83496a1cd24c807b3258785d856, type: 2}
+        value: {fileID: 11400000, guid: 99d0ded83db67834f9824d239b23e1b5, type: 2}
     - rid: 1481063179134173322
       type: {class: WaitForStateAsync, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -59,11 +59,11 @@ MonoBehaviour:
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: {fileID: 11400000, guid: 80d8a4bd57882284ca561d2723f0a9a2, type: 2}
-    - rid: 1481063553013383194
+    - rid: 1481063553013383168
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: {fileID: 11400000, guid: f5f88bf9348995e4ca56d4a201b47497, type: 2}
-    - rid: 1953366480956948480
+        value: {fileID: 11400000, guid: 11e84d094f6dc6442b23c8bbf303c303, type: 2}
+    - rid: 1481063553013383169
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: {fileID: 11400000, guid: 60e543c19e7d6413e9e148b901af209d, type: 2}
+        value: {fileID: 11400000, guid: bbccb99147a68b647a84f1b8470dd798, type: 2}
