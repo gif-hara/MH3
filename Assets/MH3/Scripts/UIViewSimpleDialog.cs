@@ -30,6 +30,8 @@ namespace MH3
         {
             var document = Object.Instantiate(documentPrefab);
             var inputController = TinyServiceLocator.Resolve<InputController>();
+            var uiViewInputGuide = TinyServiceLocator.Resolve<UIViewInputGuide>();
+            var scopeSource = CancellationTokenSource.CreateLinkedTokenSource(scope);
             try
             {
                 document.Q<TMP_Text>("Message").text = message;
@@ -51,12 +53,18 @@ namespace MH3
                 })
                 .ToList();
                 inputController.PushActionType(InputController.InputActionType.UI);
+                uiViewInputGuide.Push(() => string.Format(
+                    "{0}:選択 {1}:決定 {2}:キャンセル",
+                    InputSprite.GetTag(inputController.Actions.UI.Navigate),
+                    InputSprite.GetTag(inputController.Actions.UI.Submit),
+                    InputSprite.GetTag(inputController.Actions.UI.Cancel)
+                    ).Localized(), scopeSource.Token);
                 inputController.Actions.UI.Cancel.OnPerformedAsObservable()
                     .Subscribe(_ =>
                     {
                         source.TrySetResult(cancelIndex);
                     })
-                    .RegisterTo(scope);
+                    .RegisterTo(scopeSource.Token);
                 for (var i = 0; i < buttons.Count; i++)
                 {
                     var navigation = buttons[i].navigation;
@@ -87,6 +95,8 @@ namespace MH3
             {
                 document.DestroySafe();
                 inputController.PopActionType();
+                scopeSource.Cancel();
+                scopeSource.Dispose();
             }
         }
     }
