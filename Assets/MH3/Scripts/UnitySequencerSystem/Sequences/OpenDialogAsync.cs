@@ -19,8 +19,8 @@ namespace MH3
         [SerializeReference, SubclassSelector]
         private StringResolver messageResolver;
 
-        [SerializeReference, SubclassSelector]
-        private List<StringResolver> optionsResolvers;
+        [SerializeField]
+        private List<string> options;
 
         [SerializeReference, SubclassSelector]
         private IntResolver initialSelectionIndexResolver;
@@ -35,13 +35,16 @@ namespace MH3
         {
             var dialog = new UIViewSimpleDialog(documentPrefab);
             var result = await dialog.OpenAsync(
-                messageResolver.Resolve(container),
-                optionsResolvers.Select(r => r.Resolve(container)),
+                messageResolver.Resolve(container).Localized(),
+                options.Select(x => x.Localized()),
                 initialSelectionIndexResolver.Resolve(container),
                 cancelIndexResolver.Resolve(container),
                 cancellationToken
                 );
-            container.RegisterOrReplace(resultResolver.Resolve(container), result);
+            if (resultResolver != null)
+            {
+                container.RegisterOrReplace(resultResolver.Resolve(container), result);
+            }
         }
     }
 }
