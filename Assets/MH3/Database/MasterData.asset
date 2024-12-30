@@ -2874,3 +2874,13 @@ MonoBehaviour:
         NewContentsKey: FirstPlay
         SequencesKey: FirstPlay
         Sequences: {fileID: 11400000, guid: 406207341eadccd48907bcaf0d2b89ca, type: 2}
+      - Trigger: 0
+        NewContentsKey: Acquire.InstanceSkillCore
+        SequencesKey: Acquire.InstanceSkillCore
+        Sequences: {fileID: 11400000, guid: 6b635c931ae303846925b48e37bd9a00, type: 2}
+    - Key: 1
+      Value:
+      - Trigger: 1
+        NewContentsKey: FirstBattle
+        SequencesKey: FirstBattle
+        Sequences: {fileID: 11400000, guid: 321fd4398e0a1324e8f31801f00cbf57, type: 2}
