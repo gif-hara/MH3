@@ -15,6 +15,7 @@ MonoBehaviour:
   sequences:
   - rid: 1481063743668093010
   - rid: 1481063743668093026
+  - rid: 1481063743668093030
   references:
     version: 2
     RefIds:
@@ -69,6 +70,32 @@ MonoBehaviour:
       data:
         value: 0
     - rid: 1481063743668093029
+      type: {class: IntResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
+    - rid: 1481063743668093030
+      type: {class: OpenDialogAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        documentPrefab: {fileID: 6562501259230542608, guid: 815578b8314213d4e8a9cdd2f2d5d23a, type: 3}
+        messageResolver:
+          rid: 1481063743668093031
+        options:
+        - "\u78BA\u8A8D"
+        initialSelectionIndexResolver:
+          rid: 1481063743668093032
+        cancelIndexResolver:
+          rid: 1481063743668093033
+        resultResolver:
+          rid: -2
+    - rid: 1481063743668093031
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: "\u305D\u306E\u524D\u306B\u3001\u76EE\u306E\u524D\u306B\u3044\u308B\u30B9\u30E9\u30A4\u30E0\u3067\u6226\u3044\u306E\u7DF4\u7FD2\u3059\u308B\u306E\u3082\u30A2\u30EA\u3067\u3059\u3088\uFF01"
+    - rid: 1481063743668093032
+      type: {class: IntResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
+    - rid: 1481063743668093033
       type: {class: IntResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
