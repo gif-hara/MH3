@@ -125,6 +125,10 @@ namespace MH3
         private ArmorSkill.Group armorSkills;
         public ArmorSkill.Group ArmorSkills => armorSkills;
 
+        [SerializeField]
+        private AvailableContentsEvent.Group availableContentsEvents;
+        public AvailableContentsEvent.Group AvailableContentsEvents => availableContentsEvents;
+
 #if UNITY_EDITOR
         [ContextMenu("Update")]
         private async void UpdateMasterData()
@@ -169,6 +173,7 @@ namespace MH3
                 "ArmorDefense",
                 "ArmorSkillCount",
                 "ArmorSkill",
+                "AvailableContentsEvent",
             };
             var database = await UniTask.WhenAll(
                 masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -200,6 +205,7 @@ namespace MH3
             armorDefenses.Set(JsonHelper.FromJson<ArmorDefense>(database[24]));
             armorSkillCounts.Set(JsonHelper.FromJson<ArmorSkillCount>(database[25]));
             armorSkills.Set(JsonHelper.FromJson<ArmorSkill>(database[26]));
+            availableContentsEvents.Set(JsonHelper.FromJson<AvailableContentsEvent>(database[27]));
             foreach (var weaponSpec in weaponSpecs.List)
             {
                 weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -235,6 +241,13 @@ namespace MH3
             foreach (var armorSpec in armorSpecs.List)
             {
                 armorSpec.ModelData = AssetDatabase.LoadAssetAtPath<ArmorModelData>($"Assets/MH3/Database/ArmorModelData/{armorSpec.ModelDataId}.asset");
+            }
+            foreach (var availableContentsEvent in availableContentsEvents.List)
+            {
+                foreach (var i in availableContentsEvent.Value)
+                {
+                    i.Sequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/AvailableContentsEventSequences/{i.SequencesKey}.asset");
+                }
             }
             EditorUtility.SetDirty(this);
             AssetDatabase.SaveAssets();
@@ -885,6 +898,26 @@ namespace MH3
             public class Group : Group<int, ArmorSkill>
             {
                 public Group() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class AvailableContentsEvent
+        {
+            public Define.AvaiableContentsEventTrigger Trigger;
+
+            public string NewContentsKey;
+
+            public string SequencesKey;
+
+            public ScriptableSequences Sequences;
+
+            [Serializable]
+            public class Group : Group<Define.AvaiableContentsEventTrigger, AvailableContentsEvent>
+            {
+                public Group() : base(x => x.Trigger)
                 {
                 }
             }

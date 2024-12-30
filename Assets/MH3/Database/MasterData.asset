@@ -2866,3 +2866,11 @@ MonoBehaviour:
         Level: 1
         RareType: 0
         Weight: 100
+  availableContentsEvents:
+    list:
+    - Key: 0
+      Value:
+      - Trigger: 0
+        NewContentsKey: FirstPlay
+        SequencesKey: FirstPlay
+        Sequences: {fileID: 11400000, guid: 406207341eadccd48907bcaf0d2b89ca, type: 2}
