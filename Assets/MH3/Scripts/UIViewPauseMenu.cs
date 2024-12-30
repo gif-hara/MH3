@@ -196,6 +196,8 @@ namespace MH3
                                 _ =>
                                 {
                                     gameSceneController.SetupQuestAsync(x.Id).Forget();
+                                    userData.AvailableContents.Add(AvailableContents.Key.FirstBattle);
+                                    SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                     TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.BeginQuest.1");
                                     pauseMenuScope.Dispose();
                                 },

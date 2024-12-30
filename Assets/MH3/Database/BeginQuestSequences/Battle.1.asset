@@ -18,7 +18,9 @@ MonoBehaviour:
   - rid: 1481063520193740930
   - rid: 1481063520193740897
   - rid: 1481063520193740901
+  - rid: 1481063743668093038
   - rid: 1481063743668093021
+  - rid: 1481063743668093040
   - rid: 1481063587024470118
   references:
     version: 2
@@ -102,3 +104,15 @@ MonoBehaviour:
       type: {class: PlayAvailableContentsEventAsync, ns: MH3, asm: Assembly-CSharp}
       data:
         trigger: 1
+    - rid: 1481063743668093038
+      type: {class: PushTimeScaleRoot, ns: MH3, asm: Assembly-CSharp}
+      data:
+        timeScaleResolver:
+          rid: 1481063743668093039
+    - rid: 1481063743668093039
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
+    - rid: 1481063743668093040
+      type: {class: PopTimeScaleRoot, ns: MH3, asm: Assembly-CSharp}
+      data: 

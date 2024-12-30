@@ -11,12 +11,16 @@ namespace MH3
         private SerializableHashSet<string> contents = new();
 
         [SerializeField]
-        private List<string> newContents = new();
+        private SerializableHashSet<string> newContents = new();
 
-        public List<string> NewContents => newContents;
+        public SerializableHashSet<string> NewContents => newContents;
 
         public void Add(string content)
         {
+            if (contents.Contains(content))
+            {
+                return;
+            }
             contents.Add(content);
             newContents.Add(content);
         }
@@ -45,6 +49,8 @@ namespace MH3
             public const string AcquireInstanceArmor = "Acquire.InstanceArmor";
 
             public const string AcquireInstanceSkillCore = "Acquire.InstanceSkillCore";
+
+            public const string FirstBattle = "FirstBattle";
 
             public static string GetQuestClear(string questSpecId)
             {
