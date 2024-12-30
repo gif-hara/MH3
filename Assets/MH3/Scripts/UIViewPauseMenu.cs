@@ -246,7 +246,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(document, "腕".Localized(), _ =>
                             {
-                                selectedArmorType = Define.ArmorType.Head;
+                                selectedArmorType = Define.ArmorType.Arms;
                                 stateMachine.Change(StateChangeInstanceArmor);
                             });
                         },
@@ -254,7 +254,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(document, "胴".Localized(), _ =>
                             {
-                                selectedArmorType = Define.ArmorType.Head;
+                                selectedArmorType = Define.ArmorType.Body;
                                 stateMachine.Change(StateChangeInstanceArmor);
                             });
                         },
