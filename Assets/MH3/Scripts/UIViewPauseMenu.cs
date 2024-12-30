@@ -187,7 +187,7 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
-                                x.Id,
+                                x.GetEnemyActorSpec().LocalizedName,
                                 _ =>
                                 {
                                     gameSceneController.SetupQuestAsync(x.Id).Forget();
