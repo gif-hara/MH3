@@ -105,7 +105,7 @@ namespace MH3
         public void AddInstanceWeaponData(InstanceWeapon instanceWeaponData)
         {
             instanceWeapons.Add(instanceWeaponData);
-            availableContents.Add("Acquire.InstanceWeapon");
+            availableContents.Add(AvailableContents.Key.AcquireInstanceWeapon);
         }
 
         public void RemoveInstanceWeapon(InstanceWeapon instanceWeaponData)
@@ -116,7 +116,7 @@ namespace MH3
         public void AddInstanceSkillCore(InstanceSkillCore instanceSkillCore)
         {
             instanceSkillCores.Add(instanceSkillCore);
-            availableContents.Add("Acquire.InstanceSkillCore");
+            availableContents.Add(AvailableContents.Key.AcquireInstanceSkillCore);
         }
 
         public void RemoveInstanceSkillCore(InstanceSkillCore instanceSkillCore)
@@ -131,7 +131,7 @@ namespace MH3
         public void AddInstanceArmor(InstanceArmor instanceArmor)
         {
             instanceArmors.Add(instanceArmor);
-            availableContents.Add("Acquire.InstanceArmor");
+            availableContents.Add(AvailableContents.Key.AcquireInstanceArmor);
         }
 
         public void RemoveInstanceArmor(InstanceArmor instanceArmor)

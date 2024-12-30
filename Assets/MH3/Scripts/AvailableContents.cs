@@ -40,6 +40,12 @@ namespace MH3
         {
             public const string FirstPlay = "FirstPlay";
 
+            public const string AcquireInstanceWeapon = "Acquire.InstanceWeapon";
+
+            public const string AcquireInstanceArmor = "Acquire.InstanceArmor";
+
+            public const string AcquireInstanceSkillCore = "Acquire.InstanceSkillCore";
+
             public static string GetQuestClear(string questSpecId)
             {
                 return $"Clear.Quest.{questSpecId}";

@@ -74,58 +74,63 @@ namespace MH3
             async UniTask StateHomeRoot(CancellationToken scope)
             {
                 SetHeaderText("ホームメニュー".Localized());
+                var userData = TinyServiceLocator.Resolve<UserData>();
                 var actorSpecStatusDocument = UnityEngine.Object.Instantiate(actorSpecStatusDocumentPrefab);
+                var listElements = new List<Action<HKUIDocument>>();
+                listElements.Add(document =>
+                {
+                    UIViewList.ApplyAsSimpleElement(document, "クエスト選択".Localized(), _ => stateMachine.Change(StateSelectQuest));
+                });
+                listElements.Add(document =>
+                {
+                    UIViewList.ApplyAsSimpleElement(document, "装備変更".Localized(), _ =>
+                    {
+                        stateMachine.Change(StateChangeEquipmentTypeRoot);
+                    });
+                });
+                if (userData.AvailableContents.Contains(AvailableContents.Key.AcquireInstanceSkillCore))
+                {
+                    listElements.Add(document =>
+                    {
+                        UIViewList.ApplyAsSimpleElement(document, "スキルコア装着".Localized(), _ =>
+                        {
+                            stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
+                        });
+                    });
+                }
+                listElements.Add(document =>
+                {
+                    UIViewList.ApplyAsSimpleElement(document, "装備削除".Localized(), _ =>
+                    {
+                        stateMachine.Change(StateRemoveEquipment);
+                    });
+                });
+                if (userData.AvailableContents.Contains(AvailableContents.Key.AcquireInstanceSkillCore))
+                {
+                    listElements.Add(document =>
+                    {
+                        UIViewList.ApplyAsSimpleElement(document, "スキルコア削除".Localized(), _ =>
+                        {
+                            stateMachine.Change(StateRemoveInstanceSkillCore);
+                        });
+                    });
+                }
+                listElements.Add(document =>
+                {
+                    UIViewList.ApplyAsSimpleElement(document, "オプション".Localized(), _ =>
+                    {
+                        stateMachine.Change(StateOptionsRoot);
+                    });
+                });
+                listElements.Add(document =>
+                {
+                    UIViewList.ApplyAsSimpleElement(document, "閉じる".Localized(), _ => pauseMenuScope.Dispose());
+                });
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
-                    new List<Action<HKUIDocument>>
-                    {
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, "クエスト選択".Localized(), _ => stateMachine.Change(StateSelectQuest));
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, "装備変更".Localized(), _ =>
-                            {
-                                stateMachine.Change(StateChangeEquipmentTypeRoot);
-                            });
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, "スキルコア装着".Localized(), _ =>
-                            {
-                                stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
-                            });
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, "装備削除".Localized(), _ =>
-                            {
-                                stateMachine.Change(StateRemoveEquipment);
-                            });
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, "スキルコア削除".Localized(), _ =>
-                            {
-                                stateMachine.Change(StateRemoveInstanceSkillCore);
-                            });
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, "オプション".Localized(), _ =>
-                            {
-                                stateMachine.Change(StateOptionsRoot);
-                            });
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, "閉じる".Localized(), _ => pauseMenuScope.Dispose());
-                        },
-                    },
+                    listElements,
                     0
                 );
-                var userData = TinyServiceLocator.Resolve<UserData>();
                 var container = new Container();
                 container.Register("Actor", actor);
                 container.Register("InstanceWeapon", userData.GetEquippedInstanceWeapon());
