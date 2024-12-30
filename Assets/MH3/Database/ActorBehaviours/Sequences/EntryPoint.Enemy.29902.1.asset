@@ -14,21 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequences:
   - rid: 1481063179134173322
-  - rid: 1481063179134173264
+  - rid: 1481063734313222233
   references:
     version: 2
     RefIds:
-    - rid: 1481063179134173264
-      type: {class: SelectorWithWeight, ns: MH3, asm: Assembly-CSharp}
-      data:
-        elements:
-        - weight: 100
-          sequenceResolver:
-            rid: 1481063179134173265
-    - rid: 1481063179134173265
-      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: {fileID: 11400000, guid: 2d9f3b6ef3999424989b8b7bf97b8762, type: 2}
     - rid: 1481063179134173322
       type: {class: WaitForStateAsync, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -39,3 +28,19 @@ MonoBehaviour:
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor
+    - rid: 1481063734313222233
+      type: {class: Selector, ns: MH3, asm: Assembly-CSharp}
+      data:
+        elements:
+        - evaluator:
+            rid: 1481063734313222237
+          sequences: {fileID: 11400000, guid: 2d9f3b6ef3999424989b8b7bf97b8762, type: 2}
+    - rid: 1481063734313222237
+      type: {class: Constant, ns: MH3.ContainerEvaluators, asm: Assembly-CSharp}
+      data:
+        resolver:
+          rid: 1481063734313222238
+    - rid: 1481063734313222238
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 1
