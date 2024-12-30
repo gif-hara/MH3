@@ -129,6 +129,10 @@ namespace MH3
         private AvailableContentsEvent.Group availableContentsEvents;
         public AvailableContentsEvent.Group AvailableContentsEvents => availableContentsEvents;
 
+        [SerializeField]
+        private AvailableContentsUnlock.Group availableContentsUnlocks;
+        public AvailableContentsUnlock.Group AvailableContentsUnlocks => availableContentsUnlocks;
+
 #if UNITY_EDITOR
         [ContextMenu("Update")]
         private async void UpdateMasterData()
@@ -136,125 +140,137 @@ namespace MH3
             var startTime = DateTime.Now;
             var progressId = UnityEditor.Progress.Start("MasterData Update");
             var scope = new CancellationTokenSource();
-            Observable.EveryUpdate()
-                .Subscribe(_ =>
+            try
+            {
+                Observable.EveryUpdate()
+                    .Subscribe(_ =>
+                    {
+                        var elapsed = DateTime.Now - startTime;
+                        UnityEditor.Progress.Report(progressId, (float)elapsed.TotalSeconds / 10.0f);
+                    })
+                    .RegisterTo(scope.Token);
+                Debug.Log("Begin MasterData Update");
+                var masterDataNames = new[]
                 {
-                    var elapsed = DateTime.Now - startTime;
-                    UnityEditor.Progress.Report(progressId, (float)elapsed.TotalSeconds / 10.0f);
-                })
-                .RegisterTo(scope.Token);
-            Debug.Log("Begin MasterData Update");
-            var masterDataNames = new[]
-            {
-                "WeaponSpec",
-                "AttackSpec",
-                "ActorSpec",
-                "WeaponCombo",
-                "QuestSpec",
-                "WeaponAttack",
-                "QuestReward",
-                "WeaponCritical",
-                "SkillCoreSpec",
-                "SkillCoreCount",
-                "SkillCoreEffect",
-                "WeaponSkillSlot",
-                "Skill.AttackUp",
-                "SkillTypeToParameter",
-                "Skill.CriticalUp",
-                "Skill.DefenseUp",
-                "WeaponAbnormalStatus",
-                "WeaponElement",
-                "Skill.AbnormalStatusUp",
-                "Skill.ElementAttackUp",
-                "Skill.HealthUp",
-                "Skill.RecoveryCommandCountUp",
-                "Skill.RewardUp",
-                "ArmorSpec",
-                "ArmorDefense",
-                "ArmorSkillCount",
-                "ArmorSkill",
-                "AvailableContentsEvent",
-            };
-            var database = await UniTask.WhenAll(
-                masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
-            );
-            weaponSpecs.Set(JsonHelper.FromJson<WeaponSpec>(database[0]));
-            attackSpecs.Set(JsonHelper.FromJson<AttackSpec>(database[1]));
-            actorSpecs.Set(JsonHelper.FromJson<ActorSpec>(database[2]));
-            weaponCombos.Set(JsonHelper.FromJson<WeaponCombo>(database[3]));
-            questSpecs.Set(JsonHelper.FromJson<QuestSpec>(database[4]));
-            weaponAttacks.Set(JsonHelper.FromJson<WeaponAttack>(database[5]));
-            questRewards.Set(JsonHelper.FromJson<QuestReward>(database[6]));
-            weaponCriticals.Set(JsonHelper.FromJson<WeaponCritical>(database[7]));
-            skillCoreSpecs.Set(JsonHelper.FromJson<SkillCoreSpec>(database[8]));
-            skillCoreCounts.Set(JsonHelper.FromJson<SkillCoreCount>(database[9]));
-            skillCoreEffects.Set(JsonHelper.FromJson<SkillCoreEffect>(database[10]));
-            weaponSkillSlots.Set(JsonHelper.FromJson<WeaponSkillSlot>(database[11]));
-            skillAttackUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[12]));
-            skillTypeToParameters.Set(JsonHelper.FromJson<SkillTypeToParameter>(database[13]));
-            skillCriticalUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[14]));
-            skillDefenseUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[15]));
-            weaponAbnormalStatuses.Set(JsonHelper.FromJson<WeaponAbnormalStatus>(database[16]));
-            weaponElements.Set(JsonHelper.FromJson<WeaponElement>(database[17]));
-            skillAbnormalStatusUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[18]));
-            skillElementAttackUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[19]));
-            skillHealthUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[20]));
-            skillRecoveryCommandCountUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[21]));
-            skillRewardUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[22]));
-            armorSpecs.Set(JsonHelper.FromJson<ArmorSpec>(database[23]));
-            armorDefenses.Set(JsonHelper.FromJson<ArmorDefense>(database[24]));
-            armorSkillCounts.Set(JsonHelper.FromJson<ArmorSkillCount>(database[25]));
-            armorSkills.Set(JsonHelper.FromJson<ArmorSkill>(database[26]));
-            availableContentsEvents.Set(JsonHelper.FromJson<AvailableContentsEvent>(database[27]));
-            foreach (var weaponSpec in weaponSpecs.List)
-            {
-                weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
-                weaponSpec.GuardPerformedSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/ActionSequences/{weaponSpec.GuardPerformedSequencesKey}.asset");
-                weaponSpec.GuardCanceledSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/ActionSequences/{weaponSpec.GuardCanceledSequencesKey}.asset");
-                weaponSpec.DodgePerformedSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/ActionSequences/{weaponSpec.DodgePerformedSequencesKey}.asset");
-            }
-            foreach (var actorSpec in actorSpecs.List)
-            {
-                actorSpec.InitialStateSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.InitialStateKey}.asset");
-                actorSpec.AttackSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.AttackSequencesKey}.asset");
-                actorSpec.FlinchSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.FlinchSequencesKey}.asset");
-                actorSpec.DodgeSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.DodgeSequencesKey}.asset");
-                actorSpec.GuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.GuardSequencesKey}.asset");
-                actorSpec.SuccessJustGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.SuccessJustGuardSequencesKey}.asset");
-                actorSpec.SuccessGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.SuccessGuardSequencesKey}.asset");
-                actorSpec.DeadSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.DeadSequencesKey}.asset");
-                actorSpec.RecoverySequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.RecoverySequencesKey}.asset");
-                actorSpec.ActorPrefab = AssetDatabase.LoadAssetAtPath<Actor>($"Assets/MH3/Prefabs/Actor.{actorSpec.ActorPrefabKey}.prefab");
-                actorSpec.Behaviour = AssetDatabase.LoadAssetAtPath<ActorBehaviourData>($"Assets/MH3/Database/ActorBehaviours/{actorSpec.BehaviourKey}.asset");
-            }
-            foreach (var questSpec in questSpecs.List)
-            {
-                questSpec.StagePrefab = AssetDatabase.LoadAssetAtPath<Stage>($"Assets/MH3/Prefabs/Stage.{questSpec.StagePrefabKey}.prefab");
-                questSpec.QuestClearSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/QuestClearSequences/{questSpec.QuestClearSequencesKey}.asset");
-                questSpec.QuestFailedSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/QuestFailedSequences/{questSpec.QuestFailedSequencesKey}.asset");
-                questSpec.BeginQuestSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/BeginQuestSequences/{questSpec.BeginQuestSequencesKey}.asset");
-            }
-            foreach (var attackSpec in attackSpecs.List)
-            {
-                attackSpec.HitAdditionalSequencesPlayer = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/HitAdditionalSequences/{attackSpec.HitAdditionalSequencesKeyPlayer}.asset");
-            }
-            foreach (var armorSpec in armorSpecs.List)
-            {
-                armorSpec.ModelData = AssetDatabase.LoadAssetAtPath<ArmorModelData>($"Assets/MH3/Database/ArmorModelData/{armorSpec.ModelDataId}.asset");
-            }
-            foreach (var availableContentsEvent in availableContentsEvents.List)
-            {
-                foreach (var i in availableContentsEvent.Value)
+                    "WeaponSpec",
+                    "AttackSpec",
+                    "ActorSpec",
+                    "WeaponCombo",
+                    "QuestSpec",
+                    "WeaponAttack",
+                    "QuestReward",
+                    "WeaponCritical",
+                    "SkillCoreSpec",
+                    "SkillCoreCount",
+                    "SkillCoreEffect",
+                    "WeaponSkillSlot",
+                    "Skill.AttackUp",
+                    "SkillTypeToParameter",
+                    "Skill.CriticalUp",
+                    "Skill.DefenseUp",
+                    "WeaponAbnormalStatus",
+                    "WeaponElement",
+                    "Skill.AbnormalStatusUp",
+                    "Skill.ElementAttackUp",
+                    "Skill.HealthUp",
+                    "Skill.RecoveryCommandCountUp",
+                    "Skill.RewardUp",
+                    "ArmorSpec",
+                    "ArmorDefense",
+                    "ArmorSkillCount",
+                    "ArmorSkill",
+                    "AvailableContentsEvent",
+                    "AvailableContentsUnlock",
+                };
+                var database = await UniTask.WhenAll(
+                    masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
+                );
+                weaponSpecs.Set(JsonHelper.FromJson<WeaponSpec>(database[0]));
+                attackSpecs.Set(JsonHelper.FromJson<AttackSpec>(database[1]));
+                actorSpecs.Set(JsonHelper.FromJson<ActorSpec>(database[2]));
+                weaponCombos.Set(JsonHelper.FromJson<WeaponCombo>(database[3]));
+                questSpecs.Set(JsonHelper.FromJson<QuestSpec>(database[4]));
+                weaponAttacks.Set(JsonHelper.FromJson<WeaponAttack>(database[5]));
+                questRewards.Set(JsonHelper.FromJson<QuestReward>(database[6]));
+                weaponCriticals.Set(JsonHelper.FromJson<WeaponCritical>(database[7]));
+                skillCoreSpecs.Set(JsonHelper.FromJson<SkillCoreSpec>(database[8]));
+                skillCoreCounts.Set(JsonHelper.FromJson<SkillCoreCount>(database[9]));
+                skillCoreEffects.Set(JsonHelper.FromJson<SkillCoreEffect>(database[10]));
+                weaponSkillSlots.Set(JsonHelper.FromJson<WeaponSkillSlot>(database[11]));
+                skillAttackUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[12]));
+                skillTypeToParameters.Set(JsonHelper.FromJson<SkillTypeToParameter>(database[13]));
+                skillCriticalUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[14]));
+                skillDefenseUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[15]));
+                weaponAbnormalStatuses.Set(JsonHelper.FromJson<WeaponAbnormalStatus>(database[16]));
+                weaponElements.Set(JsonHelper.FromJson<WeaponElement>(database[17]));
+                skillAbnormalStatusUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[18]));
+                skillElementAttackUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[19]));
+                skillHealthUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[20]));
+                skillRecoveryCommandCountUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[21]));
+                skillRewardUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[22]));
+                armorSpecs.Set(JsonHelper.FromJson<ArmorSpec>(database[23]));
+                armorDefenses.Set(JsonHelper.FromJson<ArmorDefense>(database[24]));
+                armorSkillCounts.Set(JsonHelper.FromJson<ArmorSkillCount>(database[25]));
+                armorSkills.Set(JsonHelper.FromJson<ArmorSkill>(database[26]));
+                availableContentsEvents.Set(JsonHelper.FromJson<AvailableContentsEvent>(database[27]));
+                availableContentsUnlocks.Set(JsonHelper.FromJson<AvailableContentsUnlock>(database[28]));
+                foreach (var weaponSpec in weaponSpecs.List)
                 {
-                    i.Sequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/AvailableContentsEventSequences/{i.SequencesKey}.asset");
+                    weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
+                    weaponSpec.GuardPerformedSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/ActionSequences/{weaponSpec.GuardPerformedSequencesKey}.asset");
+                    weaponSpec.GuardCanceledSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/ActionSequences/{weaponSpec.GuardCanceledSequencesKey}.asset");
+                    weaponSpec.DodgePerformedSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/ActionSequences/{weaponSpec.DodgePerformedSequencesKey}.asset");
                 }
+                foreach (var actorSpec in actorSpecs.List)
+                {
+                    actorSpec.InitialStateSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.InitialStateKey}.asset");
+                    actorSpec.AttackSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.AttackSequencesKey}.asset");
+                    actorSpec.FlinchSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.FlinchSequencesKey}.asset");
+                    actorSpec.DodgeSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.DodgeSequencesKey}.asset");
+                    actorSpec.GuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.GuardSequencesKey}.asset");
+                    actorSpec.SuccessJustGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.SuccessJustGuardSequencesKey}.asset");
+                    actorSpec.SuccessGuardSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.SuccessGuardSequencesKey}.asset");
+                    actorSpec.DeadSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.DeadSequencesKey}.asset");
+                    actorSpec.RecoverySequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/StateSequences/State.Enter.{actorSpec.RecoverySequencesKey}.asset");
+                    actorSpec.ActorPrefab = AssetDatabase.LoadAssetAtPath<Actor>($"Assets/MH3/Prefabs/Actor.{actorSpec.ActorPrefabKey}.prefab");
+                    actorSpec.Behaviour = AssetDatabase.LoadAssetAtPath<ActorBehaviourData>($"Assets/MH3/Database/ActorBehaviours/{actorSpec.BehaviourKey}.asset");
+                }
+                foreach (var questSpec in questSpecs.List)
+                {
+                    questSpec.StagePrefab = AssetDatabase.LoadAssetAtPath<Stage>($"Assets/MH3/Prefabs/Stage.{questSpec.StagePrefabKey}.prefab");
+                    questSpec.QuestClearSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/QuestClearSequences/{questSpec.QuestClearSequencesKey}.asset");
+                    questSpec.QuestFailedSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/QuestFailedSequences/{questSpec.QuestFailedSequencesKey}.asset");
+                    questSpec.BeginQuestSequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/BeginQuestSequences/{questSpec.BeginQuestSequencesKey}.asset");
+                }
+                foreach (var attackSpec in attackSpecs.List)
+                {
+                    attackSpec.HitAdditionalSequencesPlayer = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/HitAdditionalSequences/{attackSpec.HitAdditionalSequencesKeyPlayer}.asset");
+                }
+                foreach (var armorSpec in armorSpecs.List)
+                {
+                    armorSpec.ModelData = AssetDatabase.LoadAssetAtPath<ArmorModelData>($"Assets/MH3/Database/ArmorModelData/{armorSpec.ModelDataId}.asset");
+                }
+                foreach (var availableContentsEvent in availableContentsEvents.List)
+                {
+                    foreach (var i in availableContentsEvent.Value)
+                    {
+                        i.Sequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/AvailableContentsEventSequences/{i.SequencesKey}.asset");
+                    }
+                }
+                EditorUtility.SetDirty(this);
+                AssetDatabase.SaveAssets();
+                Debug.Log("End MasterData Update");
             }
-            EditorUtility.SetDirty(this);
-            AssetDatabase.SaveAssets();
-            Debug.Log("End MasterData Update");
-            UnityEditor.Progress.Remove(progressId);
-            scope.Cancel();
-            scope.Dispose();
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+            finally
+            {
+                UnityEditor.Progress.Remove(progressId);
+                scope.Cancel();
+                scope.Dispose();
+            }
         }
 #endif
 
@@ -918,6 +934,22 @@ namespace MH3
             public class Group : Group<Define.AvaiableContentsEventTrigger, AvailableContentsEvent>
             {
                 public Group() : base(x => x.Trigger)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class AvailableContentsUnlock
+        {
+            public string AvailableContentsKey;
+
+            public string NeedAvailableContentKey;
+
+            [Serializable]
+            public class Group : Group<string, AvailableContentsUnlock>
+            {
+                public Group() : base(x => x.AvailableContentsKey)
                 {
                 }
             }
