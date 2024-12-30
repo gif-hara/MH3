@@ -121,5 +121,11 @@ namespace MH3
             DualSword,
             Blade,
         }
+
+        public enum AvaiableContentsEventTrigger
+        {
+            Home,
+            Battle,
+        }
     }
 }
