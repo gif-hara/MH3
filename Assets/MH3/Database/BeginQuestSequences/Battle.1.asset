@@ -18,6 +18,7 @@ MonoBehaviour:
   - rid: 1481063520193740930
   - rid: 1481063520193740897
   - rid: 1481063520193740901
+  - rid: 1481063743668093021
   - rid: 1481063587024470118
   references:
     version: 2
@@ -97,3 +98,7 @@ MonoBehaviour:
     - rid: 1481063587024470118
       type: {class: BeginQuestTimer, ns: MH3, asm: Assembly-CSharp}
       data: 
+    - rid: 1481063743668093021
+      type: {class: PlayAvailableContentsEventAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        trigger: 1

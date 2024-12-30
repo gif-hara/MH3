@@ -15,6 +15,7 @@ MonoBehaviour:
   sequences:
   - rid: 1481063734313222223
   - rid: 1481063734313222226
+  - rid: 1481063743668093022
   references:
     version: 2
     RefIds:
@@ -50,3 +51,7 @@ MonoBehaviour:
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
+    - rid: 1481063743668093022
+      type: {class: PlayAvailableContentsEventAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        trigger: 0
