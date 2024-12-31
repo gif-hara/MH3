@@ -119,6 +119,9 @@ namespace MH3.ActorControllers
             recoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
             recoveryCommandCount.Value = recoveryCommandCountMax.ValueFloorToInt;
             SetWeaponId(spec.WeaponId);
+            SetArmorId(Define.ArmorType.Head, spec.ArmorHeadId);
+            SetArmorId(Define.ArmorType.Arms, spec.ArmorArmsId);
+            SetArmorId(Define.ArmorType.Body, spec.ArmorBodyId);
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Poison, new ReactiveProperty<int>(spec.PoisonThreshold));
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Paralysis, new ReactiveProperty<int>(spec.ParalysisThreshold));
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Collapse, new ReactiveProperty<int>(spec.CollapseThreshold));
