@@ -1807,9 +1807,9 @@ MonoBehaviour:
       MoveSpeed: 7
       RotationSpeed: 10
       WeaponId: 20301
-      ArmorHeadId: 10101
+      ArmorHeadId: 0
       ArmorArmsId: 0
-      ArmorBodyId: 0
+      ArmorBodyId: 10301
       VisibleStatusUI: 1
       RecoveryCommandCount: 0
       InitialStateKey: Idle.Default
@@ -1854,7 +1854,7 @@ MonoBehaviour:
       RotationSpeed: 10
       WeaponId: 20201
       ArmorHeadId: 0
-      ArmorArmsId: 0
+      ArmorArmsId: 10201
       ArmorBodyId: 0
       VisibleStatusUI: 1
       RecoveryCommandCount: 0
@@ -1899,7 +1899,7 @@ MonoBehaviour:
       MoveSpeed: 7
       RotationSpeed: 10
       WeaponId: 20101
-      ArmorHeadId: 0
+      ArmorHeadId: 10101
       ArmorArmsId: 0
       ArmorBodyId: 0
       VisibleStatusUI: 1
