@@ -90,6 +90,8 @@ namespace MH3
             Health,
             RecoveryCommandCount,
             Reward,
+            FlinchDamage,
+            RecoveryAmount,
         }
 
         public enum SkillLevelValueType
@@ -102,6 +104,8 @@ namespace MH3
             HealthUp,
             RecoveryCommandCountUp,
             RewardUp,
+            FlinchDamageUp,
+            RecoveryAmountUp,
         }
 
         public enum AbnormalStatusType
