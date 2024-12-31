@@ -36,7 +36,6 @@ namespace MH3
             }
             damage = Mathf.Max(1, damage);
             var flinchDamage = attackSpec.FlinchDamage + attackSpec.FlinchDamage * attacker.SpecController.Skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.FlinchDamage, attacker));
-            Debug.Log($"flinchDamage: {flinchDamage}");
             if (targetGuardResult == Define.GuardResult.SuccessGuard)
             {
                 damage = Mathf.FloorToInt(damage * gameRules.GuardSuccessDamageRate);
