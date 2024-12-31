@@ -165,26 +165,29 @@ namespace MH3
                 return player.SpecController.WeaponSpec.WeaponType switch
                 {
                     Define.WeaponType.Sword => string.Format(
-                        "{0}:移動 {1}:攻撃 {2}:回避 {3}:ガード {4}:メニュー".Localized(),
+                        "{0}:移動 {1}:攻撃 {2}:回避 {3}:回復 {4}:ガード {5}:メニュー".Localized(),
                         InputSprite.GetTag(inputController.Actions.Player.Move),
                         InputSprite.GetTag(inputController.Actions.Player.Attack),
                         InputSprite.GetTag(inputController.Actions.Player.Dodge),
+                        InputSprite.GetTag(inputController.Actions.Player.Recovery),
                         InputSprite.GetTag(inputController.Actions.Player.Guard),
                         InputSprite.GetTag(inputController.Actions.Player.PauseMenu)
                         ),
                     Define.WeaponType.DualSword => string.Format(
-                        "{0}:移動 {1}:攻撃 {2}:回避 {3}:研ぎ {4}:メニュー".Localized(),
+                        "{0}:移動 {1}:攻撃 {2}:回避 {3}:回復 {4}:研ぎ {5}:メニュー".Localized(),
                         InputSprite.GetTag(inputController.Actions.Player.Move),
                         InputSprite.GetTag(inputController.Actions.Player.Attack),
                         InputSprite.GetTag(inputController.Actions.Player.Dodge),
+                        InputSprite.GetTag(inputController.Actions.Player.Recovery),
                         InputSprite.GetTag(inputController.Actions.Player.Guard),
                         InputSprite.GetTag(inputController.Actions.Player.PauseMenu)
                         ),
                     Define.WeaponType.Blade => string.Format(
-                        "{0}:移動 {1}:攻撃 {2}:回避 {3}:我慢 {4}:メニュー".Localized(),
+                        "{0}:移動 {1}:攻撃 {2}:回避 {3}:回復 {4}:我慢 {5}:メニュー".Localized(),
                         InputSprite.GetTag(inputController.Actions.Player.Move),
                         InputSprite.GetTag(inputController.Actions.Player.Attack),
                         InputSprite.GetTag(inputController.Actions.Player.Dodge),
+                        InputSprite.GetTag(inputController.Actions.Player.Recovery),
                         InputSprite.GetTag(inputController.Actions.Player.Guard),
                         InputSprite.GetTag(inputController.Actions.Player.PauseMenu)
                         ),
