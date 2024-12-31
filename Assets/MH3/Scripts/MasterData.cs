@@ -110,6 +110,10 @@ namespace MH3
         public SkillLevelValue.DictionaryList SkillRewardUp => skillRewardUp;
 
         [SerializeField]
+        private SkillLevelValue.DictionaryList skillFlinchDamageUp;
+        public SkillLevelValue.DictionaryList SkillFlinchDamageUp => skillFlinchDamageUp;
+
+        [SerializeField]
         private ArmorSpec.DictionaryList armorSpecs;
         public ArmorSpec.DictionaryList ArmorSpecs => armorSpecs;
 
@@ -181,6 +185,7 @@ namespace MH3
                     "ArmorSkill",
                     "AvailableContentsEvent",
                     "AvailableContentsUnlock",
+                    "Skill.FlinchDamageUp",
                 };
                 var database = await UniTask.WhenAll(
                     masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -214,6 +219,7 @@ namespace MH3
                 armorSkills.Set(JsonHelper.FromJson<ArmorSkill>(database[26]));
                 availableContentsEvents.Set(JsonHelper.FromJson<AvailableContentsEvent>(database[27]));
                 availableContentsUnlocks.Set(JsonHelper.FromJson<AvailableContentsUnlock>(database[28]));
+                skillFlinchDamageUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[29]));
                 foreach (var weaponSpec in weaponSpecs.List)
                 {
                     weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");

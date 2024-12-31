@@ -2244,6 +2244,10 @@ MonoBehaviour:
       Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
       ColorCode: '#FF0000'
+    - Id: 19901
+      Name: "\u30C6\u30B9\u30C8\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+      Slot: 1
+      ColorCode: '#FF0000'
   skillCoreCounts:
     list:
     - Key: 10101
@@ -2274,6 +2278,12 @@ MonoBehaviour:
         Weight: 100
       - Id: 10103
         Count: 2
+        RareType: 0
+        Weight: 100
+    - Key: 19901
+      Value:
+      - Id: 19901
+        Count: 1
         RareType: 0
         Weight: 100
   skillCoreEffects:
@@ -2327,6 +2337,13 @@ MonoBehaviour:
       - Id: 10103
         SkillType: 2
         Level: 1
+        RareType: 0
+        Weight: 50
+    - Key: 19901
+      Value:
+      - Id: 19901
+        SkillType: 12
+        Level: 25
         RareType: 0
         Weight: 50
   skillTypeToParameters:
@@ -2391,6 +2408,11 @@ MonoBehaviour:
       - SkillType: 11
         ActorParameterType: 11
         SkillLevelValueType: 7
+    - Key: 12
+      Value:
+      - SkillType: 12
+        ActorParameterType: 12
+        SkillLevelValueType: 8
   skillAttackUp:
     list:
     - Level: 0
@@ -2759,6 +2781,60 @@ MonoBehaviour:
       Value: 1
     - Level: 2
       Value: 2
+  skillFlinchDamageUp:
+    list:
+    - Level: 0
+      Value: 0
+    - Level: 1
+      Value: 0.04
+    - Level: 2
+      Value: 0.08
+    - Level: 3
+      Value: 0.12
+    - Level: 4
+      Value: 0.16
+    - Level: 5
+      Value: 0.2
+    - Level: 6
+      Value: 0.24
+    - Level: 7
+      Value: 0.28
+    - Level: 8
+      Value: 0.32
+    - Level: 9
+      Value: 0.36
+    - Level: 10
+      Value: 0.4
+    - Level: 11
+      Value: 0.44
+    - Level: 12
+      Value: 0.48
+    - Level: 13
+      Value: 0.52
+    - Level: 14
+      Value: 0.56
+    - Level: 15
+      Value: 0.6
+    - Level: 16
+      Value: 0.64
+    - Level: 17
+      Value: 0.68
+    - Level: 18
+      Value: 0.72
+    - Level: 19
+      Value: 0.76
+    - Level: 20
+      Value: 0.8
+    - Level: 21
+      Value: 0.84
+    - Level: 22
+      Value: 0.88
+    - Level: 23
+      Value: 0.92
+    - Level: 24
+      Value: 0.96
+    - Level: 25
+      Value: 1
   armorSpecs:
     list:
     - Id: 10101
@@ -2796,19 +2872,19 @@ MonoBehaviour:
     - Key: 10101
       Value:
       - Id: 10101
-        Defense: 2
+        Defense: 3
         RareType: 0
         Weight: 100
     - Key: 10201
       Value:
       - Id: 10201
-        Defense: 2
+        Defense: 3
         RareType: 0
         Weight: 100
     - Key: 10301
       Value:
       - Id: 10301
-        Defense: 2
+        Defense: 3
         RareType: 0
         Weight: 100
   armorSkillCounts:
