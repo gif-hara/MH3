@@ -70,6 +70,10 @@ namespace MH3
             FlinchUp,
             /// <summary>回復量アップ</summary>
             RecoveryAmountUp,
+            /// <summary>ジャストガード成功時会心率アップ</summary>
+            SuccessJustGuardCriticalUp,
+            /// <summary>最後のコンボ攻撃力アップ</summary>
+            LastComboAttackUp,
         }
 
         public enum ActorParameterType
