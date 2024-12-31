@@ -538,7 +538,7 @@ namespace MH3.ActorControllers
         public void RecoveryFromAnimation()
         {
             var result = hitPoint.Value + TinyServiceLocator.Resolve<GameRules>().RecoveryAmount;
-            hitPoint.Value = result > spec.HitPoint ? spec.HitPoint : result;
+            hitPoint.Value = result > HitPointMax ? HitPointMax : result;
         }
 
         public void ResetAll()
@@ -555,7 +555,7 @@ namespace MH3.ActorControllers
 
         public bool TryRecovery()
         {
-            if (hitPoint.Value >= spec.HitPoint || recoveryCommandCountMax.Value <= 0)
+            if (hitPoint.Value >= HitPointMax || recoveryCommandCount.Value <= 0)
             {
                 return false;
             }
