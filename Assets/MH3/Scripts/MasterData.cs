@@ -575,6 +575,12 @@ namespace MH3
 
             public int WeaponId;
 
+            public int ArmorHeadId;
+
+            public int ArmorArmsId;
+
+            public int ArmorBodyId;
+
             public bool VisibleStatusUI;
 
             public int RecoveryCommandCount;
