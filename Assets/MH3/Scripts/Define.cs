@@ -67,7 +67,7 @@ namespace MH3
             /// <summary>報酬アップ</summary>
             RewardUp,
             /// <summary>怯み値アップ</summary>
-            FlinchUp,
+            FlinchDamageUp,
             /// <summary>回復量アップ</summary>
             RecoveryAmountUp,
             /// <summary>ジャストガード成功時会心率アップ</summary>

@@ -42,7 +42,7 @@ namespace MH3
                 Define.SkillType.HealthUp => "体力アップ".Localized(),
                 Define.SkillType.RecoveryCommandCountUp => "回復回数アップ".Localized(),
                 Define.SkillType.RewardUp => "報酬アップ".Localized(),
-                Define.SkillType.FlinchUp => "怯み値アップ".Localized(),
+                Define.SkillType.FlinchDamageUp => "怯み値アップ".Localized(),
                 Define.SkillType.RecoveryAmountUp => "回復量アップ".Localized(),
                 Define.SkillType.SuccessJustGuardCriticalUp => "見切り".Localized(),
                 Define.SkillType.LastComboAttackUp => "渾身の一撃".Localized(),
@@ -63,6 +63,7 @@ namespace MH3
                 Define.SkillLevelValueType.HealthUp => m.SkillHealthUp,
                 Define.SkillLevelValueType.RecoveryCommandCountUp => m.SkillRecoveryCommandCountUp,
                 Define.SkillLevelValueType.RewardUp => m.SkillRewardUp,
+                Define.SkillLevelValueType.FlinchDamageUp => m.SkillFlinchDamageUp,
                 _ => throw new NotImplementedException($"未対応の値です. self: {self}")
             };
         }
