@@ -1927,15 +1927,15 @@ MonoBehaviour:
       ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
       Behaviour: {fileID: 11400000, guid: 149a3b5dc3df4be419e41b4e029ae45b, type: 2}
     - Id: 20201
-      Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0"
+      Name: "\u6599\u7406\u9577\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
-      HitPoint: 1000
+      HitPoint: 888
       Attack: 100
       PhysicalDamageCutRate: 0
       FireDamageCutRate: 0.2
       WaterDamageCutRate: 0
       GrassDamageCutRate: 0
-      FlinchThreshold: 100
+      FlinchThreshold: 104
       PoisonThreshold: 100
       ParalysisThreshold: 100
       CollapseThreshold: 100
@@ -1973,15 +1973,15 @@ MonoBehaviour:
       ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
       Behaviour: {fileID: 11400000, guid: 149a3b5dc3df4be419e41b4e029ae45b, type: 2}
     - Id: 20202
-      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0"
+      Name: "\u304A\u3055\u304B\u306A\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
-      HitPoint: 910
+      HitPoint: 816
       Attack: 100
       PhysicalDamageCutRate: 0
       FireDamageCutRate: 0
       WaterDamageCutRate: 0.2
       GrassDamageCutRate: 0
-      FlinchThreshold: 68
+      FlinchThreshold: 88
       PoisonThreshold: 100
       ParalysisThreshold: 100
       CollapseThreshold: 100
@@ -2019,15 +2019,15 @@ MonoBehaviour:
       ActorPrefab: {fileID: 963923653530722458, guid: 9b87f1f2f1832244a9f6cecb09fed9b5, type: 3}
       Behaviour: {fileID: 11400000, guid: 2b6010e8fecd3d645a0952b41fc3c62d, type: 2}
     - Id: 20203
-      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0"
+      Name: "\u3042\u304B\u304A\u306B\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
-      HitPoint: 1140
+      HitPoint: 1032
       Attack: 100
       PhysicalDamageCutRate: 0
       FireDamageCutRate: 0
       WaterDamageCutRate: 0
       GrassDamageCutRate: 0.2
-      FlinchThreshold: 80
+      FlinchThreshold: 130
       PoisonThreshold: 100
       ParalysisThreshold: 100
       CollapseThreshold: 100
@@ -3029,6 +3029,21 @@ MonoBehaviour:
       ModelDataId: Body.2
       ArmorType: 2
       ModelData: {fileID: 11400000, guid: 4d9e1ea1626e8784d9e2667cbbf4d165, type: 2}
+    - Id: 10103
+      Name: "\u30B3\u30C3\u30AF\u5E3D"
+      ModelDataId: Head.3
+      ArmorType: 0
+      ModelData: {fileID: 11400000, guid: d6b766d17ec6ac24fbd33355fc8a43ed, type: 2}
+    - Id: 10203
+      Name: "\u30B3\u30C3\u30AF\u30B0\u30ED\u30FC\u30D6"
+      ModelDataId: Arms.3
+      ArmorType: 1
+      ModelData: {fileID: 11400000, guid: 23a5e5b5aaf346e4ea8a89d682da6734, type: 2}
+    - Id: 10303
+      Name: "\u30B3\u30C3\u30AF\u30A8\u30D7\u30ED\u30F3"
+      ModelDataId: Body.3
+      ArmorType: 2
+      ModelData: {fileID: 11400000, guid: 4069948e8b02eeb4a87fa80988eec724, type: 2}
     - Id: 20101
       Name: "\u6575\u9632\u5177\uFF08\u982D\uFF09"
       ModelDataId: Head.1
@@ -3079,6 +3094,24 @@ MonoBehaviour:
     - Key: 10302
       Value:
       - Id: 10302
+        Defense: 5
+        RareType: 0
+        Weight: 100
+    - Key: 10103
+      Value:
+      - Id: 10103
+        Defense: 5
+        RareType: 0
+        Weight: 100
+    - Key: 10203
+      Value:
+      - Id: 10203
+        Defense: 5
+        RareType: 0
+        Weight: 100
+    - Key: 10303
+      Value:
+      - Id: 10303
         Defense: 5
         RareType: 0
         Weight: 100
@@ -3144,6 +3177,36 @@ MonoBehaviour:
         Count: 2
         RareType: 0
         Weight: 100
+    - Key: 10103
+      Value:
+      - Id: 10103
+        Count: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10103
+        Count: 2
+        RareType: 0
+        Weight: 100
+    - Key: 10203
+      Value:
+      - Id: 10203
+        Count: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10203
+        Count: 2
+        RareType: 0
+        Weight: 100
+    - Key: 10303
+      Value:
+      - Id: 10303
+        Count: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10303
+        Count: 2
+        RareType: 0
+        Weight: 100
   armorSkills:
     list:
     - Key: 10101
@@ -3184,6 +3247,27 @@ MonoBehaviour:
     - Key: 10302
       Value:
       - Id: 10302
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10103
+      Value:
+      - Id: 10103
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10203
+      Value:
+      - Id: 10203
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10303
+      Value:
+      - Id: 10303
         SkillType: 0
         Level: 1
         RareType: 0
