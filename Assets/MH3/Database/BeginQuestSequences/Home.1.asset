@@ -15,6 +15,7 @@ MonoBehaviour:
   sequences:
   - rid: 1481063734313222223
   - rid: 1481063734313222226
+  - rid: 7349438136591057098
   - rid: 1481063743668093022
   references:
     version: 2
@@ -55,3 +56,6 @@ MonoBehaviour:
       type: {class: PlayAvailableContentsEventAsync, ns: MH3, asm: Assembly-CSharp}
       data:
         trigger: 0
+    - rid: 7349438136591057098
+      type: {class: TryAvailableContentsUnlock, ns: MH3, asm: Assembly-CSharp}
+      data: 
