@@ -508,7 +508,7 @@ namespace MH3
                     .Where(_ => dialogScope == null)
                     .Subscribe(_ =>
                     {
-                        stateMachine.Change(StateHomeRoot);
+                        stateMachine.Change(StateRemoveEquipment);
                     })
                     .RegisterTo(scope);
                 void CreateList()
