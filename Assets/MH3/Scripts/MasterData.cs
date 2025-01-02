@@ -956,7 +956,7 @@ namespace MH3
         {
             public string AvailableContentsKey;
 
-            public string NeedAvailableContentKey;
+            public string NeedAvailableContentsKey;
 
             [Serializable]
             public class Group : Group<string, AvailableContentsUnlock>

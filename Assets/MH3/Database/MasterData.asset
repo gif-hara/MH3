@@ -1973,7 +1973,7 @@ MonoBehaviour:
       ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
       Behaviour: {fileID: 11400000, guid: 149a3b5dc3df4be419e41b4e029ae45b, type: 2}
     - Id: 20202
-      Name: "\u304A\u3055\u304B\u306A\u30B9\u30E9\u30A4\u30E0"
+      Name: "\u9B54\u6CD5\u4F7F\u3044\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
       HitPoint: 816
       Attack: 100
@@ -2019,7 +2019,7 @@ MonoBehaviour:
       ActorPrefab: {fileID: 963923653530722458, guid: 9b87f1f2f1832244a9f6cecb09fed9b5, type: 3}
       Behaviour: {fileID: 11400000, guid: 2b6010e8fecd3d645a0952b41fc3c62d, type: 2}
     - Id: 20203
-      Name: "\u3042\u304B\u304A\u306B\u30B9\u30E9\u30A4\u30E0"
+      Name: "\u8D64\u9B3C\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
       HitPoint: 1032
       Attack: 100
@@ -2340,6 +2340,48 @@ MonoBehaviour:
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
       NeedAvailableContentKey: FirstPlay
+      AddWhenQuestClearContentKey: 
+      RewardCount: 1
+      BeginQuestSequencesKey: Battle.1
+      BgmKey: Quest.1
+      StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
+      QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
+      QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
+      BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
+    - Id: Quest.10201
+      StagePrefabKey: Battle
+      EnemyActorSpecId: 20101
+      QuestClearSequencesKey: EnemyDefeat
+      QuestFailedSequencesKey: PlayerDefeat
+      NeedAvailableContentKey: Clear.QuestLevel.1
+      AddWhenQuestClearContentKey: 
+      RewardCount: 1
+      BeginQuestSequencesKey: Battle.1
+      BgmKey: Quest.1
+      StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
+      QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
+      QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
+      BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
+    - Id: Quest.10202
+      StagePrefabKey: Battle
+      EnemyActorSpecId: 20102
+      QuestClearSequencesKey: EnemyDefeat
+      QuestFailedSequencesKey: PlayerDefeat
+      NeedAvailableContentKey: Clear.QuestLevel.1
+      AddWhenQuestClearContentKey: 
+      RewardCount: 1
+      BeginQuestSequencesKey: Battle.1
+      BgmKey: Quest.1
+      StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
+      QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
+      QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
+      BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
+    - Id: Quest.10203
+      StagePrefabKey: Battle
+      EnemyActorSpecId: 20103
+      QuestClearSequencesKey: EnemyDefeat
+      QuestFailedSequencesKey: PlayerDefeat
+      NeedAvailableContentKey: Clear.QuestLevel.1
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -3379,8 +3421,8 @@ MonoBehaviour:
     - Key: Clear.QuestLevel.1
       Value:
       - AvailableContentsKey: Clear.QuestLevel.1
-        NeedAvailableContentKey: 
+        NeedAvailableContentsKey: Clear.Quest.10101
       - AvailableContentsKey: Clear.QuestLevel.1
-        NeedAvailableContentKey: 
+        NeedAvailableContentsKey: Clear.Quest.10102
       - AvailableContentsKey: Clear.QuestLevel.1
-        NeedAvailableContentKey: 
+        NeedAvailableContentsKey: Clear.Quest.10103

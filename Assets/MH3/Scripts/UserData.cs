@@ -170,7 +170,7 @@ namespace MH3
                     continue;
                 }
 
-                if (group.Value.All(x => availableContents.Contains(x.NeedAvailableContentKey)))
+                if (group.Value.All(x => availableContents.Contains(x.NeedAvailableContentsKey)))
                 {
                     availableContents.Add(group.Key);
                 }
