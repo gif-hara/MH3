@@ -182,6 +182,20 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: ca6de69a7071aa343ab752314858b62d, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 10203
+      Name: "\u9B54\u529B\u3092\u5E2F\u3073\u305F\u77ED\u5200"
+      WeaponType: 1
+      ModelDataId: DualSword.3
+      ComboId: 10201
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Sharpen
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 92fe05acc5d88d146a9174f6cca2f152, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: ca6de69a7071aa343ab752314858b62d, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10301
       Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u5927\u5263"
       WeaponType: 2
@@ -207,6 +221,20 @@ MonoBehaviour:
       GuardCanceledSequencesKey: 
       DodgePerformedSequencesKey: Dodge.Performed.Default
       ModelData: {fileID: 11400000, guid: 59c620b3751a34322824250e43c10406, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: ad4e38fd6d24e054997530a726cb0c64, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 10303
+      Name: "\u9B3C\u306E\u91D1\u68D2"
+      WeaponType: 2
+      ModelDataId: Blade.3
+      ComboId: 10301
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Endurance
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 63c49e1a2d69ae848960cb2ac16bf905, type: 2}
       GuardPerformedSequences: {fileID: 11400000, guid: ad4e38fd6d24e054997530a726cb0c64, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
@@ -393,15 +421,15 @@ MonoBehaviour:
     - Key: 10110
       Value:
       - Id: 10110
+        Attack: 120
+        RareType: 0
+        Weight: 100
+      - Id: 10110
+        Attack: 130
+        RareType: 0
+        Weight: 100
+      - Id: 10110
         Attack: 140
-        RareType: 0
-        Weight: 100
-      - Id: 10110
-        Attack: 145
-        RareType: 0
-        Weight: 100
-      - Id: 10110
-        Attack: 150
         RareType: 0
         Weight: 100
     - Key: 10201
@@ -424,6 +452,20 @@ MonoBehaviour:
         Attack: 120
         RareType: 0
         Weight: 100
+    - Key: 10203
+      Value:
+      - Id: 10203
+        Attack: 110
+        RareType: 0
+        Weight: 100
+      - Id: 10203
+        Attack: 120
+        RareType: 0
+        Weight: 100
+      - Id: 10203
+        Attack: 130
+        RareType: 0
+        Weight: 100
     - Key: 10301
       Value:
       - Id: 10301
@@ -442,6 +484,20 @@ MonoBehaviour:
         Weight: 100
       - Id: 10302
         Attack: 120
+        RareType: 0
+        Weight: 100
+    - Key: 10303
+      Value:
+      - Id: 10303
+        Attack: 120
+        RareType: 0
+        Weight: 100
+      - Id: 10303
+        Attack: 130
+        RareType: 0
+        Weight: 100
+      - Id: 10303
+        Attack: 140
         RareType: 0
         Weight: 100
   weaponCriticals:
@@ -518,6 +574,12 @@ MonoBehaviour:
         Critical: 0
         RareType: 0
         Weight: 100
+    - Key: 10203
+      Value:
+      - Id: 10203
+        Critical: 0
+        RareType: 0
+        Weight: 100
     - Key: 10301
       Value:
       - Id: 10301
@@ -527,6 +589,12 @@ MonoBehaviour:
     - Key: 10302
       Value:
       - Id: 10302
+        Critical: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10303
+      Value:
+      - Id: 10303
         Critical: 0
         RareType: 0
         Weight: 100
@@ -616,6 +684,16 @@ MonoBehaviour:
         SkillSlot: 2
         RareType: 0
         Weight: 100
+    - Key: 10203
+      Value:
+      - Id: 10203
+        SkillSlot: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10203
+        SkillSlot: 2
+        RareType: 0
+        Weight: 100
     - Key: 10301
       Value:
       - Id: 10301
@@ -629,6 +707,16 @@ MonoBehaviour:
         RareType: 0
         Weight: 100
       - Id: 10302
+        SkillSlot: 2
+        RareType: 0
+        Weight: 100
+    - Key: 10303
+      Value:
+      - Id: 10303
+        SkillSlot: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10303
         SkillSlot: 2
         RareType: 0
         Weight: 100
@@ -723,6 +811,13 @@ MonoBehaviour:
         Power: 0
         RareType: 0
         Weight: 100
+    - Key: 10203
+      Value:
+      - Id: 10203
+        AbnormalStatusType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
     - Key: 10301
       Value:
       - Id: 10301
@@ -733,6 +828,13 @@ MonoBehaviour:
     - Key: 10302
       Value:
       - Id: 10302
+        AbnormalStatusType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10303
+      Value:
+      - Id: 10303
         AbnormalStatusType: 0
         Power: 0
         RareType: 0
@@ -823,6 +925,38 @@ MonoBehaviour:
         Power: 0
         RareType: 0
         Weight: 100
+    - Key: 10203
+      Value:
+      - Id: 10203
+        ElementType: 1
+        Power: 8
+        RareType: 0
+        Weight: 100
+      - Id: 10203
+        ElementType: 1
+        Power: 10
+        RareType: 0
+        Weight: 100
+      - Id: 10203
+        ElementType: 2
+        Power: 8
+        RareType: 0
+        Weight: 100
+      - Id: 10203
+        ElementType: 2
+        Power: 10
+        RareType: 0
+        Weight: 100
+      - Id: 10203
+        ElementType: 3
+        Power: 8
+        RareType: 0
+        Weight: 100
+      - Id: 10203
+        ElementType: 3
+        Power: 10
+        RareType: 0
+        Weight: 100
     - Key: 10301
       Value:
       - Id: 10301
@@ -833,6 +967,13 @@ MonoBehaviour:
     - Key: 10302
       Value:
       - Id: 10302
+        ElementType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10303
+      Value:
+      - Id: 10303
         ElementType: 0
         Power: 0
         RareType: 0
