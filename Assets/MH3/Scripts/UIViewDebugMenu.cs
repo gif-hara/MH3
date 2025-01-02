@@ -107,6 +107,16 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
+                                "Add AvailableContents".Localized(),
+                                _ =>
+                                {
+                                    stateMachine.Change(StateAddAvailableContents);
+                                });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
                                 "チェック".Localized(),
                                 _ =>
                                 {
@@ -347,6 +357,36 @@ namespace MH3
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.gameObject.DestroySafe();
+            }
+
+            async UniTask StateAddAvailableContents(CancellationToken scope)
+            {
+                var elements = new List<string>();
+                var masterData = TinyServiceLocator.Resolve<MasterData>();
+                elements.AddRange(masterData.QuestSpecs.List.Select(x => AvailableContents.Key.GetQuestClear(x.Id)));
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    elements
+                        .Select(x => new Action<HKUIDocument>(document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                x,
+                                _ =>
+                                {
+                                    var userData = TinyServiceLocator.Resolve<UserData>();
+                                    userData.AvailableContents.Add(x);
+                                    Debug.Log($"Add AvailableContents: {x}");
+                                });
+                        }))
+                        .ToList(),
+                    0
+                );
+                inputController.Actions.UI.Cancel.OnPerformedAsObservable()
+                    .Subscribe(_ => stateMachine.Change(StateRoot))
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.DestroySafe();
             }
 
             async UniTask StateCheck(CancellationToken scope)
