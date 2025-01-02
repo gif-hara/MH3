@@ -241,42 +241,84 @@ MonoBehaviour:
     - Id: 20101
       Name: "\u6575\u6B66\u5668\uFF08\u76F4\u5263\uFF09"
       WeaponType: 0
-      ModelDataId: Sword.1
+      ModelDataId: Sword.2
       ComboId: 20101
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: 
       GuardPerformedSequencesKey: Guard.Performed.Default
       GuardCanceledSequencesKey: 
       DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
+      ModelData: {fileID: 11400000, guid: df8f701c3beac42188e9d69db5bf50c9, type: 2}
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20201
       Name: "\u6575\u6B66\u5668\uFF08\u4E21\u624B\u5263\uFF09"
       WeaponType: 1
-      ModelDataId: DualSword.1
+      ModelDataId: DualSword.2
       ComboId: 20201
       JustGuardAttackAnimationKey: 
       StrongAttackAnimationKey: 
       GuardPerformedSequencesKey: Guard.Performed.Default
       GuardCanceledSequencesKey: 
       DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 3fea2e14e7fe110429c301f8832e04da, type: 2}
+      ModelData: {fileID: 11400000, guid: 7cd7eeddb2df34485bfc2de1898df6b7, type: 2}
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20301
       Name: "\u6575\u6B66\u5668\uFF08\u5927\u5263\uFF09"
       WeaponType: 2
-      ModelDataId: Blade.1
+      ModelDataId: Blade.2
       ComboId: 20301
       JustGuardAttackAnimationKey: 
       StrongAttackAnimationKey: 
       GuardPerformedSequencesKey: Guard.Performed.Default
       GuardCanceledSequencesKey: 
       DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 3eff6415dc612f14aadbb594f8a7f21d, type: 2}
+      ModelData: {fileID: 11400000, guid: 59c620b3751a34322824250e43c10406, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20102
+      Name: "\u6575\u6B66\u5668\uFF08\u76F4\u5263\uFF09"
+      WeaponType: 0
+      ModelDataId: Sword.3
+      ComboId: 20101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 5e0101092b161574a8be92cad86e2e7d, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20202
+      Name: "\u6575\u6B66\u5668\uFF08\u4E21\u624B\u5263\uFF09"
+      WeaponType: 1
+      ModelDataId: DualSword.3
+      ComboId: 20201
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 92fe05acc5d88d146a9174f6cca2f152, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20302
+      Name: "\u6575\u6B66\u5668\uFF08\u5927\u5263\uFF09"
+      WeaponType: 2
+      ModelDataId: Blade.3
+      ComboId: 20301
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 63c49e1a2d69ae848960cb2ac16bf905, type: 2}
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
@@ -2011,7 +2053,7 @@ MonoBehaviour:
       MoveSpeed: 7
       RotationSpeed: 10
       WeaponId: 20101
-      ArmorHeadId: 10101
+      ArmorHeadId: 0
       ArmorArmsId: 0
       ArmorBodyId: 0
       VisibleStatusUI: 1
@@ -2026,7 +2068,7 @@ MonoBehaviour:
       DeadSequencesKey: Dead.Default
       RecoverySequencesKey: Recovery.Default
       ActorPrefabKey: Enemy.Green
-      BehaviourKey: Enemy.20103
+      BehaviourKey: Enemy.20101
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
       FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
@@ -2058,7 +2100,7 @@ MonoBehaviour:
       RotationSpeed: 10
       WeaponId: 20201
       ArmorHeadId: 0
-      ArmorArmsId: 10201
+      ArmorArmsId: 0
       ArmorBodyId: 0
       VisibleStatusUI: 1
       RecoveryCommandCount: 0
@@ -2105,7 +2147,7 @@ MonoBehaviour:
       WeaponId: 20301
       ArmorHeadId: 0
       ArmorArmsId: 0
-      ArmorBodyId: 10301
+      ArmorBodyId: 0
       VisibleStatusUI: 1
       RecoveryCommandCount: 0
       InitialStateKey: Idle.Default
@@ -2118,7 +2160,7 @@ MonoBehaviour:
       DeadSequencesKey: Dead.Default
       RecoverySequencesKey: Recovery.Default
       ActorPrefabKey: Enemy.Red
-      BehaviourKey: Enemy.20101
+      BehaviourKey: Enemy.20103
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
       FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
@@ -2148,10 +2190,10 @@ MonoBehaviour:
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20301
-      ArmorHeadId: 0
-      ArmorArmsId: 0
-      ArmorBodyId: 0
+      WeaponId: 20102
+      ArmorHeadId: 10103
+      ArmorArmsId: 10203
+      ArmorBodyId: 10303
       VisibleStatusUI: 1
       RecoveryCommandCount: 0
       InitialStateKey: Idle.Default
@@ -2163,8 +2205,8 @@ MonoBehaviour:
       SuccessGuardSequencesKey: SuccessGuard.Default
       DeadSequencesKey: Dead.Default
       RecoverySequencesKey: Recovery.Default
-      ActorPrefabKey: Enemy.Red
-      BehaviourKey: Enemy.20101
+      ActorPrefabKey: Enemy.Green
+      BehaviourKey: Enemy.20201
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
       FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
@@ -2174,8 +2216,8 @@ MonoBehaviour:
       SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
-      ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
-      Behaviour: {fileID: 11400000, guid: 149a3b5dc3df4be419e41b4e029ae45b, type: 2}
+      ActorPrefab: {fileID: 963923653530722458, guid: 3f43d0dbd817c974a88930c72ab359fa, type: 3}
+      Behaviour: {fileID: 0}
     - Id: 20202
       Name: "\u9B54\u6CD5\u4F7F\u3044\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
@@ -2194,7 +2236,7 @@ MonoBehaviour:
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20201
+      WeaponId: 20202
       ArmorHeadId: 0
       ArmorArmsId: 0
       ArmorBodyId: 0
@@ -2240,7 +2282,7 @@ MonoBehaviour:
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20101
+      WeaponId: 20301
       ArmorHeadId: 0
       ArmorArmsId: 0
       ArmorBodyId: 0
@@ -2255,7 +2297,7 @@ MonoBehaviour:
       SuccessGuardSequencesKey: SuccessGuard.Default
       DeadSequencesKey: Dead.Default
       RecoverySequencesKey: Recovery.Default
-      ActorPrefabKey: Enemy.Green
+      ActorPrefabKey: Enemy.Red
       BehaviourKey: Enemy.20103
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
@@ -2266,8 +2308,8 @@ MonoBehaviour:
       SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
-      ActorPrefab: {fileID: 963923653530722458, guid: 3f43d0dbd817c974a88930c72ab359fa, type: 3}
-      Behaviour: {fileID: 11400000, guid: 9266d92255e2e594baf28167a4d7d058, type: 2}
+      ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
+      Behaviour: {fileID: 11400000, guid: 149a3b5dc3df4be419e41b4e029ae45b, type: 2}
     - Id: 29901
       Name: "\u30C8\u30EC\u30FC\u30CB\u30F3\u30B0\u30C0\u30DF\u30FC\u541B"
       ActorType: 1
@@ -2641,8 +2683,24 @@ MonoBehaviour:
     - Key: Quest.10201
       Value:
       - Id: Quest.10201
+        RewardType: 0
+        RewardId: 10110
+        Weight: 100
+      - Id: Quest.10201
+        RewardType: 1
+        RewardId: 10201
+        Weight: 100
+      - Id: Quest.10201
         RewardType: 2
-        RewardId: 10301
+        RewardId: 10103
+        Weight: 100
+      - Id: Quest.10201
+        RewardType: 2
+        RewardId: 10203
+        Weight: 100
+      - Id: Quest.10201
+        RewardType: 2
+        RewardId: 10203
         Weight: 100
   skillCoreSpecs:
     list:
@@ -2656,6 +2714,18 @@ MonoBehaviour:
       ColorCode: '#0000FF'
     - Id: 10103
       Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+      Slot: 1
+      ColorCode: '#FF0000'
+    - Id: 10201
+      Name: "\u6599\u7406\u9577\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+      Slot: 1
+      ColorCode: '#00FF00'
+    - Id: 10202
+      Name: "\u9B54\u6CD5\u4F7F\u3044\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+      Slot: 1
+      ColorCode: '#0000FF'
+    - Id: 10203
+      Name: "\u8D64\u9B3C\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
       ColorCode: '#FF0000'
     - Id: 19901
@@ -2692,6 +2762,48 @@ MonoBehaviour:
         Weight: 100
       - Id: 10103
         Count: 2
+        RareType: 0
+        Weight: 100
+    - Key: 10201
+      Value:
+      - Id: 10201
+        Count: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10201
+        Count: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10201
+        Count: 3
+        RareType: 0
+        Weight: 100
+    - Key: 10202
+      Value:
+      - Id: 10202
+        Count: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10202
+        Count: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10202
+        Count: 3
+        RareType: 0
+        Weight: 100
+    - Key: 10203
+      Value:
+      - Id: 10203
+        Count: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10203
+        Count: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10203
+        Count: 3
         RareType: 0
         Weight: 100
     - Key: 19901
@@ -2749,6 +2861,57 @@ MonoBehaviour:
         RareType: 0
         Weight: 50
       - Id: 10103
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 50
+    - Key: 10201
+      Value:
+      - Id: 10201
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10201
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10201
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 50
+    - Key: 10202
+      Value:
+      - Id: 10202
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10202
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10202
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 50
+    - Key: 10203
+      Value:
+      - Id: 10203
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10203
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10203
         SkillType: 2
         Level: 1
         RareType: 0

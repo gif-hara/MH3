@@ -27,20 +27,20 @@ MonoBehaviour:
             rid: 1481063179134173265
         - weight: 100
           sequenceResolver:
-            rid: 1481063179134173331
+            rid: 1481063553013383194
         - weight: 100
           sequenceResolver:
-            rid: 1481063364369056151
-        - weight: 50
+            rid: 1953366480956948480
+        - weight: 25
           sequenceResolver:
             rid: 1481063179134173329
-        - weight: 50
+        - weight: 25
           sequenceResolver:
             rid: 1481063179134173330
     - rid: 1481063179134173265
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: {fileID: 11400000, guid: abc92420c867a304aaadaa5b10c2f32e, type: 2}
+        value: {fileID: 11400000, guid: 1d91f83496a1cd24c807b3258785d856, type: 2}
     - rid: 1481063179134173322
       type: {class: WaitForStateAsync, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -59,11 +59,11 @@ MonoBehaviour:
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: {fileID: 11400000, guid: 80d8a4bd57882284ca561d2723f0a9a2, type: 2}
-    - rid: 1481063179134173331
+    - rid: 1481063553013383194
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: {fileID: 11400000, guid: ff118d268aa2fab45abec6a14e90ec14, type: 2}
-    - rid: 1481063364369056151
+        value: {fileID: 11400000, guid: f5f88bf9348995e4ca56d4a201b47497, type: 2}
+    - rid: 1953366480956948480
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: {fileID: 11400000, guid: 2254d227ff16e6840af33912ff4b0e88, type: 2}
+        value: {fileID: 11400000, guid: 60e543c19e7d6413e9e148b901af209d, type: 2}
