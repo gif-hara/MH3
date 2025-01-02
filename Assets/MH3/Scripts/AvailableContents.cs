@@ -54,7 +54,7 @@ namespace MH3
 
             public static string GetQuestClear(string questSpecId)
             {
-                return $"Clear.Quest.{questSpecId}";
+                return $"Clear.{questSpecId}";
             }
 
             public static string GetSeenWeapon(int weaponSpecId)
