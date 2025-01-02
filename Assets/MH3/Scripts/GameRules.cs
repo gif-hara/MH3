@@ -51,8 +51,8 @@ namespace MH3
         public float PoisonInterval => poisonInterval;
 
         [SerializeField]
-        private int poisonDamage;
-        public int PoisonDamage => poisonDamage;
+        private float poisonDamageRate;
+        public float PoisonDamageRate => poisonDamageRate;
 
         [SerializeField]
         private ScriptableSequences paralysisBeginSequence;
