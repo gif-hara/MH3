@@ -25,6 +25,10 @@ namespace MH3
 
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return UniTask.CompletedTask;
+            }
             var actor = actorResolver.Resolve(container);
             var forceChange = forceChangeResolver.Resolve(container);
             var isSuccess = actor.StateMachine.TryChangeState(stateSequence, forceChange, nextContainer: container);
