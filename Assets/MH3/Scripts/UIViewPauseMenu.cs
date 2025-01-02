@@ -541,7 +541,7 @@ namespace MH3
                                     if (result == 0)
                                     {
                                         var armorSpec = x.ArmorSpec;
-                                        if (userData.GetEquippedInstanceArmor(armorSpec.ArmorType).InstanceId ==
+                                        if (userData.GetEquippedInstanceArmor(armorSpec.ArmorType)?.InstanceId ==
                                             x.InstanceId)
                                         {
                                             userData.SetEquippedInstanceArmor(armorSpec.ArmorType, 0);
