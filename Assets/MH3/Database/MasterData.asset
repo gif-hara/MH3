@@ -3044,6 +3044,21 @@ MonoBehaviour:
       ModelDataId: Body.3
       ArmorType: 2
       ModelData: {fileID: 11400000, guid: 4069948e8b02eeb4a87fa80988eec724, type: 2}
+    - Id: 10104
+      Name: "\u9B54\u6CD5\u4F7F\u3044\u306E\u5E3D\u5B50"
+      ModelDataId: Head.4
+      ArmorType: 0
+      ModelData: {fileID: 11400000, guid: 681cc0d1bfea3184da638198fedd6640, type: 2}
+    - Id: 10204
+      Name: "\u9B54\u6CD5\u4F7F\u3044\u306E\u30B0\u30ED\u30FC\u30D6"
+      ModelDataId: Arms.4
+      ArmorType: 1
+      ModelData: {fileID: 11400000, guid: 5dce1561ca70ada4985c0bc388dcc89f, type: 2}
+    - Id: 10304
+      Name: "\u9B54\u6CD5\u4F7F\u3044\u306E\u30ED\u30FC\u30D6"
+      ModelDataId: Body.4
+      ArmorType: 2
+      ModelData: {fileID: 11400000, guid: b990522c5b4067b45beceb15c2171520, type: 2}
     - Id: 20101
       Name: "\u6575\u9632\u5177\uFF08\u982D\uFF09"
       ModelDataId: Head.1
@@ -3112,6 +3127,24 @@ MonoBehaviour:
     - Key: 10303
       Value:
       - Id: 10303
+        Defense: 5
+        RareType: 0
+        Weight: 100
+    - Key: 10104
+      Value:
+      - Id: 10104
+        Defense: 5
+        RareType: 0
+        Weight: 100
+    - Key: 10204
+      Value:
+      - Id: 10204
+        Defense: 5
+        RareType: 0
+        Weight: 100
+    - Key: 10304
+      Value:
+      - Id: 10304
         Defense: 5
         RareType: 0
         Weight: 100
@@ -3207,6 +3240,36 @@ MonoBehaviour:
         Count: 2
         RareType: 0
         Weight: 100
+    - Key: 10104
+      Value:
+      - Id: 10104
+        Count: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10104
+        Count: 2
+        RareType: 0
+        Weight: 100
+    - Key: 10204
+      Value:
+      - Id: 10204
+        Count: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10204
+        Count: 2
+        RareType: 0
+        Weight: 100
+    - Key: 10304
+      Value:
+      - Id: 10304
+        Count: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10304
+        Count: 2
+        RareType: 0
+        Weight: 100
   armorSkills:
     list:
     - Key: 10101
@@ -3268,6 +3331,27 @@ MonoBehaviour:
     - Key: 10303
       Value:
       - Id: 10303
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10104
+      Value:
+      - Id: 10104
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10204
+      Value:
+      - Id: 10204
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10304
+      Value:
+      - Id: 10304
         SkillType: 0
         Level: 1
         RareType: 0
