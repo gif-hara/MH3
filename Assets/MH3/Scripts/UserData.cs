@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using HK;
 using UnityEngine;
 
 namespace MH3
@@ -157,6 +158,23 @@ namespace MH3
         public int GetAndIncrementCreatedInstanceArmorCount()
         {
             return createdInstanceArmorCount++;
+        }
+
+        public void TryAvailableContentsUnlock()
+        {
+            var masterData = TinyServiceLocator.Resolve<MasterData>();
+            foreach (var group in masterData.AvailableContentsUnlocks.List)
+            {
+                if (availableContents.Contains(group.Key))
+                {
+                    continue;
+                }
+
+                if (group.Value.All(x => availableContents.Contains(x.NeedAvailableContentKey)))
+                {
+                    availableContents.Add(group.Key);
+                }
+            }
         }
     }
 }
