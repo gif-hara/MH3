@@ -17,14 +17,29 @@ namespace MH3
         public UIViewPlayerStatus(HKUIDocument documentPrefab, Actor actor, CancellationToken scope)
             : base(scope)
         {
+            var gameRules = TinyServiceLocator.Resolve<GameRules>();
             document = UnityEngine.Object.Instantiate(documentPrefab);
+            var hitPointSlider = document.Q<HKUIDocument>("Slider.HitPoint").Q<Slider>("Slider");
+            var hitPointSliderDefaultSize = ((RectTransform)hitPointSlider.transform).sizeDelta;
+            ((RectTransform)hitPointSlider.transform).sizeDelta = new Vector2(
+                gameRules.HitPointSliderAddWidth * actor.SpecController.HitPointMax,
+                hitPointSliderDefaultSize.y
+                );
             actor.SpecController.HitPoint
-                .Subscribe((document, actor), static (_, t) =>
+                .Subscribe((hitPointSlider, actor), static (_, t) =>
                 {
-                    var (document, actor) = t;
-                    document.Q<HKUIDocument>("Slider.HitPoint")
-                        .Q<Slider>("Slider")
-                        .value = (float)actor.SpecController.HitPoint.CurrentValue / actor.SpecController.HitPointMax;
+                    var (hitPointSlider, actor) = t;
+                    hitPointSlider.value = (float)actor.SpecController.HitPoint.CurrentValue / actor.SpecController.HitPointMax;
+                })
+                .RegisterTo(scope);
+            actor.SpecController.OnBuildStatuses
+                .Subscribe((hitPointSlider, hitPointSliderDefaultSize, gameRules, actor), static (_, t) =>
+                {
+                    var (hitPointSlider, hitPointSliderDefaultSize, gameRules, actor) = t;
+                    ((RectTransform)hitPointSlider.transform).sizeDelta = new Vector2(
+                        gameRules.HitPointSliderAddWidth * actor.SpecController.HitPointMax,
+                        hitPointSliderDefaultSize.y
+                        );
                 })
                 .RegisterTo(scope);
             actor.SpecController.RecoveryCommandCount

@@ -110,6 +110,10 @@ namespace MH3
         private string criticalHitEffectKey;
         public string CriticalHitEffectKey => criticalHitEffectKey;
 
+        [SerializeField]
+        private float hitPointSliderAddWidth;
+        public float HitPointSliderAddWidth => hitPointSliderAddWidth;
+
         [Serializable]
         public class ElementProjectile
         {

@@ -104,6 +104,9 @@ namespace MH3.ActorControllers
 
         public readonly ReactiveProperty<bool> IsEventStop = new(false);
 
+        private readonly Subject<Unit> onBuildStatuses = new();
+        public Observable<Unit> OnBuildStatuses => onBuildStatuses;
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -128,6 +131,8 @@ namespace MH3.ActorControllers
         }
 
         public Define.ActorType ActorType => spec.ActorType;
+
+        public int HitPointBase => spec.HitPoint;
 
         public int HitPointMax => hitPointMax.ValueFloorToInt;
 
@@ -322,6 +327,7 @@ namespace MH3.ActorControllers
             recoveryCommandCountMax.RegisterAdds("Skills", () => Skills.Sum(x => x.GetParameter(Define.ActorParameterType.RecoveryCommandCount, actor)));
             recoveryCommandCount.Value = recoveryCommandCountMax.ValueFloorToInt;
             rewardUp.Value = Skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Reward, actor));
+            onBuildStatuses.OnNext(Unit.Default);
         }
 
         public void SetSuperArmor(int value)
