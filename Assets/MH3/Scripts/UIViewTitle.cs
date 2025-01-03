@@ -17,9 +17,11 @@ namespace MH3
             var areaTitleAnimation = document.Q<SimpleAnimation>("Area.Title");
             var areaPressButtonAnimation = document.Q<SimpleAnimation>("Area.PressButton");
             var areaPressButtonCanvasGroup = document.Q<CanvasGroup>("Area.PressButton");
+            var gameCameraController = TinyServiceLocator.Resolve<GameCameraController>();
             inputController.PushActionType(InputController.InputActionType.UI);
             areaTitleCanvasGroup.alpha = 0.0f;
             areaPressButtonCanvasGroup.alpha = 0.0f;
+            gameCameraController.BeginTitle();
             await TinyServiceLocator.Resolve<UIViewTransition>()
                 .Build()
                 .SetMaterial("Transition.3")
@@ -28,6 +30,7 @@ namespace MH3
             await areaPressButtonAnimation.PlayAsync("In", cancellationToken);
             areaPressButtonAnimation.Play("Loop");
             await inputController.Actions.UI.Submit.OnPerformedAsObservable().FirstAsync(cancellationToken);
+            gameCameraController.EndTitle();
             await UniTask.WhenAll(
                 areaTitleAnimation.PlayAsync("Out", cancellationToken),
                 areaPressButtonAnimation.PlayAsync("Out", cancellationToken)

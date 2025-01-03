@@ -13,6 +13,9 @@ namespace MH3
         private CinemachineCamera defaultCinemachineCamera;
 
         [SerializeField]
+        private CinemachineCamera titleCinemachineCamera;
+
+        [SerializeField]
         private List<CinemachineCamera> defeatEnemyCinemachineCameras;
 
         [SerializeField]
@@ -35,11 +38,24 @@ namespace MH3
         {
             defaultCinemachineCamera.Target.TrackingTarget = player.transform;
             defaultCinemachineCamera.Target.LookAtTarget = enemy.LocatorHolder.Get("Root");
+            titleCinemachineCamera.Target.TrackingTarget = player.transform;
+            titleCinemachineCamera.Target.LookAtTarget = player.LocatorHolder.Get("Root");
+            titleCinemachineCamera.gameObject.SetActive(false);
             foreach (var defeatEnemyCinemachineCamera in defeatEnemyCinemachineCameras)
             {
                 defeatEnemyCinemachineCamera.Target.TrackingTarget = enemy.transform;
                 defeatEnemyCinemachineCamera.Target.LookAtTarget = enemy.LocatorHolder.Get("Root");
             }
+        }
+
+        public void BeginTitle()
+        {
+            titleCinemachineCamera.gameObject.SetActive(true);
+        }
+
+        public void EndTitle()
+        {
+            titleCinemachineCamera.gameObject.SetActive(false);
         }
 
         public void BeginImpulseSource(string name)
