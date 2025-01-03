@@ -114,6 +114,8 @@ namespace MH3
 
         public float ElapsedQuestTime { get; private set; }
 
+        private bool isFirstSetupQuest = true;
+
         private async void Start()
         {
             HK.Time.Root.timeScale = 1.0f;
@@ -232,6 +234,13 @@ namespace MH3
             // タイトル画面
             {
                 await UIViewTitle.OpenAsync(titleDocumentPrefab, destroyCancellationToken);
+                var questSpec = TinyServiceLocator.Resolve<MasterData>().QuestSpecs.Get(initialQuestSpecId);
+                var beginQuestContainer = new Container();
+                beginQuestContainer.Register(this);
+                beginQuestContainer.Register("Player", player);
+                beginQuestContainer.Register("Enemy", enemy);
+                var beginQuestSequencer = new Sequencer(beginQuestContainer, questSpec.BeginQuestSequences.Sequences);
+                beginQuestSequencer.PlayAsync(questScope.Token).Forget();
             }
 #if DEBUG
             var debugData = new GameDebugData();
@@ -285,12 +294,15 @@ namespace MH3
             player.transform.position = stage.PlayerSpawnPoint.position;
             player.MovementController.RotateImmediate(stage.PlayerSpawnPoint.rotation);
             player.SpecController.Target.Value = enemy;
-            var beginQuestContainer = new Container();
-            beginQuestContainer.Register(this);
-            beginQuestContainer.Register("Player", player);
-            beginQuestContainer.Register("Enemy", enemy);
-            var beginQuestSequencer = new Sequencer(beginQuestContainer, questSpec.BeginQuestSequences.Sequences);
-            beginQuestSequencer.PlayAsync(questScope.Token).Forget();
+            if (!isFirstSetupQuest)
+            {
+                var beginQuestContainer = new Container();
+                beginQuestContainer.Register(this);
+                beginQuestContainer.Register("Player", player);
+                beginQuestContainer.Register("Enemy", enemy);
+                var beginQuestSequencer = new Sequencer(beginQuestContainer, questSpec.BeginQuestSequences.Sequences);
+                beginQuestSequencer.PlayAsync(questScope.Token).Forget();
+            }
             enemy.SpecController.Target.Value = player;
             enemy.BehaviourController.Begin(enemySpec.Behaviour).Forget();
             gameCameraController.Setup(player, enemy);
@@ -316,6 +328,7 @@ namespace MH3
                     .Build()
                     .BeginAsync(LMotion.Create(1.0f, 0.0f, 0.4f));
             }
+            isFirstSetupQuest = false;
         }
 
         public void BeginQuestTimer()
