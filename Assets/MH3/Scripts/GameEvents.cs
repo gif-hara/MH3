@@ -2,8 +2,10 @@ using R3;
 
 namespace MH3
 {
-    public static class GameEvents
+    public sealed class GameEvents
     {
-        public static readonly Subject<Unit> OnBeginTitle = new();
+        public readonly Subject<Unit> OnBeginTitle = new();
+
+        public readonly Subject<Unit> OnEndTitle = new();
     }
 }

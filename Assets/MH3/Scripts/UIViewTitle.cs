@@ -18,10 +18,12 @@ namespace MH3
             var areaPressButtonAnimation = document.Q<SimpleAnimation>("Area.PressButton");
             var areaPressButtonCanvasGroup = document.Q<CanvasGroup>("Area.PressButton");
             var gameCameraController = TinyServiceLocator.Resolve<GameCameraController>();
+            var gameEvents = TinyServiceLocator.Resolve<GameEvents>();
             inputController.PushActionType(InputController.InputActionType.UI);
             areaTitleCanvasGroup.alpha = 0.0f;
             areaPressButtonCanvasGroup.alpha = 0.0f;
             gameCameraController.BeginTitle();
+            gameEvents.OnBeginTitle.OnNext(Unit.Default);
             await TinyServiceLocator.Resolve<UIViewTransition>()
                 .Build()
                 .SetMaterial("Transition.3")
@@ -35,6 +37,7 @@ namespace MH3
                 areaTitleAnimation.PlayAsync("Out", cancellationToken),
                 areaPressButtonAnimation.PlayAsync("Out", cancellationToken)
             );
+            gameEvents.OnEndTitle.OnNext(Unit.Default);
             inputController.PopActionType();
             document.DestroySafe();
         }

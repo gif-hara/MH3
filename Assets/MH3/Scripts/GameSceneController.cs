@@ -117,6 +117,7 @@ namespace MH3
         private async void Start()
         {
             HK.Time.Root.timeScale = 1.0f;
+            TinyServiceLocator.RegisterAsync(new GameEvents(), destroyCancellationToken).Forget();
             var inputController = new InputController();
             TinyServiceLocator.RegisterAsync(inputController, destroyCancellationToken).Forget();
             TinyServiceLocator.RegisterAsync(masterData, destroyCancellationToken).Forget();

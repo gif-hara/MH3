@@ -24,6 +24,21 @@ namespace MH3
                 document.DestroySafe();
             });
             document.gameObject.SetActive(false);
+            var gameEvents = TinyServiceLocator.Resolve<GameEvents>();
+            gameEvents.OnBeginTitle
+                .Subscribe(document, static (x, t) =>
+                {
+                    var document = t;
+                    document.gameObject.SetActive(false);
+                })
+                .RegisterTo(scope);
+            gameEvents.OnEndTitle
+                .Subscribe(document, static (x, t) =>
+                {
+                    var document = t;
+                    document.gameObject.SetActive(true);
+                })
+                .RegisterTo(scope);
         }
 
         public void Push(Func<string> textSelector, CancellationToken scope)

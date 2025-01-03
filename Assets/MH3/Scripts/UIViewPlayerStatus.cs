@@ -21,6 +21,21 @@ namespace MH3
             document = UnityEngine.Object.Instantiate(documentPrefab);
             var hitPointSlider = document.Q<HKUIDocument>("Slider.HitPoint").Q<Slider>("Slider");
             var hitPointSliderDefaultSize = ((RectTransform)hitPointSlider.transform).sizeDelta;
+            var gameEvents = TinyServiceLocator.Resolve<GameEvents>();
+            gameEvents.OnBeginTitle
+                .Subscribe(document, static (x, t) =>
+                {
+                    var document = t;
+                    document.gameObject.SetActive(false);
+                })
+                .RegisterTo(scope);
+            gameEvents.OnEndTitle
+                .Subscribe(document, static (x, t) =>
+                {
+                    var document = t;
+                    document.gameObject.SetActive(true);
+                })
+                .RegisterTo(scope);
             ((RectTransform)hitPointSlider.transform).sizeDelta = new Vector2(
                 gameRules.HitPointSliderAddWidth * actor.SpecController.HitPointMax,
                 hitPointSliderDefaultSize.y
