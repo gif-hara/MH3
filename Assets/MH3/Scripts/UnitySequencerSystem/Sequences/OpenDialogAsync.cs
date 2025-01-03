@@ -34,8 +34,11 @@ namespace MH3
         public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var dialog = new UIViewSimpleDialog(documentPrefab);
+            var message = messageResolver.Resolve(container).Localized();
+            var inputController = TinyServiceLocator.Resolve<InputController>();
+            message = message.Replace("{InputSprite.Player.PauseMenu}", InputSprite.GetTag(inputController.Actions.Player.PauseMenu));
             var result = await dialog.OpenAsync(
-                messageResolver.Resolve(container).Localized(),
+                message,
                 options.Select(x => x.Localized()),
                 initialSelectionIndexResolver.Resolve(container),
                 cancelIndexResolver.Resolve(container),
