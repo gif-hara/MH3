@@ -14,15 +14,24 @@ namespace MH3
             var document = Object.Instantiate(documentPrefab);
             var inputController = TinyServiceLocator.Resolve<InputController>();
             var areaTitleCanvasGroup = document.Q<CanvasGroup>("Area.Title");
+            var areaTitleAnimation = document.Q<SimpleAnimation>("Area.Title");
+            var areaPressButtonAnimation = document.Q<SimpleAnimation>("Area.PressButton");
+            var areaPressButtonCanvasGroup = document.Q<CanvasGroup>("Area.PressButton");
             inputController.PushActionType(InputController.InputActionType.UI);
             areaTitleCanvasGroup.alpha = 0.0f;
+            areaPressButtonCanvasGroup.alpha = 0.0f;
             await TinyServiceLocator.Resolve<UIViewTransition>()
                 .Build()
                 .SetMaterial("Transition.3")
                 .BeginAsync(LMotion.Create(1.0f, 0.0f, 0.5f));
-            await document.Q<SimpleAnimation>("Area.Title").PlayAsync("In", cancellationToken);
+            await areaTitleAnimation.PlayAsync("In", cancellationToken);
+            await areaPressButtonAnimation.PlayAsync("In", cancellationToken);
+            areaPressButtonAnimation.Play("Loop");
             await inputController.Actions.UI.Submit.OnPerformedAsObservable().FirstAsync(cancellationToken);
-            await document.Q<SimpleAnimation>("Area.Title").PlayAsync("Out", cancellationToken);
+            await UniTask.WhenAll(
+                areaTitleAnimation.PlayAsync("Out", cancellationToken),
+                areaPressButtonAnimation.PlayAsync("Out", cancellationToken)
+            );
             inputController.PopActionType();
             document.DestroySafe();
         }

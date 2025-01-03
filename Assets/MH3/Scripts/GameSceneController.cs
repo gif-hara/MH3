@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using HK;
 using LitMotion;
@@ -88,6 +89,9 @@ namespace MH3
         [SerializeField]
         private HKUIDocument inputGuideDocumentPrefab;
 
+        [SerializeField]
+        private HKUIDocument titleDocumentPrefab;
+
         private Actor player;
 
         private Actor enemy;
@@ -110,7 +114,7 @@ namespace MH3
 
         public float ElapsedQuestTime { get; private set; }
 
-        private void Start()
+        private async void Start()
         {
             HK.Time.Root.timeScale = 1.0f;
             var inputController = new InputController();
@@ -224,6 +228,10 @@ namespace MH3
                     ).Forget();
                 })
                 .RegisterTo(destroyCancellationToken);
+            // タイトル画面
+            {
+                await UIViewTitle.OpenAsync(titleDocumentPrefab, destroyCancellationToken);
+            }
 #if DEBUG
             var debugData = new GameDebugData();
             var isOpenDebugMenu = false;
