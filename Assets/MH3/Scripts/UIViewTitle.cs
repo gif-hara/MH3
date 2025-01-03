@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using HK;
 using LitMotion;
 using R3;
+using TMPro;
 using UnityEngine;
 
 namespace MH3
@@ -23,6 +24,13 @@ namespace MH3
             areaTitleCanvasGroup.alpha = 0.0f;
             areaPressButtonCanvasGroup.alpha = 0.0f;
             gameCameraController.BeginTitle();
+            TinyServiceLocator.Resolve<InputScheme>().InputSchemeTypeReactiveProperty
+                .Subscribe((document, inputController), static (x, t) =>
+                {
+                    var (document, inputController) = t;
+                    document.Q<TMP_Text>("Text.PressButton").text = string.Format("{0}:ゲームスタート", InputSprite.GetTag(inputController.Actions.UI.Submit)).Localized();
+                })
+                .RegisterTo(cancellationToken);
             gameEvents.OnBeginTitle.OnNext(Unit.Default);
             await TinyServiceLocator.Resolve<UIViewTransition>()
                 .Build()
