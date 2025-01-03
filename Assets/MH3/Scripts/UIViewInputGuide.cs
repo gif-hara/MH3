@@ -37,6 +37,7 @@ namespace MH3
                 {
                     var document = t;
                     document.gameObject.SetActive(true);
+                    document.Q<SimpleAnimation>("Area.Animation").Play("In");
                 })
                 .RegisterTo(scope);
         }
