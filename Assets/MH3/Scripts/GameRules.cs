@@ -118,6 +118,18 @@ namespace MH3
         private float skillSuccessJustGuardCriticalUpDuration;
         public float SkillSuccessJustGuardCriticalUpDuration => skillSuccessJustGuardCriticalUpDuration;
 
+        [SerializeField]
+        private float staminaRecoveryAmount;
+        public float StaminaRecoveryAmount => staminaRecoveryAmount;
+
+        [SerializeField]
+        private float dodgeStaminaCost;
+        public float DodgeStaminaCost => dodgeStaminaCost;
+
+        [SerializeField]
+        private float staminaSliderAddWidth;
+        public float StaminaSliderAddWidth => staminaSliderAddWidth;
+
         [Serializable]
         public class ElementProjectile
         {
