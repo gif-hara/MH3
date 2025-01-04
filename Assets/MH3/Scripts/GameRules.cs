@@ -130,6 +130,10 @@ namespace MH3
         private ScriptableSequences sharpenStateSequences;
         public ScriptableSequences SharpenStateSequences => sharpenStateSequences;
 
+        [SerializeField]
+        private ScriptableSequences enduranceStateSequences;
+        public ScriptableSequences EnduranceStateSequences => enduranceStateSequences;
+
         [Serializable]
         public class ElementProjectile
         {
