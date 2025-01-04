@@ -116,7 +116,7 @@ namespace MH3
 
         private bool isFirstSetupQuest = true;
 
-        private async void Start()
+        private void Start()
         {
             HK.Time.Root.timeScale = 1.0f;
             TinyServiceLocator.RegisterAsync(new GameEvents(), destroyCancellationToken).Forget();
