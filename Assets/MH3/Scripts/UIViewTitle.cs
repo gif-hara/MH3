@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
@@ -13,7 +14,7 @@ namespace MH3
         public static async UniTask OpenAsync(HKUIDocument documentPrefab, CancellationToken scope)
         {
             var newScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
-            var document = Object.Instantiate(documentPrefab);
+            var document = UnityEngine.Object.Instantiate(documentPrefab);
             var inputController = TinyServiceLocator.Resolve<InputController>();
             var areaTitleCanvasGroup = document.Q<CanvasGroup>("Area.Title");
             var areaTitleAnimation = document.Q<SimpleAnimation>("Area.Title");
@@ -38,10 +39,12 @@ namespace MH3
                 .SetMaterial("Transition.3")
                 .BeginAsync(LMotion.Create(1.0f, 0.0f, 0.5f));
             await areaTitleAnimation.PlayAsync("In", newScope.Token);
-            await areaPressButtonAnimation.PlayAsync("In", newScope.Token);
-            areaPressButtonAnimation.Play("Loop");
+            var pressButtonAnimationScope = CancellationTokenSource.CreateLinkedTokenSource(newScope.Token);
+            PlayPressButtonAnimationAsync(pressButtonAnimationScope.Token).Forget();
             await inputController.Actions.UI.Submit.OnPerformedAsObservable().FirstAsync(newScope.Token);
             gameCameraController.EndTitle();
+            pressButtonAnimationScope.Cancel();
+            pressButtonAnimationScope.Dispose();
             await UniTask.WhenAll(
                 areaTitleAnimation.PlayAsync("Out", newScope.Token),
                 areaPressButtonAnimation.PlayAsync("Out", newScope.Token)
@@ -51,6 +54,18 @@ namespace MH3
             document.DestroySafe();
             newScope.Cancel();
             newScope.Dispose();
+
+            async UniTask PlayPressButtonAnimationAsync(CancellationToken scope)
+            {
+                try
+                {
+                    await areaPressButtonAnimation.PlayAsync("In", scope);
+                    areaPressButtonAnimation.Play("Loop");
+                }
+                catch (OperationCanceledException)
+                {
+                }
+            }
         }
     }
 }
