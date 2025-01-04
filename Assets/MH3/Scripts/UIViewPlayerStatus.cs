@@ -21,6 +21,8 @@ namespace MH3
             document = UnityEngine.Object.Instantiate(documentPrefab);
             var hitPointSlider = document.Q<HKUIDocument>("Slider.HitPoint").Q<Slider>("Slider");
             var hitPointSliderDefaultSize = ((RectTransform)hitPointSlider.transform).sizeDelta;
+            var staminaSlider = document.Q<HKUIDocument>("Slider.Stamina").Q<Slider>("Slider");
+            var staminaSliderDefaultSize = ((RectTransform)staminaSlider.transform).sizeDelta;
             var gameEvents = TinyServiceLocator.Resolve<GameEvents>();
             gameEvents.OnBeginTitle
                 .Subscribe(document, static (x, t) =>
@@ -41,6 +43,10 @@ namespace MH3
                 gameRules.HitPointSliderAddWidth * actor.SpecController.HitPointMaxTotal,
                 hitPointSliderDefaultSize.y
                 );
+            ((RectTransform)staminaSlider.transform).sizeDelta = new Vector2(
+                gameRules.StaminaSliderAddWidth * actor.SpecController.StaminaMaxTotal,
+                staminaSliderDefaultSize.y
+                );
             actor.SpecController.HitPoint
                 .Subscribe((hitPointSlider, actor), static (_, t) =>
                 {
@@ -48,13 +54,24 @@ namespace MH3
                     hitPointSlider.value = (float)actor.SpecController.HitPoint.CurrentValue / actor.SpecController.HitPointMaxTotal;
                 })
                 .RegisterTo(scope);
-            actor.SpecController.OnBuildStatuses
-                .Subscribe((hitPointSlider, hitPointSliderDefaultSize, gameRules, actor), static (_, t) =>
+            actor.SpecController.Stamina
+                .Subscribe((staminaSlider, actor), static (_, t) =>
                 {
-                    var (hitPointSlider, hitPointSliderDefaultSize, gameRules, actor) = t;
+                    var (staminaSlider, actor) = t;
+                    staminaSlider.value = (float)actor.SpecController.Stamina.CurrentValue / actor.SpecController.StaminaMaxTotal;
+                })
+                .RegisterTo(scope);
+            actor.SpecController.OnBuildStatuses
+                .Subscribe((hitPointSlider, hitPointSliderDefaultSize, staminaSlider, staminaSliderDefaultSize, gameRules, actor), static (_, t) =>
+                {
+                    var (hitPointSlider, hitPointSliderDefaultSize, staminaSlider, staminaSliderDefaultSize, gameRules, actor) = t;
                     ((RectTransform)hitPointSlider.transform).sizeDelta = new Vector2(
                         gameRules.HitPointSliderAddWidth * actor.SpecController.HitPointMaxTotal,
                         hitPointSliderDefaultSize.y
+                        );
+                    ((RectTransform)staminaSlider.transform).sizeDelta = new Vector2(
+                        gameRules.StaminaSliderAddWidth * actor.SpecController.StaminaMaxTotal,
+                        staminaSliderDefaultSize.y
                         );
                 })
                 .RegisterTo(scope);
