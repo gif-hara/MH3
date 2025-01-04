@@ -59,7 +59,7 @@ namespace MH3.ActorControllers
             {
                 return false;
             }
-            if (actor.SpecController.Stamina.Value < TinyServiceLocator.Resolve<GameRules>().DodgeStaminaCost)
+            if (actor.SpecController.Stamina.Value < 0)
             {
                 return false;
             }
