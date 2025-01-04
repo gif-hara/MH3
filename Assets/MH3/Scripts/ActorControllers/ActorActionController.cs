@@ -84,6 +84,19 @@ namespace MH3.ActorControllers
             return actor.StateMachine.TryChangeState(TinyServiceLocator.Resolve<GameRules>().SharpenStateSequences);
         }
 
+        public bool TryEndurance()
+        {
+            if (actor.SpecController.IsEventStop.Value)
+            {
+                return false;
+            }
+            if (actor.SpecController.Stamina.Value < 0)
+            {
+                return false;
+            }
+            return actor.StateMachine.TryChangeState(TinyServiceLocator.Resolve<GameRules>().EnduranceStateSequences);
+        }
+
         public async UniTask BeginDualSwordDodgeModeAsync()
         {
             try
