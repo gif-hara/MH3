@@ -6,8 +6,12 @@ namespace MH3
     {
         public static MasterData.SkillLevelValue GetFromLevel(this MasterData.SkillLevelValue.DictionaryList self, int level)
         {
-            level = Mathf.Clamp(level, 0, self.List.Count - 1);
-            return self.Get(level);
+            return self.Get(self.GetFixedSkillLevel(level));
+        }
+
+        public static int GetFixedSkillLevel(this MasterData.SkillLevelValue.DictionaryList self, int level)
+        {
+            return Mathf.Clamp(level, 0, self.List.Count - 1);
         }
     }
 }
