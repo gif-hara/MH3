@@ -32,30 +32,23 @@ MonoBehaviour:
       type: {class: SequencesResolver/List, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value:
-        - rid: 1481063400376893566
-    - rid: 1481063400376893566
-      type: {class: ActorStateChange, ns: MH3, asm: Assembly-CSharp}
-      data:
-        actorResolver:
-          rid: 1481063400376893567
-        stateSequence: {fileID: 11400000, guid: 8f7397817fb92fd4983872b1c246b940, type: 2}
-        forceChangeResolver:
-          rid: 1481063400376893568
-        isSuccessKeyResolver:
-          rid: 1481063400376893569
-    - rid: 1481063400376893567
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Actor
-    - rid: 1481063400376893568
-      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: 0
-    - rid: 1481063400376893569
-      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: IsSuccessChangeState
+        - rid: 7349438189002031247
     - rid: 1481063400376893573
       type: {class: BooleanResolver/NameBoolean, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        name: IsSuccessChangeState
+        name: IsSuccess
+    - rid: 7349438189002031247
+      type: {class: TryEndurance, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 7349438189002031248
+        isSuccessKeyResolver:
+          rid: 7349438189002031249
+    - rid: 7349438189002031248
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 7349438189002031249
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: IsSuccess
