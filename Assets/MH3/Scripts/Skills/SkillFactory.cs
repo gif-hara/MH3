@@ -36,6 +36,7 @@ namespace MH3.SkillSystems
                 Define.SkillType.FlinchDamageUp => new FlinchDamageUp(level),
                 Define.SkillType.RecoveryAmountUp => new RecoveryAmountUp(level),
                 Define.SkillType.SuccessJustGuardCriticalUp => new SuccessJustGuardCriticalUp(level),
+                Define.SkillType.LastComboAttackUp => new LastComboAttackUp(level),
                 _ => null
             };
         }

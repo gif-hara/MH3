@@ -2941,7 +2941,7 @@ MonoBehaviour:
     - Key: 19901
       Value:
       - Id: 19901
-        SkillType: 14
+        SkillType: 15
         Level: 10
         RareType: 0
         Weight: 50
@@ -3512,6 +3512,30 @@ MonoBehaviour:
       Value: 0.9
     - Level: 10
       Value: 1
+  skillLastComboAttackUp:
+    list:
+    - Level: 0
+      Value: 0
+    - Level: 1
+      Value: 10
+    - Level: 2
+      Value: 20
+    - Level: 3
+      Value: 30
+    - Level: 4
+      Value: 40
+    - Level: 5
+      Value: 50
+    - Level: 6
+      Value: 60
+    - Level: 7
+      Value: 70
+    - Level: 8
+      Value: 80
+    - Level: 9
+      Value: 90
+    - Level: 10
+      Value: 100
   armorSpecs:
     list:
     - Id: 10101
