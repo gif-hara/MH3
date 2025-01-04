@@ -28,7 +28,7 @@ namespace MH3.SkillSystems
                     {
                         return 0;
                     }
-                    return Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillSuccessJustGuardCriticalUp.GetFromLevel(Level).Value);
+                    return TinyServiceLocator.Resolve<MasterData>().SkillSuccessJustGuardCriticalUp.GetFromLevel(Level).Value;
                 }
                 );
         }
