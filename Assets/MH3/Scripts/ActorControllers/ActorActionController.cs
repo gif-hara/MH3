@@ -59,12 +59,21 @@ namespace MH3.ActorControllers
             {
                 return false;
             }
+            if (actor.SpecController.Stamina.Value < TinyServiceLocator.Resolve<GameRules>().DodgeStaminaCost)
+            {
+                return false;
+            }
             return actor.StateMachine.TryChangeState(
                 actor.SpecController.DodgeStateSequences,
                 containerAction: c =>
                 {
-                    c.Register("DodgeName", "Dodge");
+                    c.Register("AnimationName", GetDodgeAnimationName());
                 });
+        }
+
+        public void ConsumeStaminaForDodge()
+        {
+            actor.SpecController.Stamina.Value -= TinyServiceLocator.Resolve<GameRules>().DodgeStaminaCost;
         }
 
         public async UniTask BeginDualSwordDodgeModeAsync()
