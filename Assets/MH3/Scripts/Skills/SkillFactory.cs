@@ -32,6 +32,8 @@ namespace MH3.SkillSystems
                 Define.SkillType.GrassElementAttackUp => new GrassElementAttackUp(level),
                 Define.SkillType.HitPointMaxUp => new HitPointMaxUp(level),
                 Define.SkillType.RecoveryCommandCountUp => new RecoveryCommandCountUp(level),
+                Define.SkillType.RewardUp => new RewardUp(level),
+                Define.SkillType.FlinchDamageUp => new FlinchDamageUp(level),
                 _ => null
             };
         }
