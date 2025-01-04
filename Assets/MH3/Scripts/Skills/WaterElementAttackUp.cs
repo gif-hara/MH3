@@ -17,7 +17,7 @@ namespace MH3.SkillSystems
                 () =>
                 {
                     return owner.SpecController.ElementAttackType == Define.ElementType.Water
-                        ? Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillElementAttackUp.Get(Level).Value)
+                        ? Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillElementAttackUp.GetFromLevel(Level).Value)
                         : 0;
                 }
                 );

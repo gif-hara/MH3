@@ -14,7 +14,7 @@ namespace MH3.SkillSystems
         {
             owner.SpecController.RecoveryCommandCountMax.RegisterAdds(
                 "Skill.RecoveryCommandCountUp",
-                () => Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillRecoveryCommandCountUp.Get(Level).Value)
+                () => Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillRecoveryCommandCountUp.GetFromLevel(Level).Value)
                 );
         }
     }

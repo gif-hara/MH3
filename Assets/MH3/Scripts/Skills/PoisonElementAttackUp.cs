@@ -17,7 +17,7 @@ namespace MH3.SkillSystems
                 () =>
                 {
                     return owner.SpecController.AbnormalStatusAttackType == Define.AbnormalStatusType.Poison
-                        ? Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillAbnormalStatusUp.Get(Level).Value)
+                        ? Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillAbnormalStatusUp.GetFromLevel(Level).Value)
                         : 0;
                 }
                 );

@@ -14,7 +14,7 @@ namespace MH3.SkillSystems
         {
             owner.SpecController.FlinchDamageRate.RegisterAdds(
                 "Skill.FlinchDamageUp",
-                () => Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillFlinchDamageUp.Get(Level).Value)
+                () => Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillFlinchDamageUp.GetFromLevel(Level).Value)
                 );
         }
     }

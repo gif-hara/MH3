@@ -14,7 +14,7 @@ namespace MH3.SkillSystems
         {
             owner.SpecController.RewardUp.RegisterAdds(
                 "Skill.RewardUp",
-                () => Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillRewardUp.Get(Level).Value)
+                () => Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillRewardUp.GetFromLevel(Level).Value)
                 );
         }
     }

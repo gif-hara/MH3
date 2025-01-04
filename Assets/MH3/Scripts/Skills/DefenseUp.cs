@@ -14,7 +14,7 @@ namespace MH3.SkillSystems
         {
             owner.SpecController.Defense.RegisterAdds(
                 "Skill.DefenseUp",
-                () => Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillDefenseUp.Get(Level).Value)
+                () => Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillDefenseUp.GetFromLevel(Level).Value)
                 );
         }
     }
