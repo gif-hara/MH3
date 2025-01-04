@@ -114,8 +114,7 @@ namespace MH3.ActorControllers
 
         public ScriptableSequences DodgePerformedSequences { get; private set; }
 
-        private readonly ReactiveProperty<int> superArmorCount = new(0);
-        public ReadOnlyReactiveProperty<int> SuperArmorCount => superArmorCount;
+        public readonly ReactiveProperty<int> SuperArmorCount = new(0);
 
         public readonly ReactiveProperty<bool> IsEventStop = new(false);
 
@@ -356,13 +355,13 @@ namespace MH3.ActorControllers
             hitPoint.Value = HitPointMaxTotal;
             recoveryCommandCount.Value = RecoveryCommandCountMax.ValueFloorToInt;
             Stamina.Value = StaminaMaxTotal;
-            superArmorCount.Value = 0;
+            SuperArmorCount.Value = 0;
             onBuildStatuses.OnNext(Unit.Default);
         }
 
         public void SetSuperArmor(int value)
         {
-            superArmorCount.Value = value;
+            SuperArmorCount.Value = value;
         }
 
         public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)
@@ -497,11 +496,11 @@ namespace MH3.ActorControllers
                     onFlinch.OnNext(Unit.Default);
                 }
 
-                if (superArmorCount.Value > 0)
+                if (SuperArmorCount.Value > 0)
                 {
                     TinyServiceLocator.Resolve<AudioManager>().PlaySfx(gameRules.SuperArmorHitSfxKey);
                 }
-                superArmorCount.Value--;
+                SuperArmorCount.Value--;
 
                 if (attacker.SpecController.ActorType == Define.ActorType.Player && attackSpec.HitAdditionalSequencesPlayer != null)
                 {
@@ -550,7 +549,7 @@ namespace MH3.ActorControllers
                 return true;
             }
 #endif
-            if (superArmorCount.Value > 0)
+            if (SuperArmorCount.Value > 0)
             {
                 return false;
             }

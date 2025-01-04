@@ -19,6 +19,11 @@ namespace MH3.ActorControllers
             IsEventStop,
         }
 
+        public enum IntegerType
+        {
+            SuperArmorCount,
+        }
+
         public enum TriggerType
         {
             OnFlinch,
@@ -47,6 +52,15 @@ namespace MH3.ActorControllers
                 BooleanType.JustGuarding => actor.ActionController.JustGuarding,
                 BooleanType.CanGuard => actor.ActionController.CanGuard,
                 BooleanType.IsEventStop => actor.SpecController.IsEventStop,
+                _ => throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}"),
+            };
+        }
+
+        public Observable<int> GetIntegerAsObservable(IntegerType type)
+        {
+            return type switch
+            {
+                IntegerType.SuperArmorCount => actor.SpecController.SuperArmorCount,
                 _ => throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}"),
             };
         }
@@ -92,6 +106,18 @@ namespace MH3.ActorControllers
                     break;
                 case BooleanType.IsEventStop:
                     actor.SpecController.IsEventStop.Value = value;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}");
+            }
+        }
+
+        public void SetInteger(IntegerType type, int value)
+        {
+            switch (type)
+            {
+                case IntegerType.SuperArmorCount:
+                    actor.SpecController.SuperArmorCount.Value = value;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}");
