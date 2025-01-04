@@ -18,7 +18,7 @@ namespace MH3.SkillSystems
             owner.ActionController.JustGuarding
                 .Where(x => x)
                 .Subscribe(_ => successJustGuardTime = UnityEngine.Time.time)
-                .RegisterTo(owner.destroyCancellationToken);
+                .RegisterTo(scope);
             owner.SpecController.Critical.RegisterAdds(
                 "Skill.SuccessJustGuardCriticalUp",
                 () =>

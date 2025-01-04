@@ -114,6 +114,10 @@ namespace MH3
         private float hitPointSliderAddWidth;
         public float HitPointSliderAddWidth => hitPointSliderAddWidth;
 
+        [SerializeField]
+        private float skillSuccessJustGuardCriticalUpDuration;
+        public float SkillSuccessJustGuardCriticalUpDuration => skillSuccessJustGuardCriticalUpDuration;
+
         [Serializable]
         public class ElementProjectile
         {
