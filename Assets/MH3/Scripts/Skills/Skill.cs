@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using MH3.ActorControllers;
 using UnityEngine;
 
@@ -39,6 +40,6 @@ namespace MH3.SkillSystems
             return this;
         }
 
-        public abstract void Attach(Actor owner);
+        public abstract void Attach(Actor owner, CancellationToken scope);
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using MH3.ActorControllers;
 
 namespace MH3.SkillSystems
@@ -9,7 +10,7 @@ namespace MH3.SkillSystems
 
         int Level { get; }
 
-        void Attach(Actor owner);
+        void Attach(Actor owner, CancellationToken scope);
 
         float GetParameter(Define.ActorParameterType type, Actor owner);
 

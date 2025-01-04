@@ -89,6 +89,8 @@ namespace MH3.ActorControllers
 
         public readonly List<ISkill> Skills = new();
 
+        private CancellationTokenSource skillScope;
+
         private readonly Subject<Unit> onFlinch = new();
 
         private readonly Subject<DamageData> onTakeDamage = new();
@@ -321,9 +323,12 @@ namespace MH3.ActorControllers
             recoveryCommandCount.Value = RecoveryCommandCountMax.ValueFloorToInt;
             Skills.Clear();
             Skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
+            skillScope?.Cancel();
+            skillScope?.Dispose();
+            skillScope = new CancellationTokenSource();
             foreach (var skill in Skills)
             {
-                skill.Attach(actor);
+                skill.Attach(actor, skillScope.Token);
             }
             onBuildStatuses.OnNext(Unit.Default);
         }
