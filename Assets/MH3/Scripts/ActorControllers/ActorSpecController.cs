@@ -8,6 +8,7 @@ using LitMotion.Extensions;
 using MH3.AbnormalStatusSystems;
 using MH3.SkillSystems;
 using R3;
+using R3.Triggers;
 using UnityEngine;
 using UnitySequencerSystem;
 
@@ -24,6 +25,14 @@ namespace MH3.ActorControllers
         public readonly Parameter HitPointMax = new();
 
         private readonly ReactiveProperty<int> hitPoint = new(0);
+
+        public readonly Parameter StaminaMax = new();
+
+        public readonly ReactiveProperty<float> Stamina = new(0);
+
+        public readonly Parameter StaminaRecoveryAmount = new();
+
+        public float StaminaRecoveryRate { get; set; } = 1.0f;
 
         public readonly Parameter Attack = new();
 
@@ -120,6 +129,9 @@ namespace MH3.ActorControllers
             ActorName = spec.LocalizedName;
             HitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
             hitPoint.Value = spec.HitPoint;
+            StaminaMax.RegisterBasics("Spec", () => spec.Stamina);
+            StaminaRecoveryAmount.RegisterBasics("Default", () => TinyServiceLocator.Resolve<GameRules>().StaminaRecoveryAmount);
+            StaminaRecoveryRate = 1.0f;
             Attack.RegisterBasics("Spec", () => spec.Attack);
             CutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
             CutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);
@@ -141,6 +153,8 @@ namespace MH3.ActorControllers
         public int HitPointBase => spec.HitPoint;
 
         public int HitPointMaxTotal => HitPointMax.ValueFloorToInt;
+
+        public int StaminaMaxTotal => StaminaMax.ValueFloorToInt;
 
         public ReadOnlyReactiveProperty<int> HitPoint => hitPoint;
 
@@ -299,6 +313,9 @@ namespace MH3.ActorControllers
             AbnormalStatusAttack.ClearAll();
             ElementAttack.ClearAll();
             HitPointMax.ClearAll();
+            StaminaMax.ClearAll();
+            StaminaRecoveryAmount.ClearAll();
+            StaminaRecoveryAmount.RegisterBasics("Default", () => TinyServiceLocator.Resolve<GameRules>().StaminaRecoveryAmount);
             Defense.ClearAll();
             RecoveryCommandCountMax.ClearAll();
             RewardUp.ClearAll();
@@ -314,6 +331,7 @@ namespace MH3.ActorControllers
             elementAttackType.Value = instanceWeapon.ElementType;
             HitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
             hitPoint.Value = HitPointMaxTotal;
+            StaminaMax.RegisterBasics("Spec", () => spec.Stamina);
             Attack.RegisterBasics("Spec", () => spec.Attack);
             Attack.RegisterBasics("InstanceWeapon", () => instanceWeapon.Attack);
             Defense.RegisterBasics("InstanceArmorHead", () => instanceArmorHead?.Defense ?? 0);
@@ -555,6 +573,7 @@ namespace MH3.ActorControllers
         public void ResetAll()
         {
             hitPoint.Value = HitPointMaxTotal;
+            Stamina.Value = StaminaMaxTotal;
             flinch.Value = 0;
             flinchType.Value = Define.FlinchType.None;
             CanAddFlinchDamage.Value = true;
