@@ -30,6 +30,8 @@ namespace MH3.SkillSystems
                 Define.SkillType.FireElementAttackUp => new FireElementAttackUp(level),
                 Define.SkillType.WaterElementAttackUp => new WaterElementAttackUp(level),
                 Define.SkillType.GrassElementAttackUp => new GrassElementAttackUp(level),
+                Define.SkillType.HitPointMaxUp => new HitPointMaxUp(level),
+                Define.SkillType.RecoveryCommandCountUp => new RecoveryCommandCountUp(level),
                 _ => null
             };
         }
