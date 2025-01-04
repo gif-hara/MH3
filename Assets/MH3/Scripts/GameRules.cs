@@ -126,6 +126,10 @@ namespace MH3
         private float staminaSliderAddWidth;
         public float StaminaSliderAddWidth => staminaSliderAddWidth;
 
+        [SerializeField]
+        private ScriptableSequences sharpenStateSequences;
+        public ScriptableSequences SharpenStateSequences => sharpenStateSequences;
+
         [Serializable]
         public class ElementProjectile
         {
