@@ -98,5 +98,10 @@ namespace MH3
         {
             actor.ActionController.ConsumeStaminaForDodge();
         }
+
+        public void SetStaminaRecoveryRate(float value)
+        {
+            actor.SpecController.StaminaRecoveryRate = value;
+        }
     }
 }
