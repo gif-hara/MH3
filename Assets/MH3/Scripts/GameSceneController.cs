@@ -231,17 +231,6 @@ namespace MH3
                     ).Forget();
                 })
                 .RegisterTo(destroyCancellationToken);
-            // タイトル画面
-            {
-                await UIViewTitle.OpenAsync(titleDocumentPrefab, destroyCancellationToken);
-                var questSpec = TinyServiceLocator.Resolve<MasterData>().QuestSpecs.Get(initialQuestSpecId);
-                var beginQuestContainer = new Container();
-                beginQuestContainer.Register(this);
-                beginQuestContainer.Register("Player", player);
-                beginQuestContainer.Register("Enemy", enemy);
-                var beginQuestSequencer = new Sequencer(beginQuestContainer, questSpec.BeginQuestSequences.Sequences);
-                beginQuestSequencer.PlayAsync(questScope.Token).Forget();
-            }
 #if DEBUG
             var debugData = new GameDebugData();
             var isOpenDebugMenu = false;
@@ -294,20 +283,24 @@ namespace MH3
             player.transform.position = stage.PlayerSpawnPoint.position;
             player.MovementController.RotateImmediate(stage.PlayerSpawnPoint.rotation);
             player.SpecController.Target.Value = enemy;
-            if (!isFirstSetupQuest)
-            {
-                var beginQuestContainer = new Container();
-                beginQuestContainer.Register(this);
-                beginQuestContainer.Register("Player", player);
-                beginQuestContainer.Register("Enemy", enemy);
-                var beginQuestSequencer = new Sequencer(beginQuestContainer, questSpec.BeginQuestSequences.Sequences);
-                beginQuestSequencer.PlayAsync(questScope.Token).Forget();
-            }
-            enemy.SpecController.Target.Value = player;
-            enemy.BehaviourController.Begin(enemySpec.Behaviour).Forget();
             gameCameraController.Setup(player, enemy);
             damageLabel.BeginObserve(enemy);
             enemyStatus.BeginObserve(enemy);
+            TinyServiceLocator.Resolve<AudioManager>().PlayBgm(questSpec.BgmKey);
+            // タイトル画面
+            if (isFirstSetupQuest)
+            {
+                isFirstSetupQuest = false;
+                await UIViewTitle.OpenAsync(titleDocumentPrefab, destroyCancellationToken);
+            }
+            var beginQuestContainer = new Container();
+            beginQuestContainer.Register(this);
+            beginQuestContainer.Register("Player", player);
+            beginQuestContainer.Register("Enemy", enemy);
+            var beginQuestSequencer = new Sequencer(beginQuestContainer, questSpec.BeginQuestSequences.Sequences);
+            beginQuestSequencer.PlayAsync(questScope.Token).Forget();
+            enemy.SpecController.Target.Value = player;
+            enemy.BehaviourController.Begin(enemySpec.Behaviour).Forget();
             var questClearContainer = new Container();
             questClearContainer.Register(this);
             questClearContainer.Register("Player", player);
@@ -321,14 +314,12 @@ namespace MH3
             questFailedContainer.Register("Enemy", enemy);
             var questFailedSequencer = new Sequencer(questFailedContainer, questSpec.QuestFailedSequences.Sequences);
             questFailedSequencer.PlayAsync(questScope.Token).Forget();
-            TinyServiceLocator.Resolve<AudioManager>().PlayBgm(questSpec.BgmKey);
             if (!immediate)
             {
                 await TinyServiceLocator.Resolve<UIViewTransition>()
                     .Build()
                     .BeginAsync(LMotion.Create(1.0f, 0.0f, 0.4f));
             }
-            isFirstSetupQuest = false;
         }
 
         public void BeginQuestTimer()
