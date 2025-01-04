@@ -123,10 +123,6 @@ namespace MH3
         public float StaminaRecoveryAmount => staminaRecoveryAmount;
 
         [SerializeField]
-        private float dodgeStaminaCost;
-        public float DodgeStaminaCost => dodgeStaminaCost;
-
-        [SerializeField]
         private float staminaSliderAddWidth;
         public float StaminaSliderAddWidth => staminaSliderAddWidth;
 

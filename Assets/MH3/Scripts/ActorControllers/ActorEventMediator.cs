@@ -94,14 +94,14 @@ namespace MH3
             sequencer.PlayAsync(destroyCancellationToken).Forget();
         }
 
-        public void ConsumeStaminaForDodge()
-        {
-            actor.ActionController.ConsumeStaminaForDodge();
-        }
-
         public void SetStaminaRecoveryRate(float value)
         {
             actor.SpecController.StaminaRecoveryRate = value;
+        }
+
+        public void ConsumeStamina(float value)
+        {
+            actor.SpecController.Stamina.Value -= value;
         }
     }
 }

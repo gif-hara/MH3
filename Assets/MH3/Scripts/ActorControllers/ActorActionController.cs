@@ -71,11 +71,6 @@ namespace MH3.ActorControllers
                 });
         }
 
-        public void ConsumeStaminaForDodge()
-        {
-            actor.SpecController.Stamina.Value -= TinyServiceLocator.Resolve<GameRules>().DodgeStaminaCost;
-        }
-
         public async UniTask BeginDualSwordDodgeModeAsync()
         {
             try
