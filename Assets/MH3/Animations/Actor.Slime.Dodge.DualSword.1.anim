@@ -108,15 +108,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.33333334
         value: {x: 22.595, y: 265.80402, z: -8.976}
-        inSlope: {x: 0, y: 819.981, z: 0}
-        outSlope: {x: 0, y: 819.981, z: 0}
+        inSlope: {x: 0, y: 909.36005, z: 0}
+        outSlope: {x: 0, y: 909.36005, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.5
-        value: {x: 10, y: 360, z: 0}
+        value: {x: 8.7, y: 389.793, z: 4.95}
         inSlope: {x: -45.190002, y: 0, z: 0}
         outSlope: {x: -45.190002, y: 0, z: 0}
         tangentMode: 0
@@ -969,7 +969,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 10
+        value: 8.7
         inSlope: -45.190002
         outSlope: -45.190002
         tangentMode: 136
@@ -1027,15 +1027,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.33333334
         value: 265.80402
-        inSlope: 819.981
-        outSlope: 819.981
+        inSlope: 909.36005
+        outSlope: 909.36005
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 360
+        value: 389.793
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1101,7 +1101,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 0
+        value: 4.95
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2178,7 +2178,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root
+    path: Root/Shake/Spine/Shoulder.Right/Hand
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2190,19 +2190,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Root
+    path: Root/Shake/Spine/Shoulder.Right/Hand
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2225,8 +2213,20 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Root
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Root/Shake/Spine/Shoulder.Right/Hand
+    path: Root
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2238,7 +2238,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Root/Shake/Spine/Shoulder.Right/Hand
+    path: Root
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -2357,7 +2357,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.8
+  - time: 0.6666667
     functionName: SetCanChangeState
     data: 
     objectReferenceParameter: {fileID: 0}
