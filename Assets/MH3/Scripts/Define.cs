@@ -61,7 +61,7 @@ namespace MH3
             /// <summary>草属性アップ</summary>
             GrassElementAttackUp,
             /// <summary>体力アップ</summary>
-            HealthUp,
+            HitPointMaxUp,
             /// <summary>回復コマンド回数アップ</summary>
             RecoveryCommandCountUp,
             /// <summary>報酬アップ</summary>

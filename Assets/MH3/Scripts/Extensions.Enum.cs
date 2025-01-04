@@ -39,7 +39,7 @@ namespace MH3
                 Define.SkillType.FireElementAttackUp => "火属性値アップ".Localized(),
                 Define.SkillType.WaterElementAttackUp => "水属性値アップ".Localized(),
                 Define.SkillType.GrassElementAttackUp => "草属性値アップ".Localized(),
-                Define.SkillType.HealthUp => "体力アップ".Localized(),
+                Define.SkillType.HitPointMaxUp => "体力アップ".Localized(),
                 Define.SkillType.RecoveryCommandCountUp => "回復回数アップ".Localized(),
                 Define.SkillType.RewardUp => "報酬アップ".Localized(),
                 Define.SkillType.FlinchDamageUp => "怯み値アップ".Localized(),
