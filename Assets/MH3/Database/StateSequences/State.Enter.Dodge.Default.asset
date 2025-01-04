@@ -16,6 +16,8 @@ MonoBehaviour:
   - rid: 895594621889413198
   - rid: 8733972340067532868
   - rid: 895594621889413216
+  - rid: 7349438189002031214
+  - rid: 7349438189002031213
   - rid: 8733972348659564544
   - rid: 895594621889413277
   - rid: 895594615613948227
@@ -81,6 +83,25 @@ MonoBehaviour:
           rid: 8733972360643739743
         stateNameResolver:
           rid: 8733972360643739744
+    - rid: 7349438189002031213
+      type: {class: TakeUntilDisposeScopeObservable, ns: MH3, asm: Assembly-CSharp}
+      data:
+        subscribeSequence: {fileID: 11400000, guid: 62657e2242358ef45915cedf0fe54712, type: 2}
+    - rid: 7349438189002031214
+      type: {class: SetStaminaRecoveryRate, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 7349438189002031215
+        staminaRecoveryRateResolver:
+          rid: 7349438189002031216
+    - rid: 7349438189002031215
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 7349438189002031216
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
     - rid: 8733972340067532868
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:

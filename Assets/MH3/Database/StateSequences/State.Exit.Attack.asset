@@ -15,6 +15,7 @@ MonoBehaviour:
   sequences:
   - rid: 1481063115200659530
   - rid: 1481063132064121270
+  - rid: 7349438189002031221
   references:
     version: 2
     RefIds:
@@ -36,3 +37,18 @@ MonoBehaviour:
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor
+    - rid: 7349438189002031221
+      type: {class: SetStaminaRecoveryRate, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 7349438189002031222
+        staminaRecoveryRateResolver:
+          rid: 7349438189002031223
+    - rid: 7349438189002031222
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 7349438189002031223
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 1
