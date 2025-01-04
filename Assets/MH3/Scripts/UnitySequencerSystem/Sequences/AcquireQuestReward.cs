@@ -35,7 +35,7 @@ namespace MH3
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
             var gameSceneController = container.Resolve<GameSceneController>();
 
-            for (var i = 0; i < questSpec.RewardCount + player.SpecController.RewardUp.CurrentValue; i++)
+            for (var i = 0; i < questSpec.RewardCount + player.SpecController.RewardUp.ValueFloorToInt; i++)
             {
                 var rewards = new List<IReward>();
                 for (var k = 0; k < gameRules.RewardOptionNumber; k++)
