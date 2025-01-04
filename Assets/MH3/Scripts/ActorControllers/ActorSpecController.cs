@@ -337,7 +337,6 @@ namespace MH3.ActorControllers
             ElementAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.ElementAttack);
             elementAttackType.Value = instanceWeapon.ElementType;
             HitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
-            hitPoint.Value = HitPointMaxTotal;
             StaminaMax.RegisterBasics("Spec", () => spec.Stamina);
             Attack.RegisterBasics("Spec", () => spec.Attack);
             Attack.RegisterBasics("InstanceWeapon", () => instanceWeapon.Attack);
@@ -345,7 +344,6 @@ namespace MH3.ActorControllers
             Defense.RegisterBasics("InstanceArmorArms", () => instanceArmorArms?.Defense ?? 0);
             Defense.RegisterBasics("InstanceArmorBody", () => instanceArmorBody?.Defense ?? 0);
             RecoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
-            recoveryCommandCount.Value = RecoveryCommandCountMax.ValueFloorToInt;
             Skills.Clear();
             Skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
             skillScope?.Cancel();
@@ -355,6 +353,9 @@ namespace MH3.ActorControllers
             {
                 skill.Attach(actor, skillScope.Token);
             }
+            hitPoint.Value = HitPointMaxTotal;
+            recoveryCommandCount.Value = RecoveryCommandCountMax.ValueFloorToInt;
+            Stamina.Value = StaminaMaxTotal;
             onBuildStatuses.OnNext(Unit.Default);
         }
 

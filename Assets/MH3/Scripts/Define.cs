@@ -74,6 +74,8 @@ namespace MH3
             SuccessJustGuardCriticalUp,
             /// <summary>最後のコンボ攻撃力アップ</summary>
             LastComboAttackUp,
+            /// <summary>スタミナ最大値アップ</summary>
+            StaminaMaxUp,
         }
 
         public enum ActorParameterType

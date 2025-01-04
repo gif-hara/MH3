@@ -46,6 +46,7 @@ namespace MH3
                 Define.SkillType.RecoveryAmountUp => "回復量アップ".Localized(),
                 Define.SkillType.SuccessJustGuardCriticalUp => "見切り".Localized(),
                 Define.SkillType.LastComboAttackUp => "渾身の一撃".Localized(),
+                Define.SkillType.StaminaMaxUp => "スタミナアップ".Localized(),
                 _ => throw new NotImplementedException($"未対応のスキルタイプです {self}"),
             };
         }
