@@ -38,14 +38,14 @@ namespace MH3
                 })
                 .RegisterTo(scope);
             ((RectTransform)hitPointSlider.transform).sizeDelta = new Vector2(
-                gameRules.HitPointSliderAddWidth * actor.SpecController.HitPointMax,
+                gameRules.HitPointSliderAddWidth * actor.SpecController.HitPointMaxTotal,
                 hitPointSliderDefaultSize.y
                 );
             actor.SpecController.HitPoint
                 .Subscribe((hitPointSlider, actor), static (_, t) =>
                 {
                     var (hitPointSlider, actor) = t;
-                    hitPointSlider.value = (float)actor.SpecController.HitPoint.CurrentValue / actor.SpecController.HitPointMax;
+                    hitPointSlider.value = (float)actor.SpecController.HitPoint.CurrentValue / actor.SpecController.HitPointMaxTotal;
                 })
                 .RegisterTo(scope);
             actor.SpecController.OnBuildStatuses
@@ -53,7 +53,7 @@ namespace MH3
                 {
                     var (hitPointSlider, hitPointSliderDefaultSize, gameRules, actor) = t;
                     ((RectTransform)hitPointSlider.transform).sizeDelta = new Vector2(
-                        gameRules.HitPointSliderAddWidth * actor.SpecController.HitPointMax,
+                        gameRules.HitPointSliderAddWidth * actor.SpecController.HitPointMaxTotal,
                         hitPointSliderDefaultSize.y
                         );
                 })

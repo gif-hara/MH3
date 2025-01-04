@@ -18,7 +18,7 @@ namespace MH3.AbnormalStatusSystems
                 .Subscribe((target, gameRules), static (_, t) =>
                 {
                     var (target, gameRules) = t;
-                    var damage = Mathf.FloorToInt(target.SpecController.HitPointMax * gameRules.PoisonDamageRate);
+                    var damage = Mathf.FloorToInt(target.SpecController.HitPointMaxTotal * gameRules.PoisonDamageRate);
                     target.SpecController.TakeDamageFromPoison(damage);
                 })
                 .RegisterTo(target.destroyCancellationToken);

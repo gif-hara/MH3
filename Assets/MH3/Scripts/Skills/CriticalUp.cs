@@ -12,7 +12,7 @@ namespace MH3.SkillSystems
 
         public override void Attach(Actor owner)
         {
-            owner.SpecController.Attack.RegisterAdds(
+            owner.SpecController.Critical.RegisterAdds(
                 "Skill.CriticalUp",
                 () => Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillCriticalUp.Get(Level).Value)
                 );

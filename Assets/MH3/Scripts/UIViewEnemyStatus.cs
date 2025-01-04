@@ -29,7 +29,7 @@ namespace MH3
                 {
                     d.Q<HKUIDocument>("Slider.HitPoint")
                         .Q<Slider>("Slider")
-                        .value = (float)actor.SpecController.HitPoint.CurrentValue / actor.SpecController.HitPointMax;
+                        .value = (float)actor.SpecController.HitPoint.CurrentValue / actor.SpecController.HitPointMaxTotal;
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             document.Q<TMP_Text>("Name").text = actor.SpecController.ActorName;

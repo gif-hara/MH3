@@ -21,29 +21,29 @@ namespace MH3.ActorControllers
 
         public string ActorName { get; set; }
 
-        private readonly Parameter hitPointMax = new();
+        public readonly Parameter HitPointMax = new();
 
         private readonly ReactiveProperty<int> hitPoint = new(0);
 
         public readonly Parameter Attack = new();
 
-        private readonly Parameter defense = new();
+        public readonly Parameter Defense = new();
 
         public readonly Parameter Critical = new();
 
-        private readonly Parameter cutRatePhysicalDamage = new();
+        public readonly Parameter CutRatePhysicalDamage = new();
 
-        private readonly Parameter cutRateFireDamage = new();
+        public readonly Parameter CutRateFireDamage = new();
 
-        private readonly Parameter cutRateWaterDamage = new();
+        public readonly Parameter CutRateWaterDamage = new();
 
-        private readonly Parameter cutRateGrassDamage = new();
+        public readonly Parameter CutRateGrassDamage = new();
 
-        private readonly Parameter abnormalStatusAttack = new();
+        public readonly Parameter AbnormalStatusAttack = new();
 
         private readonly ReactiveProperty<Define.AbnormalStatusType> abnormalStatusAttackType = new(Define.AbnormalStatusType.None);
 
-        private readonly Parameter elementAttack = new();
+        public readonly Parameter ElementAttack = new();
 
         private readonly ReactiveProperty<Define.ElementType> elementAttackType = new(Define.ElementType.None);
 
@@ -112,13 +112,13 @@ namespace MH3.ActorControllers
             this.actor = actor;
             this.spec = spec;
             ActorName = spec.LocalizedName;
-            hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
+            HitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
             hitPoint.Value = spec.HitPoint;
             Attack.RegisterBasics("Spec", () => spec.Attack);
-            cutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
-            cutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);
-            cutRateWaterDamage.RegisterBasics("Spec", () => spec.WaterDamageCutRate);
-            cutRateGrassDamage.RegisterBasics("Spec", () => spec.GrassDamageCutRate);
+            CutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
+            CutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);
+            CutRateWaterDamage.RegisterBasics("Spec", () => spec.WaterDamageCutRate);
+            CutRateGrassDamage.RegisterBasics("Spec", () => spec.GrassDamageCutRate);
             recoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
             recoveryCommandCount.Value = recoveryCommandCountMax.ValueFloorToInt;
             SetWeaponId(spec.WeaponId);
@@ -134,7 +134,7 @@ namespace MH3.ActorControllers
 
         public int HitPointBase => spec.HitPoint;
 
-        public int HitPointMax => hitPointMax.ValueFloorToInt;
+        public int HitPointMaxTotal => HitPointMax.ValueFloorToInt;
 
         public ReadOnlyReactiveProperty<int> HitPoint => hitPoint;
 
@@ -142,15 +142,15 @@ namespace MH3.ActorControllers
 
         public float CriticalTotal => Critical.Value;
 
-        public int AbnormalStatusAttackTotal => abnormalStatusAttack.ValueFloorToInt;
+        public int AbnormalStatusAttackTotal => AbnormalStatusAttack.ValueFloorToInt;
 
         public Define.AbnormalStatusType AbnormalStatusAttackType => abnormalStatusAttackType.Value;
 
-        public int ElementAttackTotal => elementAttack.ValueFloorToInt;
+        public int ElementAttackTotal => ElementAttack.ValueFloorToInt;
 
         public Define.ElementType ElementAttackType => elementAttackType.Value;
 
-        public int DefenseTotal => defense.ValueFloorToInt;
+        public int DefenseTotal => Defense.ValueFloorToInt;
 
         public ReadOnlyReactiveProperty<int> RecoveryCommandCount => recoveryCommandCount;
 
@@ -220,10 +220,10 @@ namespace MH3.ActorControllers
         {
             return elementType switch
             {
-                Define.ElementType.None => cutRatePhysicalDamage.Value,
-                Define.ElementType.Fire => cutRateFireDamage.Value,
-                Define.ElementType.Water => cutRateWaterDamage.Value,
-                Define.ElementType.Grass => cutRateGrassDamage.Value,
+                Define.ElementType.None => CutRatePhysicalDamage.Value,
+                Define.ElementType.Fire => CutRateFireDamage.Value,
+                Define.ElementType.Water => CutRateWaterDamage.Value,
+                Define.ElementType.Grass => CutRateGrassDamage.Value,
                 _ => throw new System.NotImplementedException($"未対応の属性です {elementType}"),
             };
         }
@@ -288,31 +288,31 @@ namespace MH3.ActorControllers
                 .ToList();
             Attack.ClearAll();
             Critical.ClearAll();
-            cutRatePhysicalDamage.ClearAll();
-            cutRateFireDamage.ClearAll();
-            cutRateWaterDamage.ClearAll();
-            cutRateGrassDamage.ClearAll();
-            abnormalStatusAttack.ClearAll();
-            elementAttack.ClearAll();
-            hitPointMax.ClearAll();
-            defense.ClearAll();
+            CutRatePhysicalDamage.ClearAll();
+            CutRateFireDamage.ClearAll();
+            CutRateWaterDamage.ClearAll();
+            CutRateGrassDamage.ClearAll();
+            AbnormalStatusAttack.ClearAll();
+            ElementAttack.ClearAll();
+            HitPointMax.ClearAll();
+            Defense.ClearAll();
             recoveryCommandCountMax.ClearAll();
             Critical.RegisterBasics("InstanceWeapon", () => instanceWeapon.Critical);
-            cutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
-            cutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);
-            cutRateWaterDamage.RegisterBasics("Spec", () => spec.WaterDamageCutRate);
-            cutRateGrassDamage.RegisterBasics("Spec", () => spec.GrassDamageCutRate);
-            abnormalStatusAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.AbnormalStatusAttack);
+            CutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
+            CutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);
+            CutRateWaterDamage.RegisterBasics("Spec", () => spec.WaterDamageCutRate);
+            CutRateGrassDamage.RegisterBasics("Spec", () => spec.GrassDamageCutRate);
+            AbnormalStatusAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.AbnormalStatusAttack);
             abnormalStatusAttackType.Value = instanceWeapon.AbnormalStatusType;
-            elementAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.ElementAttack);
+            ElementAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.ElementAttack);
             elementAttackType.Value = instanceWeapon.ElementType;
-            hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
-            hitPoint.Value = HitPointMax;
+            HitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
+            hitPoint.Value = HitPointMaxTotal;
             Attack.RegisterBasics("Spec", () => spec.Attack);
             Attack.RegisterBasics("InstanceWeapon", () => instanceWeapon.Attack);
-            defense.RegisterBasics("InstanceArmorHead", () => instanceArmorHead?.Defense ?? 0);
-            defense.RegisterBasics("InstanceArmorArms", () => instanceArmorArms?.Defense ?? 0);
-            defense.RegisterBasics("InstanceArmorBody", () => instanceArmorBody?.Defense ?? 0);
+            Defense.RegisterBasics("InstanceArmorHead", () => instanceArmorHead?.Defense ?? 0);
+            Defense.RegisterBasics("InstanceArmorArms", () => instanceArmorArms?.Defense ?? 0);
+            Defense.RegisterBasics("InstanceArmorBody", () => instanceArmorBody?.Defense ?? 0);
             recoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
             recoveryCommandCount.Value = recoveryCommandCountMax.ValueFloorToInt;
             rewardUp.Value = 0;
@@ -539,12 +539,12 @@ namespace MH3.ActorControllers
         public void RecoveryFromAnimation()
         {
             var result = hitPoint.Value + TinyServiceLocator.Resolve<GameRules>().RecoveryAmount;
-            hitPoint.Value = result > HitPointMax ? HitPointMax : result;
+            hitPoint.Value = result > HitPointMaxTotal ? HitPointMaxTotal : result;
         }
 
         public void ResetAll()
         {
-            hitPoint.Value = HitPointMax;
+            hitPoint.Value = HitPointMaxTotal;
             flinch.Value = 0;
             flinchType.Value = Define.FlinchType.None;
             CanAddFlinchDamage.Value = true;
@@ -556,7 +556,7 @@ namespace MH3.ActorControllers
 
         public bool TryRecovery()
         {
-            if (hitPoint.Value >= HitPointMax || recoveryCommandCount.Value <= 0)
+            if (hitPoint.Value >= HitPointMaxTotal || recoveryCommandCount.Value <= 0)
             {
                 return false;
             }

@@ -12,7 +12,7 @@ namespace MH3.SkillSystems
 
         public override void Attach(Actor owner)
         {
-            owner.SpecController.Attack.RegisterAdds(
+            owner.SpecController.AbnormalStatusAttack.RegisterAdds(
                 "Skill.CollapseElementAttackUp",
                 () =>
                 {
