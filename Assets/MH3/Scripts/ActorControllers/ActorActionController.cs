@@ -51,6 +51,15 @@ namespace MH3.ActorControllers
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
+            actor.SpecController.OnBuildStatuses
+                .Subscribe((this, actor), static (_, t) =>
+                {
+                    var (@this, actor) = t;
+                    @this.OverrideDodgeAnimationName = null;
+                    @this.DualSwordDodgeModeDisposable?.Dispose();
+                    @this.BladeEnduranceModeDisposable?.Dispose();
+                })
+                .RegisterTo(actor.destroyCancellationToken);
         }
 
         public bool TryDodge()

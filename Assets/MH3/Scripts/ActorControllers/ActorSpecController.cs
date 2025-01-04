@@ -356,6 +356,7 @@ namespace MH3.ActorControllers
             hitPoint.Value = HitPointMaxTotal;
             recoveryCommandCount.Value = RecoveryCommandCountMax.ValueFloorToInt;
             Stamina.Value = StaminaMaxTotal;
+            superArmorCount.Value = 0;
             onBuildStatuses.OnNext(Unit.Default);
         }
 
