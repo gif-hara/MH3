@@ -33,33 +33,11 @@ MonoBehaviour:
       type: {class: SequencesResolver/List, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value:
-        - rid: 1481063400376893566
-    - rid: 1481063400376893566
-      type: {class: ActorStateChange, ns: MH3, asm: Assembly-CSharp}
-      data:
-        actorResolver:
-          rid: 1481063400376893567
-        stateSequence: {fileID: 11400000, guid: 382dc8b38b611744f879c2c1942dcdde, type: 2}
-        forceChangeResolver:
-          rid: 1481063400376893568
-        isSuccessKeyResolver:
-          rid: 1481063400376893569
-    - rid: 1481063400376893567
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Actor
-    - rid: 1481063400376893568
-      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: 0
-    - rid: 1481063400376893569
-      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: IsSuccessChangeState
+        - rid: 7349438189002031198
     - rid: 1481063400376893573
       type: {class: BooleanResolver/NameBoolean, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        name: IsSuccessChangeState
+        name: IsSuccess
     - rid: 1481063426879914099
       type: {class: RegisterContainerDodgeAnimationName, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -75,3 +53,18 @@ MonoBehaviour:
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor
+    - rid: 7349438189002031198
+      type: {class: TryDodge, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 7349438189002031199
+        isSuccessKeyResolver:
+          rid: 7349438189002031200
+    - rid: 7349438189002031199
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 7349438189002031200
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: IsSuccess
