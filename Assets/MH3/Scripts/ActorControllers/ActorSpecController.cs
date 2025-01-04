@@ -53,11 +53,11 @@ namespace MH3.ActorControllers
 
         private readonly HashSet<Define.AbnormalStatusType> appliedAbnormalStatuses = new();
 
-        private readonly Parameter recoveryCommandCountMax = new();
+        public readonly Parameter RecoveryCommandCountMax = new();
 
         private readonly ReactiveProperty<int> recoveryCommandCount = new();
 
-        private readonly ReactiveProperty<int> rewardUp = new(0);
+        public readonly Parameter RewardUp = new();
 
         private readonly ReactiveProperty<int> weaponId = new(0);
 
@@ -119,8 +119,8 @@ namespace MH3.ActorControllers
             CutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);
             CutRateWaterDamage.RegisterBasics("Spec", () => spec.WaterDamageCutRate);
             CutRateGrassDamage.RegisterBasics("Spec", () => spec.GrassDamageCutRate);
-            recoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
-            recoveryCommandCount.Value = recoveryCommandCountMax.ValueFloorToInt;
+            RecoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
+            recoveryCommandCount.Value = RecoveryCommandCountMax.ValueFloorToInt;
             SetWeaponId(spec.WeaponId);
             SetArmorId(Define.ArmorType.Head, spec.ArmorHeadId);
             SetArmorId(Define.ArmorType.Arms, spec.ArmorArmsId);
@@ -177,8 +177,6 @@ namespace MH3.ActorControllers
         public ReadOnlyReactiveProperty<int> ArmorBodyId => armorBodyId;
 
         public ReadOnlyReactiveProperty<int> Flinch => flinch;
-
-        public ReadOnlyReactiveProperty<int> RewardUp => rewardUp;
 
         public ScriptableSequences AttackStateSequences => spec.AttackSequences;
 
@@ -296,7 +294,8 @@ namespace MH3.ActorControllers
             ElementAttack.ClearAll();
             HitPointMax.ClearAll();
             Defense.ClearAll();
-            recoveryCommandCountMax.ClearAll();
+            RecoveryCommandCountMax.ClearAll();
+            RewardUp.ClearAll();
             Critical.RegisterBasics("InstanceWeapon", () => instanceWeapon.Critical);
             CutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
             CutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);
@@ -313,9 +312,8 @@ namespace MH3.ActorControllers
             Defense.RegisterBasics("InstanceArmorHead", () => instanceArmorHead?.Defense ?? 0);
             Defense.RegisterBasics("InstanceArmorArms", () => instanceArmorArms?.Defense ?? 0);
             Defense.RegisterBasics("InstanceArmorBody", () => instanceArmorBody?.Defense ?? 0);
-            recoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
-            recoveryCommandCount.Value = recoveryCommandCountMax.ValueFloorToInt;
-            rewardUp.Value = 0;
+            RecoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
+            recoveryCommandCount.Value = RecoveryCommandCountMax.ValueFloorToInt;
             Skills.Clear();
             Skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
             foreach (var skill in Skills)
@@ -550,7 +548,7 @@ namespace MH3.ActorControllers
             CanAddFlinchDamage.Value = true;
             Invincible.Value = false;
             appliedAbnormalStatuses.Clear();
-            recoveryCommandCount.Value = recoveryCommandCountMax.ValueFloorToInt;
+            recoveryCommandCount.Value = RecoveryCommandCountMax.ValueFloorToInt;
             actor.StateMachine.TryChangeState(spec.InitialStateSequences, force: true);
         }
 
