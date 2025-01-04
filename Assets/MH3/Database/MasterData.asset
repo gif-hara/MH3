@@ -2610,7 +2610,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20201
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.1
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -2624,7 +2624,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20202
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.1
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -2638,7 +2638,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20203
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.1
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -2734,6 +2734,28 @@ MonoBehaviour:
       - Id: Quest.10202
         RewardType: 2
         RewardId: 10304
+        Weight: 100
+    - Key: Quest.10203
+      Value:
+      - Id: Quest.10203
+        RewardType: 0
+        RewardId: 10303
+        Weight: 100
+      - Id: Quest.10203
+        RewardType: 1
+        RewardId: 10203
+        Weight: 100
+      - Id: Quest.10203
+        RewardType: 2
+        RewardId: 10102
+        Weight: 100
+      - Id: Quest.10203
+        RewardType: 2
+        RewardId: 10202
+        Weight: 100
+      - Id: Quest.10203
+        RewardType: 2
+        RewardId: 10302
         Weight: 100
   skillCoreSpecs:
     list:
