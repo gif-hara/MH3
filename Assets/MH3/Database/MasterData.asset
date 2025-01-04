@@ -2243,9 +2243,9 @@ MonoBehaviour:
       MoveSpeed: 7
       RotationSpeed: 10
       WeaponId: 20202
-      ArmorHeadId: 0
-      ArmorArmsId: 0
-      ArmorBodyId: 0
+      ArmorHeadId: 10104
+      ArmorArmsId: 10204
+      ArmorBodyId: 10304
       VisibleStatusUI: 1
       RecoveryCommandCount: 0
       InitialStateKey: Idle.Default
@@ -2258,7 +2258,7 @@ MonoBehaviour:
       DeadSequencesKey: Dead.Default
       RecoverySequencesKey: Recovery.Default
       ActorPrefabKey: Enemy.Blue
-      BehaviourKey: Enemy.20102
+      BehaviourKey: Enemy.20202
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
       FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
@@ -2269,7 +2269,7 @@ MonoBehaviour:
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 9b87f1f2f1832244a9f6cecb09fed9b5, type: 3}
-      Behaviour: {fileID: 11400000, guid: 2b6010e8fecd3d645a0952b41fc3c62d, type: 2}
+      Behaviour: {fileID: 11400000, guid: 689d786d3cc39904e9ace8ab92e1f7e6, type: 2}
     - Id: 20203
       Name: "\u8D64\u9B3C\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1

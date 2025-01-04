@@ -22,15 +22,27 @@ MonoBehaviour:
       type: {class: SelectorWithWeight, ns: MH3, asm: Assembly-CSharp}
       data:
         elements:
+        - weight: 15
+          sequenceResolver:
+            rid: 1481063179134173329
+        - weight: 15
+          sequenceResolver:
+            rid: 1481063179134173330
         - weight: 100
           sequenceResolver:
             rid: 1481063179134173265
-        - weight: 5
+        - weight: 100
           sequenceResolver:
-            rid: 1481063179134173329
-        - weight: 5
+            rid: 7349438189002031251
+        - weight: 100
           sequenceResolver:
-            rid: 1481063179134173330
+            rid: 7349438189002031252
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438189002031253
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438189002031254
     - rid: 1481063179134173265
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
@@ -53,3 +65,19 @@ MonoBehaviour:
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: {fileID: 11400000, guid: 80d8a4bd57882284ca561d2723f0a9a2, type: 2}
+    - rid: 7349438189002031251
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: be5bbf9fdc719034ca7b64268720745f, type: 2}
+    - rid: 7349438189002031252
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 467ab558fa2971447ae19e44b4615d95, type: 2}
+    - rid: 7349438189002031253
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 9d245617f40c2a34691bcf6b78aff95e, type: 2}
+    - rid: 7349438189002031254
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 19d48908d0f0e154bb9dad749be97acd, type: 2}
