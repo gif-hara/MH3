@@ -19,14 +19,20 @@ namespace MH3.SkillSystems
 
         private static ISkill CreateSkill(Define.SkillType skillType, int level)
         {
-            var masterData = TinyServiceLocator.Resolve<MasterData>();
-            var result = new Skill(skillType, level);
-            foreach (var i in masterData.SkillTypeToParameters.Get(skillType))
+            return skillType switch
             {
-                result.RegisterParameterSelector(i.ActorParameterType, _ => i.SkillLevelValueType.GetSkillLevelValue().Get(level).Value);
-            }
+                Define.SkillType.AttackUp => new AttackUp(level),
+                Define.SkillType.CriticalUp => new CriticalUp(level),
+                _ => null
+            };
+            // var masterData = TinyServiceLocator.Resolve<MasterData>();
+            // var result = new Skill(skillType, level);
+            // foreach (var i in masterData.SkillTypeToParameters.Get(skillType))
+            // {
+            //     result.RegisterParameterSelector(i.ActorParameterType, _ => i.SkillLevelValueType.GetSkillLevelValue().Get(level).Value);
+            // }
 
-            return result;
+            // return result;
         }
     }
 }

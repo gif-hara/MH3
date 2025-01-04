@@ -9,6 +9,8 @@ namespace MH3.SkillSystems
 
         int Level { get; }
 
+        void Attach(Actor owner);
+
         float GetParameter(Define.ActorParameterType type, Actor owner);
 
         int GetParameterInt(Define.ActorParameterType type, Actor owner);

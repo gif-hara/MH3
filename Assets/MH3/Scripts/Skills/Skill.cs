@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MH3.SkillSystems
 {
-    public sealed class Skill : ISkill
+    public abstract class Skill : ISkill
     {
         private readonly Dictionary<Define.ActorParameterType, Func<Actor, float>> parameterSelectors = new();
 
@@ -38,5 +38,7 @@ namespace MH3.SkillSystems
             parameterSelectors[type] = selector;
             return this;
         }
+
+        public abstract void Attach(Actor owner);
     }
 }

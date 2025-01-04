@@ -25,11 +25,11 @@ namespace MH3.ActorControllers
 
         private readonly ReactiveProperty<int> hitPoint = new(0);
 
-        private readonly Parameter attack = new();
+        public readonly Parameter Attack = new();
 
         private readonly Parameter defense = new();
 
-        private readonly Parameter critical = new();
+        public readonly Parameter Critical = new();
 
         private readonly Parameter cutRatePhysicalDamage = new();
 
@@ -114,7 +114,7 @@ namespace MH3.ActorControllers
             ActorName = spec.LocalizedName;
             hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
             hitPoint.Value = spec.HitPoint;
-            attack.RegisterBasics("Spec", () => spec.Attack);
+            Attack.RegisterBasics("Spec", () => spec.Attack);
             cutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
             cutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);
             cutRateWaterDamage.RegisterBasics("Spec", () => spec.WaterDamageCutRate);
@@ -138,9 +138,9 @@ namespace MH3.ActorControllers
 
         public ReadOnlyReactiveProperty<int> HitPoint => hitPoint;
 
-        public int AttackTotal => attack.ValueFloorToInt;
+        public int AttackTotal => Attack.ValueFloorToInt;
 
-        public float CriticalTotal => critical.Value;
+        public float CriticalTotal => Critical.Value;
 
         public int AbnormalStatusAttackTotal => abnormalStatusAttack.ValueFloorToInt;
 
@@ -286,47 +286,42 @@ namespace MH3.ActorControllers
                 .Concat(instanceArmorArmsSkills)
                 .Concat(instanceArmorBodySkills)
                 .ToList();
-            Skills.Clear();
-            Skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
-            critical.ClearAll();
-            critical.RegisterBasics("InstanceWeapon", () => instanceWeapon.Critical);
-            critical.RegisterAdds("Skills", () => Skills.Sum(x => x.GetParameter(Define.ActorParameterType.Critical, actor)));
+            Attack.ClearAll();
+            Critical.ClearAll();
             cutRatePhysicalDamage.ClearAll();
-            cutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
             cutRateFireDamage.ClearAll();
-            cutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);
             cutRateWaterDamage.ClearAll();
-            cutRateWaterDamage.RegisterBasics("Spec", () => spec.WaterDamageCutRate);
             cutRateGrassDamage.ClearAll();
-            cutRateGrassDamage.RegisterBasics("Spec", () => spec.GrassDamageCutRate);
             abnormalStatusAttack.ClearAll();
-            abnormalStatusAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.AbnormalStatusAttack);
-            abnormalStatusAttack.RegisterAdds("Skills", () => Skills.Sum(x =>
-                abnormalStatusAttackType.Value == Define.AbnormalStatusType.None ? 0 : x.GetParameter(abnormalStatusAttackType.Value.ToActorParameterType(), actor)));
-            abnormalStatusAttackType.Value = instanceWeapon.AbnormalStatusType;
             elementAttack.ClearAll();
-            elementAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.ElementAttack);
-            elementAttack.RegisterAdds("Skills", () => Skills.Sum(x =>
-                elementAttackType.Value == Define.ElementType.None ? 0 : x.GetParameter(elementAttackType.Value.ToActorParameterType(), actor)));
-            elementAttackType.Value = instanceWeapon.ElementType;
             hitPointMax.ClearAll();
-            hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
-            hitPointMax.RegisterAdds("Skills", () => Skills.Sum(x => x.GetParameter(Define.ActorParameterType.Health, actor)));
-            hitPoint.Value = HitPointMax;
-            attack.ClearAll();
-            attack.RegisterBasics("Spec", () => spec.Attack);
-            attack.RegisterBasics("InstanceWeapon", () => instanceWeapon.Attack);
-            attack.RegisterAdds("Skills", () => Skills.Sum(x => x.GetParameter(Define.ActorParameterType.Attack, actor)));
             defense.ClearAll();
+            recoveryCommandCountMax.ClearAll();
+            Critical.RegisterBasics("InstanceWeapon", () => instanceWeapon.Critical);
+            cutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
+            cutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);
+            cutRateWaterDamage.RegisterBasics("Spec", () => spec.WaterDamageCutRate);
+            cutRateGrassDamage.RegisterBasics("Spec", () => spec.GrassDamageCutRate);
+            abnormalStatusAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.AbnormalStatusAttack);
+            abnormalStatusAttackType.Value = instanceWeapon.AbnormalStatusType;
+            elementAttack.RegisterBasics("InstanceWeapon", () => instanceWeapon.ElementAttack);
+            elementAttackType.Value = instanceWeapon.ElementType;
+            hitPointMax.RegisterBasics("Spec", () => spec.HitPoint);
+            hitPoint.Value = HitPointMax;
+            Attack.RegisterBasics("Spec", () => spec.Attack);
+            Attack.RegisterBasics("InstanceWeapon", () => instanceWeapon.Attack);
             defense.RegisterBasics("InstanceArmorHead", () => instanceArmorHead?.Defense ?? 0);
             defense.RegisterBasics("InstanceArmorArms", () => instanceArmorArms?.Defense ?? 0);
             defense.RegisterBasics("InstanceArmorBody", () => instanceArmorBody?.Defense ?? 0);
-            defense.RegisterAdds("Skills", () => Skills.Sum(x => x.GetParameter(Define.ActorParameterType.Defense, actor)));
-            recoveryCommandCountMax.ClearAll();
             recoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
-            recoveryCommandCountMax.RegisterAdds("Skills", () => Skills.Sum(x => x.GetParameter(Define.ActorParameterType.RecoveryCommandCount, actor)));
             recoveryCommandCount.Value = recoveryCommandCountMax.ValueFloorToInt;
-            rewardUp.Value = Skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.Reward, actor));
+            rewardUp.Value = 0;
+            Skills.Clear();
+            Skills.AddRange(SkillFactory.CreateSkills(instanceSkills));
+            foreach (var skill in Skills)
+            {
+                skill.Attach(actor);
+            }
             onBuildStatuses.OnNext(Unit.Default);
         }
 
