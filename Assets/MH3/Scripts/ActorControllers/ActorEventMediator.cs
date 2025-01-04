@@ -93,5 +93,10 @@ namespace MH3
             var sequencer = new Sequencer(container, sequences.Sequences);
             sequencer.PlayAsync(destroyCancellationToken).Forget();
         }
+
+        public void ConsumeStaminaForDodge()
+        {
+            actor.ActionController.ConsumeStaminaForDodge();
+        }
     }
 }
