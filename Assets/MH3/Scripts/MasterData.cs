@@ -563,6 +563,8 @@ namespace MH3
 
             public int HitPoint;
 
+            public int Stamina;
+
             public int Attack;
 
             public float PhysicalDamageCutRate;
