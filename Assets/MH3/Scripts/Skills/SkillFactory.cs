@@ -23,16 +23,15 @@ namespace MH3.SkillSystems
             {
                 Define.SkillType.AttackUp => new AttackUp(level),
                 Define.SkillType.CriticalUp => new CriticalUp(level),
+                Define.SkillType.DefenseUp => new DefenseUp(level),
+                Define.SkillType.PoisonElementAttackUp => new PoisonElementAttackUp(level),
+                Define.SkillType.ParalysisElementAttackUp => new ParalysisElementAttackUp(level),
+                Define.SkillType.CollapseElementAttackUp => new CollapseElementAttackUp(level),
+                Define.SkillType.FireElementAttackUp => new FireElementAttackUp(level),
+                Define.SkillType.WaterElementAttackUp => new WaterElementAttackUp(level),
+                Define.SkillType.GrassElementAttackUp => new GrassElementAttackUp(level),
                 _ => null
             };
-            // var masterData = TinyServiceLocator.Resolve<MasterData>();
-            // var result = new Skill(skillType, level);
-            // foreach (var i in masterData.SkillTypeToParameters.Get(skillType))
-            // {
-            //     result.RegisterParameterSelector(i.ActorParameterType, _ => i.SkillLevelValueType.GetSkillLevelValue().Get(level).Value);
-            // }
-
-            // return result;
         }
     }
 }
