@@ -20,7 +20,7 @@ namespace MH3
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var actor = actorResolver.Resolve(container);
-            text.text = actor.SpecController.HitPointMax.ToString();
+            text.text = actor.SpecController.HitPointMaxTotal.ToString();
             return UniTask.CompletedTask;
         }
     }
