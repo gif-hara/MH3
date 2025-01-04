@@ -15,7 +15,7 @@ namespace MH3.SkillSystems
         {
             owner.SpecController.Critical.RegisterAdds(
                 "Skill.CriticalUp",
-                () => Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillCriticalUp.GetFromLevel(Level).Value)
+                () => TinyServiceLocator.Resolve<MasterData>().SkillCriticalUp.GetFromLevel(Level).Value
                 );
         }
     }
