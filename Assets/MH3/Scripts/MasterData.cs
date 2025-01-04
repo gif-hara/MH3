@@ -98,8 +98,8 @@ namespace MH3
         public SkillLevelValue.DictionaryList SkillElementAttackUp => skillElementAttackUp;
 
         [SerializeField]
-        private SkillLevelValue.DictionaryList skillHealthUp;
-        public SkillLevelValue.DictionaryList SkillHealthUp => skillHealthUp;
+        private SkillLevelValue.DictionaryList skillHitPointMaxUp;
+        public SkillLevelValue.DictionaryList SkillHitPointMaxUp => skillHitPointMaxUp;
 
         [SerializeField]
         private SkillLevelValue.DictionaryList skillRecoveryCommandCountUp;
@@ -188,7 +188,7 @@ namespace MH3
                     "WeaponElement",
                     "Skill.AbnormalStatusUp",
                     "Skill.ElementAttackUp",
-                    "Skill.HealthUp",
+                    "Skill.HitPointMaxUp",
                     "Skill.RecoveryCommandCountUp",
                     "Skill.RewardUp",
                     "ArmorSpec",
@@ -225,7 +225,7 @@ namespace MH3
                 weaponElements.Set(JsonHelper.FromJson<WeaponElement>(database[17]));
                 skillAbnormalStatusUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[18]));
                 skillElementAttackUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[19]));
-                skillHealthUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[20]));
+                skillHitPointMaxUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[20]));
                 skillRecoveryCommandCountUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[21]));
                 skillRewardUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[22]));
                 armorSpecs.Set(JsonHelper.FromJson<ArmorSpec>(database[23]));

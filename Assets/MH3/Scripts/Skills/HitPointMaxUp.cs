@@ -15,7 +15,7 @@ namespace MH3.SkillSystems
         {
             owner.SpecController.HitPointMax.RegisterAdds(
                 "Skill.HitPointMaxUp",
-                () => Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillHealthUp.GetFromLevel(Level).Value)
+                () => Mathf.FloorToInt(TinyServiceLocator.Resolve<MasterData>().SkillHitPointMaxUp.GetFromLevel(Level).Value)
                 );
         }
     }

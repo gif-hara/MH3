@@ -60,7 +60,7 @@ namespace MH3
                 Define.SkillLevelValueType.DefenseUp => m.SkillDefenseUp,
                 Define.SkillLevelValueType.AbnormalStatusUp => m.SkillAbnormalStatusUp,
                 Define.SkillLevelValueType.ElementAttackUp => m.SkillElementAttackUp,
-                Define.SkillLevelValueType.HealthUp => m.SkillHealthUp,
+                Define.SkillLevelValueType.HealthUp => m.SkillHitPointMaxUp,
                 Define.SkillLevelValueType.RecoveryCommandCountUp => m.SkillRecoveryCommandCountUp,
                 Define.SkillLevelValueType.RewardUp => m.SkillRewardUp,
                 Define.SkillLevelValueType.FlinchDamageUp => m.SkillFlinchDamageUp,
