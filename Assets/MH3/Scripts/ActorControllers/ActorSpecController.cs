@@ -61,6 +61,8 @@ namespace MH3.ActorControllers
 
         public readonly Parameter FlinchDamageRate = new();
 
+        public readonly Parameter RecoveryAmountUp = new();
+
         private readonly ReactiveProperty<int> weaponId = new(0);
 
         private readonly ReactiveProperty<int> armorHeadId = new(0);
@@ -539,7 +541,9 @@ namespace MH3.ActorControllers
 
         public void RecoveryFromAnimation()
         {
-            var result = hitPoint.Value + TinyServiceLocator.Resolve<GameRules>().RecoveryAmount;
+            var amount = TinyServiceLocator.Resolve<GameRules>().RecoveryAmount;
+            amount += Mathf.FloorToInt(amount * RecoveryAmountUp.Value);
+            var result = hitPoint.Value + amount;
             hitPoint.Value = result > HitPointMaxTotal ? HitPointMaxTotal : result;
         }
 

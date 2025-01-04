@@ -34,6 +34,7 @@ namespace MH3.SkillSystems
                 Define.SkillType.RecoveryCommandCountUp => new RecoveryCommandCountUp(level),
                 Define.SkillType.RewardUp => new RewardUp(level),
                 Define.SkillType.FlinchDamageUp => new FlinchDamageUp(level),
+                Define.SkillType.RecoveryAmountUp => new RecoveryAmountUp(level),
                 _ => null
             };
         }
