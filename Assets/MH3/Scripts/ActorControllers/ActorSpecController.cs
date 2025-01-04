@@ -146,6 +146,13 @@ namespace MH3.ActorControllers
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Poison, new ReactiveProperty<int>(spec.PoisonThreshold));
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Paralysis, new ReactiveProperty<int>(spec.ParalysisThreshold));
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Collapse, new ReactiveProperty<int>(spec.CollapseThreshold));
+            actor.UpdateAsObservable()
+                .Subscribe(actor, (_, a) =>
+                {
+                    var result = a.SpecController.Stamina.Value + a.SpecController.StaminaRecoveryAmount.Value * a.SpecController.StaminaRecoveryRate * a.TimeController.Time.deltaTime;
+                    a.SpecController.Stamina.Value = Mathf.Min(result, a.SpecController.StaminaMaxTotal);
+                })
+                .RegisterTo(actor.destroyCancellationToken);
         }
 
         public Define.ActorType ActorType => spec.ActorType;
