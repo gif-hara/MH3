@@ -244,7 +244,7 @@ MonoBehaviour:
       ModelDataId: Shield.1
       ComboId: 10401
       JustGuardAttackAnimationKey: Attack.Shield.JustGuard.1
-      StrongAttackAnimationKey: Attack.Sword.Strong.1
+      StrongAttackAnimationKey: Attack.Shield.Strong.1
       GuardPerformedSequencesKey: Guard.Performed.Default
       GuardCanceledSequencesKey: Guard.Canceled.Default
       DodgePerformedSequencesKey: Dodge.Performed.Default
@@ -2014,6 +2014,30 @@ MonoBehaviour:
       HitCameraImpulseSourceKey: VerySmall
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Shield.Strong.1
+      Power: 111
+      FlinchDamage: 10
+      ColliderName: Default
+      FlinchName: Flinch.Large
+      FlinchType: 3
+      ForceFlinch: 1
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.5
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.5
+      ShakeStrength: 0.7
+      ShakeDuration: 0.5
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.2
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: Small
+      HitAdditionalSequencesKeyPlayer: Hit.Strong.Player.1
+      HitAdditionalSequencesPlayer: {fileID: 11400000, guid: 1b746f36630a9df49a3ed10c2aa58aa4, type: 2}
     - Id: Training.Basic.1
       Power: 0
       FlinchDamage: 10
