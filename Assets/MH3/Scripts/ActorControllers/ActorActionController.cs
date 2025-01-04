@@ -71,6 +71,19 @@ namespace MH3.ActorControllers
                 });
         }
 
+        public bool TrySharpen()
+        {
+            if (actor.SpecController.IsEventStop.Value)
+            {
+                return false;
+            }
+            if (actor.SpecController.Stamina.Value < 0)
+            {
+                return false;
+            }
+            return actor.StateMachine.TryChangeState(TinyServiceLocator.Resolve<GameRules>().SharpenStateSequences);
+        }
+
         public async UniTask BeginDualSwordDodgeModeAsync()
         {
             try
