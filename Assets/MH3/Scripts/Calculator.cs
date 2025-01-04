@@ -35,7 +35,7 @@ namespace MH3
                 damage = Mathf.FloorToInt(damage * gameRules.SuperArmorDamageRate);
             }
             damage = Mathf.Max(1, damage);
-            var flinchDamage = attackSpec.FlinchDamage + attackSpec.FlinchDamage * attacker.SpecController.Skills.Sum(x => x.GetParameterInt(Define.ActorParameterType.FlinchDamage, attacker));
+            var flinchDamage = Mathf.FloorToInt(attackSpec.FlinchDamage + attackSpec.FlinchDamage * attacker.SpecController.FlinchDamageRate.Value);
             if (targetGuardResult == Define.GuardResult.SuccessGuard)
             {
                 damage = Mathf.FloorToInt(damage * gameRules.GuardSuccessDamageRate);

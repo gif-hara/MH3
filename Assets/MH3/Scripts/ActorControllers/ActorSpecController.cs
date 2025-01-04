@@ -59,6 +59,8 @@ namespace MH3.ActorControllers
 
         public readonly Parameter RewardUp = new();
 
+        public readonly Parameter FlinchDamageRate = new();
+
         private readonly ReactiveProperty<int> weaponId = new(0);
 
         private readonly ReactiveProperty<int> armorHeadId = new(0);
@@ -296,6 +298,7 @@ namespace MH3.ActorControllers
             Defense.ClearAll();
             RecoveryCommandCountMax.ClearAll();
             RewardUp.ClearAll();
+            FlinchDamageRate.ClearAll();
             Critical.RegisterBasics("InstanceWeapon", () => instanceWeapon.Critical);
             CutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
             CutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);
