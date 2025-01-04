@@ -49,11 +49,11 @@ namespace MH3
             /// <summary>防御力アップ</summary>
             DefenseUp,
             /// <summary>毒属性アップ</summary>
-            PoisonUp,
+            PoisonElementAttackUp,
             /// <summary>麻痺属性アップ</summary>
-            ParalysisUp,
+            ParalysisElementAttackUp,
             /// <summary>崩壊属性アップ</summary>
-            CollapseUp,
+            CollapseElementAttackUp,
             /// <summary>火属性アップ</summary>
             FireElementAttackUp,
             /// <summary>水属性アップ</summary>
