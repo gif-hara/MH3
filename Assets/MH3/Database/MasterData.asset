@@ -2111,7 +2111,31 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Shield.Basic.3
-      Power: 26
+      Power: 23
+      FlinchDamage: 14
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Shield.Basic.4
+      Power: 32
       FlinchDamage: 14
       ColliderName: Default
       FlinchName: Flinch.Small
@@ -2991,7 +3015,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20301
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.2
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -3109,6 +3133,28 @@ MonoBehaviour:
       - Id: Quest.10203
         RewardType: 2
         RewardId: 10302
+        Weight: 100
+    - Key: Quest.10301
+      Value:
+      - Id: Quest.10301
+        RewardType: 0
+        RewardId: 10402
+        Weight: 100
+      - Id: Quest.10301
+        RewardType: 1
+        RewardId: 10301
+        Weight: 100
+      - Id: Quest.10301
+        RewardType: 2
+        RewardId: 10105
+        Weight: 100
+      - Id: Quest.10301
+        RewardType: 2
+        RewardId: 10205
+        Weight: 100
+      - Id: Quest.10301
+        RewardType: 2
+        RewardId: 10305
         Weight: 100
   skillCoreSpecs:
     list:
@@ -4611,3 +4657,11 @@ MonoBehaviour:
         NeedAvailableContentsKey: Clear.Quest.10102
       - AvailableContentsKey: Clear.QuestLevel.1
         NeedAvailableContentsKey: Clear.Quest.10103
+    - Key: Clear.QuestLevel.2
+      Value:
+      - AvailableContentsKey: Clear.QuestLevel.2
+        NeedAvailableContentsKey: Clear.Quest.10201
+      - AvailableContentsKey: Clear.QuestLevel.2
+        NeedAvailableContentsKey: Clear.Quest.10202
+      - AvailableContentsKey: Clear.QuestLevel.2
+        NeedAvailableContentsKey: Clear.Quest.10203

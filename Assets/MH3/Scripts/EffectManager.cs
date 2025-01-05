@@ -37,6 +37,7 @@ namespace MH3
         private async UniTask ReturnAsync(ObjectPool<EffectObject> pool, EffectObject instance)
         {
             await instance.WaitUntilDeadAsync(destroyCancellationToken);
+            instance.transform.SetParent(null);
             pool.Release(instance);
         }
 

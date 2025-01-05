@@ -34,6 +34,9 @@ MonoBehaviour:
         - weight: 100
           sequenceResolver:
             rid: 7349438210953183233
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438210953183330
     - rid: 1481063179134173265
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
@@ -60,3 +63,7 @@ MonoBehaviour:
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: {fileID: 11400000, guid: 1bd7858104626f443b57d18bb605b2c0, type: 2}
+    - rid: 7349438210953183330
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 2b984c80428aef844a66862f365df639, type: 2}
