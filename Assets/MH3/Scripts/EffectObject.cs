@@ -12,7 +12,10 @@ namespace MH3
 
         public async UniTask WaitUntilDeadAsync(CancellationToken scope)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(lifeTime), cancellationToken: scope);
+            var newScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+            await UniTask.Delay(TimeSpan.FromSeconds(lifeTime), cancellationToken: newScope.Token);
+            newScope.Cancel();
+            newScope.Dispose();
         }
     }
 }
