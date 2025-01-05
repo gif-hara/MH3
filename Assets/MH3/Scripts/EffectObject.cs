@@ -10,12 +10,9 @@ namespace MH3
         [SerializeField]
         private float lifeTime;
 
-        public async UniTask WaitUntilDeadAsync(CancellationToken scope)
+        public UniTask WaitUntilDeadAsync(CancellationToken scope)
         {
-            var newScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
-            await UniTask.Delay(TimeSpan.FromSeconds(lifeTime), cancellationToken: newScope.Token);
-            newScope.Cancel();
-            newScope.Dispose();
+            return UniTask.Delay(TimeSpan.FromSeconds(lifeTime), cancellationToken: scope);
         }
     }
 }

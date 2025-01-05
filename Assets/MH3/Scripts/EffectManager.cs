@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using UnityEngine;
@@ -36,9 +37,16 @@ namespace MH3
 
         private async UniTask ReturnAsync(ObjectPool<EffectObject> pool, EffectObject instance)
         {
-            await instance.WaitUntilDeadAsync(destroyCancellationToken);
-            instance.transform.SetParent(null);
-            pool.Release(instance);
+            try
+            {
+                var scope = CancellationTokenSource.CreateLinkedTokenSource(destroyCancellationToken, instance.destroyCancellationToken);
+                await instance.WaitUntilDeadAsync(scope.Token);
+                instance.transform.SetParent(null);
+                pool.Release(instance);
+            }
+            catch (OperationCanceledException)
+            {
+            }
         }
 
         [Serializable]
