@@ -2110,6 +2110,30 @@ MonoBehaviour:
       HitCameraImpulseSourceKey: VerySmall
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Shield.Basic.3
+      Power: 26
+      FlinchDamage: 14
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Shield.JustGuard.1
       Power: 35
       FlinchDamage: 20
@@ -2619,7 +2643,7 @@ MonoBehaviour:
       SuccessGuardSequencesKey: SuccessGuard.Default
       DeadSequencesKey: Dead.Default
       RecoverySequencesKey: Recovery.Default
-      ActorPrefabKey: Enemy.Red
+      ActorPrefabKey: Enemy.Black
       BehaviourKey: Enemy.20301
       InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
       AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
@@ -2630,7 +2654,7 @@ MonoBehaviour:
       SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
-      ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
+      ActorPrefab: {fileID: 963923653530722458, guid: 07d7ea718d879eb449782c1012233de5, type: 3}
       Behaviour: {fileID: 11400000, guid: c3989d6b78ef36344a7b26426ab25dff, type: 2}
     - Id: 29901
       Name: "\u30C8\u30EC\u30FC\u30CB\u30F3\u30B0\u30C0\u30DF\u30FC\u541B"
