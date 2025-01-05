@@ -252,6 +252,20 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 10402
+      Name: "\u89AA\u885B\u968A\u306E\u76FE"
+      WeaponType: 3
+      ModelDataId: Shield.2
+      ComboId: 10401
+      JustGuardAttackAnimationKey: Attack.Shield.JustGuard.1
+      StrongAttackAnimationKey: Attack.Shield.Strong.1
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: Guard.Canceled.Default
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 98ae4caa5da8a2941a0b0c467fcd3795, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20101
       Name: "\u6575\u6B66\u5668\uFF08\u76F4\u5263\uFF09"
       WeaponType: 0
@@ -562,6 +576,20 @@ MonoBehaviour:
         Attack: 100
         RareType: 0
         Weight: 100
+    - Key: 10402
+      Value:
+      - Id: 10402
+        Attack: 150
+        RareType: 0
+        Weight: 100
+      - Id: 10402
+        Attack: 160
+        RareType: 0
+        Weight: 100
+      - Id: 10402
+        Attack: 170
+        RareType: 0
+        Weight: 100
   weaponCriticals:
     list:
     - Key: 10101
@@ -663,6 +691,12 @@ MonoBehaviour:
     - Key: 10401
       Value:
       - Id: 10401
+        Critical: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10402
+      Value:
+      - Id: 10402
         Critical: 0
         RareType: 0
         Weight: 100
@@ -794,6 +828,16 @@ MonoBehaviour:
         SkillSlot: 0
         RareType: 0
         Weight: 100
+    - Key: 10402
+      Value:
+      - Id: 10402
+        SkillSlot: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10402
+        SkillSlot: 3
+        RareType: 0
+        Weight: 100
   weaponAbnormalStatuses:
     list:
     - Key: 10101
@@ -916,6 +960,13 @@ MonoBehaviour:
     - Key: 10401
       Value:
       - Id: 10401
+        AbnormalStatusType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10402
+      Value:
+      - Id: 10402
         AbnormalStatusType: 0
         Power: 0
         RareType: 0
@@ -1062,6 +1113,13 @@ MonoBehaviour:
     - Key: 10401
       Value:
       - Id: 10401
+        ElementType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10402
+      Value:
+      - Id: 10402
         ElementType: 0
         Power: 0
         RareType: 0
@@ -2970,10 +3028,6 @@ MonoBehaviour:
     - Key: 10201
       Value:
       - Id: 10201
-        Count: 1
-        RareType: 0
-        Weight: 100
-      - Id: 10201
         Count: 2
         RareType: 0
         Weight: 100
@@ -2984,10 +3038,6 @@ MonoBehaviour:
     - Key: 10202
       Value:
       - Id: 10202
-        Count: 1
-        RareType: 0
-        Weight: 100
-      - Id: 10202
         Count: 2
         RareType: 0
         Weight: 100
@@ -2997,10 +3047,6 @@ MonoBehaviour:
         Weight: 100
     - Key: 10203
       Value:
-      - Id: 10203
-        Count: 1
-        RareType: 0
-        Weight: 100
       - Id: 10203
         Count: 2
         RareType: 0
@@ -3030,14 +3076,14 @@ MonoBehaviour:
         RareType: 0
         Weight: 50
       - Id: 10101
-        SkillType: 0
+        SkillType: 9
         Level: 1
         RareType: 0
         Weight: 50
     - Key: 10102
       Value:
       - Id: 10102
-        SkillType: 0
+        SkillType: 9
         Level: 1
         RareType: 0
         Weight: 100
@@ -3081,14 +3127,14 @@ MonoBehaviour:
         RareType: 0
         Weight: 50
       - Id: 10201
-        SkillType: 0
+        SkillType: 9
         Level: 1
         RareType: 0
         Weight: 50
     - Key: 10202
       Value:
       - Id: 10202
-        SkillType: 0
+        SkillType: 9
         Level: 1
         RareType: 0
         Weight: 100
@@ -4057,7 +4103,7 @@ MonoBehaviour:
     - Key: 10101
       Value:
       - Id: 10101
-        SkillType: 0
+        SkillType: 9
         Level: 1
         RareType: 0
         Weight: 100
@@ -4078,7 +4124,7 @@ MonoBehaviour:
     - Key: 10102
       Value:
       - Id: 10102
-        SkillType: 0
+        SkillType: 9
         Level: 1
         RareType: 0
         Weight: 100
@@ -4099,7 +4145,7 @@ MonoBehaviour:
     - Key: 10103
       Value:
       - Id: 10103
-        SkillType: 0
+        SkillType: 9
         Level: 1
         RareType: 0
         Weight: 100
@@ -4120,7 +4166,7 @@ MonoBehaviour:
     - Key: 10104
       Value:
       - Id: 10104
-        SkillType: 0
+        SkillType: 9
         Level: 1
         RareType: 0
         Weight: 100
