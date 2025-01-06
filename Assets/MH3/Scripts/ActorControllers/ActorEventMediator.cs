@@ -103,5 +103,15 @@ namespace MH3
         {
             actor.SpecController.Stamina.Value -= value;
         }
+
+        public void SetFacial(string facialName)
+        {
+            actor.FacialController.SetFacial(facialName);
+        }
+
+        public void PlayAnimationFacial(string animationName)
+        {
+            actor.FacialController.Play(animationName);
+        }
     }
 }
