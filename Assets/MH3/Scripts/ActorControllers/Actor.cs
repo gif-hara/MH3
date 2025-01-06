@@ -61,6 +61,7 @@ namespace MH3.ActorControllers
             actor.BehaviourController = new ActorBehaviourController(actor);
             actor.ActionController = new ActorActionController(actor);
             actor.MovementController.Setup(actor, actor.openCharacterController);
+            actor.SpecController.BeginObserve();
             return actor;
         }
 

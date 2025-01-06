@@ -130,6 +130,10 @@ namespace MH3
         public SkillLevelValue.DictionaryList SkillStaminaMaxUp => skillStaminaMaxUp;
 
         [SerializeField]
+        private SkillLevelValue.DictionaryList skillInvokeSharpenAttackUp;
+        public SkillLevelValue.DictionaryList SkillInvokeSharpenAttackUp => skillInvokeSharpenAttackUp;
+
+        [SerializeField]
         private ArmorSpec.DictionaryList armorSpecs;
         public ArmorSpec.DictionaryList ArmorSpecs => armorSpecs;
 
@@ -206,6 +210,7 @@ namespace MH3
                     "Skill.SuccessJustGuardCriticalUp",
                     "Skill.LastComboAttackUp",
                     "Skill.StaminaMaxUp",
+                    "Skill.InvokeSharpenAttackUp",
                 };
                 var database = await UniTask.WhenAll(
                     masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -244,6 +249,7 @@ namespace MH3
                 skillSuccessJustGuardCriticalUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[31]));
                 skillLastComboAttackUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[32]));
                 skillStaminaMaxUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[33]));
+                skillInvokeSharpenAttackUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[34]));
                 foreach (var weaponSpec in weaponSpecs.List)
                 {
                     weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");

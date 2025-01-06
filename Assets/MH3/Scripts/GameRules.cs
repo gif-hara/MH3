@@ -134,6 +134,11 @@ namespace MH3
         private ScriptableSequences enduranceStateSequences;
         public ScriptableSequences EnduranceStateSequences => enduranceStateSequences;
 
+        [SerializeField]
+        private int skillInvokeSharpenAttackUpAttackMax;
+        public int SkillInvokeSharpenAttackUpAttackMax => skillInvokeSharpenAttackUpAttackMax;
+
+
         [Serializable]
         public class ElementProjectile
         {

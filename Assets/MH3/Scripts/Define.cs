@@ -76,6 +76,8 @@ namespace MH3
             LastComboAttackUp,
             /// <summary>スタミナ最大値アップ</summary>
             StaminaMaxUp,
+            /// <summary>研ぎアクション回数で攻撃力アップ</summary>
+            InvokeSharpenAttackUp,
         }
 
         public enum ActorParameterType

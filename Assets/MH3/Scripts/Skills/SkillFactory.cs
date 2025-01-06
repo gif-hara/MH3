@@ -38,6 +38,7 @@ namespace MH3.SkillSystems
                 Define.SkillType.SuccessJustGuardCriticalUp => new SuccessJustGuardCriticalUp(level),
                 Define.SkillType.LastComboAttackUp => new LastComboAttackUp(level),
                 Define.SkillType.StaminaMaxUp => new StaminaMaxUp(level),
+                Define.SkillType.InvokeSharpenAttackUp => new InvokeSharpenAttackUp(level),
                 _ => null
             };
         }

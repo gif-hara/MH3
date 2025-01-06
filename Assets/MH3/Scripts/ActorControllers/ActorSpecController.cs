@@ -147,6 +147,10 @@ namespace MH3.ActorControllers
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Poison, new ReactiveProperty<int>(spec.PoisonThreshold));
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Paralysis, new ReactiveProperty<int>(spec.ParalysisThreshold));
             abnormalStatusThreshold.Add(Define.AbnormalStatusType.Collapse, new ReactiveProperty<int>(spec.CollapseThreshold));
+        }
+
+        public void BeginObserve()
+        {
             actor.UpdateAsObservable()
                 .Subscribe(actor, (_, a) =>
                 {
