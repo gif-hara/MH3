@@ -76,6 +76,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b99920dd4c13364c88aed93db594ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5541183580120520854 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6734182565490814336, guid: aafe0f3c918bbb146b37f530bc33c958, type: 3}
+  m_PrefabInstance: {fileID: 1266252869543851286}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e5f03171e9f574ab2e25d93e4df39c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8133385725902412071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7011319014485896241, guid: aafe0f3c918bbb146b37f530bc33c958, type: 3}
@@ -176,6 +187,10 @@ PrefabInstance:
       propertyPath: simpleAnimation
       value: 
       objectReference: {fileID: 8984360029309688821}
+    - target: {fileID: 6713123197178141326, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: facialController
+      value: 
+      objectReference: {fileID: 5541183580120520854}
     - target: {fileID: 7729714759173695386, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
       propertyPath: m_Layer
       value: 7

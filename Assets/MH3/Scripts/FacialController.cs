@@ -10,16 +10,36 @@ namespace MH3
         private List<Element> elements;
 
         [SerializeField]
-        private string defaultFacialName;
+        private SimpleAnimation simpleAnimation;
 
-        void Start()
+        public void Play(string facialName)
         {
-            SetFacial(defaultFacialName);
-            Debug.Log("FacialController.Start() called");
+            if (!gameObject.activeSelf)
+            {
+                return;
+            }
+            simpleAnimation.Play(facialName);
+        }
+
+        public void SetFacialFromAnimation(string facialName)
+        {
+            if (!gameObject.activeSelf)
+            {
+                return;
+            }
+            foreach (var element in elements)
+            {
+                element.SetActive(facialName);
+            }
         }
 
         public void SetFacial(string facialName)
         {
+            if (!gameObject.activeSelf)
+            {
+                return;
+            }
+            simpleAnimation.Stop();
             foreach (var element in elements)
             {
                 element.SetActive(facialName);

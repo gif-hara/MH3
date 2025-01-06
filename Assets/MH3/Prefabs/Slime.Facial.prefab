@@ -112,7 +112,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.16, y: 0.714, z: 0.501}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6549450896212292058}
@@ -231,7 +231,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.16, y: 0.714, z: 0.501}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7776717610998572124}
@@ -495,7 +495,8 @@ MonoBehaviour:
   elements:
   - facialObject: {fileID: 5510520139782906488}
   - facialObject: {fileID: 2204662739782541837}
-  defaultFacialName: Default.1
+  - facialObject: {fileID: 3363884392714214724}
+  simpleAnimation: {fileID: 7775704221552106721}
 --- !u!95 &6628142883429140528
 Animator:
   serializedVersion: 7

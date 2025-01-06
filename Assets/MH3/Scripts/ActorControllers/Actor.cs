@@ -14,6 +14,9 @@ namespace MH3.ActorControllers
         [SerializeField]
         private OpenCharacterController openCharacterController;
 
+        [SerializeField]
+        private FacialController facialController;
+
         public ActorMovementController MovementController { get; private set; }
 
         public ActorStateMachine StateMachine { get; private set; }
@@ -25,7 +28,7 @@ namespace MH3.ActorControllers
         public ActorAnimationController AnimationController { get; private set; }
 
         public ActorWeaponController WeaponController { get; private set; }
-        
+
         public ActorArmorController ArmorController { get; private set; }
 
         public ActorAttackController AttackController { get; private set; }
@@ -39,6 +42,8 @@ namespace MH3.ActorControllers
         public ActorActionController ActionController { get; private set; }
 
         public LocatorHolder LocatorHolder => locatorHolder;
+
+        public FacialController FacialController => facialController;
 
         public Actor Spawn(Vector3 position, Quaternion rotation, MasterData.ActorSpec actorSpec)
         {
