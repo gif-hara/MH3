@@ -121,6 +121,8 @@ namespace MH3.ActorControllers
         private readonly Subject<Unit> onBuildStatuses = new();
         public Observable<Unit> OnBuildStatuses => onBuildStatuses;
 
+        public int InvokeSharpenCount { get; private set; }
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -150,6 +152,12 @@ namespace MH3.ActorControllers
                 {
                     var result = a.SpecController.Stamina.Value + a.SpecController.StaminaRecoveryAmount.Value * a.SpecController.StaminaRecoveryRate * a.TimeController.Time.deltaTime;
                     a.SpecController.Stamina.Value = Mathf.Min(result, a.SpecController.StaminaMaxTotal);
+                })
+                .RegisterTo(actor.destroyCancellationToken);
+            actor.ActionController.OnBeginDualSwordDodgeMode
+                .Subscribe(actor, (_, a) =>
+                {
+                    a.SpecController.InvokeSharpenCount++;
                 })
                 .RegisterTo(actor.destroyCancellationToken);
         }
@@ -589,6 +597,7 @@ namespace MH3.ActorControllers
             appliedAbnormalStatuses.Clear();
             recoveryCommandCount.Value = RecoveryCommandCountMax.ValueFloorToInt;
             actor.StateMachine.TryChangeState(spec.InitialStateSequences, force: true);
+            InvokeSharpenCount = 0;
         }
 
         public bool TryRecovery()
