@@ -3397,8 +3397,8 @@ MonoBehaviour:
     - Key: 19901
       Value:
       - Id: 19901
-        SkillType: 17
-        Level: 7
+        SkillType: 18
+        Level: 10
         RareType: 0
         Weight: 50
   skillTypeToParameters:
@@ -4078,6 +4078,30 @@ MonoBehaviour:
       Value: 9
     - Level: 10
       Value: 10
+  skillAttackUpForSuperArmor:
+    list:
+    - Level: 0
+      Value: 0
+    - Level: 1
+      Value: 20
+    - Level: 2
+      Value: 30
+    - Level: 3
+      Value: 40
+    - Level: 4
+      Value: 50
+    - Level: 5
+      Value: 60
+    - Level: 6
+      Value: 70
+    - Level: 7
+      Value: 80
+    - Level: 8
+      Value: 90
+    - Level: 9
+      Value: 100
+    - Level: 10
+      Value: 120
   armorSpecs:
     list:
     - Id: 10101

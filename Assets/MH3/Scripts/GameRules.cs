@@ -138,6 +138,10 @@ namespace MH3
         private int skillInvokeSharpenAttackUpAttackMax;
         public int SkillInvokeSharpenAttackUpAttackMax => skillInvokeSharpenAttackUpAttackMax;
 
+        [SerializeField]
+        private float skillAttackUpForSuperArmorDuration;
+        public float SkillAttackUpForSuperArmorDuration => skillAttackUpForSuperArmorDuration;
+
 
         [Serializable]
         public class ElementProjectile

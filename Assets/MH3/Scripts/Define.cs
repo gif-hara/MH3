@@ -78,6 +78,8 @@ namespace MH3
             StaminaMaxUp,
             /// <summary>研ぎアクション回数で攻撃力アップ</summary>
             InvokeSharpenAttackUp,
+            /// <summary>スーパーアーマー時攻撃力アップ</summary>
+            AttackUpForSuperArmor,
         }
 
         public enum ActorParameterType

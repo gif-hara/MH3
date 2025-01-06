@@ -123,6 +123,9 @@ namespace MH3.ActorControllers
 
         public int InvokeSharpenCount { get; private set; }
 
+        private Subject<Unit> onInvokeSuperArmor = new();
+        public Observable<Unit> OnInvokeSuperArmor => onInvokeSuperArmor;
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -511,6 +514,7 @@ namespace MH3.ActorControllers
                 if (SuperArmorCount.Value > 0)
                 {
                     TinyServiceLocator.Resolve<AudioManager>().PlaySfx(gameRules.SuperArmorHitSfxKey);
+                    onInvokeSuperArmor.OnNext(Unit.Default);
                 }
                 SuperArmorCount.Value--;
 

@@ -39,6 +39,7 @@ namespace MH3.SkillSystems
                 Define.SkillType.LastComboAttackUp => new LastComboAttackUp(level),
                 Define.SkillType.StaminaMaxUp => new StaminaMaxUp(level),
                 Define.SkillType.InvokeSharpenAttackUp => new InvokeSharpenAttackUp(level),
+                Define.SkillType.AttackUpForSuperArmor => new AttackUpForSuperArmor(level),
                 _ => null
             };
         }

@@ -48,6 +48,7 @@ namespace MH3
                 Define.SkillType.LastComboAttackUp => "渾身の一撃".Localized(),
                 Define.SkillType.StaminaMaxUp => "スタミナアップ".Localized(),
                 Define.SkillType.InvokeSharpenAttackUp => "研磨".Localized(),
+                Define.SkillType.AttackUpForSuperArmor => "忍耐の力".Localized(),
                 _ => throw new NotImplementedException($"未対応のスキルタイプです {self}"),
             };
         }
