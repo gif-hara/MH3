@@ -68,7 +68,7 @@ namespace MH3
             inputController.Actions.Player.Recovery.OnPerformedAsObservable()
                 .Subscribe(actor, static (_, a) =>
                 {
-                    EarlyInputHandler.Invoke(() => a.SpecController.TryRecovery(), TinyServiceLocator.Resolve<GameRules>().EarlyInputTime, a.destroyCancellationToken);
+                    EarlyInputHandler.Invoke(() => a.ActionController.TryRecovery(), TinyServiceLocator.Resolve<GameRules>().EarlyInputTime, a.destroyCancellationToken);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             return UniTask.CompletedTask;

@@ -251,6 +251,8 @@ namespace MH3.ActorControllers
 
         public CancellationToken DeadCancellationToken => deadCancellationTokenSource.Token;
 
+        public ScriptableSequences RecoverySequences => spec.RecoverySequences;
+
         public int GetAttackValue(Define.ElementType elementType)
         {
             return elementType switch
@@ -621,15 +623,6 @@ namespace MH3.ActorControllers
             {
                 skill.Reset();
             }
-        }
-
-        public bool TryRecovery()
-        {
-            if (hitPoint.Value >= HitPointMaxTotal || recoveryCommandCount.Value <= 0)
-            {
-                return false;
-            }
-            return actor.StateMachine.TryChangeState(spec.RecoverySequences);
         }
 
         public void AddRecoveryCommandCount(int value)

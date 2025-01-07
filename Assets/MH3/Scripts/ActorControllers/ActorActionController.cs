@@ -80,6 +80,16 @@ namespace MH3.ActorControllers
                 });
         }
 
+        public bool TryRecovery()
+        {
+            var specController = actor.SpecController;
+            if (specController.HitPoint.CurrentValue >= specController.HitPointMaxTotal || specController.RecoveryCommandCount.CurrentValue <= 0)
+            {
+                return false;
+            }
+            return actor.StateMachine.TryChangeState(specController.RecoverySequences);
+        }
+
         public bool TrySharpen()
         {
             if (actor.SpecController.IsEventStop.Value)
