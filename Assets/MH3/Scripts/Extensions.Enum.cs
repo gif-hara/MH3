@@ -51,6 +51,7 @@ namespace MH3
                 Define.SkillType.AttackUpForSuperArmor => "忍耐の力".Localized(),
                 Define.SkillType.StaminaRecoveryAmountUp => "スタミナ回復速度アップ".Localized(),
                 Define.SkillType.AttackUpForConsumeStamina => "オーバーヒート".Localized(),
+                Define.SkillType.RecoveryStaminaForCritical => "会心の呼吸".Localized(),
                 _ => throw new NotImplementedException($"未対応のスキルタイプです {self}"),
             };
         }

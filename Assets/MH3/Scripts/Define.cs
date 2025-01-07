@@ -84,6 +84,8 @@ namespace MH3
             StaminaRecoveryAmountUp,
             /// <summary>攻撃時スタミナして攻撃力アップ</summary>
             AttackUpForConsumeStamina,
+            /// <summary>クリティカル時スタミナ回復</summary>
+            RecoveryStaminaForCritical,
         }
 
         public enum ActorParameterType

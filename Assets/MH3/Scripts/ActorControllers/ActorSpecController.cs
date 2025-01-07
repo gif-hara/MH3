@@ -106,6 +106,9 @@ namespace MH3.ActorControllers
 
         private readonly Subject<DamageData> onTakeDamage = new();
 
+        private readonly Subject<DamageData> onGiveDamage = new();
+        public Observable<DamageData> OnGiveDamage => onGiveDamage;
+
         private readonly Subject<Unit> onDead = new();
 
         private readonly CancellationTokenSource deadCancellationTokenSource = new();
@@ -535,6 +538,7 @@ namespace MH3.ActorControllers
                     actor.StateMachine.TryChangeState(spec.SuccessGuardSequences, force: true);
                 }
                 onTakeDamage.OnNext(damageData);
+                attacker.SpecController.onGiveDamage.OnNext(damageData);
             }
         }
 
@@ -625,6 +629,13 @@ namespace MH3.ActorControllers
         public void AddRecoveryCommandCount(int value)
         {
             recoveryCommandCount.Value += value;
+        }
+        
+        public void AddStamina(float value)
+        {
+            var result = Stamina.Value + value;
+            result = Mathf.Min(result, StaminaMaxTotal);
+            Stamina.Value = result;
         }
 
 #if DEBUG
