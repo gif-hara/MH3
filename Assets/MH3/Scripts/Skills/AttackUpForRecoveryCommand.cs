@@ -36,5 +36,10 @@ namespace MH3.SkillSystems
                 }
                 );
         }
+
+        public override void Reset()
+        {
+            recoveryCommandTime = -9999.0f;
+        }
     }
 }
