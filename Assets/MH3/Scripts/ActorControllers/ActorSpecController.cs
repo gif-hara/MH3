@@ -126,6 +126,9 @@ namespace MH3.ActorControllers
         private readonly Subject<Unit> onBuildStatuses = new();
         public Observable<Unit> OnBuildStatuses => onBuildStatuses;
 
+        private readonly Subject<Unit> onReset = new();
+        public Observable<Unit> OnReset => onReset;
+
         public int InvokeSharpenCount { get; private set; }
 
         private Subject<Unit> onInvokeSuperArmor = new();
@@ -616,6 +619,7 @@ namespace MH3.ActorControllers
             {
                 skill.Reset();
             }
+            onReset.OnNext(Unit.Default);
         }
 
         public void AddRecoveryCommandCount(int value)

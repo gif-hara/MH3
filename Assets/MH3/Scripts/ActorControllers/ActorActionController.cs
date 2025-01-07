@@ -51,7 +51,10 @@ namespace MH3.ActorControllers
                     }
                 })
                 .RegisterTo(actor.destroyCancellationToken);
-            actor.SpecController.OnBuildStatuses
+            Observable.Merge(
+                actor.SpecController.OnBuildStatuses,
+                actor.SpecController.OnReset
+            )
                 .Subscribe((this, actor), static (_, t) =>
                 {
                     var (@this, actor) = t;
