@@ -58,7 +58,7 @@ namespace MH3
 
         public void Recovery()
         {
-            actor.SpecController.RecoveryFromAnimation();
+            actor.ActionController.BeginRecoveryCommand();
         }
 
         public void ResetAttackCount()

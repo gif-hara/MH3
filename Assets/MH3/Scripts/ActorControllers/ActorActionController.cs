@@ -116,6 +116,14 @@ namespace MH3.ActorControllers
             return actor.StateMachine.TryChangeState(TinyServiceLocator.Resolve<GameRules>().EnduranceStateSequences);
         }
 
+        public void BeginRecoveryCommand()
+        {
+            var specController = actor.SpecController;
+            var amount = TinyServiceLocator.Resolve<GameRules>().RecoveryAmount;
+            amount += Mathf.FloorToInt(amount * specController.RecoveryAmountUp.Value);
+            specController.AddHitPoint(amount);
+        }
+
         public async UniTask BeginDualSwordDodgeModeAsync()
         {
             try

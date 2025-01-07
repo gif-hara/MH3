@@ -599,13 +599,6 @@ namespace MH3.ActorControllers
             flinchType.Value = Define.FlinchType.None;
         }
 
-        public void RecoveryFromAnimation()
-        {
-            var amount = TinyServiceLocator.Resolve<GameRules>().RecoveryAmount;
-            amount += Mathf.FloorToInt(amount * RecoveryAmountUp.Value);
-            var result = hitPoint.Value + amount;
-            hitPoint.Value = result > HitPointMaxTotal ? HitPointMaxTotal : result;
-        }
 
         public void ResetAll()
         {
@@ -630,18 +623,18 @@ namespace MH3.ActorControllers
             recoveryCommandCount.Value += value;
         }
 
-        public void AddStamina(float value)
-        {
-            var result = Stamina.Value + value;
-            result = Mathf.Min(result, StaminaMaxTotal);
-            Stamina.Value = result;
-        }
-
         public void AddHitPoint(int value)
         {
             var result = hitPoint.Value + value;
             result = Mathf.Min(result, HitPointMaxTotal);
             hitPoint.Value = result;
+        }
+
+        public void AddStamina(float value)
+        {
+            var result = Stamina.Value + value;
+            result = Mathf.Min(result, StaminaMaxTotal);
+            Stamina.Value = result;
         }
 
 #if DEBUG
