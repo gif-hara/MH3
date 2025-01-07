@@ -140,7 +140,7 @@ namespace MH3
         [SerializeField]
         private SkillLevelValue.DictionaryList skillStaminaRecoveryAmountUp;
         public SkillLevelValue.DictionaryList SkillStaminaRecoveryAmountUp => skillStaminaRecoveryAmountUp;
-        
+
         [SerializeField]
         private SkillLevelValue.DictionaryList skillAttackUpForConsumeStamina;
         public SkillLevelValue.DictionaryList SkillAttackUpForConsumeStamina => skillAttackUpForConsumeStamina;
@@ -156,6 +156,10 @@ namespace MH3
         [SerializeField]
         private SkillLevelValue.DictionaryList skillCriticalUpForAttackNoMiss;
         public SkillLevelValue.DictionaryList SkillCriticalUpForAttackNoMiss => skillCriticalUpForAttackNoMiss;
+
+        [SerializeField]
+        private SkillLevelValue.DictionaryList skillCriticalDamageUp;
+        public SkillLevelValue.DictionaryList SkillCriticalDamageUp => skillCriticalDamageUp;
 
         [SerializeField]
         private ArmorSpec.DictionaryList armorSpecs;
@@ -241,6 +245,7 @@ namespace MH3
                     "Skill.RecoveryStaminaForCritical",
                     "Skill.RecoveryHitPointForAttack",
                     "Skill.CriticalUpForAttackNoMiss",
+                    "Skill.CriticalDamageUp",
                 };
                 var database = await UniTask.WhenAll(
                     masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -286,6 +291,7 @@ namespace MH3
                 skillRecoveryStaminaForCritical.Set(JsonHelper.FromJson<SkillLevelValue>(database[38]));
                 skillRecoveryHitPointForAttack.Set(JsonHelper.FromJson<SkillLevelValue>(database[39]));
                 skillCriticalUpForAttackNoMiss.Set(JsonHelper.FromJson<SkillLevelValue>(database[40]));
+                skillCriticalDamageUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[41]));
                 foreach (var weaponSpec in weaponSpecs.List)
                 {
                     weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");

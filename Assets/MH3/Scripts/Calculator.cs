@@ -21,7 +21,7 @@ namespace MH3
             var isCritical = attackSpec.CanCritical && attacker.SpecController.CriticalTotal > Random.value;
             if (isCritical)
             {
-                damage = Mathf.FloorToInt(damage * gameRules.CriticalDamageRate);
+                damage = Mathf.FloorToInt(damage * (gameRules.CriticalDamageRate + attacker.SpecController.CriticalDamageRate.Value));
             }
             if (target.SpecController.ContainsAppliedAbnormalStatus(Define.AbnormalStatusType.Collapse))
             {

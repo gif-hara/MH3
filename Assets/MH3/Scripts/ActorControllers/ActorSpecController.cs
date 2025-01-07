@@ -71,7 +71,7 @@ namespace MH3.ActorControllers
         public readonly Parameter FlinchDamageRate = new();
 
         public readonly Parameter RecoveryAmountUp = new();
-        
+
         public readonly Parameter AttackStaminaCost = new();
 
         private readonly ReactiveProperty<int> weaponId = new(0);
@@ -130,6 +130,8 @@ namespace MH3.ActorControllers
 
         private Subject<Unit> onInvokeSuperArmor = new();
         public Observable<Unit> OnInvokeSuperArmor => onInvokeSuperArmor;
+
+        public readonly Parameter CriticalDamageRate = new();
 
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
@@ -630,14 +632,14 @@ namespace MH3.ActorControllers
         {
             recoveryCommandCount.Value += value;
         }
-        
+
         public void AddStamina(float value)
         {
             var result = Stamina.Value + value;
             result = Mathf.Min(result, StaminaMaxTotal);
             Stamina.Value = result;
         }
-        
+
         public void AddHitPoint(int value)
         {
             var result = hitPoint.Value + value;
