@@ -37,5 +37,10 @@ namespace MH3.SkillSystems
                     )
                 );
         }
+
+        public override void Reset()
+        {
+            count = 0;
+        }
     }
 }

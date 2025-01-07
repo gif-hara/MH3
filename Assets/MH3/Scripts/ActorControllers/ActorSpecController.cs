@@ -617,6 +617,10 @@ namespace MH3.ActorControllers
             recoveryCommandCount.Value = RecoveryCommandCountMax.ValueFloorToInt;
             actor.StateMachine.TryChangeState(spec.InitialStateSequences, force: true);
             InvokeSharpenCount = 0;
+            foreach (var skill in Skills)
+            {
+                skill.Reset();
+            }
         }
 
         public bool TryRecovery()

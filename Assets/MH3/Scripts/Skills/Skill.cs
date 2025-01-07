@@ -41,5 +41,9 @@ namespace MH3.SkillSystems
         }
 
         public abstract void Attach(Actor owner, CancellationToken scope);
+
+        public virtual void Reset()
+        {
+        }
     }
 }

@@ -8,16 +8,16 @@ namespace MH3.SkillSystems
 {
     public class SuccessJustGuardCriticalUp : Skill
     {
+        private float successJustGuardTime = -9999.0f;
         public SuccessJustGuardCriticalUp(int level) : base(Define.SkillType.SuccessJustGuardCriticalUp, level)
         {
         }
 
         public override void Attach(Actor owner, CancellationToken scope)
         {
-            var successJustGuardTime = -9999.0f;
             owner.ActionController.JustGuarding
                 .Where(x => x)
-                .Subscribe(_ => successJustGuardTime = UnityEngine.Time.time)
+                .Subscribe(this, static (_, @this) => @this.successJustGuardTime = UnityEngine.Time.time)
                 .RegisterTo(scope);
             owner.SpecController.Critical.RegisterAdds(
                 "Skill.SuccessJustGuardCriticalUp",

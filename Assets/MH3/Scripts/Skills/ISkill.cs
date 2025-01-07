@@ -12,6 +12,8 @@ namespace MH3.SkillSystems
 
         void Attach(Actor owner, CancellationToken scope);
 
+        void Reset();
+
         float GetParameter(Define.ActorParameterType type, Actor owner);
 
         int GetParameterInt(Define.ActorParameterType type, Actor owner);
