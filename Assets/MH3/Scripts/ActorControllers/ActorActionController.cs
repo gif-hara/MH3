@@ -89,9 +89,20 @@ namespace MH3.ActorControllers
         public bool TryRecovery()
         {
             var specController = actor.SpecController;
-            if (specController.HitPoint.CurrentValue >= specController.HitPointMaxTotal || specController.RecoveryCommandCount.CurrentValue <= 0)
+            if (specController.IsEventStop.Value)
             {
                 return false;
+            }
+            if (specController.RecoveryCommandCount.CurrentValue <= 0)
+            {
+                return false;
+            }
+            if (specController.RecoveryCommandType == Define.RecoveryCommandType.Recovery)
+            {
+                if (specController.HitPoint.CurrentValue >= specController.HitPointMaxTotal)
+                {
+                    return false;
+                }
             }
             return actor.StateMachine.TryChangeState(specController.RecoverySequences);
         }

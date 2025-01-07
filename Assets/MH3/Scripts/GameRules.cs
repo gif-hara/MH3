@@ -150,6 +150,10 @@ namespace MH3
         private float skillCriticalUpForAttackNoMissLimit;
         public float SkillCriticalUpForAttackNoMissLimit => skillCriticalUpForAttackNoMissLimit;
 
+        [SerializeField]
+        private float skillAttackUpForRecoveryCommandDuration;
+        public float SkillAttackUpForRecoveryCommandDuration => skillAttackUpForRecoveryCommandDuration;
+
 
         [Serializable]
         public class ElementProjectile

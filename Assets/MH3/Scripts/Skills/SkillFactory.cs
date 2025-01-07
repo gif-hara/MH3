@@ -46,6 +46,7 @@ namespace MH3.SkillSystems
                 Define.SkillType.RecoveryHitPointForAttack => new RecoveryHitPointForAttack(level),
                 Define.SkillType.CriticalUpForAttackNoMiss => new CriticalUpForAttackNoMiss(level),
                 Define.SkillType.CriticalDamageUp => new CriticalDamageUp(level),
+                Define.SkillType.AttackUpForRecoveryCommand => new AttackUpForRecoveryCommand(level),
                 _ => throw new System.NotImplementedException($"未実装のスキルタイプです. {skillType}"),
             };
         }

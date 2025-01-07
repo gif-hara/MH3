@@ -92,6 +92,8 @@ namespace MH3
             CriticalUpForAttackNoMiss,
             /// <summary>会心ダメージアップ</summary>
             CriticalDamageUp,
+            /// <summary>回復コマンドが攻撃力アップに変更</summary>
+            AttackUpForRecoveryCommand,
         }
 
         public enum ActorParameterType
