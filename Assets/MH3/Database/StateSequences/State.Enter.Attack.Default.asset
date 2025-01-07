@@ -110,7 +110,7 @@ MonoBehaviour:
       type: {class: ActorConsumeStaminaFromAttack, ns: MH3, asm: Assembly-CSharp}
       data:
         actorResolver:
-          rid: -2
+          rid: 7349438256698359893
     - rid: 7349438189002031218
       type: {class: SetStaminaRecoveryRate, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -141,6 +141,10 @@ MonoBehaviour:
       type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: Attack.1
+    - rid: 7349438256698359893
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
     - rid: 8733972340067532868
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
