@@ -92,6 +92,9 @@ namespace MH3
         [SerializeField]
         private HKUIDocument titleDocumentPrefab;
 
+        [SerializeField]
+        private bool isSkipTitle;
+
         private Actor player;
 
         private Actor enemy;
@@ -118,6 +121,12 @@ namespace MH3
 
         private void Start()
         {
+#if DEBUG
+            if (isSkipTitle)
+            {
+                isFirstSetupQuest = false;
+            }
+#endif
             HK.Time.Root.timeScale = 1.0f;
             TinyServiceLocator.RegisterAsync(new GameEvents(), destroyCancellationToken).Forget();
             var inputController = new InputController();
