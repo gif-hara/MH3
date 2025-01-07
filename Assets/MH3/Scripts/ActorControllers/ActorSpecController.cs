@@ -71,6 +71,8 @@ namespace MH3.ActorControllers
         public readonly Parameter FlinchDamageRate = new();
 
         public readonly Parameter RecoveryAmountUp = new();
+        
+        public readonly Parameter AttackStaminaCost = new();
 
         private readonly ReactiveProperty<int> weaponId = new(0);
 
@@ -143,6 +145,7 @@ namespace MH3.ActorControllers
             CutRateGrassDamage.RegisterBasics("Spec", () => spec.GrassDamageCutRate);
             RecoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
             recoveryCommandCount.Value = RecoveryCommandCountMax.ValueFloorToInt;
+            AttackStaminaCost.RegisterBasics("Default", () => 0);
             SetWeaponId(spec.WeaponId);
             SetArmorId(Define.ArmorType.Head, spec.ArmorHeadId);
             SetArmorId(Define.ArmorType.Arms, spec.ArmorArmsId);
@@ -341,6 +344,8 @@ namespace MH3.ActorControllers
             RecoveryCommandCountMax.ClearAll();
             RewardUp.ClearAll();
             FlinchDamageRate.ClearAll();
+            AttackStaminaCost.ClearAll();
+            AttackStaminaCost.RegisterBasics("Default", () => 0);
             Critical.RegisterBasics("InstanceWeapon", () => instanceWeapon.Critical);
             CutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
             CutRateFireDamage.RegisterBasics("Spec", () => spec.FireDamageCutRate);

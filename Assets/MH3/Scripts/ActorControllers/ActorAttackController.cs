@@ -29,6 +29,10 @@ namespace MH3.ActorControllers
             {
                 return false;
             }
+            if (actor.SpecController.Stamina.Value < 0)
+            {
+                return false;
+            }
             if (!string.IsNullOrEmpty(actor.SpecController.StrongAttackAnimationKey) && target.SpecController.FlinchType.CurrentValue == Define.FlinchType.Small)
             {
                 if (actor.StateMachine.TryChangeState(
