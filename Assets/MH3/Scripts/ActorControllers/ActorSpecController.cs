@@ -136,6 +136,8 @@ namespace MH3.ActorControllers
 
         public readonly Parameter CriticalDamageRate = new();
 
+        public Define.RecoveryCommandType RecoveryCommandType { get; set; } = Define.RecoveryCommandType.Recovery;
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;

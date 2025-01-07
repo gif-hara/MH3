@@ -25,6 +25,9 @@ namespace MH3.ActorControllers
         private readonly Subject<(float duration, CancellationDisposable scope)> onBeginBladeEnduranceMode = new();
         public Observable<(float duration, CancellationDisposable scope)> OnBeginBladeEnduranceMode => onBeginBladeEnduranceMode;
 
+        private readonly Subject<Define.RecoveryCommandType> onBeginRecoveryCommand = new();
+        public Observable<Define.RecoveryCommandType> OnBeginRecoveryCommand => onBeginRecoveryCommand;
+
         private CancellationDisposable DualSwordDodgeModeDisposable = null;
 
         private CancellationDisposable BladeEnduranceModeDisposable = null;
@@ -122,9 +125,13 @@ namespace MH3.ActorControllers
         public void BeginRecoveryCommand()
         {
             var specController = actor.SpecController;
-            var amount = TinyServiceLocator.Resolve<GameRules>().RecoveryAmount;
-            amount += Mathf.FloorToInt(amount * specController.RecoveryAmountUp.Value);
-            specController.AddHitPoint(amount);
+            if (specController.RecoveryCommandType == Define.RecoveryCommandType.Recovery)
+            {
+                var amount = TinyServiceLocator.Resolve<GameRules>().RecoveryAmount;
+                amount += Mathf.FloorToInt(amount * specController.RecoveryAmountUp.Value);
+                specController.AddHitPoint(amount);
+            }
+            onBeginRecoveryCommand.OnNext(specController.RecoveryCommandType);
         }
 
         public async UniTask BeginDualSwordDodgeModeAsync()

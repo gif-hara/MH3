@@ -170,5 +170,11 @@ namespace MH3
             Home,
             Battle,
         }
+
+        public enum RecoveryCommandType
+        {
+            Recovery,
+            AttackUp,
+        }
     }
 }
