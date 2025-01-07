@@ -49,6 +49,7 @@ namespace MH3
                 Define.SkillType.StaminaMaxUp => "スタミナアップ".Localized(),
                 Define.SkillType.InvokeSharpenAttackUp => "研磨".Localized(),
                 Define.SkillType.AttackUpForSuperArmor => "忍耐の力".Localized(),
+                Define.SkillType.StaminaRecoveryAmountUp => "スタミナ回復速度アップ".Localized(),
                 _ => throw new NotImplementedException($"未対応のスキルタイプです {self}"),
             };
         }

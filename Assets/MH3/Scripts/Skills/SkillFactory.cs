@@ -40,6 +40,7 @@ namespace MH3.SkillSystems
                 Define.SkillType.StaminaMaxUp => new StaminaMaxUp(level),
                 Define.SkillType.InvokeSharpenAttackUp => new InvokeSharpenAttackUp(level),
                 Define.SkillType.AttackUpForSuperArmor => new AttackUpForSuperArmor(level),
+                Define.SkillType.StaminaRecoveryAmountUp => new StaminaRecoveryAmountUp(level),
                 _ => null
             };
         }

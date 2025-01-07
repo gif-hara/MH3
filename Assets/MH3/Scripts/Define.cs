@@ -80,6 +80,8 @@ namespace MH3
             InvokeSharpenAttackUp,
             /// <summary>スーパーアーマー時攻撃力アップ</summary>
             AttackUpForSuperArmor,
+            /// <summary>スタミナ回復速度アップ</summary>
+            StaminaRecoveryAmountUp,
         }
 
         public enum ActorParameterType
