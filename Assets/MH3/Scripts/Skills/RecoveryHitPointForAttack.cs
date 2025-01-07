@@ -18,7 +18,7 @@ namespace MH3.SkillSystems
                 .Subscribe((owner, this), static (x, t) =>
                 {
                     var (owner, @this) = t;
-                    var amount = Mathf.FloatToHalf(x.Damage * TinyServiceLocator.Resolve<MasterData>()
+                    var amount = Mathf.FloorToInt(x.Damage * TinyServiceLocator.Resolve<MasterData>()
                         .SkillRecoveryHitPointForAttack.GetFromLevel(@this.Level).Value);
                     owner.SpecController.AddHitPoint(amount);
                 })
