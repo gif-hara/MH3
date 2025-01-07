@@ -41,10 +41,11 @@ namespace MH3.SkillSystems
                 Define.SkillType.InvokeSharpenAttackUp => new InvokeSharpenAttackUp(level),
                 Define.SkillType.AttackUpForSuperArmor => new AttackUpForSuperArmor(level),
                 Define.SkillType.StaminaRecoveryAmountUp => new StaminaRecoveryAmountUp(level),
+                Define.SkillType.AttackUpForConsumeStamina => new AttackUpForConsumeStamina(level),
                 Define.SkillType.RecoveryStaminaForCritical => new RecoveryStaminaForCritical(level),
                 Define.SkillType.RecoveryHitPointForAttack => new RecoveryHitPointForAttack(level),
                 Define.SkillType.CriticalUpForAttackNoMiss => new CriticalUpForAttackNoMiss(level),
-                _ => null
+                _ => throw new System.NotImplementedException($"未実装のスキルタイプです. {skillType}"),
             };
         }
     }
