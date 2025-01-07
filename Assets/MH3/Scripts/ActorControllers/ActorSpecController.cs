@@ -637,6 +637,13 @@ namespace MH3.ActorControllers
             result = Mathf.Min(result, StaminaMaxTotal);
             Stamina.Value = result;
         }
+        
+        public void AddHitPoint(int value)
+        {
+            var result = hitPoint.Value + value;
+            result = Mathf.Min(result, HitPointMaxTotal);
+            hitPoint.Value = result;
+        }
 
 #if DEBUG
         public void SetHitPointDebug(int value)

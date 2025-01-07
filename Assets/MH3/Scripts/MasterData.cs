@@ -150,6 +150,10 @@ namespace MH3
         public SkillLevelValue.DictionaryList SkillRecoveryStaminaForCritical => skillRecoveryStaminaForCritical;
 
         [SerializeField]
+        private SkillLevelValue.DictionaryList skillRecoveryHitPointForAttack;
+        public SkillLevelValue.DictionaryList SkillRecoveryHitPointForAttack => skillRecoveryHitPointForAttack;
+
+        [SerializeField]
         private ArmorSpec.DictionaryList armorSpecs;
         public ArmorSpec.DictionaryList ArmorSpecs => armorSpecs;
 
@@ -231,6 +235,7 @@ namespace MH3
                     "Skill.StaminaRecoveryAmountUp",
                     "Skill.AttackUpForConsumeStamina",
                     "Skill.RecoveryStaminaForCritical",
+                    "Skill.RecoveryHitPointForAttack",
                 };
                 var database = await UniTask.WhenAll(
                     masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -274,6 +279,7 @@ namespace MH3
                 skillStaminaRecoveryAmountUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[36]));
                 skillAttackUpForConsumeStamina.Set(JsonHelper.FromJson<SkillLevelValue>(database[37]));
                 skillRecoveryStaminaForCritical.Set(JsonHelper.FromJson<SkillLevelValue>(database[38]));
+                skillRecoveryHitPointForAttack.Set(JsonHelper.FromJson<SkillLevelValue>(database[39]));
                 foreach (var weaponSpec in weaponSpecs.List)
                 {
                     weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");

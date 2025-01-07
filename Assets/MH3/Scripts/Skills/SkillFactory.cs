@@ -42,6 +42,7 @@ namespace MH3.SkillSystems
                 Define.SkillType.AttackUpForSuperArmor => new AttackUpForSuperArmor(level),
                 Define.SkillType.StaminaRecoveryAmountUp => new StaminaRecoveryAmountUp(level),
                 Define.SkillType.RecoveryStaminaForCritical => new RecoveryStaminaForCritical(level),
+                Define.SkillType.RecoveryHitPointForAttack => new RecoveryHitPointForAttack(level),
                 _ => null
             };
         }
