@@ -17,6 +17,7 @@ MonoBehaviour:
   - rid: 8733972340067532868
   - rid: 895594621889413216
   - rid: 1481063080126841025
+  - rid: 7128522175273500758
   - rid: 8733972348659564544
   - rid: 7349438189002031218
   - rid: 7349438234004029706
@@ -105,6 +106,11 @@ MonoBehaviour:
       type: {class: TakeUntilDisposeScopeObservable, ns: MH3, asm: Assembly-CSharp}
       data:
         subscribeSequence: {fileID: 11400000, guid: 5d5da4098ee1ad242b6df8f552874be2, type: 2}
+    - rid: 7128522175273500758
+      type: {class: ActorConsumeStaminaFromAttack, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: -2
     - rid: 7349438189002031218
       type: {class: SetStaminaRecoveryRate, ns: MH3, asm: Assembly-CSharp}
       data:

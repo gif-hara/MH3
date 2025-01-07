@@ -82,6 +82,8 @@ namespace MH3
             AttackUpForSuperArmor,
             /// <summary>スタミナ回復速度アップ</summary>
             StaminaRecoveryAmountUp,
+            /// <summary>攻撃時スタミナして攻撃力アップ</summary>
+            AttackUpForConsumeStamina,
         }
 
         public enum ActorParameterType

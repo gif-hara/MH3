@@ -141,6 +141,10 @@ namespace MH3
         [SerializeField]
         private float skillAttackUpForSuperArmorDuration;
         public float SkillAttackUpForSuperArmorDuration => skillAttackUpForSuperArmorDuration;
+        
+        [SerializeField]
+        private AttackUpForConsumeStaminaCost.DictionaryList attackUpForConsumeStaminaCosts;
+        public AttackUpForConsumeStaminaCost.DictionaryList AttackUpForConsumeStaminaCosts => attackUpForConsumeStaminaCosts;
 
 
         [Serializable]
@@ -162,6 +166,25 @@ namespace MH3
             public class DictionaryList : DictionaryList<Define.ElementType, ElementProjectile>
             {
                 public DictionaryList() : base(x => x.ElementType)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class AttackUpForConsumeStaminaCost
+        {
+            [SerializeField]
+            private Define.WeaponType weaponType;
+
+            [SerializeField]
+            private float needStamina;
+            public float NeedStamina => needStamina;
+            
+            [Serializable]
+            public class DictionaryList : DictionaryList<Define.WeaponType, AttackUpForConsumeStaminaCost>
+            {
+                public DictionaryList() : base(x => x.weaponType)
                 {
                 }
             }
