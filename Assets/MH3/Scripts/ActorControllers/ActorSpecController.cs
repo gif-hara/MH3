@@ -156,6 +156,7 @@ namespace MH3.ActorControllers
             RecoveryCommandCountMax.RegisterBasics("Spec", () => spec.RecoveryCommandCount);
             recoveryCommandCount.Value = RecoveryCommandCountMax.ValueFloorToInt;
             AttackStaminaCost.RegisterBasics("Default", () => 0);
+            RecoveryCommandType = Define.RecoveryCommandType.Recovery;
             SetWeaponId(spec.WeaponId);
             SetArmorId(Define.ArmorType.Head, spec.ArmorHeadId);
             SetArmorId(Define.ArmorType.Arms, spec.ArmorArmsId);
@@ -357,6 +358,7 @@ namespace MH3.ActorControllers
             RewardUp.ClearAll();
             FlinchDamageRate.ClearAll();
             AttackStaminaCost.ClearAll();
+            RecoveryCommandType = Define.RecoveryCommandType.Recovery;
             AttackStaminaCost.RegisterBasics("Default", () => 0);
             Critical.RegisterBasics("InstanceWeapon", () => instanceWeapon.Critical);
             CutRatePhysicalDamage.RegisterBasics("Spec", () => spec.PhysicalDamageCutRate);
