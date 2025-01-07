@@ -55,3 +55,11 @@ MonoBehaviour:
   enduranceStateSequences: {fileID: 11400000, guid: 8f7397817fb92fd4983872b1c246b940, type: 2}
   skillInvokeSharpenAttackUpAttackMax: 150
   skillAttackUpForSuperArmorDuration: 3
+  attackUpForConsumeStaminaCosts:
+    list:
+    - weaponType: 0
+      needStamina: 15
+    - weaponType: 1
+      needStamina: 10
+    - weaponType: 2
+      needStamina: 25
