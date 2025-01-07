@@ -160,6 +160,7 @@ namespace MH3
             Sword,
             DualSword,
             Blade,
+            Shield,
         }
 
         public enum AvaiableContentsEventTrigger
