@@ -53,6 +53,7 @@ namespace MH3
                 Define.SkillType.AttackUpForConsumeStamina => "オーバーヒート".Localized(),
                 Define.SkillType.RecoveryStaminaForCritical => "会心の呼吸".Localized(),
                 Define.SkillType.RecoveryHitPointForAttack => "吸血".Localized(),
+                Define.SkillType.CriticalUpForAttackNoMiss => "完璧主義".Localized(),
                 _ => throw new NotImplementedException($"未対応のスキルタイプです {self}"),
             };
         }

@@ -43,6 +43,7 @@ namespace MH3.SkillSystems
                 Define.SkillType.StaminaRecoveryAmountUp => new StaminaRecoveryAmountUp(level),
                 Define.SkillType.RecoveryStaminaForCritical => new RecoveryStaminaForCritical(level),
                 Define.SkillType.RecoveryHitPointForAttack => new RecoveryHitPointForAttack(level),
+                Define.SkillType.CriticalUpForAttackNoMiss => new CriticalUpForAttackNoMiss(level),
                 _ => null
             };
         }
