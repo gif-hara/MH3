@@ -127,6 +127,16 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
+                                "スキル作成".Localized(),
+                                _ =>
+                                {
+                                    stateMachine.Change(StateCreateSkillCoreSelectSkill);
+                                });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
                                 "閉じる".Localized(),
                                 _ =>
                                 {
@@ -440,6 +450,40 @@ namespace MH3
                                 });
                         },
                     },
+                    0
+                );
+                inputController.Actions.UI.Cancel.OnPerformedAsObservable()
+                    .Subscribe(_ => stateMachine.Change(StateRoot))
+                    .RegisterTo(scope);
+                await UniTask.WaitUntilCanceled(scope);
+                list.DestroySafe();
+            }
+
+            async UniTask StateCreateSkillCoreSelectSkill(CancellationToken scope)
+            {
+                var list = UIViewList.CreateWithPages(
+                    listDocumentPrefab,
+                    Enum.GetValues(typeof(Define.SkillType)).Cast<Define.SkillType>()
+                        .Select(x => new Action<HKUIDocument>(document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                $"{x.GetName()}",
+                                _ =>
+                                {
+                                    var userData = TinyServiceLocator.Resolve<UserData>();
+                                    var instanceSkill = new InstanceSkill(x, 99, Define.RareType.Common);
+                                    var instanceSkillCore = new InstanceSkillCore(
+                                        userData.GetAndIncrementCreatedInstanceSkillCoreCount(),
+                                        19901,
+                                        1,
+                                        new List<InstanceSkill> { instanceSkill }
+                                        );
+                                    userData.AddInstanceSkillCore(instanceSkillCore);
+                                    SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
+                                    Debug.Log($"Create InstanceSkillCoreData: {x}");
+                                });
+                        })),
                     0
                 );
                 inputController.Actions.UI.Cancel.OnPerformedAsObservable()
