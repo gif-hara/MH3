@@ -155,14 +155,14 @@ namespace MH3.ActorControllers
         public void BeginObserve()
         {
             actor.UpdateAsObservable()
-                .Subscribe(actor, (_, a) =>
+                .Subscribe(actor, static (_, a) =>
                 {
                     var result = a.SpecController.Stamina.Value + a.SpecController.StaminaRecoveryAmount.Value * a.SpecController.StaminaRecoveryRate * a.TimeController.Time.deltaTime;
                     a.SpecController.Stamina.Value = Mathf.Min(result, a.SpecController.StaminaMaxTotal);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             actor.ActionController.OnBeginDualSwordDodgeMode
-                .Subscribe(actor, (_, a) =>
+                .Subscribe(actor, static (_, a) =>
                 {
                     a.SpecController.InvokeSharpenCount++;
                 })
