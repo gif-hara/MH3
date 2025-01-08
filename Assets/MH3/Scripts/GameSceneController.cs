@@ -207,6 +207,15 @@ namespace MH3
                         InputSprite.GetTag(inputController.Actions.Player.Guard),
                         InputSprite.GetTag(inputController.Actions.Player.PauseMenu)
                         ),
+                    Define.WeaponType.Shield => string.Format(
+                        "{0}:移動 {1}:攻撃 {2}:回避 {3}:回復 {4}:ガード {5}:メニュー".Localized(),
+                        InputSprite.GetTag(inputController.Actions.Player.Move),
+                        InputSprite.GetTag(inputController.Actions.Player.Attack),
+                        InputSprite.GetTag(inputController.Actions.Player.Dodge),
+                        InputSprite.GetTag(inputController.Actions.Player.Recovery),
+                        InputSprite.GetTag(inputController.Actions.Player.Guard),
+                        InputSprite.GetTag(inputController.Actions.Player.PauseMenu)
+                        ),
                     _ => string.Empty,
                 };
             }, destroyCancellationToken);
