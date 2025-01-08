@@ -220,7 +220,7 @@ MonoBehaviour:
       GuardPerformedSequencesKey: Guard.Performed.Sharpen
       GuardCanceledSequencesKey: 
       DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 630bc62392fc9d14c90f2b489f9de414, type: 2}
+      ModelData: {fileID: 11400000, guid: e9cef7ab72b21ca48833e33c9ebab89e, type: 2}
       GuardPerformedSequences: {fileID: 11400000, guid: ca6de69a7071aa343ab752314858b62d, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
@@ -781,7 +781,7 @@ MonoBehaviour:
         RareType: 0
         Weight: 100
       - Id: 10204
-        Critical: 10
+        Critical: 0.1
         RareType: 0
         Weight: 100
     - Key: 10301
