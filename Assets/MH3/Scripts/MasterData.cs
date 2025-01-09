@@ -343,6 +343,7 @@ namespace MH3
                     }
                 }
                 ValidateSkillCoreSpec();
+                ValidateArmorSpec();
                 EditorUtility.SetDirty(this);
                 AssetDatabase.SaveAssets();
                 Debug.Log("End MasterData Update");
@@ -370,6 +371,21 @@ namespace MH3
                 if (countMax > uniqueSkillTypes)
                 {
                     Debug.LogError($"SkillCoreSpec {i.Id} {i.Name} は最大スキルスロット数がスキルの種類数より多いです. 抽選で無限ループする可能性があります.");
+                }
+            }
+            TinyServiceLocator.Remove<MasterData>();
+        }
+
+        private void ValidateArmorSpec()
+        {
+            TinyServiceLocator.Register(this);
+            foreach (var i in armorSpecs.List)
+            {
+                var countMax = i.GetSkillCounts()?.Max(x => x.Count);
+                var uniqueSkillTypes = i.GetSkills()?.Select(x => x.SkillType).Distinct().Count();
+                if (countMax > uniqueSkillTypes)
+                {
+                    Debug.LogError($"ArmorSpec {i.Id} {i.Name} は最大スキルスロット数がスキルの種類数より多いです. 抽選で無限ループする可能性があります.");
                 }
             }
             TinyServiceLocator.Remove<MasterData>();
