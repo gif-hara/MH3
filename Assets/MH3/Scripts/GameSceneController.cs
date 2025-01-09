@@ -131,7 +131,10 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(new GameEvents(), destroyCancellationToken).Forget();
             var inputController = new InputController();
             TinyServiceLocator.RegisterAsync(inputController, destroyCancellationToken).Forget();
-            TinyServiceLocator.RegisterAsync(masterData, destroyCancellationToken).Forget();
+            if (!TinyServiceLocator.Contains<MasterData>())
+            {
+                TinyServiceLocator.RegisterAsync(masterData, destroyCancellationToken).Forget();
+            }
             TinyServiceLocator.RegisterAsync(gameRules, destroyCancellationToken).Forget();
             var audioManager = Instantiate(audioManagerPrefab);
             TinyServiceLocator.RegisterAsync(audioManager, destroyCancellationToken).Forget();
