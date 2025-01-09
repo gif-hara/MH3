@@ -14,6 +14,11 @@ namespace MH3
             for (var i = 0; i < skillCoreCount.Count; i++)
             {
                 var skillCoreEffect = skillCoreSpec.GetSkillCoreEffects().Lottery(x => x.Weight);
+                if (skills.Exists(x => x.SkillType == skillCoreEffect.SkillType))
+                {
+                    i--;
+                    continue;
+                }
                 skills.Add(new InstanceSkill(skillCoreEffect.SkillType, skillCoreEffect.Level, skillCoreEffect.RareType));
             }
             return new InstanceSkillCore(
