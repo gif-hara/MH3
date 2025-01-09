@@ -342,8 +342,14 @@ namespace MH3
                         i.Sequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/AvailableContentsEventSequences/{i.SequencesKey}.asset");
                     }
                 }
+                if (TinyServiceLocator.Contains<MasterData>())
+                {
+                    TinyServiceLocator.Remove<MasterData>();
+                }
+                TinyServiceLocator.Register(this);
                 ValidateSkillCoreSpec();
                 ValidateArmorSpec();
+                TinyServiceLocator.Remove<MasterData>();
                 EditorUtility.SetDirty(this);
                 AssetDatabase.SaveAssets();
                 Debug.Log("End MasterData Update");
@@ -363,7 +369,6 @@ namespace MH3
 
         private void ValidateSkillCoreSpec()
         {
-            TinyServiceLocator.Register(this);
             foreach (var i in skillCoreSpecs.List)
             {
                 var countMax = i.GetSkillCoreCounts().Max(x => x.Count);
@@ -373,12 +378,10 @@ namespace MH3
                     Debug.LogError($"SkillCoreSpec {i.Id} {i.Name} は最大スキルスロット数がスキルの種類数より多いです. 抽選で無限ループする可能性があります.");
                 }
             }
-            TinyServiceLocator.Remove<MasterData>();
         }
 
         private void ValidateArmorSpec()
         {
-            TinyServiceLocator.Register(this);
             foreach (var i in armorSpecs.List)
             {
                 var countMax = i.GetSkillCounts()?.Max(x => x.Count);
@@ -388,7 +391,6 @@ namespace MH3
                     Debug.LogError($"ArmorSpec {i.Id} {i.Name} は最大スキルスロット数がスキルの種類数より多いです. 抽選で無限ループする可能性があります.");
                 }
             }
-            TinyServiceLocator.Remove<MasterData>();
         }
 
         [Serializable]

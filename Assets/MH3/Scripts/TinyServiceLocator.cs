@@ -49,7 +49,7 @@ namespace HK
             scope = CancellationTokenSource.CreateLinkedTokenSource(Application.exitCancellationToken);
 #endif
             namedService[name] = (service, scope);
-            await scope.Token.ToUniTask().Item1;
+            await UniTask.WaitUntilCanceled(scope.Token, completeImmediately: true);
             namedService[name].scope.Dispose();
             namedService.Remove(name);
         }

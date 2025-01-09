@@ -392,6 +392,48 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20103
+      Name: "\u6575\u6B66\u5668\uFF08\u76F4\u5263\uFF09"
+      WeaponType: 0
+      ModelDataId: Sword.4
+      ComboId: 20101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 4c7449dca2e49ef42963dd02223b71e5, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20203
+      Name: "\u6575\u6B66\u5668\uFF08\u4E21\u624B\u5263\uFF09"
+      WeaponType: 1
+      ModelDataId: DualSword.4
+      ComboId: 20201
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: e9cef7ab72b21ca48833e33c9ebab89e, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20303
+      Name: "\u6575\u6B66\u5668\uFF08\u5927\u5263\uFF09"
+      WeaponType: 2
+      ModelDataId: Blade.4
+      ComboId: 20301
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: c3e878246871c1d459d4f2dc4d2e8f22, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20401
       Name: "\u6575\u6B66\u5668\uFF08\u5927\u76FE\uFF09"
       WeaponType: 3
@@ -2939,7 +2981,7 @@ MonoBehaviour:
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 3f43d0dbd817c974a88930c72ab359fa, type: 3}
-      Behaviour: {fileID: 0}
+      Behaviour: {fileID: 11400000, guid: cb8ad6766b0552a4f9eb68f7d10372dc, type: 2}
     - Id: 20402
       Name: "\u306B\u308F\u3068\u308A\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
@@ -4088,7 +4130,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20401
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Clear.QuestLevel.3
+      NeedAvailableContentKey: Never
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -4102,7 +4144,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20402
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Clear.QuestLevel.3
+      NeedAvailableContentKey: Never
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -4116,7 +4158,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20403
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Clear.QuestLevel.3
+      NeedAvailableContentKey: Never
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
