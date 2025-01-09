@@ -17,6 +17,11 @@ namespace MH3
                 for (var i = 0; i < skillCount.Count; i++)
                 {
                     var armorSkill = armorSpec.GetSkills().Lottery(x => x.Weight);
+                    if (skills.Exists(x => x.SkillType == armorSkill.SkillType))
+                    {
+                        i--;
+                        continue;
+                    }
                     var instanceSkill = new InstanceSkill(armorSkill.SkillType, armorSkill.Level, armorSkill.RareType);
                     skills.Add(instanceSkill);
                 }
