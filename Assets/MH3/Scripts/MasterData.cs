@@ -342,14 +342,8 @@ namespace MH3
                         i.Sequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/AvailableContentsEventSequences/{i.SequencesKey}.asset");
                     }
                 }
-                if (TinyServiceLocator.Contains<MasterData>())
-                {
-                    TinyServiceLocator.Remove<MasterData>();
-                }
-                TinyServiceLocator.Register(this);
                 ValidateSkillCoreSpec();
                 ValidateArmorSpec();
-                TinyServiceLocator.Remove<MasterData>();
                 EditorUtility.SetDirty(this);
                 AssetDatabase.SaveAssets();
                 Debug.Log("End MasterData Update");
@@ -371,8 +365,8 @@ namespace MH3
         {
             foreach (var i in skillCoreSpecs.List)
             {
-                var countMax = i.GetSkillCoreCounts().Max(x => x.Count);
-                var uniqueSkillTypes = i.GetSkillCoreEffects().Select(x => x.SkillType).Distinct().Count();
+                var countMax = i.GetSkillCoreCounts(this).Max(x => x.Count);
+                var uniqueSkillTypes = i.GetSkillCoreEffects(this).Select(x => x.SkillType).Distinct().Count();
                 if (countMax > uniqueSkillTypes)
                 {
                     Debug.LogError($"SkillCoreSpec {i.Id} {i.Name} は最大スキルスロット数がスキルの種類数より多いです. 抽選で無限ループする可能性があります.");
@@ -384,8 +378,8 @@ namespace MH3
         {
             foreach (var i in armorSpecs.List)
             {
-                var countMax = i.GetSkillCounts()?.Max(x => x.Count);
-                var uniqueSkillTypes = i.GetSkills()?.Select(x => x.SkillType).Distinct().Count();
+                var countMax = i.GetSkillCounts(this)?.Max(x => x.Count);
+                var uniqueSkillTypes = i.GetSkills(this)?.Select(x => x.SkillType).Distinct().Count();
                 if (countMax > uniqueSkillTypes)
                 {
                     Debug.LogError($"ArmorSpec {i.Id} {i.Name} は最大スキルスロット数がスキルの種類数より多いです. 抽選で無限ループする可能性があります.");
@@ -847,14 +841,14 @@ namespace MH3
 
             public Color Color => ColorUtility.TryParseHtmlString(ColorCode, out var color) ? color : Color.white;
 
-            public List<SkillCoreCount> GetSkillCoreCounts()
+            public List<SkillCoreCount> GetSkillCoreCounts(MasterData masterData = null)
             {
-                return TinyServiceLocator.Resolve<MasterData>().SkillCoreCounts.Get(Id);
+                return (masterData ?? TinyServiceLocator.Resolve<MasterData>()).SkillCoreCounts.Get(Id);
             }
 
-            public List<SkillCoreEffect> GetSkillCoreEffects()
+            public List<SkillCoreEffect> GetSkillCoreEffects(MasterData masterData = null)
             {
-                return TinyServiceLocator.Resolve<MasterData>().SkillCoreEffects.Get(Id);
+                return (masterData ?? TinyServiceLocator.Resolve<MasterData>()).SkillCoreEffects.Get(Id);
             }
 
             [Serializable]
@@ -963,15 +957,17 @@ namespace MH3
                 return defenses;
             }
 
-            public List<ArmorSkillCount> GetSkillCounts()
+            public List<ArmorSkillCount> GetSkillCounts(MasterData masterData = null)
             {
-                TinyServiceLocator.Resolve<MasterData>().ArmorSkillCounts.TryGetValue(Id, out var skillCounts);
+                masterData ??= TinyServiceLocator.Resolve<MasterData>();
+                masterData.ArmorSkillCounts.TryGetValue(Id, out var skillCounts);
                 return skillCounts;
             }
 
-            public List<ArmorSkill> GetSkills()
+            public List<ArmorSkill> GetSkills(MasterData masterData = null)
             {
-                TinyServiceLocator.Resolve<MasterData>().ArmorSkills.TryGetValue(Id, out var skills);
+                masterData ??= TinyServiceLocator.Resolve<MasterData>();
+                masterData.ArmorSkills.TryGetValue(Id, out var skills);
                 return skills;
             }
 
