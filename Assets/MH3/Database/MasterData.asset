@@ -3075,7 +3075,7 @@ MonoBehaviour:
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
-      Behaviour: {fileID: 0}
+      Behaviour: {fileID: 11400000, guid: ece113c2fb36d5545a0fb3c03fa28ca4, type: 2}
     - Id: 20501
       Name: "\u6D77\u8CCA\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
@@ -3804,7 +3804,7 @@ MonoBehaviour:
       ArmorHeadId: 0
       ArmorArmsId: 0
       ArmorBodyId: 0
-      VisibleStatusUI: 1
+      VisibleStatusUI: 0
       RecoveryCommandCount: 0
       InitialStateKey: Idle.Default
       AttackSequencesKey: Attack.Default
@@ -4394,19 +4394,19 @@ MonoBehaviour:
     - Id: 10301
       Name: "\u897F\u6D0B\u9A0E\u58EB\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
-      ColorCode: '#AA8888'
+      ColorCode: '#CC8888'
     - Id: 10401
       Name: "\u304A\u3055\u304B\u306A\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
-      ColorCode: '#AA8888'
+      ColorCode: '#00FF00'
     - Id: 10402
       Name: "\u306B\u308F\u3068\u308A\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
-      ColorCode: '#AA8888'
+      ColorCode: '#0000FF'
     - Id: 10403
       Name: "\u304A\u304A\u304B\u307F\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
-      ColorCode: '#AA8888'
+      ColorCode: '#FF0000'
     - Id: 19901
       Name: "\u30C6\u30B9\u30C8\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
