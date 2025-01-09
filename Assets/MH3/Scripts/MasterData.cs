@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
@@ -341,6 +342,7 @@ namespace MH3
                         i.Sequences = AssetDatabase.LoadAssetAtPath<ScriptableSequences>($"Assets/MH3/Database/AvailableContentsEventSequences/{i.SequencesKey}.asset");
                     }
                 }
+                ValidateSkillCoreSpec();
                 EditorUtility.SetDirty(this);
                 AssetDatabase.SaveAssets();
                 Debug.Log("End MasterData Update");
@@ -357,6 +359,21 @@ namespace MH3
             }
         }
 #endif
+
+        private void ValidateSkillCoreSpec()
+        {
+            TinyServiceLocator.Register(this);
+            foreach (var i in skillCoreSpecs.List)
+            {
+                var countMax = i.GetSkillCoreCounts().Max(x => x.Count);
+                var uniqueSkillTypes = i.GetSkillCoreEffects().Select(x => x.SkillType).Distinct().Count();
+                if (countMax > uniqueSkillTypes)
+                {
+                    Debug.LogError($"SkillCoreSpec {i.Id} {i.Name} は最大スキルスロット数がスキルの種類数より多いです. 抽選で無限ループする可能性があります.");
+                }
+            }
+            TinyServiceLocator.Remove<MasterData>();
+        }
 
         [Serializable]
         public class WeaponSpec
