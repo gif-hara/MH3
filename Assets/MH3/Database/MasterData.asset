@@ -178,7 +178,7 @@ MonoBehaviour:
       GuardPerformedSequencesKey: Guard.Performed.Default
       GuardCanceledSequencesKey: Guard.Canceled.Default
       DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 0}
+      ModelData: {fileID: 11400000, guid: a28c9cbc556206242a17335a37c91e03, type: 2}
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
@@ -656,6 +656,20 @@ MonoBehaviour:
         Attack: 160
         RareType: 0
         Weight: 100
+    - Key: 10112
+      Value:
+      - Id: 10112
+        Attack: 150
+        RareType: 0
+        Weight: 100
+      - Id: 10112
+        Attack: 160
+        RareType: 0
+        Weight: 100
+      - Id: 10112
+        Attack: 170
+        RareType: 0
+        Weight: 100
     - Key: 10201
       Value:
       - Id: 10201
@@ -840,6 +854,16 @@ MonoBehaviour:
         Critical: 0
         RareType: 0
         Weight: 100
+    - Key: 10112
+      Value:
+      - Id: 10112
+        Critical: 0.05
+        RareType: 0
+        Weight: 100
+      - Id: 10112
+        Critical: 0.1
+        RareType: 0
+        Weight: 100
     - Key: 10201
       Value:
       - Id: 10201
@@ -981,6 +1005,16 @@ MonoBehaviour:
         RareType: 0
         Weight: 100
       - Id: 10111
+        SkillSlot: 3
+        RareType: 0
+        Weight: 100
+    - Key: 10112
+      Value:
+      - Id: 10112
+        SkillSlot: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10112
         SkillSlot: 3
         RareType: 0
         Weight: 100
@@ -1156,6 +1190,13 @@ MonoBehaviour:
         Power: 0
         RareType: 0
         Weight: 100
+    - Key: 10112
+      Value:
+      - Id: 10112
+        AbnormalStatusType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
     - Key: 10201
       Value:
       - Id: 10201
@@ -1313,6 +1354,13 @@ MonoBehaviour:
       - Id: 10111
         ElementType: 2
         Power: 12
+        RareType: 0
+        Weight: 100
+    - Key: 10112
+      Value:
+      - Id: 10112
+        ElementType: 0
+        Power: 0
         RareType: 0
         Weight: 100
     - Key: 10201
