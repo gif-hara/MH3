@@ -248,7 +248,7 @@ MonoBehaviour:
       GuardPerformedSequencesKey: Guard.Performed.Sharpen
       GuardCanceledSequencesKey: 
       DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 0}
+      ModelData: {fileID: 11400000, guid: 7cf28a17e8fc4ce45827f73994de6a81, type: 2}
       GuardPerformedSequences: {fileID: 11400000, guid: ca6de69a7071aa343ab752314858b62d, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
@@ -718,6 +718,20 @@ MonoBehaviour:
         Attack: 160
         RareType: 0
         Weight: 100
+    - Key: 10205
+      Value:
+      - Id: 10205
+        Attack: 150
+        RareType: 0
+        Weight: 100
+      - Id: 10205
+        Attack: 160
+        RareType: 0
+        Weight: 100
+      - Id: 10205
+        Attack: 170
+        RareType: 0
+        Weight: 100
     - Key: 10301
       Value:
       - Id: 10301
@@ -892,6 +906,16 @@ MonoBehaviour:
         Critical: 0.1
         RareType: 0
         Weight: 100
+    - Key: 10205
+      Value:
+      - Id: 10205
+        Critical: 0.1
+        RareType: 0
+        Weight: 100
+      - Id: 10205
+        Critical: 0.2
+        RareType: 0
+        Weight: 100
     - Key: 10301
       Value:
       - Id: 10301
@@ -1051,6 +1075,16 @@ MonoBehaviour:
         RareType: 0
         Weight: 100
       - Id: 10204
+        SkillSlot: 3
+        RareType: 0
+        Weight: 100
+    - Key: 10205
+      Value:
+      - Id: 10205
+        SkillSlot: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10205
         SkillSlot: 3
         RareType: 0
         Weight: 100
@@ -1221,6 +1255,13 @@ MonoBehaviour:
     - Key: 10204
       Value:
       - Id: 10204
+        AbnormalStatusType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10205
+      Value:
+      - Id: 10205
         AbnormalStatusType: 0
         Power: 0
         RareType: 0
@@ -1439,6 +1480,13 @@ MonoBehaviour:
       - Id: 10204
         ElementType: 3
         Power: 12
+        RareType: 0
+        Weight: 100
+    - Key: 10205
+      Value:
+      - Id: 10205
+        ElementType: 0
+        Power: 0
         RareType: 0
         Weight: 100
     - Key: 10301
