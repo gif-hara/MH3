@@ -3265,7 +3265,7 @@ MonoBehaviour:
       ActorPrefab: {fileID: 963923653530722458, guid: 07d7ea718d879eb449782c1012233de5, type: 3}
       Behaviour: {fileID: 0}
     - Id: 20601
-      Name: "\u89AA\u885B\u968A\u9577\u30B9\u30E9\u30A4\u30E0"
+      Name: "\u89AA\u885B\u968A\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
       HitPoint: 1623
       Stamina: 9999
@@ -3312,7 +3312,7 @@ MonoBehaviour:
       ActorPrefab: {fileID: 0}
       Behaviour: {fileID: 0}
     - Id: 20701
-      Name: "\u5FDC\u63F4\u56E3\u30B9\u30E9\u30A4\u30E0"
+      Name: "\u5FDC\u63F4\u56E3\u54E1\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
       HitPoint: 1806
       Stamina: 9999
@@ -5690,6 +5690,21 @@ MonoBehaviour:
       ModelDataId: Body.8
       ArmorType: 2
       ModelData: {fileID: 11400000, guid: 2b9a25fabac22864b84f6872397242bc, type: 2}
+    - Id: 10109
+      Name: "\u6D77\u8CCA\u5E3D"
+      ModelDataId: Head.9
+      ArmorType: 0
+      ModelData: {fileID: 11400000, guid: 81926731f56f41e46ab196cd393f8846, type: 2}
+    - Id: 10209
+      Name: "\u6D77\u8CCA\u306E\u8155"
+      ModelDataId: Arms.9
+      ArmorType: 1
+      ModelData: {fileID: 11400000, guid: 8b1149e8c2c7d4c4ab6d01a8b2816099, type: 2}
+    - Id: 10309
+      Name: "\u6D77\u8CCA\u306E\u670D"
+      ModelDataId: Body.9
+      ArmorType: 2
+      ModelData: {fileID: 11400000, guid: d6f6d6b9966199e488aca450e96f3db8, type: 2}
     - Id: 20101
       Name: "\u6575\u9632\u5177\uFF08\u982D\uFF09"
       ModelDataId: Head.1
@@ -5782,31 +5797,31 @@ MonoBehaviour:
     - Key: 10105
       Value:
       - Id: 10105
-        Defense: 9
+        Defense: 12
         RareType: 0
         Weight: 100
       - Id: 10105
-        Defense: 10
+        Defense: 13
         RareType: 0
         Weight: 100
     - Key: 10205
       Value:
       - Id: 10205
-        Defense: 9
+        Defense: 12
         RareType: 0
         Weight: 100
       - Id: 10205
-        Defense: 10
+        Defense: 13
         RareType: 0
         Weight: 100
     - Key: 10305
       Value:
       - Id: 10305
-        Defense: 9
+        Defense: 12
         RareType: 0
         Weight: 100
       - Id: 10305
-        Defense: 10
+        Defense: 13
         RareType: 0
         Weight: 100
     - Key: 10106
@@ -5897,6 +5912,36 @@ MonoBehaviour:
         Weight: 100
       - Id: 10308
         Defense: 13
+        RareType: 0
+        Weight: 100
+    - Key: 10109
+      Value:
+      - Id: 10109
+        Defense: 14
+        RareType: 0
+        Weight: 100
+      - Id: 10109
+        Defense: 15
+        RareType: 0
+        Weight: 100
+    - Key: 10209
+      Value:
+      - Id: 10209
+        Defense: 14
+        RareType: 0
+        Weight: 100
+      - Id: 10209
+        Defense: 15
+        RareType: 0
+        Weight: 100
+    - Key: 10309
+      Value:
+      - Id: 10309
+        Defense: 14
+        RareType: 0
+        Weight: 100
+      - Id: 10309
+        Defense: 15
         RareType: 0
         Weight: 100
   armorSkillCounts:
@@ -6138,6 +6183,36 @@ MonoBehaviour:
         RareType: 0
         Weight: 100
       - Id: 10308
+        Count: 3
+        RareType: 0
+        Weight: 100
+    - Key: 10109
+      Value:
+      - Id: 10109
+        Count: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10109
+        Count: 3
+        RareType: 0
+        Weight: 100
+    - Key: 10209
+      Value:
+      - Id: 10209
+        Count: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10209
+        Count: 3
+        RareType: 0
+        Weight: 100
+    - Key: 10309
+      Value:
+      - Id: 10309
+        Count: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10309
         Count: 3
         RareType: 0
         Weight: 100
@@ -6592,6 +6667,72 @@ MonoBehaviour:
         RareType: 0
         Weight: 100
       - Id: 10308
+        SkillType: 5
+        Level: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10109
+      Value:
+      - Id: 10109
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10109
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10109
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10109
+        SkillType: 3
+        Level: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10209
+      Value:
+      - Id: 10209
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10209
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10209
+        SkillType: 12
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10209
+        SkillType: 4
+        Level: 1
+        RareType: 0
+        Weight: 100
+    - Key: 10309
+      Value:
+      - Id: 10309
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10309
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10309
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10309
         SkillType: 5
         Level: 1
         RareType: 0
