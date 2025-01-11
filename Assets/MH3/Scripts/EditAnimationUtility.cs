@@ -7,7 +7,7 @@ namespace MH3.Editor
 {
     public class EditAnimationUtility : MonoBehaviour
     {
-        public Actor actor;
+        public LocatorHolder locatorHolder;
 
         public List<WeaponModelData> weaponModelData = new List<WeaponModelData>();
     }

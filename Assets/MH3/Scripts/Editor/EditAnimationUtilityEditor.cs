@@ -18,27 +18,33 @@ namespace MH3.Editor
 
         public override void OnInspectorGUI()
         {
-            DrawActor();
+            DrawLocatorHolder();
             DrawWeaponModelData();
         }
 
-        private void DrawActor()
+        private void DrawLocatorHolder()
         {
             EditAnimationUtility editAnimationUtility = (EditAnimationUtility)target;
-            editAnimationUtility.actor = (Actor)EditorGUILayout.ObjectField("Actor", editAnimationUtility.actor, typeof(Actor), true);
+            editAnimationUtility.locatorHolder = (LocatorHolder)EditorGUILayout.ObjectField("Locator Holder", editAnimationUtility.locatorHolder, typeof(LocatorHolder), true);
         }
 
         private void DrawWeaponModelData()
         {
             EditAnimationUtility editAnimationUtility = (EditAnimationUtility)target;
-            for (int i = 0; i < editAnimationUtility.weaponModelData.Count; i++)
+            foreach (var i in editAnimationUtility.weaponModelData)
             {
-                var horizontalLayout = EditorGUILayout.BeginHorizontal();
-                WeaponModelData weaponModelData = editAnimationUtility.weaponModelData[i];
-                EditorGUILayout.LabelField(weaponModelData.name);
-                if (GUILayout.Button("Edit"))
+                EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField(i.name);
+                if (GUILayout.Button("Change"))
                 {
-                    Debug.Log("Edit " + weaponModelData.name);
+                    foreach (var weapon in editAnimationUtility.locatorHolder.GetComponentsInChildren<Weapon>())
+                    {
+                        DestroyImmediate(weapon.gameObject);
+                    }
+                    foreach (var weaponModel in i.Elements)
+                    {
+                        var weapon = Instantiate(weaponModel.ModelPrefab, editAnimationUtility.locatorHolder.Get(weaponModel.LocatorName));
+                    }
                 }
                 EditorGUILayout.EndHorizontal();
             }
