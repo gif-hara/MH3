@@ -43,8 +43,9 @@ namespace MH3.Editor
                     }
                     foreach (var weaponModel in i.Elements)
                     {
-                        var weapon = Instantiate(weaponModel.ModelPrefab, editAnimationUtility.locatorHolder.Get(weaponModel.LocatorName));
+                        Instantiate(weaponModel.ModelPrefab, editAnimationUtility.locatorHolder.Get(weaponModel.LocatorName));
                     }
+                    EditorUtility.SetDirty(editAnimationUtility.locatorHolder);
                 }
                 EditorGUILayout.EndHorizontal();
             }
