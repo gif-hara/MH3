@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
+  m_Name: EntryPoint.Enemy.20502.1
+  m_EditorClassIdentifier: 
+  sequences:
+  - rid: 1481063179134173322
+  - rid: 1481063179134173264
+  references:
+    version: 2
+    RefIds:
+    - rid: 1481063179134173264
+      type: {class: SelectorWithWeight, ns: MH3, asm: Assembly-CSharp}
+      data:
+        elements:
+        - weight: 25
+          sequenceResolver:
+            rid: 1481063179134173329
+        - weight: 25
+          sequenceResolver:
+            rid: 1481063179134173330
+        - weight: 100
+          sequenceResolver:
+            rid: 1481063179134173265
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438302028038224
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438302028038225
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438302028038226
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438302028038227
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438345841999977
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438345841999978
+        - weight: 300
+          sequenceResolver:
+            rid: 7349438345841999979
+        - weight: 300
+          sequenceResolver:
+            rid: 7349438345841999980
+    - rid: 1481063179134173265
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 75c7870960b648948b749f96096b1687, type: 2}
+    - rid: 1481063179134173322
+      type: {class: WaitForStateAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063179134173323
+        stateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+    - rid: 1481063179134173323
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063179134173329
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: b29c4456964fd5b41975913175eea13d, type: 2}
+    - rid: 1481063179134173330
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 80d8a4bd57882284ca561d2723f0a9a2, type: 2}
+    - rid: 7349438302028038224
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 428069151e7162f449ec016a1af2e804, type: 2}
+    - rid: 7349438302028038225
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 8be204450ee439e49a5e6e32f5839cc1, type: 2}
+    - rid: 7349438302028038226
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: faa5b0dcfda53144389e232af2371d12, type: 2}
+    - rid: 7349438302028038227
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 3799b26dadde26f40a0ccd242e6f4050, type: 2}
+    - rid: 7349438345841999977
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 780e4fd77b88e854a831a38b4947c095, type: 2}
+    - rid: 7349438345841999978
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: f84843fb763d55b4da54b2233a535f5b, type: 2}
+    - rid: 7349438345841999979
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 484c2fae29c5c1b4d8545b748056a3e9, type: 2}
+    - rid: 7349438345841999980
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 8fec5c03bc472384ba034d10b137294f, type: 2}
