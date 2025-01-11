@@ -544,7 +544,7 @@ namespace MH3.ActorControllers
                     sequencer.PlayAsync(actor.destroyCancellationToken).Forget();
                 }
 
-                if (guardResult == Define.GuardResult.SuccessGuard)
+                if (guardResult == Define.GuardResult.SuccessGuard && !IsDead)
                 {
                     actor.StateMachine.TryChangeState(spec.SuccessGuardSequences, force: true);
                 }
