@@ -1,0 +1,15 @@
+#if UNITY_EDITOR
+using System.Collections.Generic;
+using MH3.ActorControllers;
+using UnityEngine;
+
+namespace MH3.Editor
+{
+    public class EditAnimationUtility : MonoBehaviour
+    {
+        public Actor actor;
+
+        public List<WeaponModelData> weaponModelData = new List<WeaponModelData>();
+    }
+}
+#endif
