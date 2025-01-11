@@ -1891,7 +1891,7 @@ MonoBehaviour:
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Sword.Basic.8
-      Power: 56
+      Power: 28
       FlinchDamage: 18
       ColliderName: Default
       FlinchName: Flinch.Small
@@ -1901,10 +1901,34 @@ MonoBehaviour:
       ElementPower: 1
       ElementType: 0
       CanCritical: 1
-      HitStopTimeScaleActor: 0
-      HitStopDurationActor: 0
-      HitStopTimeScaleTarget: 0
-      HitStopDurationTarget: 0
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: Small
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Sword.Basic.9
+      Power: 30
+      FlinchDamage: 18
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
       ShakeStrength: 0.4
       ShakeDuration: 0.2
       ShakeFrequency: 6
