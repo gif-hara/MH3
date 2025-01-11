@@ -4933,6 +4933,28 @@ MonoBehaviour:
         RewardType: 2
         RewardId: 10308
         Weight: 100
+    - Key: Quest.10501
+      Value:
+      - Id: Quest.10501
+        RewardType: 0
+        RewardId: 10112
+        Weight: 100
+      - Id: Quest.10501
+        RewardType: 1
+        RewardId: 10501
+        Weight: 100
+      - Id: Quest.10501
+        RewardType: 2
+        RewardId: 10109
+        Weight: 100
+      - Id: Quest.10501
+        RewardType: 2
+        RewardId: 10209
+        Weight: 100
+      - Id: Quest.10501
+        RewardType: 2
+        RewardId: 10309
+        Weight: 100
   skillCoreSpecs:
     list:
     - Id: 10101
@@ -4975,6 +4997,22 @@ MonoBehaviour:
       Name: "\u304A\u304A\u304B\u307F\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
       ColorCode: '#FF0000'
+    - Id: 10501
+      Name: "\u6D77\u8CCA\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+      Slot: 1
+      ColorCode: '#00FF00'
+    - Id: 10502
+      Name: "\u5FCD\u8005\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+      Slot: 1
+      ColorCode: '#0000FF'
+    - Id: 10503
+      Name: "\u30B5\u30F3\u30BF\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+      Slot: 1
+      ColorCode: '#FF0000'
+    - Id: 10504
+      Name: "\u30D2\u30B0\u30DE\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+      Slot: 1
+      ColorCode: '#CC8888'
     - Id: 19901
       Name: "\u30C6\u30B9\u30C8\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
@@ -5078,6 +5116,46 @@ MonoBehaviour:
         RareType: 0
         Weight: 100
       - Id: 10403
+        Count: 4
+        RareType: 0
+        Weight: 100
+    - Key: 10501
+      Value:
+      - Id: 10501
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10501
+        Count: 4
+        RareType: 0
+        Weight: 100
+    - Key: 10502
+      Value:
+      - Id: 10502
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10502
+        Count: 4
+        RareType: 0
+        Weight: 100
+    - Key: 10503
+      Value:
+      - Id: 10503
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10503
+        Count: 4
+        RareType: 0
+        Weight: 100
+    - Key: 10504
+      Value:
+      - Id: 10504
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10504
         Count: 4
         RareType: 0
         Weight: 100
@@ -5292,6 +5370,214 @@ MonoBehaviour:
       - Id: 10403
         SkillType: 6
         Level: 1
+        RareType: 0
+        Weight: 50
+    - Key: 10501
+      Value:
+      - Id: 10501
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10501
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10501
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10501
+        SkillType: 12
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10501
+        SkillType: 8
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10501
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10501
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 50
+      - Id: 10501
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 50
+      - Id: 10501
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 50
+      - Id: 10501
+        SkillType: 8
+        Level: 2
+        RareType: 0
+        Weight: 50
+    - Key: 10502
+      Value:
+      - Id: 10502
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10502
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10502
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10502
+        SkillType: 12
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10502
+        SkillType: 7
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10502
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10502
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 50
+      - Id: 10502
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 50
+      - Id: 10502
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 50
+      - Id: 10502
+        SkillType: 7
+        Level: 2
+        RareType: 0
+        Weight: 50
+    - Key: 10503
+      Value:
+      - Id: 10503
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10503
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10503
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10503
+        SkillType: 12
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10503
+        SkillType: 6
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10503
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10503
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 50
+      - Id: 10503
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 50
+      - Id: 10503
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 50
+      - Id: 10503
+        SkillType: 6
+        Level: 2
+        RareType: 0
+        Weight: 50
+    - Key: 10504
+      Value:
+      - Id: 10504
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10504
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10504
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10504
+        SkillType: 12
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10504
+        SkillType: 3
+        Level: 1
+        RareType: 0
+        Weight: 50
+      - Id: 10504
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10504
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 50
+      - Id: 10504
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 50
+      - Id: 10504
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 50
+      - Id: 10504
+        SkillType: 3
+        Level: 2
         RareType: 0
         Weight: 50
     - Key: 19901
