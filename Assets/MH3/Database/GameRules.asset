@@ -68,7 +68,8 @@ MonoBehaviour:
   skillCriticalUpForAttackNoMissLimit: 0.5
   skillAttackUpForRecoveryCommandDuration: 40
   onEvadeSpearSequences: {fileID: 11400000, guid: e9050b429777d1e4d964646f4fde5166, type: 2}
-  spearDodgeGaugeMax: 300
+  spearDodgeGaugeMax: 400
   spearDodgeGaugeDecreaseAmount: 10
-  spearDodgeSplitAmount: 100
-  spearDodgeLevelMax: 2
+  spearComboLevelThresholds:
+  - 100
+  - 350

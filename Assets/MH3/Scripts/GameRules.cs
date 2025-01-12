@@ -167,12 +167,8 @@ namespace MH3
         public float SpearDodgeGaugeDecreaseAmount => spearDodgeGaugeDecreaseAmount;
 
         [SerializeField]
-        private float spearDodgeSplitAmount;
-        public float SpearDodgeSplitAmount => spearDodgeSplitAmount;
-
-        [SerializeField]
-        private int spearDodgeLevelMax;
-        public int SpearDodgeLevelMax => spearDodgeLevelMax;
+        private List<float> spearComboLevelThresholds;
+        public List<float> SpearComboLevelThresholds => spearComboLevelThresholds;
 
 
         [Serializable]

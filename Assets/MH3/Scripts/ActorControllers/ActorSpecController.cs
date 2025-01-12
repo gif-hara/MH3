@@ -673,20 +673,21 @@ namespace MH3.ActorControllers
             result = Mathf.Clamp(result, 0.0f, gameRules.SpearDodgeGaugeMax);
             spearDodgeGauge.Value = result;
             var level = -1;
-            for (var i = 0; i <= gameRules.SpearDodgeLevelMax; i++)
+            var threshold = 0.0f;
+            for (var i = 0; i <= gameRules.SpearComboLevelThresholds.Count; i++)
             {
-                if (i == gameRules.SpearDodgeLevelMax)
+                if (i == gameRules.SpearComboLevelThresholds.Count)
                 {
                     level = i;
                     break;
                 }
-                var min = i * gameRules.SpearDodgeSplitAmount;
-                var max = min + gameRules.SpearDodgeSplitAmount;
-                if (min <= result && result < max)
+                var max = gameRules.SpearComboLevelThresholds[i];
+                if (threshold <= result && result < max)
                 {
                     level = i;
                     break;
                 }
+                threshold = max;
             }
             if (spearComboLevel.Value != level)
             {
