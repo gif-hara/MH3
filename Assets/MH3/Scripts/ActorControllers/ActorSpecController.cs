@@ -691,6 +691,7 @@ namespace MH3.ActorControllers
             }
             if (spearComboLevel.Value != level)
             {
+                var diff = level - spearComboLevel.Value;
                 spearComboLevel.Value = level;
                 var masterData = TinyServiceLocator.Resolve<MasterData>();
                 if (masterData.SpearSpecs.ContainsKey(weaponId.Value))
@@ -698,6 +699,11 @@ namespace MH3.ActorControllers
                     var spearSpec = masterData.SpearSpecs.Get(weaponId.Value);
                     var spearCombos = spearSpec.GetSpearCombos();
                     ChangeComboAnimationKeys(spearCombos.Find(x => x.Level == level).GetWeaponCombos().Select(x => x.AnimationKey).ToList());
+                }
+                if (diff > 0)
+                {
+                    var audioManager = TinyServiceLocator.Resolve<AudioManager>();
+                    audioManager.PlaySfx("Spear.ComboLevelUp.1");
                 }
             }
         }
