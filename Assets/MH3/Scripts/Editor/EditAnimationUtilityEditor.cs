@@ -34,7 +34,7 @@ namespace MH3.Editor
             foreach (var i in editAnimationUtility.weaponModelData)
             {
                 EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(i.name);
+                EditorGUILayout.ObjectField(i, typeof(WeaponModelData), false);
                 if (GUILayout.Button("Change"))
                 {
                     foreach (var weapon in editAnimationUtility.locatorHolder.GetComponentsInChildren<Weapon>())
