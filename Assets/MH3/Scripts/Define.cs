@@ -165,6 +165,7 @@ namespace MH3
             DualSword,
             Blade,
             Shield,
+            Spear,
         }
 
         public enum AvaiableContentsEventTrigger
