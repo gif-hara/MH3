@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
+  m_Name: Dodge.Performed.Spear
+  m_EditorClassIdentifier: 
+  sequences:
+  - rid: 1481063426879914076
+  - rid: 1481063400376893564
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 1481063400376893564
+      type: {class: InvokeEarlyInputHandler, ns: MH3, asm: Assembly-CSharp}
+      data:
+        sequencesResolver:
+          rid: 1481063400376893565
+        inputTimeResolver:
+          rid: -2
+        isSuccessResolver:
+          rid: 1481063400376893573
+    - rid: 1481063400376893565
+      type: {class: SequencesResolver/List, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value:
+        - rid: 1481063400376893566
+    - rid: 1481063400376893566
+      type: {class: ActorStateChange, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063400376893567
+        stateSequence: {fileID: 11400000, guid: 382dc8b38b611744f879c2c1942dcdde, type: 2}
+        forceChangeResolver:
+          rid: 1481063400376893568
+        isSuccessKeyResolver:
+          rid: 1481063400376893569
+    - rid: 1481063400376893567
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063400376893568
+      type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
+    - rid: 1481063400376893569
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: IsSuccessChangeState
+    - rid: 1481063400376893573
+      type: {class: BooleanResolver/NameBoolean, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: IsSuccessChangeState
+    - rid: 1481063426879914076
+      type: {class: RegisterContainerString, ns: MH3, asm: Assembly-CSharp}
+      data:
+        keyResolver:
+          rid: 1481063426879914077
+        valueResolver:
+          rid: 1481063426879914078
+    - rid: 1481063426879914077
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: AnimationName
+    - rid: 1481063426879914078
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Dodge.Spear.1
