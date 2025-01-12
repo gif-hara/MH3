@@ -292,11 +292,13 @@ namespace MH3.ActorControllers
             DodgePerformedSequences = weaponSpec.DodgePerformedSequences;
             JustGuardAttackAnimationKey = weaponSpec.JustGuardAttackAnimationKey;
             StrongAttackAnimationKey = weaponSpec.StrongAttackAnimationKey;
+            ChangeComboAnimationKeys(weaponSpec.GetCombos().Select(x => x.AnimationKey).ToList());
+        }
+
+        public void ChangeComboAnimationKeys(List<string> keys)
+        {
             ComboAnimationKeys.Clear();
-            foreach (var combo in weaponSpec.GetCombos())
-            {
-                ComboAnimationKeys.Add(combo.AnimationKey);
-            }
+            ComboAnimationKeys.AddRange(keys);
         }
 
         public void ChangeInstanceWeapon(InstanceWeapon instanceWeapon)
