@@ -13,11 +13,22 @@ MonoBehaviour:
   m_Name: OnEvade.Spear
   m_EditorClassIdentifier: 
   sequences:
-  - rid: 7349438358569615467
+  - rid: 7349438358569615474
   references:
     version: 2
     RefIds:
-    - rid: 7349438358569615467
-      type: {class: Log, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+    - rid: 7349438358569615474
+      type: {class: ActorAddSpearDodgeGauge, ns: MH3, asm: Assembly-CSharp}
       data:
-        message: Hoge
+        actorResolver:
+          rid: 7349438358569615475
+        valueResolver:
+          rid: 7349438358569615476
+    - rid: 7349438358569615475
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 7349438358569615476
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 75
