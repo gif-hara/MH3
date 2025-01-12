@@ -138,6 +138,9 @@ namespace MH3.ActorControllers
 
         public Define.RecoveryCommandType RecoveryCommandType { get; set; } = Define.RecoveryCommandType.Recovery;
 
+        public Subject<Unit> onEvade = new();
+        public Observable<Unit> OnEvade => onEvade;
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -409,6 +412,7 @@ namespace MH3.ActorControllers
             }
             if (Invincible.Value)
             {
+                onEvade.OnNext(Unit.Default);
                 return;
             }
 
