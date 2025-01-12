@@ -1,9 +1,11 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using R3;
 using R3.Triggers;
 using UnityEngine;
+using UnitySequencerSystem;
 
 namespace MH3.ActorControllers
 {
@@ -33,6 +35,8 @@ namespace MH3.ActorControllers
         private CancellationDisposable BladeEnduranceModeDisposable = null;
 
         public string OverrideDodgeAnimationName { get; private set; }
+
+        private CancellationDisposable spearDodgeModeDisposable = null;
 
         public ActorActionController(Actor actor)
         {
@@ -212,6 +216,33 @@ namespace MH3.ActorControllers
                 BladeEnduranceModeDisposable = null;
                 actor.SpecController.SetSuperArmor(0);
             }
+        }
+
+        public void BeginSpearDodgeMode()
+        {
+            if (spearDodgeModeDisposable != null)
+            {
+                return;
+            }
+
+            spearDodgeModeDisposable = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(actor.destroyCancellationToken));
+            actor.SpecController.OnEvade
+                .Subscribe((this, actor), static (_, t) =>
+                {
+                    var (@this, actor) = t;
+                    var gameRules = TinyServiceLocator.Resolve<GameRules>();
+                    var container = new Container();
+                    container.Register("Actor", actor);
+                    var seruqncer = new Sequencer(container, gameRules.OnEvadeSpearSequences.Sequences);
+                    seruqncer.PlayAsync(@this.spearDodgeModeDisposable.Token).Forget();
+                })
+                .AddTo(actor.destroyCancellationToken);
+        }
+
+        public void EndSpearDodgeMode()
+        {
+            spearDodgeModeDisposable?.Dispose();
+            spearDodgeModeDisposable = null;
         }
 
         public string GetDodgeAnimationName()

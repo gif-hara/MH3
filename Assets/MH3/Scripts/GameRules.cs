@@ -154,6 +154,10 @@ namespace MH3
         private float skillAttackUpForRecoveryCommandDuration;
         public float SkillAttackUpForRecoveryCommandDuration => skillAttackUpForRecoveryCommandDuration;
 
+        [SerializeField]
+        private ScriptableSequences onEvadeSpearSequences;
+        public ScriptableSequences OnEvadeSpearSequences => onEvadeSpearSequences;
+
 
         [Serializable]
         public class ElementProjectile
