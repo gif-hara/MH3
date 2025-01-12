@@ -141,6 +141,9 @@ namespace MH3.ActorControllers
         public Subject<Unit> onEvade = new();
         public Observable<Unit> OnEvade => onEvade;
 
+        private ReactiveProperty<float> spearDodgeGauge = new(0.0f);
+        public ReadOnlyReactiveProperty<float> SpearDodgeGauge => spearDodgeGauge.ToReadOnlyReactiveProperty();
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -176,6 +179,13 @@ namespace MH3.ActorControllers
                 {
                     var result = a.SpecController.Stamina.Value + a.SpecController.StaminaRecoveryAmount.Value * a.SpecController.StaminaRecoveryRate * a.TimeController.Time.deltaTime;
                     a.SpecController.Stamina.Value = Mathf.Min(result, a.SpecController.StaminaMaxTotal);
+                })
+                .RegisterTo(actor.destroyCancellationToken);
+            actor.UpdateAsObservable()
+                .Subscribe(actor, static (_, a) =>
+                {
+                    var gameRules = TinyServiceLocator.Resolve<GameRules>();
+                    a.SpecController.AddSpearDodgeGauge(-gameRules.SpearDodgeGaugeDecreaseAmount * a.TimeController.Time.deltaTime);
                 })
                 .RegisterTo(actor.destroyCancellationToken);
             actor.ActionController.OnBeginDualSwordDodgeMode
@@ -650,6 +660,14 @@ namespace MH3.ActorControllers
             var result = Stamina.Value + value;
             result = Mathf.Min(result, StaminaMaxTotal);
             Stamina.Value = result;
+        }
+
+        public void AddSpearDodgeGauge(float value)
+        {
+            var result = spearDodgeGauge.Value + value;
+            var gameRules = TinyServiceLocator.Resolve<GameRules>();
+            result = Mathf.Clamp(result, 0.0f, gameRules.SpearDodgeGaugeMax);
+            spearDodgeGauge.Value = result;
         }
 
 #if DEBUG

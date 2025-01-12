@@ -158,6 +158,22 @@ namespace MH3
         private ScriptableSequences onEvadeSpearSequences;
         public ScriptableSequences OnEvadeSpearSequences => onEvadeSpearSequences;
 
+        [SerializeField]
+        private float spearDodgeGaugeMax;
+        public float SpearDodgeGaugeMax => spearDodgeGaugeMax;
+
+        [SerializeField]
+        private float spearDodgeGaugeDecreaseAmount;
+        public float SpearDodgeGaugeDecreaseAmount => spearDodgeGaugeDecreaseAmount;
+
+        [SerializeField]
+        private float spearDodgeSplitAmount;
+        public float SpearDodgeSplitAmount => spearDodgeSplitAmount;
+
+        [SerializeField]
+        private int spearDodgeLevelMax;
+        public int SpearDodgeLevelMax => spearDodgeLevelMax;
+
 
         [Serializable]
         public class ElementProjectile
