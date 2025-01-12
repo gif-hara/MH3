@@ -25,5 +25,10 @@ namespace MH3
         {
             return TinyServiceLocator.Resolve<MasterData>().SpearSpecs.Get(self.Id);
         }
+
+        public static List<MasterData.SpearCombo> GetSpearCombos(this MasterData.SpearSpec self)
+        {
+            return TinyServiceLocator.Resolve<MasterData>().SpearCombos.Get(self.SpearComboId);
+        }
     }
 }

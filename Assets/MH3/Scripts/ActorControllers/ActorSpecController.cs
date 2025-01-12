@@ -672,14 +672,31 @@ namespace MH3.ActorControllers
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
             result = Mathf.Clamp(result, 0.0f, gameRules.SpearDodgeGaugeMax);
             spearDodgeGauge.Value = result;
-            for (var i = 0; i < gameRules.SpearDodgeLevelMax; i++)
+            var level = -1;
+            for (var i = 0; i <= gameRules.SpearDodgeLevelMax; i++)
             {
+                if (i == gameRules.SpearDodgeLevelMax)
+                {
+                    level = i;
+                    break;
+                }
                 var min = i * gameRules.SpearDodgeSplitAmount;
                 var max = min + gameRules.SpearDodgeSplitAmount;
                 if (min <= result && result < max)
                 {
-                    spearComboLevel.Value = i;
+                    level = i;
                     break;
+                }
+            }
+            if (spearComboLevel.Value != level)
+            {
+                spearComboLevel.Value = level;
+                var masterData = TinyServiceLocator.Resolve<MasterData>();
+                if (masterData.SpearSpecs.ContainsKey(weaponId.Value))
+                {
+                    var spearSpec = masterData.SpearSpecs.Get(weaponId.Value);
+                    var spearCombos = spearSpec.GetSpearCombos();
+                    ChangeComboAnimationKeys(spearCombos.Find(x => x.Level == level).GetWeaponCombos().Select(x => x.AnimationKey).ToList());
                 }
             }
         }
