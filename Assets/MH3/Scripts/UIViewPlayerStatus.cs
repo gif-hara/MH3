@@ -158,6 +158,17 @@ namespace MH3
                         .text = string.Format("Lv.{0}".Localized(), x);
                 })
                 .RegisterTo(scope);
+            var spearComboGaugeThresholdPrefab = spearDodgeGaugeDocument.Q("Prefab.Threshold");
+            var spearComboGaugeThresholdParent = spearDodgeGaugeDocument.Q<Transform>("Area.Threshold");
+            foreach (var threshold in gameRules.SpearComboLevelThresholds)
+            {
+                var thresholdObject = Object.Instantiate(spearComboGaugeThresholdPrefab, spearComboGaugeThresholdParent);
+                var t = (RectTransform)thresholdObject.transform;
+                var rate = threshold / gameRules.SpearDodgeGaugeMax;
+                t.anchorMax = new Vector2(rate, 1.0f);
+                t.anchorMin = new Vector2(rate, 0.0f);
+                t.anchoredPosition = Vector2.zero;
+            }
         }
 
         protected override void OnDispose()
