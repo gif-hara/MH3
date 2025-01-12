@@ -47,6 +47,14 @@ namespace MH3
         public WeaponCombo.Group WeaponCombos => weaponCombos;
 
         [SerializeField]
+        private SpearSpec.DictionaryList spearSpecs;
+        public SpearSpec.DictionaryList SpearSpecs => spearSpecs;
+
+        [SerializeField]
+        private SpearCombo.Group spearCombos;
+        public SpearCombo.Group SpearCombos => spearCombos;
+
+        [SerializeField]
         private AttackSpec.DictionaryList attackSpecs;
         public AttackSpec.DictionaryList AttackSpecs => attackSpecs;
 
@@ -252,6 +260,8 @@ namespace MH3
                     "Skill.CriticalUpForAttackNoMiss",
                     "Skill.CriticalDamageUp",
                     "Skill.AttackUpForRecoveryCommand",
+                    "SpearCombo",
+                    "SpearSpec",
                 };
                 var database = await UniTask.WhenAll(
                     masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -299,6 +309,8 @@ namespace MH3
                 skillCriticalUpForAttackNoMiss.Set(JsonHelper.FromJson<SkillLevelValue>(database[40]));
                 skillCriticalDamageUp.Set(JsonHelper.FromJson<SkillLevelValue>(database[41]));
                 skillAttackUpForRecoveryCommand.Set(JsonHelper.FromJson<SkillLevelValue>(database[42]));
+                spearCombos.Set(JsonHelper.FromJson<SpearCombo>(database[43]));
+                spearSpecs.Set(JsonHelper.FromJson<SpearSpec>(database[44]));
                 foreach (var weaponSpec in weaponSpecs.List)
                 {
                     weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -572,6 +584,40 @@ namespace MH3
 
             [Serializable]
             public class Group : Group<string, WeaponCombo>
+            {
+                public Group() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class SpearSpec
+        {
+            public int WeaponId;
+
+            public string SpearComboId;
+
+            [Serializable]
+            public class DictionaryList : DictionaryList<int, SpearSpec>
+            {
+                public DictionaryList() : base(x => x.WeaponId)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class SpearCombo
+        {
+            public string Id;
+
+            public int Level;
+
+            public string WeaponComboId;
+
+            [Serializable]
+            public class Group : Group<string, SpearCombo>
             {
                 public Group() : base(x => x.Id)
                 {

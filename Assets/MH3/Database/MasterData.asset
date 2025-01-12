@@ -1820,6 +1820,37 @@ MonoBehaviour:
         AnimationKey: Attack.Spear.Basic.2
       - Id: 10501
         AnimationKey: Attack.Spear.Basic.3
+    - Key: 10502
+      Value:
+      - Id: 10502
+        AnimationKey: Attack.Spear.Basic.4
+      - Id: 10502
+        AnimationKey: Attack.Spear.Basic.5
+    - Key: 10503
+      Value:
+      - Id: 10503
+        AnimationKey: Attack.Spear.Basic.3
+      - Id: 10503
+        AnimationKey: Attack.Spear.Basic.4
+      - Id: 10503
+        AnimationKey: Attack.Spear.Basic.5
+  spearSpecs:
+    list:
+    - WeaponId: 10501
+      SpearComboId: 1
+  spearCombos:
+    list:
+    - Key: 1
+      Value:
+      - Id: 1
+        Level: 0
+        WeaponComboId: 10501
+      - Id: 1
+        Level: 1
+        WeaponComboId: 10502
+      - Id: 1
+        Level: 2
+        WeaponComboId: 10503
   attackSpecs:
     list:
     - Id: Sword.Basic.1
