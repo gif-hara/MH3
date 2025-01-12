@@ -636,6 +636,7 @@ namespace MH3.ActorControllers
             actor.StateMachine.TryChangeState(spec.InitialStateSequences, force: true);
             InvokeSharpenCount = 0;
             actor.FacialController.Play("Default");
+            spearDodgeGauge.Value = 0.0f;
             foreach (var skill in Skills)
             {
                 skill.Reset();
