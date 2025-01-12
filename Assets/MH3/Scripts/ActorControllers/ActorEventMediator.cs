@@ -113,5 +113,15 @@ namespace MH3
         {
             actor.FacialController.Play(animationName);
         }
+
+        public void BeginSpearDodgeMode()
+        {
+            actor.ActionController.BeginSpearDodgeMode();
+        }
+
+        public void EndSpeardDodgeMode()
+        {
+            actor.ActionController.EndSpearDodgeMode();
+        }
     }
 }
