@@ -700,11 +700,6 @@ namespace MH3.ActorControllers
                     var spearCombos = spearSpec.GetSpearCombos();
                     ChangeComboAnimationKeys(spearCombos.Find(x => x.Level == level).GetWeaponCombos().Select(x => x.AnimationKey).ToList());
                 }
-                if (diff > 0)
-                {
-                    var audioManager = TinyServiceLocator.Resolve<AudioManager>();
-                    audioManager.PlaySfx("Spear.ComboLevelUp.1");
-                }
             }
         }
 
