@@ -131,6 +131,25 @@ namespace MH3
                     });
                 })
                 .RegisterTo(scope);
+
+            var spearDodgeGaugeDocument = document.Q<HKUIDocument>("Area.SpearDodgeGauge");
+            spearDodgeGaugeDocument.gameObject.SetActive(actor.SpecController.WeaponSpec.WeaponType == Define.WeaponType.Spear);
+            actor.SpecController.OnBuildStatuses
+                .Subscribe((actor, spearDodgeGaugeDocument), static (_, t) =>
+                {
+                    var (actor, spearDodgeGaugeDocument) = t;
+                    spearDodgeGaugeDocument.gameObject.SetActive(actor.SpecController.WeaponSpec.WeaponType == Define.WeaponType.Spear);
+                })
+                .RegisterTo(scope);
+            actor.SpecController.SpearDodgeGauge
+                .Subscribe((spearDodgeGaugeDocument, actor), static (_, t) =>
+                {
+                    var (spearDodgeGaugeDocument, actor) = t;
+                    var gameRules = TinyServiceLocator.Resolve<GameRules>();
+                    spearDodgeGaugeDocument.Q<Slider>("Slider")
+                        .value = (float)actor.SpecController.SpearDodgeGauge.CurrentValue / gameRules.SpearDodgeGaugeMax;
+                })
+                .RegisterTo(scope);
         }
 
         protected override void OnDispose()
