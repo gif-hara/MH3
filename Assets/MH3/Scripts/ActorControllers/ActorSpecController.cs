@@ -144,6 +144,9 @@ namespace MH3.ActorControllers
         private ReactiveProperty<float> spearDodgeGauge = new(0.0f);
         public ReadOnlyReactiveProperty<float> SpearDodgeGauge => spearDodgeGauge.ToReadOnlyReactiveProperty();
 
+        private ReactiveProperty<int> spearComboLevel = new(0);
+        public ReadOnlyReactiveProperty<int> SpearComboLevel => spearComboLevel.ToReadOnlyReactiveProperty();
+
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
             this.actor = actor;
@@ -669,6 +672,16 @@ namespace MH3.ActorControllers
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
             result = Mathf.Clamp(result, 0.0f, gameRules.SpearDodgeGaugeMax);
             spearDodgeGauge.Value = result;
+            for (var i = 0; i < gameRules.SpearDodgeLevelMax; i++)
+            {
+                var min = i * gameRules.SpearDodgeSplitAmount;
+                var max = min + gameRules.SpearDodgeSplitAmount;
+                if (min <= result && result < max)
+                {
+                    spearComboLevel.Value = i;
+                    break;
+                }
+            }
         }
 
 #if DEBUG

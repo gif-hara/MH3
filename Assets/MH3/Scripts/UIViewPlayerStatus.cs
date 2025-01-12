@@ -150,6 +150,14 @@ namespace MH3
                         .value = (float)actor.SpecController.SpearDodgeGauge.CurrentValue / gameRules.SpearDodgeGaugeMax;
                 })
                 .RegisterTo(scope);
+            actor.SpecController.SpearComboLevel
+                .Subscribe((spearDodgeGaugeDocument, actor), static (x, t) =>
+                {
+                    var (spearDodgeGaugeDocument, actor) = t;
+                    spearDodgeGaugeDocument.Q<TMP_Text>("Text.ComboLevel")
+                        .text = string.Format("Lv.{0}".Localized(), x);
+                })
+                .RegisterTo(scope);
         }
 
         protected override void OnDispose()
