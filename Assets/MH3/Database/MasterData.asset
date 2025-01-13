@@ -5366,7 +5366,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20401
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.3
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -5380,7 +5380,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20402
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.3
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -5394,7 +5394,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20403
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.3
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -5408,7 +5408,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20501
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.4
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -5422,7 +5422,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20502
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.4
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -5436,7 +5436,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20503
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.4
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -5450,7 +5450,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20504
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.4
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -5464,11 +5464,11 @@ MonoBehaviour:
       EnemyActorSpecId: 20601
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.5
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
-      BgmKey: Quest.1
+      BgmKey: Quest.2
       StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
       QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
       QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
@@ -9182,3 +9182,25 @@ MonoBehaviour:
       Value:
       - AvailableContentsKey: Clear.QuestLevel.3
         NeedAvailableContentsKey: Clear.Quest.10301
+    - Key: Clear.QuestLevel.4
+      Value:
+      - AvailableContentsKey: Clear.QuestLevel.4
+        NeedAvailableContentsKey: Clear.Quest.10401
+      - AvailableContentsKey: Clear.QuestLevel.4
+        NeedAvailableContentsKey: Clear.Quest.10402
+      - AvailableContentsKey: Clear.QuestLevel.4
+        NeedAvailableContentsKey: Clear.Quest.10403
+    - Key: Clear.QuestLevel.5
+      Value:
+      - AvailableContentsKey: Clear.QuestLevel.5
+        NeedAvailableContentsKey: Clear.Quest.10501
+      - AvailableContentsKey: Clear.QuestLevel.5
+        NeedAvailableContentsKey: Clear.Quest.10502
+      - AvailableContentsKey: Clear.QuestLevel.5
+        NeedAvailableContentsKey: Clear.Quest.10503
+      - AvailableContentsKey: Clear.QuestLevel.5
+        NeedAvailableContentsKey: Clear.Quest.10504
+    - Key: Clear.QuestLevel.6
+      Value:
+      - AvailableContentsKey: Clear.QuestLevel.6
+        NeedAvailableContentsKey: Clear.Quest.10601
