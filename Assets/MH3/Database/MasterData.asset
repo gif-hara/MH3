@@ -388,7 +388,7 @@ MonoBehaviour:
       GuardPerformedSequencesKey: 
       GuardCanceledSequencesKey: 
       DodgePerformedSequencesKey: Dodge.Performed.Spear
-      ModelData: {fileID: 0}
+      ModelData: {fileID: 11400000, guid: 776fa17c9ff40fe4387b3ac871404e4a, type: 2}
       GuardPerformedSequences: {fileID: 0}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: d254a2176535ec54dbf46ca026eacb2a, type: 2}
@@ -940,26 +940,6 @@ MonoBehaviour:
         Attack: 160
         RareType: 0
         Weight: 100
-    - Key: 10501
-      Value:
-      - Id: 10501
-        Attack: 180
-        RareType: 0
-        Weight: 100
-      - Id: 10501
-        Attack: 190
-        RareType: 0
-        Weight: 100
-      - Id: 10501
-        Attack: 200
-        RareType: 0
-        Weight: 100
-    - Key: 10502
-      Value:
-      - Id: 10502
-        Attack: 100
-        RareType: 0
-        Weight: 100
     - Key: 10403
       Value:
       - Id: 10403
@@ -972,6 +952,26 @@ MonoBehaviour:
         Weight: 100
       - Id: 10403
         Attack: 170
+        RareType: 0
+        Weight: 100
+    - Key: 10501
+      Value:
+      - Id: 10501
+        Attack: 100
+        RareType: 0
+        Weight: 100
+    - Key: 10502
+      Value:
+      - Id: 10502
+        Attack: 180
+        RareType: 0
+        Weight: 100
+      - Id: 10502
+        Attack: 190
+        RareType: 0
+        Weight: 100
+      - Id: 10502
+        Attack: 200
         RareType: 0
         Weight: 100
   weaponCriticals:
@@ -1911,6 +1911,8 @@ MonoBehaviour:
   spearSpecs:
     list:
     - WeaponId: 10501
+      SpearComboId: 1
+    - WeaponId: 10502
       SpearComboId: 1
   spearCombos:
     list:
@@ -3467,6 +3469,78 @@ MonoBehaviour:
       Power: 34
       FlinchDamage: 10
       ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Spear.Basic.12.1
+      Power: 10
+      FlinchDamage: 0
+      ColliderName: Large.1
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0
+      HitStopDurationActor: 0
+      HitStopTimeScaleTarget: 0
+      HitStopDurationTarget: 0
+      ShakeStrength: 0.4
+      ShakeDuration: 0.1
+      ShakeFrequency: 3
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Spear.Basic.12.2
+      Power: 10
+      FlinchDamage: 0
+      ColliderName: Large.1
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0
+      HitStopDurationActor: 0
+      HitStopTimeScaleTarget: 0
+      HitStopDurationTarget: 0
+      ShakeStrength: 0.4
+      ShakeDuration: 0.1
+      ShakeFrequency: 3
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Spear.Basic.12.3
+      Power: 10
+      FlinchDamage: 10
+      ColliderName: Large.1
       FlinchName: Flinch.Small
       FlinchType: 2
       ForceFlinch: 0
