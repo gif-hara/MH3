@@ -141,7 +141,8 @@ namespace MH3
             HKUIDocument element,
             string header,
             Action<Unit> onClick,
-            Action<BaseEventData> onSelect = null
+            Action<BaseEventData> onSelect = null,
+            Action<BaseEventData> onDeselect = null
         )
         {
             element.Q<TMP_Text>("Header").text = header;
@@ -153,6 +154,12 @@ namespace MH3
             {
                 button.OnSelectAsObservable()
                     .Subscribe(onSelect)
+                    .RegisterTo(element.destroyCancellationToken);
+            }
+            if (onDeselect != null)
+            {
+                button.OnDeselectAsObservable()
+                    .Subscribe(onDeselect)
                     .RegisterTo(element.destroyCancellationToken);
             }
         }
