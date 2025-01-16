@@ -7,5 +7,9 @@ namespace MH3
         public readonly Subject<Unit> OnBeginTitle = new();
 
         public readonly Subject<Unit> OnEndTitle = new();
+
+        public readonly Subject<Unit> OnBeginPauseMenu = new();
+
+        public readonly Subject<Unit> OnEndPauseMenu = new();
     }
 }

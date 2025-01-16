@@ -58,6 +58,8 @@ namespace MH3
                 stateMachine.Change(StateQuestRoot);
             }
 
+            TinyServiceLocator.Resolve<GameEvents>().OnBeginPauseMenu.OnNext(Unit.Default);
+
             // 待機
             {
                 await UniTask.WaitUntilCanceled(pauseMenuScope.Token);
@@ -69,6 +71,7 @@ namespace MH3
                 inputController.PopActionType();
                 pauseMenuScope.Dispose();
                 stateMachine.Dispose();
+                TinyServiceLocator.Resolve<GameEvents>().OnEndPauseMenu.OnNext(Unit.Default);
             }
 
             async UniTask StateHomeRoot(CancellationToken scope)
