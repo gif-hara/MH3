@@ -32,6 +32,22 @@ namespace MH3
                         .value = (float)actor.SpecController.HitPoint.CurrentValue / actor.SpecController.HitPointMaxTotal;
                 })
                 .RegisterTo(actor.destroyCancellationToken);
+            if (actor.SpecController.VisibleStatusUI)
+            {
+                var gameEvents = TinyServiceLocator.Resolve<GameEvents>();
+                gameEvents.OnBeginPauseMenu
+                    .Subscribe(document, (_, d) =>
+                    {
+                        d.gameObject.SetActive(false);
+                    })
+                    .RegisterTo(actor.destroyCancellationToken);
+                gameEvents.OnEndPauseMenu
+                    .Subscribe(document, (_, d) =>
+                    {
+                        d.gameObject.SetActive(true);
+                    })
+                    .RegisterTo(actor.destroyCancellationToken);
+            }
             document.Q<TMP_Text>("Name").text = actor.SpecController.ActorName;
         }
     }

@@ -39,6 +39,20 @@ namespace MH3
                     document.Q<SimpleAnimation>("Area.Animation").Play("In");
                 })
                 .RegisterTo(scope);
+            gameEvents.OnBeginPauseMenu
+                .Subscribe(document, static (x, t) =>
+                {
+                    var document = t;
+                    document.gameObject.SetActive(false);
+                })
+                .RegisterTo(scope);
+            gameEvents.OnEndPauseMenu
+                .Subscribe(document, static (x, t) =>
+                {
+                    var document = t;
+                    document.gameObject.SetActive(true);
+                })
+                .RegisterTo(scope);
             ((RectTransform)hitPointSlider.transform).sizeDelta = new Vector2(
                 gameRules.HitPointSliderAddWidth * actor.SpecController.HitPointMaxTotal,
                 hitPointSliderDefaultSize.y
