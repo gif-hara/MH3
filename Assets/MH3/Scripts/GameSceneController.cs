@@ -93,6 +93,9 @@ namespace MH3
         private HKUIDocument titleDocumentPrefab;
 
         [SerializeField]
+        private HKUIDocument termDescriptionDocumentPrefab;
+
+        [SerializeField]
         private bool isSkipTitle;
 
         private Actor player;
@@ -253,6 +256,7 @@ namespace MH3
                         actorSpecStatusDocumentPrefab,
                         questSpecStatusDocumentPrefab,
                         optionsSoundsDocumentPrefab,
+                        termDescriptionDocumentPrefab,
                         player,
                         this,
                         currentQuestSpec.Id == homeQuestSpecId,

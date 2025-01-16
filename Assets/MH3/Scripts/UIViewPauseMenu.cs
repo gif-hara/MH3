@@ -25,6 +25,7 @@ namespace MH3
             HKUIDocument actorSpecStatusDocumentPrefab,
             HKUIDocument questSpecStatusDocumentPrefab,
             HKUIDocument optionsSoundsDocumentPrefab,
+            HKUIDocument termDescriptionDocumentPrefab,
             Actor actor,
             GameSceneController gameSceneController,
             bool isHome,
@@ -48,6 +49,8 @@ namespace MH3
             HKUIDocument optionsListDocument = null;
             Selectable optionsListSelection = null;
             HKUIDocument optionsDocument = null;
+            List<UIViewTermDescription.Element> termDescriptionElements = null;
+            Func<CancellationToken, UniTask> onEndTermDescriptionNextState = null;
 
             if (isHome)
             {
@@ -283,15 +286,25 @@ namespace MH3
                 var instanceWeapons = userData.InstanceWeapons;
                 var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
                 var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
+                uiViewInputGuide.Push(() => string.Format(
+                    "{0}:選択 {1}:決定 {2}:キャンセル {3}:用語説明",
+                    InputSprite.GetTag(inputController.Actions.UI.Navigate),
+                    InputSprite.GetTag(inputController.Actions.UI.Submit),
+                    InputSprite.GetTag(inputController.Actions.UI.Cancel),
+                    InputSprite.GetTag(inputController.Actions.UI.Description)
+                    ).Localized(), scope);
+
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     instanceWeapons
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
+                            CancellationTokenSource selectScope = null;
                             var header = userData.EquippedInstanceWeaponId == x.InstanceId
                                 ? $"[E] {x.WeaponSpec.LocalizedName}"
                                 : x.WeaponSpec.LocalizedName;
-                            UIViewList.ApplyAsSimpleElement(document, header, _ =>
+                            UIViewList.ApplyAsSimpleElement(document, header,
+                                _ =>
                                 {
                                     if (userData.EquippedInstanceWeaponId == x.InstanceId)
                                     {
@@ -309,7 +322,29 @@ namespace MH3
                                     var container = new Container();
                                     container.Register("InstanceWeapon", x);
                                     instanceWeaponSequences.PlayAsync(container, scope).Forget();
-                                });
+                                    selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                    inputController.Actions.UI.Description
+                                        .OnPerformedAsObservable()
+                                        .Subscribe(_ =>
+                                        {
+                                            termDescriptionElements = new List<UIViewTermDescription.Element>
+                                            {
+                                                new(
+                                                    x.WeaponSpec.LocalizedName,
+                                                    "武器の説明"
+                                                )
+                                            };
+                                            onEndTermDescriptionNextState = StateChangeInstanceWeapon;
+                                            stateMachine.Change(StateTermDescription);
+                                        })
+                                        .RegisterTo(selectScope.Token);
+                                },
+                                _ =>
+                                {
+                                    selectScope?.Cancel();
+                                    selectScope?.Dispose();
+                                }
+                                );
                         })),
                     0
                 );
@@ -930,6 +965,17 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateOptionsRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
+            }
+
+            async UniTask StateTermDescription(CancellationToken scope)
+            {
+                await UIViewTermDescription.OpenAsync(
+                    listDocumentPrefab,
+                    termDescriptionDocumentPrefab,
+                    termDescriptionElements,
+                    scope
+                );
+                stateMachine.Change(onEndTermDescriptionNextState);
             }
 
             void SetHeaderText(string text)
