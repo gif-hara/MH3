@@ -450,6 +450,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Description",
+                    "type": "Button",
+                    "id": "4df5c7a7-92f4-4567-8df5-0f72acd83182",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Point",
                     "type": "PassThrough",
                     "id": "32b35790-4ed0-4e9a-aa41-69ac6d629449",
@@ -907,6 +916,28 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e66ba4cb-0b0c-4007-a48b-c5e4bef48ae4",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Description",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1d5ef50-bfc2-4f1d-b6ef-deb3a6410d63",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Description",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
