@@ -6,7 +6,6 @@ using Cysharp.Threading.Tasks;
 using HK;
 using R3;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace MH3
@@ -66,6 +65,7 @@ namespace MH3
                 var description = page.Description;
                 description = description.Replace("{InputSprite.Player.Guard}", InputSprite.GetTag(inputController.Actions.Player.Guard));
                 descriptionDocument.Q<TMP_Text>("Text.Description").text = description;
+                descriptionDocument.Q<TMP_Text>("Text.Page").text = $"{pageIndex + 1}/{currentElement.Pages.Count}";
             }
             uiViewInputGuide.Push(() => string.Format(
                 "{0}:選択 {1}:戻る {2}:前のページ {3}:次のページ",
