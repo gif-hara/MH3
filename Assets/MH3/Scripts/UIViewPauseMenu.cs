@@ -323,13 +323,15 @@ namespace MH3
                                     container.Register("InstanceWeapon", x);
                                     instanceWeaponSequences.PlayAsync(container, scope).Forget();
                                     selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                    var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs;
                                     inputController.Actions.UI.Description
                                         .OnPerformedAsObservable()
                                         .Subscribe(_ =>
                                         {
                                             termDescriptionElements = new List<UIViewTermDescription.Element>
                                             {
-                                                new(x.WeaponSpec.WeaponType.GetTermDescriptionSpec())
+                                                new(x.WeaponSpec.WeaponType.GetTermDescriptionSpec()),
+                                                new(termDescriptionSpecs.Get("Parameter")),
                                             };
                                             onEndTermDescriptionNextState = StateChangeInstanceWeapon;
                                             stateMachine.Change(StateTermDescription);
