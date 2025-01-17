@@ -483,6 +483,24 @@ namespace MH3
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""PageNext"",
+                    ""type"": ""Button"",
+                    ""id"": ""0588e8ed-964e-4d68-8ed5-ed19601c7b44"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PagePrevious"",
+                    ""type"": ""Button"",
+                    ""id"": ""e70ee71e-0dd9-4249-a60c-dd284fddfbb7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Point"",
                     ""type"": ""PassThrough"",
                     ""id"": ""32b35790-4ed0-4e9a-aa41-69ac6d629449"",
@@ -1118,6 +1136,50 @@ namespace MH3
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7047cfe-d753-4419-884c-e44dbe0a605a"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""PageNext"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8100466b-c83d-4892-bc9c-52d6913a8893"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""PageNext"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e06f199-abe4-4005-b715-debf07939f96"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""PagePrevious"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86991ecf-64d0-43a0-8ff1-bc019164ec89"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""PagePrevious"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1203,6 +1265,8 @@ namespace MH3
             m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
             m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
             m_UI_Description = m_UI.FindAction("Description", throwIfNotFound: true);
+            m_UI_PageNext = m_UI.FindAction("PageNext", throwIfNotFound: true);
+            m_UI_PagePrevious = m_UI.FindAction("PagePrevious", throwIfNotFound: true);
             m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
             m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
             m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
@@ -1392,6 +1456,8 @@ namespace MH3
         private readonly InputAction m_UI_Submit;
         private readonly InputAction m_UI_Cancel;
         private readonly InputAction m_UI_Description;
+        private readonly InputAction m_UI_PageNext;
+        private readonly InputAction m_UI_PagePrevious;
         private readonly InputAction m_UI_Point;
         private readonly InputAction m_UI_Click;
         private readonly InputAction m_UI_RightClick;
@@ -1408,6 +1474,8 @@ namespace MH3
             public InputAction @Submit => m_Wrapper.m_UI_Submit;
             public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
             public InputAction @Description => m_Wrapper.m_UI_Description;
+            public InputAction @PageNext => m_Wrapper.m_UI_PageNext;
+            public InputAction @PagePrevious => m_Wrapper.m_UI_PagePrevious;
             public InputAction @Point => m_Wrapper.m_UI_Point;
             public InputAction @Click => m_Wrapper.m_UI_Click;
             public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
@@ -1439,6 +1507,12 @@ namespace MH3
                 @Description.started += instance.OnDescription;
                 @Description.performed += instance.OnDescription;
                 @Description.canceled += instance.OnDescription;
+                @PageNext.started += instance.OnPageNext;
+                @PageNext.performed += instance.OnPageNext;
+                @PageNext.canceled += instance.OnPageNext;
+                @PagePrevious.started += instance.OnPagePrevious;
+                @PagePrevious.performed += instance.OnPagePrevious;
+                @PagePrevious.canceled += instance.OnPagePrevious;
                 @Point.started += instance.OnPoint;
                 @Point.performed += instance.OnPoint;
                 @Point.canceled += instance.OnPoint;
@@ -1479,6 +1553,12 @@ namespace MH3
                 @Description.started -= instance.OnDescription;
                 @Description.performed -= instance.OnDescription;
                 @Description.canceled -= instance.OnDescription;
+                @PageNext.started -= instance.OnPageNext;
+                @PageNext.performed -= instance.OnPageNext;
+                @PageNext.canceled -= instance.OnPageNext;
+                @PagePrevious.started -= instance.OnPagePrevious;
+                @PagePrevious.performed -= instance.OnPagePrevious;
+                @PagePrevious.canceled -= instance.OnPagePrevious;
                 @Point.started -= instance.OnPoint;
                 @Point.performed -= instance.OnPoint;
                 @Point.canceled -= instance.OnPoint;
@@ -1581,6 +1661,8 @@ namespace MH3
             void OnSubmit(InputAction.CallbackContext context);
             void OnCancel(InputAction.CallbackContext context);
             void OnDescription(InputAction.CallbackContext context);
+            void OnPageNext(InputAction.CallbackContext context);
+            void OnPagePrevious(InputAction.CallbackContext context);
             void OnPoint(InputAction.CallbackContext context);
             void OnClick(InputAction.CallbackContext context);
             void OnRightClick(InputAction.CallbackContext context);
