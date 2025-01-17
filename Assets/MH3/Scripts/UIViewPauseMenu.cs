@@ -293,7 +293,6 @@ namespace MH3
                     InputSprite.GetTag(inputController.Actions.UI.Cancel),
                     InputSprite.GetTag(inputController.Actions.UI.Description)
                     ).Localized(), scope);
-
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     instanceWeapons
@@ -376,11 +375,19 @@ namespace MH3
                 var instanceArmorSequences = instanceArmorView.Q<SequencesMonoBehaviour>("Sequences");
                 var instanceArmors = userData.InstanceArmors
                     .Where(x => x.ArmorSpec.ArmorType == selectedArmorType);
+                uiViewInputGuide.Push(() => string.Format(
+                    "{0}:選択 {1}:決定 {2}:キャンセル {3}:用語説明",
+                    InputSprite.GetTag(inputController.Actions.UI.Navigate),
+                    InputSprite.GetTag(inputController.Actions.UI.Submit),
+                    InputSprite.GetTag(inputController.Actions.UI.Cancel),
+                    InputSprite.GetTag(inputController.Actions.UI.Description)
+                    ).Localized(), scope);
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     instanceArmors
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
+                            CancellationTokenSource selectScope = null;
                             var header = userData.GetEquippedInstanceArmor(selectedArmorType)?.InstanceId == x.InstanceId
                                 ? $"[E] {x.ArmorSpec.LocalizedName}"
                                 : x.ArmorSpec.LocalizedName;
@@ -401,7 +408,38 @@ namespace MH3
                                     var container = new Container();
                                     container.Register("InstanceArmor", x);
                                     instanceArmorSequences.PlayAsync(container, scope).Forget();
-                                });
+                                    selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                    var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs;
+                                    inputController.Actions.UI.Description
+                                        .OnPerformedAsObservable()
+                                        .Subscribe(_ =>
+                                        {
+                                            termDescriptionElements = new List<UIViewTermDescription.Element>
+                                            {
+                                                new(termDescriptionSpecs.Get("Armor")),
+                                                new(termDescriptionSpecs.Get("Parameter")),
+                                            };
+                                            if (x.Skills.Count > 0)
+                                            {
+                                                termDescriptionElements.Add(new(termDescriptionSpecs.Get("Skill")));
+                                                x.Skills
+                                                    .Select(y => y.SkillType)
+                                                    .Distinct()
+                                                    .OrderBy(y => y)
+                                                    .ToList()
+                                                    .ForEach(y => termDescriptionElements.Add(new(y.GetTermDescriptionSpec())));
+                                            }
+                                            onEndTermDescriptionNextState = StateChangeInstanceArmor;
+                                            stateMachine.Change(StateTermDescription);
+                                        })
+                                        .RegisterTo(selectScope.Token);
+                                },
+                                _ =>
+                                {
+                                    selectScope?.Cancel();
+                                    selectScope?.Dispose();
+                                }
+                                );
                         })),
                     0
                 );
