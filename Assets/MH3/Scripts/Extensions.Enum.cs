@@ -121,5 +121,10 @@ namespace MH3
                 _ => throw new NotImplementedException($"未対応の異常状態です {self}"),
             };
         }
+
+        public static MasterData.TermDescriptionSpec GetTermDescriptionSpec(this Define.WeaponType self)
+        {
+            return TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs.Get($"WeaponType.{self}");
+        }
     }
 }

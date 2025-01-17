@@ -329,10 +329,7 @@ namespace MH3
                                         {
                                             termDescriptionElements = new List<UIViewTermDescription.Element>
                                             {
-                                                new(
-                                                    x.WeaponSpec.LocalizedName,
-                                                    "武器の説明"
-                                                )
+                                                new(x.WeaponSpec.WeaponType.GetTermDescriptionSpec())
                                             };
                                             onEndTermDescriptionNextState = StateChangeInstanceWeapon;
                                             stateMachine.Change(StateTermDescription);
