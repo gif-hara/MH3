@@ -126,5 +126,10 @@ namespace MH3
         {
             return TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs.Get($"WeaponType.{self}");
         }
+
+        public static MasterData.TermDescriptionSpec GetTermDescriptionSpec(this Define.SkillType self)
+        {
+            return TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs.Get($"Skill.{self}");
+        }
     }
 }

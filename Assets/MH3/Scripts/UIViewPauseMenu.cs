@@ -333,6 +333,17 @@ namespace MH3
                                                 new(x.WeaponSpec.WeaponType.GetTermDescriptionSpec()),
                                                 new(termDescriptionSpecs.Get("Parameter")),
                                             };
+                                            if (x.InstanceSkillCoreIds.Count > 0)
+                                            {
+                                                termDescriptionElements.Add(new(termDescriptionSpecs.Get("Skill")));
+                                                x.InstanceSkillCores
+                                                    .SelectMany(y => y.Skills)
+                                                    .Select(y => y.SkillType)
+                                                    .Distinct()
+                                                    .OrderBy(y => y)
+                                                    .ToList()
+                                                    .ForEach(y => termDescriptionElements.Add(new(y.GetTermDescriptionSpec())));
+                                            }
                                             onEndTermDescriptionNextState = StateChangeInstanceWeapon;
                                             stateMachine.Change(StateTermDescription);
                                         })
