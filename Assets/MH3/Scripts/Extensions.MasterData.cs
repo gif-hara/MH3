@@ -30,5 +30,10 @@ namespace MH3
         {
             return TinyServiceLocator.Resolve<MasterData>().SpearCombos.Get(self.SpearComboId);
         }
+
+        public static List<MasterData.TermDescriptionPage> GetPages(this MasterData.TermDescriptionSpec self)
+        {
+            return TinyServiceLocator.Resolve<MasterData>().TermDescriptionPages.Get(self.Id);
+        }
     }
 }

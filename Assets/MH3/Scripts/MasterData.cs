@@ -198,6 +198,14 @@ namespace MH3
         private AvailableContentsUnlock.Group availableContentsUnlocks;
         public AvailableContentsUnlock.Group AvailableContentsUnlocks => availableContentsUnlocks;
 
+        [SerializeField]
+        private TermDescriptionSpec.DictionaryList termDescriptionSpecs;
+        public TermDescriptionSpec.DictionaryList TermDescriptionSpecs => termDescriptionSpecs;
+
+        [SerializeField]
+        private TermDescriptionPage.Group termDescriptionPages;
+        public TermDescriptionPage.Group TermDescriptionPages => termDescriptionPages;
+
 #if UNITY_EDITOR
         [ContextMenu("Update")]
         private async void UpdateMasterData()
@@ -262,6 +270,8 @@ namespace MH3
                     "Skill.AttackUpForRecoveryCommand",
                     "SpearCombo",
                     "SpearSpec",
+                    "TermDescriptionSpec",
+                    "TermDescriptionPage",
                 };
                 var database = await UniTask.WhenAll(
                     masterDataNames.Select(GoogleSpreadSheetDownloader.DownloadAsync)
@@ -311,6 +321,8 @@ namespace MH3
                 skillAttackUpForRecoveryCommand.Set(JsonHelper.FromJson<SkillLevelValue>(database[42]));
                 spearCombos.Set(JsonHelper.FromJson<SpearCombo>(database[43]));
                 spearSpecs.Set(JsonHelper.FromJson<SpearSpec>(database[44]));
+                termDescriptionSpecs.Set(JsonHelper.FromJson<TermDescriptionSpec>(database[45]));
+                termDescriptionPages.Set(JsonHelper.FromJson<TermDescriptionPage>(database[46]));
                 foreach (var weaponSpec in weaponSpecs.List)
                 {
                     weaponSpec.ModelData = AssetDatabase.LoadAssetAtPath<WeaponModelData>($"Assets/MH3/Database/WeaponModelData/{weaponSpec.ModelDataId}.asset");
@@ -1119,6 +1131,40 @@ namespace MH3
             public class Group : Group<string, AvailableContentsUnlock>
             {
                 public Group() : base(x => x.AvailableContentsKey)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class TermDescriptionSpec
+        {
+            public string Id;
+
+            public string Title;
+
+            [Serializable]
+            public class DictionaryList : DictionaryList<string, TermDescriptionSpec>
+            {
+                public DictionaryList() : base(x => x.Id)
+                {
+                }
+            }
+        }
+
+        [Serializable]
+        public class TermDescriptionPage
+        {
+            public string Id;
+
+            public string Title;
+
+            public string Description;
+
+            [Serializable]
+            public class Group : Group<string, TermDescriptionPage>
+            {
+                public Group() : base(x => x.Id)
                 {
                 }
             }
