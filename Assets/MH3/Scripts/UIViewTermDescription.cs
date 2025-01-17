@@ -48,6 +48,7 @@ namespace MH3
                 {
                     pageIndex = Mathf.Max(0, pageIndex - 1);
                     UpdateDescription(pageIndex);
+                    TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.Select.2");
                 })
                 .AddTo(scope.Token);
             inputController.Actions.UI.PageNext
@@ -56,6 +57,7 @@ namespace MH3
                 {
                     pageIndex = Mathf.Min(currentElement.Pages.Count - 1, pageIndex + 1);
                     UpdateDescription(pageIndex);
+                    TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.Select.2");
                 })
                 .AddTo(scope.Token);
             void UpdateDescription(int pageIndex)
