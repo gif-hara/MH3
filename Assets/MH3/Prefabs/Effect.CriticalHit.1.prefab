@@ -65,12 +65,16 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 198636252779543386, guid: 42c427f9d12527f4b86f4e770b4ce034, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198636252779543386, guid: 42c427f9d12527f4b86f4e770b4ce034, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 198636252779543386, guid: 42c427f9d12527f4b86f4e770b4ce034, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 198636252779543386, guid: 42c427f9d12527f4b86f4e770b4ce034, type: 3}
       propertyPath: InitialModule.startRotation.scalar
