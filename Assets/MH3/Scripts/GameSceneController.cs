@@ -96,6 +96,9 @@ namespace MH3
         private HKUIDocument termDescriptionDocumentPrefab;
 
         [SerializeField]
+        private HKUIDocument tipsDocumentPrefab;
+
+        [SerializeField]
         private bool isSkipTitle;
 
         private Actor player;
@@ -151,6 +154,8 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(uiViewTransition, destroyCancellationToken).Forget();
             var uiViewInputGuide = new UIViewInputGuide(inputGuideDocumentPrefab, destroyCancellationToken);
             TinyServiceLocator.RegisterAsync(uiViewInputGuide, destroyCancellationToken).Forget();
+            var uiViewTips = new UIViewTips(tipsDocumentPrefab, destroyCancellationToken);
+            TinyServiceLocator.RegisterAsync(uiViewTips, destroyCancellationToken).Forget();
             var containsSaveData = SaveSystem.Contains(SaveData.Path);
             var saveData = containsSaveData ? SaveSystem.Load<SaveData>(SaveData.Path) : new SaveData();
             if (!containsSaveData)
