@@ -595,6 +595,13 @@ namespace MH3
                 var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
                 var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
                 UIViewTips.SetTip("削除する武器を選択してください。".Localized());
+                uiViewInputGuide.Push(() => string.Format(
+                    "{0}:選択 {1}:決定 {2}:キャンセル {3}:用語説明",
+                    InputSprite.GetTag(inputController.Actions.UI.Navigate),
+                    InputSprite.GetTag(inputController.Actions.UI.Submit),
+                    InputSprite.GetTag(inputController.Actions.UI.Cancel),
+                    InputSprite.GetTag(inputController.Actions.UI.Description)
+                    ).Localized(), scope);
                 CancellationDisposable dialogScope = null;
                 Selectable tempSelection = null;
                 HKUIDocument list = null;
@@ -700,6 +707,13 @@ namespace MH3
                 var instanceArmorView = UnityEngine.Object.Instantiate(instanceArmorViewDocumentPrefab);
                 var instanceArmorSequences = instanceArmorView.Q<SequencesMonoBehaviour>("Sequences");
                 UIViewTips.SetTip("削除する防具を選択してください。".Localized());
+                uiViewInputGuide.Push(() => string.Format(
+                    "{0}:選択 {1}:決定 {2}:キャンセル {3}:用語説明",
+                    InputSprite.GetTag(inputController.Actions.UI.Navigate),
+                    InputSprite.GetTag(inputController.Actions.UI.Submit),
+                    InputSprite.GetTag(inputController.Actions.UI.Cancel),
+                    InputSprite.GetTag(inputController.Actions.UI.Description)
+                    ).Localized(), scope);
                 CancellationDisposable dialogScope = null;
                 Selectable tempSelection = null;
                 HKUIDocument list = null;
@@ -906,6 +920,13 @@ namespace MH3
                 var instanceSkillCoreView = UnityEngine.Object.Instantiate(instanceSkillCoreViewDocumentPrefab);
                 var instanceSkillCoreSequences = instanceSkillCoreView.Q<SequencesMonoBehaviour>("Sequences");
                 UIViewTips.SetTip("削除するスキルコアを選択してください。".Localized());
+                uiViewInputGuide.Push(() => string.Format(
+                    "{0}:選択 {1}:決定 {2}:キャンセル {3}:用語説明",
+                    InputSprite.GetTag(inputController.Actions.UI.Navigate),
+                    InputSprite.GetTag(inputController.Actions.UI.Submit),
+                    InputSprite.GetTag(inputController.Actions.UI.Cancel),
+                    InputSprite.GetTag(inputController.Actions.UI.Description)
+                    ).Localized(), scope);
                 CancellationDisposable dialogScope = null;
                 HKUIDocument list = null;
                 CreateList();
