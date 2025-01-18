@@ -84,6 +84,12 @@ namespace MH3
                 SetHeaderText("ホームメニュー".Localized());
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var actorSpecStatusDocument = UnityEngine.Object.Instantiate(actorSpecStatusDocumentPrefab);
+                uiViewInputGuide.Push(() => string.Format(
+                    "{0}:選択 {1}:キャンセル {2}:用語説明",
+                    InputSprite.GetTag(inputController.Actions.UI.Navigate),
+                    InputSprite.GetTag(inputController.Actions.UI.Cancel),
+                    InputSprite.GetTag(inputController.Actions.UI.Description)
+                    ).Localized(), scope);
                 var listElements = new List<Action<HKUIDocument>>();
                 listElements.Add(document =>
                 {
@@ -171,6 +177,28 @@ namespace MH3
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
                     .Subscribe(_ => pauseMenuScope.Dispose())
+                    .RegisterTo(scope);
+                inputController.Actions.UI.Description
+                    .OnPerformedAsObservable()
+                    .Subscribe(_ =>
+                    {
+                        termDescriptionElements = new List<UIViewTermDescription.Element>
+                        {
+                            new(TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs.Get("Parameter")),
+                        };
+                        if (actor.SpecController.Skills.Count > 0)
+                        {
+                            termDescriptionElements.Add(new(TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs.Get("Skill")));
+                            actor.SpecController.Skills
+                                .Select(x => x.SkillType)
+                                .Distinct()
+                                .OrderBy(x => x)
+                                .ToList()
+                                .ForEach(x => termDescriptionElements.Add(new(x.GetTermDescriptionSpec())));
+                        }
+                        onEndTermDescriptionNextState = StateHomeRoot;
+                        stateMachine.Change(StateTermDescription);
+                    })
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
@@ -1163,7 +1191,7 @@ namespace MH3
                             },
                             _ =>
                             {
-                                UIViewTips.SetTip("マスターボリューム、BGM、効果音の音量設定を変更します。".Localized());
+                                UIViewTips.SetTip("マスター、BGM、効果音の音量設定を変更します。".Localized());
                                 CreateOptionsDocument(optionsSoundsDocumentPrefab);
                                 var saveData = TinyServiceLocator.Resolve<SaveData>();
                                 optionsDocument
@@ -1258,7 +1286,7 @@ namespace MH3
                 }.SetNavigationVertical();
 
                 masterVolumeSelectable.OnSelectAsObservable()
-                    .Subscribe(_ => UIViewTips.SetTip("マスターボリュームを変更します。".Localized()))
+                    .Subscribe(_ => UIViewTips.SetTip("マスター音量を変更します。".Localized()))
                     .AddTo(scope);
 
                 bgmVolumeSelectable.OnSelectAsObservable()
@@ -1316,6 +1344,7 @@ namespace MH3
 
             async UniTask StateTermDescription(CancellationToken scope)
             {
+                UIViewTips.Close();
                 SetHeaderText("用語説明".Localized());
                 await UIViewTermDescription.OpenAsync(
                     listDocumentPrefab,
