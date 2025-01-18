@@ -6,6 +6,7 @@ using Cysharp.Threading.Tasks;
 using HK;
 using MH3.ActorControllers;
 using R3;
+using R3.Triggers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -220,6 +221,7 @@ namespace MH3
             {
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var questSpecStatusDocument = UnityEngine.Object.Instantiate(questSpecStatusDocumentPrefab);
+                UIViewTips.SetTip("戦いたい敵スライム君を選んでください。".Localized());
                 SetHeaderText("クエスト選択".Localized());
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
@@ -266,38 +268,60 @@ namespace MH3
                     {
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "武器".Localized(), _ =>
-                            {
-                                stateMachine.Change(StateChangeInstanceWeapon);
-                            });
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "武器".Localized(),
+                                _ => stateMachine.Change(StateChangeInstanceWeapon),
+                                _ => UIViewTips.SetTip("武器を変更します。".Localized())
+                                );
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "頭".Localized(), _ =>
-                            {
-                                selectedArmorType = Define.ArmorType.Head;
-                                stateMachine.Change(StateChangeInstanceArmor);
-                            });
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "頭防具".Localized(),
+                                _ =>
+                                {
+                                    selectedArmorType = Define.ArmorType.Head;
+                                    stateMachine.Change(StateChangeInstanceArmor);
+                                },
+                                _ => UIViewTips.SetTip("頭に装備する防具を変更します。".Localized())
+                                );
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "腕".Localized(), _ =>
-                            {
-                                selectedArmorType = Define.ArmorType.Arms;
-                                stateMachine.Change(StateChangeInstanceArmor);
-                            });
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "腕防具".Localized(),
+                                _ =>
+                                {
+                                    selectedArmorType = Define.ArmorType.Arms;
+                                    stateMachine.Change(StateChangeInstanceArmor);
+                                },
+                                _ => UIViewTips.SetTip("腕に装備する防具を変更します。".Localized())
+                                );
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "胴".Localized(), _ =>
-                            {
-                                selectedArmorType = Define.ArmorType.Body;
-                                stateMachine.Change(StateChangeInstanceArmor);
-                            });
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "胴防具".Localized(),
+                                _ =>
+                                {
+                                    selectedArmorType = Define.ArmorType.Body;
+                                    stateMachine.Change(StateChangeInstanceArmor);
+                                },
+                                _ => UIViewTips.SetTip("胴に装備する防具を変更します。".Localized())
+                                );
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "戻る".Localized(), _ => stateMachine.Change(StateHomeRoot));
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "戻る".Localized(),
+                                _ => stateMachine.Change(StateHomeRoot),
+                                _ => UIViewTips.SetTip("前のメニューに戻ります。".Localized())
+                                );
                         },
                     },
                     0
@@ -324,6 +348,7 @@ namespace MH3
                     InputSprite.GetTag(inputController.Actions.UI.Cancel),
                     InputSprite.GetTag(inputController.Actions.UI.Description)
                     ).Localized(), scope);
+                UIViewTips.SetTip("装備する武器を選択してください。".Localized());
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     instanceWeapons
@@ -414,6 +439,7 @@ namespace MH3
                     InputSprite.GetTag(inputController.Actions.UI.Cancel),
                     InputSprite.GetTag(inputController.Actions.UI.Description)
                     ).Localized(), scope);
+                UIViewTips.SetTip("装備する防具を選択してください。".Localized());
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     instanceArmors
@@ -496,38 +522,60 @@ namespace MH3
                     {
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "武器".Localized(), _ =>
-                            {
-                                stateMachine.Change(StateRemoveInstanceWeapon);
-                            });
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "武器".Localized(),
+                                _ => stateMachine.Change(StateRemoveInstanceWeapon),
+                                _ => UIViewTips.SetTip("所持している武器を削除します。".Localized())
+                                );
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "頭".Localized(), _ =>
-                            {
-                                selectedArmorType = Define.ArmorType.Head;
-                                stateMachine.Change(StateRemoveInstanceArmor);
-                            });
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "頭防具".Localized(),
+                                _ =>
+                                {
+                                    selectedArmorType = Define.ArmorType.Head;
+                                    stateMachine.Change(StateRemoveInstanceArmor);
+                                },
+                                _ => UIViewTips.SetTip("所持している頭防具を削除します。".Localized())
+                                );
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "腕".Localized(), _ =>
-                            {
-                                selectedArmorType = Define.ArmorType.Arms;
-                                stateMachine.Change(StateRemoveInstanceArmor);
-                            });
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "腕防具".Localized(),
+                                _ =>
+                                {
+                                    selectedArmorType = Define.ArmorType.Arms;
+                                    stateMachine.Change(StateRemoveInstanceArmor);
+                                },
+                                _ => UIViewTips.SetTip("所持している腕防具を削除します。".Localized())
+                                );
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "胴".Localized(), _ =>
-                            {
-                                selectedArmorType = Define.ArmorType.Body;
-                                stateMachine.Change(StateRemoveInstanceArmor);
-                            });
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "胴防具".Localized(),
+                                _ =>
+                                {
+                                    selectedArmorType = Define.ArmorType.Body;
+                                    stateMachine.Change(StateRemoveInstanceArmor);
+                                },
+                                _ => UIViewTips.SetTip("所持している胴防具を削除します。".Localized())
+                                );
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "戻る".Localized(), _ => stateMachine.Change(StateHomeRoot));
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "戻る".Localized(),
+                                _ => stateMachine.Change(StateHomeRoot),
+                                _ => UIViewTips.SetTip("前のメニューに戻ります。".Localized())
+                                );
                         },
                     },
                     0
@@ -546,6 +594,7 @@ namespace MH3
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
                 var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
+                UIViewTips.SetTip("削除する武器を選択してください。".Localized());
                 CancellationDisposable dialogScope = null;
                 Selectable tempSelection = null;
                 HKUIDocument list = null;
@@ -650,6 +699,7 @@ namespace MH3
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var instanceArmorView = UnityEngine.Object.Instantiate(instanceArmorViewDocumentPrefab);
                 var instanceArmorSequences = instanceArmorView.Q<SequencesMonoBehaviour>("Sequences");
+                UIViewTips.SetTip("削除する防具を選択してください。".Localized());
                 CancellationDisposable dialogScope = null;
                 Selectable tempSelection = null;
                 HKUIDocument list = null;
@@ -774,6 +824,7 @@ namespace MH3
                     InputSprite.GetTag(inputController.Actions.UI.Cancel),
                     InputSprite.GetTag(inputController.Actions.UI.Description)
                     ).Localized(), scope);
+                UIViewTips.SetTip("スキルコアを装着する武器を選択してください。".Localized());
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     instanceWeapons
@@ -854,6 +905,7 @@ namespace MH3
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var instanceSkillCoreView = UnityEngine.Object.Instantiate(instanceSkillCoreViewDocumentPrefab);
                 var instanceSkillCoreSequences = instanceSkillCoreView.Q<SequencesMonoBehaviour>("Sequences");
+                UIViewTips.SetTip("削除するスキルコアを選択してください。".Localized());
                 CancellationDisposable dialogScope = null;
                 HKUIDocument list = null;
                 CreateList();
@@ -982,6 +1034,7 @@ namespace MH3
                 var instanceSkillCoreView = UnityEngine.Object.Instantiate(instanceSkillCoreViewDocumentPrefab);
                 var instanceSkillCoreSequences = instanceSkillCoreView.Q<SequencesMonoBehaviour>("Sequences");
                 var instanceSkillCores = TinyServiceLocator.Resolve<UserData>().InstanceSkillCores;
+                UIViewTips.SetTip("装着するスキルコアを選択してください。".Localized());
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     instanceSkillCores
@@ -1089,6 +1142,7 @@ namespace MH3
                             },
                             _ =>
                             {
+                                UIViewTips.SetTip("マスターボリューム、BGM、効果音の音量設定を変更します。".Localized());
                                 CreateOptionsDocument(optionsSoundsDocumentPrefab);
                                 var saveData = TinyServiceLocator.Resolve<SaveData>();
                                 optionsDocument
@@ -1119,7 +1173,11 @@ namespace MH3
                                     optionsListDocument.DestroySafe();
                                     stateMachine.Change(StateHomeRoot);
                                 },
-                                _ => optionsDocument.DestroySafe()
+                                _ =>
+                                {
+                                    UIViewTips.SetTip("前のメニューに戻ります。".Localized());
+                                    optionsDocument.DestroySafe();
+                                }
                             );
                         },
                         },
@@ -1177,8 +1235,20 @@ namespace MH3
                     bgmVolumeSelectable,
                     sfxVolumeSelectable,
                 }.SetNavigationVertical();
-                masterVolumeSelectable.Select();
 
+                masterVolumeSelectable.OnSelectAsObservable()
+                    .Subscribe(_ => UIViewTips.SetTip("マスターボリュームを変更します。".Localized()))
+                    .AddTo(scope);
+
+                bgmVolumeSelectable.OnSelectAsObservable()
+                    .Subscribe(_ => UIViewTips.SetTip("BGMの音量を変更します。".Localized()))
+                    .AddTo(scope);
+
+                sfxVolumeSelectable.OnSelectAsObservable()
+                    .Subscribe(_ => UIViewTips.SetTip("効果音の音量を変更します。".Localized()))
+                    .AddTo(scope);
+
+                masterVolumeSelectable.Select();
                 masterVolumeSlider.value = saveData.SystemData.MasterVolume;
                 bgmVolumeSlider.value = saveData.SystemData.BgmVolume;
                 sfxVolumeSlider.value = saveData.SystemData.SfxVolume;
