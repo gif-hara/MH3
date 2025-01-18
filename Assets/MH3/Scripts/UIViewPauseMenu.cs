@@ -75,6 +75,7 @@ namespace MH3
                 pauseMenuScope.Dispose();
                 stateMachine.Dispose();
                 TinyServiceLocator.Resolve<GameEvents>().OnEndPauseMenu.OnNext(Unit.Default);
+                UIViewTips.Close();
             }
 
             async UniTask StateHomeRoot(CancellationToken scope)
@@ -85,52 +86,72 @@ namespace MH3
                 var listElements = new List<Action<HKUIDocument>>();
                 listElements.Add(document =>
                 {
-                    UIViewList.ApplyAsSimpleElement(document, "クエスト選択".Localized(), _ => stateMachine.Change(StateSelectQuest));
+                    UIViewList.ApplyAsSimpleElement(
+                        document,
+                        "クエスト選択".Localized(),
+                        _ => stateMachine.Change(StateSelectQuest),
+                        _ => UIViewTips.SetTip("敵スライム君と戦うクエストを選択します。".Localized())
+                        );
                 });
                 listElements.Add(document =>
                 {
-                    UIViewList.ApplyAsSimpleElement(document, "装備変更".Localized(), _ =>
-                    {
-                        stateMachine.Change(StateChangeEquipmentTypeRoot);
-                    });
-                });
-                if (userData.AvailableContents.Contains(AvailableContents.Key.AcquireInstanceSkillCore))
-                {
-                    listElements.Add(document =>
-                    {
-                        UIViewList.ApplyAsSimpleElement(document, "スキルコア装着".Localized(), _ =>
-                        {
-                            stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon);
-                        });
-                    });
-                }
-                listElements.Add(document =>
-                {
-                    UIViewList.ApplyAsSimpleElement(document, "装備削除".Localized(), _ =>
-                    {
-                        stateMachine.Change(StateRemoveEquipment);
-                    });
+                    UIViewList.ApplyAsSimpleElement(
+                        document,
+                        "装備変更".Localized(),
+                        _ => stateMachine.Change(StateChangeEquipmentTypeRoot),
+                        _ => UIViewTips.SetTip("武器や防具を変更します。".Localized())
+                        );
                 });
                 if (userData.AvailableContents.Contains(AvailableContents.Key.AcquireInstanceSkillCore))
                 {
                     listElements.Add(document =>
                     {
-                        UIViewList.ApplyAsSimpleElement(document, "スキルコア削除".Localized(), _ =>
-                        {
-                            stateMachine.Change(StateRemoveInstanceSkillCore);
-                        });
+                        UIViewList.ApplyAsSimpleElement(
+                            document,
+                            "スキルコア装着".Localized(),
+                            _ => stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon),
+                            _ => UIViewTips.SetTip("武器にスキルコアを装着します。".Localized())
+                            );
                     });
                 }
                 listElements.Add(document =>
                 {
-                    UIViewList.ApplyAsSimpleElement(document, "オプション".Localized(), _ =>
+                    UIViewList.ApplyAsSimpleElement(
+                        document,
+                        "装備削除".Localized(),
+                        _ => stateMachine.Change(StateRemoveEquipment),
+                        _ => UIViewTips.SetTip("不要な武器や防具を削除します。".Localized())
+                        );
+                });
+                if (userData.AvailableContents.Contains(AvailableContents.Key.AcquireInstanceSkillCore))
+                {
+                    listElements.Add(document =>
                     {
-                        stateMachine.Change(StateOptionsRoot);
+                        UIViewList.ApplyAsSimpleElement(
+                            document,
+                            "スキルコア削除".Localized(),
+                            _ => stateMachine.Change(StateRemoveInstanceSkillCore),
+                            _ => UIViewTips.SetTip("不要なスキルコアを削除します。".Localized())
+                            );
                     });
+                }
+                listElements.Add(document =>
+                {
+                    UIViewList.ApplyAsSimpleElement(
+                        document,
+                        "オプション".Localized(),
+                        _ => stateMachine.Change(StateOptionsRoot),
+                        _ => UIViewTips.SetTip("ゲームの設定を変更します。".Localized())
+                        );
                 });
                 listElements.Add(document =>
                 {
-                    UIViewList.ApplyAsSimpleElement(document, "閉じる".Localized(), _ => pauseMenuScope.Dispose());
+                    UIViewList.ApplyAsSimpleElement(
+                        document,
+                        "閉じる".Localized(),
+                        _ => pauseMenuScope.Dispose(),
+                        _ => UIViewTips.SetTip("ポーズメニューを閉じます。".Localized())
+                        );
                 });
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
@@ -164,15 +185,25 @@ namespace MH3
                     {
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "ホームに戻る".Localized(), _ =>
-                            {
-                                gameSceneController.SetupHomeQuestAsync();
-                                pauseMenuScope.Dispose();
-                            });
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "ホームに戻る".Localized(),
+                                _ =>
+                                {
+                                    gameSceneController.SetupHomeQuestAsync();
+                                    pauseMenuScope.Dispose();
+                                },
+                                _ => UIViewTips.SetTip("クエストをあきらめてホームに戻ります。".Localized())
+                                );
                         },
                         document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, "閉じる".Localized(), _ => pauseMenuScope.Dispose());
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "閉じる".Localized(),
+                                _ => pauseMenuScope.Dispose(),
+                                _ => UIViewTips.SetTip("ポーズメニューを閉じます。".Localized())
+                                );
                         },
                     },
                     0
