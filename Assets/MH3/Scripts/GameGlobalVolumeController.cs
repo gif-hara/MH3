@@ -26,7 +26,8 @@ namespace MH3
                     t.takeDamageAnimationScope = new CancellationDisposable();
                     LMotion.Create(1.0f, 0.0f, t.takeDamageDuration)
                         .Bind(x => takeDamageVolume.weight = x)
-                        .ToUniTask(cancellationToken: t.takeDamageAnimationScope.Token);
+                        .ToUniTask(cancellationToken: t.takeDamageAnimationScope.Token)
+                        .Forget();
                 });
         }
     }

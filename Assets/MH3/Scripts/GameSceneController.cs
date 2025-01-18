@@ -39,6 +39,9 @@ namespace MH3
         private MaterialManager materialManagerPrefab;
 
         [SerializeField]
+        private GameGlobalVolumeController gameGlobalVolumeControllerPrefab;
+
+        [SerializeField]
         private string playerName;
 
         [SerializeField]
@@ -156,6 +159,7 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(uiViewInputGuide, destroyCancellationToken).Forget();
             var uiViewTips = new UIViewTips(tipsDocumentPrefab, destroyCancellationToken);
             TinyServiceLocator.RegisterAsync(uiViewTips, destroyCancellationToken).Forget();
+            var gameGlobalVolumeController = Instantiate(gameGlobalVolumeControllerPrefab);
             var containsSaveData = SaveSystem.Contains(SaveData.Path);
             var saveData = containsSaveData ? SaveSystem.Load<SaveData>(SaveData.Path) : new SaveData();
             if (!containsSaveData)
@@ -184,6 +188,7 @@ namespace MH3
             TinyServiceLocator.RegisterAsync(new UIViewSimpleDialog(simpleDialogDocumentPrefab), destroyCancellationToken).Forget();
             var playerSpec = masterData.ActorSpecs.Get(playerActorSpecId);
             player = playerSpec.Spawn(Vector3.zero, Quaternion.identity);
+            gameGlobalVolumeController.BeginObserves(player);
             player.SpecController.ActorName = playerName;
             player.BehaviourController.Begin(playerSpec.Behaviour).Forget();
             player.SpecController.ChangeInstanceWeapon(userData.GetEquippedInstanceWeapon());
