@@ -370,6 +370,7 @@ namespace MH3
 
             async UniTask StateChangeInstanceArmor(CancellationToken scope)
             {
+                SetHeaderText("防具変更".Localized());
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var instanceArmorView = UnityEngine.Object.Instantiate(instanceArmorViewDocumentPrefab);
                 var instanceArmorSequences = instanceArmorView.Q<SequencesMonoBehaviour>("Sequences");
@@ -538,6 +539,7 @@ namespace MH3
                         instanceWeapons
                             .Select(x => new Action<HKUIDocument>(document =>
                             {
+                                CancellationTokenSource selectScope = null;
                                 UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.LocalizedName, async _ =>
                                 {
                                     tempSelection = document.Q<Selectable>("Button");
@@ -567,7 +569,39 @@ namespace MH3
                                     var container = new Container();
                                     container.Register("InstanceWeapon", x);
                                     instanceWeaponSequences.PlayAsync(container, scope).Forget();
-                                });
+                                    selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                    var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs;
+                                    inputController.Actions.UI.Description
+                                        .OnPerformedAsObservable()
+                                        .Subscribe(_ =>
+                                        {
+                                            termDescriptionElements = new List<UIViewTermDescription.Element>
+                                            {
+                                                new(x.WeaponSpec.WeaponType.GetTermDescriptionSpec()),
+                                                new(termDescriptionSpecs.Get("Parameter")),
+                                            };
+                                            if (x.InstanceSkillCoreIds.Count > 0)
+                                            {
+                                                termDescriptionElements.Add(new(termDescriptionSpecs.Get("Skill")));
+                                                x.InstanceSkillCores
+                                                    .SelectMany(y => y.Skills)
+                                                    .Select(y => y.SkillType)
+                                                    .Distinct()
+                                                    .OrderBy(y => y)
+                                                    .ToList()
+                                                    .ForEach(y => termDescriptionElements.Add(new(y.GetTermDescriptionSpec())));
+                                            }
+                                            onEndTermDescriptionNextState = StateRemoveInstanceWeapon;
+                                            stateMachine.Change(StateTermDescription);
+                                        })
+                                        .RegisterTo(selectScope.Token);
+                                },
+                                _ =>
+                                {
+                                    selectScope?.Cancel();
+                                    selectScope?.Dispose();
+                                }
+                                );
                             })),
                         0
                     );
@@ -608,10 +642,15 @@ namespace MH3
                     list = UIViewList.CreateWithPages(
                         listDocumentPrefab,
                         userData.InstanceArmors
+                            .Where(x => userData.GetEquippedInstanceArmor(selectedArmorType)?.InstanceId != x.InstanceId)
                             .Where(x => x.ArmorSpec.ArmorType == selectedArmorType)
                             .Select(x => new Action<HKUIDocument>(document =>
                             {
-                                UIViewList.ApplyAsSimpleElement(document, x.ArmorSpec.LocalizedName, async _ =>
+                                CancellationTokenSource selectScope = null;
+                                var header = userData.GetEquippedInstanceArmor(selectedArmorType)?.InstanceId == x.InstanceId
+                                    ? $"[E] {x.ArmorSpec.LocalizedName}"
+                                    : x.ArmorSpec.LocalizedName;
+                                UIViewList.ApplyAsSimpleElement(document, header, async _ =>
                                 {
                                     tempSelection = document.Q<Selectable>("Button");
                                     dialogScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
@@ -647,7 +686,38 @@ namespace MH3
                                     var container = new Container();
                                     container.Register("InstanceArmor", x);
                                     instanceArmorSequences.PlayAsync(container, scope).Forget();
-                                });
+                                    selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                    var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs;
+                                    inputController.Actions.UI.Description
+                                        .OnPerformedAsObservable()
+                                        .Subscribe(_ =>
+                                        {
+                                            termDescriptionElements = new List<UIViewTermDescription.Element>
+                                            {
+                                                new(termDescriptionSpecs.Get("Armor")),
+                                                new(termDescriptionSpecs.Get("Parameter")),
+                                            };
+                                            if (x.Skills.Count > 0)
+                                            {
+                                                termDescriptionElements.Add(new(termDescriptionSpecs.Get("Skill")));
+                                                x.Skills
+                                                    .Select(y => y.SkillType)
+                                                    .Distinct()
+                                                    .OrderBy(y => y)
+                                                    .ToList()
+                                                    .ForEach(y => termDescriptionElements.Add(new(y.GetTermDescriptionSpec())));
+                                            }
+                                            onEndTermDescriptionNextState = StateRemoveInstanceArmor;
+                                            stateMachine.Change(StateTermDescription);
+                                        })
+                                        .RegisterTo(selectScope.Token);
+                                },
+                                _ =>
+                                {
+                                    selectScope?.Cancel();
+                                    selectScope?.Dispose();
+                                }
+                                );
                             })),
                         0
                     );
@@ -768,6 +838,7 @@ namespace MH3
                         instanceSkillCores
                             .Select(x => new Action<HKUIDocument>(document =>
                             {
+                                CancellationTokenSource selectScope = null;
                                 var header = x.SkillCoreSpec.LocalizedName;
                                 UIViewList.ApplyAsSimpleElement(document, header, async _ =>
                                 {
@@ -824,7 +895,37 @@ namespace MH3
                                     var container = new Container();
                                     container.Register("InstanceSkillCore", x);
                                     instanceSkillCoreSequences.PlayAsync(container, scope).Forget();
-                                });
+                                    selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                    var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs;
+                                    inputController.Actions.UI.Description
+                                        .OnPerformedAsObservable()
+                                        .Subscribe(_ =>
+                                        {
+                                            termDescriptionElements = new List<UIViewTermDescription.Element>
+                                            {
+                                                new(termDescriptionSpecs.Get("SkillCore")),
+                                            };
+                                            if (x.Skills.Count > 0)
+                                            {
+                                                termDescriptionElements.Add(new(termDescriptionSpecs.Get("Skill")));
+                                                x.Skills
+                                                    .Select(y => y.SkillType)
+                                                    .Distinct()
+                                                    .OrderBy(y => y)
+                                                    .ToList()
+                                                    .ForEach(y => termDescriptionElements.Add(new(y.GetTermDescriptionSpec())));
+                                            }
+                                            onEndTermDescriptionNextState = StateRemoveInstanceSkillCore;
+                                            stateMachine.Change(StateTermDescription);
+                                        })
+                                        .RegisterTo(selectScope.Token);
+                                },
+                                _ =>
+                                {
+                                    selectScope?.Cancel();
+                                    selectScope?.Dispose();
+                                }
+                                );
                             })),
                         0
                     );
@@ -855,6 +956,7 @@ namespace MH3
                         .OrderBy(x => selectedInstanceWeapon.InstanceSkillCoreIds.Contains(x.InstanceId) ? 0 : 1)
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
+                            CancellationTokenSource selectScope = null;
                             var header = selectedInstanceWeapon.InstanceSkillCoreIds.Contains(x.InstanceId)
                                 ? $"[E] {x.SkillCoreSpec.LocalizedName}"
                                 : x.SkillCoreSpec.LocalizedName;
@@ -887,7 +989,37 @@ namespace MH3
                                 var container = new Container();
                                 container.Register("InstanceSkillCore", x);
                                 instanceSkillCoreSequences.PlayAsync(container, scope).Forget();
-                            });
+                                selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs;
+                                inputController.Actions.UI.Description
+                                    .OnPerformedAsObservable()
+                                    .Subscribe(_ =>
+                                    {
+                                        termDescriptionElements = new List<UIViewTermDescription.Element>
+                                        {
+                                                new(termDescriptionSpecs.Get("SkillCore")),
+                                        };
+                                        if (x.Skills.Count > 0)
+                                        {
+                                            termDescriptionElements.Add(new(termDescriptionSpecs.Get("Skill")));
+                                            x.Skills
+                                                .Select(y => y.SkillType)
+                                                .Distinct()
+                                                .OrderBy(y => y)
+                                                .ToList()
+                                                .ForEach(y => termDescriptionElements.Add(new(y.GetTermDescriptionSpec())));
+                                        }
+                                        onEndTermDescriptionNextState = StateAddInstanceSkillCoreSelectSkillCore;
+                                        stateMachine.Change(StateTermDescription);
+                                    })
+                                    .RegisterTo(selectScope.Token);
+                            },
+                                _ =>
+                                {
+                                    selectScope?.Cancel();
+                                    selectScope?.Dispose();
+                                }
+                                );
                         })),
                     0
                 );
