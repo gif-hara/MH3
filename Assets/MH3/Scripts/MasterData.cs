@@ -774,6 +774,8 @@ namespace MH3
 
             public string BehaviourKey;
 
+            public string FlaverText;
+
             public ScriptableSequences InitialStateSequences;
 
             public ScriptableSequences AttackSequences;
