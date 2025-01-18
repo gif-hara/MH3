@@ -662,15 +662,27 @@ namespace MH3
             async UniTask StateAddInstanceSkillCoreSelectInstanceWeapon(CancellationToken scope)
             {
                 SetHeaderText("スキルコア装着".Localized());
+                var userData = TinyServiceLocator.Resolve<UserData>();
                 var instanceWeaponView = UnityEngine.Object.Instantiate(instanceWeaponViewDocumentPrefab);
                 var instanceWeaponSequences = instanceWeaponView.Q<SequencesMonoBehaviour>("Sequences");
                 var instanceWeapons = TinyServiceLocator.Resolve<UserData>().InstanceWeapons.Where(x => x.SkillSlot > 0);
+                uiViewInputGuide.Push(() => string.Format(
+                    "{0}:選択 {1}:決定 {2}:キャンセル {3}:用語説明",
+                    InputSprite.GetTag(inputController.Actions.UI.Navigate),
+                    InputSprite.GetTag(inputController.Actions.UI.Submit),
+                    InputSprite.GetTag(inputController.Actions.UI.Cancel),
+                    InputSprite.GetTag(inputController.Actions.UI.Description)
+                    ).Localized(), scope);
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     instanceWeapons
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.LocalizedName, _ =>
+                            CancellationTokenSource selectScope = null;
+                            var header = userData.EquippedInstanceWeaponId == x.InstanceId
+                                ? $"[E] {x.WeaponSpec.LocalizedName}"
+                                : x.WeaponSpec.LocalizedName;
+                            UIViewList.ApplyAsSimpleElement(document, header, _ =>
                             {
                                 if (x.SkillSlot <= 0)
                                 {
@@ -680,12 +692,44 @@ namespace MH3
                                 selectedInstanceWeapon = x;
                                 stateMachine.Change(StateAddInstanceSkillCoreSelectSkillCore);
                             },
-                            _ =>
-                            {
-                                var container = new Container();
-                                container.Register("InstanceWeapon", x);
-                                instanceWeaponSequences.PlayAsync(container, scope).Forget();
-                            });
+                                _ =>
+                                {
+                                    var container = new Container();
+                                    container.Register("InstanceWeapon", x);
+                                    instanceWeaponSequences.PlayAsync(container, scope).Forget();
+                                    selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                    var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs;
+                                    inputController.Actions.UI.Description
+                                        .OnPerformedAsObservable()
+                                        .Subscribe(_ =>
+                                        {
+                                            termDescriptionElements = new List<UIViewTermDescription.Element>
+                                            {
+                                                new(x.WeaponSpec.WeaponType.GetTermDescriptionSpec()),
+                                                new(termDescriptionSpecs.Get("Parameter")),
+                                            };
+                                            if (x.InstanceSkillCoreIds.Count > 0)
+                                            {
+                                                termDescriptionElements.Add(new(termDescriptionSpecs.Get("Skill")));
+                                                x.InstanceSkillCores
+                                                    .SelectMany(y => y.Skills)
+                                                    .Select(y => y.SkillType)
+                                                    .Distinct()
+                                                    .OrderBy(y => y)
+                                                    .ToList()
+                                                    .ForEach(y => termDescriptionElements.Add(new(y.GetTermDescriptionSpec())));
+                                            }
+                                            onEndTermDescriptionNextState = StateAddInstanceSkillCoreSelectInstanceWeapon;
+                                            stateMachine.Change(StateTermDescription);
+                                        })
+                                        .RegisterTo(selectScope.Token);
+                                },
+                                _ =>
+                                {
+                                    selectScope?.Cancel();
+                                    selectScope?.Dispose();
+                                }
+                                );
                         })),
                     0
                 );
