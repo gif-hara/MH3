@@ -947,6 +947,7 @@ namespace MH3
 
             async UniTask StateAddInstanceSkillCoreSelectSkillCore(CancellationToken scope)
             {
+                SetHeaderText("スキルコア装着".Localized());
                 var instanceSkillCoreView = UnityEngine.Object.Instantiate(instanceSkillCoreViewDocumentPrefab);
                 var instanceSkillCoreSequences = instanceSkillCoreView.Q<SequencesMonoBehaviour>("Sequences");
                 var instanceSkillCores = TinyServiceLocator.Resolve<UserData>().InstanceSkillCores;
@@ -1193,6 +1194,7 @@ namespace MH3
 
             async UniTask StateTermDescription(CancellationToken scope)
             {
+                SetHeaderText("用語説明".Localized());
                 await UIViewTermDescription.OpenAsync(
                     listDocumentPrefab,
                     termDescriptionDocumentPrefab,
