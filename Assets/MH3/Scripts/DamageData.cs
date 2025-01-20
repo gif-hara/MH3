@@ -12,12 +12,18 @@ namespace MH3
 
         public bool IsCritical { get; }
 
-        public DamageData(int damage, int flinchDamage, Vector3 damagePosition, bool isCritical)
+        public Define.GuardResult GuardResult { get; }
+
+        public bool ConsumedSuperArmor { get; }
+
+        public DamageData(int damage, int flinchDamage, Vector3 damagePosition, bool isCritical, Define.GuardResult guardResult, bool consumedSuperArmor)
         {
             Damage = damage;
             FlinchDamage = flinchDamage;
             DamagePosition = damagePosition;
             IsCritical = isCritical;
+            GuardResult = guardResult;
+            ConsumedSuperArmor = consumedSuperArmor;
         }
     }
 }
