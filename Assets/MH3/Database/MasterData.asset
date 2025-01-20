@@ -3219,6 +3219,30 @@ MonoBehaviour:
       HitCameraImpulseSourceKey: VerySmall
       HitAdditionalSequencesKeyPlayer: 
       HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Shield.Basic.7
+      Power: 35
+      FlinchDamage: 14
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: VerySmall
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
     - Id: Shield.JustGuard.1
       Power: 35
       FlinchDamage: 20
@@ -3994,7 +4018,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 925
       Stamina: 9999
-      Attack: 120
+      Attack: 117
       PhysicalDamageCutRate: 0.01
       FireDamageCutRate: 0.01
       WaterDamageCutRate: 0.01
@@ -4042,7 +4066,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 850
       Stamina: 9999
-      Attack: 108
+      Attack: 105
       PhysicalDamageCutRate: 0.01
       FireDamageCutRate: 0.01
       WaterDamageCutRate: 0.21
@@ -4090,7 +4114,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 1075
       Stamina: 9999
-      Attack: 132
+      Attack: 128
       PhysicalDamageCutRate: 0.01
       FireDamageCutRate: 0.21
       WaterDamageCutRate: 0.01
@@ -4138,7 +4162,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 1187
       Stamina: 9999
-      Attack: 144
+      Attack: 136
       PhysicalDamageCutRate: 0.07
       FireDamageCutRate: 0.12
       WaterDamageCutRate: 0.12
@@ -4186,7 +4210,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 1156
       Stamina: 9999
-      Attack: 144
+      Attack: 136
       PhysicalDamageCutRate: 0.02
       FireDamageCutRate: 0.02
       WaterDamageCutRate: 0.02
@@ -4234,7 +4258,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 1062
       Stamina: 9999
-      Attack: 129
+      Attack: 123
       PhysicalDamageCutRate: 0.02
       FireDamageCutRate: 0.02
       WaterDamageCutRate: 0.22
@@ -4282,7 +4306,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 1343
       Stamina: 9999
-      Attack: 158
+      Attack: 150
       PhysicalDamageCutRate: 0.02
       FireDamageCutRate: 0.22
       WaterDamageCutRate: 0.02
@@ -4330,7 +4354,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 1445
       Stamina: 9999
-      Attack: 172
+      Attack: 160
       PhysicalDamageCutRate: 0.03
       FireDamageCutRate: 0.03
       WaterDamageCutRate: 0.03
@@ -4378,7 +4402,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 1328
       Stamina: 9999
-      Attack: 155
+      Attack: 144
       PhysicalDamageCutRate: 0.03
       FireDamageCutRate: 0.03
       WaterDamageCutRate: 0.23
@@ -4426,7 +4450,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 1679
       Stamina: 9999
-      Attack: 190
+      Attack: 176
       PhysicalDamageCutRate: 0.03
       FireDamageCutRate: 0.23
       WaterDamageCutRate: 0.03
@@ -4474,7 +4498,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 1484
       Stamina: 9999
-      Attack: 172
+      Attack: 160
       PhysicalDamageCutRate: 0.08
       FireDamageCutRate: 0.13
       WaterDamageCutRate: 0.13
@@ -4522,7 +4546,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 1623
       Stamina: 9999
-      Attack: 217
+      Attack: 196
       PhysicalDamageCutRate: 0.09
       FireDamageCutRate: 0.14
       WaterDamageCutRate: 0.14
@@ -4570,7 +4594,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 1806
       Stamina: 9999
-      Attack: 207
+      Attack: 187
       PhysicalDamageCutRate: 0.04
       FireDamageCutRate: 0.04
       WaterDamageCutRate: 0.04
@@ -4618,7 +4642,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 1660
       Stamina: 9999
-      Attack: 186
+      Attack: 168
       PhysicalDamageCutRate: 0.04
       FireDamageCutRate: 0.04
       WaterDamageCutRate: 0.24
@@ -4666,7 +4690,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 2099
       Stamina: 9999
-      Attack: 228
+      Attack: 206
       PhysicalDamageCutRate: 0.04
       FireDamageCutRate: 0.24
       WaterDamageCutRate: 0.04
@@ -4714,7 +4738,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 1855
       Stamina: 9999
-      Attack: 207
+      Attack: 187
       PhysicalDamageCutRate: 0.09
       FireDamageCutRate: 0.14
       WaterDamageCutRate: 0.14
@@ -4762,7 +4786,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 2258
       Stamina: 9999
-      Attack: 248
+      Attack: 219
       PhysicalDamageCutRate: 0.05
       FireDamageCutRate: 0.05
       WaterDamageCutRate: 0.05
@@ -4810,7 +4834,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 2075
       Stamina: 9999
-      Attack: 223
+      Attack: 197
       PhysicalDamageCutRate: 0.05
       FireDamageCutRate: 0.05
       WaterDamageCutRate: 0.25
@@ -4858,7 +4882,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 2624
       Stamina: 9999
-      Attack: 273
+      Attack: 241
       PhysicalDamageCutRate: 0.05
       FireDamageCutRate: 0.25
       WaterDamageCutRate: 0.05
@@ -4906,7 +4930,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 2319
       Stamina: 9999
-      Attack: 248
+      Attack: 219
       PhysicalDamageCutRate: 0.1
       FireDamageCutRate: 0.15
       WaterDamageCutRate: 0.15
@@ -4954,7 +4978,7 @@ MonoBehaviour:
       ActorType: 1
       HitPoint: 2029
       Stamina: 9999
-      Attack: 261
+      Attack: 230
       PhysicalDamageCutRate: 0.1
       FireDamageCutRate: 0.15
       WaterDamageCutRate: 0.15
@@ -5000,17 +5024,17 @@ MonoBehaviour:
     - Id: 20901
       Name: "\u4F8D\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
-      HitPoint: 2822
+      HitPoint: 3528
       Stamina: 9999
-      Attack: 298
-      PhysicalDamageCutRate: 0.06
-      FireDamageCutRate: 0.06
-      WaterDamageCutRate: 0.06
-      GrassDamageCutRate: 0.26
-      FlinchThreshold: 215
-      PoisonThreshold: 177
-      ParalysisThreshold: 167
-      CollapseThreshold: 187
+      Attack: 300
+      PhysicalDamageCutRate: 0.07
+      FireDamageCutRate: 0.07
+      WaterDamageCutRate: 0.07
+      GrassDamageCutRate: 0.27
+      FlinchThreshold: 254
+      PoisonThreshold: 194
+      ParalysisThreshold: 182
+      CollapseThreshold: 207
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -5044,6 +5068,246 @@ MonoBehaviour:
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 3f43d0dbd817c974a88930c72ab359fa, type: 3}
+      Behaviour: {fileID: 0}
+    - Id: 21001
+      Name: "\u30CF\u30ED\u30A6\u30A3\u30F3\u30B9\u30E9\u30A4\u30E0"
+      ActorType: 1
+      HitPoint: 4410
+      Stamina: 9999
+      Attack: 351
+      PhysicalDamageCutRate: 0.08
+      FireDamageCutRate: 0.08
+      WaterDamageCutRate: 0.08
+      GrassDamageCutRate: 0.28
+      FlinchThreshold: 300
+      PoisonThreshold: 214
+      ParalysisThreshold: 199
+      CollapseThreshold: 230
+      PoisonDuration: 30
+      ParalysisDuration: 10
+      CollapseDuration: 30
+      MoveSpeed: 7
+      RotationSpeed: 10
+      WeaponId: 20105
+      ArmorHeadId: 10114
+      ArmorArmsId: 10214
+      ArmorBodyId: 10314
+      VisibleStatusUI: 1
+      RecoveryCommandCount: 0
+      InitialStateKey: Idle.Default
+      AttackSequencesKey: Attack.Default
+      FlinchSequencesKey: Flinch.Default
+      DodgeSequencesKey: Dodge.Default
+      GuardSequencesKey: Guard.Default
+      SuccessJustGuardSequencesKey: SuccessJustGuard.Default
+      SuccessGuardSequencesKey: SuccessGuard.Default
+      DeadSequencesKey: Dead.Default
+      RecoverySequencesKey: Recovery.Default
+      ActorPrefabKey: Enemy.Green
+      BehaviourKey: Enemy.20801
+      FlaverText: "\u304B\u307C\u3061\u3083\u7551\u3067\u904A\u3093\u3067\u3044\u305F\u3089\u3001\u3044\u3064\u306E\u9593\u306B\u304B\u30CF\u30ED\u30A6\u30A3\u30F3\u6C17\u5206\u306B\u306A\u3063\u305F\u30B9\u30E9\u30A4\u30E0\u541B\u3002\u4F53\u306E\u4E2D\u306B\u306F\u5C0F\u3055\u306A\u304A\u83D3\u5B50\u304C\u3044\u3063\u3071\u3044\u8A70\u307E\u3063\u3066\u3044\u3066\u3001\u5B50\u4F9B\u305F\u3061\u306B\u300C\u30C8\u30EA\u30C3\u30AF\u30FB\u30AA\u30A2\u30FB\u30C8\u30EA\u30FC\u30C8\uFF01\u300D\u3068\u5143\u6C17\u3088\u304F\u914D\u308B\u3002\u591C\u306B\u306A\u308B\u3068\u6708\u660E\u304B\u308A\u306E\u4E0B\u3067\u304A\u5316\u3051\u3068\u4E00\u7DD2\u306B\u8E0A\u308A\u660E\u304B\u3059\u306E\u304C\u6052\u4F8B\u884C\u4E8B\u3002"
+      InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+      AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
+      FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
+      DodgeSequences: {fileID: 11400000, guid: 382dc8b38b611744f879c2c1942dcdde, type: 2}
+      GuardSequences: {fileID: 11400000, guid: 00f83183459bd704a9af1dcc204da93c, type: 2}
+      SuccessJustGuardSequences: {fileID: 11400000, guid: 94d370458b442564993fb0b876ce15ae, type: 2}
+      SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
+      DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
+      RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
+      ActorPrefab: {fileID: 963923653530722458, guid: 3f43d0dbd817c974a88930c72ab359fa, type: 3}
+      Behaviour: {fileID: 0}
+    - Id: 21002
+      Name: "\u30D5\u30A7\u30A2\u30EA\u30FC\u30B9\u30E9\u30A4\u30E0"
+      ActorType: 1
+      HitPoint: 4053
+      Stamina: 9999
+      Attack: 316
+      PhysicalDamageCutRate: 0.08
+      FireDamageCutRate: 0.08
+      WaterDamageCutRate: 0.28
+      GrassDamageCutRate: 0.08
+      FlinchThreshold: 255
+      PoisonThreshold: 214
+      ParalysisThreshold: 199
+      CollapseThreshold: 230
+      PoisonDuration: 30
+      ParalysisDuration: 10
+      CollapseDuration: 30
+      MoveSpeed: 7
+      RotationSpeed: 10
+      WeaponId: 20205
+      ArmorHeadId: 10115
+      ArmorArmsId: 10215
+      ArmorBodyId: 10315
+      VisibleStatusUI: 1
+      RecoveryCommandCount: 0
+      InitialStateKey: Idle.Default
+      AttackSequencesKey: Attack.Default
+      FlinchSequencesKey: Flinch.Default
+      DodgeSequencesKey: Dodge.Default
+      GuardSequencesKey: Guard.Default
+      SuccessJustGuardSequencesKey: SuccessJustGuard.Default
+      SuccessGuardSequencesKey: SuccessGuard.Default
+      DeadSequencesKey: Dead.Default
+      RecoverySequencesKey: Recovery.Default
+      ActorPrefabKey: Enemy.Blue
+      BehaviourKey: Enemy.20802
+      FlaverText: "\u82B1\u7551\u3067\u5996\u7CBE\u305F\u3061\u3068\u51FA\u4F1A\u3044\u3001\u305D\u306E\u9B54\u6CD5\u306E\u7C89\u3092\u6D74\u3073\u305F\u30B9\u30E9\u30A4\u30E0\u541B\u3002\u4F53\u304C\u307B\u3093\u306E\u308A\u8F1D\u304D\u3001\u5468\u56F2\u306B\u5C0F\u3055\u306A\u7FBD\u6839\u306E\u3088\u3046\u306A\u5149\u3092\u632F\u308A\u307E\u304F\u3002\u3069\u3093\u306A\u306B\u6697\u3044\u5834\u6240\u3067\u3082\u660E\u308B\u304F\u7167\u3089\u3059\u529B\u3092\u6301\u3061\u3001\u4EF2\u9593\u306E\u9053\u3092\u5C0E\u304F\u5B58\u5728\u3002\u591C\u306F\u82B1\u306E\u9999\u308A\u306B\u5305\u307E\u308C\u3066\u3001\u5996\u7CBE\u305F\u3061\u3068\u5922\u306E\u4E16\u754C\u3092\u697D\u3057\u3093\u3067\u3044\u308B\u3002"
+      InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+      AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
+      FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
+      DodgeSequences: {fileID: 11400000, guid: 382dc8b38b611744f879c2c1942dcdde, type: 2}
+      GuardSequences: {fileID: 11400000, guid: 00f83183459bd704a9af1dcc204da93c, type: 2}
+      SuccessJustGuardSequences: {fileID: 11400000, guid: 94d370458b442564993fb0b876ce15ae, type: 2}
+      SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
+      DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
+      RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
+      ActorPrefab: {fileID: 963923653530722458, guid: 9b87f1f2f1832244a9f6cecb09fed9b5, type: 3}
+      Behaviour: {fileID: 0}
+    - Id: 21003
+      Name: "\u30AB\u30A6\u30DC\u30FC\u30A4\u30B9\u30E9\u30A4\u30E0"
+      ActorType: 1
+      HitPoint: 5125
+      Stamina: 9999
+      Attack: 386
+      PhysicalDamageCutRate: 0.08
+      FireDamageCutRate: 0.28
+      WaterDamageCutRate: 0.08
+      GrassDamageCutRate: 0.08
+      FlinchThreshold: 375
+      PoisonThreshold: 214
+      ParalysisThreshold: 199
+      CollapseThreshold: 230
+      PoisonDuration: 30
+      ParalysisDuration: 10
+      CollapseDuration: 30
+      MoveSpeed: 7
+      RotationSpeed: 10
+      WeaponId: 20305
+      ArmorHeadId: 10116
+      ArmorArmsId: 10216
+      ArmorBodyId: 10316
+      VisibleStatusUI: 1
+      RecoveryCommandCount: 0
+      InitialStateKey: Idle.Default
+      AttackSequencesKey: Attack.Default
+      FlinchSequencesKey: Flinch.Default
+      DodgeSequencesKey: Dodge.Default
+      GuardSequencesKey: Guard.Default
+      SuccessJustGuardSequencesKey: SuccessJustGuard.Default
+      SuccessGuardSequencesKey: SuccessGuard.Default
+      DeadSequencesKey: Dead.Default
+      RecoverySequencesKey: Recovery.Default
+      ActorPrefabKey: Enemy.Red
+      BehaviourKey: Enemy.20803
+      FlaverText: "\u897F\u90E8\u5287\u306B\u61A7\u308C\u3001\u62FE\u3063\u305F\u30C6\u30F3\u30AC\u30ED\u30F3\u30CF\u30C3\u30C8\u3092\u88AB\u3063\u3066\u30AB\u30A6\u30DC\u30FC\u30A4\u306B\u306A\u308A\u304D\u3063\u305F\u30B9\u30E9\u30A4\u30E0\u541B\u3002\u8352\u91CE\u3092\u3077\u3088\u3077\u3088\u9032\u307F\u306A\u304C\u3089\u3001\u8FF7\u5B50\u306E\u4EF2\u9593\u3092\u52A9\u3051\u308B\u3053\u3068\u304C\u5F97\u610F\u3002\u304A\u6C17\u306B\u5165\u308A\u306E\u30ED\u30FC\u30D7\u3067\u898B\u4E8B\u306A\u6295\u3052\u7E04\u3092\u62AB\u9732\u3057\u3001\u307F\u3093\u306A\u3092\u9A5A\u304B\u305B\u308B\u3053\u3068\u3082\u3002\u591C\u306F\u711A\u304D\u706B\u3092\u56F2\u3093\u3067\u661F\u7A7A\u3092\u898B\u4E0A\u3052\u306A\u304C\u3089\u3001\u81EA\u7531\u306A\u66AE\u3089\u3057\u3092\u6E80\u55AB\u3057\u3066\u3044\u308B\u3002"
+      InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+      AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
+      FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
+      DodgeSequences: {fileID: 11400000, guid: 382dc8b38b611744f879c2c1942dcdde, type: 2}
+      GuardSequences: {fileID: 11400000, guid: 00f83183459bd704a9af1dcc204da93c, type: 2}
+      SuccessJustGuardSequences: {fileID: 11400000, guid: 94d370458b442564993fb0b876ce15ae, type: 2}
+      SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
+      DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
+      RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
+      ActorPrefab: {fileID: 963923653530722458, guid: 91cf57ec130ed9549b50d1572945e85a, type: 3}
+      Behaviour: {fileID: 0}
+    - Id: 21004
+      Name: "\u57F7\u4E8B\u30B9\u30E9\u30A4\u30E0"
+      ActorType: 1
+      HitPoint: 4529
+      Stamina: 9999
+      Attack: 351
+      PhysicalDamageCutRate: 0.13
+      FireDamageCutRate: 0.18
+      WaterDamageCutRate: 0.18
+      GrassDamageCutRate: 0.18
+      FlinchThreshold: 413
+      PoisonThreshold: 214
+      ParalysisThreshold: 199
+      CollapseThreshold: 230
+      PoisonDuration: 30
+      ParalysisDuration: 10
+      CollapseDuration: 30
+      MoveSpeed: 7
+      RotationSpeed: 10
+      WeaponId: 20403
+      ArmorHeadId: 10117
+      ArmorArmsId: 10217
+      ArmorBodyId: 10317
+      VisibleStatusUI: 1
+      RecoveryCommandCount: 0
+      InitialStateKey: Idle.Default
+      AttackSequencesKey: Attack.Default
+      FlinchSequencesKey: Flinch.Default
+      DodgeSequencesKey: Dodge.Default
+      GuardSequencesKey: Guard.Default
+      SuccessJustGuardSequencesKey: SuccessJustGuard.Default
+      SuccessGuardSequencesKey: SuccessGuard.Default
+      DeadSequencesKey: Dead.Default
+      RecoverySequencesKey: Recovery.Default
+      ActorPrefabKey: Enemy.Black
+      BehaviourKey: Enemy.20804
+      FlaverText: "\u53E4\u3044\u5C4B\u6577\u3067\u6383\u9664\u3057\u3066\u3044\u305F\u3089\u3001\u4F4F\u4EBA\u306B\u6C17\u306B\u5165\u3089\u308C\u57F7\u4E8B\u3068\u3057\u3066\u96C7\u308F\u308C\u305F\u30B9\u30E9\u30A4\u30E0\u541B\u3002\u304D\u3061\u3093\u3068\u3057\u305F\u8EAB\u306A\u308A\u3068\u4E01\u5BE7\u306A\u8A00\u8449\u9063\u3044\u3067\u3001\u307F\u3093\u306A\u306B\u7652\u3057\u3092\u4E0E\u3048\u308B\u5B58\u5728\u3002\u304A\u8336\u3092\u6DF9\u308C\u308B\u306E\u304C\u5F97\u610F\u3067\u3001\u7279\u306B\u7D05\u8336\u306E\u9999\u308A\u306B\u306F\u3053\u3060\u308F\u308A\u304C\u3042\u308B\u3002\u591C\u306F\u5C4B\u6577\u306E\u898B\u56DE\u308A\u3092\u3057\u306A\u304C\u3089\u3001\u4F4F\u4EBA\u306E\u5E73\u548C\u3092\u5B88\u308B\u3053\u3068\u306B\u52E4\u3057\u3093\u3067\u3044\u308B\u3002"
+      InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+      AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
+      FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
+      DodgeSequences: {fileID: 11400000, guid: 382dc8b38b611744f879c2c1942dcdde, type: 2}
+      GuardSequences: {fileID: 11400000, guid: 00f83183459bd704a9af1dcc204da93c, type: 2}
+      SuccessJustGuardSequences: {fileID: 11400000, guid: 94d370458b442564993fb0b876ce15ae, type: 2}
+      SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
+      DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
+      RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
+      ActorPrefab: {fileID: 963923653530722458, guid: 07d7ea718d879eb449782c1012233de5, type: 3}
+      Behaviour: {fileID: 0}
+    - Id: 21005
+      Name: "\u8B66\u5BDF\u5B98\u30B9\u30E9\u30A4\u30E0"
+      ActorType: 1
+      HitPoint: 3963
+      Stamina: 9999
+      Attack: 368
+      PhysicalDamageCutRate: 0.13
+      FireDamageCutRate: 0.18
+      WaterDamageCutRate: 0.18
+      GrassDamageCutRate: 0.18
+      FlinchThreshold: 300
+      PoisonThreshold: 214
+      ParalysisThreshold: 199
+      CollapseThreshold: 230
+      PoisonDuration: 30
+      ParalysisDuration: 10
+      CollapseDuration: 30
+      MoveSpeed: 7
+      RotationSpeed: 10
+      WeaponId: 20501
+      ArmorHeadId: 10118
+      ArmorArmsId: 10218
+      ArmorBodyId: 10318
+      VisibleStatusUI: 1
+      RecoveryCommandCount: 0
+      InitialStateKey: Idle.Default
+      AttackSequencesKey: Attack.Default
+      FlinchSequencesKey: Flinch.Default
+      DodgeSequencesKey: Dodge.Default
+      GuardSequencesKey: Guard.Default
+      SuccessJustGuardSequencesKey: SuccessJustGuard.Default
+      SuccessGuardSequencesKey: SuccessGuard.Default
+      DeadSequencesKey: Dead.Default
+      RecoverySequencesKey: Recovery.Default
+      ActorPrefabKey: Enemy.Orange
+      BehaviourKey: Enemy.20805
+      FlaverText: "\u8857\u3067\u62FE\u3063\u305F\u8B66\u5BDF\u30D0\u30C3\u30B8\u3092\u80F8\u306B\u4ED8\u3051\u3001\u6B63\u7FA9\u611F\u306B\u71C3\u3048\u308B\u30B9\u30E9\u30A4\u30E0\u541B\u3002\u3077\u3088\u3077\u3088\u4F53\u3067\u3069\u3093\u306A\u72ED\u3044\u9699\u9593\u306B\u3082\u5165\u308A\u8FBC\u307F\u3001\u4E8B\u4EF6\u3092\u89E3\u6C7A\u3059\u308B\u983C\u3082\u3057\u3044\u5B58\u5728\u3002\u7B1B\u3092\u5439\u3044\u3066\u4EA4\u901A\u6574\u7406\u3092\u3059\u308B\u59FF\u306F\u753A\u306E\u5B50\u4F9B\u305F\u3061\u306B\u3082\u5927\u4EBA\u6C17\u3002\u591C\u306F\u30D1\u30C8\u30ED\u30FC\u30EB\u3092\u7D42\u3048\u305F\u5F8C\u3001\u4EF2\u9593\u3068\u4E00\u7DD2\u306B\u30DB\u30C3\u3068\u4E00\u606F\u3064\u304F\u6642\u9593\u3092\u697D\u3057\u3080\u3002"
+      InitialStateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+      AttackSequences: {fileID: 11400000, guid: 76fb237acd009490c8147cb89a766311, type: 2}
+      FlinchSequences: {fileID: 11400000, guid: da47cb434a71f904a8857f1b2427b29c, type: 2}
+      DodgeSequences: {fileID: 11400000, guid: 382dc8b38b611744f879c2c1942dcdde, type: 2}
+      GuardSequences: {fileID: 11400000, guid: 00f83183459bd704a9af1dcc204da93c, type: 2}
+      SuccessJustGuardSequences: {fileID: 11400000, guid: 94d370458b442564993fb0b876ce15ae, type: 2}
+      SuccessGuardSequences: {fileID: 11400000, guid: aa02fbce63c289841b5dd9cc4ccc08c1, type: 2}
+      DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
+      RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
+      ActorPrefab: {fileID: 0}
       Behaviour: {fileID: 0}
     - Id: 29901
       Name: "\u30C8\u30EC\u30FC\u30CB\u30F3\u30B0\u30B9\u30E9\u30A4\u30E0\u541B"
