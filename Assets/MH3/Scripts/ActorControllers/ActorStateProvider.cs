@@ -29,6 +29,8 @@ namespace MH3.ActorControllers
             OnFlinch,
             OnTakeDamage,
             OnDead,
+            OnBeginAttack,
+            OnEndAttack,
         }
 
         private readonly Actor actor;
@@ -72,6 +74,8 @@ namespace MH3.ActorControllers
                 TriggerType.OnFlinch => actor.SpecController.OnFlinch,
                 TriggerType.OnTakeDamage => actor.SpecController.OnTakeDamage.Select(_ => Unit.Default),
                 TriggerType.OnDead => actor.SpecController.OnDead,
+                TriggerType.OnBeginAttack => actor.AttackController.OnBeginAttack,
+                TriggerType.OnEndAttack => actor.AttackController.OnEndAttack,
                 _ => throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}"),
             };
         }
