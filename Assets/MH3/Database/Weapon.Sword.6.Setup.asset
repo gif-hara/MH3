@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
+  m_Name: Weapon.Sword.6.Setup
+  m_EditorClassIdentifier: 
+  sequences:
+  - rid: 7349438574997012581
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 7349438574997012581
+      type: {class: ActorTriggerObserve, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 7349438574997012582
+        triggerType: 0
+        sequences:
+          rid: -2
+    - rid: 7349438574997012582
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: 
