@@ -8865,6 +8865,21 @@ MonoBehaviour:
       ModelDataId: Body.13
       ArmorType: 2
       ModelData: {fileID: 11400000, guid: ebeeb8508245891449353dec7cbd387d, type: 2}
+    - Id: 10114
+      Name: "\u5FDC\u63F4\u56E3\u306F\u3061\u307E\u304D"
+      ModelDataId: Head.14
+      ArmorType: 0
+      ModelData: {fileID: 11400000, guid: 66b3151319c57e846b71a078ac47397f, type: 2}
+    - Id: 10214
+      Name: "\u5FDC\u63F4\u56E3\u306E\u8ECD\u624B"
+      ModelDataId: Arms.14
+      ArmorType: 1
+      ModelData: {fileID: 11400000, guid: 6e8d68285ada53f44bf7f52c34c75439, type: 2}
+    - Id: 10314
+      Name: "\u5FDC\u63F4\u56E3\u5B66\u30E9\u30F3"
+      ModelDataId: Body.14
+      ArmorType: 2
+      ModelData: {fileID: 11400000, guid: bdb3b1a0946d59846989330c40c6c9e7, type: 2}
     - Id: 20101
       Name: "\u6575\u9632\u5177\uFF08\u982D\uFF09"
       ModelDataId: Head.1
@@ -9221,6 +9236,36 @@ MonoBehaviour:
         RareType: 0
         Weight: 100
       - Id: 10313
+        Defense: 17
+        RareType: 0
+        Weight: 100
+    - Key: 10114
+      Value:
+      - Id: 10114
+        Defense: 15
+        RareType: 0
+        Weight: 100
+      - Id: 10114
+        Defense: 17
+        RareType: 0
+        Weight: 100
+    - Key: 10214
+      Value:
+      - Id: 10214
+        Defense: 15
+        RareType: 0
+        Weight: 100
+      - Id: 10214
+        Defense: 17
+        RareType: 0
+        Weight: 100
+    - Key: 10314
+      Value:
+      - Id: 10314
+        Defense: 15
+        RareType: 0
+        Weight: 100
+      - Id: 10314
         Defense: 17
         RareType: 0
         Weight: 100
@@ -9613,6 +9658,36 @@ MonoBehaviour:
         RareType: 0
         Weight: 100
       - Id: 10313
+        Count: 3
+        RareType: 0
+        Weight: 100
+    - Key: 10114
+      Value:
+      - Id: 10114
+        Count: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10114
+        Count: 3
+        RareType: 0
+        Weight: 100
+    - Key: 10214
+      Value:
+      - Id: 10214
+        Count: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10214
+        Count: 3
+        RareType: 0
+        Weight: 100
+    - Key: 10314
+      Value:
+      - Id: 10314
+        Count: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10314
         Count: 3
         RareType: 0
         Weight: 100
@@ -10488,6 +10563,132 @@ MonoBehaviour:
         Weight: 100
       - Id: 10313
         SkillType: 8
+        Level: 2
+        RareType: 0
+        Weight: 100
+    - Key: 10114
+      Value:
+      - Id: 10114
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10114
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10114
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10114
+        SkillType: 3
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10114
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10114
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10114
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10114
+        SkillType: 3
+        Level: 2
+        RareType: 0
+        Weight: 100
+    - Key: 10214
+      Value:
+      - Id: 10214
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10214
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10214
+        SkillType: 12
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10214
+        SkillType: 4
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10214
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10214
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10214
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10214
+        SkillType: 4
+        Level: 2
+        RareType: 0
+        Weight: 100
+    - Key: 10314
+      Value:
+      - Id: 10314
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10314
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10314
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10314
+        SkillType: 5
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10314
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10314
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10314
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10314
+        SkillType: 5
         Level: 2
         RareType: 0
         Weight: 100
