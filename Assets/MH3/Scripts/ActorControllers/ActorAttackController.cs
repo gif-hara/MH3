@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using HK;
+using R3;
 using UnityEngine;
 
 namespace MH3.ActorControllers
@@ -17,6 +19,20 @@ namespace MH3.ActorControllers
         private readonly HashSet<(Actor actor, string colliderName)> attackedActors = new();
 
         public bool HasNextCombo => attackCount < actor.SpecController.ComboAnimationKeys.Count;
+
+        private Subject<Unit> onBeginAttack = new();
+        public Observable<Unit> OnBeginAttack
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => onBeginAttack;
+        }
+
+        private Subject<Unit> onEndAttack = new();
+        public Observable<Unit> OnEndAttack
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => onEndAttack;
+        }
 
         public ActorAttackController(Actor actor)
         {
@@ -40,6 +56,7 @@ namespace MH3.ActorControllers
                     containerAction: c =>
                     {
                         c.Register("AttackName", actor.SpecController.StrongAttackAnimationKey);
+                        onBeginAttack.OnNext(Unit.Default);
                     }))
                 {
                     return true;
@@ -53,6 +70,7 @@ namespace MH3.ActorControllers
                     containerAction: c =>
                     {
                         c.Register("AttackName", actor.SpecController.JustGuardAttackAnimationKey);
+                        onBeginAttack.OnNext(Unit.Default);
                     }))
                 {
                     return true;
@@ -71,12 +89,18 @@ namespace MH3.ActorControllers
                     containerAction: c =>
                     {
                         c.Register("AttackName", actor.SpecController.ComboAnimationKeys[attackCount++]);
+                        onBeginAttack.OnNext(Unit.Default);
                     }))
                 {
                     return true;
                 }
                 return false;
             }
+        }
+
+        public void EndAttack()
+        {
+            onEndAttack.OnNext(Unit.Default);
         }
 
         public void ResetAttackCount()
