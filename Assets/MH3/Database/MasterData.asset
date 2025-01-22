@@ -182,6 +182,20 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 10113
+      Name: "\u5FDC\u63F4\u56E3\u6247\u5B50"
+      WeaponType: 0
+      ModelDataId: Sword.6
+      ComboId: 10102
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: Attack.Sword.Strong.1
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: Guard.Canceled.Default
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 0}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10201
       Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u4E21\u624B\u5263"
       WeaponType: 1
@@ -810,6 +824,20 @@ MonoBehaviour:
         Attack: 170
         RareType: 0
         Weight: 100
+    - Key: 10113
+      Value:
+      - Id: 10113
+        Attack: 180
+        RareType: 0
+        Weight: 100
+      - Id: 10113
+        Attack: 190
+        RareType: 0
+        Weight: 100
+      - Id: 10113
+        Attack: 200
+        RareType: 0
+        Weight: 100
     - Key: 10201
       Value:
       - Id: 10201
@@ -1066,6 +1094,12 @@ MonoBehaviour:
         Critical: 0.1
         RareType: 0
         Weight: 100
+    - Key: 10113
+      Value:
+      - Id: 10113
+        Critical: 0
+        RareType: 0
+        Weight: 100
     - Key: 10201
       Value:
       - Id: 10201
@@ -1260,6 +1294,16 @@ MonoBehaviour:
         Weight: 100
       - Id: 10112
         SkillSlot: 3
+        RareType: 0
+        Weight: 100
+    - Key: 10113
+      Value:
+      - Id: 10113
+        SkillSlot: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10113
+        SkillSlot: 4
         RareType: 0
         Weight: 100
     - Key: 10201
@@ -1487,6 +1531,18 @@ MonoBehaviour:
         Power: 0
         RareType: 0
         Weight: 100
+    - Key: 10113
+      Value:
+      - Id: 10113
+        AbnormalStatusType: 3
+        Power: 18
+        RareType: 0
+        Weight: 100
+      - Id: 10113
+        AbnormalStatusType: 2
+        Power: 18
+        RareType: 0
+        Weight: 100
     - Key: 10201
       Value:
       - Id: 10201
@@ -1689,6 +1745,13 @@ MonoBehaviour:
     - Key: 10112
       Value:
       - Id: 10112
+        ElementType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
+    - Key: 10113
+      Value:
+      - Id: 10113
         ElementType: 0
         Power: 0
         RareType: 0
