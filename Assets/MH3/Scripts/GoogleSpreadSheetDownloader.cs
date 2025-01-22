@@ -14,7 +14,7 @@ namespace HK
         public static async UniTask<string> DownloadAsync(string sheetName)
         {
             var request = UnityWebRequest.Get(url + "?sheetName=" + sheetName);
-            request.timeout = 20;
+            request.timeout = 60;
             try
             {
                 await request.SendWebRequest();
