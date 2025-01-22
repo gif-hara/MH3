@@ -127,7 +127,6 @@ GameObject:
   - component: {fileID: 7910637187700256412}
   - component: {fileID: 1637353955629178747}
   - component: {fileID: 5542617390802368681}
-  - component: {fileID: 9128590800609029150}
   m_Layer: 0
   m_Name: Pipe
   m_TagString: Untagged
@@ -1082,28 +1081,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2212404624044005403}
   m_Mesh: {fileID: 0}
---- !u!64 &9128590800609029150
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2212404624044005403}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &3000387140348301546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,7 +1212,6 @@ GameObject:
   - component: {fileID: 5275358823730338104}
   - component: {fileID: 1544068713768089667}
   - component: {fileID: 2275887217203411726}
-  - component: {fileID: 5928341521186716639}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -39134,28 +39110,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5230616100061126001}
   m_Mesh: {fileID: 0}
---- !u!64 &5928341521186716639
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5230616100061126001}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &7070248855861393077
 GameObject:
   m_ObjectHideFlags: 0
@@ -39323,7 +39277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1976346192919378102, guid: 0e82cc3799eb4c642bcddde07e2e767a, type: 3}
       propertyPath: managedReferences[7349438598120996946].value
-      value: Attack,3
+      value: Attack.3
       objectReference: {fileID: 0}
     - target: {fileID: -1976346192919378102, guid: 0e82cc3799eb4c642bcddde07e2e767a, type: 3}
       propertyPath: managedReferences[7349438598120996942].sequences

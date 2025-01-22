@@ -219,7 +219,7 @@ namespace MH3
                     .Subscribe(_ =>
                     {
                         var elapsed = DateTime.Now - startTime;
-                        UnityEditor.Progress.Report(progressId, (float)elapsed.TotalSeconds / 10.0f);
+                        UnityEditor.Progress.Report(progressId, (float)elapsed.TotalSeconds / 60.0f);
                     })
                     .RegisterTo(scope.Token);
                 Debug.Log("Begin MasterData Update");
