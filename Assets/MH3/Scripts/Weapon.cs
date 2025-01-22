@@ -41,11 +41,14 @@ namespace MH3
                 trail.Trail.Emit = false;
             }
 
-            var container = new Container();
-            container.Register("Actor", actor);
-            var sequences = onSetupSequencesResolver.Resolve(container);
-            var sequencer = new Sequencer(container, sequences);
-            sequencer.PlayAsync(actor.destroyCancellationToken).Forget();
+            if (onSetupSequencesResolver != null)
+            {
+                var container = new Container();
+                container.Register("Actor", actor);
+                var sequences = onSetupSequencesResolver.Resolve(container);
+                var sequencer = new Sequencer(container, sequences);
+                sequencer.PlayAsync(actor.destroyCancellationToken).Forget();
+            }
         }
 
         public void Dispose()
