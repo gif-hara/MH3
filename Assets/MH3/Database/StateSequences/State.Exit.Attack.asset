@@ -17,6 +17,7 @@ MonoBehaviour:
   - rid: 1481063132064121270
   - rid: 7349438189002031221
   - rid: 7349438234004029709
+  - rid: 7349438597551095808
   references:
     version: 2
     RefIds:
@@ -68,3 +69,12 @@ MonoBehaviour:
       type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: Default
+    - rid: 7349438597551095808
+      type: {class: ActorEndAttack, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 7349438597551095809
+    - rid: 7349438597551095809
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
