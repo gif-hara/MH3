@@ -50,7 +50,7 @@ namespace HK
 
         public TValue Get(TKey key)
         {
-            Assert.IsTrue(dictionary.ContainsKey(key), $"key={key}");
+            Assert.IsTrue(dictionary.ContainsKey(key), $"TKey={typeof(TKey)} TValue={typeof(TValue)} key={key}");
             return dictionary[key];
         }
 
