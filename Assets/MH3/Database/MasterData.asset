@@ -658,6 +658,20 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20105
+      Name: "\u6575\u6B66\u5668\uFF08\u76F4\u5263\uFF09"
+      WeaponType: 0
+      ModelDataId: Sword.6
+      ComboId: 20101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 47fa610bb98c58a40ad8c163d2618dd4, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 29902
       Name: "\u6575\u6B66\u5668\uFF08\u30C6\u30B9\u30C8\u76F4\u5263\uFF09"
       WeaponType: 0
@@ -4885,7 +4899,7 @@ MonoBehaviour:
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 3f43d0dbd817c974a88930c72ab359fa, type: 3}
-      Behaviour: {fileID: 0}
+      Behaviour: {fileID: 11400000, guid: bd9d857cfd404834ea37fa5d9285ff2d, type: 2}
     - Id: 20702
       Name: "\u30D4\u30A8\u30ED\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
@@ -7006,6 +7020,20 @@ MonoBehaviour:
       QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
       QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
       BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
+    - Id: Quest.10701
+      StagePrefabKey: Battle
+      EnemyActorSpecId: 20701
+      QuestClearSequencesKey: EnemyDefeat
+      QuestFailedSequencesKey: PlayerDefeat
+      NeedAvailableContentKey: Never
+      AddWhenQuestClearContentKey: 
+      RewardCount: 1
+      BeginQuestSequencesKey: Battle.1
+      BgmKey: Quest.1
+      StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
+      QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
+      QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
+      BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
   questRewards:
     list:
     - Key: Quest.10101
@@ -7314,8 +7342,34 @@ MonoBehaviour:
         RewardType: 2
         RewardId: 10313
         Weight: 100
+    - Key: Quest.10701
+      Value:
+      - Id: Quest.10701
+        RewardType: 0
+        RewardId: 10113
+        Weight: 100
+      - Id: Quest.10701
+        RewardType: 1
+        RewardId: 10701
+        Weight: 100
+      - Id: Quest.10701
+        RewardType: 2
+        RewardId: 10114
+        Weight: 100
+      - Id: Quest.10701
+        RewardType: 2
+        RewardId: 10214
+        Weight: 100
+      - Id: Quest.10701
+        RewardType: 2
+        RewardId: 10314
+        Weight: 100
   skillCoreSpecs:
     list:
+    - Id: 19901
+      Name: "\u30C6\u30B9\u30C8\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+      Slot: 1
+      ColorCode: '#FF0000'
     - Id: 10101
       Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
@@ -7376,12 +7430,18 @@ MonoBehaviour:
       Name: "\u89AA\u885B\u968A\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
       ColorCode: '#7FDBFF'
-    - Id: 19901
-      Name: "\u30C6\u30B9\u30C8\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+    - Id: 10701
+      Name: "\u5FDC\u63F4\u56E3\u54E1\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
-      ColorCode: '#FF0000'
+      ColorCode: '#00FF00'
   skillCoreCounts:
     list:
+    - Key: 19901
+      Value:
+      - Id: 19901
+        Count: 1
+        RareType: 0
+        Weight: 100
     - Key: 10101
       Value:
       - Id: 10101
@@ -7532,14 +7592,25 @@ MonoBehaviour:
         Count: 5
         RareType: 0
         Weight: 100
-    - Key: 19901
+    - Key: 10701
       Value:
-      - Id: 19901
-        Count: 1
+      - Id: 10701
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10701
+        Count: 5
         RareType: 0
         Weight: 100
   skillCoreEffects:
     list:
+    - Key: 19901
+      Value:
+      - Id: 19901
+        SkillType: 18
+        Level: 10
+        RareType: 0
+        Weight: 100
     - Key: 10101
       Value:
       - Id: 10101
@@ -8075,11 +8146,76 @@ MonoBehaviour:
         Level: 2
         RareType: 0
         Weight: 100
-    - Key: 19901
+    - Key: 10701
       Value:
-      - Id: 19901
-        SkillType: 18
-        Level: 10
+      - Id: 10701
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 10701
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 10701
+        SkillType: 1
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 10701
+        SkillType: 13
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 10701
+        SkillType: 13
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 10701
+        SkillType: 13
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 10701
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10701
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10701
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10701
+        SkillType: 16
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10701
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10701
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10701
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10701
+        SkillType: 16
+        Level: 2
         RareType: 0
         Weight: 100
   skillTypeToParameters:
