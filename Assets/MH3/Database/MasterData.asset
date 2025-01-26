@@ -700,6 +700,20 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20403
+      Name: "\u6575\u6B66\u5668\uFF08\u5927\u76FE\uFF09"
+      WeaponType: 3
+      ModelDataId: Shield.4
+      ComboId: 10401
+      JustGuardAttackAnimationKey: Attack.Shield.JustGuard.1
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: Guard.Canceled.Default
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 2fea29cab82fb4146b40bb599860a03e, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 29902
       Name: "\u6575\u6B66\u5668\uFF08\u30C6\u30B9\u30C8\u76F4\u5263\uFF09"
       WeaponType: 0
@@ -5071,7 +5085,7 @@ MonoBehaviour:
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 07d7ea718d879eb449782c1012233de5, type: 3}
-      Behaviour: {fileID: 0}
+      Behaviour: {fileID: 11400000, guid: 708326dc82a991a4686999d4612fd9e0, type: 2}
     - Id: 20801
       Name: "\u30CF\u30ED\u30A6\u30A3\u30F3\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
@@ -7090,6 +7104,20 @@ MonoBehaviour:
       QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
       QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
       BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
+    - Id: Quest.10704
+      StagePrefabKey: Battle
+      EnemyActorSpecId: 20704
+      QuestClearSequencesKey: EnemyDefeat
+      QuestFailedSequencesKey: PlayerDefeat
+      NeedAvailableContentKey: Never
+      AddWhenQuestClearContentKey: 
+      RewardCount: 1
+      BeginQuestSequencesKey: Battle.1
+      BgmKey: Quest.1
+      StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
+      QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
+      QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
+      BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
   questRewards:
     list:
     - Key: Quest.10101
@@ -7464,6 +7492,28 @@ MonoBehaviour:
         RewardType: 2
         RewardId: 10316
         Weight: 100
+    - Key: Quest.10704
+      Value:
+      - Id: Quest.10704
+        RewardType: 0
+        RewardId: 10404
+        Weight: 100
+      - Id: Quest.10704
+        RewardType: 1
+        RewardId: 10704
+        Weight: 100
+      - Id: Quest.10704
+        RewardType: 2
+        RewardId: 10117
+        Weight: 100
+      - Id: Quest.10704
+        RewardType: 2
+        RewardId: 10217
+        Weight: 100
+      - Id: Quest.10704
+        RewardType: 2
+        RewardId: 10317
+        Weight: 100
   skillCoreSpecs:
     list:
     - Id: 19901
@@ -7542,6 +7592,10 @@ MonoBehaviour:
       Name: "\u30D1\u30A4\u30ED\u30C3\u30C8\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
       ColorCode: '#FF0000'
+    - Id: 10704
+      Name: "\u63A2\u691C\u5BB6\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+      Slot: 1
+      ColorCode: '#CC8888'
   skillCoreCounts:
     list:
     - Key: 19901
@@ -7727,6 +7781,16 @@ MonoBehaviour:
         RareType: 0
         Weight: 100
       - Id: 10703
+        Count: 4
+        RareType: 0
+        Weight: 100
+    - Key: 10704
+      Value:
+      - Id: 10704
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10704
         Count: 4
         RareType: 0
         Weight: 100
@@ -8506,6 +8570,78 @@ MonoBehaviour:
         RareType: 0
         Weight: 100
       - Id: 10703
+        SkillType: 19
+        Level: 2
+        RareType: 0
+        Weight: 100
+    - Key: 10704
+      Value:
+      - Id: 10704
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 10704
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 10704
+        SkillType: 9
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 10704
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 10704
+        SkillType: 2
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 10704
+        SkillType: 2
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 10704
+        SkillType: 13
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10704
+        SkillType: 12
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10704
+        SkillType: 16
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10704
+        SkillType: 19
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10704
+        SkillType: 13
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10704
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10704
+        SkillType: 16
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10704
         SkillType: 19
         Level: 2
         RareType: 0
