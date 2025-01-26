@@ -7067,7 +7067,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20701
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.6
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -7081,7 +7081,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20702
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.6
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -7095,7 +7095,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20703
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.6
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -7109,7 +7109,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20704
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.6
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -13520,6 +13520,16 @@ MonoBehaviour:
       Value:
       - AvailableContentsKey: Clear.QuestLevel.6
         NeedAvailableContentsKey: Clear.Quest.10601
+    - Key: Clear.QuestLevel.7
+      Value:
+      - AvailableContentsKey: Clear.QuestLevel.7
+        NeedAvailableContentsKey: Clear.Quest.10701
+      - AvailableContentsKey: Clear.QuestLevel.7
+        NeedAvailableContentsKey: Clear.Quest.10702
+      - AvailableContentsKey: Clear.QuestLevel.7
+        NeedAvailableContentsKey: Clear.Quest.10703
+      - AvailableContentsKey: Clear.QuestLevel.7
+        NeedAvailableContentsKey: Clear.Quest.10704
   termDescriptionSpecs:
     list:
     - Id: WeaponType.Sword
