@@ -89,7 +89,7 @@ namespace MH3
                     await UniTask.WhenAll
                     (
                         LMotion.Create(0.0f, 1.0f, 0.3f)
-                            .BindToCanvasGroupAlpha(canvasGroup)
+                            .BindToAlpha(canvasGroup)
                             .ToUniTask(animationScope.Token),
                         LMotion.Create(20.0f, 0.0f, 0.3f)
                             .BindToAnchoredPositionX(messageRectTransform)
