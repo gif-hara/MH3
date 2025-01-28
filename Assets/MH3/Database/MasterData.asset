@@ -224,6 +224,20 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 10116
+      Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0EX\u306E\u5263"
+      WeaponType: 0
+      ModelDataId: Sword.9
+      ComboId: 10102
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: Attack.Sword.Strong.1
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: Guard.Canceled.Default
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 0}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10201
       Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u4E21\u624B\u5263"
       WeaponType: 1
@@ -325,7 +339,21 @@ MonoBehaviour:
     - Id: 10208
       Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u8107\u5DEE"
       WeaponType: 1
-      ModelDataId: DualSword.7
+      ModelDataId: DualSword.8
+      ComboId: 10201
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Sharpen
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 0}
+      GuardPerformedSequences: {fileID: 11400000, guid: ca6de69a7071aa343ab752314858b62d, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 10209
+      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0EX\u306E\u4E21\u624B\u5263"
+      WeaponType: 1
+      ModelDataId: DualSword.9
       ComboId: 10201
       JustGuardAttackAnimationKey: 
       StrongAttackAnimationKey: 
@@ -437,7 +465,21 @@ MonoBehaviour:
     - Id: 10308
       Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u592A\u5200"
       WeaponType: 2
-      ModelDataId: Blade.7
+      ModelDataId: Blade.8
+      ComboId: 10301
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Endurance
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 0}
+      GuardPerformedSequences: {fileID: 11400000, guid: ad4e38fd6d24e054997530a726cb0c64, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 10309
+      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0EX\u306E\u5927\u5263"
+      WeaponType: 2
+      ModelDataId: Blade.9
       ComboId: 10301
       JustGuardAttackAnimationKey: 
       StrongAttackAnimationKey: 
@@ -518,6 +560,20 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 10406
+      Name: "\u30D6\u30E9\u30C3\u30AF\u30B9\u30E9\u30A4\u30E0EX\u306E\u5927\u76FE"
+      WeaponType: 3
+      ModelDataId: Shield.6
+      ComboId: 10401
+      JustGuardAttackAnimationKey: Attack.Shield.JustGuard.1
+      StrongAttackAnimationKey: Attack.Shield.Strong.1
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: Guard.Canceled.Default
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 0}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 10501
       Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u69CD"
       WeaponType: 4
@@ -560,8 +616,22 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 0}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: d254a2176535ec54dbf46ca026eacb2a, type: 2}
+    - Id: 10504
+      Name: "\u30B9\u30AB\u30A4\u30B9\u30E9\u30A4\u30E0EX\u306E\u69CD"
+      WeaponType: 4
+      ModelDataId: Spear.4
+      ComboId: 10501
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: 
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Spear
+      ModelData: {fileID: 0}
+      GuardPerformedSequences: {fileID: 0}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: d254a2176535ec54dbf46ca026eacb2a, type: 2}
     - Id: 20101
-      Name: "\u6575\u6B66\u5668\uFF08\u76F4\u5263\uFF09"
+      Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 0
       ModelDataId: Sword.2
       ComboId: 20101
@@ -575,7 +645,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20201
-      Name: "\u6575\u6B66\u5668\uFF08\u4E21\u624B\u5263\uFF09"
+      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 1
       ModelDataId: DualSword.2
       ComboId: 20201
@@ -589,7 +659,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20301
-      Name: "\u6575\u6B66\u5668\uFF08\u5927\u5263\uFF09"
+      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 2
       ModelDataId: Blade.2
       ComboId: 20301
@@ -603,7 +673,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20102
-      Name: "\u6575\u6B66\u5668\uFF08\u76F4\u5263\uFF09"
+      Name: "\u6599\u7406\u9577\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 0
       ModelDataId: Sword.3
       ComboId: 20101
@@ -617,7 +687,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20202
-      Name: "\u6575\u6B66\u5668\uFF08\u4E21\u624B\u5263\uFF09"
+      Name: "\u9B54\u6CD5\u4F7F\u3044\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 1
       ModelDataId: DualSword.3
       ComboId: 20201
@@ -631,7 +701,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20302
-      Name: "\u6575\u6B66\u5668\uFF08\u5927\u5263\uFF09"
+      Name: "\u8D64\u9B3C\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 2
       ModelDataId: Blade.3
       ComboId: 20301
@@ -645,7 +715,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20103
-      Name: "\u6575\u6B66\u5668\uFF08\u76F4\u5263\uFF09"
+      Name: "\u304A\u3055\u304B\u306A\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 0
       ModelDataId: Sword.4
       ComboId: 20101
@@ -659,7 +729,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20203
-      Name: "\u6575\u6B66\u5668\uFF08\u4E21\u624B\u5263\uFF09"
+      Name: "\u306B\u308F\u3068\u308A\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 1
       ModelDataId: DualSword.4
       ComboId: 20201
@@ -673,7 +743,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20303
-      Name: "\u6575\u6B66\u5668\uFF08\u5927\u5263\uFF09"
+      Name: "\u304A\u304A\u304B\u307F\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 2
       ModelDataId: Blade.4
       ComboId: 20301
@@ -687,7 +757,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20104
-      Name: "\u6575\u6B66\u5668\uFF08\u76F4\u5263\uFF09"
+      Name: "\u6D77\u8CCA\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 0
       ModelDataId: Sword.5
       ComboId: 20101
@@ -701,7 +771,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20204
-      Name: "\u6575\u6B66\u5668\uFF08\u4E21\u624B\u5263\uFF09"
+      Name: "\u5FCD\u8005\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 1
       ModelDataId: DualSword.5
       ComboId: 20201
@@ -715,7 +785,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20304
-      Name: "\u6575\u6B66\u5668\uFF08\u5927\u5263\uFF09"
+      Name: "\u30B5\u30F3\u30BF\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 2
       ModelDataId: Blade.5
       ComboId: 20301
@@ -729,7 +799,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20401
-      Name: "\u6575\u6B66\u5668\uFF08\u5927\u76FE\uFF09"
+      Name: "\u897F\u6D0B\u9A0E\u58EB\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 3
       ModelDataId: Shield.2
       ComboId: 10401
@@ -743,7 +813,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20402
-      Name: "\u6575\u6B66\u5668\uFF08\u5927\u76FE\uFF09"
+      Name: "\u30D2\u30B0\u30DE\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 3
       ModelDataId: Shield.3
       ComboId: 10401
@@ -757,7 +827,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20501
-      Name: "\u6575\u6B66\u5668\uFF08\u69CD\uFF09"
+      Name: "\u89AA\u885B\u968A\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 4
       ModelDataId: Spear.2
       ComboId: 10401
@@ -771,7 +841,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20105
-      Name: "\u6575\u6B66\u5668\uFF08\u76F4\u5263\uFF09"
+      Name: "\u5FDC\u63F4\u56E3\u54E1\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 0
       ModelDataId: Sword.6
       ComboId: 20101
@@ -785,7 +855,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20205
-      Name: "\u6575\u6B66\u5668\uFF08\u4E21\u624B\u5263\uFF09"
+      Name: "\u30D4\u30A8\u30ED\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 1
       ModelDataId: DualSword.6
       ComboId: 20201
@@ -799,7 +869,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20305
-      Name: "\u6575\u6B66\u5668\uFF08\u5927\u5263\uFF09"
+      Name: "\u30D1\u30A4\u30ED\u30C3\u30C8\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 2
       ModelDataId: Blade.6
       ComboId: 20301
@@ -813,7 +883,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20403
-      Name: "\u6575\u6B66\u5668\uFF08\u5927\u76FE\uFF09"
+      Name: "\u63A2\u691C\u5BB6\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 3
       ModelDataId: Shield.4
       ComboId: 10401
@@ -827,23 +897,37 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20106
-      Name: "\u6575\u6B66\u5668\uFF08\u76F4\u5263\uFF09"
+      Name: "\u4F8D\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 0
-      ModelDataId: Sword.7
+      ModelDataId: Sword.8
       ComboId: 20101
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: 
       GuardPerformedSequencesKey: Guard.Performed.Default
       GuardCanceledSequencesKey: 
       DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 5e1cafb57cabb1f4099ab1047b57b62a, type: 2}
+      ModelData: {fileID: 0}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20107
+      Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0EX\u306E\u6B66\u5668"
+      WeaponType: 0
+      ModelDataId: Sword.9
+      ComboId: 20101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 0}
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20206
-      Name: "\u6575\u6B66\u5668\uFF08\u4E21\u624B\u5263\uFF09"
+      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0EX\u306E\u6B66\u5668"
       WeaponType: 1
-      ModelDataId: DualSword.7
+      ModelDataId: DualSword.9
       ComboId: 20201
       JustGuardAttackAnimationKey: 
       StrongAttackAnimationKey: 
@@ -855,9 +939,9 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20306
-      Name: "\u6575\u6B66\u5668\uFF08\u5927\u5263\uFF09"
+      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0EX\u306E\u6B66\u5668"
       WeaponType: 2
-      ModelDataId: Blade.7
+      ModelDataId: Blade.9
       ComboId: 20301
       JustGuardAttackAnimationKey: 
       StrongAttackAnimationKey: 
@@ -869,9 +953,9 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20404
-      Name: "\u6575\u6B66\u5668\uFF08\u5927\u76FE\uFF09"
+      Name: "\u30D6\u30E9\u30C3\u30AF\u30B9\u30E9\u30A4\u30E0EX\u306E\u6B66\u5668"
       WeaponType: 3
-      ModelDataId: Shield.5
+      ModelDataId: Shield.6
       ComboId: 10401
       JustGuardAttackAnimationKey: Attack.Shield.JustGuard.1
       StrongAttackAnimationKey: 
@@ -883,9 +967,9 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20502
-      Name: "\u6575\u6B66\u5668\uFF08\u69CD\uFF09"
+      Name: "\u30B9\u30AB\u30A4\u30B9\u30E9\u30A4\u30E0EX\u306E\u6B66\u5668"
       WeaponType: 4
-      ModelDataId: Spear.3
+      ModelDataId: Spear.4
       ComboId: 10401
       JustGuardAttackAnimationKey: 
       StrongAttackAnimationKey: 
@@ -897,7 +981,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 29902
-      Name: "\u6575\u6B66\u5668\uFF08\u30C6\u30B9\u30C8\u76F4\u5263\uFF09"
+      Name: "\u76F4\u5263\u30C6\u30B9\u30C8\u541B\u306E\u6B66\u5668"
       WeaponType: 0
       ModelDataId: Sword.1
       ComboId: 20101
@@ -911,7 +995,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 29903
-      Name: "\u6575\u6B66\u5668\uFF08\u30C6\u30B9\u30C8\u4E21\u624B\u5263\uFF09"
+      Name: "\u4E21\u624B\u5263\u30C6\u30B9\u30C8\u541B\u306E\u6B66\u5668"
       WeaponType: 1
       ModelDataId: DualSword.1
       ComboId: 20101
@@ -925,7 +1009,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 29904
-      Name: "\u6575\u6B66\u5668\uFF08\u30C6\u30B9\u30C8\u5927\u5263\uFF09"
+      Name: "\u5927\u5263\u30C6\u30B9\u30C8\u541B\u306E\u6B66\u5668"
       WeaponType: 2
       ModelDataId: Blade.1
       ComboId: 20101
@@ -939,7 +1023,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 29905
-      Name: "\u6575\u6B66\u5668\uFF08\u30C6\u30B9\u30C8\u5927\u76FE\uFF09"
+      Name: "\u5927\u76FE\u30C6\u30B9\u30C8\u541B\u306E\u6B66\u5668"
       WeaponType: 3
       ModelDataId: Shield.1
       ComboId: 20101
@@ -953,7 +1037,7 @@ MonoBehaviour:
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 29906
-      Name: "\u6575\u6B66\u5668\uFF08\u30C6\u30B9\u30C8\u5927\u76FE\uFF09"
+      Name: "\u69CD\u30C6\u30B9\u30C8\u541B\u306E\u6B66\u5668"
       WeaponType: 4
       ModelDataId: Spear.1
       ComboId: 20101
@@ -1146,6 +1230,20 @@ MonoBehaviour:
         Attack: 280
         RareType: 1
         Weight: 100
+    - Key: 10116
+      Value:
+      - Id: 10116
+        Attack: 280
+        RareType: 0
+        Weight: 100
+      - Id: 10116
+        Attack: 290
+        RareType: 0
+        Weight: 100
+      - Id: 10116
+        Attack: 310
+        RareType: 1
+        Weight: 100
     - Key: 10201
       Value:
       - Id: 10201
@@ -1223,6 +1321,12 @@ MonoBehaviour:
     - Key: 10208
       Value:
       - Id: 10208
+        Attack: 200
+        RareType: 0
+        Weight: 100
+    - Key: 10209
+      Value:
+      - Id: 10209
         Attack: 200
         RareType: 0
         Weight: 100
@@ -1330,6 +1434,20 @@ MonoBehaviour:
         Attack: 280
         RareType: 1
         Weight: 100
+    - Key: 10309
+      Value:
+      - Id: 10309
+        Attack: 280
+        RareType: 0
+        Weight: 100
+      - Id: 10309
+        Attack: 290
+        RareType: 0
+        Weight: 100
+      - Id: 10309
+        Attack: 310
+        RareType: 1
+        Weight: 100
     - Key: 10401
       Value:
       - Id: 10401
@@ -1392,6 +1510,20 @@ MonoBehaviour:
         Attack: 220
         RareType: 0
         Weight: 100
+    - Key: 10406
+      Value:
+      - Id: 10406
+        Attack: 290
+        RareType: 0
+        Weight: 100
+      - Id: 10406
+        Attack: 300
+        RareType: 0
+        Weight: 100
+      - Id: 10406
+        Attack: 320
+        RareType: 1
+        Weight: 100
     - Key: 10501
       Value:
       - Id: 10501
@@ -1425,6 +1557,20 @@ MonoBehaviour:
       - Id: 10503
         Attack: 210
         RareType: 0
+        Weight: 100
+    - Key: 10504
+      Value:
+      - Id: 10504
+        Attack: 280
+        RareType: 0
+        Weight: 100
+      - Id: 10504
+        Attack: 290
+        RareType: 0
+        Weight: 100
+      - Id: 10504
+        Attack: 310
+        RareType: 1
         Weight: 100
   weaponCriticals:
     list:
@@ -1530,6 +1676,16 @@ MonoBehaviour:
         Critical: 0.2
         RareType: 1
         Weight: 100
+    - Key: 10116
+      Value:
+      - Id: 10116
+        Critical: 0
+        RareType: 0
+        Weight: 100
+      - Id: 10116
+        Critical: 0.2
+        RareType: 1
+        Weight: 100
     - Key: 10201
       Value:
       - Id: 10201
@@ -1590,6 +1746,12 @@ MonoBehaviour:
         Critical: 0
         RareType: 0
         Weight: 100
+    - Key: 10209
+      Value:
+      - Id: 10209
+        Critical: 0
+        RareType: 0
+        Weight: 100
     - Key: 10301
       Value:
       - Id: 10301
@@ -1638,6 +1800,12 @@ MonoBehaviour:
         Critical: 0
         RareType: 0
         Weight: 100
+    - Key: 10309
+      Value:
+      - Id: 10309
+        Critical: 0
+        RareType: 0
+        Weight: 100
     - Key: 10401
       Value:
       - Id: 10401
@@ -1668,6 +1836,12 @@ MonoBehaviour:
         Critical: 0
         RareType: 0
         Weight: 100
+    - Key: 10406
+      Value:
+      - Id: 10406
+        Critical: 0
+        RareType: 0
+        Weight: 100
     - Key: 10501
       Value:
       - Id: 10501
@@ -1693,6 +1867,16 @@ MonoBehaviour:
       - Id: 10503
         Critical: 0.1
         RareType: 0
+        Weight: 100
+    - Key: 10504
+      Value:
+      - Id: 10504
+        Critical: 0
+        RareType: 0
+        Weight: 100
+      - Id: 10504
+        Critical: 0.2
+        RareType: 1
         Weight: 100
   weaponSkillSlots:
     list:
@@ -1818,6 +2002,20 @@ MonoBehaviour:
         SkillSlot: 5
         RareType: 1
         Weight: 100
+    - Key: 10116
+      Value:
+      - Id: 10116
+        SkillSlot: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10116
+        SkillSlot: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10116
+        SkillSlot: 5
+        RareType: 1
+        Weight: 100
     - Key: 10201
       Value:
       - Id: 10201
@@ -1895,6 +2093,20 @@ MonoBehaviour:
         RareType: 0
         Weight: 100
       - Id: 10208
+        SkillSlot: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10209
+      Value:
+      - Id: 10209
+        SkillSlot: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10209
+        SkillSlot: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10209
         SkillSlot: 5
         RareType: 1
         Weight: 100
@@ -1978,6 +2190,20 @@ MonoBehaviour:
         SkillSlot: 5
         RareType: 1
         Weight: 100
+    - Key: 10309
+      Value:
+      - Id: 10309
+        SkillSlot: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10309
+        SkillSlot: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10309
+        SkillSlot: 5
+        RareType: 1
+        Weight: 100
     - Key: 10401
       Value:
       - Id: 10401
@@ -2024,6 +2250,20 @@ MonoBehaviour:
         SkillSlot: 4
         RareType: 0
         Weight: 100
+    - Key: 10406
+      Value:
+      - Id: 10406
+        SkillSlot: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10406
+        SkillSlot: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10406
+        SkillSlot: 5
+        RareType: 1
+        Weight: 100
     - Key: 10501
       Value:
       - Id: 10501
@@ -2049,6 +2289,20 @@ MonoBehaviour:
       - Id: 10503
         SkillSlot: 4
         RareType: 0
+        Weight: 100
+    - Key: 10504
+      Value:
+      - Id: 10504
+        SkillSlot: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10504
+        SkillSlot: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10504
+        SkillSlot: 5
+        RareType: 1
         Weight: 100
   weaponAbnormalStatuses:
     list:
@@ -2172,6 +2426,13 @@ MonoBehaviour:
         Power: 0
         RareType: 0
         Weight: 100
+    - Key: 10116
+      Value:
+      - Id: 10116
+        AbnormalStatusType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
     - Key: 10201
       Value:
       - Id: 10201
@@ -2248,6 +2509,13 @@ MonoBehaviour:
         Power: 0
         RareType: 0
         Weight: 100
+    - Key: 10209
+      Value:
+      - Id: 10209
+        AbnormalStatusType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
     - Key: 10301
       Value:
       - Id: 10301
@@ -2314,6 +2582,13 @@ MonoBehaviour:
         Power: 0
         RareType: 0
         Weight: 100
+    - Key: 10309
+      Value:
+      - Id: 10309
+        AbnormalStatusType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
     - Key: 10401
       Value:
       - Id: 10401
@@ -2349,6 +2624,23 @@ MonoBehaviour:
         Power: 12
         RareType: 0
         Weight: 100
+    - Key: 10406
+      Value:
+      - Id: 10406
+        AbnormalStatusType: 1
+        Power: 21
+        RareType: 0
+        Weight: 100
+      - Id: 10406
+        AbnormalStatusType: 2
+        Power: 21
+        RareType: 0
+        Weight: 100
+      - Id: 10406
+        AbnormalStatusType: 3
+        Power: 21
+        RareType: 0
+        Weight: 100
     - Key: 10501
       Value:
       - Id: 10501
@@ -2368,6 +2660,13 @@ MonoBehaviour:
       - Id: 10503
         AbnormalStatusType: 3
         Power: 7
+        RareType: 0
+        Weight: 100
+    - Key: 10504
+      Value:
+      - Id: 10504
+        AbnormalStatusType: 0
+        Power: 0
         RareType: 0
         Weight: 100
   weaponElements:
@@ -2482,6 +2781,13 @@ MonoBehaviour:
         Power: 0
         RareType: 0
         Weight: 100
+    - Key: 10116
+      Value:
+      - Id: 10116
+        ElementType: 0
+        Power: 0
+        RareType: 0
+        Weight: 100
     - Key: 10201
       Value:
       - Id: 10201
@@ -2571,52 +2877,99 @@ MonoBehaviour:
       Value:
       - Id: 10206
         ElementType: 1
-        Power: 16
+        Power: 15
         RareType: 0
         Weight: 100
       - Id: 10206
         ElementType: 2
-        Power: 16
+        Power: 15
         RareType: 0
         Weight: 100
       - Id: 10206
         ElementType: 3
-        Power: 16
+        Power: 15
         RareType: 0
         Weight: 100
     - Key: 10207
       Value:
       - Id: 10207
         ElementType: 1
-        Power: 18
+        Power: 17
         RareType: 0
         Weight: 100
       - Id: 10207
         ElementType: 2
-        Power: 18
+        Power: 17
         RareType: 0
         Weight: 100
       - Id: 10207
         ElementType: 3
-        Power: 18
+        Power: 17
         RareType: 0
         Weight: 100
     - Key: 10208
       Value:
       - Id: 10208
         ElementType: 1
-        Power: 24
+        Power: 22
         RareType: 0
         Weight: 100
       - Id: 10208
         ElementType: 2
-        Power: 24
+        Power: 22
         RareType: 0
         Weight: 100
       - Id: 10208
         ElementType: 3
-        Power: 24
+        Power: 22
         RareType: 0
+        Weight: 100
+      - Id: 10208
+        ElementType: 1
+        Power: 24
+        RareType: 1
+        Weight: 100
+      - Id: 10208
+        ElementType: 2
+        Power: 24
+        RareType: 1
+        Weight: 100
+      - Id: 10208
+        ElementType: 3
+        Power: 24
+        RareType: 1
+        Weight: 100
+    - Key: 10209
+      Value:
+      - Id: 10209
+        ElementType: 1
+        Power: 23
+        RareType: 0
+        Weight: 100
+      - Id: 10209
+        ElementType: 2
+        Power: 23
+        RareType: 0
+        Weight: 100
+      - Id: 10209
+        ElementType: 3
+        Power: 23
+        RareType: 0
+        Weight: 100
+      - Id: 10209
+        ElementType: 1
+        Power: 25
+        RareType: 1
+        Weight: 100
+      - Id: 10209
+        ElementType: 2
+        Power: 25
+        RareType: 1
+        Weight: 100
+      - Id: 10209
+        ElementType: 3
+        Power: 25
+        RareType: 1
         Weight: 100
     - Key: 10301
       Value:
@@ -7885,6 +8238,90 @@ MonoBehaviour:
       QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
       QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
       BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
+    - Id: Quest.10901
+      StagePrefabKey: Battle
+      EnemyActorSpecId: 20901
+      QuestClearSequencesKey: EnemyDefeat
+      QuestFailedSequencesKey: PlayerDefeat
+      NeedAvailableContentKey: Never
+      AddWhenQuestClearContentKey: 
+      RewardCount: 1
+      BeginQuestSequencesKey: Battle.1
+      BgmKey: Quest.1
+      StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
+      QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
+      QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
+      BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
+    - Id: Quest.11001
+      StagePrefabKey: Battle
+      EnemyActorSpecId: 21001
+      QuestClearSequencesKey: EnemyDefeat
+      QuestFailedSequencesKey: PlayerDefeat
+      NeedAvailableContentKey: Never
+      AddWhenQuestClearContentKey: 
+      RewardCount: 1
+      BeginQuestSequencesKey: Battle.1
+      BgmKey: Quest.1
+      StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
+      QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
+      QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
+      BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
+    - Id: Quest.11002
+      StagePrefabKey: Battle
+      EnemyActorSpecId: 21002
+      QuestClearSequencesKey: EnemyDefeat
+      QuestFailedSequencesKey: PlayerDefeat
+      NeedAvailableContentKey: Never
+      AddWhenQuestClearContentKey: 
+      RewardCount: 1
+      BeginQuestSequencesKey: Battle.1
+      BgmKey: Quest.1
+      StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
+      QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
+      QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
+      BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
+    - Id: Quest.11003
+      StagePrefabKey: Battle
+      EnemyActorSpecId: 21003
+      QuestClearSequencesKey: EnemyDefeat
+      QuestFailedSequencesKey: PlayerDefeat
+      NeedAvailableContentKey: Never
+      AddWhenQuestClearContentKey: 
+      RewardCount: 1
+      BeginQuestSequencesKey: Battle.1
+      BgmKey: Quest.1
+      StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
+      QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
+      QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
+      BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
+    - Id: Quest.11004
+      StagePrefabKey: Battle
+      EnemyActorSpecId: 21004
+      QuestClearSequencesKey: EnemyDefeat
+      QuestFailedSequencesKey: PlayerDefeat
+      NeedAvailableContentKey: Never
+      AddWhenQuestClearContentKey: 
+      RewardCount: 1
+      BeginQuestSequencesKey: Battle.1
+      BgmKey: Quest.1
+      StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
+      QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
+      QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
+      BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
+    - Id: Quest.11005
+      StagePrefabKey: Battle
+      EnemyActorSpecId: 21005
+      QuestClearSequencesKey: EnemyDefeat
+      QuestFailedSequencesKey: PlayerDefeat
+      NeedAvailableContentKey: Never
+      AddWhenQuestClearContentKey: 
+      RewardCount: 1
+      BeginQuestSequencesKey: Battle.1
+      BgmKey: Quest.1
+      StagePrefab: {fileID: 7216371262307075504, guid: 3c6101ef95de14d28bcb555dcadb16b3, type: 3}
+      QuestClearSequences: {fileID: 11400000, guid: b9f6a536eb8d88e4dae54562552b8fea, type: 2}
+      QuestFailedSequences: {fileID: 11400000, guid: bd08f5861a7bdbf4faa0452df9ef86e3, type: 2}
+      BeginQuestSequences: {fileID: 11400000, guid: cc275f12d86c18e4c8197397cf847fb6, type: 2}
   questRewards:
     list:
     - Key: Quest.10101
@@ -8391,6 +8828,170 @@ MonoBehaviour:
         RewardType: 2
         RewardId: 10322
         Weight: 100
+    - Key: Quest.10901
+      Value:
+      - Id: Quest.10901
+        RewardType: 0
+        RewardId: 10115
+        Weight: 100
+      - Id: Quest.10901
+        RewardType: 0
+        RewardId: 10208
+        Weight: 100
+      - Id: Quest.10901
+        RewardType: 0
+        RewardId: 10308
+        Weight: 100
+      - Id: Quest.10901
+        RewardType: 1
+        RewardId: 10901
+        Weight: 100
+      - Id: Quest.10901
+        RewardType: 1
+        RewardId: 10902
+        Weight: 100
+      - Id: Quest.10901
+        RewardType: 2
+        RewardId: 10123
+        Weight: 100
+      - Id: Quest.10901
+        RewardType: 2
+        RewardId: 10223
+        Weight: 100
+      - Id: Quest.10901
+        RewardType: 2
+        RewardId: 10323
+        Weight: 100
+    - Key: Quest.11001
+      Value:
+      - Id: Quest.11001
+        RewardType: 0
+        RewardId: 10116
+        Weight: 100
+      - Id: Quest.11001
+        RewardType: 1
+        RewardId: 11001
+        Weight: 100
+      - Id: Quest.11001
+        RewardType: 1
+        RewardId: 11002
+        Weight: 100
+      - Id: Quest.11001
+        RewardType: 2
+        RewardId: 10124
+        Weight: 100
+      - Id: Quest.11001
+        RewardType: 2
+        RewardId: 10224
+        Weight: 100
+      - Id: Quest.11001
+        RewardType: 2
+        RewardId: 10324
+        Weight: 100
+    - Key: Quest.11002
+      Value:
+      - Id: Quest.11002
+        RewardType: 0
+        RewardId: 10209
+        Weight: 100
+      - Id: Quest.11002
+        RewardType: 1
+        RewardId: 11003
+        Weight: 100
+      - Id: Quest.11002
+        RewardType: 1
+        RewardId: 11004
+        Weight: 100
+      - Id: Quest.11002
+        RewardType: 2
+        RewardId: 10125
+        Weight: 100
+      - Id: Quest.11002
+        RewardType: 2
+        RewardId: 10225
+        Weight: 100
+      - Id: Quest.11002
+        RewardType: 2
+        RewardId: 10325
+        Weight: 100
+    - Key: Quest.11003
+      Value:
+      - Id: Quest.11003
+        RewardType: 0
+        RewardId: 10309
+        Weight: 100
+      - Id: Quest.11003
+        RewardType: 1
+        RewardId: 11005
+        Weight: 100
+      - Id: Quest.11003
+        RewardType: 1
+        RewardId: 11006
+        Weight: 100
+      - Id: Quest.11003
+        RewardType: 2
+        RewardId: 10126
+        Weight: 100
+      - Id: Quest.11003
+        RewardType: 2
+        RewardId: 10226
+        Weight: 100
+      - Id: Quest.11003
+        RewardType: 2
+        RewardId: 10326
+        Weight: 100
+    - Key: Quest.11004
+      Value:
+      - Id: Quest.11004
+        RewardType: 0
+        RewardId: 10406
+        Weight: 100
+      - Id: Quest.11004
+        RewardType: 1
+        RewardId: 11007
+        Weight: 100
+      - Id: Quest.11004
+        RewardType: 1
+        RewardId: 11008
+        Weight: 100
+      - Id: Quest.11004
+        RewardType: 2
+        RewardId: 10127
+        Weight: 100
+      - Id: Quest.11004
+        RewardType: 2
+        RewardId: 10227
+        Weight: 100
+      - Id: Quest.11004
+        RewardType: 2
+        RewardId: 10327
+        Weight: 100
+    - Key: Quest.11005
+      Value:
+      - Id: Quest.11005
+        RewardType: 0
+        RewardId: 10504
+        Weight: 100
+      - Id: Quest.11005
+        RewardType: 1
+        RewardId: 11009
+        Weight: 100
+      - Id: Quest.11005
+        RewardType: 1
+        RewardId: 11010
+        Weight: 100
+      - Id: Quest.11005
+        RewardType: 2
+        RewardId: 10128
+        Weight: 100
+      - Id: Quest.11005
+        RewardType: 2
+        RewardId: 10228
+        Weight: 100
+      - Id: Quest.11005
+        RewardType: 2
+        RewardId: 10328
+        Weight: 100
   skillCoreSpecs:
     list:
     - Id: 19901
@@ -8492,6 +9093,54 @@ MonoBehaviour:
     - Id: 10805
       Name: "\u8B66\u5BDF\u5B98\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
       Slot: 1
+      ColorCode: '#7FDBFF'
+    - Id: 10901
+      Name: "\u4F8D\u30B9\u30E9\u30A4\u30E0\u306E\u6838"
+      Slot: 1
+      ColorCode: '#00FF00'
+    - Id: 10902
+      Name: "\u4F8D\u30B9\u30E9\u30A4\u30E0\u306E\u5927\u6838"
+      Slot: 2
+      ColorCode: '#00FF00'
+    - Id: 11001
+      Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0EX\u306E\u6838"
+      Slot: 1
+      ColorCode: '#00FF00'
+    - Id: 11002
+      Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0EX\u306E\u5927\u6838"
+      Slot: 2
+      ColorCode: '#00FF00'
+    - Id: 11003
+      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0EX\u306E\u6838"
+      Slot: 1
+      ColorCode: '#0000FF'
+    - Id: 11004
+      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0EX\u306E\u5927\u6838"
+      Slot: 2
+      ColorCode: '#0000FF'
+    - Id: 11005
+      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0EX\u306E\u6838"
+      Slot: 1
+      ColorCode: '#FF0000'
+    - Id: 11006
+      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0EX\u306E\u5927\u6838"
+      Slot: 2
+      ColorCode: '#FF0000'
+    - Id: 11007
+      Name: "\u30D6\u30E9\u30C3\u30AF\u30B9\u30E9\u30A4\u30E0EX\u306E\u6838"
+      Slot: 1
+      ColorCode: '#CC8888'
+    - Id: 11008
+      Name: "\u30D6\u30E9\u30C3\u30AF\u30B9\u30E9\u30A4\u30E0EX\u306E\u5927\u6838"
+      Slot: 2
+      ColorCode: '#CC8888'
+    - Id: 11009
+      Name: "\u30B9\u30AB\u30A4\u30B9\u30E9\u30A4\u30E0EX\u306E\u6838"
+      Slot: 1
+      ColorCode: '#7FDBFF'
+    - Id: 11010
+      Name: "\u30B9\u30AB\u30A4\u30B9\u30E9\u30A4\u30E0EX\u306E\u5927\u6838"
+      Slot: 2
       ColorCode: '#7FDBFF'
   skillCoreCounts:
     list:
@@ -8738,6 +9387,126 @@ MonoBehaviour:
         RareType: 0
         Weight: 100
       - Id: 10805
+        Count: 5
+        RareType: 0
+        Weight: 100
+    - Key: 10901
+      Value:
+      - Id: 10901
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10901
+        Count: 5
+        RareType: 0
+        Weight: 100
+      - Id: 10901
+        Count: 6
+        RareType: 1
+        Weight: 100
+    - Key: 10902
+      Value:
+      - Id: 10902
+        Count: 5
+        RareType: 0
+        Weight: 100
+    - Key: 11001
+      Value:
+      - Id: 11001
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11001
+        Count: 5
+        RareType: 0
+        Weight: 100
+      - Id: 11001
+        Count: 6
+        RareType: 1
+        Weight: 100
+    - Key: 11002
+      Value:
+      - Id: 11002
+        Count: 5
+        RareType: 0
+        Weight: 100
+    - Key: 11003
+      Value:
+      - Id: 11003
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11003
+        Count: 5
+        RareType: 0
+        Weight: 100
+      - Id: 11003
+        Count: 6
+        RareType: 1
+        Weight: 100
+    - Key: 11004
+      Value:
+      - Id: 11004
+        Count: 5
+        RareType: 0
+        Weight: 100
+    - Key: 11005
+      Value:
+      - Id: 11005
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11005
+        Count: 5
+        RareType: 0
+        Weight: 100
+      - Id: 11005
+        Count: 6
+        RareType: 1
+        Weight: 100
+    - Key: 11006
+      Value:
+      - Id: 11006
+        Count: 5
+        RareType: 0
+        Weight: 100
+    - Key: 11007
+      Value:
+      - Id: 11007
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11007
+        Count: 5
+        RareType: 0
+        Weight: 100
+      - Id: 11007
+        Count: 6
+        RareType: 1
+        Weight: 100
+    - Key: 11008
+      Value:
+      - Id: 11008
+        Count: 5
+        RareType: 0
+        Weight: 100
+    - Key: 11009
+      Value:
+      - Id: 11009
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11009
+        Count: 5
+        RareType: 0
+        Weight: 100
+      - Id: 11009
+        Count: 6
+        RareType: 1
+        Weight: 100
+    - Key: 11010
+      Value:
+      - Id: 11010
         Count: 5
         RareType: 0
         Weight: 100
@@ -9983,6 +10752,855 @@ MonoBehaviour:
         Level: 2
         RareType: 0
         Weight: 100
+    - Key: 10901
+      Value:
+      - Id: 10901
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 10901
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 10901
+        SkillType: 1
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 10901
+        SkillType: 13
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 10901
+        SkillType: 13
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 10901
+        SkillType: 13
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 10901
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10901
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10901
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10901
+        SkillType: 16
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10901
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10901
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10901
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10901
+        SkillType: 16
+        Level: 2
+        RareType: 0
+        Weight: 100
+    - Key: 10902
+      Value:
+      - Id: 10902
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 10902
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 10902
+        SkillType: 1
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 10902
+        SkillType: 13
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 10902
+        SkillType: 13
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 10902
+        SkillType: 13
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 10902
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 10902
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 10902
+        SkillType: 0
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 10902
+        SkillType: 14
+        Level: 1
+        RareType: 0
+        Weight: 200
+      - Id: 10902
+        SkillType: 14
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 10902
+        SkillType: 22
+        Level: 1
+        RareType: 0
+        Weight: 200
+      - Id: 10902
+        SkillType: 22
+        Level: 2
+        RareType: 0
+        Weight: 200
+    - Key: 11001
+      Value:
+      - Id: 11001
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11001
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11001
+        SkillType: 1
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 11001
+        SkillType: 13
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11001
+        SkillType: 13
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11001
+        SkillType: 13
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 11001
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11001
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11001
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11001
+        SkillType: 16
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11001
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11001
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11001
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11001
+        SkillType: 16
+        Level: 2
+        RareType: 0
+        Weight: 100
+    - Key: 11002
+      Value:
+      - Id: 11002
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11002
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11002
+        SkillType: 1
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 11002
+        SkillType: 13
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11002
+        SkillType: 13
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11002
+        SkillType: 13
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 11002
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11002
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11002
+        SkillType: 0
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 11002
+        SkillType: 14
+        Level: 1
+        RareType: 0
+        Weight: 200
+      - Id: 11002
+        SkillType: 14
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11002
+        SkillType: 22
+        Level: 1
+        RareType: 0
+        Weight: 200
+      - Id: 11002
+        SkillType: 22
+        Level: 2
+        RareType: 0
+        Weight: 200
+    - Key: 11003
+      Value:
+      - Id: 11003
+        SkillType: 6
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11003
+        SkillType: 6
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11003
+        SkillType: 6
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 11003
+        SkillType: 7
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11003
+        SkillType: 7
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11003
+        SkillType: 7
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 11003
+        SkillType: 8
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11003
+        SkillType: 8
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11003
+        SkillType: 8
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 11003
+        SkillType: 16
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11003
+        SkillType: 16
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11003
+        SkillType: 16
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 11003
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11003
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11003
+        SkillType: 19
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11003
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11003
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11003
+        SkillType: 19
+        Level: 2
+        RareType: 0
+        Weight: 100
+    - Key: 11004
+      Value:
+      - Id: 11004
+        SkillType: 6
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11004
+        SkillType: 6
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 11004
+        SkillType: 6
+        Level: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11004
+        SkillType: 7
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11004
+        SkillType: 7
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 11004
+        SkillType: 7
+        Level: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11004
+        SkillType: 8
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11004
+        SkillType: 8
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 11004
+        SkillType: 8
+        Level: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11004
+        SkillType: 17
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11004
+        SkillType: 17
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11004
+        SkillType: 21
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11004
+        SkillType: 21
+        Level: 2
+        RareType: 0
+        Weight: 100
+    - Key: 11005
+      Value:
+      - Id: 11005
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11005
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11005
+        SkillType: 0
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 11005
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11005
+        SkillType: 12
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11005
+        SkillType: 12
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 11005
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11005
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11005
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11005
+        SkillType: 19
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11005
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11005
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11005
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11005
+        SkillType: 19
+        Level: 2
+        RareType: 0
+        Weight: 100
+    - Key: 11006
+      Value:
+      - Id: 11006
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11006
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 11006
+        SkillType: 0
+        Level: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11006
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11006
+        SkillType: 12
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 11006
+        SkillType: 12
+        Level: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11006
+        SkillType: 16
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11006
+        SkillType: 16
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 11006
+        SkillType: 16
+        Level: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11006
+        SkillType: 15
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11006
+        SkillType: 15
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11006
+        SkillType: 23
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11006
+        SkillType: 23
+        Level: 2
+        RareType: 0
+        Weight: 100
+    - Key: 11007
+      Value:
+      - Id: 11007
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11007
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11007
+        SkillType: 9
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 11007
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11007
+        SkillType: 2
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11007
+        SkillType: 2
+        Level: 4
+        RareType: 0
+        Weight: 200
+      - Id: 11007
+        SkillType: 13
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11007
+        SkillType: 12
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11007
+        SkillType: 16
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11007
+        SkillType: 19
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11007
+        SkillType: 13
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11007
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11007
+        SkillType: 16
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11007
+        SkillType: 19
+        Level: 2
+        RareType: 0
+        Weight: 100
+    - Key: 11008
+      Value:
+      - Id: 11008
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11008
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 11008
+        SkillType: 9
+        Level: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11008
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11008
+        SkillType: 2
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 11008
+        SkillType: 2
+        Level: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11008
+        SkillType: 19
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11008
+        SkillType: 19
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 11008
+        SkillType: 19
+        Level: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11008
+        SkillType: 18
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11008
+        SkillType: 18
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11008
+        SkillType: 24
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11008
+        SkillType: 24
+        Level: 2
+        RareType: 0
+        Weight: 100
+    - Key: 11009
+      Value:
+      - Id: 11009
+        SkillType: 3
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11009
+        SkillType: 3
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11009
+        SkillType: 4
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11009
+        SkillType: 4
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11009
+        SkillType: 5
+        Level: 3
+        RareType: 0
+        Weight: 200
+      - Id: 11009
+        SkillType: 5
+        Level: 2
+        RareType: 0
+        Weight: 200
+      - Id: 11009
+        SkillType: 11
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11009
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11009
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11009
+        SkillType: 12
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11009
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11009
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11009
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 100
+    - Key: 11010
+      Value:
+      - Id: 11010
+        SkillType: 3
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11010
+        SkillType: 3
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 11010
+        SkillType: 3
+        Level: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11010
+        SkillType: 4
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11010
+        SkillType: 4
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 11010
+        SkillType: 4
+        Level: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11010
+        SkillType: 5
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11010
+        SkillType: 5
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 11010
+        SkillType: 5
+        Level: 4
+        RareType: 0
+        Weight: 100
+      - Id: 11010
+        SkillType: 23
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11010
+        SkillType: 23
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 11010
+        SkillType: 25
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 11010
+        SkillType: 25
+        Level: 2
+        RareType: 0
+        Weight: 100
   skillTypeToParameters:
     list:
     - Key: 0
@@ -10073,45 +11691,45 @@ MonoBehaviour:
     - Level: 10
       Value: 40
     - Level: 11
-      Value: 44
+      Value: 55
     - Level: 12
-      Value: 48
-    - Level: 13
-      Value: 52
-    - Level: 14
-      Value: 56
-    - Level: 15
       Value: 60
+    - Level: 13
+      Value: 65
+    - Level: 14
+      Value: 70
+    - Level: 15
+      Value: 75
     - Level: 16
-      Value: 64
-    - Level: 17
-      Value: 68
-    - Level: 18
-      Value: 72
-    - Level: 19
-      Value: 76
-    - Level: 20
       Value: 80
-    - Level: 21
-      Value: 84
-    - Level: 22
-      Value: 88
-    - Level: 23
-      Value: 92
-    - Level: 24
-      Value: 96
-    - Level: 25
+    - Level: 17
+      Value: 85
+    - Level: 18
+      Value: 90
+    - Level: 19
+      Value: 95
+    - Level: 20
       Value: 100
+    - Level: 21
+      Value: 126
+    - Level: 22
+      Value: 132
+    - Level: 23
+      Value: 138
+    - Level: 24
+      Value: 144
+    - Level: 25
+      Value: 150
     - Level: 26
-      Value: 104
+      Value: 156
     - Level: 27
-      Value: 108
+      Value: 162
     - Level: 28
-      Value: 112
+      Value: 168
     - Level: 29
-      Value: 116
+      Value: 174
     - Level: 30
-      Value: 120
+      Value: 180
   skillCriticalUp:
     list:
     - Level: 0
@@ -10309,65 +11927,65 @@ MonoBehaviour:
     - Level: 0
       Value: 0
     - Level: 1
-      Value: 3
+      Value: 2
     - Level: 2
-      Value: 6
+      Value: 5
     - Level: 3
-      Value: 9
+      Value: 7
     - Level: 4
-      Value: 12
+      Value: 10
     - Level: 5
-      Value: 15
+      Value: 12
     - Level: 6
-      Value: 18
+      Value: 15
     - Level: 7
-      Value: 21
+      Value: 17
     - Level: 8
-      Value: 24
+      Value: 20
     - Level: 9
-      Value: 27
+      Value: 22
     - Level: 10
-      Value: 30
+      Value: 25
     - Level: 11
-      Value: 33
+      Value: 27
     - Level: 12
-      Value: 36
+      Value: 30
     - Level: 13
-      Value: 39
+      Value: 32
     - Level: 14
-      Value: 42
+      Value: 35
     - Level: 15
-      Value: 45
+      Value: 37
     - Level: 16
-      Value: 48
+      Value: 40
     - Level: 17
-      Value: 51
+      Value: 42
     - Level: 18
-      Value: 54
+      Value: 45
     - Level: 19
-      Value: 57
+      Value: 47
     - Level: 20
-      Value: 60
+      Value: 50
     - Level: 21
-      Value: 63
+      Value: 52
     - Level: 22
-      Value: 66
+      Value: 55
     - Level: 23
-      Value: 69
+      Value: 57
     - Level: 24
-      Value: 72
+      Value: 60
     - Level: 25
-      Value: 75
+      Value: 62
     - Level: 26
-      Value: 78
+      Value: 65
     - Level: 27
-      Value: 81
+      Value: 67
     - Level: 28
-      Value: 84
+      Value: 70
     - Level: 29
-      Value: 87
+      Value: 72
     - Level: 30
-      Value: 90
+      Value: 75
   skillHitPointMaxUp:
     list:
     - Level: 0
@@ -10428,6 +12046,14 @@ MonoBehaviour:
       Value: 5
     - Level: 6
       Value: 6
+    - Level: 7
+      Value: 7
+    - Level: 8
+      Value: 8
+    - Level: 9
+      Value: 9
+    - Level: 10
+      Value: 10
   skillRewardUp:
     list:
     - Level: 0
@@ -11041,7 +12667,7 @@ MonoBehaviour:
       ArmorType: 1
       ModelData: {fileID: 11400000, guid: fcd42602c02203943ac4137c67eb8bd6, type: 2}
     - Id: 10315
-      Name: "\u30D4\u30A8\u30ED\u306E\u304A\u9762"
+      Name: "\u30D4\u30A8\u30ED\u306E\u670D"
       ModelDataId: Body.15
       ArmorType: 2
       ModelData: {fileID: 11400000, guid: 16fa6179605dd9a48a02e351304ef3a5, type: 2}
@@ -11094,17 +12720,17 @@ MonoBehaviour:
       Name: "\u5996\u7CBE\u306E\u9AEA\u98FE\u308A"
       ModelDataId: Head.19
       ArmorType: 0
-      ModelData: {fileID: 0}
+      ModelData: {fileID: 11400000, guid: c0f70e3522547d6489372f6d0f43efa5, type: 2}
     - Id: 10219
       Name: "\u5996\u7CBE\u306E\u8155\u98FE\u308A"
       ModelDataId: Arms.19
       ArmorType: 1
-      ModelData: {fileID: 0}
+      ModelData: {fileID: 11400000, guid: ffb1830f9c1f4b84f84cde8b11db0824, type: 2}
     - Id: 10319
       Name: "\u5996\u7CBE\u306E\u7FBD"
       ModelDataId: Body.19
       ArmorType: 2
-      ModelData: {fileID: 0}
+      ModelData: {fileID: 11400000, guid: c2fd42cbfaa354047b34f18aaa7824f3, type: 2}
     - Id: 10120
       Name: "\u30AB\u30A6\u30DC\u30FC\u30A4\u30CF\u30C3\u30C8"
       ModelDataId: Head.20
@@ -11148,6 +12774,96 @@ MonoBehaviour:
     - Id: 10322
       Name: "\u8B66\u5BDF\u5B98\u306E\u30B9\u30FC\u30C4"
       ModelDataId: Body.22
+      ArmorType: 2
+      ModelData: {fileID: 0}
+    - Id: 10123
+      Name: "\u4F8D\u306E\u3061\u3087\u3093\u307E\u3052"
+      ModelDataId: Head.23
+      ArmorType: 0
+      ModelData: {fileID: 0}
+    - Id: 10223
+      Name: "\u4F8D\u306E\u8155"
+      ModelDataId: Arms.23
+      ArmorType: 1
+      ModelData: {fileID: 0}
+    - Id: 10323
+      Name: "\u4F8D\u306E\u5C0F\u8896"
+      ModelDataId: Body.23
+      ArmorType: 2
+      ModelData: {fileID: 0}
+    - Id: 10124
+      Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0EX\u30D8\u30EB\u30E0"
+      ModelDataId: Head.24
+      ArmorType: 0
+      ModelData: {fileID: 0}
+    - Id: 10224
+      Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0EX\u30A2\u30FC\u30E0"
+      ModelDataId: Arms.24
+      ArmorType: 1
+      ModelData: {fileID: 0}
+    - Id: 10324
+      Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0EX\u30E1\u30A4\u30EB"
+      ModelDataId: Body.24
+      ArmorType: 2
+      ModelData: {fileID: 0}
+    - Id: 10125
+      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0EX\u30D8\u30EB\u30E0"
+      ModelDataId: Head.25
+      ArmorType: 0
+      ModelData: {fileID: 0}
+    - Id: 10225
+      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0EX\u30A2\u30FC\u30E0"
+      ModelDataId: Arms.25
+      ArmorType: 1
+      ModelData: {fileID: 0}
+    - Id: 10325
+      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0EX\u30E1\u30A4\u30EB"
+      ModelDataId: Body.25
+      ArmorType: 2
+      ModelData: {fileID: 0}
+    - Id: 10126
+      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0EX\u30D8\u30EB\u30E0"
+      ModelDataId: Head.26
+      ArmorType: 0
+      ModelData: {fileID: 0}
+    - Id: 10226
+      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0EX\u30A2\u30FC\u30E0"
+      ModelDataId: Arms.26
+      ArmorType: 1
+      ModelData: {fileID: 0}
+    - Id: 10326
+      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0EX\u30E1\u30A4\u30EB"
+      ModelDataId: Body.26
+      ArmorType: 2
+      ModelData: {fileID: 0}
+    - Id: 10127
+      Name: "\u30D6\u30E9\u30C3\u30AF\u30B9\u30E9\u30A4\u30E0EX\u30D8\u30EB\u30E0"
+      ModelDataId: Head.27
+      ArmorType: 0
+      ModelData: {fileID: 0}
+    - Id: 10227
+      Name: "\u30D6\u30E9\u30C3\u30AF\u30B9\u30E9\u30A4\u30E0EX\u30A2\u30FC\u30E0"
+      ModelDataId: Arms.27
+      ArmorType: 1
+      ModelData: {fileID: 0}
+    - Id: 10327
+      Name: "\u30D6\u30E9\u30C3\u30AF\u30B9\u30E9\u30A4\u30E0EX\u30E1\u30A4\u30EB"
+      ModelDataId: Body.27
+      ArmorType: 2
+      ModelData: {fileID: 0}
+    - Id: 10128
+      Name: "\u30B9\u30AB\u30A4\u30B9\u30E9\u30A4\u30E0EX\u30D8\u30EB\u30E0"
+      ModelDataId: Head.28
+      ArmorType: 0
+      ModelData: {fileID: 0}
+    - Id: 10228
+      Name: "\u30B9\u30AB\u30A4\u30B9\u30E9\u30A4\u30E0EX\u30A2\u30FC\u30E0"
+      ModelDataId: Arms.28
+      ArmorType: 1
+      ModelData: {fileID: 0}
+    - Id: 10328
+      Name: "\u30B9\u30AB\u30A4\u30B9\u30E9\u30A4\u30E0EX\u30E1\u30A4\u30EB"
+      ModelDataId: Body.28
       ArmorType: 2
       ModelData: {fileID: 0}
     - Id: 20101
@@ -11778,6 +13494,258 @@ MonoBehaviour:
       - Id: 10322
         Defense: 22
         RareType: 0
+        Weight: 100
+    - Key: 10123
+      Value:
+      - Id: 10123
+        Defense: 44
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        Defense: 46
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        Defense: 50
+        RareType: 1
+        Weight: 100
+    - Key: 10223
+      Value:
+      - Id: 10223
+        Defense: 44
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        Defense: 46
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        Defense: 50
+        RareType: 1
+        Weight: 100
+    - Key: 10323
+      Value:
+      - Id: 10323
+        Defense: 44
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        Defense: 46
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        Defense: 50
+        RareType: 1
+        Weight: 100
+    - Key: 10124
+      Value:
+      - Id: 10124
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10124
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10124
+        Defense: 57
+        RareType: 1
+        Weight: 100
+    - Key: 10224
+      Value:
+      - Id: 10224
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10224
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10224
+        Defense: 57
+        RareType: 1
+        Weight: 100
+    - Key: 10324
+      Value:
+      - Id: 10324
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10324
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10324
+        Defense: 57
+        RareType: 1
+        Weight: 100
+    - Key: 10125
+      Value:
+      - Id: 10125
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10125
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10125
+        Defense: 57
+        RareType: 1
+        Weight: 100
+    - Key: 10225
+      Value:
+      - Id: 10225
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10225
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10225
+        Defense: 57
+        RareType: 1
+        Weight: 100
+    - Key: 10325
+      Value:
+      - Id: 10325
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10325
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10325
+        Defense: 57
+        RareType: 1
+        Weight: 100
+    - Key: 10126
+      Value:
+      - Id: 10126
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10126
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10126
+        Defense: 57
+        RareType: 1
+        Weight: 100
+    - Key: 10226
+      Value:
+      - Id: 10226
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10226
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10226
+        Defense: 57
+        RareType: 1
+        Weight: 100
+    - Key: 10326
+      Value:
+      - Id: 10326
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10326
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10326
+        Defense: 57
+        RareType: 1
+        Weight: 100
+    - Key: 10127
+      Value:
+      - Id: 10127
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10127
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10127
+        Defense: 57
+        RareType: 1
+        Weight: 100
+    - Key: 10227
+      Value:
+      - Id: 10227
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10227
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10227
+        Defense: 57
+        RareType: 1
+        Weight: 100
+    - Key: 10327
+      Value:
+      - Id: 10327
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10327
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10327
+        Defense: 57
+        RareType: 1
+        Weight: 100
+    - Key: 10128
+      Value:
+      - Id: 10128
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10128
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10128
+        Defense: 57
+        RareType: 1
+        Weight: 100
+    - Key: 10228
+      Value:
+      - Id: 10228
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10228
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10228
+        Defense: 57
+        RareType: 1
+        Weight: 100
+    - Key: 10328
+      Value:
+      - Id: 10328
+        Defense: 52
+        RareType: 0
+        Weight: 100
+      - Id: 10328
+        Defense: 54
+        RareType: 0
+        Weight: 100
+      - Id: 10328
+        Defense: 57
+        RareType: 1
         Weight: 100
   armorSkillCounts:
     list:
@@ -12440,6 +14408,258 @@ MonoBehaviour:
       - Id: 10322
         Count: 4
         RareType: 0
+        Weight: 100
+    - Key: 10123
+      Value:
+      - Id: 10123
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10223
+      Value:
+      - Id: 10223
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10323
+      Value:
+      - Id: 10323
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10124
+      Value:
+      - Id: 10124
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10124
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10124
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10224
+      Value:
+      - Id: 10224
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10224
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10224
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10324
+      Value:
+      - Id: 10324
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10324
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10324
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10125
+      Value:
+      - Id: 10125
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10125
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10125
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10225
+      Value:
+      - Id: 10225
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10225
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10225
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10325
+      Value:
+      - Id: 10325
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10325
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10325
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10126
+      Value:
+      - Id: 10126
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10126
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10126
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10226
+      Value:
+      - Id: 10226
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10226
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10226
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10326
+      Value:
+      - Id: 10326
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10326
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10326
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10127
+      Value:
+      - Id: 10127
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10127
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10127
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10227
+      Value:
+      - Id: 10227
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10227
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10227
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10327
+      Value:
+      - Id: 10327
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10327
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10327
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10128
+      Value:
+      - Id: 10128
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10128
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10128
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10228
+      Value:
+      - Id: 10228
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10228
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10228
+        Count: 5
+        RareType: 1
+        Weight: 100
+    - Key: 10328
+      Value:
+      - Id: 10328
+        Count: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10328
+        Count: 4
+        RareType: 0
+        Weight: 100
+      - Id: 10328
+        Count: 5
+        RareType: 1
         Weight: 100
   armorSkills:
     list:
@@ -14794,6 +17014,1392 @@ MonoBehaviour:
         SkillType: 8
         Level: 3
         RareType: 0
+        Weight: 100
+    - Key: 10123
+      Value:
+      - Id: 10123
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        SkillType: 3
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        SkillType: 19
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        SkillType: 3
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        SkillType: 19
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        SkillType: 3
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10123
+        SkillType: 19
+        Level: 3
+        RareType: 0
+        Weight: 100
+    - Key: 10223
+      Value:
+      - Id: 10223
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        SkillType: 2
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        SkillType: 12
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        SkillType: 4
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        SkillType: 19
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        SkillType: 4
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        SkillType: 19
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        SkillType: 2
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        SkillType: 12
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        SkillType: 4
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10223
+        SkillType: 19
+        Level: 3
+        RareType: 0
+        Weight: 100
+    - Key: 10323
+      Value:
+      - Id: 10323
+        SkillType: 0
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        SkillType: 1
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        SkillType: 9
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        SkillType: 5
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        SkillType: 19
+        Level: 1
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        SkillType: 5
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        SkillType: 19
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        SkillType: 5
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10323
+        SkillType: 19
+        Level: 3
+        RareType: 0
+        Weight: 100
+    - Key: 10124
+      Value:
+      - Id: 10124
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10124
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10124
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10124
+        SkillType: 3
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10124
+        SkillType: 19
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10124
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10124
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10124
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10124
+        SkillType: 3
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10124
+        SkillType: 19
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10124
+        SkillType: 9
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10124
+        SkillType: 0
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10124
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10124
+        SkillType: 3
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10124
+        SkillType: 19
+        Level: 4
+        RareType: 1
+        Weight: 100
+    - Key: 10224
+      Value:
+      - Id: 10224
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10224
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10224
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10224
+        SkillType: 4
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10224
+        SkillType: 19
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10224
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10224
+        SkillType: 2
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10224
+        SkillType: 12
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10224
+        SkillType: 4
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10224
+        SkillType: 19
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10224
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10224
+        SkillType: 2
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10224
+        SkillType: 12
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10224
+        SkillType: 4
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10224
+        SkillType: 19
+        Level: 4
+        RareType: 1
+        Weight: 100
+    - Key: 10324
+      Value:
+      - Id: 10324
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10324
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10324
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10324
+        SkillType: 5
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10324
+        SkillType: 19
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10324
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10324
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10324
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10324
+        SkillType: 5
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10324
+        SkillType: 19
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10324
+        SkillType: 0
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10324
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10324
+        SkillType: 9
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10324
+        SkillType: 5
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10324
+        SkillType: 19
+        Level: 4
+        RareType: 1
+        Weight: 100
+    - Key: 10125
+      Value:
+      - Id: 10125
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10125
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10125
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10125
+        SkillType: 3
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10125
+        SkillType: 6
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10125
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10125
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10125
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10125
+        SkillType: 3
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10125
+        SkillType: 6
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10125
+        SkillType: 9
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10125
+        SkillType: 0
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10125
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10125
+        SkillType: 3
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10125
+        SkillType: 6
+        Level: 4
+        RareType: 1
+        Weight: 100
+    - Key: 10225
+      Value:
+      - Id: 10225
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10225
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10225
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10225
+        SkillType: 4
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10225
+        SkillType: 7
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10225
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10225
+        SkillType: 2
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10225
+        SkillType: 12
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10225
+        SkillType: 4
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10225
+        SkillType: 7
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10225
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10225
+        SkillType: 2
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10225
+        SkillType: 12
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10225
+        SkillType: 4
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10225
+        SkillType: 7
+        Level: 4
+        RareType: 1
+        Weight: 100
+    - Key: 10325
+      Value:
+      - Id: 10325
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10325
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10325
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10325
+        SkillType: 5
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10325
+        SkillType: 8
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10325
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10325
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10325
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10325
+        SkillType: 5
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10325
+        SkillType: 8
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10325
+        SkillType: 0
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10325
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10325
+        SkillType: 9
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10325
+        SkillType: 5
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10325
+        SkillType: 8
+        Level: 4
+        RareType: 1
+        Weight: 100
+    - Key: 10126
+      Value:
+      - Id: 10126
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10126
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10126
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10126
+        SkillType: 3
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10126
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10126
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10126
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10126
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10126
+        SkillType: 3
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10126
+        SkillType: 2
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10126
+        SkillType: 9
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10126
+        SkillType: 0
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10126
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10126
+        SkillType: 3
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10126
+        SkillType: 2
+        Level: 4
+        RareType: 1
+        Weight: 100
+    - Key: 10226
+      Value:
+      - Id: 10226
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10226
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10226
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10226
+        SkillType: 4
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10226
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10226
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10226
+        SkillType: 2
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10226
+        SkillType: 12
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10226
+        SkillType: 4
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10226
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10226
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10226
+        SkillType: 2
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10226
+        SkillType: 12
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10226
+        SkillType: 4
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10226
+        SkillType: 0
+        Level: 4
+        RareType: 1
+        Weight: 100
+    - Key: 10326
+      Value:
+      - Id: 10326
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10326
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10326
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10326
+        SkillType: 5
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10326
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10326
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10326
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10326
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10326
+        SkillType: 5
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10326
+        SkillType: 2
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10326
+        SkillType: 0
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10326
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10326
+        SkillType: 9
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10326
+        SkillType: 5
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10326
+        SkillType: 2
+        Level: 4
+        RareType: 1
+        Weight: 100
+    - Key: 10127
+      Value:
+      - Id: 10127
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10127
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10127
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10127
+        SkillType: 3
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10127
+        SkillType: 10
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10127
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10127
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10127
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10127
+        SkillType: 3
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10127
+        SkillType: 10
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10127
+        SkillType: 9
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10127
+        SkillType: 0
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10127
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10127
+        SkillType: 3
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10127
+        SkillType: 10
+        Level: 4
+        RareType: 1
+        Weight: 100
+    - Key: 10227
+      Value:
+      - Id: 10227
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10227
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10227
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10227
+        SkillType: 4
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10227
+        SkillType: 13
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10227
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10227
+        SkillType: 2
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10227
+        SkillType: 12
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10227
+        SkillType: 4
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10227
+        SkillType: 13
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10227
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10227
+        SkillType: 2
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10227
+        SkillType: 12
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10227
+        SkillType: 4
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10227
+        SkillType: 13
+        Level: 4
+        RareType: 1
+        Weight: 100
+    - Key: 10327
+      Value:
+      - Id: 10327
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10327
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10327
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10327
+        SkillType: 5
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10327
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10327
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10327
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10327
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10327
+        SkillType: 5
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10327
+        SkillType: 12
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10327
+        SkillType: 0
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10327
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10327
+        SkillType: 9
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10327
+        SkillType: 5
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10327
+        SkillType: 12
+        Level: 4
+        RareType: 1
+        Weight: 100
+    - Key: 10128
+      Value:
+      - Id: 10128
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10128
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10128
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10128
+        SkillType: 3
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10128
+        SkillType: 6
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10128
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10128
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10128
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10128
+        SkillType: 3
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10128
+        SkillType: 6
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10128
+        SkillType: 9
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10128
+        SkillType: 0
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10128
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10128
+        SkillType: 3
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10128
+        SkillType: 6
+        Level: 4
+        RareType: 1
+        Weight: 100
+    - Key: 10228
+      Value:
+      - Id: 10228
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10228
+        SkillType: 2
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10228
+        SkillType: 12
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10228
+        SkillType: 4
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10228
+        SkillType: 7
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10228
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10228
+        SkillType: 2
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10228
+        SkillType: 12
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10228
+        SkillType: 4
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10228
+        SkillType: 7
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10228
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10228
+        SkillType: 2
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10228
+        SkillType: 12
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10228
+        SkillType: 4
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10228
+        SkillType: 7
+        Level: 4
+        RareType: 1
+        Weight: 100
+    - Key: 10328
+      Value:
+      - Id: 10328
+        SkillType: 0
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10328
+        SkillType: 1
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10328
+        SkillType: 9
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10328
+        SkillType: 5
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10328
+        SkillType: 8
+        Level: 2
+        RareType: 0
+        Weight: 100
+      - Id: 10328
+        SkillType: 0
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10328
+        SkillType: 1
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10328
+        SkillType: 9
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10328
+        SkillType: 5
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10328
+        SkillType: 8
+        Level: 3
+        RareType: 0
+        Weight: 100
+      - Id: 10328
+        SkillType: 0
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10328
+        SkillType: 1
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10328
+        SkillType: 9
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10328
+        SkillType: 5
+        Level: 4
+        RareType: 1
+        Weight: 100
+      - Id: 10328
+        SkillType: 8
+        Level: 4
+        RareType: 1
         Weight: 100
   availableContentsEvents:
     list:
