@@ -8245,7 +8245,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20801
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.7
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -8259,7 +8259,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20802
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.7
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -8273,7 +8273,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20803
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.7
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -8287,7 +8287,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20804
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.7
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -8301,7 +8301,7 @@ MonoBehaviour:
       EnemyActorSpecId: 20805
       QuestClearSequencesKey: EnemyDefeat
       QuestFailedSequencesKey: PlayerDefeat
-      NeedAvailableContentKey: Never
+      NeedAvailableContentKey: Clear.QuestLevel.7
       AddWhenQuestClearContentKey: 
       RewardCount: 1
       BeginQuestSequencesKey: Battle.1
@@ -18545,6 +18545,18 @@ MonoBehaviour:
         NeedAvailableContentsKey: Clear.Quest.10703
       - AvailableContentsKey: Clear.QuestLevel.7
         NeedAvailableContentsKey: Clear.Quest.10704
+    - Key: Clear.QuestLevel.8
+      Value:
+      - AvailableContentsKey: Clear.QuestLevel.8
+        NeedAvailableContentsKey: Clear.Quest.10801
+      - AvailableContentsKey: Clear.QuestLevel.8
+        NeedAvailableContentsKey: Clear.Quest.10802
+      - AvailableContentsKey: Clear.QuestLevel.8
+        NeedAvailableContentsKey: Clear.Quest.10803
+      - AvailableContentsKey: Clear.QuestLevel.8
+        NeedAvailableContentsKey: Clear.Quest.10804
+      - AvailableContentsKey: Clear.QuestLevel.8
+        NeedAvailableContentsKey: Clear.Quest.10805
   termDescriptionSpecs:
     list:
     - Id: WeaponType.Sword
