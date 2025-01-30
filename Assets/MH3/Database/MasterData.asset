@@ -910,6 +910,20 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20206
+      Name: "\u30D5\u30A7\u30A2\u30EA\u30FC\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 1
+      ModelDataId: DualSword.7
+      ComboId: 20201
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 54dc540aa9d8bcd47bf94ff51e495849, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20107
       Name: "\u4F8D\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 0
@@ -938,7 +952,7 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20206
+    - Id: 20207
       Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0EX\u306E\u6B66\u5668"
       WeaponType: 1
       ModelDataId: DualSword.9
@@ -6219,7 +6233,7 @@ MonoBehaviour:
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20205
+      WeaponId: 20206
       ArmorHeadId: 10119
       ArmorArmsId: 10219
       ArmorBodyId: 10319
@@ -6247,7 +6261,7 @@ MonoBehaviour:
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 9b87f1f2f1832244a9f6cecb09fed9b5, type: 3}
-      Behaviour: {fileID: 0}
+      Behaviour: {fileID: 11400000, guid: d0c802590a6c6054ab4cf3fa2304b805, type: 2}
     - Id: 20803
       Name: "\u30AB\u30A6\u30DC\u30FC\u30A4\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
@@ -6507,7 +6521,7 @@ MonoBehaviour:
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20206
+      WeaponId: 20207
       ArmorHeadId: 10125
       ArmorArmsId: 10225
       ArmorBodyId: 10325
@@ -6699,7 +6713,7 @@ MonoBehaviour:
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20207
+      WeaponId: 20208
       ArmorHeadId: 10129
       ArmorArmsId: 10229
       ArmorBodyId: 10329
@@ -6795,7 +6809,7 @@ MonoBehaviour:
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20208
+      WeaponId: 20209
       ArmorHeadId: 10131
       ArmorArmsId: 10231
       ArmorBodyId: 10331
@@ -7083,7 +7097,7 @@ MonoBehaviour:
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20208
+      WeaponId: 20210
       ArmorHeadId: 10137
       ArmorArmsId: 10237
       ArmorBodyId: 10337
