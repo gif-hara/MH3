@@ -23,8 +23,12 @@ namespace MH3.SkillSystems
                 })
                 .RegisterTo(scope);
             owner.SpecController.OnTakeDamage
-                .Subscribe(this, static (_, @this) =>
+                .Subscribe(this, static (x, @this) =>
                 {
+                    if (x.ConsumedSuperArmor)
+                    {
+                        return;
+                    }
                     @this.count = 0;
                 })
                 .RegisterTo(scope);
