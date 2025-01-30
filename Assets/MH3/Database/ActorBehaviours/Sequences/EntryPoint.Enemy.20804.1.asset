@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
+  m_Name: EntryPoint.Enemy.20804.1
+  m_EditorClassIdentifier: 
+  sequences:
+  - rid: 1481063179134173322
+  - rid: 1481063179134173264
+  references:
+    version: 2
+    RefIds:
+    - rid: 1481063179134173264
+      type: {class: SelectorWithWeight, ns: MH3, asm: Assembly-CSharp}
+      data:
+        elements:
+        - weight: 25
+          sequenceResolver:
+            rid: 1481063179134173329
+        - weight: 25
+          sequenceResolver:
+            rid: 1481063179134173330
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438654173937694
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438777664471140
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438777664471141
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438777664471142
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438777664471143
+        - weight: 100
+          sequenceResolver:
+            rid: 7349438777664471144
+        - weight: 250
+          sequenceResolver:
+            rid: 7349438777664471145
+    - rid: 1481063179134173322
+      type: {class: WaitForStateAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 1481063179134173323
+        stateSequences: {fileID: 11400000, guid: c1279abbf254742cdb902be8f51bbec0, type: 2}
+    - rid: 1481063179134173323
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 1481063179134173329
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: b29c4456964fd5b41975913175eea13d, type: 2}
+    - rid: 1481063179134173330
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 80d8a4bd57882284ca561d2723f0a9a2, type: 2}
+    - rid: 7349438654173937694
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: d3521a60497077f4e8d31a0b8c6b4f6a, type: 2}
+    - rid: 7349438777664471140
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: b429084270c61194a997ed899d0ea591, type: 2}
+    - rid: 7349438777664471141
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 16698c8446f70d347a8a324c2ac16031, type: 2}
+    - rid: 7349438777664471142
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: e1a17e48bc83e4f41bad34bf1953c4a0, type: 2}
+    - rid: 7349438777664471143
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: f5fa78415f1023b4584012379127908d, type: 2}
+    - rid: 7349438777664471144
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: d0184570d0f48ab4db86f34ddfd68acd, type: 2}
+    - rid: 7349438777664471145
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 859589fd86e8a284abd838181cf57dc3, type: 2}

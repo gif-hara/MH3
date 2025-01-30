@@ -938,6 +938,20 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20404
+      Name: "\u57F7\u4E8B\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 3
+      ModelDataId: Shield.5
+      ComboId: 10401
+      JustGuardAttackAnimationKey: Attack.Shield.JustGuard.1
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: Guard.Canceled.Default
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 80e176db6820adf48a745dd7ab477f30, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20107
       Name: "\u4F8D\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 0
@@ -994,7 +1008,7 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20404
+    - Id: 20405
       Name: "\u30D6\u30E9\u30C3\u30AF\u30B9\u30E9\u30A4\u30E0EX\u306E\u6B66\u5668"
       WeaponType: 3
       ModelDataId: Shield.6
@@ -2415,12 +2429,12 @@ MonoBehaviour:
       Value:
       - Id: 10110
         AbnormalStatusType: 1
-        Power: 12
+        Power: 9
         RareType: 0
         Weight: 100
       - Id: 10110
         AbnormalStatusType: 1
-        Power: 15
+        Power: 12
         RareType: 0
         Weight: 100
     - Key: 10111
@@ -2441,24 +2455,24 @@ MonoBehaviour:
       Value:
       - Id: 10113
         AbnormalStatusType: 3
-        Power: 18
+        Power: 12
         RareType: 0
         Weight: 100
       - Id: 10113
         AbnormalStatusType: 2
-        Power: 18
+        Power: 12
         RareType: 0
         Weight: 100
     - Key: 10114
       Value:
       - Id: 10114
         AbnormalStatusType: 3
-        Power: 18
+        Power: 13
         RareType: 0
         Weight: 100
       - Id: 10114
         AbnormalStatusType: 2
-        Power: 18
+        Power: 13
         RareType: 0
         Weight: 100
     - Key: 10115
@@ -2514,34 +2528,34 @@ MonoBehaviour:
       Value:
       - Id: 10206
         AbnormalStatusType: 1
-        Power: 7
+        Power: 5
         RareType: 0
         Weight: 100
       - Id: 10206
         AbnormalStatusType: 2
-        Power: 7
+        Power: 5
         RareType: 0
         Weight: 100
       - Id: 10206
         AbnormalStatusType: 3
-        Power: 7
+        Power: 5
         RareType: 0
         Weight: 100
     - Key: 10207
       Value:
       - Id: 10207
         AbnormalStatusType: 1
-        Power: 7
+        Power: 5
         RareType: 0
         Weight: 100
       - Id: 10207
         AbnormalStatusType: 2
-        Power: 7
+        Power: 5
         RareType: 0
         Weight: 100
       - Id: 10207
         AbnormalStatusType: 3
-        Power: 7
+        Power: 5
         RareType: 0
         Weight: 100
     - Key: 10208
@@ -2588,7 +2602,7 @@ MonoBehaviour:
         Weight: 100
       - Id: 10304
         AbnormalStatusType: 2
-        Power: 21
+        Power: 8
         RareType: 0
         Weight: 100
     - Key: 10305
@@ -2600,7 +2614,7 @@ MonoBehaviour:
         Weight: 100
       - Id: 10305
         AbnormalStatusType: 3
-        Power: 13
+        Power: 8
         RareType: 0
         Weight: 100
     - Key: 10306
@@ -2649,7 +2663,7 @@ MonoBehaviour:
       Value:
       - Id: 10403
         AbnormalStatusType: 1
-        Power: 9
+        Power: 8
         RareType: 0
         Weight: 100
     - Key: 10404
@@ -2663,24 +2677,24 @@ MonoBehaviour:
       Value:
       - Id: 10405
         AbnormalStatusType: 2
-        Power: 12
+        Power: 7
         RareType: 0
         Weight: 100
     - Key: 10406
       Value:
       - Id: 10406
         AbnormalStatusType: 1
-        Power: 21
+        Power: 9
         RareType: 0
         Weight: 100
       - Id: 10406
         AbnormalStatusType: 2
-        Power: 21
+        Power: 9
         RareType: 0
         Weight: 100
       - Id: 10406
         AbnormalStatusType: 3
-        Power: 21
+        Power: 9
         RareType: 0
         Weight: 100
     - Key: 10501
@@ -2694,14 +2708,14 @@ MonoBehaviour:
       Value:
       - Id: 10502
         AbnormalStatusType: 3
-        Power: 6
+        Power: 5
         RareType: 0
         Weight: 100
     - Key: 10503
       Value:
       - Id: 10503
         AbnormalStatusType: 3
-        Power: 7
+        Power: 5
         RareType: 0
         Weight: 100
     - Key: 10504
@@ -5423,9 +5437,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.01
       GrassDamageCutRate: 0.21
       FlinchThreshold: 94
-      PoisonThreshold: 110
-      ParalysisThreshold: 109
-      CollapseThreshold: 111
+      PoisonThreshold: 113
+      ParalysisThreshold: 114
+      CollapseThreshold: 115
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -5471,9 +5485,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.21
       GrassDamageCutRate: 0.01
       FlinchThreshold: 80
-      PoisonThreshold: 110
-      ParalysisThreshold: 109
-      CollapseThreshold: 111
+      PoisonThreshold: 113
+      ParalysisThreshold: 114
+      CollapseThreshold: 115
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -5519,9 +5533,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.01
       GrassDamageCutRate: 0.01
       FlinchThreshold: 118
-      PoisonThreshold: 110
-      ParalysisThreshold: 109
-      CollapseThreshold: 111
+      PoisonThreshold: 113
+      ParalysisThreshold: 114
+      CollapseThreshold: 115
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -5567,9 +5581,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.12
       GrassDamageCutRate: 0.12
       FlinchThreshold: 153
-      PoisonThreshold: 121
-      ParalysisThreshold: 118
-      CollapseThreshold: 123
+      PoisonThreshold: 127
+      ParalysisThreshold: 129
+      CollapseThreshold: 132
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -5615,9 +5629,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.02
       GrassDamageCutRate: 0.22
       FlinchThreshold: 111
-      PoisonThreshold: 121
-      ParalysisThreshold: 118
-      CollapseThreshold: 123
+      PoisonThreshold: 127
+      ParalysisThreshold: 129
+      CollapseThreshold: 132
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -5663,9 +5677,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.22
       GrassDamageCutRate: 0.02
       FlinchThreshold: 94
-      PoisonThreshold: 121
-      ParalysisThreshold: 118
-      CollapseThreshold: 123
+      PoisonThreshold: 127
+      ParalysisThreshold: 129
+      CollapseThreshold: 132
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -5711,9 +5725,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.02
       GrassDamageCutRate: 0.02
       FlinchThreshold: 139
-      PoisonThreshold: 121
-      ParalysisThreshold: 118
-      CollapseThreshold: 123
+      PoisonThreshold: 127
+      ParalysisThreshold: 129
+      CollapseThreshold: 132
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -5759,9 +5773,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.03
       GrassDamageCutRate: 0.23
       FlinchThreshold: 131
-      PoisonThreshold: 133
-      ParalysisThreshold: 129
-      CollapseThreshold: 136
+      PoisonThreshold: 144
+      ParalysisThreshold: 148
+      CollapseThreshold: 152
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -5807,9 +5821,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.23
       GrassDamageCutRate: 0.03
       FlinchThreshold: 111
-      PoisonThreshold: 133
-      ParalysisThreshold: 129
-      CollapseThreshold: 136
+      PoisonThreshold: 144
+      ParalysisThreshold: 148
+      CollapseThreshold: 152
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -5855,9 +5869,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.03
       GrassDamageCutRate: 0.03
       FlinchThreshold: 164
-      PoisonThreshold: 133
-      ParalysisThreshold: 129
-      CollapseThreshold: 136
+      PoisonThreshold: 144
+      ParalysisThreshold: 148
+      CollapseThreshold: 152
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -5903,9 +5917,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.13
       GrassDamageCutRate: 0.13
       FlinchThreshold: 180
-      PoisonThreshold: 133
-      ParalysisThreshold: 129
-      CollapseThreshold: 136
+      PoisonThreshold: 144
+      ParalysisThreshold: 148
+      CollapseThreshold: 152
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -5951,9 +5965,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.14
       GrassDamageCutRate: 0.14
       FlinchThreshold: 155
-      PoisonThreshold: 146
-      ParalysisThreshold: 141
-      CollapseThreshold: 151
+      PoisonThreshold: 163
+      ParalysisThreshold: 168
+      CollapseThreshold: 174
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -5999,9 +6013,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.04
       GrassDamageCutRate: 0.24
       FlinchThreshold: 155
-      PoisonThreshold: 146
-      ParalysisThreshold: 141
-      CollapseThreshold: 151
+      PoisonThreshold: 163
+      ParalysisThreshold: 168
+      CollapseThreshold: 174
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6047,9 +6061,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.24
       GrassDamageCutRate: 0.04
       FlinchThreshold: 131
-      PoisonThreshold: 146
-      ParalysisThreshold: 141
-      CollapseThreshold: 151
+      PoisonThreshold: 163
+      ParalysisThreshold: 168
+      CollapseThreshold: 174
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6095,9 +6109,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.04
       GrassDamageCutRate: 0.04
       FlinchThreshold: 193
-      PoisonThreshold: 146
-      ParalysisThreshold: 141
-      CollapseThreshold: 151
+      PoisonThreshold: 163
+      ParalysisThreshold: 168
+      CollapseThreshold: 174
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6143,9 +6157,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.14
       GrassDamageCutRate: 0.14
       FlinchThreshold: 213
-      PoisonThreshold: 146
-      ParalysisThreshold: 141
-      CollapseThreshold: 151
+      PoisonThreshold: 163
+      ParalysisThreshold: 168
+      CollapseThreshold: 174
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6191,9 +6205,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.05
       GrassDamageCutRate: 0.25
       FlinchThreshold: 183
-      PoisonThreshold: 161
-      ParalysisThreshold: 153
-      CollapseThreshold: 168
+      PoisonThreshold: 184
+      ParalysisThreshold: 192
+      CollapseThreshold: 201
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6239,9 +6253,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.25
       GrassDamageCutRate: 0.05
       FlinchThreshold: 155
-      PoisonThreshold: 161
-      ParalysisThreshold: 153
-      CollapseThreshold: 168
+      PoisonThreshold: 184
+      ParalysisThreshold: 192
+      CollapseThreshold: 201
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6287,9 +6301,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.05
       GrassDamageCutRate: 0.05
       FlinchThreshold: 228
-      PoisonThreshold: 161
-      ParalysisThreshold: 153
-      CollapseThreshold: 168
+      PoisonThreshold: 184
+      ParalysisThreshold: 192
+      CollapseThreshold: 201
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6335,15 +6349,15 @@ MonoBehaviour:
       WaterDamageCutRate: 0.15
       GrassDamageCutRate: 0.15
       FlinchThreshold: 251
-      PoisonThreshold: 161
-      ParalysisThreshold: 153
-      CollapseThreshold: 168
+      PoisonThreshold: 184
+      ParalysisThreshold: 192
+      CollapseThreshold: 201
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20403
+      WeaponId: 20404
       ArmorHeadId: 10121
       ArmorArmsId: 10221
       ArmorBodyId: 10321
@@ -6371,7 +6385,7 @@ MonoBehaviour:
       DeadSequences: {fileID: 11400000, guid: 4cb4d242094d2494385b556fbafd1559, type: 2}
       RecoverySequences: {fileID: 11400000, guid: 2a8a8e24b3fb84e4ea602c4663e0b715, type: 2}
       ActorPrefab: {fileID: 963923653530722458, guid: 07d7ea718d879eb449782c1012233de5, type: 3}
-      Behaviour: {fileID: 0}
+      Behaviour: {fileID: 11400000, guid: d829819304726df45bf502d5bdf7a661, type: 2}
     - Id: 20805
       Name: "\u8B66\u5BDF\u5B98\u30B9\u30E9\u30A4\u30E0"
       ActorType: 1
@@ -6383,9 +6397,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.15
       GrassDamageCutRate: 0.15
       FlinchThreshold: 183
-      PoisonThreshold: 161
-      ParalysisThreshold: 153
-      CollapseThreshold: 168
+      PoisonThreshold: 184
+      ParalysisThreshold: 192
+      CollapseThreshold: 201
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6431,9 +6445,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.07
       GrassDamageCutRate: 0.27
       FlinchThreshold: 254
-      PoisonThreshold: 194
-      ParalysisThreshold: 182
-      CollapseThreshold: 207
+      PoisonThreshold: 235
+      ParalysisThreshold: 250
+      CollapseThreshold: 266
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6479,9 +6493,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.08
       GrassDamageCutRate: 0.28
       FlinchThreshold: 300
-      PoisonThreshold: 214
-      ParalysisThreshold: 199
-      CollapseThreshold: 230
+      PoisonThreshold: 265
+      ParalysisThreshold: 285
+      CollapseThreshold: 305
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6527,9 +6541,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.28
       GrassDamageCutRate: 0.08
       FlinchThreshold: 255
-      PoisonThreshold: 214
-      ParalysisThreshold: 199
-      CollapseThreshold: 230
+      PoisonThreshold: 265
+      ParalysisThreshold: 285
+      CollapseThreshold: 305
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6575,9 +6589,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.08
       GrassDamageCutRate: 0.08
       FlinchThreshold: 375
-      PoisonThreshold: 214
-      ParalysisThreshold: 199
-      CollapseThreshold: 230
+      PoisonThreshold: 265
+      ParalysisThreshold: 285
+      CollapseThreshold: 305
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6623,15 +6637,15 @@ MonoBehaviour:
       WaterDamageCutRate: 0.18
       GrassDamageCutRate: 0.18
       FlinchThreshold: 413
-      PoisonThreshold: 214
-      ParalysisThreshold: 199
-      CollapseThreshold: 230
+      PoisonThreshold: 265
+      ParalysisThreshold: 285
+      CollapseThreshold: 305
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20404
+      WeaponId: 20405
       ArmorHeadId: 10127
       ArmorArmsId: 10227
       ArmorBodyId: 10327
@@ -6671,9 +6685,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.18
       GrassDamageCutRate: 0.18
       FlinchThreshold: 300
-      PoisonThreshold: 214
-      ParalysisThreshold: 199
-      CollapseThreshold: 230
+      PoisonThreshold: 265
+      ParalysisThreshold: 285
+      CollapseThreshold: 305
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6719,9 +6733,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.29
       GrassDamageCutRate: 0.09
       FlinchThreshold: 301
-      PoisonThreshold: 235
-      ParalysisThreshold: 217
-      CollapseThreshold: 255
+      PoisonThreshold: 300
+      ParalysisThreshold: 325
+      CollapseThreshold: 351
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6767,9 +6781,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.1
       GrassDamageCutRate: 0.3
       FlinchThreshold: 418
-      PoisonThreshold: 259
-      ParalysisThreshold: 236
-      CollapseThreshold: 283
+      PoisonThreshold: 339
+      ParalysisThreshold: 370
+      CollapseThreshold: 404
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6815,9 +6829,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.3
       GrassDamageCutRate: 0.1
       FlinchThreshold: 355
-      PoisonThreshold: 259
-      ParalysisThreshold: 236
-      CollapseThreshold: 283
+      PoisonThreshold: 339
+      ParalysisThreshold: 370
+      CollapseThreshold: 404
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6863,9 +6877,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.1
       GrassDamageCutRate: 0.1
       FlinchThreshold: 523
-      PoisonThreshold: 259
-      ParalysisThreshold: 236
-      CollapseThreshold: 283
+      PoisonThreshold: 339
+      ParalysisThreshold: 370
+      CollapseThreshold: 404
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -6911,15 +6925,15 @@ MonoBehaviour:
       WaterDamageCutRate: 0.2
       GrassDamageCutRate: 0.2
       FlinchThreshold: 575
-      PoisonThreshold: 259
-      ParalysisThreshold: 236
-      CollapseThreshold: 283
+      PoisonThreshold: 339
+      ParalysisThreshold: 370
+      CollapseThreshold: 404
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20405
+      WeaponId: 20406
       ArmorHeadId: 10133
       ArmorArmsId: 10233
       ArmorBodyId: 10333
@@ -6959,9 +6973,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.2
       GrassDamageCutRate: 0.2
       FlinchThreshold: 418
-      PoisonThreshold: 259
-      ParalysisThreshold: 236
-      CollapseThreshold: 283
+      PoisonThreshold: 339
+      ParalysisThreshold: 370
+      CollapseThreshold: 404
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -7007,9 +7021,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.11
       GrassDamageCutRate: 0.11
       FlinchThreshold: 617
-      PoisonThreshold: 285
-      ParalysisThreshold: 258
-      CollapseThreshold: 315
+      PoisonThreshold: 383
+      ParalysisThreshold: 422
+      CollapseThreshold: 465
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -7055,9 +7069,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.12
       GrassDamageCutRate: 0.32
       FlinchThreshold: 583
-      PoisonThreshold: 313
-      ParalysisThreshold: 281
-      CollapseThreshold: 349
+      PoisonThreshold: 433
+      ParalysisThreshold: 481
+      CollapseThreshold: 535
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -7103,9 +7117,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.32
       GrassDamageCutRate: 0.12
       FlinchThreshold: 495
-      PoisonThreshold: 313
-      ParalysisThreshold: 281
-      CollapseThreshold: 349
+      PoisonThreshold: 433
+      ParalysisThreshold: 481
+      CollapseThreshold: 535
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -7151,9 +7165,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.12
       GrassDamageCutRate: 0.12
       FlinchThreshold: 728
-      PoisonThreshold: 313
-      ParalysisThreshold: 281
-      CollapseThreshold: 349
+      PoisonThreshold: 433
+      ParalysisThreshold: 481
+      CollapseThreshold: 535
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -7199,15 +7213,15 @@ MonoBehaviour:
       WaterDamageCutRate: 0.22
       GrassDamageCutRate: 0.22
       FlinchThreshold: 801
-      PoisonThreshold: 313
-      ParalysisThreshold: 281
-      CollapseThreshold: 349
+      PoisonThreshold: 433
+      ParalysisThreshold: 481
+      CollapseThreshold: 535
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20405
+      WeaponId: 20407
       ArmorHeadId: 10139
       ArmorArmsId: 10239
       ArmorBodyId: 10339
@@ -7247,9 +7261,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.22
       GrassDamageCutRate: 0.22
       FlinchThreshold: 583
-      PoisonThreshold: 313
-      ParalysisThreshold: 281
-      CollapseThreshold: 349
+      PoisonThreshold: 433
+      ParalysisThreshold: 481
+      CollapseThreshold: 535
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -7295,9 +7309,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.14
       GrassDamageCutRate: 0.34
       FlinchThreshold: 811
-      PoisonThreshold: 379
-      ParalysisThreshold: 334
-      CollapseThreshold: 431
+      PoisonThreshold: 553
+      ParalysisThreshold: 626
+      CollapseThreshold: 707
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -7343,9 +7357,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.34
       GrassDamageCutRate: 0.14
       FlinchThreshold: 690
-      PoisonThreshold: 379
-      ParalysisThreshold: 334
-      CollapseThreshold: 431
+      PoisonThreshold: 553
+      ParalysisThreshold: 626
+      CollapseThreshold: 707
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -7391,9 +7405,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.14
       GrassDamageCutRate: 0.14
       FlinchThreshold: 1014
-      PoisonThreshold: 379
-      ParalysisThreshold: 334
-      CollapseThreshold: 431
+      PoisonThreshold: 553
+      ParalysisThreshold: 626
+      CollapseThreshold: 707
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -7439,9 +7453,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.24
       GrassDamageCutRate: 0.24
       FlinchThreshold: 1116
-      PoisonThreshold: 379
-      ParalysisThreshold: 334
-      CollapseThreshold: 431
+      PoisonThreshold: 553
+      ParalysisThreshold: 626
+      CollapseThreshold: 707
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -7487,9 +7501,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.24
       GrassDamageCutRate: 0.24
       FlinchThreshold: 811
-      PoisonThreshold: 379
-      ParalysisThreshold: 334
-      CollapseThreshold: 431
+      PoisonThreshold: 553
+      ParalysisThreshold: 626
+      CollapseThreshold: 707
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
@@ -7535,9 +7549,9 @@ MonoBehaviour:
       WaterDamageCutRate: 0.36
       GrassDamageCutRate: 0.16
       FlinchThreshold: 960
-      PoisonThreshold: 459
-      ParalysisThreshold: 397
-      CollapseThreshold: 531
+      PoisonThreshold: 706
+      ParalysisThreshold: 813
+      CollapseThreshold: 935
       PoisonDuration: 30
       ParalysisDuration: 10
       CollapseDuration: 30
