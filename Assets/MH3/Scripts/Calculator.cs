@@ -28,7 +28,7 @@ namespace MH3
                 damage = Mathf.FloorToInt(damage * gameRules.CollapseDamageRate);
             }
 
-            damage = Mathf.FloorToInt(damage - (float)target.SpecController.DefenseTotal / gameRules.DefenseRate);
+            damage = Mathf.FloorToInt(damage * (1.0f - (float)target.SpecController.DefenseTotal / gameRules.DefenseRate));
             damage = Mathf.FloorToInt(damage * (1.0f - target.SpecController.GetCutRate(attackSpec.ElementType)));
             var consumedSuperArmor = false;
             if (target.SpecController.SuperArmorCount.CurrentValue > 0)
