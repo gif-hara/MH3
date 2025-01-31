@@ -630,6 +630,34 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 0}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: d254a2176535ec54dbf46ca026eacb2a, type: 2}
+    - Id: 19901
+      Name: "\u6575\u6B66\u5668"
+      WeaponType: 0
+      ModelDataId: Sword.1
+      ComboId: 19901
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: Guard.Canceled.Default
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 19902
+      Name: "\u6575\u6B66\u5668"
+      WeaponType: 0
+      ModelDataId: Training.1
+      ComboId: 20101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: Guard.Canceled.Default
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: de818f0f8b8f4694f91f199a6e2c9bac, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20101
       Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 0
@@ -641,34 +669,6 @@ MonoBehaviour:
       GuardCanceledSequencesKey: 
       DodgePerformedSequencesKey: Dodge.Performed.Default
       ModelData: {fileID: 11400000, guid: df8f701c3beac42188e9d69db5bf50c9, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20201
-      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 1
-      ModelDataId: DualSword.2
-      ComboId: 20201
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 7cd7eeddb2df34485bfc2de1898df6b7, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20301
-      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 2
-      ModelDataId: Blade.2
-      ComboId: 20301
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 59c620b3751a34322824250e43c10406, type: 2}
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
@@ -686,34 +686,6 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20202
-      Name: "\u9B54\u6CD5\u4F7F\u3044\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 1
-      ModelDataId: DualSword.3
-      ComboId: 20201
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 92fe05acc5d88d146a9174f6cca2f152, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20302
-      Name: "\u8D64\u9B3C\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 2
-      ModelDataId: Blade.3
-      ComboId: 20301
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 63c49e1a2d69ae848960cb2ac16bf905, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20103
       Name: "\u304A\u3055\u304B\u306A\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 0
@@ -725,34 +697,6 @@ MonoBehaviour:
       GuardCanceledSequencesKey: 
       DodgePerformedSequencesKey: Dodge.Performed.Default
       ModelData: {fileID: 11400000, guid: 4c7449dca2e49ef42963dd02223b71e5, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20203
-      Name: "\u306B\u308F\u3068\u308A\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 1
-      ModelDataId: DualSword.4
-      ComboId: 20201
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: e9cef7ab72b21ca48833e33c9ebab89e, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20303
-      Name: "\u304A\u304A\u304B\u307F\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 2
-      ModelDataId: Blade.4
-      ComboId: 20301
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: c3e878246871c1d459d4f2dc4d2e8f22, type: 2}
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
@@ -770,6 +714,104 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20105
+      Name: "\u5FDC\u63F4\u56E3\u54E1\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 0
+      ModelDataId: Sword.6
+      ComboId: 20101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 47fa610bb98c58a40ad8c163d2618dd4, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20106
+      Name: "\u30CF\u30ED\u30A6\u30A3\u30F3\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 0
+      ModelDataId: Sword.7
+      ComboId: 20101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 5e1cafb57cabb1f4099ab1047b57b62a, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20107
+      Name: "\u4F8D\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 0
+      ModelDataId: Sword.8
+      ComboId: 20101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 0}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20108
+      Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0EX\u306E\u6B66\u5668"
+      WeaponType: 0
+      ModelDataId: Sword.9
+      ComboId: 20101
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 0}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20201
+      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 1
+      ModelDataId: DualSword.2
+      ComboId: 20201
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 7cd7eeddb2df34485bfc2de1898df6b7, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20202
+      Name: "\u9B54\u6CD5\u4F7F\u3044\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 1
+      ModelDataId: DualSword.3
+      ComboId: 20201
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 92fe05acc5d88d146a9174f6cca2f152, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20203
+      Name: "\u306B\u308F\u3068\u308A\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 1
+      ModelDataId: DualSword.4
+      ComboId: 20201
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: e9cef7ab72b21ca48833e33c9ebab89e, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20204
       Name: "\u5FCD\u8005\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 1
@@ -784,6 +826,90 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20205
+      Name: "\u30D4\u30A8\u30ED\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 1
+      ModelDataId: DualSword.6
+      ComboId: 20201
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 5fe6864acc717764c8b3767ebf1dafa4, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20206
+      Name: "\u30D5\u30A7\u30A2\u30EA\u30FC\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 1
+      ModelDataId: DualSword.7
+      ComboId: 20201
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 54dc540aa9d8bcd47bf94ff51e495849, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20207
+      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0EX\u306E\u6B66\u5668"
+      WeaponType: 1
+      ModelDataId: DualSword.9
+      ComboId: 20201
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 0}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20301
+      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 2
+      ModelDataId: Blade.2
+      ComboId: 20301
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 59c620b3751a34322824250e43c10406, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20302
+      Name: "\u8D64\u9B3C\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 2
+      ModelDataId: Blade.3
+      ComboId: 20301
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 63c49e1a2d69ae848960cb2ac16bf905, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20303
+      Name: "\u304A\u304A\u304B\u307F\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 2
+      ModelDataId: Blade.4
+      ComboId: 20301
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: c3e878246871c1d459d4f2dc4d2e8f22, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20304
       Name: "\u30B5\u30F3\u30BF\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 2
@@ -795,6 +921,48 @@ MonoBehaviour:
       GuardCanceledSequencesKey: 
       DodgePerformedSequencesKey: Dodge.Performed.Default
       ModelData: {fileID: 11400000, guid: 98474f27a0d486645a7234c519331968, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20305
+      Name: "\u30D1\u30A4\u30ED\u30C3\u30C8\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 2
+      ModelDataId: Blade.6
+      ComboId: 20301
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 0acee303bf2740441bfadc8b910952e0, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20306
+      Name: "\u30AB\u30A6\u30DC\u30FC\u30A4\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 2
+      ModelDataId: Blade.7
+      ComboId: 20301
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 663525d0d0674a243a879d8d4e7e4add, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 0}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20307
+      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0EX\u306E\u6B66\u5668"
+      WeaponType: 2
+      ModelDataId: Blade.9
+      ComboId: 20301
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: 
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 0}
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
@@ -826,62 +994,6 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20501
-      Name: "\u89AA\u885B\u968A\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 4
-      ModelDataId: Spear.2
-      ComboId: 10401
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: Guard.Canceled.Default
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 776fa17c9ff40fe4387b3ac871404e4a, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20105
-      Name: "\u5FDC\u63F4\u56E3\u54E1\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 0
-      ModelDataId: Sword.6
-      ComboId: 20101
-      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 47fa610bb98c58a40ad8c163d2618dd4, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20205
-      Name: "\u30D4\u30A8\u30ED\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 1
-      ModelDataId: DualSword.6
-      ComboId: 20201
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 5fe6864acc717764c8b3767ebf1dafa4, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20305
-      Name: "\u30D1\u30A4\u30ED\u30C3\u30C8\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 2
-      ModelDataId: Blade.6
-      ComboId: 20301
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 0acee303bf2740441bfadc8b910952e0, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20403
       Name: "\u63A2\u691C\u5BB6\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
       WeaponType: 3
@@ -895,48 +1007,6 @@ MonoBehaviour:
       ModelData: {fileID: 11400000, guid: 2fea29cab82fb4146b40bb599860a03e, type: 2}
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20106
-      Name: "\u30CF\u30ED\u30A6\u30A3\u30F3\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 0
-      ModelDataId: Sword.7
-      ComboId: 20101
-      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 5e1cafb57cabb1f4099ab1047b57b62a, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20206
-      Name: "\u30D5\u30A7\u30A2\u30EA\u30FC\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 1
-      ModelDataId: DualSword.7
-      ComboId: 20201
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 54dc540aa9d8bcd47bf94ff51e495849, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20306
-      Name: "\u30AB\u30A6\u30DC\u30FC\u30A4\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 2
-      ModelDataId: Blade.7
-      ComboId: 20301
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 663525d0d0674a243a879d8d4e7e4add, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20404
       Name: "\u57F7\u4E8B\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
@@ -952,76 +1022,6 @@ MonoBehaviour:
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20502
-      Name: "\u8B66\u5BDF\u5B98\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 4
-      ModelDataId: Spear.3
-      ComboId: 10401
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: Guard.Canceled.Default
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: 74064d26bed82654f95a048fa365e264, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20107
-      Name: "\u4F8D\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
-      WeaponType: 0
-      ModelDataId: Sword.8
-      ComboId: 20101
-      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 0}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20108
-      Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0EX\u306E\u6B66\u5668"
-      WeaponType: 0
-      ModelDataId: Sword.9
-      ComboId: 20101
-      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 0}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20207
-      Name: "\u30D6\u30EB\u30FC\u30B9\u30E9\u30A4\u30E0EX\u306E\u6B66\u5668"
-      WeaponType: 1
-      ModelDataId: DualSword.9
-      ComboId: 20201
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 0}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 20307
-      Name: "\u30EC\u30C3\u30C9\u30B9\u30E9\u30A4\u30E0EX\u306E\u6B66\u5668"
-      WeaponType: 2
-      ModelDataId: Blade.9
-      ComboId: 20301
-      JustGuardAttackAnimationKey: 
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: 
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 0}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
     - Id: 20405
       Name: "\u30D6\u30E9\u30C3\u30AF\u30B9\u30E9\u30A4\u30E0EX\u306E\u6B66\u5668"
       WeaponType: 3
@@ -1033,6 +1033,34 @@ MonoBehaviour:
       GuardCanceledSequencesKey: Guard.Canceled.Default
       DodgePerformedSequencesKey: Dodge.Performed.Default
       ModelData: {fileID: 0}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20501
+      Name: "\u89AA\u885B\u968A\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 4
+      ModelDataId: Spear.2
+      ComboId: 10401
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: Guard.Canceled.Default
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 776fa17c9ff40fe4387b3ac871404e4a, type: 2}
+      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
+      GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
+      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
+    - Id: 20502
+      Name: "\u8B66\u5BDF\u5B98\u30B9\u30E9\u30A4\u30E0\u306E\u6B66\u5668"
+      WeaponType: 4
+      ModelDataId: Spear.3
+      ComboId: 10401
+      JustGuardAttackAnimationKey: 
+      StrongAttackAnimationKey: 
+      GuardPerformedSequencesKey: Guard.Performed.Default
+      GuardCanceledSequencesKey: Guard.Canceled.Default
+      DodgePerformedSequencesKey: Dodge.Performed.Default
+      ModelData: {fileID: 11400000, guid: 74064d26bed82654f95a048fa365e264, type: 2}
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
@@ -1119,34 +1147,6 @@ MonoBehaviour:
       ModelData: {fileID: 11400000, guid: eb290d97519588d448f51b4c717cf480, type: 2}
       GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
       GuardCanceledSequences: {fileID: 0}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 19901
-      Name: "\u6575\u6B66\u5668"
-      WeaponType: 0
-      ModelDataId: Sword.1
-      ComboId: 19901
-      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: Guard.Canceled.Default
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: aaf97dca89a6deb4bb0ffc2d2edf26d6, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
-      DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
-    - Id: 19902
-      Name: "\u6575\u6B66\u5668"
-      WeaponType: 0
-      ModelDataId: Training.1
-      ComboId: 20101
-      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
-      StrongAttackAnimationKey: 
-      GuardPerformedSequencesKey: Guard.Performed.Default
-      GuardCanceledSequencesKey: Guard.Canceled.Default
-      DodgePerformedSequencesKey: Dodge.Performed.Default
-      ModelData: {fileID: 11400000, guid: de818f0f8b8f4694f91f199a6e2c9bac, type: 2}
-      GuardPerformedSequences: {fileID: 11400000, guid: 42cb48338cd804a43ad34d9a395c76c2, type: 2}
-      GuardCanceledSequences: {fileID: 11400000, guid: 42ae0db117db4e54ab64bf0d99276602, type: 2}
       DodgePerformedSequences: {fileID: 11400000, guid: 73b808134a0d1449c8f98036736ea0e0, type: 2}
   weaponAttacks:
     list:
@@ -7379,7 +7379,7 @@ MonoBehaviour:
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20209
+      WeaponId: 20211
       ArmorHeadId: 10142
       ArmorArmsId: 10242
       ArmorBodyId: 10342
@@ -7427,7 +7427,7 @@ MonoBehaviour:
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20308
+      WeaponId: 20311
       ArmorHeadId: 10143
       ArmorArmsId: 10243
       ArmorBodyId: 10343
@@ -7571,7 +7571,7 @@ MonoBehaviour:
       CollapseDuration: 30
       MoveSpeed: 7
       RotationSpeed: 10
-      WeaponId: 20210
+      WeaponId: 20212
       ArmorHeadId: 10146
       ArmorArmsId: 10246
       ArmorBodyId: 10346
@@ -12819,7 +12819,7 @@ MonoBehaviour:
       ArmorType: 2
       ModelData: {fileID: 11400000, guid: c7dce925932010a4aa0d5a23bfe3d1d2, type: 2}
     - Id: 10121
-      Name: "\u57F7\u4E8B\u306E\u30B7\u30EB\u30AF\u30CF\u30C3\u30C8"
+      Name: "\u57F7\u4E8B\u306E\u982D"
       ModelDataId: Head.21
       ArmorType: 0
       ModelData: {fileID: 11400000, guid: 9e59bcc4a660fbb489098971b57131ef, type: 2}
@@ -12849,20 +12849,20 @@ MonoBehaviour:
       ArmorType: 2
       ModelData: {fileID: 11400000, guid: d827ef627a3c71b4792e377b8c4a00b3, type: 2}
     - Id: 10123
-      Name: "\u4F8D\u306E\u3061\u3087\u3093\u307E\u3052"
+      Name: "\u4F8D\u306E\u515C"
       ModelDataId: Head.23
       ArmorType: 0
-      ModelData: {fileID: 0}
+      ModelData: {fileID: 11400000, guid: 84c47436ff5cb444aa462869a91825f1, type: 2}
     - Id: 10223
-      Name: "\u4F8D\u306E\u8155"
+      Name: "\u4F8D\u306E\u624B\u7532"
       ModelDataId: Arms.23
       ArmorType: 1
-      ModelData: {fileID: 0}
+      ModelData: {fileID: 11400000, guid: 8384b6bd863988840b9198e542e6a11b, type: 2}
     - Id: 10323
-      Name: "\u4F8D\u306E\u5C0F\u8896"
+      Name: "\u4F8D\u306E\u93A7"
       ModelDataId: Body.23
       ArmorType: 2
-      ModelData: {fileID: 0}
+      ModelData: {fileID: 11400000, guid: 50adf63074f061c4485dfc97493cf8d1, type: 2}
     - Id: 10124
       Name: "\u30B0\u30EA\u30FC\u30F3\u30B9\u30E9\u30A4\u30E0EX\u30D8\u30EB\u30E0"
       ModelDataId: Head.24
