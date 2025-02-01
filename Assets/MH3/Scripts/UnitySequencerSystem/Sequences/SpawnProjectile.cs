@@ -22,11 +22,15 @@ namespace MH3
         [SerializeReference, SubclassSelector]
         private StringResolver attackSpecIdResolver;
 
+        [SerializeReference, SubclassSelector]
+        private StringResolver registerKeyResolver;
+
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var actor = actorResolver.Resolve(container);
             var attackSpecId = attackSpecIdResolver.Resolve(container);
-            projectilePrefab.Spawn(actor, TinyServiceLocator.Resolve<MasterData>().AttackSpecs.Get(attackSpecId), actor.transform.position, actor.transform.rotation);
+            var projectile = projectilePrefab.Spawn(actor, TinyServiceLocator.Resolve<MasterData>().AttackSpecs.Get(attackSpecId), actor.transform.position, actor.transform.rotation);
+            container.Register(registerKeyResolver.Resolve(container), projectile.transform);
             return UniTask.CompletedTask;
         }
     }
