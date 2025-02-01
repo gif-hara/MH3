@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequences:
   - rid: 803094316256854162
-  - rid: 803094316256854395
   references:
     version: 2
     RefIds:
@@ -40,24 +39,3 @@ MonoBehaviour:
       type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: Projectile
-    - rid: 803094316256854395
-      type: {class: TransformAddLocalPosition, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
-      data:
-        targetResolver:
-          rid: 803094316256854396
-        positionResolver:
-          rid: 803094316256854397
-        deltaTimeResolver:
-          rid: 803094316256854398
-    - rid: 803094316256854396
-      type: {class: TransformResolver/Name, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        name: Projectile
-    - rid: 803094316256854397
-      type: {class: Vector3Resolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: {x: 0, y: 1, z: 0}
-    - rid: 803094316256854398
-      type: {class: DeltaTimeResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: 1
