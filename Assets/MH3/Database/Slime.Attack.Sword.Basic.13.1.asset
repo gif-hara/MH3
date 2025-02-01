@@ -13,23 +13,72 @@ MonoBehaviour:
   m_Name: Slime.Attack.Sword.Basic.13.1
   m_EditorClassIdentifier: 
   sequences:
-  - rid: 803094316256854162
+  - rid: 803094316256854166
+  - rid: 803094316256854179
+  - rid: 803094316256854185
   references:
     version: 2
     RefIds:
-    - rid: 803094316256854162
-      type: {class: SpawnProjectile, ns: MH3, asm: Assembly-CSharp}
+    - rid: 803094316256854166
+      type: {class: SpawnEffect, ns: MH3, asm: Assembly-CSharp}
       data:
+        effectKeyResolver:
+          rid: 803094316256854167
+        registerKeyResolver:
+          rid: 803094316256854168
+    - rid: 803094316256854167
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Attack.1
+    - rid: 803094316256854168
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Effect
+    - rid: 803094316256854179
+      type: {class: SetParentFromActor, ns: MH3, asm: Assembly-CSharp}
+      data:
+        targetTransformResolver:
+          rid: 803094316256854180
         actorResolver:
-          rid: 803094316256854163
-        projectilePrefab: {fileID: 8149426423206855055, guid: 3e0aa5ef6f90e0d4f80365e5f1f4a4ab, type: 3}
-        attackSpecIdResolver:
-          rid: 803094316256854165
-    - rid: 803094316256854163
+          rid: 803094316256854181
+        positionResolver:
+          rid: 803094316256854182
+        rotationResolver:
+          rid: 803094316256854183
+        scaleResolver:
+          rid: 803094316256854184
+    - rid: 803094316256854180
+      type: {class: TransformResolver/Name, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Effect
+    - rid: 803094316256854181
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Actor
-    - rid: 803094316256854165
-      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+    - rid: 803094316256854182
+      type: {class: Vector3Resolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: Spear.Basic.13
+        value: {x: 0, y: 0, z: 0}
+    - rid: 803094316256854183
+      type: {class: QuaternionResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 0, y: 0, z: 0, w: 0}
+    - rid: 803094316256854184
+      type: {class: Vector3Resolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 1, y: 1, z: 1}
+    - rid: 803094316256854185
+      type: {class: TransformSetLocalPosition, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 803094316256854186
+        positionResolver:
+          rid: 803094316256854187
+    - rid: 803094316256854186
+      type: {class: TransformResolver/Name, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Effect
+    - rid: 803094316256854187
+      type: {class: Vector3Resolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 0, y: 0, z: 2}
