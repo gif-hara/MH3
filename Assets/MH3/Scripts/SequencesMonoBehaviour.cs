@@ -14,6 +14,9 @@ namespace MH3
         [SerializeField]
         private bool playOnEnable;
 
+        [SerializeField]
+        private Transform root;
+
         private void OnEnable()
         {
             if (playOnEnable)
@@ -24,7 +27,8 @@ namespace MH3
 
         public UniTask PlayAsync(Container container, CancellationToken scope)
         {
-            container.Register("Root", transform);
+            var r = root == null ? transform : root;
+            container.Register("Root", r);
             var sequences = sequencesResolver.Resolve(container);
             var sequencer = new Sequencer(container, sequences);
             return sequencer.PlayAsync(scope);
