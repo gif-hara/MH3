@@ -24,6 +24,7 @@ namespace MH3
 
         public UniTask PlayAsync(Container container, CancellationToken scope)
         {
+            container.Register("Root", transform);
             var sequences = sequencesResolver.Resolve(container);
             var sequencer = new Sequencer(container, sequences);
             return sequencer.PlayAsync(scope);
