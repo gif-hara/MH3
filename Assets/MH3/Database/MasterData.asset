@@ -214,7 +214,7 @@ MonoBehaviour:
       Name: "\u30B9\u30E9\u30A4\u30E0\u306E\u5200"
       WeaponType: 0
       ModelDataId: Sword.8
-      ComboId: 10102
+      ComboId: 10103
       JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
       StrongAttackAnimationKey: Attack.Sword.Strong.1
       GuardPerformedSequencesKey: Guard.Performed.Default
@@ -3189,6 +3189,12 @@ MonoBehaviour:
         AnimationKey: Attack.Sword.Basic.5
       - Id: 10102
         AnimationKey: Attack.Sword.Basic.6
+    - Key: 10103
+      Value:
+      - Id: 10103
+        AnimationKey: Attack.Sword.Basic.12
+      - Id: 10103
+        AnimationKey: Attack.Sword.Basic.13
     - Key: 10201
       Value:
       - Id: 10201
@@ -3569,6 +3575,54 @@ MonoBehaviour:
     - Id: Sword.Basic.11
       Power: 30
       FlinchDamage: 10
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: Small
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Sword.Basic.12
+      Power: 30
+      FlinchDamage: 10
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: Small
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Sword.Basic.13
+      Power: 42
+      FlinchDamage: 12
       ColliderName: Default
       FlinchName: Flinch.Small
       FlinchType: 2
