@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
+  m_Name: Slime.Attack.Sword.JustGuard.2.2
+  m_EditorClassIdentifier: 
+  sequences:
+  - rid: 803094316256854162
+  - rid: 803094316256854395
+  references:
+    version: 2
+    RefIds:
+    - rid: 803094316256854162
+      type: {class: SpawnProjectile, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 803094316256854163
+        projectilePrefab: {fileID: 8149426423206855055, guid: 3e0aa5ef6f90e0d4f80365e5f1f4a4ab, type: 3}
+        attackSpecIdResolver:
+          rid: 803094316256854165
+        registerKeyResolver:
+          rid: 803094316256854394
+    - rid: 803094316256854163
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 803094316256854165
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Sword.JustGuard.2
+    - rid: 803094316256854394
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Projectile
+    - rid: 803094316256854395
+      type: {class: TransformAddLocalPosition, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 803094316256854396
+        positionResolver:
+          rid: 803094316256854397
+        deltaTimeResolver:
+          rid: 803094316256854398
+    - rid: 803094316256854396
+      type: {class: TransformResolver/Name, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Projectile
+    - rid: 803094316256854397
+      type: {class: Vector3Resolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 0, y: 1, z: 0}
+    - rid: 803094316256854398
+      type: {class: DeltaTimeResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 1

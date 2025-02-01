@@ -215,7 +215,7 @@ MonoBehaviour:
       WeaponType: 0
       ModelDataId: Sword.8
       ComboId: 10103
-      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.1
+      JustGuardAttackAnimationKey: Attack.Sword.JustGuard.2
       StrongAttackAnimationKey: Attack.Sword.Strong.1
       GuardPerformedSequencesKey: Guard.Performed.Default
       GuardCanceledSequencesKey: Guard.Canceled.Default
@@ -3671,6 +3671,30 @@ MonoBehaviour:
     - Id: Sword.JustGuard.1
       Power: 32
       FlinchDamage: 100
+      ColliderName: Default
+      FlinchName: Flinch.Small
+      FlinchType: 2
+      ForceFlinch: 0
+      AbnormalStatusPower: 1
+      ElementPower: 1
+      ElementType: 0
+      CanCritical: 1
+      HitStopTimeScaleActor: 0.01
+      HitStopDurationActor: 0.2
+      HitStopTimeScaleTarget: 0.01
+      HitStopDurationTarget: 0.2
+      ShakeStrength: 0.4
+      ShakeDuration: 0.2
+      ShakeFrequency: 6
+      ShakeDampingRatio: 0
+      HitSfxKey: Hit.1
+      HitEffectKey: Hit.1
+      HitCameraImpulseSourceKey: Small
+      HitAdditionalSequencesKeyPlayer: 
+      HitAdditionalSequencesPlayer: {fileID: 0}
+    - Id: Sword.JustGuard.2
+      Power: 44
+      FlinchDamage: 120
       ColliderName: Default
       FlinchName: Flinch.Small
       FlinchType: 2
