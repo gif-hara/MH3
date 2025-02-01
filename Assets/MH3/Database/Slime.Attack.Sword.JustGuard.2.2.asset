@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Slime.Attack.Sword.JustGuard.2.2
   m_EditorClassIdentifier: 
   sequences:
+  - rid: 803094316256854401
   - rid: 803094316256854162
   - rid: 803094316256854395
   references:
@@ -61,3 +62,12 @@ MonoBehaviour:
       type: {class: DeltaTimeResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 1
+    - rid: 803094316256854401
+      type: {class: PlaySfx, ns: MH3, asm: Assembly-CSharp}
+      data:
+        keyResolver:
+          rid: 803094316256854403
+    - rid: 803094316256854403
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Attack.5

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Slime.Attack.Sword.Basic.13.2
   m_EditorClassIdentifier: 
   sequences:
+  - rid: 803094316256854399
   - rid: 803094316256854162
   - rid: 803094316256854395
   references:
@@ -61,3 +62,12 @@ MonoBehaviour:
       type: {class: DeltaTimeResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 1
+    - rid: 803094316256854399
+      type: {class: PlaySfx, ns: MH3, asm: Assembly-CSharp}
+      data:
+        keyResolver:
+          rid: 803094316256854400
+    - rid: 803094316256854400
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Attack.5
