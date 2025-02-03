@@ -28,7 +28,9 @@ MonoBehaviour:
         targetResolver:
           rid: 1481063177779675232
         comboAnimationKeys:
+        - Attack.Sword.Basic.18
         - Attack.Sword.Basic.19
+        - Attack.Sword.Basic.20
     - rid: 1481063177779675231
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
@@ -76,4 +78,4 @@ MonoBehaviour:
     - rid: 1481063179134173326
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: {fileID: 11400000, guid: 35ebc28bb19caa84ba39d50c6e05e946, type: 2}
+        value: {fileID: 11400000, guid: af2c7041b8a0f7546b105d9f55119f60, type: 2}
