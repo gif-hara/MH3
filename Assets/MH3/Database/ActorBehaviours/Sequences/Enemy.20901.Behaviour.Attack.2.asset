@@ -10,27 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
-  m_Name: Enemy.20901.Behaviour.Attack.1
+  m_Name: Enemy.20901.Behaviour.Attack.2
   m_EditorClassIdentifier: 
   sequences:
   - rid: 1481063179134173325
   - rid: 1481063179134173307
   - rid: 1481063177779675230
-  - rid: 803094369536049238
   - rid: 1481063179134173273
   references:
     version: 2
     RefIds:
-    - rid: 803094369536049238
-      type: {class: ActorBehaviourChange, ns: MH3, asm: Assembly-CSharp}
-      data:
-        actorResolver:
-          rid: 803094369536049239
-        data: {fileID: 11400000, guid: 9e600ac655f63ed4db11a1877e5604cb, type: 2}
-    - rid: 803094369536049239
-      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
-      data:
-        name: Actor
     - rid: 1481063177779675230
       type: {class: ActorAttackTakeUntilCompleteAsync, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -39,7 +28,9 @@ MonoBehaviour:
         targetResolver:
           rid: 1481063177779675232
         comboAnimationKeys:
-        - Attack.Sword.Basic.16
+        - Attack.Sword.Basic.18
+        - Attack.Sword.Basic.19
+        - Attack.Sword.Basic.20
     - rid: 1481063177779675231
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
@@ -87,4 +78,4 @@ MonoBehaviour:
     - rid: 1481063179134173326
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: {fileID: 11400000, guid: 35ebc28bb19caa84ba39d50c6e05e946, type: 2}
+        value: {fileID: 11400000, guid: af2c7041b8a0f7546b105d9f55119f60, type: 2}
