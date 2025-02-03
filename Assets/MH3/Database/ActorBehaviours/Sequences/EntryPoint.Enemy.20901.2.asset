@@ -18,6 +18,10 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 803094369536049259
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: 9ed03766a0a350d489c93044389153c2, type: 2}
     - rid: 1481063179134173264
       type: {class: SelectorWithWeight, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -25,6 +29,9 @@ MonoBehaviour:
         - weight: 100
           sequenceResolver:
             rid: 7349438777664471125
+        - weight: 100
+          sequenceResolver:
+            rid: 803094369536049259
     - rid: 1481063179134173322
       type: {class: WaitForStateAsync, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -38,4 +45,4 @@ MonoBehaviour:
     - rid: 7349438777664471125
       type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: {fileID: 11400000, guid: 9ed03766a0a350d489c93044389153c2, type: 2}
+        value: {fileID: 11400000, guid: 6c9acb25979a3af48ab6018ff2ac7fc6, type: 2}
