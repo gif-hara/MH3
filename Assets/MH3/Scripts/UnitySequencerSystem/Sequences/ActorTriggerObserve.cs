@@ -25,6 +25,7 @@ namespace MH3
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var actor = actorResolver.Resolve(container);
+            var scope = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, actor.destroyCancellationToken);
             actor.StateProvider.GetTriggerAsObservable(triggerType)
                 .Subscribe((actor, this, cancellationToken, container), async static (_, t) =>
                 {
@@ -32,7 +33,7 @@ namespace MH3
                     var sequencer = new Sequencer(container, self.sequences.Resolve(container));
                     await sequencer.PlayAsync(cancellationToken);
                 })
-                .RegisterTo(actor.destroyCancellationToken);
+                .RegisterTo(scope.Token);
             return UniTask.CompletedTask;
         }
     }
