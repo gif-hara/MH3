@@ -103,6 +103,11 @@ namespace MH3.ActorControllers
             onEndAttack.OnNext(Unit.Default);
         }
 
+        public void AbortAttack()
+        {
+            attackCount = 99;
+        }
+
         public void ResetAttackCount()
         {
             attackCount = 0;
