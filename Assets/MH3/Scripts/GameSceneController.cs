@@ -128,6 +128,8 @@ namespace MH3
 
         private bool isFirstSetupQuest = true;
 
+        private bool isQuestTransitioning;
+
         private void Start()
         {
 #if DEBUG
@@ -255,6 +257,7 @@ namespace MH3
             SetupQuestAsync(initialQuestSpecId, immediate: true).Forget();
             inputController.Actions.Player.PauseMenu
                 .OnPerformedAsObservable()
+                .Where(_ => !isQuestTransitioning)
                 .Subscribe(_ =>
                 {
                     UIViewPauseMenu.OpenAsync(
@@ -301,6 +304,7 @@ namespace MH3
 
         public async UniTask SetupQuestAsync(string questSpecId, bool immediate = false)
         {
+            isQuestTransitioning = true;
             if (questScope != null)
             {
                 questScope.Dispose();
@@ -358,6 +362,7 @@ namespace MH3
             questFailedContainer.Register("Enemy", enemy);
             var questFailedSequencer = new Sequencer(questFailedContainer, questSpec.QuestFailedSequences.Sequences);
             questFailedSequencer.PlayAsync(questScope.Token).Forget();
+            isQuestTransitioning = false;
             if (!immediate)
             {
                 await TinyServiceLocator.Resolve<UIViewTransition>()
