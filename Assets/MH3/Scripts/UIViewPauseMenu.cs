@@ -219,11 +219,24 @@ namespace MH3
                                 "ホームに戻る".Localized(),
                                 _ =>
                                 {
-                                    gameSceneController.SetupHomeQuestAsync();
+                                    gameSceneController.SetupHomeQuestAsync().Forget();
                                     pauseMenuScope.Dispose();
                                 },
                                 _ => UIViewTips.SetTip("クエストをあきらめてホームに戻ります。".Localized())
-                                );
+                            );
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "リトライ".Localized(),
+                                _ =>
+                                {
+                                    gameSceneController.SetupRetryQuestAsync().Forget();
+                                    pauseMenuScope.Dispose();
+                                },
+                                _ => UIViewTips.SetTip("クエストをあきらめて再度同じスライム君と戦います。".Localized())
+                            );
                         },
                         document =>
                         {

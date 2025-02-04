@@ -379,6 +379,11 @@ namespace MH3
         {
             return SetupQuestAsync(homeQuestSpecId);
         }
+        
+        public UniTask SetupRetryQuestAsync()
+        {
+            return SetupQuestAsync(currentQuestSpec.Id);
+        }
 
 #if DEBUG
         public UniTask SetupDefaultQuestAsync()
