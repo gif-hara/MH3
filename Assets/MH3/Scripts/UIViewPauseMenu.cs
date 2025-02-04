@@ -52,6 +52,11 @@ namespace MH3
             HKUIDocument optionsDocument = null;
             List<UIViewTermDescription.Element> termDescriptionElements = null;
             Func<CancellationToken, UniTask> onEndTermDescriptionNextState = null;
+            var gameEvents = TinyServiceLocator.Resolve<GameEvents>();
+            gameEvents.OnBeginQuestTransition
+                .Subscribe(pauseMenuScope, static (_, p) => p.Dispose())
+                .RegisterTo(pauseMenuScope.Token);
+
 
             if (isHome)
             {
@@ -62,7 +67,7 @@ namespace MH3
                 stateMachine.Change(StateQuestRoot);
             }
 
-            TinyServiceLocator.Resolve<GameEvents>().OnBeginPauseMenu.OnNext(Unit.Default);
+            gameEvents.OnBeginPauseMenu.OnNext(Unit.Default);
 
             // 待機
             {

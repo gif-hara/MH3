@@ -306,6 +306,7 @@ namespace MH3
                 questScope.Dispose();
             }
 
+            TinyServiceLocator.Resolve<GameEvents>().OnBeginQuestTransition.OnNext(Unit.Default);
             if (!immediate)
             {
                 await TinyServiceLocator.Resolve<UIViewTransition>()
@@ -379,7 +380,7 @@ namespace MH3
         {
             return SetupQuestAsync(homeQuestSpecId);
         }
-        
+
         public UniTask SetupRetryQuestAsync()
         {
             return SetupQuestAsync(currentQuestSpec.Id);
