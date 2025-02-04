@@ -85,8 +85,9 @@ namespace MH3
                 var userData = TinyServiceLocator.Resolve<UserData>();
                 var actorSpecStatusDocument = UnityEngine.Object.Instantiate(actorSpecStatusDocumentPrefab);
                 uiViewInputGuide.Push(() => string.Format(
-                    "{0}:選択 {1}:キャンセル {2}:用語説明",
+                    "{0}:選択 {1}:決定 {2}:キャンセル {3}:用語説明",
                     InputSprite.GetTag(inputController.Actions.UI.Navigate),
+                    InputSprite.GetTag(inputController.Actions.UI.Submit),
                     InputSprite.GetTag(inputController.Actions.UI.Cancel),
                     InputSprite.GetTag(inputController.Actions.UI.Description)
                     ).Localized(), scope);
