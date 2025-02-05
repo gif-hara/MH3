@@ -142,7 +142,7 @@ namespace MH3
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     listElements,
-                    listInitialIndexCaches.TryGetValue("HomeRoot", out var index) ? index : 0
+                    listInitialIndexCaches.TryGetValue(nameof(StateHomeRoot), out var index) ? index : 0
                 );
                 var container = new Container();
                 container.Register("Actor", actor);
@@ -183,21 +183,29 @@ namespace MH3
                 list.DestroySafe();
                 actorSpecStatusDocument.DestroySafe();
 
-                void AddListElement(string header, Action<Unit> onClick, Action<BaseEventData> onSelect)
+                void AddListElement(string headerText, Action<Unit> onClick, Action<BaseEventData> onSelect)
                 {
                     var index = listElements.Count;
                     listElements.Add(document =>
                     {
-                        UIViewList.ApplyAsSimpleElement(
-                            document,
-                            header,
-                            onClick,
-                            x =>
+                        document.CreateListElementBuilder()
+                            .EditHeader(header =>
                             {
-                                listInitialIndexCaches["HomeRoot"] = index;
-                                onSelect(x);
-                            }
-                        );
+                                header.text = headerText;
+                            })
+                            .EditButton(button =>
+                            {
+                                button.OnClickAsObservable()
+                                    .Subscribe(onClick)
+                                    .RegisterTo(button.destroyCancellationToken);
+                                button.OnSelectAsObservable()
+                                    .Subscribe(x =>
+                                    {
+                                        listInitialIndexCaches[nameof(StateHomeRoot)] = index;
+                                        onSelect(x);
+                                    })
+                                    .RegisterTo(button.destroyCancellationToken);
+                            });
                     });
                 }
             }
