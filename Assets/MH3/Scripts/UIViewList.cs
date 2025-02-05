@@ -70,7 +70,6 @@ namespace MH3
                 var buttons = new List<Button>();
                 foreach (var action in elementActivateActions.Skip(pageIndex * elementCount).Take(elementCount))
                 {
-                    var i = elementIndex;
                     var element = Object.Instantiate(listElementPrefab, listParent);
                     elements.Add(element);
                     var button = element.Q<Button>("Button");
