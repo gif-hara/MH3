@@ -979,10 +979,11 @@ namespace MH3
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
                             CancellationTokenSource selectScope = null;
+                            var isEquiped = userData.EquippedInstanceWeaponId == x.InstanceId;
                             document.CreateListElementBuilder()
                                 .EditHeader(header =>
                                 {
-                                    header.text = userData.EquippedInstanceWeaponId == x.InstanceId
+                                    header.text = isEquiped
                                         ? $"[E] {x.WeaponSpec.LocalizedName}"
                                         : x.WeaponSpec.LocalizedName;
                                 })
@@ -1049,7 +1050,11 @@ namespace MH3
                                             selectScope?.Dispose();
                                         })
                                         .RegisterTo(button.destroyCancellationToken);
-                                });
+                                })
+                                .ApplyStyle(isEquiped
+                                    ? UIViewListElementBuilder.StyleNames.Primary
+                                    : UIViewListElementBuilder.StyleNames.Default
+                                    );
                         })),
                     0
                 );
@@ -1244,10 +1249,14 @@ namespace MH3
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
                             CancellationTokenSource selectScope = null;
+                            var userData = TinyServiceLocator.Resolve<UserData>();
+                            var isEquiped = selectedInstanceWeapon.InstanceSkillCoreIds.Contains(x.InstanceId);
+                            var canAttach = selectedInstanceWeapon.GetUsingSlotCount(userData.InstanceSkillCores) + x.Slot
+                                            <= selectedInstanceWeapon.SkillSlot;
                             document.CreateListElementBuilder()
                                 .EditHeader(header =>
                                     {
-                                        header.text = selectedInstanceWeapon.InstanceSkillCoreIds.Contains(x.InstanceId)
+                                        header.text = isEquiped
                                             ? $"[E] {x.SkillCoreSpec.LocalizedName}"
                                             : x.SkillCoreSpec.LocalizedName;
                                     }
@@ -1257,19 +1266,16 @@ namespace MH3
                                     button.OnClickAsObservable()
                                         .Subscribe(_ =>
                                         {
-                                            var userData = TinyServiceLocator.Resolve<UserData>();
                                             if (selectedInstanceWeapon.InstanceSkillCoreIds.Contains(x.InstanceId))
                                             {
                                                 selectedInstanceWeapon.RemoveInstanceSkillCoreId(x.InstanceId);
                                             }
                                             else
                                             {
-                                                if (selectedInstanceWeapon.GetUsingSlotCount(
-                                                        userData.InstanceSkillCores) +
-                                                    x.Slot > selectedInstanceWeapon.SkillSlot)
+                                                if (!canAttach)
                                                 {
                                                     TinyServiceLocator.Resolve<UIViewNotificationCenter>()
-                                                        .BeginOneShotAsync("スキルスロットが足りません".Localized()).Forget();
+                                                        .BeginOneShotAsync("スキルスロットが足りないため装着出来ません".Localized()).Forget();
                                                     return;
                                                 }
 
@@ -1331,7 +1337,13 @@ namespace MH3
                                             selectScope?.Dispose();
                                         })
                                         .RegisterTo(button.destroyCancellationToken);
-                                });
+                                })
+                                .ApplyStyle(isEquiped
+                                    ? UIViewListElementBuilder.StyleNames.Primary
+                                    : canAttach
+                                        ? UIViewListElementBuilder.StyleNames.Default
+                                        : UIViewListElementBuilder.StyleNames.Deactive
+                                    );
                         })),
                     0
                 );
