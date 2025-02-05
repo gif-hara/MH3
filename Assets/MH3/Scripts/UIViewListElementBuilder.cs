@@ -31,6 +31,12 @@ namespace MH3
             return this;
         }
 
+        public UIViewListElementBuilder EditButton(Action<Button, UIViewListElementBuilder> action)
+        {
+            action(elementDocument.Q<Button>("Button"), this);
+            return this;
+        }
+
         public UIViewListElementBuilder ApplyStyle(StyleNames name)
         {
             var sequenceName = name switch
