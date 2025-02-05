@@ -977,93 +977,120 @@ namespace MH3
                             .Select(x => new Action<HKUIDocument>(document =>
                             {
                                 CancellationTokenSource selectScope = null;
-                                var header = x.SkillCoreSpec.LocalizedName;
-                                UIViewList.ApplyAsSimpleElement(document, header, async _ =>
-                                {
-                                    var tempSelection = document.Q<Button>("Button");
-                                    dialogScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
-                                    var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
-                                        "本当に削除しますか？".Localized(),
-                                        new List<string> { "はい".Localized(), "いいえ".Localized() },
-                                        0,
-                                        1,
-                                        dialogScope.Token
-                                    );
-                                    dialogScope.Dispose();
-                                    dialogScope = null;
-                                    if (result == 0)
+                                document.CreateListElementBuilder()
+                                    .EditHeader(header =>
                                     {
-                                        if (userData.AnyAttachedSkillCore(x.InstanceId))
-                                        {
-                                            dialogScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
-                                            result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
-                                                "武器に装着されてますが、本当に削除しますか？削除する場合、自動的に外れます".Localized(),
-                                                new List<string> { "はい".Localized(), "いいえ".Localized() },
-                                                0,
-                                                1,
-                                                dialogScope.Token
-                                            );
-                                            dialogScope.Dispose();
-                                            dialogScope = null;
-                                            if (result == 0)
-                                            {
-                                                userData.RemoveInstanceSkillCore(x);
-                                                SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
-                                                CreateList();
-                                            }
-                                            else
-                                            {
-                                                tempSelection.Select();
-                                            }
-                                        }
-                                        else
-                                        {
-                                            userData.RemoveInstanceSkillCore(x);
-                                            SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
-                                            CreateList();
-                                        }
-                                    }
-                                    else
+                                        header.text = x.SkillCoreSpec.LocalizedName;
+                                    })
+                                    .EditButton(button =>
                                     {
-                                        tempSelection.Select();
-                                    }
-                                },
-                                _ =>
-                                {
-                                    var container = new Container();
-                                    container.Register("InstanceSkillCore", x);
-                                    instanceSkillCoreSequences.PlayAsync(container, scope).Forget();
-                                    selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
-                                    var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs;
-                                    inputController.Actions.UI.Description
-                                        .OnPerformedAsObservable()
-                                        .Subscribe(_ =>
-                                        {
-                                            termDescriptionElements = new List<UIViewTermDescription.Element>
+                                        button.OnClickAsObservable()
+                                            .Subscribe(async _ =>
                                             {
-                                                new(termDescriptionSpecs.Get("SkillCore")),
-                                            };
-                                            if (x.Skills.Count > 0)
+                                                var tempSelection = document.Q<Button>("Button");
+                                                dialogScope =
+                                                    new CancellationDisposable(
+                                                        CancellationTokenSource.CreateLinkedTokenSource(scope));
+                                                var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>()
+                                                    .OpenAsync(
+                                                        "本当に削除しますか？".Localized(),
+                                                        new List<string> { "はい".Localized(), "いいえ".Localized() },
+                                                        0,
+                                                        1,
+                                                        dialogScope.Token
+                                                    );
+                                                dialogScope.Dispose();
+                                                dialogScope = null;
+                                                if (result == 0)
+                                                {
+                                                    if (userData.AnyAttachedSkillCore(x.InstanceId))
+                                                    {
+                                                        dialogScope =
+                                                            new CancellationDisposable(CancellationTokenSource
+                                                                .CreateLinkedTokenSource(scope));
+                                                        result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>()
+                                                            .OpenAsync(
+                                                                "武器に装着されてますが、本当に削除しますか？削除する場合、自動的に外れます".Localized(),
+                                                                new List<string>
+                                                                    { "はい".Localized(), "いいえ".Localized() },
+                                                                0,
+                                                                1,
+                                                                dialogScope.Token
+                                                            );
+                                                        dialogScope.Dispose();
+                                                        dialogScope = null;
+                                                        if (result == 0)
+                                                        {
+                                                            userData.RemoveInstanceSkillCore(x);
+                                                            SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(),
+                                                                SaveData.Path);
+                                                            CreateList();
+                                                        }
+                                                        else
+                                                        {
+                                                            tempSelection.Select();
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        userData.RemoveInstanceSkillCore(x);
+                                                        SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(),
+                                                            SaveData.Path);
+                                                        CreateList();
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    tempSelection.Select();
+                                                }
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                        button.OnSelectAsObservable()
+                                            .Subscribe(_ =>
                                             {
-                                                termDescriptionElements.Add(new(termDescriptionSpecs.Get("Skill")));
-                                                x.Skills
-                                                    .Select(y => y.SkillType)
-                                                    .Distinct()
-                                                    .OrderBy(y => y)
-                                                    .ToList()
-                                                    .ForEach(y => termDescriptionElements.Add(new(y.GetTermDescriptionSpec())));
-                                            }
-                                            onEndTermDescriptionNextState = StateRemoveInstanceSkillCore;
-                                            stateMachine.Change(StateTermDescription);
-                                        })
-                                        .RegisterTo(selectScope.Token);
-                                },
-                                _ =>
-                                {
-                                    selectScope?.Cancel();
-                                    selectScope?.Dispose();
-                                }
-                                );
+                                                var container = new Container();
+                                                container.Register("InstanceSkillCore", x);
+                                                instanceSkillCoreSequences.PlayAsync(container, scope).Forget();
+                                                selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                                var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>()
+                                                    .TermDescriptionSpecs;
+                                                inputController.Actions.UI.Description
+                                                    .OnPerformedAsObservable()
+                                                    .Subscribe(_ =>
+                                                    {
+                                                        termDescriptionElements =
+                                                            new List<UIViewTermDescription.Element>
+                                                            {
+                                                                new(termDescriptionSpecs.Get("SkillCore")),
+                                                            };
+                                                        if (x.Skills.Count > 0)
+                                                        {
+                                                            termDescriptionElements.Add(
+                                                                new(termDescriptionSpecs.Get("Skill")));
+                                                            x.Skills
+                                                                .Select(y => y.SkillType)
+                                                                .Distinct()
+                                                                .OrderBy(y => y)
+                                                                .ToList()
+                                                                .ForEach(y =>
+                                                                    termDescriptionElements.Add(
+                                                                        new(y.GetTermDescriptionSpec())));
+                                                        }
+
+                                                        onEndTermDescriptionNextState = StateRemoveInstanceSkillCore;
+                                                        stateMachine.Change(StateTermDescription);
+                                                    })
+                                                    .RegisterTo(selectScope.Token);
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                        button.OnDeselectAsObservable()
+                                            .Subscribe(_ =>
+                                            {
+                                                selectScope?.Cancel();
+                                                selectScope?.Dispose();
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                    });
                             })),
                         0
                     );
