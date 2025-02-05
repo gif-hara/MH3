@@ -275,24 +275,34 @@ namespace MH3
                         .Where(x => userData.AvailableContents.Contains(x.NeedAvailableContentKey))
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
-                            UIViewList.ApplyAsSimpleElement(
-                                document,
-                                x.GetEnemyActorSpec().LocalizedName,
-                                _ =>
+                            document.CreateListElementBuilder()
+                                .EditHeader(header =>
                                 {
-                                    gameSceneController.SetupQuestAsync(x.Id).Forget();
-                                    userData.AvailableContents.Add(AvailableContents.Key.FirstBattle);
-                                    SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
-                                    TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.BeginQuest.1");
-                                    pauseMenuScope.Dispose();
-                                },
-                                _ =>
+                                    header.text = x.GetEnemyActorSpec().LocalizedName;
+                                })
+                                .EditButton(button =>
                                 {
-                                    var container = new Container();
-                                    container.Register("QuestSpec", x);
-                                    questSpecStatusDocument.Q<SequencesMonoBehaviour>("Sequences")
-                                        .PlayAsync(container, scope).Forget();
-                                });
+                                    button.OnClickAsObservable()
+                                        .Subscribe(_ =>
+                                        {
+                                            gameSceneController.SetupQuestAsync(x.Id).Forget();
+                                            userData.AvailableContents.Add(AvailableContents.Key.FirstBattle);
+                                            SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
+                                            TinyServiceLocator.Resolve<AudioManager>().PlaySfx("UI.BeginQuest.1");
+                                            pauseMenuScope.Dispose();
+                                        })
+                                        .RegisterTo(button.destroyCancellationToken);
+                                    button.OnSelectAsObservable()
+                                        .Subscribe(_ =>
+                                        {
+                                            var container = new Container();
+                                            container.Register("QuestSpec", x);
+                                            questSpecStatusDocument.Q<SequencesMonoBehaviour>("Sequences")
+                                                .PlayAsync(container, scope).Forget();
+                                        })
+                                        .RegisterTo(button.destroyCancellationToken);
+                                })
+                                .SetActiveBadge(userData.Stats.GetOrDefault(Stats.Key.GetDefeatEnemyCount(x.EnemyActorSpecId)) == 0);
                         })),
                     0
                 );
