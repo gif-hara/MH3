@@ -52,6 +52,7 @@ namespace MH3
             HKUIDocument optionsDocument = null;
             List<UIViewTermDescription.Element> termDescriptionElements = null;
             Func<CancellationToken, UniTask> onEndTermDescriptionNextState = null;
+            var listInitialIndexCaches = new Dictionary<string, int>();
             var gameEvents = TinyServiceLocator.Resolve<GameEvents>();
             gameEvents.OnBeginQuestTransition
                 .Subscribe(pauseMenuScope, static (_, p) => p.Dispose())
@@ -97,79 +98,51 @@ namespace MH3
                     InputSprite.GetTag(inputController.Actions.UI.Description)
                     ).Localized(), scope);
                 var listElements = new List<Action<HKUIDocument>>();
-                listElements.Add(document =>
-                {
-                    UIViewList.ApplyAsSimpleElement(
-                        document,
-                        "クエスト選択".Localized(),
-                        _ => stateMachine.Change(StateSelectQuest),
-                        _ => UIViewTips.SetTip("敵スライム君と戦うクエストを選択します。".Localized())
-                        );
-                });
-                listElements.Add(document =>
-                {
-                    UIViewList.ApplyAsSimpleElement(
-                        document,
-                        "装備変更".Localized(),
-                        _ => stateMachine.Change(StateChangeEquipmentTypeRoot),
-                        _ => UIViewTips.SetTip("武器や防具を変更します。".Localized())
-                        );
-                });
+                AddListElement(
+                    "クエスト選択".Localized(),
+                    _ => stateMachine.Change(StateSelectQuest),
+                    _ => UIViewTips.SetTip("敵スライム君と戦うクエストを選択します。".Localized())
+                    );
+                AddListElement(
+                    "装備変更".Localized(),
+                    _ => stateMachine.Change(StateChangeEquipmentTypeRoot),
+                    _ => UIViewTips.SetTip("武器や防具を変更します。".Localized())
+                );
                 if (userData.AvailableContents.Contains(AvailableContents.Key.AcquireInstanceSkillCore))
                 {
-                    listElements.Add(document =>
-                    {
-                        UIViewList.ApplyAsSimpleElement(
-                            document,
-                            "スキルコア装着".Localized(),
-                            _ => stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon),
-                            _ => UIViewTips.SetTip("武器にスキルコアを装着します。".Localized())
-                            );
-                    });
+                    AddListElement(
+                        "スキルコア装着".Localized(),
+                        _ => stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon),
+                        _ => UIViewTips.SetTip("武器にスキルコアを装着します。".Localized())
+                    );
                 }
-                listElements.Add(document =>
-                {
-                    UIViewList.ApplyAsSimpleElement(
-                        document,
-                        "装備削除".Localized(),
-                        _ => stateMachine.Change(StateRemoveEquipment),
-                        _ => UIViewTips.SetTip("不要な武器や防具を削除します。".Localized())
-                        );
-                });
+                AddListElement(
+                    "装備削除".Localized(),
+                    _ => stateMachine.Change(StateRemoveEquipment),
+                    _ => UIViewTips.SetTip("不要な武器や防具を削除します。".Localized())
+                );
                 if (userData.AvailableContents.Contains(AvailableContents.Key.AcquireInstanceSkillCore))
                 {
-                    listElements.Add(document =>
-                    {
-                        UIViewList.ApplyAsSimpleElement(
-                            document,
-                            "スキルコア削除".Localized(),
-                            _ => stateMachine.Change(StateRemoveInstanceSkillCore),
-                            _ => UIViewTips.SetTip("不要なスキルコアを削除します。".Localized())
-                            );
-                    });
+                    AddListElement(
+                        "スキルコア削除".Localized(),
+                        _ => stateMachine.Change(StateRemoveInstanceSkillCore),
+                        _ => UIViewTips.SetTip("不要なスキルコアを削除します。".Localized())
+                    );
                 }
-                listElements.Add(document =>
-                {
-                    UIViewList.ApplyAsSimpleElement(
-                        document,
-                        "オプション".Localized(),
-                        _ => stateMachine.Change(StateOptionsRoot),
-                        _ => UIViewTips.SetTip("ゲームの設定を変更します。".Localized())
-                        );
-                });
-                listElements.Add(document =>
-                {
-                    UIViewList.ApplyAsSimpleElement(
-                        document,
-                        "閉じる".Localized(),
-                        _ => pauseMenuScope.Dispose(),
-                        _ => UIViewTips.SetTip("ポーズメニューを閉じます。".Localized())
-                        );
-                });
+                AddListElement(
+                    "オプション".Localized(),
+                    _ => stateMachine.Change(StateOptionsRoot),
+                    _ => UIViewTips.SetTip("ゲームの設定を変更します。".Localized())
+                );
+                AddListElement(
+                    "閉じる".Localized(),
+                    _ => pauseMenuScope.Dispose(),
+                    _ => UIViewTips.SetTip("ポーズメニューを閉じます。".Localized())
+                );
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     listElements,
-                    0
+                    listInitialIndexCaches.TryGetValue("HomeRoot", out var index) ? index : 0
                 );
                 var container = new Container();
                 container.Register("Actor", actor);
@@ -209,6 +182,29 @@ namespace MH3
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
                 actorSpecStatusDocument.DestroySafe();
+
+                void AddListElement(string header, Action<Unit> onClick, Action<BaseEventData> onSelect)
+                {
+                    var index = listElements.Count;
+                    listElements.Add(document =>
+                    {
+                        UIViewList.ApplyAsSimpleElement(
+                            document,
+                            header,
+                            onClick,
+                            x =>
+                            {
+                                SetInitialIndexCache(index);
+                                onSelect(x);
+                            }
+                        );
+                    });
+                }
+
+                void SetInitialIndexCache(int index)
+                {
+                    listInitialIndexCaches["HomeRoot"] = index;
+                }
             }
 
             async UniTask StateQuestRoot(CancellationToken scope)
