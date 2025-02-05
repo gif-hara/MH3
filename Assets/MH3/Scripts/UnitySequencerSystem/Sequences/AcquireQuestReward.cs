@@ -4,6 +4,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using MH3.UnitySequencerSystem.Resolvers;
+using R3;
 using UnityEngine;
 using UnitySequencerSystem;
 using UnitySequencerSystem.Resolvers;
@@ -57,7 +58,9 @@ namespace MH3
                             throw new ArgumentOutOfRangeException($"未対応のRewardTypeです {reward.RewardType}");
                     }
                 }
+                TinyServiceLocator.Resolve<GameEvents>().OnBeginAcquireReward.OnNext(Unit.Default);
                 var index = await UIViewAcquireReward.OpenAsync(documentPrefab, rewards, gameSceneController.ElapsedQuestTime, enemy.SpecController.ActorName, cancellationToken);
+                TinyServiceLocator.Resolve<GameEvents>().OnEndAcquireReward.OnNext(Unit.Default);
                 rewards[index].Acquire(userData);
                 SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
             }

@@ -13,5 +13,9 @@ namespace MH3
         public readonly Subject<Unit> OnEndPauseMenu = new();
 
         public readonly Subject<Unit> OnBeginQuestTransition = new();
+
+        public readonly Subject<Unit> OnBeginAcquireReward = new();
+
+        public readonly Subject<Unit> OnEndAcquireReward = new();
     }
 }
