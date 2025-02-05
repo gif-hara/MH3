@@ -550,69 +550,48 @@ namespace MH3
             {
                 SetHeaderText("装備削除".Localized());
                 var userData = TinyServiceLocator.Resolve<UserData>();
+                var listElements = new List<Action<HKUIDocument>>();
+                AddListElement(
+                    "武器".Localized(),
+                    _ => stateMachine.Change(StateRemoveInstanceWeapon),
+                    _ => UIViewTips.SetTip("所持している武器を削除します。".Localized())
+                    );
+                AddListElement(
+                    "頭防具".Localized(),
+                    _ =>
+                    {
+                        selectedArmorType = Define.ArmorType.Head;
+                        stateMachine.Change(StateRemoveInstanceArmor);
+                    },
+                    _ => UIViewTips.SetTip("所持している頭防具を削除します。".Localized())
+                );
+                AddListElement(
+                    "腕防具".Localized(),
+                    _ =>
+                    {
+                        selectedArmorType = Define.ArmorType.Arms;
+                        stateMachine.Change(StateRemoveInstanceArmor);
+                    },
+                    _ => UIViewTips.SetTip("所持している腕防具を削除します。".Localized())
+                );
+                AddListElement(
+                    "胴防具".Localized(),
+                    _ =>
+                    {
+                        selectedArmorType = Define.ArmorType.Body;
+                        stateMachine.Change(StateRemoveInstanceArmor);
+                    },
+                    _ => UIViewTips.SetTip("所持している胴防具を削除します。".Localized())
+                );
+                AddListElement(
+                    "戻る".Localized(),
+                    _ => stateMachine.Change(StateHomeRoot),
+                    _ => UIViewTips.SetTip("前のメニューに戻ります。".Localized())
+                );
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
-                    new List<Action<HKUIDocument>>
-                    {
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(
-                                document,
-                                "武器".Localized(),
-                                _ => stateMachine.Change(StateRemoveInstanceWeapon),
-                                _ => UIViewTips.SetTip("所持している武器を削除します。".Localized())
-                                );
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(
-                                document,
-                                "頭防具".Localized(),
-                                _ =>
-                                {
-                                    selectedArmorType = Define.ArmorType.Head;
-                                    stateMachine.Change(StateRemoveInstanceArmor);
-                                },
-                                _ => UIViewTips.SetTip("所持している頭防具を削除します。".Localized())
-                                );
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(
-                                document,
-                                "腕防具".Localized(),
-                                _ =>
-                                {
-                                    selectedArmorType = Define.ArmorType.Arms;
-                                    stateMachine.Change(StateRemoveInstanceArmor);
-                                },
-                                _ => UIViewTips.SetTip("所持している腕防具を削除します。".Localized())
-                                );
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(
-                                document,
-                                "胴防具".Localized(),
-                                _ =>
-                                {
-                                    selectedArmorType = Define.ArmorType.Body;
-                                    stateMachine.Change(StateRemoveInstanceArmor);
-                                },
-                                _ => UIViewTips.SetTip("所持している胴防具を削除します。".Localized())
-                                );
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(
-                                document,
-                                "戻る".Localized(),
-                                _ => stateMachine.Change(StateHomeRoot),
-                                _ => UIViewTips.SetTip("前のメニューに戻ります。".Localized())
-                                );
-                        },
-                    },
-                    0
+                    listElements,
+                    listInitialIndexCaches.TryGetValue(nameof(StateRemoveEquipment), out var index) ? index : 0
                 );
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
@@ -620,6 +599,23 @@ namespace MH3
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
+                void AddListElement(string header, Action<Unit> onClick, Action<BaseEventData> onSelect)
+                {
+                    var index = listElements.Count;
+                    listElements.Add(document =>
+                    {
+                        UIViewList.ApplyAsSimpleElement(
+                            document,
+                            header,
+                            onClick,
+                            x =>
+                            {
+                                listInitialIndexCaches[nameof(StateRemoveEquipment)] = index;
+                                onSelect(x);
+                            }
+                        );
+                    });
+                }
             }
 
             async UniTask StateRemoveInstanceWeapon(CancellationToken scope)
