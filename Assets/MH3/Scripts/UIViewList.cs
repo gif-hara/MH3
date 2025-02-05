@@ -31,7 +31,7 @@ namespace MH3
             var parentSize = listParent.rect.height - layoutGroup.padding.top - layoutGroup.padding.bottom;
             var elementSize = ((RectTransform)listElementPrefab.transform).rect.height + layoutGroup.spacing;
             var elementCount = Mathf.FloorToInt(parentSize / elementSize);
-            var pageIndex = 0;
+            var pageIndex = initialElementIndex / elementCount;
             var pageMax = elementActivateActions.Count() / elementCount;
             if (elementActivateActions.Count() % elementCount == 0)
             {
