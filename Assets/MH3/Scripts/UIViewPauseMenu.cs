@@ -976,7 +976,7 @@ namespace MH3
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     instanceWeapons
-                        .Select(x => new Action<HKUIDocument>(document =>
+                        .Select((x, i) => new Action<HKUIDocument>(document =>
                         {
                             CancellationTokenSource selectScope = null;
                             var isEquiped = userData.EquippedInstanceWeaponId == x.InstanceId;
@@ -1010,6 +1010,7 @@ namespace MH3
                                             container.Register("InstanceWeapon", x);
                                             instanceWeaponSequences.PlayAsync(container, scope).Forget();
                                             selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                            listInitialIndexCaches[nameof(StateAddInstanceSkillCoreSelectInstanceWeapon)] = i;
                                             var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>()
                                                 .TermDescriptionSpecs;
                                             inputController.Actions.UI.Description
@@ -1056,7 +1057,7 @@ namespace MH3
                                     : UIViewListElementBuilder.StyleNames.Default
                                     );
                         })),
-                    0
+                    listInitialIndexCaches.TryGetValue(nameof(StateAddInstanceSkillCoreSelectInstanceWeapon), out var index) ? index : 0
                 );
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
