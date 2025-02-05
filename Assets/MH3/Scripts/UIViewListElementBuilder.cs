@@ -1,10 +1,12 @@
 using System;
+using Cysharp.Threading.Tasks;
 using HK;
 using R3;
 using R3.Triggers;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnitySequencerSystem;
 
 namespace MH3
 {
@@ -31,29 +33,30 @@ namespace MH3
             action(elementDocument.Q<Button>("Button"));
             return this;
         }
-            
-        public UIViewListElementBuilder SetOnClick(Action<Unit> onClick)
+        
+        public UIViewListElementBuilder InvokeSequence(string sequenceName)
         {
-            elementDocument.Q<Button>("Button").OnClickAsObservable()
-                .Subscribe(onClick)
-                .RegisterTo(elementDocument.destroyCancellationToken);
+            elementDocument
+                .Q<HKUIDocument>("Sequences")
+                .Q<SequencesMonoBehaviour>(sequenceName)
+                .PlayAsync(new Container(), elementDocument.destroyCancellationToken)
+                .Forget();
             return this;
         }
-            
-        public UIViewListElementBuilder SetOnSelect(Action<BaseEventData> onSelect)
+
+        public UIViewListElementBuilder InvokeSequenceDefault()
         {
-            elementDocument.Q<Button>("Button").OnSelectAsObservable()
-                .Subscribe(onSelect)
-                .RegisterTo(elementDocument.destroyCancellationToken);
-            return this;
+            return InvokeSequence("Default");
         }
             
-        public UIViewListElementBuilder SetOnDeselect(Action<BaseEventData> onDeselect)
+        public UIViewListElementBuilder InvokeSequenceDeactive()
         {
-            elementDocument.Q<Button>("Button").OnDeselectAsObservable()
-                .Subscribe(onDeselect)
-                .RegisterTo(elementDocument.destroyCancellationToken);
-            return this;
+            return InvokeSequence("Deactive");
+        }
+        
+        public UIViewListElementBuilder InvokeSequencePrimary()
+        {
+            return InvokeSequence("Primary");
         }
     }
 }
