@@ -194,16 +194,11 @@ namespace MH3
                             onClick,
                             x =>
                             {
-                                SetInitialIndexCache(index);
+                                listInitialIndexCaches["HomeRoot"] = index;
                                 onSelect(x);
                             }
                         );
                     });
-                }
-
-                void SetInitialIndexCache(int index)
-                {
-                    listInitialIndexCaches["HomeRoot"] = index;
                 }
             }
 
@@ -305,69 +300,48 @@ namespace MH3
             async UniTask StateChangeEquipmentTypeRoot(CancellationToken scope)
             {
                 SetHeaderText("装備変更".Localized());
+                var listElements = new List<Action<HKUIDocument>>();
+                AddListElement(
+                    "武器".Localized(),
+                    _ => stateMachine.Change(StateChangeInstanceWeapon),
+                    _ => UIViewTips.SetTip("武器を変更します。".Localized())
+                );
+                AddListElement(
+                    "頭防具".Localized(),
+                    _ =>
+                    {
+                        selectedArmorType = Define.ArmorType.Head;
+                        stateMachine.Change(StateChangeInstanceArmor);
+                    },
+                    _ => UIViewTips.SetTip("頭に装備する防具を変更します。".Localized())
+                );
+                AddListElement(
+                    "腕防具".Localized(),
+                    _ =>
+                    {
+                        selectedArmorType = Define.ArmorType.Arms;
+                        stateMachine.Change(StateChangeInstanceArmor);
+                    },
+                    _ => UIViewTips.SetTip("腕に装備する防具を変更します。".Localized())
+                );
+                AddListElement(
+                    "胴防具".Localized(),
+                    _ =>
+                    {
+                        selectedArmorType = Define.ArmorType.Body;
+                        stateMachine.Change(StateChangeInstanceArmor);
+                    },
+                    _ => UIViewTips.SetTip("胴に装備する防具を変更します。".Localized())
+                );
+                AddListElement(
+                    "戻る".Localized(),
+                    _ => stateMachine.Change(StateHomeRoot),
+                    _ => UIViewTips.SetTip("前のメニューに戻ります。".Localized())
+                );
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
-                    new List<Action<HKUIDocument>>
-                    {
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(
-                                document,
-                                "武器".Localized(),
-                                _ => stateMachine.Change(StateChangeInstanceWeapon),
-                                _ => UIViewTips.SetTip("武器を変更します。".Localized())
-                                );
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(
-                                document,
-                                "頭防具".Localized(),
-                                _ =>
-                                {
-                                    selectedArmorType = Define.ArmorType.Head;
-                                    stateMachine.Change(StateChangeInstanceArmor);
-                                },
-                                _ => UIViewTips.SetTip("頭に装備する防具を変更します。".Localized())
-                                );
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(
-                                document,
-                                "腕防具".Localized(),
-                                _ =>
-                                {
-                                    selectedArmorType = Define.ArmorType.Arms;
-                                    stateMachine.Change(StateChangeInstanceArmor);
-                                },
-                                _ => UIViewTips.SetTip("腕に装備する防具を変更します。".Localized())
-                                );
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(
-                                document,
-                                "胴防具".Localized(),
-                                _ =>
-                                {
-                                    selectedArmorType = Define.ArmorType.Body;
-                                    stateMachine.Change(StateChangeInstanceArmor);
-                                },
-                                _ => UIViewTips.SetTip("胴に装備する防具を変更します。".Localized())
-                                );
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(
-                                document,
-                                "戻る".Localized(),
-                                _ => stateMachine.Change(StateHomeRoot),
-                                _ => UIViewTips.SetTip("前のメニューに戻ります。".Localized())
-                                );
-                        },
-                    },
-                    0
+                    listElements,
+                    listInitialIndexCaches.TryGetValue("ChangeEquipmentTypeRoot", out var index) ? index : 0
                 );
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
@@ -375,6 +349,23 @@ namespace MH3
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
+                void AddListElement(string header, Action<Unit> onClick, Action<BaseEventData> onSelect)
+                {
+                    var index = listElements.Count;
+                    listElements.Add(document =>
+                    {
+                        UIViewList.ApplyAsSimpleElement(
+                            document,
+                            header,
+                            onClick,
+                            x =>
+                            {
+                                listInitialIndexCaches["ChangeEquipmentTypeRoot"] = index;
+                                onSelect(x);
+                            }
+                        );
+                    });
+                }
             }
 
             async UniTask StateChangeInstanceWeapon(CancellationToken scope)
