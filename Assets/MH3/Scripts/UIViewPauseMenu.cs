@@ -341,7 +341,7 @@ namespace MH3
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     listElements,
-                    listInitialIndexCaches.TryGetValue("ChangeEquipmentTypeRoot", out var index) ? index : 0
+                    listInitialIndexCaches.TryGetValue(nameof(StateChangeEquipmentTypeRoot), out var index) ? index : 0
                 );
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
@@ -360,7 +360,7 @@ namespace MH3
                             onClick,
                             x =>
                             {
-                                listInitialIndexCaches["ChangeEquipmentTypeRoot"] = index;
+                                listInitialIndexCaches[nameof(StateChangeEquipmentTypeRoot)] = index;
                                 onSelect(x);
                             }
                         );
