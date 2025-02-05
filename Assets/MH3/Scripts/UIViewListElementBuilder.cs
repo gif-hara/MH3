@@ -31,24 +31,24 @@ namespace MH3
             return this;
         }
         
-        public UIViewListElementBuilder InvokeSequence(SequenceNames name)
+        public UIViewListElementBuilder ApplyStyle(StyleNames name)
         {
             var sequenceName = name switch
             {
-                SequenceNames.Default => "Default",
-                SequenceNames.Deactive => "Deactive",
-                SequenceNames.Primary => "Primary",
+                StyleNames.Default => "Default",
+                StyleNames.Deactive => "Deactive",
+                StyleNames.Primary => "Primary",
                 _ => throw new ArgumentOutOfRangeException($"Invalid name: {name}")
             };
             elementDocument
-                .Q<HKUIDocument>("Sequences")
+                .Q<HKUIDocument>("StyleSequences")
                 .Q<SequencesMonoBehaviour>(sequenceName)
                 .PlayAsync(new Container(), elementDocument.destroyCancellationToken)
                 .Forget();
             return this;
         }
         
-        public enum SequenceNames
+        public enum StyleNames
         {
             Default,
             Deactive,
