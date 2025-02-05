@@ -17,6 +17,9 @@ namespace MH3
         [SerializeField]
         private HKUIDocument documentPrefab;
 
+        [SerializeField]
+        private HKUIDocument headerDocumentPrefab;
+
         [SerializeReference, SubclassSelector]
         private ActorResolver playerActorResolver;
 
@@ -58,6 +61,9 @@ namespace MH3
                             throw new ArgumentOutOfRangeException($"未対応のRewardTypeです {reward.RewardType}");
                     }
                 }
+                var header = UnityEngine.Object.Instantiate(headerDocumentPrefab);
+                header.Q<TMPro.TextMeshProUGUI>("Header").text = "報酬獲得".Localized();
+                UIViewTips.SetTip("欲しい報酬を一つ選んでください。".Localized());
                 TinyServiceLocator.Resolve<GameEvents>().OnBeginAcquireReward.OnNext(Unit.Default);
                 var index = await UIViewAcquireReward.OpenAsync(documentPrefab, rewards, gameSceneController.ElapsedQuestTime, enemy.SpecController.ActorName, cancellationToken);
                 TinyServiceLocator.Resolve<GameEvents>().OnEndAcquireReward.OnNext(Unit.Default);
