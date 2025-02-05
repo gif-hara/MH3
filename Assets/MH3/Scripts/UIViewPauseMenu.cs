@@ -1245,7 +1245,6 @@ namespace MH3
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
                     instanceSkillCores
-                        .OrderBy(x => selectedInstanceWeapon.InstanceSkillCoreIds.Contains(x.InstanceId) ? 0 : 1)
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
                             CancellationTokenSource selectScope = null;
