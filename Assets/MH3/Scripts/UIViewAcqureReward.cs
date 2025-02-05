@@ -86,14 +86,7 @@ namespace MH3
                 }
             }
 
-            for (var i = 0; i < selectable.Count; i++)
-            {
-                var navigation = selectable[i].navigation;
-                navigation.mode = Navigation.Mode.Explicit;
-                navigation.selectOnLeft = selectable[((i - 1) % selectable.Count + selectable.Count) % selectable.Count];
-                navigation.selectOnRight = selectable[(i + 1) % selectable.Count];
-                selectable[i].navigation = navigation;
-            }
+            selectable.SetNavigationHorizontal();
 
             var inputController = TinyServiceLocator.Resolve<InputController>();
             inputController.PushActionType(InputController.InputActionType.UI);
