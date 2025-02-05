@@ -405,7 +405,7 @@ namespace MH3
                                         ? $"[E] {x.WeaponSpec.LocalizedName}"
                                         : x.WeaponSpec.LocalizedName;
                                 })
-                                .EditButton(button =>
+                                .EditButton((button, builder) =>
                                 {
                                     button.OnClickAsObservable()
                                         .Subscribe(_ =>
@@ -427,6 +427,8 @@ namespace MH3
                                     button.OnSelectAsObservable()
                                         .Subscribe(_ =>
                                         {
+                                            userData.AvailableContents.Add(AvailableContents.Key.GetSeenInstanceWeapon(x.InstanceId));
+                                            SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                             var container = new Container();
                                             container.Register("InstanceWeapon", x);
                                             instanceWeaponSequences.PlayAsync(container, scope).Forget();
@@ -468,13 +470,15 @@ namespace MH3
                                         {
                                             selectScope?.Cancel();
                                             selectScope?.Dispose();
+                                            builder.SetActiveBadge(false);
                                         })
                                         .RegisterTo(button.destroyCancellationToken);
                                 })
                                 .ApplyStyle(isEquiped
                                     ? UIViewListElementBuilder.StyleNames.Primary
                                     : UIViewListElementBuilder.StyleNames.Default
-                                    );
+                                    )
+                                .SetActiveBadge(!userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceWeapon(x.InstanceId)));
                         })),
                     0
                 );
