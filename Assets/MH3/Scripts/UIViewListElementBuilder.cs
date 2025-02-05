@@ -13,7 +13,7 @@ namespace MH3
     public class UIViewListElementBuilder
     {
         private readonly HKUIDocument elementDocument;
-            
+
         public UIViewListElementBuilder(HKUIDocument elementDocument)
         {
             this.elementDocument = elementDocument;
@@ -24,13 +24,13 @@ namespace MH3
             action(elementDocument.Q<TMP_Text>("Header"));
             return this;
         }
-        
+
         public UIViewListElementBuilder EditButton(Action<Button> action)
         {
             action(elementDocument.Q<Button>("Button"));
             return this;
         }
-        
+
         public UIViewListElementBuilder ApplyStyle(StyleNames name)
         {
             var sequenceName = name switch
@@ -47,7 +47,13 @@ namespace MH3
                 .Forget();
             return this;
         }
-        
+
+        public UIViewListElementBuilder SetActiveBadge(bool active)
+        {
+            elementDocument.Q("Area.Badge").SetActive(active);
+            return this;
+        }
+
         public enum StyleNames
         {
             Default,
