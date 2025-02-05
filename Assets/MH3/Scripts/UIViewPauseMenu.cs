@@ -654,75 +654,99 @@ namespace MH3
                     {
                         list.DestroySafe();
                     }
-                    var instanceWeapons = userData.InstanceWeapons.Where(x => x.InstanceId != userData.EquippedInstanceWeaponId);
+                    var instanceWeapons = userData.InstanceWeapons
+                        .Where(x => x.InstanceId != userData.EquippedInstanceWeaponId);
                     list = UIViewList.CreateWithPages(
                         listDocumentPrefab,
                         instanceWeapons
                             .Select(x => new Action<HKUIDocument>(document =>
                             {
                                 CancellationTokenSource selectScope = null;
-                                UIViewList.ApplyAsSimpleElement(document, x.WeaponSpec.LocalizedName, async _ =>
-                                {
-                                    tempSelection = document.Q<Selectable>("Button");
-                                    dialogScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
-                                    var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
-                                        "本当に削除しますか？".Localized(),
-                                        new List<string> { "はい".Localized(), "いいえ".Localized() },
-                                        0,
-                                        1,
-                                        dialogScope.Token
-                                    );
-                                    dialogScope.Dispose();
-                                    dialogScope = null;
-                                    if (result == 0)
+                                document.CreateListElementBuilder()
+                                    .EditHeader(header =>
                                     {
-                                        userData.RemoveInstanceWeapon(x);
-                                        SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
-                                        CreateList();
-                                    }
-                                    else
+                                        header.text = x.WeaponSpec.LocalizedName;
+                                    })
+                                    .EditButton(button =>
                                     {
-                                        tempSelection.Select();
-                                    }
-                                },
-                                _ =>
-                                {
-                                    var container = new Container();
-                                    container.Register("InstanceWeapon", x);
-                                    instanceWeaponSequences.PlayAsync(container, scope).Forget();
-                                    selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
-                                    var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs;
-                                    inputController.Actions.UI.Description
-                                        .OnPerformedAsObservable()
-                                        .Subscribe(_ =>
-                                        {
-                                            termDescriptionElements = new List<UIViewTermDescription.Element>
+                                        button.OnClickAsObservable()
+                                            .Subscribe(async _ =>
                                             {
-                                                new(x.WeaponSpec.WeaponType.GetTermDescriptionSpec()),
-                                                new(termDescriptionSpecs.Get("Parameter")),
-                                            };
-                                            if (x.InstanceSkillCoreIds.Count > 0)
+                                                tempSelection = document.Q<Selectable>("Button");
+                                                dialogScope =
+                                                    new CancellationDisposable(
+                                                        CancellationTokenSource.CreateLinkedTokenSource(scope));
+                                                var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>()
+                                                    .OpenAsync(
+                                                        "本当に削除しますか？".Localized(),
+                                                        new List<string> { "はい".Localized(), "いいえ".Localized() },
+                                                        0,
+                                                        1,
+                                                        dialogScope.Token
+                                                    );
+                                                dialogScope.Dispose();
+                                                dialogScope = null;
+                                                if (result == 0)
+                                                {
+                                                    userData.RemoveInstanceWeapon(x);
+                                                    SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(),
+                                                        SaveData.Path);
+                                                    CreateList();
+                                                }
+                                                else
+                                                {
+                                                    tempSelection.Select();
+                                                }
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                        button.OnSelectAsObservable()
+                                            .Subscribe(_ =>
                                             {
-                                                termDescriptionElements.Add(new(termDescriptionSpecs.Get("Skill")));
-                                                x.InstanceSkillCores
-                                                    .SelectMany(y => y.Skills)
-                                                    .Select(y => y.SkillType)
-                                                    .Distinct()
-                                                    .OrderBy(y => y)
-                                                    .ToList()
-                                                    .ForEach(y => termDescriptionElements.Add(new(y.GetTermDescriptionSpec())));
-                                            }
-                                            onEndTermDescriptionNextState = StateRemoveInstanceWeapon;
-                                            stateMachine.Change(StateTermDescription);
-                                        })
-                                        .RegisterTo(selectScope.Token);
-                                },
-                                _ =>
-                                {
-                                    selectScope?.Cancel();
-                                    selectScope?.Dispose();
-                                }
-                                );
+                                                var container = new Container();
+                                                container.Register("InstanceWeapon", x);
+                                                instanceWeaponSequences.PlayAsync(container, scope).Forget();
+                                                selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                                var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>()
+                                                    .TermDescriptionSpecs;
+                                                inputController.Actions.UI.Description
+                                                    .OnPerformedAsObservable()
+                                                    .Subscribe(_ =>
+                                                    {
+                                                        termDescriptionElements =
+                                                            new List<UIViewTermDescription.Element>
+                                                            {
+                                                                new(x.WeaponSpec.WeaponType.GetTermDescriptionSpec()),
+                                                                new(termDescriptionSpecs.Get("Parameter")),
+                                                            };
+                                                        if (x.InstanceSkillCoreIds.Count > 0)
+                                                        {
+                                                            termDescriptionElements.Add(
+                                                                new(termDescriptionSpecs.Get("Skill")));
+                                                            x.InstanceSkillCores
+                                                                .SelectMany(y => y.Skills)
+                                                                .Select(y => y.SkillType)
+                                                                .Distinct()
+                                                                .OrderBy(y => y)
+                                                                .ToList()
+                                                                .ForEach(y =>
+                                                                    termDescriptionElements.Add(
+                                                                        new(y.GetTermDescriptionSpec())));
+                                                        }
+
+                                                        onEndTermDescriptionNextState = StateRemoveInstanceWeapon;
+                                                        stateMachine.Change(StateTermDescription);
+                                                    })
+                                                    .RegisterTo(selectScope.Token);
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                        button.OnDeselectAsObservable()
+                                            .Subscribe(_ =>
+                                            {
+                                                selectScope?.Cancel();
+                                                selectScope?.Dispose();
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                    });
                             })),
                         0
                     );
@@ -776,77 +800,99 @@ namespace MH3
                             .Select(x => new Action<HKUIDocument>(document =>
                             {
                                 CancellationTokenSource selectScope = null;
-                                var header = userData.GetEquippedInstanceArmor(selectedArmorType)?.InstanceId == x.InstanceId
-                                    ? $"[E] {x.ArmorSpec.LocalizedName}"
-                                    : x.ArmorSpec.LocalizedName;
-                                UIViewList.ApplyAsSimpleElement(document, header, async _ =>
-                                {
-                                    tempSelection = document.Q<Selectable>("Button");
-                                    dialogScope = new CancellationDisposable(CancellationTokenSource.CreateLinkedTokenSource(scope));
-                                    var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>().OpenAsync(
-                                        "本当に削除しますか？".Localized(),
-                                        new List<string> { "はい".Localized(), "いいえ".Localized() },
-                                        0,
-                                        1,
-                                        dialogScope.Token
-                                    );
-                                    dialogScope.Dispose();
-                                    dialogScope = null;
-                                    if (result == 0)
+                                document.CreateListElementBuilder()
+                                    .EditHeader(header =>
                                     {
-                                        var armorSpec = x.ArmorSpec;
-                                        if (userData.GetEquippedInstanceArmor(armorSpec.ArmorType)?.InstanceId ==
-                                            x.InstanceId)
-                                        {
-                                            userData.SetEquippedInstanceArmor(armorSpec.ArmorType, 0);
-                                            actor.SpecController.BuildStatuses();
-                                        }
-                                        userData.RemoveInstanceArmor(x);
-                                        SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
-                                        CreateList();
-                                    }
-                                    else
+                                        header.text = x.ArmorSpec.LocalizedName;
+                                    })
+                                    .EditButton(button =>
                                     {
-                                        tempSelection.Select();
-                                    }
-                                },
-                                _ =>
-                                {
-                                    var container = new Container();
-                                    container.Register("InstanceArmor", x);
-                                    instanceArmorSequences.PlayAsync(container, scope).Forget();
-                                    selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
-                                    var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs;
-                                    inputController.Actions.UI.Description
-                                        .OnPerformedAsObservable()
-                                        .Subscribe(_ =>
-                                        {
-                                            termDescriptionElements = new List<UIViewTermDescription.Element>
+                                        button.OnClickAsObservable()
+                                            .Subscribe(async _ =>
                                             {
-                                                new(termDescriptionSpecs.Get("Armor")),
-                                                new(termDescriptionSpecs.Get("Parameter")),
-                                            };
-                                            if (x.Skills.Count > 0)
+                                                tempSelection = document.Q<Selectable>("Button");
+                                                dialogScope =
+                                                    new CancellationDisposable(
+                                                        CancellationTokenSource.CreateLinkedTokenSource(scope));
+                                                var result = await TinyServiceLocator.Resolve<UIViewSimpleDialog>()
+                                                    .OpenAsync(
+                                                        "本当に削除しますか？".Localized(),
+                                                        new List<string> { "はい".Localized(), "いいえ".Localized() },
+                                                        0,
+                                                        1,
+                                                        dialogScope.Token
+                                                    );
+                                                dialogScope.Dispose();
+                                                dialogScope = null;
+                                                if (result == 0)
+                                                {
+                                                    var armorSpec = x.ArmorSpec;
+                                                    if (userData.GetEquippedInstanceArmor(armorSpec.ArmorType)
+                                                            ?.InstanceId ==
+                                                        x.InstanceId)
+                                                    {
+                                                        userData.SetEquippedInstanceArmor(armorSpec.ArmorType, 0);
+                                                        actor.SpecController.BuildStatuses();
+                                                    }
+
+                                                    userData.RemoveInstanceArmor(x);
+                                                    SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(),
+                                                        SaveData.Path);
+                                                    CreateList();
+                                                }
+                                                else
+                                                {
+                                                    tempSelection.Select();
+                                                }
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                        button.OnSelectAsObservable()
+                                            .Subscribe(_ =>
                                             {
-                                                termDescriptionElements.Add(new(termDescriptionSpecs.Get("Skill")));
-                                                x.Skills
-                                                    .Select(y => y.SkillType)
-                                                    .Distinct()
-                                                    .OrderBy(y => y)
-                                                    .ToList()
-                                                    .ForEach(y => termDescriptionElements.Add(new(y.GetTermDescriptionSpec())));
-                                            }
-                                            onEndTermDescriptionNextState = StateRemoveInstanceArmor;
-                                            stateMachine.Change(StateTermDescription);
-                                        })
-                                        .RegisterTo(selectScope.Token);
-                                },
-                                _ =>
-                                {
-                                    selectScope?.Cancel();
-                                    selectScope?.Dispose();
-                                }
-                                );
+                                                var container = new Container();
+                                                container.Register("InstanceArmor", x);
+                                                instanceArmorSequences.PlayAsync(container, scope).Forget();
+                                                selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                                var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>()
+                                                    .TermDescriptionSpecs;
+                                                inputController.Actions.UI.Description
+                                                    .OnPerformedAsObservable()
+                                                    .Subscribe(_ =>
+                                                    {
+                                                        termDescriptionElements =
+                                                            new List<UIViewTermDescription.Element>
+                                                            {
+                                                                new(termDescriptionSpecs.Get("Armor")),
+                                                                new(termDescriptionSpecs.Get("Parameter")),
+                                                            };
+                                                        if (x.Skills.Count > 0)
+                                                        {
+                                                            termDescriptionElements.Add(
+                                                                new(termDescriptionSpecs.Get("Skill")));
+                                                            x.Skills
+                                                                .Select(y => y.SkillType)
+                                                                .Distinct()
+                                                                .OrderBy(y => y)
+                                                                .ToList()
+                                                                .ForEach(y =>
+                                                                    termDescriptionElements.Add(
+                                                                        new(y.GetTermDescriptionSpec())));
+                                                        }
+
+                                                        onEndTermDescriptionNextState = StateRemoveInstanceArmor;
+                                                        stateMachine.Change(StateTermDescription);
+                                                    })
+                                                    .RegisterTo(selectScope.Token);
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                        button.OnDeselectAsObservable()
+                                            .Subscribe(_ =>
+                                            {
+                                                selectScope?.Cancel();
+                                                selectScope?.Dispose();
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                    });
                             })),
                         0
                     );
@@ -879,57 +925,77 @@ namespace MH3
                         .Select(x => new Action<HKUIDocument>(document =>
                         {
                             CancellationTokenSource selectScope = null;
-                            var header = userData.EquippedInstanceWeaponId == x.InstanceId
-                                ? $"[E] {x.WeaponSpec.LocalizedName}"
-                                : x.WeaponSpec.LocalizedName;
-                            UIViewList.ApplyAsSimpleElement(document, header, _ =>
-                            {
-                                if (x.SkillSlot <= 0)
+                            document.CreateListElementBuilder()
+                                .EditHeader(header =>
                                 {
-                                    TinyServiceLocator.Resolve<UIViewNotificationCenter>().BeginOneShotAsync("スキルスロットがありません".Localized()).Forget();
-                                    return;
-                                }
-                                selectedInstanceWeapon = x;
-                                stateMachine.Change(StateAddInstanceSkillCoreSelectSkillCore);
-                            },
-                                _ =>
+                                    header.text = userData.EquippedInstanceWeaponId == x.InstanceId
+                                        ? $"[E] {x.WeaponSpec.LocalizedName}"
+                                        : x.WeaponSpec.LocalizedName;
+                                })
+                                .EditButton(button =>
                                 {
-                                    var container = new Container();
-                                    container.Register("InstanceWeapon", x);
-                                    instanceWeaponSequences.PlayAsync(container, scope).Forget();
-                                    selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
-                                    var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>().TermDescriptionSpecs;
-                                    inputController.Actions.UI.Description
-                                        .OnPerformedAsObservable()
+                                    button.OnClickAsObservable()
                                         .Subscribe(_ =>
                                         {
-                                            termDescriptionElements = new List<UIViewTermDescription.Element>
+                                            if (x.SkillSlot <= 0)
                                             {
-                                                new(x.WeaponSpec.WeaponType.GetTermDescriptionSpec()),
-                                                new(termDescriptionSpecs.Get("Parameter")),
-                                            };
-                                            if (x.InstanceSkillCoreIds.Count > 0)
-                                            {
-                                                termDescriptionElements.Add(new(termDescriptionSpecs.Get("Skill")));
-                                                x.InstanceSkillCores
-                                                    .SelectMany(y => y.Skills)
-                                                    .Select(y => y.SkillType)
-                                                    .Distinct()
-                                                    .OrderBy(y => y)
-                                                    .ToList()
-                                                    .ForEach(y => termDescriptionElements.Add(new(y.GetTermDescriptionSpec())));
+                                                TinyServiceLocator.Resolve<UIViewNotificationCenter>()
+                                                    .BeginOneShotAsync("スキルスロットがありません".Localized()).Forget();
+                                                return;
                                             }
-                                            onEndTermDescriptionNextState = StateAddInstanceSkillCoreSelectInstanceWeapon;
-                                            stateMachine.Change(StateTermDescription);
+
+                                            selectedInstanceWeapon = x;
+                                            stateMachine.Change(StateAddInstanceSkillCoreSelectSkillCore);
                                         })
-                                        .RegisterTo(selectScope.Token);
-                                },
-                                _ =>
-                                {
-                                    selectScope?.Cancel();
-                                    selectScope?.Dispose();
-                                }
-                                );
+                                        .RegisterTo(button.destroyCancellationToken);
+                                    button.OnSelectAsObservable()
+                                        .Subscribe(_ =>
+                                        {
+                                            var container = new Container();
+                                            container.Register("InstanceWeapon", x);
+                                            instanceWeaponSequences.PlayAsync(container, scope).Forget();
+                                            selectScope = CancellationTokenSource.CreateLinkedTokenSource(scope);
+                                            var termDescriptionSpecs = TinyServiceLocator.Resolve<MasterData>()
+                                                .TermDescriptionSpecs;
+                                            inputController.Actions.UI.Description
+                                                .OnPerformedAsObservable()
+                                                .Subscribe(_ =>
+                                                {
+                                                    termDescriptionElements = new List<UIViewTermDescription.Element>
+                                                    {
+                                                        new(x.WeaponSpec.WeaponType.GetTermDescriptionSpec()),
+                                                        new(termDescriptionSpecs.Get("Parameter")),
+                                                    };
+                                                    if (x.InstanceSkillCoreIds.Count > 0)
+                                                    {
+                                                        termDescriptionElements.Add(
+                                                            new(termDescriptionSpecs.Get("Skill")));
+                                                        x.InstanceSkillCores
+                                                            .SelectMany(y => y.Skills)
+                                                            .Select(y => y.SkillType)
+                                                            .Distinct()
+                                                            .OrderBy(y => y)
+                                                            .ToList()
+                                                            .ForEach(y =>
+                                                                termDescriptionElements.Add(
+                                                                    new(y.GetTermDescriptionSpec())));
+                                                    }
+
+                                                    onEndTermDescriptionNextState =
+                                                        StateAddInstanceSkillCoreSelectInstanceWeapon;
+                                                    stateMachine.Change(StateTermDescription);
+                                                })
+                                                .RegisterTo(selectScope.Token);
+                                        })
+                                        .RegisterTo(button.destroyCancellationToken);
+                                    button.OnDeselectAsObservable()
+                                        .Subscribe(_ =>
+                                        {
+                                            selectScope?.Cancel();
+                                            selectScope?.Dispose();
+                                        })
+                                        .RegisterTo(button.destroyCancellationToken);
+                                });
                         })),
                     0
                 );
