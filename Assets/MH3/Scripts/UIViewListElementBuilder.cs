@@ -1,10 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
 using HK;
-using R3;
-using R3.Triggers;
 using TMPro;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnitySequencerSystem;
 
@@ -34,8 +31,15 @@ namespace MH3
             return this;
         }
         
-        public UIViewListElementBuilder InvokeSequence(string sequenceName)
+        public UIViewListElementBuilder InvokeSequence(SequenceNames name)
         {
+            var sequenceName = name switch
+            {
+                SequenceNames.Default => "Default",
+                SequenceNames.Deactive => "Deactive",
+                SequenceNames.Primary => "Primary",
+                _ => throw new ArgumentOutOfRangeException($"Invalid name: {name}")
+            };
             elementDocument
                 .Q<HKUIDocument>("Sequences")
                 .Q<SequencesMonoBehaviour>(sequenceName)
@@ -43,20 +47,12 @@ namespace MH3
                 .Forget();
             return this;
         }
-
-        public UIViewListElementBuilder InvokeSequenceDefault()
-        {
-            return InvokeSequence("Default");
-        }
-            
-        public UIViewListElementBuilder InvokeSequenceDeactive()
-        {
-            return InvokeSequence("Deactive");
-        }
         
-        public UIViewListElementBuilder InvokeSequencePrimary()
+        public enum SequenceNames
         {
-            return InvokeSequence("Primary");
+            Default,
+            Deactive,
+            Primary
         }
     }
 }
