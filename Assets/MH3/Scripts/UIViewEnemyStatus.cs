@@ -47,6 +47,18 @@ namespace MH3
                         d.gameObject.SetActive(true);
                     })
                     .RegisterTo(actor.destroyCancellationToken);
+                gameEvents.OnBeginAcquireReward
+                    .Subscribe(document, (_, d) =>
+                    {
+                        d.gameObject.SetActive(false);
+                    })
+                    .RegisterTo(actor.destroyCancellationToken);
+                gameEvents.OnEndAcquireReward
+                    .Subscribe(document, (_, d) =>
+                    {
+                        d.gameObject.SetActive(true);
+                    })
+                    .RegisterTo(actor.destroyCancellationToken);
             }
             document.Q<TMP_Text>("Name").text = actor.SpecController.ActorName;
         }

@@ -53,6 +53,20 @@ namespace MH3
                     document.gameObject.SetActive(true);
                 })
                 .RegisterTo(scope);
+            gameEvents.OnBeginAcquireReward
+                .Subscribe(document, static (x, t) =>
+                {
+                    var document = t;
+                    document.gameObject.SetActive(false);
+                })
+                .RegisterTo(scope);
+            gameEvents.OnEndAcquireReward
+                .Subscribe(document, static (x, t) =>
+                {
+                    var document = t;
+                    document.gameObject.SetActive(true);
+                })
+                .RegisterTo(scope);
             ((RectTransform)hitPointSlider.transform).sizeDelta = new Vector2(
                 gameRules.HitPointSliderAddWidth * actor.SpecController.HitPointMaxTotal,
                 hitPointSliderDefaultSize.y
