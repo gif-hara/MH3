@@ -66,6 +66,7 @@ namespace MH3
                 UIViewTips.SetTip("欲しい報酬を一つ選んでください。".Localized());
                 TinyServiceLocator.Resolve<GameEvents>().OnBeginAcquireReward.OnNext(Unit.Default);
                 var index = await UIViewAcquireReward.OpenAsync(documentPrefab, rewards, gameSceneController.ElapsedQuestTime, enemy.SpecController.ActorName, cancellationToken);
+                header.DestroySafe();
                 TinyServiceLocator.Resolve<GameEvents>().OnEndAcquireReward.OnNext(Unit.Default);
                 rewards[index].Acquire(userData);
                 SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
