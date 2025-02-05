@@ -57,7 +57,7 @@ namespace MH3
                     EventSystem.current.SetSelectedGameObject(defaultSelectable.gameObject);
                 })
                 .RegisterTo(document.destroyCancellationToken);
-            CreateList(initialElementIndex);
+            CreateList(initialElementIndex % elementCount);
 
             void CreateList(int selectIndex)
             {
