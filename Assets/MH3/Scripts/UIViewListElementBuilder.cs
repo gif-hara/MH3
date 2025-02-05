@@ -25,6 +25,12 @@ namespace MH3
             action(elementDocument.Q<TMP_Text>("Header"));
             return this;
         }
+        
+        public UIViewListElementBuilder EditButton(Action<Button> action)
+        {
+            action(elementDocument.Q<Button>("Button"));
+            return this;
+        }
             
         public UIViewListElementBuilder SetOnClick(Action<Unit> onClick)
         {
