@@ -71,6 +71,11 @@ namespace MH3
             {
                 return $"Seen.SkillCore.{skillCoreSpecId}";
             }
+
+            public static string GetSeenInstanceWeapon(int weaponInstanceId)
+            {
+                return $"Seen.InstanceWeapon.{weaponInstanceId}";
+            }
         }
     }
 }
