@@ -523,7 +523,7 @@ namespace MH3
                                         ? $"[E] {x.ArmorSpec.LocalizedName}"
                                         : x.ArmorSpec.LocalizedName;
                                 })
-                                .EditButton(button =>
+                                .EditButton((button, builder) =>
                                 {
                                     button.OnClickAsObservable()
                                         .Subscribe(_ =>
@@ -547,6 +547,8 @@ namespace MH3
                                     button.OnSelectAsObservable()
                                         .Subscribe(_ =>
                                         {
+                                            userData.AvailableContents.Add(AvailableContents.Key.GetSeenInstanceArmor(x.InstanceId));
+                                            SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                             var container = new Container();
                                             container.Register("InstanceArmor", x);
                                             instanceArmorSequences.PlayAsync(container, scope).Forget();
@@ -585,6 +587,7 @@ namespace MH3
                                     button.OnDeselectAsObservable()
                                         .Subscribe(_ =>
                                         {
+                                            builder.SetActiveBadge(false);
                                             selectScope?.Cancel();
                                             selectScope?.Dispose();
                                         })
@@ -593,7 +596,8 @@ namespace MH3
                                 .ApplyStyle(isEquiped
                                     ? UIViewListElementBuilder.StyleNames.Primary
                                     : UIViewListElementBuilder.StyleNames.Default
-                                    );
+                                    )
+                                .SetActiveBadge(!userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceArmor(x.InstanceId)));
                         })),
                     0
                 );
@@ -725,7 +729,7 @@ namespace MH3
                                     {
                                         header.text = x.WeaponSpec.LocalizedName;
                                     })
-                                    .EditButton(button =>
+                                    .EditButton((button, builder) =>
                                     {
                                         button.OnClickAsObservable()
                                             .Subscribe(async _ =>
@@ -760,6 +764,8 @@ namespace MH3
                                         button.OnSelectAsObservable()
                                             .Subscribe(_ =>
                                             {
+                                                userData.AvailableContents.Add(AvailableContents.Key.GetSeenInstanceWeapon(x.InstanceId));
+                                                SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                                 var container = new Container();
                                                 container.Register("InstanceWeapon", x);
                                                 instanceWeaponSequences.PlayAsync(container, scope).Forget();
@@ -800,11 +806,13 @@ namespace MH3
                                         button.OnDeselectAsObservable()
                                             .Subscribe(_ =>
                                             {
+                                                builder.SetActiveBadge(false);
                                                 selectScope?.Cancel();
                                                 selectScope?.Dispose();
                                             })
                                             .RegisterTo(button.destroyCancellationToken);
-                                    });
+                                    })
+                                    .SetActiveBadge(!userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceWeapon(x.InstanceId)));
                             })),
                         0
                     );
@@ -863,7 +871,7 @@ namespace MH3
                                     {
                                         header.text = x.ArmorSpec.LocalizedName;
                                     })
-                                    .EditButton(button =>
+                                    .EditButton((button, builder) =>
                                     {
                                         button.OnClickAsObservable()
                                             .Subscribe(async _ =>
@@ -907,6 +915,8 @@ namespace MH3
                                         button.OnSelectAsObservable()
                                             .Subscribe(_ =>
                                             {
+                                                userData.AvailableContents.Add(AvailableContents.Key.GetSeenInstanceArmor(x.InstanceId));
+                                                SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                                 var container = new Container();
                                                 container.Register("InstanceArmor", x);
                                                 instanceArmorSequences.PlayAsync(container, scope).Forget();
@@ -946,11 +956,13 @@ namespace MH3
                                         button.OnDeselectAsObservable()
                                             .Subscribe(_ =>
                                             {
+                                                builder.SetActiveBadge(false);
                                                 selectScope?.Cancel();
                                                 selectScope?.Dispose();
                                             })
                                             .RegisterTo(button.destroyCancellationToken);
-                                    });
+                                    })
+                                    .SetActiveBadge(!userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceArmor(x.InstanceId)));
                             })),
                         0
                     );
@@ -991,7 +1003,7 @@ namespace MH3
                                         ? $"[E] {x.WeaponSpec.LocalizedName}"
                                         : x.WeaponSpec.LocalizedName;
                                 })
-                                .EditButton(button =>
+                                .EditButton((button, builder) =>
                                 {
                                     button.OnClickAsObservable()
                                         .Subscribe(_ =>
@@ -1010,6 +1022,8 @@ namespace MH3
                                     button.OnSelectAsObservable()
                                         .Subscribe(_ =>
                                         {
+                                            userData.AvailableContents.Add(AvailableContents.Key.GetSeenInstanceWeapon(x.InstanceId));
+                                            SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                             var container = new Container();
                                             container.Register("InstanceWeapon", x);
                                             instanceWeaponSequences.PlayAsync(container, scope).Forget();
@@ -1051,6 +1065,7 @@ namespace MH3
                                     button.OnDeselectAsObservable()
                                         .Subscribe(_ =>
                                         {
+                                            builder.SetActiveBadge(false);
                                             selectScope?.Cancel();
                                             selectScope?.Dispose();
                                         })
@@ -1059,7 +1074,8 @@ namespace MH3
                                 .ApplyStyle(isEquiped
                                     ? UIViewListElementBuilder.StyleNames.Primary
                                     : UIViewListElementBuilder.StyleNames.Default
-                                    );
+                                    )
+                                .SetActiveBadge(!userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceWeapon(x.InstanceId)));
                         })),
                     listInitialIndexCaches.TryGetValue(nameof(StateAddInstanceSkillCoreSelectInstanceWeapon), out var index) ? index : 0
                 );
@@ -1112,7 +1128,7 @@ namespace MH3
                                     {
                                         header.text = x.SkillCoreSpec.LocalizedName;
                                     })
-                                    .EditButton(button =>
+                                    .EditButton((button, builder) =>
                                     {
                                         button.OnClickAsObservable()
                                             .Subscribe(async _ =>
@@ -1178,6 +1194,8 @@ namespace MH3
                                         button.OnSelectAsObservable()
                                             .Subscribe(_ =>
                                             {
+                                                userData.AvailableContents.Add(AvailableContents.Key.GetSeenInstanceSkillCore(x.InstanceId));
+                                                SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                                 var container = new Container();
                                                 container.Register("InstanceSkillCore", x);
                                                 instanceSkillCoreSequences.PlayAsync(container, scope).Forget();
@@ -1216,11 +1234,13 @@ namespace MH3
                                         button.OnDeselectAsObservable()
                                             .Subscribe(_ =>
                                             {
+                                                builder.SetActiveBadge(false);
                                                 selectScope?.Cancel();
                                                 selectScope?.Dispose();
                                             })
                                             .RegisterTo(button.destroyCancellationToken);
-                                    });
+                                    })
+                                    .SetActiveBadge(!userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceSkillCore(x.InstanceId)));
                             })),
                         0
                     );
@@ -1274,7 +1294,7 @@ namespace MH3
                                                 : x.SkillCoreSpec.LocalizedName;
                                         }
                                     )
-                                    .EditButton(button =>
+                                    .EditButton((button, builder) =>
                                     {
                                         button.OnClickAsObservable()
                                             .Subscribe(_ =>
@@ -1308,6 +1328,8 @@ namespace MH3
                                         button.OnSelectAsObservable()
                                             .Subscribe(_ =>
                                             {
+                                                userData.AvailableContents.Add(AvailableContents.Key.GetSeenInstanceSkillCore(x.InstanceId));
+                                                SaveSystem.Save(TinyServiceLocator.Resolve<SaveData>(), SaveData.Path);
                                                 var container = new Container();
                                                 container.Register("InstanceSkillCore", x);
                                                 instanceSkillCoreSequences.PlayAsync(container, scope).Forget();
@@ -1347,6 +1369,7 @@ namespace MH3
                                         button.OnDeselectAsObservable()
                                             .Subscribe(_ =>
                                             {
+                                                builder.SetActiveBadge(false);
                                                 selectScope?.Cancel();
                                                 selectScope?.Dispose();
                                             })
@@ -1357,7 +1380,8 @@ namespace MH3
                                         : canAttach
                                             ? UIViewListElementBuilder.StyleNames.Default
                                             : UIViewListElementBuilder.StyleNames.Deactive
-                                        );
+                                        )
+                                    .SetActiveBadge(!userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceSkillCore(x.InstanceId)));
                             })),
                         listIndex
                     );
