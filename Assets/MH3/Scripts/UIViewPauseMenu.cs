@@ -8,6 +8,7 @@ using MH3.ActorControllers;
 using R3;
 using R3.Triggers;
 using TMPro;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -101,43 +102,52 @@ namespace MH3
                 AddListElement(
                     "クエスト選択".Localized(),
                     _ => stateMachine.Change(StateSelectQuest),
-                    _ => UIViewTips.SetTip("敵スライム君と戦うクエストを選択します。".Localized())
+                    _ => UIViewTips.SetTip("敵スライム君と戦うクエストを選択します。".Localized()),
+                    false
                     );
                 AddListElement(
                     "装備変更".Localized(),
                     _ => stateMachine.Change(StateChangeEquipmentTypeRoot),
-                    _ => UIViewTips.SetTip("武器や防具を変更します。".Localized())
+                    _ => UIViewTips.SetTip("武器や防具を変更します。".Localized()),
+                    userData.InstanceWeapons.Any(x => !userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceWeapon(x.InstanceId)))
+                    || userData.InstanceArmors.Any(x => !userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceArmor(x.InstanceId)))
                 );
                 if (userData.AvailableContents.Contains(AvailableContents.Key.AcquireInstanceSkillCore))
                 {
                     AddListElement(
                         "スキルコア装着".Localized(),
                         _ => stateMachine.Change(StateAddInstanceSkillCoreSelectInstanceWeapon),
-                        _ => UIViewTips.SetTip("武器にスキルコアを装着します。".Localized())
+                        _ => UIViewTips.SetTip("武器にスキルコアを装着します。".Localized()),
+                        userData.InstanceSkillCores.Any(x => !userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceSkillCore(x.InstanceId)))
                     );
                 }
                 AddListElement(
                     "装備削除".Localized(),
                     _ => stateMachine.Change(StateRemoveEquipment),
-                    _ => UIViewTips.SetTip("不要な武器や防具を削除します。".Localized())
+                    _ => UIViewTips.SetTip("不要な武器や防具を削除します。".Localized()),
+                    userData.InstanceWeapons.Any(x => !userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceWeapon(x.InstanceId)))
+                    || userData.InstanceArmors.Any(x => !userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceArmor(x.InstanceId)))
                 );
                 if (userData.AvailableContents.Contains(AvailableContents.Key.AcquireInstanceSkillCore))
                 {
                     AddListElement(
                         "スキルコア削除".Localized(),
                         _ => stateMachine.Change(StateRemoveInstanceSkillCore),
-                        _ => UIViewTips.SetTip("不要なスキルコアを削除します。".Localized())
+                        _ => UIViewTips.SetTip("不要なスキルコアを削除します。".Localized()),
+                        userData.InstanceSkillCores.Any(x => !userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceSkillCore(x.InstanceId)))
                     );
                 }
                 AddListElement(
                     "オプション".Localized(),
                     _ => stateMachine.Change(StateOptionsRoot),
-                    _ => UIViewTips.SetTip("ゲームの設定を変更します。".Localized())
+                    _ => UIViewTips.SetTip("ゲームの設定を変更します。".Localized()),
+                    false
                 );
                 AddListElement(
                     "閉じる".Localized(),
                     _ => pauseMenuScope.Dispose(),
-                    _ => UIViewTips.SetTip("ポーズメニューを閉じます。".Localized())
+                    _ => UIViewTips.SetTip("ポーズメニューを閉じます。".Localized()),
+                    false
                 );
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
@@ -183,7 +193,7 @@ namespace MH3
                 list.DestroySafe();
                 actorSpecStatusDocument.DestroySafe();
 
-                void AddListElement(string headerText, Action<Unit> onClick, Action<BaseEventData> onSelect)
+                void AddListElement(string headerText, Action<Unit> onClick, Action<BaseEventData> onSelect, bool isActiveBadge)
                 {
                     var index = listElements.Count;
                     listElements.Add(document =>
@@ -205,7 +215,8 @@ namespace MH3
                                         onSelect(x);
                                     })
                                     .RegisterTo(button.destroyCancellationToken);
-                            });
+                            })
+                            .SetActiveBadge(isActiveBadge);
                     });
                 }
             }
@@ -317,12 +328,14 @@ namespace MH3
 
             async UniTask StateChangeEquipmentTypeRoot(CancellationToken scope)
             {
+                var userData = TinyServiceLocator.Resolve<UserData>();
                 SetHeaderText("装備変更".Localized());
                 var listElements = new List<Action<HKUIDocument>>();
                 AddListElement(
                     "武器".Localized(),
                     _ => stateMachine.Change(StateChangeInstanceWeapon),
-                    _ => UIViewTips.SetTip("武器を変更します。".Localized())
+                    _ => UIViewTips.SetTip("武器を変更します。".Localized()),
+                    userData.InstanceWeapons.Any(x => !userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceWeapon(x.InstanceId)))
                 );
                 AddListElement(
                     "頭防具".Localized(),
@@ -331,7 +344,8 @@ namespace MH3
                         selectedArmorType = Define.ArmorType.Head;
                         stateMachine.Change(StateChangeInstanceArmor);
                     },
-                    _ => UIViewTips.SetTip("頭に装備する防具を変更します。".Localized())
+                    _ => UIViewTips.SetTip("頭に装備する防具を変更します。".Localized()),
+                    userData.InstanceArmors.Any(x => x.ArmorSpec.ArmorType == Define.ArmorType.Head && !userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceArmor(x.InstanceId)))
                 );
                 AddListElement(
                     "腕防具".Localized(),
@@ -340,7 +354,8 @@ namespace MH3
                         selectedArmorType = Define.ArmorType.Arms;
                         stateMachine.Change(StateChangeInstanceArmor);
                     },
-                    _ => UIViewTips.SetTip("腕に装備する防具を変更します。".Localized())
+                    _ => UIViewTips.SetTip("腕に装備する防具を変更します。".Localized()),
+                    userData.InstanceArmors.Any(x => x.ArmorSpec.ArmorType == Define.ArmorType.Arms && !userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceArmor(x.InstanceId)))
                 );
                 AddListElement(
                     "胴防具".Localized(),
@@ -349,12 +364,14 @@ namespace MH3
                         selectedArmorType = Define.ArmorType.Body;
                         stateMachine.Change(StateChangeInstanceArmor);
                     },
-                    _ => UIViewTips.SetTip("胴に装備する防具を変更します。".Localized())
+                    _ => UIViewTips.SetTip("胴に装備する防具を変更します。".Localized()),
+                    userData.InstanceArmors.Any(x => x.ArmorSpec.ArmorType == Define.ArmorType.Body && !userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceArmor(x.InstanceId)))
                 );
                 AddListElement(
                     "戻る".Localized(),
                     _ => stateMachine.Change(StateHomeRoot),
-                    _ => UIViewTips.SetTip("前のメニューに戻ります。".Localized())
+                    _ => UIViewTips.SetTip("前のメニューに戻ります。".Localized()),
+                    false
                 );
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
@@ -367,21 +384,30 @@ namespace MH3
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
-                void AddListElement(string header, Action<Unit> onClick, Action<BaseEventData> onSelect)
+                void AddListElement(string headerText, Action<Unit> onClick, Action<BaseEventData> onSelect, bool isActiveBadge)
                 {
                     var index = listElements.Count;
                     listElements.Add(document =>
                     {
-                        UIViewList.ApplyAsSimpleElement(
-                            document,
-                            header,
-                            onClick,
-                            x =>
+                        document.CreateListElementBuilder()
+                            .EditHeader(header =>
                             {
-                                listInitialIndexCaches[nameof(StateChangeEquipmentTypeRoot)] = index;
-                                onSelect(x);
-                            }
-                        );
+                                header.text = headerText;
+                            })
+                            .EditButton(button =>
+                            {
+                                button.OnClickAsObservable()
+                                    .Subscribe(onClick)
+                                    .RegisterTo(button.destroyCancellationToken);
+                                button.OnSelectAsObservable()
+                                    .Subscribe(x =>
+                                    {
+                                        listInitialIndexCaches[nameof(StateChangeEquipmentTypeRoot)] = index;
+                                        onSelect(x);
+                                    })
+                                    .RegisterTo(button.destroyCancellationToken);
+                            })
+                            .SetActiveBadge(isActiveBadge);
                     });
                 }
             }
@@ -630,7 +656,8 @@ namespace MH3
                 AddListElement(
                     "武器".Localized(),
                     _ => stateMachine.Change(StateRemoveInstanceWeapon),
-                    _ => UIViewTips.SetTip("所持している武器を削除します。".Localized())
+                    _ => UIViewTips.SetTip("所持している武器を削除します。".Localized()),
+                    userData.InstanceWeapons.Any(x => !userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceWeapon(x.InstanceId)))
                     );
                 AddListElement(
                     "頭防具".Localized(),
@@ -639,7 +666,8 @@ namespace MH3
                         selectedArmorType = Define.ArmorType.Head;
                         stateMachine.Change(StateRemoveInstanceArmor);
                     },
-                    _ => UIViewTips.SetTip("所持している頭防具を削除します。".Localized())
+                    _ => UIViewTips.SetTip("所持している頭防具を削除します。".Localized()),
+                    userData.InstanceArmors.Any(x => x.ArmorSpec.ArmorType == Define.ArmorType.Head && !userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceArmor(x.InstanceId)))
                 );
                 AddListElement(
                     "腕防具".Localized(),
@@ -648,7 +676,8 @@ namespace MH3
                         selectedArmorType = Define.ArmorType.Arms;
                         stateMachine.Change(StateRemoveInstanceArmor);
                     },
-                    _ => UIViewTips.SetTip("所持している腕防具を削除します。".Localized())
+                    _ => UIViewTips.SetTip("所持している腕防具を削除します。".Localized()),
+                    userData.InstanceArmors.Any(x => x.ArmorSpec.ArmorType == Define.ArmorType.Arms && !userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceArmor(x.InstanceId)))
                 );
                 AddListElement(
                     "胴防具".Localized(),
@@ -657,12 +686,14 @@ namespace MH3
                         selectedArmorType = Define.ArmorType.Body;
                         stateMachine.Change(StateRemoveInstanceArmor);
                     },
-                    _ => UIViewTips.SetTip("所持している胴防具を削除します。".Localized())
+                    _ => UIViewTips.SetTip("所持している胴防具を削除します。".Localized()),
+                    userData.InstanceArmors.Any(x => x.ArmorSpec.ArmorType == Define.ArmorType.Body && !userData.AvailableContents.Contains(AvailableContents.Key.GetSeenInstanceArmor(x.InstanceId)))
                 );
                 AddListElement(
                     "戻る".Localized(),
                     _ => stateMachine.Change(StateHomeRoot),
-                    _ => UIViewTips.SetTip("前のメニューに戻ります。".Localized())
+                    _ => UIViewTips.SetTip("前のメニューに戻ります。".Localized()),
+                    false
                 );
                 var list = UIViewList.CreateWithPages(
                     listDocumentPrefab,
@@ -675,21 +706,30 @@ namespace MH3
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 list.DestroySafe();
-                void AddListElement(string header, Action<Unit> onClick, Action<BaseEventData> onSelect)
+                void AddListElement(string headerText, Action<Unit> onClick, Action<BaseEventData> onSelect, bool isActiveBadge)
                 {
                     var index = listElements.Count;
                     listElements.Add(document =>
                     {
-                        UIViewList.ApplyAsSimpleElement(
-                            document,
-                            header,
-                            onClick,
-                            x =>
+                        document.CreateListElementBuilder()
+                            .EditHeader(header =>
                             {
-                                listInitialIndexCaches[nameof(StateRemoveEquipment)] = index;
-                                onSelect(x);
-                            }
-                        );
+                                header.text = headerText;
+                            })
+                            .EditButton(button =>
+                            {
+                                button.OnClickAsObservable()
+                                    .Subscribe(onClick)
+                                    .RegisterTo(button.destroyCancellationToken);
+                                button.OnSelectAsObservable()
+                                    .Subscribe(x =>
+                                    {
+                                        listInitialIndexCaches[nameof(StateRemoveEquipment)] = index;
+                                        onSelect(x);
+                                    })
+                                    .RegisterTo(button.destroyCancellationToken);
+                            })
+                            .SetActiveBadge(isActiveBadge);
                     });
                 }
             }
