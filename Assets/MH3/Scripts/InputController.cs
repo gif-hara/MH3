@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using HK;
+using UnityEngine.InputSystem;
 
 namespace MH3
 {
@@ -13,7 +16,15 @@ namespace MH3
         public MHInputActions Actions { get; }
 
         private readonly Stack<InputActionType> actionTypes = new();
-
+        
+        private InputActionRebindingExtensions.RebindingOperation rebindOperation = null;
+        
+        public enum RebindingResult
+        {
+            Completed,
+            Canceled,
+        }
+        
         public InputController()
         {
             Actions = new MHInputActions();
@@ -31,6 +42,35 @@ namespace MH3
         {
             actionTypes.Pop();
             ChangeInputType(actionTypes.Peek());
+        }
+
+        public UniTask<RebindingResult> BeginRebindingAsync(InputAction inputAction, InputScheme.InputSchemeType schemeType)
+        {
+            rebindOperation?.Cancel();
+            Actions.Disable();
+            var bindingIndex = inputAction.GetBindingIndex(InputBinding.MaskByGroup(InputScheme.GetSchemeName(schemeType)));
+            var source = new UniTaskCompletionSource<RebindingResult>();
+            rebindOperation = inputAction.PerformInteractiveRebinding(bindingIndex)
+                .OnComplete(_ =>
+                {
+                    source.TrySetResult(RebindingResult.Completed);
+                    OnFinished();
+                })
+                .OnCancel(_ =>
+                {
+                    source.TrySetResult(RebindingResult.Canceled);
+                    OnFinished();
+                })
+                .Start();
+            
+            return source.Task;
+            
+            void OnFinished()
+            {
+                rebindOperation?.Dispose();
+                rebindOperation = null;
+                Actions.Enable();
+            }
         }
 
         private void ChangeInputType(InputActionType type)
