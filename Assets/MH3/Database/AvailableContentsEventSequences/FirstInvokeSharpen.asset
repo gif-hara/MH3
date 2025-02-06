@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FirstInvokeSharpen
   m_EditorClassIdentifier: 
   sequences:
+  - rid: 4652974973218455678
   - rid: 1481063743668093010
   references:
     version: 2
@@ -45,3 +46,7 @@ MonoBehaviour:
       type: {class: IntResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
+    - rid: 4652974973218455678
+      type: {class: Delay, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        seconds: 0.5
