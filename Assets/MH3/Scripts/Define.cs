@@ -172,7 +172,8 @@ namespace MH3
         {
             Home,
             Battle,
-            InvokeSharpen
+            InvokeSharpen,
+            InvokeEndurance,
         }
 
         public enum RecoveryCommandType

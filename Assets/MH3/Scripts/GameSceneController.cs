@@ -257,6 +257,14 @@ namespace MH3
                         .Forget();
                 })
                 .RegisterTo(destroyCancellationToken);
+            player.ActionController.OnBeginBladeEnduranceMode
+                .Subscribe(_ =>
+                {
+                    masterData.AvailableContentsEvents.Get(Define.AvailableContentsEventTrigger.InvokeEndurance)
+                        .PlayAsync(destroyCancellationToken)
+                        .Forget();
+                })
+                .RegisterTo(destroyCancellationToken);
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);
