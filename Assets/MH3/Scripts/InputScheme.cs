@@ -39,6 +39,21 @@ namespace HK
             scope.RegisterWithoutCaptureExecutionContext(() => InputSystem.onEvent -= OnEvent);
         }
 
+        public string GetCurrentSchemeName()
+        {
+            return GetSchemeName(CurrentInputSchemeType);
+        }
+        
+        public string GetSchemeName(InputSchemeType inputSchemeType)
+        {
+            return inputSchemeType switch
+            {
+                InputSchemeType.KeyboardAndMouse => "Keyboard&Mouse",
+                InputSchemeType.GamePad => "Gamepad",
+                _ => "Unknown"
+            };
+        }
+
         private void OnEvent(InputEventPtr inputEventPtr, InputDevice inputDevice)
         {
             var eventType = inputEventPtr.type;
