@@ -249,6 +249,14 @@ namespace MH3
             player.SpecController.SetArmorId(Define.ArmorType.Arms, userData.GetEquippedInstanceArmor(Define.ArmorType.Arms)?.ArmorId ?? 0);
             player.SpecController.SetArmorId(Define.ArmorType.Body, userData.GetEquippedInstanceArmor(Define.ArmorType.Body)?.ArmorId ?? 0);
             player.SpecController.BuildStatuses();
+            player.ActionController.OnBeginDualSwordDodgeMode
+                .Subscribe(_ =>
+                {
+                    masterData.AvailableContentsEvents.Get(Define.AvailableContentsEventTrigger.InvokeSharpen)
+                        .PlayAsync(destroyCancellationToken)
+                        .Forget();
+                })
+                .RegisterTo(destroyCancellationToken);
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);
