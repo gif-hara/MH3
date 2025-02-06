@@ -15,9 +15,24 @@ MonoBehaviour:
   sequences:
   - rid: 7349438358569615474
   - rid: 7349438358569615512
+  - rid: 803094436334010467
+  - rid: 803094436334010469
   references:
     version: 2
     RefIds:
+    - rid: 803094436334010467
+      type: {class: AddAvailableContents, ns: MH3, asm: Assembly-CSharp}
+      data:
+        keyResolver:
+          rid: 803094436334010468
+    - rid: 803094436334010468
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: FirstSuccessJustDodgeSpear
+    - rid: 803094436334010469
+      type: {class: PlayAvailableContentsEventAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        trigger: 6
     - rid: 7349438358569615474
       type: {class: ActorAddSpearDodgeGauge, ns: MH3, asm: Assembly-CSharp}
       data:
