@@ -44,7 +44,7 @@ namespace HK
             return GetSchemeName(CurrentInputSchemeType);
         }
         
-        public string GetSchemeName(InputSchemeType inputSchemeType)
+        public static string GetSchemeName(InputSchemeType inputSchemeType)
         {
             return inputSchemeType switch
             {
