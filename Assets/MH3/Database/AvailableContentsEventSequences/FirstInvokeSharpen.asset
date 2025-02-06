@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequences:
   - rid: 4652974973218455678
+  - rid: 4652974973218455682
   - rid: 1481063743668093010
+  - rid: 4652974973218455684
   references:
     version: 2
     RefIds:
@@ -50,3 +52,15 @@ MonoBehaviour:
       type: {class: Delay, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
       data:
         seconds: 0.5
+    - rid: 4652974973218455682
+      type: {class: PushTimeScaleRoot, ns: MH3, asm: Assembly-CSharp}
+      data:
+        timeScaleResolver:
+          rid: 4652974973218455683
+    - rid: 4652974973218455683
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
+    - rid: 4652974973218455684
+      type: {class: PopTimeScaleRoot, ns: MH3, asm: Assembly-CSharp}
+      data: 

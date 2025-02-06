@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: FirstBattle
   m_EditorClassIdentifier: 
   sequences:
+  - rid: 4652974973218455679
   - rid: 1481063743668093010
+  - rid: 4652974973218455681
   references:
     version: 2
     RefIds:
@@ -45,3 +47,15 @@ MonoBehaviour:
       type: {class: IntResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
+    - rid: 4652974973218455679
+      type: {class: PushTimeScaleRoot, ns: MH3, asm: Assembly-CSharp}
+      data:
+        timeScaleResolver:
+          rid: 4652974973218455680
+    - rid: 4652974973218455680
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0
+    - rid: 4652974973218455681
+      type: {class: PopTimeScaleRoot, ns: MH3, asm: Assembly-CSharp}
+      data: 
