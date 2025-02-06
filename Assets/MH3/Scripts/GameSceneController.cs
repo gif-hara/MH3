@@ -267,6 +267,16 @@ namespace MH3
                         .Forget();
                 })
                 .RegisterTo(destroyCancellationToken);
+            player.ActionController.IsGuard
+                .Where(x => x && player.SpecController.WeaponSpec.WeaponType == Define.WeaponType.Sword)
+                .Subscribe(_ =>
+                {
+                    TinyServiceLocator.Resolve<UserData>().AvailableContents.Add(AvailableContents.Key.FirstGuardSword);
+                    masterData.AvailableContentsEvents.Get(Define.AvailableContentsEventTrigger.InvokeGuardSword)
+                        .PlayAsync(destroyCancellationToken)
+                        .Forget();
+                })
+                .RegisterTo(destroyCancellationToken);
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);

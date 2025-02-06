@@ -175,6 +175,7 @@ namespace MH3
             InvokeSharpen,
             InvokeEndurance,
             InvokeAttackShield,
+            InvokeGuardSword,
         }
 
         public enum RecoveryCommandType
