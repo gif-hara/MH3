@@ -12,6 +12,7 @@ namespace MH3.AbnormalStatusSystems
         {
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
             target.StateMachine.TryChangeState(gameRules.ParalysisBeginSequence, true);
+            target.SpecController.ResetFlinch();
             await UniTask.Delay(TimeSpan.FromSeconds(target.SpecController.ParalysisDuration), cancellationToken: target.destroyCancellationToken);
             if (target.SpecController.IsDead)
             {

@@ -495,7 +495,7 @@ namespace MH3.ActorControllers
 #endif
                 fixedHitPoint = fixedHitPoint < 0 ? 0 : fixedHitPoint;
                 hitPoint.Value = fixedHitPoint;
-                if (CanAddFlinchDamage.Value)
+                if (CanAddFlinchDamage.Value && !appliedAbnormalStatuses.Contains(Define.AbnormalStatusType.Paralysis))
                 {
                     flinch.Value += damageData.FlinchDamage;
                 }
