@@ -168,10 +168,11 @@ namespace MH3
             Spear,
         }
 
-        public enum AvaiableContentsEventTrigger
+        public enum AvailableContentsEventTrigger
         {
             Home,
             Battle,
+            InvokeSharpen
         }
 
         public enum RecoveryCommandType

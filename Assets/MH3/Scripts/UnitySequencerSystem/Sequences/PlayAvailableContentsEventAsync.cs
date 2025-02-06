@@ -11,7 +11,7 @@ namespace MH3
     public class PlayAvailableContentsEventAsync : Sequence
     {
         [SerializeField]
-        private Define.AvaiableContentsEventTrigger trigger;
+        private Define.AvailableContentsEventTrigger trigger;
 
         public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {

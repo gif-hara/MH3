@@ -1105,7 +1105,7 @@ namespace MH3
         [Serializable]
         public class AvailableContentsEvent
         {
-            public Define.AvaiableContentsEventTrigger Trigger;
+            public Define.AvailableContentsEventTrigger Trigger;
 
             public string NewContentsKey;
 
@@ -1114,7 +1114,7 @@ namespace MH3
             public ScriptableSequences Sequences;
 
             [Serializable]
-            public class Group : Group<Define.AvaiableContentsEventTrigger, AvailableContentsEvent>
+            public class Group : Group<Define.AvailableContentsEventTrigger, AvailableContentsEvent>
             {
                 public Group() : base(x => x.Trigger)
                 {
