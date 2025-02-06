@@ -1461,53 +1461,75 @@ namespace MH3
                         listDocumentPrefab,
                         new List<Action<HKUIDocument>>
                         {
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, "サウンド".Localized(), _ =>
+                            document =>
                             {
-                                optionsListSelection = document.Q<Selectable>("Button");
-                                stateMachine.Change(StateOptionsSounds);
+                                document.CreateListElementBuilder()
+                                    .EditHeader(header =>
+                                    {
+                                        header.text = "サウンド".Localized();
+                                    })
+                                    .EditButton(button =>
+                                    {
+                                        button.OnClickAsObservable()
+                                            .Subscribe(_ =>
+                                            {
+                                                optionsListSelection = button;
+                                                stateMachine.Change(StateOptionsSounds);
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                        button.OnSelectAsObservable()
+                                            .Subscribe(_ =>
+                                            {
+                                                UIViewTips.SetTip("マスター、BGM、効果音の音量設定を変更します。".Localized());
+                                                CreateOptionsDocument(optionsSoundsDocumentPrefab);
+                                                var saveData = TinyServiceLocator.Resolve<SaveData>();
+                                                optionsDocument
+                                                    .Q<HKUIDocument>("MasterVolume")
+                                                    .Q<HKUIDocument>("Area.Slider")
+                                                    .Q<HKUIDocument>("Element.Slider")
+                                                    .Q<Slider>("Slider")
+                                                    .value = saveData.SystemData.MasterVolume;
+                                                optionsDocument
+                                                    .Q<HKUIDocument>("BgmVolume")
+                                                    .Q<HKUIDocument>("Area.Slider")
+                                                    .Q<HKUIDocument>("Element.Slider")
+                                                    .Q<Slider>("Slider")
+                                                    .value = saveData.SystemData.BgmVolume;
+                                                optionsDocument
+                                                    .Q<HKUIDocument>("SfxVolume")
+                                                    .Q<HKUIDocument>("Area.Slider")
+                                                    .Q<HKUIDocument>("Element.Slider")
+                                                    .Q<Slider>("Slider")
+                                                    .value = saveData.SystemData.SfxVolume;
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                    });
                             },
-                            _ =>
+                            document =>
                             {
-                                UIViewTips.SetTip("マスター、BGM、効果音の音量設定を変更します。".Localized());
-                                CreateOptionsDocument(optionsSoundsDocumentPrefab);
-                                var saveData = TinyServiceLocator.Resolve<SaveData>();
-                                optionsDocument
-                                    .Q<HKUIDocument>("MasterVolume")
-                                    .Q<HKUIDocument>("Area.Slider")
-                                    .Q<HKUIDocument>("Element.Slider")
-                                    .Q<Slider>("Slider")
-                                    .value = saveData.SystemData.MasterVolume;
-                                optionsDocument
-                                    .Q<HKUIDocument>("BgmVolume")
-                                    .Q<HKUIDocument>("Area.Slider")
-                                    .Q<HKUIDocument>("Element.Slider")
-                                    .Q<Slider>("Slider")
-                                    .value = saveData.SystemData.BgmVolume;
-                                optionsDocument
-                                    .Q<HKUIDocument>("SfxVolume")
-                                    .Q<HKUIDocument>("Area.Slider")
-                                    .Q<HKUIDocument>("Element.Slider")
-                                    .Q<Slider>("Slider")
-                                    .value = saveData.SystemData.SfxVolume;
-                            });
-                        },
-                        document =>
-                        {
-                            UIViewList.ApplyAsSimpleElement(document, "戻る".Localized(),
-                                _ =>
-                                {
-                                    optionsListDocument.DestroySafe();
-                                    stateMachine.Change(StateHomeRoot);
-                                },
-                                _ =>
-                                {
-                                    UIViewTips.SetTip("前のメニューに戻ります。".Localized());
-                                    optionsDocument.DestroySafe();
-                                }
-                            );
-                        },
+                                document.CreateListElementBuilder()
+                                    .EditHeader(header =>
+                                    {
+                                        header.text = "戻る".Localized();
+                                    })
+                                    .EditButton(button =>
+                                    {
+                                        button.OnClickAsObservable()
+                                            .Subscribe(_ =>
+                                            {
+                                                optionsListDocument.DestroySafe();
+                                                stateMachine.Change(StateHomeRoot);
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                        button.OnSelectAsObservable()
+                                            .Subscribe(_ =>
+                                            {
+                                                UIViewTips.SetTip("前のメニューに戻ります。".Localized());
+                                                optionsDocument.DestroySafe();
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                    });
+                            },
                         },
                         0
                     );
