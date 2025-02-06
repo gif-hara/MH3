@@ -252,6 +252,7 @@ namespace MH3
             player.ActionController.OnBeginDualSwordDodgeMode
                 .Subscribe(_ =>
                 {
+                    TinyServiceLocator.Resolve<UserData>().AvailableContents.Add(AvailableContents.Key.FirstInvokeSharpen);
                     masterData.AvailableContentsEvents.Get(Define.AvailableContentsEventTrigger.InvokeSharpen)
                         .PlayAsync(destroyCancellationToken)
                         .Forget();
@@ -260,6 +261,7 @@ namespace MH3
             player.ActionController.OnBeginBladeEnduranceMode
                 .Subscribe(_ =>
                 {
+                    TinyServiceLocator.Resolve<UserData>().AvailableContents.Add(AvailableContents.Key.FirstInvokeEndurance);
                     masterData.AvailableContentsEvents.Get(Define.AvailableContentsEventTrigger.InvokeEndurance)
                         .PlayAsync(destroyCancellationToken)
                         .Forget();

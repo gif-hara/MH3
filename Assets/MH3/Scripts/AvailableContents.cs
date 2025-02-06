@@ -51,6 +51,10 @@ namespace MH3
             public const string AcquireInstanceSkillCore = "Acquire.InstanceSkillCore";
 
             public const string FirstBattle = "FirstBattle";
+            
+            public const string FirstInvokeSharpen = "FirstInvokeSharpen";
+            
+            public const string FirstInvokeEndurance = "FirstInvokeEndurance";
 
             public static string GetQuestClear(string questSpecId)
             {
