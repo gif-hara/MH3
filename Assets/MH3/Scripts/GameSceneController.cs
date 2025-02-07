@@ -102,6 +102,12 @@ namespace MH3
         private HKUIDocument tipsDocumentPrefab;
 
         [SerializeField]
+        private Material skyBoxMaterial;
+
+        [SerializeField]
+        private float skyBoxRotationSpeed;
+
+        [SerializeField]
         private bool isSkipTitle;
 
         private Actor player;
@@ -303,6 +309,13 @@ namespace MH3
                         currentQuestSpec.Id == homeQuestSpecId,
                         destroyCancellationToken
                     ).Forget();
+                })
+                .RegisterTo(destroyCancellationToken);
+            RenderSettings.skybox = skyBoxMaterial;
+            Observable.EveryUpdate()
+                .Subscribe(_ =>
+                {
+                    RenderSettings.skybox.SetFloat("_Rotation", UnityEngine.Time.time * HK.Time.Root.timeScale * skyBoxRotationSpeed);
                 })
                 .RegisterTo(destroyCancellationToken);
 #if DEBUG
