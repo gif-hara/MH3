@@ -311,11 +311,13 @@ namespace MH3
                     ).Forget();
                 })
                 .RegisterTo(destroyCancellationToken);
-            RenderSettings.skybox = skyBoxMaterial;
+            var instanceSkyBoxMaterial = Instantiate(skyBoxMaterial);
+            destroyCancellationToken.RegisterWithoutCaptureExecutionContext(() => Destroy(instanceSkyBoxMaterial));
+            RenderSettings.skybox = instanceSkyBoxMaterial;
             Observable.EveryUpdate()
                 .Subscribe(_ =>
                 {
-                    RenderSettings.skybox.SetFloat("_Rotation", UnityEngine.Time.time * HK.Time.Root.timeScale * skyBoxRotationSpeed);
+                    instanceSkyBoxMaterial.SetFloat("_Rotation", UnityEngine.Time.time * HK.Time.Root.timeScale * skyBoxRotationSpeed);
                 })
                 .RegisterTo(destroyCancellationToken);
 #if DEBUG
