@@ -103,7 +103,9 @@ namespace MH3
                     "クエスト選択".Localized(),
                     _ => stateMachine.Change(StateSelectQuest),
                     _ => UIViewTips.SetTip("敵スライム君と戦うクエストを選択します。".Localized()),
-                    false
+                    TinyServiceLocator.Resolve<MasterData>().QuestSpecs.List
+                        .Where(x => userData.AvailableContents.Contains(x.NeedAvailableContentKey))
+                        .Any(x => userData.Stats.GetOrDefault(Stats.Key.GetDefeatEnemyCount(x.EnemyActorSpecId)) == 0)
                     );
                 AddListElement(
                     "装備変更".Localized(),
