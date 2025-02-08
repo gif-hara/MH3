@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1090592379364538235, guid: 30ee76c90b2f82848bf872daa52c8cda, type: 3}
       propertyPath: m_Name
-      value: Effect.Slime.Footprint.Base
+      value: Effect.Slime.Footprint.LightBlue.1
       objectReference: {fileID: 0}
     - target: {fileID: 1566560882705162267, guid: 30ee76c90b2f82848bf872daa52c8cda, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4790844130533643764, guid: 30ee76c90b2f82848bf872daa52c8cda, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: cf2b526a35341bc45bfeadbd8ec4b14d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
