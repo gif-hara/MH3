@@ -232,6 +232,46 @@ PrefabInstance:
       propertyPath: effectKey
       value: Slime.Footprint.Yellow.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1983474880502285509, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[-2]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983474880502285509, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094481634328720]'
+      value: UnitySequencerSystem UnitySequencerSystem.StandardSequences.GameObjectSetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983474880502285509, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094481634328721]'
+      value: UnitySequencerSystem UnitySequencerSystem.Resolvers.GameObjectResolver/ReferenceGameObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983474880502285509, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094481634328722]'
+      value: UnitySequencerSystem UnitySequencerSystem.Resolvers.BoolResolver/Constant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983474880502285509, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094481634328722].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983474880502285509, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094481634328721].target
+      value: 
+      objectReference: {fileID: 1340603470356402475}
+    - target: {fileID: 1983474880502285509, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094481634328720].activeResolver
+      value: 803094481634328722
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983474880502285509, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094481634328720].targetResolver
+      value: 803094481634328721
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983474880502285509, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094481634328705].value.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983474880502285509, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094481634328705].value.Array.data[0]'
+      value: 803094481634328720
+      objectReference: {fileID: 0}
     - target: {fileID: 3160819261061306216, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
       propertyPath: m_Name
       value: Actor.Player
