@@ -31,6 +31,7 @@ namespace MH3.ActorControllers
             OnDead,
             OnBeginAttack,
             OnEndAttack,
+            OnReset,
         }
 
         private readonly Actor actor;
@@ -76,6 +77,7 @@ namespace MH3.ActorControllers
                 TriggerType.OnDead => actor.SpecController.OnDead,
                 TriggerType.OnBeginAttack => actor.AttackController.OnBeginAttack,
                 TriggerType.OnEndAttack => actor.AttackController.OnEndAttack,
+                TriggerType.OnReset => actor.SpecController.OnReset,
                 _ => throw new ArgumentOutOfRangeException($"Unknown or Invalid type: {type}"),
             };
         }
