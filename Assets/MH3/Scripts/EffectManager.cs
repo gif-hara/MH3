@@ -41,7 +41,7 @@ namespace MH3
             {
                 var scope = CancellationTokenSource.CreateLinkedTokenSource(destroyCancellationToken, instance.destroyCancellationToken);
                 await instance.WaitUntil(scope.Token);
-                instance.transform.SetParent(null);
+                instance.transform.SetParent(transform);
                 pool.Release(instance);
             }
             catch (OperationCanceledException)
