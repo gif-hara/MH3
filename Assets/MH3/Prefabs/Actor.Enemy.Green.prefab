@@ -233,12 +233,72 @@ PrefabInstance:
       value: UnitySequencerSystem UnitySequencerSystem.Resolvers.BoolResolver/Constant
       objectReference: {fileID: 0}
     - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442081]'
+      value: Assembly-CSharp MH3.SpawnEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442082]'
+      value: UnitySequencerSystem UnitySequencerSystem.Resolvers.StringResolver/Constant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442084]'
+      value: UnitySequencerSystem UnitySequencerSystem.Resolvers.StringResolver/Constant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442085]'
+      value: Assembly-CSharp MH3.SyncTransformFromLocator
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442086]'
+      value: UnitySequencerSystem UnitySequencerSystem.Resolvers.TransformResolver/Name
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442087]'
+      value: Assembly-CSharp MH3.UnitySequencerSystem.Resolvers.ActorResolver/Name
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442088]'
+      value: UnitySequencerSystem UnitySequencerSystem.Resolvers.StringResolver/Constant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094481634328583]'
+      value: Assembly-CSharp MH3.PlaySfx
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094481634328584]'
+      value: UnitySequencerSystem UnitySequencerSystem.Resolvers.StringResolver/Constant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442086].name
+      value: Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442087].name
+      value: Actor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
       propertyPath: managedReferences[803094476488442016].value
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
       propertyPath: managedReferences[803094476488442071].value
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442082].value
+      value: Slime.Dead.Green.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442084].value
+      value: Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442088].value
+      value: Spine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094481634328584].value
+      value: Slime.Dead.1
       objectReference: {fileID: 0}
     - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
       propertyPath: managedReferences[803094476488442015].target
@@ -248,6 +308,14 @@ PrefabInstance:
       propertyPath: managedReferences[803094476488442070].target
       value: 
       objectReference: {fileID: 3610894176173526551}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094481634328583].keyResolver
+      value: 803094481634328584
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442085].actorResolver
+      value: 803094476488442087
+      objectReference: {fileID: 0}
     - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
       propertyPath: managedReferences[803094476488442014].activeResolver
       value: 803094476488442016
@@ -266,11 +334,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
       propertyPath: managedReferences[803094476488442041].value.Array.size
-      value: 1
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442081].effectKeyResolver
+      value: 803094476488442082
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442085].locatorKeyResolver
+      value: 803094476488442088
       objectReference: {fileID: 0}
     - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
       propertyPath: 'managedReferences[803094476488442041].value.Array.data[0]'
       value: 803094476488442069
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442041].value.Array.data[1]'
+      value: 803094476488442081
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442041].value.Array.data[2]'
+      value: 803094476488442085
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442041].value.Array.data[3]'
+      value: 803094481634328583
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442081].registerKeyResolver
+      value: 803094476488442084
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442085].targetTransformResolver
+      value: 803094476488442086
       objectReference: {fileID: 0}
     - target: {fileID: 6713123197178141326, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
       propertyPath: spec
