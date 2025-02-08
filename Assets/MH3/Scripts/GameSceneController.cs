@@ -361,6 +361,7 @@ namespace MH3
                     .SetMaterial("Transition.2")
                     .BeginAsync(LMotion.Create(0.0f, 1.0f, 0.4f));
             }
+            TinyServiceLocator.Resolve<GameEvents>().OnTransitioned.OnNext(Unit.Default);
 
             enemy.DestroySafe();
             stage.DestroySafe();
