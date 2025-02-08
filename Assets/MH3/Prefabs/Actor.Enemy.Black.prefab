@@ -8,10 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8991593058751142891}
     m_Modifications:
+    - target: {fileID: 894579147050900488, guid: aafe0f3c918bbb146b37f530bc33c958, type: 3}
+      propertyPath: m_VersionIndex
+      value: 804
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162492956574183538, guid: aafe0f3c918bbb146b37f530bc33c958, type: 3}
+      propertyPath: m_VersionIndex
+      value: 804
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373382843242960341, guid: aafe0f3c918bbb146b37f530bc33c958, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1130
+      objectReference: {fileID: 0}
     - target: {fileID: 5132978226680805006, guid: aafe0f3c918bbb146b37f530bc33c958, type: 3}
       propertyPath: actor
       value: 
       objectReference: {fileID: 963923653530722458}
+    - target: {fileID: 5728746769085756210, guid: aafe0f3c918bbb146b37f530bc33c958, type: 3}
+      propertyPath: m_VersionIndex
+      value: 807
+      objectReference: {fileID: 0}
     - target: {fileID: 6831543997626997004, guid: aafe0f3c918bbb146b37f530bc33c958, type: 3}
       propertyPath: m_Name
       value: Model.Slime.5
@@ -60,6 +76,10 @@ PrefabInstance:
       propertyPath: actor
       value: 
       objectReference: {fileID: 963923653530722458}
+    - target: {fileID: 8901234217922052970, guid: aafe0f3c918bbb146b37f530bc33c958, type: 3}
+      propertyPath: m_VersionIndex
+      value: 807
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -76,6 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b99920dd4c13364c88aed93db594ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &956435547199936413 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2078221384933335691, guid: aafe0f3c918bbb146b37f530bc33c958, type: 3}
+  m_PrefabInstance: {fileID: 1266252869543851286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5409914531099494937 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6521567251417677583, guid: aafe0f3c918bbb146b37f530bc33c958, type: 3}
@@ -178,6 +203,74 @@ PrefabInstance:
     - target: {fileID: 3207065072565068287, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[-2]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442030]'
+      value: UnitySequencerSystem UnitySequencerSystem.StandardSequences.GameObjectSetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442031]'
+      value: UnitySequencerSystem UnitySequencerSystem.Resolvers.GameObjectResolver/ReferenceGameObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442032]'
+      value: UnitySequencerSystem UnitySequencerSystem.Resolvers.BoolResolver/Constant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442077]'
+      value: UnitySequencerSystem UnitySequencerSystem.StandardSequences.GameObjectSetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442078]'
+      value: UnitySequencerSystem UnitySequencerSystem.Resolvers.GameObjectResolver/ReferenceGameObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442079]'
+      value: UnitySequencerSystem UnitySequencerSystem.Resolvers.BoolResolver/Constant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442032].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442079].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442031].target
+      value: 
+      objectReference: {fileID: 956435547199936413}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442078].target
+      value: 
+      objectReference: {fileID: 956435547199936413}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442030].activeResolver
+      value: 803094476488442032
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442030].targetResolver
+      value: 803094476488442031
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442077].activeResolver
+      value: 803094476488442079
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442077].targetResolver
+      value: 803094476488442078
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: managedReferences[803094476488442041].value.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965705894311661458, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
+      propertyPath: 'managedReferences[803094476488442041].value.Array.data[0]'
+      value: 803094476488442077
       objectReference: {fileID: 0}
     - target: {fileID: 6713123197178141326, guid: 3b8bd0af53ee82e45923b12a2d8df66c, type: 3}
       propertyPath: spec

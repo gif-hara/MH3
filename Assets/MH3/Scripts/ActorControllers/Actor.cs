@@ -71,7 +71,7 @@ namespace MH3.ActorControllers
             foreach (var sequence in actor.initialSequences)
             {
                 var container = new Container();
-                container.Register(actor);
+                container.Register("Actor", actor);
                 sequence.PlayAsync(container, actor.destroyCancellationToken).Forget();
             }
             return actor;
