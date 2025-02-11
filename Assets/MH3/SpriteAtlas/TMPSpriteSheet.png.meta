@@ -135,8 +135,8 @@ TextureImporter:
       name: DualShockGamepad-buttonNorth
       rect:
         serializedVersion: 2
-        x: 0
-        y: 66
+        x: 66
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -157,8 +157,8 @@ TextureImporter:
       name: DualShockGamepad-buttonSouth
       rect:
         serializedVersion: 2
-        x: 0
-        y: 132
+        x: 132
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -179,7 +179,7 @@ TextureImporter:
       name: DualShockGamepad-buttonWest
       rect:
         serializedVersion: 2
-        x: 66
+        x: 198
         y: 0
         width: 64
         height: 64
@@ -198,11 +198,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DualShockGamepad-dpad
+      name: DualShockGamepad-dpad-down
       rect:
         serializedVersion: 2
-        x: 66
-        y: 66
+        x: 264
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -220,11 +220,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DualShockGamepad-leftShoulder
+      name: DualShockGamepad-dpad-left
       rect:
         serializedVersion: 2
-        x: 66
-        y: 132
+        x: 330
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -242,10 +242,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DualShockGamepad-leftStick
+      name: DualShockGamepad-dpad-right
       rect:
         serializedVersion: 2
-        x: 132
+        x: 396
         y: 0
         width: 64
         height: 64
@@ -264,10 +264,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DualShockGamepad-leftStickPress
+      name: DualShockGamepad-dpad-up
       rect:
         serializedVersion: 2
-        x: 132
+        x: 0
         y: 66
         width: 64
         height: 64
@@ -286,10 +286,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DualShockGamepad-leftTrigger
+      name: DualShockGamepad-dpad
       rect:
         serializedVersion: 2
-        x: 132
+        x: 0
         y: 132
         width: 64
         height: 64
@@ -308,11 +308,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DualShockGamepad-leftTriggerButton
+      name: DualShockGamepad-leftShoulder
       rect:
         serializedVersion: 2
-        x: 198
-        y: 0
+        x: 0
+        y: 198
         width: 64
         height: 64
       alignment: 0
@@ -330,11 +330,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DualShockGamepad-rightShoulder
+      name: DualShockGamepad-leftStick
       rect:
         serializedVersion: 2
-        x: 198
-        y: 66
+        x: 0
+        y: 264
         width: 64
         height: 64
       alignment: 0
@@ -352,11 +352,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DualShockGamepad-rightStick
+      name: DualShockGamepad-leftStickPress
       rect:
         serializedVersion: 2
-        x: 198
-        y: 132
+        x: 0
+        y: 330
         width: 64
         height: 64
       alignment: 0
@@ -374,11 +374,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DualShockGamepad-rightStickPress
+      name: DualShockGamepad-leftTrigger
       rect:
         serializedVersion: 2
-        x: 264
-        y: 0
+        x: 0
+        y: 396
         width: 64
         height: 64
       alignment: 0
@@ -396,11 +396,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DualShockGamepad-rightTrigger
+      name: DualShockGamepad-leftTriggerButton
       rect:
         serializedVersion: 2
-        x: 330
-        y: 0
+        x: 66
+        y: 66
         width: 64
         height: 64
       alignment: 0
@@ -418,11 +418,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DualShockGamepad-rightTriggerButton
+      name: DualShockGamepad-rightShoulder
       rect:
         serializedVersion: 2
-        x: 396
-        y: 0
+        x: 132
+        y: 66
         width: 64
         height: 64
       alignment: 0
@@ -440,10 +440,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DualShockGamepad-select
+      name: DualShockGamepad-rightStick
       rect:
         serializedVersion: 2
-        x: 264
+        x: 198
         y: 66
         width: 64
         height: 64
@@ -462,11 +462,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DualShockGamepad-start
+      name: DualShockGamepad-rightStickPress
       rect:
         serializedVersion: 2
         x: 264
-        y: 132
+        y: 66
         width: 64
         height: 64
       alignment: 0
@@ -484,11 +484,99 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DualShockGamepad-touchpadButton
+      name: DualShockGamepad-rightTrigger
       rect:
         serializedVersion: 2
         x: 330
         y: 66
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 439fbe8e89690c850800000000000000
+      internalID: 6395277054353078580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualShockGamepad-rightTriggerButton
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 66
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 439fbe8e89690c850800000000000000
+      internalID: 6395277054353078580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualShockGamepad-select
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 132
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 439fbe8e89690c850800000000000000
+      internalID: 6395277054353078580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualShockGamepad-start
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 198
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 439fbe8e89690c850800000000000000
+      internalID: 6395277054353078580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualShockGamepad-touchpadButton
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 264
         width: 64
         height: 64
       alignment: 0

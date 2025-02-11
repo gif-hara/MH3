@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
   m_Name: TMPSpriteSheet_SpriteAsset
   m_EditorClassIdentifier: 
-  m_Version: 1.1.0
+  m_Version: 
   m_FaceInfo:
     m_FaceIndex: 0
     m_FamilyName: 
@@ -39,93 +39,113 @@ MonoBehaviour:
   spriteSheet: {fileID: 2800000, guid: 309031939ec49d24293564e7c7181a9d, type: 3}
   m_SpriteCharacterTable:
   - m_ElementType: 2
-    m_Unicode: 65534
+    m_Unicode: 57344
     m_GlyphIndex: 0
     m_Scale: 1
     m_Name: DualShockGamepad-buttonEast
   - m_ElementType: 2
-    m_Unicode: 65534
+    m_Unicode: 57345
     m_GlyphIndex: 1
     m_Scale: 1
     m_Name: DualShockGamepad-buttonNorth
   - m_ElementType: 2
-    m_Unicode: 65534
+    m_Unicode: 57346
     m_GlyphIndex: 2
     m_Scale: 1
     m_Name: DualShockGamepad-buttonSouth
   - m_ElementType: 2
-    m_Unicode: 65534
+    m_Unicode: 57347
     m_GlyphIndex: 3
     m_Scale: 1
     m_Name: DualShockGamepad-buttonWest
   - m_ElementType: 2
-    m_Unicode: 65534
+    m_Unicode: 57348
     m_GlyphIndex: 4
+    m_Scale: 1
+    m_Name: DualShockGamepad-dpad-down
+  - m_ElementType: 2
+    m_Unicode: 57349
+    m_GlyphIndex: 5
+    m_Scale: 1
+    m_Name: DualShockGamepad-dpad-left
+  - m_ElementType: 2
+    m_Unicode: 57350
+    m_GlyphIndex: 6
+    m_Scale: 1
+    m_Name: DualShockGamepad-dpad-right
+  - m_ElementType: 2
+    m_Unicode: 57351
+    m_GlyphIndex: 7
+    m_Scale: 1
+    m_Name: DualShockGamepad-dpad-up
+  - m_ElementType: 2
+    m_Unicode: 57352
+    m_GlyphIndex: 8
     m_Scale: 1
     m_Name: DualShockGamepad-dpad
   - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 5
+    m_Unicode: 57353
+    m_GlyphIndex: 9
     m_Scale: 1
     m_Name: DualShockGamepad-leftShoulder
   - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 6
+    m_Unicode: 57354
+    m_GlyphIndex: 10
     m_Scale: 1
     m_Name: DualShockGamepad-leftStick
   - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 7
+    m_Unicode: 57355
+    m_GlyphIndex: 11
     m_Scale: 1
     m_Name: DualShockGamepad-leftStickPress
   - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 8
+    m_Unicode: 57356
+    m_GlyphIndex: 12
     m_Scale: 1
     m_Name: DualShockGamepad-leftTrigger
   - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 9
+    m_Unicode: 57357
+    m_GlyphIndex: 13
     m_Scale: 1
     m_Name: DualShockGamepad-leftTriggerButton
   - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 10
+    m_Unicode: 57358
+    m_GlyphIndex: 14
     m_Scale: 1
     m_Name: DualShockGamepad-rightShoulder
   - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 11
+    m_Unicode: 57359
+    m_GlyphIndex: 15
     m_Scale: 1
     m_Name: DualShockGamepad-rightStick
   - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 12
+    m_Unicode: 57360
+    m_GlyphIndex: 16
     m_Scale: 1
     m_Name: DualShockGamepad-rightStickPress
   - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 13
+    m_Unicode: 57361
+    m_GlyphIndex: 17
     m_Scale: 1
     m_Name: DualShockGamepad-rightTrigger
   - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 14
+    m_Unicode: 57362
+    m_GlyphIndex: 18
     m_Scale: 1
     m_Name: DualShockGamepad-rightTriggerButton
   - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 15
+    m_Unicode: 57363
+    m_GlyphIndex: 19
     m_Scale: 1
     m_Name: DualShockGamepad-select
   - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 16
+    m_Unicode: 57364
+    m_GlyphIndex: 20
     m_Scale: 1
     m_Name: DualShockGamepad-start
   - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 17
+    m_Unicode: 57365
+    m_GlyphIndex: 21
     m_Scale: 1
     m_Name: DualShockGamepad-touchpadButton
   m_GlyphTable:
@@ -153,8 +173,8 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 0
-      m_Y: 66
+      m_X: 66
+      m_Y: 0
       m_Width: 64
       m_Height: 64
     m_Scale: 1
@@ -169,8 +189,8 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 0
-      m_Y: 132
+      m_X: 132
+      m_Y: 0
       m_Width: 64
       m_Height: 64
     m_Scale: 1
@@ -185,7 +205,7 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 66
+      m_X: 198
       m_Y: 0
       m_Width: 64
       m_Height: 64
@@ -201,8 +221,8 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 66
-      m_Y: 66
+      m_X: 264
+      m_Y: 0
       m_Width: 64
       m_Height: 64
     m_Scale: 1
@@ -217,8 +237,8 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 66
-      m_Y: 132
+      m_X: 330
+      m_Y: 0
       m_Width: 64
       m_Height: 64
     m_Scale: 1
@@ -233,7 +253,7 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 132
+      m_X: 396
       m_Y: 0
       m_Width: 64
       m_Height: 64
@@ -249,7 +269,7 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 132
+      m_X: 0
       m_Y: 66
       m_Width: 64
       m_Height: 64
@@ -265,7 +285,7 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 132
+      m_X: 0
       m_Y: 132
       m_Width: 64
       m_Height: 64
@@ -281,8 +301,8 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 198
-      m_Y: 0
+      m_X: 0
+      m_Y: 198
       m_Width: 64
       m_Height: 64
     m_Scale: 1
@@ -297,8 +317,8 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 198
-      m_Y: 66
+      m_X: 0
+      m_Y: 264
       m_Width: 64
       m_Height: 64
     m_Scale: 1
@@ -313,8 +333,8 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 198
-      m_Y: 132
+      m_X: 0
+      m_Y: 330
       m_Width: 64
       m_Height: 64
     m_Scale: 1
@@ -329,8 +349,8 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 264
-      m_Y: 0
+      m_X: 0
+      m_Y: 396
       m_Width: 64
       m_Height: 64
     m_Scale: 1
@@ -345,8 +365,8 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 330
-      m_Y: 0
+      m_X: 66
+      m_Y: 66
       m_Width: 64
       m_Height: 64
     m_Scale: 1
@@ -361,8 +381,8 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 396
-      m_Y: 0
+      m_X: 132
+      m_Y: 66
       m_Width: 64
       m_Height: 64
     m_Scale: 1
@@ -377,7 +397,7 @@ MonoBehaviour:
       m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
-      m_X: 264
+      m_X: 198
       m_Y: 66
       m_Width: 64
       m_Height: 64
@@ -394,7 +414,7 @@ MonoBehaviour:
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 264
-      m_Y: 132
+      m_Y: 66
       m_Width: 64
       m_Height: 64
     m_Scale: 1
@@ -417,5 +437,69 @@ MonoBehaviour:
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
     sprite: {fileID: 6395277054353078580, guid: 309031939ec49d24293564e7c7181a9d, type: 3}
+  - m_Index: 18
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 396
+      m_Y: 66
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -2492597506020553411, guid: 309031939ec49d24293564e7c7181a9d, type: 3}
+  - m_Index: 19
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 66
+      m_Y: 132
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -2929917990081827748, guid: 309031939ec49d24293564e7c7181a9d, type: 3}
+  - m_Index: 20
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 66
+      m_Y: 198
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: 4249662148033460860, guid: 309031939ec49d24293564e7c7181a9d, type: 3}
+  - m_Index: 21
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
+      m_HorizontalAdvance: 64
+    m_GlyphRect:
+      m_X: 66
+      m_Y: 264
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -1766133952372218389, guid: 309031939ec49d24293564e7c7181a9d, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []
