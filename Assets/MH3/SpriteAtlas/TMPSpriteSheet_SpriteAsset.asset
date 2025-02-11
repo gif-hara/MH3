@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
   m_Name: TMPSpriteSheet_SpriteAsset
   m_EditorClassIdentifier: 
-  m_Version: 
+  m_Version: 1.1.0
   m_FaceInfo:
     m_FaceIndex: 0
     m_FamilyName: 
@@ -39,92 +39,92 @@ MonoBehaviour:
   spriteSheet: {fileID: 2800000, guid: 309031939ec49d24293564e7c7181a9d, type: 3}
   m_SpriteCharacterTable:
   - m_ElementType: 2
-    m_Unicode: 57344
+    m_Unicode: 65534
     m_GlyphIndex: 0
     m_Scale: 1
     m_Name: DualShockGamepad-buttonEast
   - m_ElementType: 2
-    m_Unicode: 57345
+    m_Unicode: 65534
     m_GlyphIndex: 1
     m_Scale: 1
     m_Name: DualShockGamepad-buttonNorth
   - m_ElementType: 2
-    m_Unicode: 57346
+    m_Unicode: 65534
     m_GlyphIndex: 2
     m_Scale: 1
     m_Name: DualShockGamepad-buttonSouth
   - m_ElementType: 2
-    m_Unicode: 57347
+    m_Unicode: 65534
     m_GlyphIndex: 3
     m_Scale: 1
     m_Name: DualShockGamepad-buttonWest
   - m_ElementType: 2
-    m_Unicode: 57348
+    m_Unicode: 65534
     m_GlyphIndex: 4
     m_Scale: 1
     m_Name: DualShockGamepad-dpad
   - m_ElementType: 2
-    m_Unicode: 57349
+    m_Unicode: 65534
     m_GlyphIndex: 5
     m_Scale: 1
     m_Name: DualShockGamepad-leftShoulder
   - m_ElementType: 2
-    m_Unicode: 57350
+    m_Unicode: 65534
     m_GlyphIndex: 6
     m_Scale: 1
     m_Name: DualShockGamepad-leftStick
   - m_ElementType: 2
-    m_Unicode: 57351
+    m_Unicode: 65534
     m_GlyphIndex: 7
     m_Scale: 1
     m_Name: DualShockGamepad-leftStickPress
   - m_ElementType: 2
-    m_Unicode: 57352
+    m_Unicode: 65534
     m_GlyphIndex: 8
     m_Scale: 1
     m_Name: DualShockGamepad-leftTrigger
   - m_ElementType: 2
-    m_Unicode: 57353
+    m_Unicode: 65534
     m_GlyphIndex: 9
     m_Scale: 1
     m_Name: DualShockGamepad-leftTriggerButton
   - m_ElementType: 2
-    m_Unicode: 57354
+    m_Unicode: 65534
     m_GlyphIndex: 10
     m_Scale: 1
     m_Name: DualShockGamepad-rightShoulder
   - m_ElementType: 2
-    m_Unicode: 57355
+    m_Unicode: 65534
     m_GlyphIndex: 11
     m_Scale: 1
     m_Name: DualShockGamepad-rightStick
   - m_ElementType: 2
-    m_Unicode: 57356
+    m_Unicode: 65534
     m_GlyphIndex: 12
     m_Scale: 1
     m_Name: DualShockGamepad-rightStickPress
   - m_ElementType: 2
-    m_Unicode: 57357
+    m_Unicode: 65534
     m_GlyphIndex: 13
     m_Scale: 1
     m_Name: DualShockGamepad-rightTrigger
   - m_ElementType: 2
-    m_Unicode: 57358
+    m_Unicode: 65534
     m_GlyphIndex: 14
     m_Scale: 1
     m_Name: DualShockGamepad-rightTriggerButton
   - m_ElementType: 2
-    m_Unicode: 57359
+    m_Unicode: 65534
     m_GlyphIndex: 15
     m_Scale: 1
     m_Name: DualShockGamepad-select
   - m_ElementType: 2
-    m_Unicode: 57360
+    m_Unicode: 65534
     m_GlyphIndex: 16
     m_Scale: 1
     m_Name: DualShockGamepad-start
   - m_ElementType: 2
-    m_Unicode: 57361
+    m_Unicode: 65534
     m_GlyphIndex: 17
     m_Scale: 1
     m_Name: DualShockGamepad-touchpadButton
@@ -133,8 +133,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 0
@@ -149,8 +149,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 0
@@ -165,8 +165,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 0
@@ -181,8 +181,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 66
@@ -197,8 +197,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 66
@@ -213,8 +213,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 66
@@ -229,8 +229,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 132
@@ -245,8 +245,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 132
@@ -261,8 +261,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 132
@@ -277,8 +277,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 198
@@ -293,8 +293,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 198
@@ -309,8 +309,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 198
@@ -325,8 +325,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 264
@@ -341,8 +341,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 330
@@ -357,8 +357,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 396
@@ -373,8 +373,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 264
@@ -389,8 +389,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 264
@@ -405,8 +405,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -2048
-      m_HorizontalBearingY: -2048
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 54
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 330
