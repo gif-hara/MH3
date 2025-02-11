@@ -20,13 +20,15 @@ namespace MH3.Editor
         [MenuItem("MH3/Enumerate Input Control")]
         public static void EnumerateInputControl()
         {
+            var sb = new System.Text.StringBuilder();
             foreach (var i in InputSystem.devices)
             {
                 foreach (var j in i.children)
                 {
-                    Debug.Log(InputSprite.GetSpriteName(j));
+                    sb.AppendLine(InputSprite.GetSpriteName(j));
                 }
             }
+            Debug.Log(sb.ToString());
         }
     }
 }
