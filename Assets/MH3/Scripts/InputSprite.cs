@@ -46,20 +46,7 @@ namespace HK
                             continue;
                         }
                     }
-
-                    var deviceIconGroup = control.device switch
-                    {
-                        Keyboard => "Keyboard",
-                        Mouse => "Mouse",
-                        XInputController => "XInputController",
-                        DualShockGamepad => "DualShockGamepad",
-#if !UNITY_WEBGL
-                        SwitchProControllerHID => "SwitchProController",
-#endif
-                        _ => "DualShockGamepad"
-                    };
-                    var controlPathContent = control.path.Substring(control.device.name.Length + 2).Replace('/', '-');
-                    sb.Append($"<sprite name={deviceIconGroup}-{controlPathContent}>");
+                    sb.Append($"<sprite name={GetSpriteName(control)}>");
                 }
             }
 
@@ -76,6 +63,23 @@ namespace HK
         public static string GetTag(InputAction action)
         {
             return GetTag(action, TinyServiceLocator.Resolve<InputScheme>());
+        }
+
+        public static string GetSpriteName(InputControl control)
+        {
+            var deviceIconGroup = control.device switch
+            {
+                Keyboard => "Keyboard",
+                Mouse => "Mouse",
+                XInputController => "XInputController",
+                DualShockGamepad => "DualShockGamepad",
+#if !UNITY_WEBGL
+                SwitchProControllerHID => "SwitchProController",
+#endif
+                _ => "DualShockGamepad"
+            };
+            var controlPathContent = control.path.Substring(control.device.name.Length + 2).Replace('/', '-');
+            return $"{deviceIconGroup}-{controlPathContent}";
         }
     }
 }
