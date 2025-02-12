@@ -53,6 +53,10 @@ namespace MH3
         [SerializeField]
         private Stats stats = new();
         public Stats Stats => stats;
+        
+        [SerializeField]
+        private List<MySetData> mySetData = new();
+        public List<MySetData> MySetData => mySetData;
 
         public InstanceWeapon GetEquippedInstanceWeapon()
         {
