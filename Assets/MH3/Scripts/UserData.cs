@@ -115,6 +115,16 @@ namespace MH3
             }
         }
 
+        public void SetEquipped(MySetData mySetData)
+        {
+            equippedInstanceWeaponId = mySetData.instanceWeaponId;
+            equippedInstanceArmorHeadId = mySetData.instanceArmorHeadId;
+            equippedInstanceArmorArmsId = mySetData.instanceArmorArmsId;
+            equippedInstanceArmorBodyId = mySetData.instanceArmorBodyId;
+            var instanceWeapon = GetInstanceWeapon(equippedInstanceWeaponId);
+            instanceWeapon.AddRangeInstanceSkillCoreIds(mySetData.instanceSkillCoreIds);
+        }
+
         public void AddInstanceWeaponData(InstanceWeapon instanceWeaponData)
         {
             instanceWeapons.Add(instanceWeaponData);
