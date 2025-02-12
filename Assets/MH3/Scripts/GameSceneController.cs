@@ -185,6 +185,7 @@ namespace MH3
             audioManager.SetVolumeBgm(saveData.SystemData.BgmVolume);
             audioManager.SetVolumeSfx(saveData.SystemData.SfxVolume);
             var userData = saveData.UserData;
+            userData.InitializeIfNeed();
             if (!userData.AvailableContents.Contains(AvailableContents.Key.FirstPlay))
             {
                 userData.AvailableContents.Add(AvailableContents.Key.FirstPlay);

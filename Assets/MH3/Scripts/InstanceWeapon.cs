@@ -118,5 +118,10 @@ namespace MH3
         {
             instanceSkillCoreIds.Remove(instanceSkillCoreId);
         }
+        
+        public void AddRangeInstanceSkillCoreIds(IEnumerable<int> instanceSkillCoreIds)
+        {
+            this.instanceSkillCoreIds.AddRange(instanceSkillCoreIds);
+        }
     }
 }

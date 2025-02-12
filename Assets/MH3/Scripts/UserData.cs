@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HK;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MH3
 {
@@ -53,6 +54,28 @@ namespace MH3
         [SerializeField]
         private Stats stats = new();
         public Stats Stats => stats;
+        
+        [SerializeField]
+        private List<MySetData> mySetData = new();
+        public List<MySetData> MySetData => mySetData;
+
+        public void InitializeIfNeed()
+        {
+            if(mySetData.Count == 0)
+            {
+                for (var i = 0; i < 100; i++)
+                {
+                    mySetData.Add(new MySetData());
+                }
+            }
+        }
+        
+        public InstanceWeapon GetInstanceWeapon(int instanceWeaponId)
+        {
+            var result = instanceWeapons.FirstOrDefault(x => x.InstanceId == instanceWeaponId);
+            Assert.IsNotNull(result, $"Not found instanceWeaponId:{instanceWeaponId}");
+            return result;
+        }
 
         public InstanceWeapon GetEquippedInstanceWeapon()
         {
@@ -101,6 +124,16 @@ namespace MH3
                 default:
                     throw new ArgumentOutOfRangeException($"Not found armor type {armorType}");
             }
+        }
+
+        public void SetEquipped(MySetData mySetData)
+        {
+            equippedInstanceWeaponId = mySetData.instanceWeaponId;
+            equippedInstanceArmorHeadId = mySetData.instanceArmorHeadId;
+            equippedInstanceArmorArmsId = mySetData.instanceArmorArmsId;
+            equippedInstanceArmorBodyId = mySetData.instanceArmorBodyId;
+            var instanceWeapon = GetInstanceWeapon(equippedInstanceWeaponId);
+            instanceWeapon.AddRangeInstanceSkillCoreIds(mySetData.instanceSkillCoreIds);
         }
 
         public void AddInstanceWeaponData(InstanceWeapon instanceWeaponData)
