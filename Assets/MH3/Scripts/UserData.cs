@@ -58,6 +58,17 @@ namespace MH3
         [SerializeField]
         private List<MySetData> mySetData = new();
         public List<MySetData> MySetData => mySetData;
+
+        public void InitializeIfNeed()
+        {
+            if(mySetData.Count == 0)
+            {
+                for (var i = 0; i < 100; i++)
+                {
+                    mySetData.Add(new MySetData());
+                }
+            }
+        }
         
         public InstanceWeapon GetInstanceWeapon(int instanceWeaponId)
         {
