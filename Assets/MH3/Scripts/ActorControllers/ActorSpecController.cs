@@ -146,6 +146,9 @@ namespace MH3.ActorControllers
 
         private ReactiveProperty<int> spearComboLevel = new(0);
         public ReadOnlyReactiveProperty<int> SpearComboLevel => spearComboLevel.ToReadOnlyReactiveProperty();
+        
+        private readonly Subject<Define.GuardResult> onGuard = new();
+        public Observable<Define.GuardResult> OnGuard => onGuard;
 
         public ActorSpecController(Actor actor, MasterData.ActorSpec spec)
         {
@@ -453,6 +456,7 @@ namespace MH3.ActorControllers
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
             var masterData = TinyServiceLocator.Resolve<MasterData>();
             var audioManager = TinyServiceLocator.Resolve<AudioManager>();
+            onGuard.OnNext(guardResult);
 
             if (guardResult == Define.GuardResult.SuccessJustGuard)
             {
