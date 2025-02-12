@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using StandardAssets.Characters.Physics;
 using UnityEngine;
+using UnitySequencerSystem;
 
 namespace MH3.ActorControllers
 {
@@ -16,6 +19,9 @@ namespace MH3.ActorControllers
 
         [SerializeField]
         private FacialController facialController;
+
+        [SerializeField]
+        private List<SequencesMonoBehaviour> initialSequences;
 
         public ActorMovementController MovementController { get; private set; }
 
@@ -62,6 +68,12 @@ namespace MH3.ActorControllers
             actor.ActionController = new ActorActionController(actor);
             actor.MovementController.Setup(actor, actor.openCharacterController);
             actor.SpecController.BeginObserve();
+            foreach (var sequence in actor.initialSequences)
+            {
+                var container = new Container();
+                container.Register("Actor", actor);
+                sequence.PlayAsync(container, actor.destroyCancellationToken).Forget();
+            }
             return actor;
         }
 

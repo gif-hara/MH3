@@ -1,5 +1,110 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &558079337908568615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5225478336892455463}
+  - component: {fileID: 1983474880502285509}
+  m_Layer: 0
+  m_Name: OnReset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5225478336892455463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558079337908568615}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7707189600441660382}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1983474880502285509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558079337908568615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf7e9d8d7386d44eab912bc2ee1cf1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sequencesResolver:
+    rid: 803094481634328692
+  playOnEnable: 0
+  root: {fileID: 533786113050098439}
+  references:
+    version: 2
+    RefIds:
+    - rid: 803094481634328692
+      type: {class: SequencesResolver/List, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value:
+        - rid: 803094481634328693
+    - rid: 803094481634328693
+      type: {class: ActorTriggerObserve, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 803094481634328704
+        triggerType: 5
+        sequences:
+          rid: 803094481634328705
+    - rid: 803094481634328704
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 803094481634328705
+      type: {class: SequencesResolver/List, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: []
+--- !u!1 &2613375478001975008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7707189600441660382}
+  m_Layer: 0
+  m_Name: InitialSequences
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7707189600441660382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2613375478001975008}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4136134215198171862}
+  - {fileID: 5225478336892455463}
+  m_Father: {fileID: 533786113050098439}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3160819261061306216
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +139,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3207065072565068287}
+  - {fileID: 438829630707035578}
+  - {fileID: 7707189600441660382}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6713123197178141326
@@ -51,6 +158,10 @@ MonoBehaviour:
   simpleAnimation: {fileID: 0}
   locatorHolder: {fileID: 0}
   openCharacterController: {fileID: -8560551768829338320}
+  facialController: {fileID: 0}
+  initialSequences:
+  - {fileID: 5965705894311661458}
+  - {fileID: 1983474880502285509}
 --- !u!136 &-6153379355842595462
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -165,3 +276,137 @@ Transform:
   m_Children: []
   m_Father: {fileID: 533786113050098439}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7941394835117851294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4136134215198171862}
+  - component: {fileID: 5965705894311661458}
+  m_Layer: 0
+  m_Name: OnDead
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4136134215198171862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7941394835117851294}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7707189600441660382}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5965705894311661458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7941394835117851294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf7e9d8d7386d44eab912bc2ee1cf1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sequencesResolver:
+    rid: 803094476488441990
+  playOnEnable: 0
+  root: {fileID: 533786113050098439}
+  references:
+    version: 2
+    RefIds:
+    - rid: 803094476488441990
+      type: {class: SequencesResolver/List, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value:
+        - rid: 803094476488442039
+    - rid: 803094476488442039
+      type: {class: ActorTriggerObserve, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 803094476488442040
+        triggerType: 2
+        sequences:
+          rid: 803094476488442041
+    - rid: 803094476488442040
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Actor
+    - rid: 803094476488442041
+      type: {class: SequencesResolver/List, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: []
+--- !u!1001 &4098125509393659338
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 533786113050098439}
+    m_Modifications:
+    - target: {fileID: 4524004679827675248, guid: e11b5e6d19a82294daf6f5a476a9366b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524004679827675248, guid: e11b5e6d19a82294daf6f5a476a9366b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524004679827675248, guid: e11b5e6d19a82294daf6f5a476a9366b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524004679827675248, guid: e11b5e6d19a82294daf6f5a476a9366b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524004679827675248, guid: e11b5e6d19a82294daf6f5a476a9366b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524004679827675248, guid: e11b5e6d19a82294daf6f5a476a9366b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524004679827675248, guid: e11b5e6d19a82294daf6f5a476a9366b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524004679827675248, guid: e11b5e6d19a82294daf6f5a476a9366b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524004679827675248, guid: e11b5e6d19a82294daf6f5a476a9366b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524004679827675248, guid: e11b5e6d19a82294daf6f5a476a9366b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556748152212358116, guid: e11b5e6d19a82294daf6f5a476a9366b, type: 3}
+      propertyPath: m_Name
+      value: Slime.Footprint
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e11b5e6d19a82294daf6f5a476a9366b, type: 3}
+--- !u!4 &438829630707035578 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4524004679827675248, guid: e11b5e6d19a82294daf6f5a476a9366b, type: 3}
+  m_PrefabInstance: {fileID: 4098125509393659338}
+  m_PrefabAsset: {fileID: 0}

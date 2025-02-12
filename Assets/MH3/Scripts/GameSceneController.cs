@@ -102,6 +102,12 @@ namespace MH3
         private HKUIDocument tipsDocumentPrefab;
 
         [SerializeField]
+        private Material skyBoxMaterial;
+
+        [SerializeField]
+        private float skyBoxRotationSpeed;
+
+        [SerializeField]
         private bool isSkipTitle;
 
         private Actor player;
@@ -268,6 +274,16 @@ namespace MH3
                         .Forget();
                 })
                 .RegisterTo(destroyCancellationToken);
+            player.ActionController.IsGuard
+                .Where(x => x && player.SpecController.WeaponSpec.WeaponType == Define.WeaponType.Sword)
+                .Subscribe(_ =>
+                {
+                    TinyServiceLocator.Resolve<UserData>().AvailableContents.Add(AvailableContents.Key.FirstGuardSword);
+                    masterData.AvailableContentsEvents.Get(Define.AvailableContentsEventTrigger.InvokeGuardSword)
+                        .PlayAsync(destroyCancellationToken)
+                        .Forget();
+                })
+                .RegisterTo(destroyCancellationToken);
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);
@@ -294,6 +310,15 @@ namespace MH3
                         currentQuestSpec.Id == homeQuestSpecId,
                         destroyCancellationToken
                     ).Forget();
+                })
+                .RegisterTo(destroyCancellationToken);
+            var instanceSkyBoxMaterial = Instantiate(skyBoxMaterial);
+            destroyCancellationToken.RegisterWithoutCaptureExecutionContext(() => Destroy(instanceSkyBoxMaterial));
+            RenderSettings.skybox = instanceSkyBoxMaterial;
+            Observable.EveryUpdate()
+                .Subscribe(_ =>
+                {
+                    instanceSkyBoxMaterial.SetFloat("_Rotation", UnityEngine.Time.time * HK.Time.Root.timeScale * skyBoxRotationSpeed);
                 })
                 .RegisterTo(destroyCancellationToken);
 #if DEBUG
@@ -337,6 +362,7 @@ namespace MH3
                     .SetMaterial("Transition.2")
                     .BeginAsync(LMotion.Create(0.0f, 1.0f, 0.4f));
             }
+            TinyServiceLocator.Resolve<GameEvents>().OnTransitioned.OnNext(Unit.Default);
 
             enemy.DestroySafe();
             stage.DestroySafe();

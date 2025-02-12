@@ -210,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5357769, y: -0.45219812, z: 0.24503328, w: 0.6696407}
+  m_LocalRotation: {x: -0.1399974, y: -0.85415834, z: 0.37204343, w: -0.33525795}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -378,6 +378,8 @@ MonoBehaviour:
   titleDocumentPrefab: {fileID: 6562501259230542608, guid: 99ba29a373b130c43be8f9c3515b5298, type: 3}
   termDescriptionDocumentPrefab: {fileID: 6562501259230542608, guid: 0f2b16c217d3f7448a942847d2743125, type: 3}
   tipsDocumentPrefab: {fileID: 6562501259230542608, guid: b9bf6b9a1f44ea943bd5e9333972d05a, type: 3}
+  skyBoxMaterial: {fileID: 2100000, guid: efd1c33efd2d58340b88804268e6833f, type: 2}
+  skyBoxRotationSpeed: 1
   isSkipTitle: 1
 --- !u!4 &1940853580
 Transform:

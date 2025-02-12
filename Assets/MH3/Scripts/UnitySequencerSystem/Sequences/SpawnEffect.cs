@@ -20,7 +20,7 @@ namespace MH3
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var effect = TinyServiceLocator.Resolve<EffectManager>().Rent(effectKeyResolver.Resolve(container));
-            container.Register(registerKeyResolver.Resolve(container), effect.transform);
+            container.RegisterOrReplace(registerKeyResolver.Resolve(container), effect.transform);
             return UniTask.CompletedTask;
         }
     }

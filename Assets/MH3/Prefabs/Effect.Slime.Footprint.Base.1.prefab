@@ -1,0 +1,311 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2616616858661763978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3554544901879354856}
+  - component: {fileID: 4790844130533643764}
+  - component: {fileID: 4245449314930097905}
+  m_Layer: 0
+  m_Name: Decal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3554544901879354856
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616616858661763978}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1566560882705162267}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &4790844130533643764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616616858661763978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 8bc59e7d31074864cbed78cd1ff80fc8, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 1
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_DecalLayerMask: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3, y: 3, z: 1}
+  m_FadeFactor: 1
+--- !u!114 &4245449314930097905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616616858661763978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc6819e64e4c44beb63ea2ef45e1a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnAwake: 0
+  animationMode: 0
+  components:
+  - rid: 803094469681611038
+  - rid: 803094469681611097
+  references:
+    version: 2
+    RefIds:
+    - rid: 803094469681611038
+      type: {class: FloatValueAnimation, ns: LitMotion.Animation.Components, asm: LitMotion.Animation}
+      data:
+        displayName: fadeFactor
+        enabled: 1
+        settings:
+          startValue: 1
+          endValue: 0
+          duration: 8
+          ease: 31
+          customEaseCurve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0.2000122
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1.0000015
+              inSlope: 2.3771749
+              outSlope: 2.3771749
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.017643332
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          delay: 0
+          delayType: 0
+          loops: 1
+          loopType: 0
+          cancelOnError: 0
+          skipValuesDuringDelay: 0
+          immediateBind: 0
+          schedulerType: 0
+          additionalSettings: 0
+        onValueChanged:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 4790844130533643764}
+              m_TargetAssemblyTypeName: UnityEngine.Rendering.Universal.DecalProjector,
+                Unity.RenderPipelines.Universal.Runtime
+              m_MethodName: set_fadeFactor
+              m_Mode: 0
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+    - rid: 803094469681611097
+      type: {class: Vector3ValueAnimation, ns: LitMotion.Animation.Components, asm: LitMotion.Animation}
+      data:
+        displayName: Vector3
+        enabled: 1
+        settings:
+          startValue: {x: 0, y: 0, z: 0.1}
+          endValue: {x: 3, y: 3, z: 0.1}
+          duration: 8
+          ease: 31
+          customEaseCurve:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 2
+              outSlope: 2
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 0.019930825
+              value: 0.6987635
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          delay: 0
+          delayType: 0
+          loops: 1
+          loopType: 0
+          cancelOnError: 0
+          skipValuesDuringDelay: 0
+          immediateBind: 0
+          schedulerType: 0
+          additionalSettings: 0
+        onValueChanged:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 4790844130533643764}
+              m_TargetAssemblyTypeName: UnityEngine.Rendering.Universal.DecalProjector,
+                Unity.RenderPipelines.Universal.Runtime
+              m_MethodName: set_size
+              m_Mode: 0
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+--- !u!1001 &5004257157364444275
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3899821823048812639, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      propertyPath: lifeTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5354848828147931912, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      propertyPath: m_Name
+      value: Effect.Slime.Footprint.Yellow.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822938317066341480, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822938317066341480, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822938317066341480, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822938317066341480, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822938317066341480, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822938317066341480, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822938317066341480, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822938317066341480, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822938317066341480, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822938317066341480, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5822938317066341480, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3554544901879354856}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5354848828147931912, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2415334169667751450}
+  m_SourcePrefab: {fileID: 100100000, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+--- !u!1 &1090592379364538235 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5354848828147931912, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+  m_PrefabInstance: {fileID: 5004257157364444275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2415334169667751450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090592379364538235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf7e9d8d7386d44eab912bc2ee1cf1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sequencesResolver:
+    rid: 803094469681611088
+  playOnEnable: 1
+  root: {fileID: 1566560882705162267}
+  references:
+    version: 2
+    RefIds:
+    - rid: 803094469681611088
+      type: {class: SequencesResolver/List, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value:
+        - rid: 803094469681611092
+    - rid: 803094469681611092
+      type: {class: PlayLitMotionAnimation, ns: MH3, asm: Assembly-CSharp}
+      data:
+        litMotionAnimation: {fileID: 4245449314930097905}
+--- !u!4 &1566560882705162267 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5822938317066341480, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+  m_PrefabInstance: {fileID: 5004257157364444275}
+  m_PrefabAsset: {fileID: 0}

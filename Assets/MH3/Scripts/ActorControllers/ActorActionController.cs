@@ -234,9 +234,9 @@ namespace MH3.ActorControllers
                     var container = new Container();
                     container.Register("Actor", actor);
                     var seruqncer = new Sequencer(container, gameRules.OnEvadeSpearSequences.Sequences);
-                    seruqncer.PlayAsync(@this.spearDodgeModeDisposable.Token).Forget();
+                    seruqncer.PlayAsync(@this.actor.destroyCancellationToken).Forget();
                 })
-                .AddTo(spearDodgeModeDisposable.Token);
+                .RegisterTo(spearDodgeModeDisposable.Token);
         }
 
         public void EndSpearDodgeMode()
