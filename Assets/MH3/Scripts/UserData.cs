@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HK;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MH3
 {
@@ -57,6 +58,13 @@ namespace MH3
         [SerializeField]
         private List<MySetData> mySetData = new();
         public List<MySetData> MySetData => mySetData;
+        
+        public InstanceWeapon GetInstanceWeapon(int instanceWeaponId)
+        {
+            var result = instanceWeapons.FirstOrDefault(x => x.InstanceId == instanceWeaponId);
+            Assert.IsNotNull(result, $"Not found instanceWeaponId:{instanceWeaponId}");
+            return result;
+        }
 
         public InstanceWeapon GetEquippedInstanceWeapon()
         {
