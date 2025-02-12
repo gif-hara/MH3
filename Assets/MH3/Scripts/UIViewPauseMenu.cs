@@ -28,6 +28,7 @@ namespace MH3
             HKUIDocument questSpecStatusDocumentPrefab,
             HKUIDocument optionsSoundsDocumentPrefab,
             HKUIDocument termDescriptionDocumentPrefab,
+            HKUIDocument optionsKeyConfigDocumentPrefab,
             Actor actor,
             GameSceneController gameSceneController,
             bool isHome,
@@ -55,6 +56,7 @@ namespace MH3
             Func<CancellationToken, UniTask> onEndTermDescriptionNextState = null;
             var listInitialIndexCaches = new Dictionary<string, int>();
             var gameEvents = TinyServiceLocator.Resolve<GameEvents>();
+            UIViewOptionsKeyConfig uiViewOptionsKeyConfig = null;
             gameEvents.OnBeginQuestTransition
                 .Subscribe(pauseMenuScope, static (_, p) => p.Dispose())
                 .RegisterTo(pauseMenuScope.Token);
@@ -1503,6 +1505,35 @@ namespace MH3
                                                     .Q<HKUIDocument>("Element.Slider")
                                                     .Q<Slider>("Slider")
                                                     .value = saveData.SystemData.SfxVolume;
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                    });
+                            },
+                            document =>
+                            {
+                                document.CreateListElementBuilder()
+                                    .EditHeader(header =>
+                                    {
+                                        header.text = "キーコンフィグ".Localized();
+                                    })
+                                    .EditButton(button =>
+                                    {
+                                        button.OnClickAsObservable()
+                                            .Subscribe(_ =>
+                                            {
+                                                optionsListSelection = button;
+                                                stateMachine.Change(StateOptionsSounds);
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                        button.OnSelectAsObservable()
+                                            .Subscribe(_ =>
+                                            {
+                                                UIViewTips.SetTip("操作するキーの設定を行います。".Localized());
+                                                if(optionsDocument != null)
+                                                {
+                                                    optionsDocument.DestroySafe();
+                                                }
+
                                             })
                                             .RegisterTo(button.destroyCancellationToken);
                                     });

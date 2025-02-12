@@ -102,6 +102,9 @@ namespace MH3
         private HKUIDocument tipsDocumentPrefab;
 
         [SerializeField]
+        private HKUIDocument optionsKeyConfigDocumentPrefab;
+
+        [SerializeField]
         private Material skyBoxMaterial;
 
         [SerializeField]
@@ -304,6 +307,7 @@ namespace MH3
                         questSpecStatusDocumentPrefab,
                         optionsSoundsDocumentPrefab,
                         termDescriptionDocumentPrefab,
+                        optionsKeyConfigDocumentPrefab,
                         player,
                         this,
                         currentQuestSpec.Id == homeQuestSpecId,
