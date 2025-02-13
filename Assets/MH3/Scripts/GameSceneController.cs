@@ -393,6 +393,10 @@ namespace MH3
                 isFirstSetupQuest = false;
                 await UIViewTitle.OpenAsync(titleDocumentPrefab, destroyCancellationToken);
             }
+            else
+            {
+                gameCameraController.ForceDefaultCinemachineCamera();
+            }
             var beginQuestContainer = new Container();
             beginQuestContainer.Register(this);
             beginQuestContainer.Register("Player", player);
