@@ -1,9 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using HK;
+using LitMotion;
 using MH3.ActorControllers;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Splines;
 
 namespace MH3
 {
@@ -21,6 +26,24 @@ namespace MH3
         [SerializeField]
         private CinemachineCameraElement.DictionaryList cinemachineCameras;
         public CinemachineCameraElement.DictionaryList CinemachineCameras => cinemachineCameras;
+
+        [SerializeField]
+        private CinemachineCamera questStartCinemachineCamera;
+
+        [SerializeField]
+        private CinemachineSplineDolly questStartCinemachineSplineDolly;
+
+        [SerializeField]
+        private SplineContainer questStartSplineContainer;
+
+        [SerializeField]
+        private float questStartDuration;
+
+        [SerializeField]
+        private float questStartToDefaultDelay;
+
+        [SerializeField]
+        private Ease questStartEase;
 
         [SerializeField]
         private ImpulseSourceElement.DictionaryList impulseSources;
@@ -41,6 +64,9 @@ namespace MH3
             titleCinemachineCamera.Target.TrackingTarget = player.transform;
             titleCinemachineCamera.Target.LookAtTarget = player.LocatorHolder.Get("Root");
             titleCinemachineCamera.gameObject.SetActive(false);
+            questStartCinemachineCamera.Target.TrackingTarget = player.transform;
+            questStartCinemachineCamera.Target.LookAtTarget = enemy.LocatorHolder.Get("Root");
+            questStartCinemachineCamera.gameObject.SetActive(false);
             foreach (var defeatEnemyCinemachineCamera in defeatEnemyCinemachineCameras)
             {
                 defeatEnemyCinemachineCamera.Target.TrackingTarget = enemy.transform;
@@ -65,6 +91,21 @@ namespace MH3
                 return;
             }
             impulseSources.Get(name).ImpulseSource.GenerateImpulse();
+        }
+
+        public async UniTask BeginQuestStartAsync(Actor actor, CancellationToken cancellationToken)
+        {
+            questStartSplineContainer.transform.position = actor.transform.position;
+            questStartCinemachineCamera.gameObject.SetActive(true);
+            await LMotion.Create(0.0f, 1.0f, questStartDuration)
+                .WithEase(questStartEase)
+                .Bind(t =>
+                {
+                    questStartCinemachineSplineDolly.CameraPosition = t;
+                })
+                .ToUniTask(cancellationToken);
+            await UniTask.Delay(TimeSpan.FromSeconds(questStartToDefaultDelay), cancellationToken: cancellationToken);
+            questStartCinemachineCamera.gameObject.SetActive(false);
         }
 
         [Serializable]

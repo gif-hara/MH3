@@ -15,7 +15,7 @@ MonoBehaviour:
   sequences:
   - rid: 1481063520193740887
   - rid: 1481063520193740891
-  - rid: 1481063520193740930
+  - rid: 803094595329065072
   - rid: 1481063520193740897
   - rid: 1481063520193740901
   - rid: 1481063743668093038
@@ -27,6 +27,32 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 803094595329065072
+      type: {class: WhenAll, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        sequencesResolver:
+          rid: 803094595329065073
+    - rid: 803094595329065073
+      type: {class: SequencesResolver/List, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value:
+        - rid: 803094595329065074
+        - rid: 803094595329065075
+    - rid: 803094595329065074
+      type: {class: GameCameraBeginQuestStartAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 803094595329065084
+    - rid: 803094595329065075
+      type: {class: BeginNotificationCenterOneShotAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        documentPrefab: {fileID: 6562501259230542608, guid: 921907e0c6d6f4a49ad870657b180977, type: 3}
+        messageResolver:
+          rid: -2
+    - rid: 803094595329065084
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Enemy
     - rid: 1481063520193740887
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
@@ -91,12 +117,6 @@ MonoBehaviour:
       type: {class: BooleanResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 0
-    - rid: 1481063520193740930
-      type: {class: BeginNotificationCenterOneShotAsync, ns: MH3, asm: Assembly-CSharp}
-      data:
-        documentPrefab: {fileID: 6562501259230542608, guid: 921907e0c6d6f4a49ad870657b180977, type: 3}
-        messageResolver:
-          rid: -2
     - rid: 1481063587024470118
       type: {class: BeginQuestTimer, ns: MH3, asm: Assembly-CSharp}
       data: 
