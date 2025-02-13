@@ -361,20 +361,19 @@ namespace MH3
             {
                 questScope.Dispose();
             }
-
+            questScope = new CancellationDisposable();
             TinyServiceLocator.Resolve<GameEvents>().OnBeginQuestTransition.OnNext(Unit.Default);
             if (!immediate)
             {
                 await TinyServiceLocator.Resolve<UIViewTransition>()
                     .Build()
                     .SetMaterial("Transition.2")
-                    .BeginAsync(LMotion.Create(0.0f, 1.0f, 0.4f));
+                    .BeginAsync(LMotion.Create(0.0f, 1.0f, 0.4f), questScope.Token);
             }
             TinyServiceLocator.Resolve<GameEvents>().OnTransitioned.OnNext(Unit.Default);
 
             enemy.DestroySafe();
             stage.DestroySafe();
-            questScope = new CancellationDisposable();
             var questSpec = TinyServiceLocator.Resolve<MasterData>().QuestSpecs.Get(questSpecId);
             currentQuestSpec = questSpec;
             stage = UnityEngine.Object.Instantiate(questSpec.StagePrefab);
@@ -420,7 +419,7 @@ namespace MH3
             {
                 await TinyServiceLocator.Resolve<UIViewTransition>()
                     .Build()
-                    .BeginAsync(LMotion.Create(1.0f, 0.0f, 0.4f));
+                    .BeginAsync(LMotion.Create(1.0f, 0.0f, 0.4f), questScope.Token);
             }
         }
 

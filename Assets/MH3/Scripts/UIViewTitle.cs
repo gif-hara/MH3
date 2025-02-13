@@ -37,7 +37,7 @@ namespace MH3
             await TinyServiceLocator.Resolve<UIViewTransition>()
                 .Build()
                 .SetMaterial("Transition.3")
-                .BeginAsync(LMotion.Create(1.0f, 0.0f, 0.5f));
+                .BeginAsync(LMotion.Create(1.0f, 0.0f, 0.5f), scope);
             await areaTitleAnimation.PlayAsync("In", newScope.Token);
             var pressButtonAnimationScope = CancellationTokenSource.CreateLinkedTokenSource(newScope.Token);
             PlayPressButtonAnimationAsync(pressButtonAnimationScope.Token).Forget();

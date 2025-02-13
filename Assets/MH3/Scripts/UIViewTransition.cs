@@ -44,11 +44,11 @@ namespace MH3
             return this;
         }
 
-        public UniTask BeginAsync(MotionBuilder<float, NoOptions, LitMotion.Adapters.FloatMotionAdapter> motionBuilder)
+        public UniTask BeginAsync(MotionBuilder<float, NoOptions, LitMotion.Adapters.FloatMotionAdapter> motionBuilder, CancellationToken cancellationToken)
         {
             return motionBuilder
                 .BindToMaterialFloat(image.material, "_Progress")
-                .ToUniTask();
+                .ToUniTask(cancellationToken);
         }
     }
 }
