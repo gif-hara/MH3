@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 733187430771144213, guid: 2127d74f2f9512b40a5f688d29052239, type: 3}
       propertyPath: m_Name
-      value: UI.Element.ActorEventNotification.SuccessJustGuard
+      value: UI.Element.ActorEventNotification.StrongAttack
       objectReference: {fileID: 0}
     - target: {fileID: 4785689361731767008, guid: 2127d74f2f9512b40a5f688d29052239, type: 3}
       propertyPath: m_Pivot.x
@@ -94,27 +94,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7642340865264972713, guid: 2127d74f2f9512b40a5f688d29052239, type: 3}
       propertyPath: m_text
-      value: "\u30B8\u30E3\u30B9\u30C8\u30AC\u30FC\u30C9\uFF01\uFF01"
-      objectReference: {fileID: 0}
-    - target: {fileID: 7642340865264972713, guid: 2127d74f2f9512b40a5f688d29052239, type: 3}
-      propertyPath: m_fontStyle
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7642340865264972713, guid: 2127d74f2f9512b40a5f688d29052239, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7642340865264972713, guid: 2127d74f2f9512b40a5f688d29052239, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.9238702
-      objectReference: {fileID: 0}
-    - target: {fileID: 7642340865264972713, guid: 2127d74f2f9512b40a5f688d29052239, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
+      value: "\u5FC5\u6BBA\u30A2\u30BF\u30C3\u30AF\uFF01"
       objectReference: {fileID: 0}
     - target: {fileID: 7642340865264972713, guid: 2127d74f2f9512b40a5f688d29052239, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278250751
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

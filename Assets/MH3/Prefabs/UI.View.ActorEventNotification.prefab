@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3226790077275121132, guid: c737cb0b6058e4a46911b72cb5790297, type: 3}
       propertyPath: elements.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3226790077275121132, guid: c737cb0b6058e4a46911b72cb5790297, type: 3}
       propertyPath: elements.Array.data[0].document
@@ -187,6 +187,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 390947095861313065, guid: 9f1f6ea23665a084783f99166208e36d, type: 3}
     - target: {fileID: 3226790077275121132, guid: c737cb0b6058e4a46911b72cb5790297, type: 3}
+      propertyPath: elements.Array.data[7].document
+      value: 
+      objectReference: {fileID: 390947095861313065, guid: 30e441abcb01d834084e324e3aa56507, type: 3}
+    - target: {fileID: 3226790077275121132, guid: c737cb0b6058e4a46911b72cb5790297, type: 3}
       propertyPath: elements.Array.data[0].overrideName
       value: 
       objectReference: {fileID: 0}
@@ -213,6 +217,10 @@ PrefabInstance:
     - target: {fileID: 3226790077275121132, guid: c737cb0b6058e4a46911b72cb5790297, type: 3}
       propertyPath: elements.Array.data[6].overrideName
       value: Element.SpearComboLevelUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226790077275121132, guid: c737cb0b6058e4a46911b72cb5790297, type: 3}
+      propertyPath: elements.Array.data[7].overrideName
+      value: Element.StrongAttack
       objectReference: {fileID: 0}
     - target: {fileID: 6927956933135241586, guid: c737cb0b6058e4a46911b72cb5790297, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
