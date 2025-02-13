@@ -141,7 +141,7 @@ Transform:
   m_GameObject: {fileID: 1460339287633691407}
   serializedVersion: 2
   m_LocalRotation: {x: 0.10338192, y: -0.005417989, z: 0.05205476, w: 0.9932639}
-  m_LocalPosition: {x: 5.321, y: 0.189, z: -3.712}
+  m_LocalPosition: {x: 5.32, y: 0.19, z: -6.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1211,7 +1211,7 @@ Transform:
   m_GameObject: {fileID: 7853155266201189488}
   serializedVersion: 2
   m_LocalRotation: {x: 0.10352379, y: 0.000000028147126, z: -0.0000000029296383, w: 0.994627}
-  m_LocalPosition: {x: 5.321, y: 0.189, z: -3.712}
+  m_LocalPosition: {x: 5.32, y: 0.19, z: -6.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1316,7 +1316,7 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0.73, z: 0.8}
+  TargetOffset: {x: 0, y: 1, z: 0.8}
   Damping: {x: 0, y: 0}
   Lookahead:
     Enabled: 0
@@ -1533,6 +1533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2ebf4b8b15944da5b9d4c73ab88f498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cinemachineBrain: {fileID: 4040525183711472146}
   defaultCinemachineCamera: {fileID: 2426988143851789573}
   titleCinemachineCamera: {fileID: 8064678733450981303}
   defeatEnemyCinemachineCameras:

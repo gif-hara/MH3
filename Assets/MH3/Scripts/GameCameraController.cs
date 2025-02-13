@@ -15,6 +15,9 @@ namespace MH3
     public class GameCameraController : MonoBehaviour
     {
         [SerializeField]
+        private CinemachineBrain cinemachineBrain;
+
+        [SerializeField]
         private CinemachineCamera defaultCinemachineCamera;
 
         [SerializeField]
@@ -72,6 +75,18 @@ namespace MH3
                 defeatEnemyCinemachineCamera.Target.TrackingTarget = enemy.transform;
                 defeatEnemyCinemachineCamera.Target.LookAtTarget = enemy.LocatorHolder.Get("Root");
             }
+        }
+
+        public void ForceDefaultCinemachineCamera()
+        {
+            defaultCinemachineCamera.gameObject.SetActive(true);
+            titleCinemachineCamera.gameObject.SetActive(false);
+            questStartCinemachineCamera.gameObject.SetActive(false);
+            foreach (var defeatEnemyCinemachineCamera in defeatEnemyCinemachineCameras)
+            {
+                defeatEnemyCinemachineCamera.gameObject.SetActive(false);
+            }
+            cinemachineBrain.ResetState();
         }
 
         public void BeginTitle()
