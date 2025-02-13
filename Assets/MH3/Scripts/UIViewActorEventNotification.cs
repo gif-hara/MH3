@@ -11,6 +11,15 @@ namespace MH3
     {
         private readonly HKUIDocument document;
 
+        public static UIViewActorEventNotification Open(
+            HKUIDocument documentPrefab,
+            Actor actor,
+            CancellationToken scope
+            )
+        {
+            return new UIViewActorEventNotification(documentPrefab, actor, scope);
+        }
+
         public UIViewActorEventNotification(HKUIDocument documentPrefab, Actor actor, CancellationToken scope)
         {
             document = Object.Instantiate(documentPrefab);
@@ -23,8 +32,9 @@ namespace MH3
                 actor.SpecController.OnEvade.Select(_ => "Element.Evade"),
                 actor.SpecController.OnGuard.Where(x => x == Define.GuardResult.SuccessGuard).Select(_ => "Element.SuccessGuard"),
                 actor.SpecController.OnGuard.Where(x => x == Define.GuardResult.SuccessJustGuard).Select(_ => "Element.SuccessJustGuard"),
-                actor.SpecController.SuperArmorCount.Scan((x, y) => y - x).Where(x => x < 0).Select(_ => "Element.SuperArmor"),
-                actor.SpecController.SpearComboLevel.Scan((x, y) => y - x).Where(x => x > 0).Select(_ => "Element.SpearComboLevelUp")
+                actor.SpecController.OnInvokeSuperArmor.Where(_ => actor.SpecController.WeaponSpec.WeaponType == Define.WeaponType.Blade).Select(_ => "Element.SuperArmor.Blade"),
+                actor.SpecController.OnInvokeSuperArmor.Where(_ => actor.SpecController.WeaponSpec.WeaponType == Define.WeaponType.Shield).Select(_ => "Element.SuperArmor.Shield"),
+                actor.SpecController.SpearComboLevel.Chunk(2, 1).Where(x => x[0] < x[1]).Select(_ => "Element.SpearComboLevelUp")
                 )
                 .Subscribe((document, elementParent), (x, t) =>
                 {

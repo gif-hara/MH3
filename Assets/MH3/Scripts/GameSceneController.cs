@@ -105,6 +105,9 @@ namespace MH3
         private HKUIDocument optionsKeyConfigDocumentPrefab;
 
         [SerializeField]
+        private HKUIDocument actorEventNotificationDocumentPrefab;
+
+        [SerializeField]
         private Material skyBoxMaterial;
 
         [SerializeField]
@@ -290,6 +293,7 @@ namespace MH3
             _ = new UIViewPlayerStatus(playerStatusDocumentPrefab, player, destroyCancellationToken);
             damageLabel = new UIViewDamageLabel(damageLabelDocumentPrefab, gameCameraController.ControlledCamera, destroyCancellationToken);
             fade = new UIViewFade(fadeDocumentPrefab, destroyCancellationToken);
+            UIViewActorEventNotification.Open(actorEventNotificationDocumentPrefab, player, destroyCancellationToken);
             TinyServiceLocator.RegisterAsync(fade, destroyCancellationToken).Forget();
             enemyStatus = new UIViewEnemyStatus(enemyStatusDocumentPrefab, destroyCancellationToken);
             SetupQuestAsync(initialQuestSpecId, immediate: true).Forget();
