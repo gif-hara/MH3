@@ -654,6 +654,8 @@ namespace MH3
 
             public bool ForceFlinch;
 
+            public bool IsStrong;
+
             public float AbnormalStatusPower;
 
             public float ElementPower;
