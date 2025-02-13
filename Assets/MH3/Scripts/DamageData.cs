@@ -16,7 +16,9 @@ namespace MH3
 
         public bool ConsumedSuperArmor { get; }
 
-        public DamageData(int damage, int flinchDamage, Vector3 damagePosition, bool isCritical, Define.GuardResult guardResult, bool consumedSuperArmor)
+        public bool IsStrongAttack { get; }
+
+        public DamageData(int damage, int flinchDamage, Vector3 damagePosition, bool isCritical, Define.GuardResult guardResult, bool consumedSuperArmor, bool isStrongAttack)
         {
             Damage = damage;
             FlinchDamage = flinchDamage;
@@ -24,6 +26,7 @@ namespace MH3
             IsCritical = isCritical;
             GuardResult = guardResult;
             ConsumedSuperArmor = consumedSuperArmor;
+            IsStrongAttack = isStrongAttack;
         }
     }
 }

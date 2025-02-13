@@ -48,7 +48,7 @@ namespace MH3
                 damage = 0;
                 flinchDamage = 0;
             }
-            return new DamageData(damage, flinchDamage, impactPosition, isCritical, targetGuardResult, consumedSuperArmor);
+            return new DamageData(damage, flinchDamage, impactPosition, isCritical, targetGuardResult, consumedSuperArmor, attackSpec.IsStrong);
         }
     }
 }

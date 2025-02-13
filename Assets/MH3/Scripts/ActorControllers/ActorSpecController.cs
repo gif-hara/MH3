@@ -146,7 +146,7 @@ namespace MH3.ActorControllers
 
         private ReactiveProperty<int> spearComboLevel = new(0);
         public ReadOnlyReactiveProperty<int> SpearComboLevel => spearComboLevel.ToReadOnlyReactiveProperty();
-        
+
         private readonly Subject<Define.GuardResult> onGuard = new();
         public Observable<Define.GuardResult> OnGuard => onGuard;
 
@@ -585,7 +585,7 @@ namespace MH3.ActorControllers
             var fixedHitPoint = hitPoint.Value - damage;
             fixedHitPoint = fixedHitPoint < 1 ? 1 : fixedHitPoint;
             hitPoint.Value = fixedHitPoint;
-            onTakeDamage.OnNext(new DamageData(damage, 0, actor.LocatorHolder.Get("Spine").position + Random.insideUnitSphere, false, Define.GuardResult.NotGuard, false));
+            onTakeDamage.OnNext(new DamageData(damage, 0, actor.LocatorHolder.Get("Spine").position + Random.insideUnitSphere, false, Define.GuardResult.NotGuard, false, false));
         }
 
         public bool ContainsAppliedAbnormalStatus(Define.AbnormalStatusType type)
