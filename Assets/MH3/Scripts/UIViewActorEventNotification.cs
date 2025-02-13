@@ -34,7 +34,8 @@ namespace MH3
                 actor.SpecController.OnGuard.Where(x => x == Define.GuardResult.SuccessJustGuard).Select(_ => "Element.SuccessJustGuard"),
                 actor.SpecController.OnInvokeSuperArmor.Where(_ => actor.SpecController.WeaponSpec.WeaponType == Define.WeaponType.Blade).Select(_ => "Element.SuperArmor.Blade"),
                 actor.SpecController.OnInvokeSuperArmor.Where(_ => actor.SpecController.WeaponSpec.WeaponType == Define.WeaponType.Shield).Select(_ => "Element.SuperArmor.Shield"),
-                actor.SpecController.SpearComboLevel.Chunk(2, 1).Where(x => x[0] < x[1]).Select(_ => "Element.SpearComboLevelUp")
+                actor.SpecController.SpearComboLevel.Chunk(2, 1).Where(x => x[0] < x[1]).Select(_ => "Element.SpearComboLevelUp"),
+                actor.SpecController.OnGiveDamage.Where(x => x.IsStrongAttack).Select(_ => "Element.StrongAttack")
                 )
                 .Subscribe((document, elementParent), (x, t) =>
                 {
