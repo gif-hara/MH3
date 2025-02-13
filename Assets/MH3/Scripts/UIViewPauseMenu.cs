@@ -1509,35 +1509,35 @@ namespace MH3
                                             .RegisterTo(button.destroyCancellationToken);
                                     });
                             },
-                            document =>
-                            {
-                                document.CreateListElementBuilder()
-                                    .EditHeader(header =>
-                                    {
-                                        header.text = "キーコンフィグ".Localized();
-                                    })
-                                    .EditButton(button =>
-                                    {
-                                        button.OnClickAsObservable()
-                                            .Subscribe(_ =>
-                                            {
-                                                optionsListSelection = button;
-                                                stateMachine.Change(StateOptionsSounds);
-                                            })
-                                            .RegisterTo(button.destroyCancellationToken);
-                                        button.OnSelectAsObservable()
-                                            .Subscribe(_ =>
-                                            {
-                                                UIViewTips.SetTip("操作するキーの設定を行います。".Localized());
-                                                if(optionsDocument != null)
-                                                {
-                                                    optionsDocument.DestroySafe();
-                                                }
+                            // document =>
+                            // {
+                            //     document.CreateListElementBuilder()
+                            //         .EditHeader(header =>
+                            //         {
+                            //             header.text = "キーコンフィグ".Localized();
+                            //         })
+                            //         .EditButton(button =>
+                            //         {
+                            //             button.OnClickAsObservable()
+                            //                 .Subscribe(_ =>
+                            //                 {
+                            //                     optionsListSelection = button;
+                            //                     stateMachine.Change(StateOptionsSounds);
+                            //                 })
+                            //                 .RegisterTo(button.destroyCancellationToken);
+                            //             button.OnSelectAsObservable()
+                            //                 .Subscribe(_ =>
+                            //                 {
+                            //                     UIViewTips.SetTip("操作するキーの設定を行います。".Localized());
+                            //                     if(optionsDocument != null)
+                            //                     {
+                            //                         optionsDocument.DestroySafe();
+                            //                     }
 
-                                            })
-                                            .RegisterTo(button.destroyCancellationToken);
-                                    });
-                            },
+                            //                 })
+                            //                 .RegisterTo(button.destroyCancellationToken);
+                            //         });
+                            // },
                             document =>
                             {
                                 document.CreateListElementBuilder()
