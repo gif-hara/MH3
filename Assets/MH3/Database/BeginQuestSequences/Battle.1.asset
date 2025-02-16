@@ -16,6 +16,7 @@ MonoBehaviour:
   - rid: 1481063520193740887
   - rid: 1481063520193740891
   - rid: 803094660761780503
+  - rid: 803094660761780527
   - rid: 803094595329065072
   - rid: 1481063520193740897
   - rid: 1481063520193740901
@@ -23,6 +24,7 @@ MonoBehaviour:
   - rid: 1481063743668093021
   - rid: 1481063743668093040
   - rid: 1481063587024470118
+  - rid: 803094660761780528
   references:
     version: 2
     RefIds:
@@ -65,6 +67,14 @@ MonoBehaviour:
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Enemy
+    - rid: 803094660761780527
+      type: {class: InvokeGameEvent, ns: MH3, asm: Assembly-CSharp}
+      data:
+        gameEventType: 8
+    - rid: 803094660761780528
+      type: {class: InvokeGameEvent, ns: MH3, asm: Assembly-CSharp}
+      data:
+        gameEventType: 9
     - rid: 1481063520193740887
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
