@@ -170,6 +170,10 @@ namespace MH3
         private List<float> spearComboLevelThresholds;
         public List<float> SpearComboLevelThresholds => spearComboLevelThresholds;
 
+        [SerializeField]
+        private List<EnemyBeginQuestEmotion> enemyBeginQuestEmotions;
+        public List<EnemyBeginQuestEmotion> EnemyBeginQuestEmotions => enemyBeginQuestEmotions;
+
 
         [Serializable]
         public class ElementProjectile
@@ -212,6 +216,18 @@ namespace MH3
                 {
                 }
             }
+        }
+
+        [Serializable]
+        public class EnemyBeginQuestEmotion
+        {
+            [SerializeField]
+            private Define.WeaponType weaponType;
+            public Define.WeaponType WeaponType => weaponType;
+
+            [SerializeField]
+            private List<string> emotionKeys;
+            public List<string> EmotionKeys => emotionKeys;
         }
     }
 }
