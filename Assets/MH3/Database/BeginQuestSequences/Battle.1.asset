@@ -15,6 +15,7 @@ MonoBehaviour:
   sequences:
   - rid: 1481063520193740887
   - rid: 1481063520193740891
+  - rid: 803094660761780503
   - rid: 803094595329065072
   - rid: 1481063520193740897
   - rid: 1481063520193740901
@@ -50,6 +51,17 @@ MonoBehaviour:
         messageResolver:
           rid: -2
     - rid: 803094595329065084
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Enemy
+    - rid: 803094660761780503
+      type: {class: TryEnemyBeginQuestEmotion, ns: MH3, asm: Assembly-CSharp}
+      data:
+        actorResolver:
+          rid: 803094660761780504
+        isSuccessKeyResolver:
+          rid: -2
+    - rid: 803094660761780504
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
         name: Enemy
