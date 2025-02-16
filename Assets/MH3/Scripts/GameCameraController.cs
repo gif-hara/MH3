@@ -82,9 +82,13 @@ namespace MH3
             defaultCinemachineCamera.gameObject.SetActive(true);
             titleCinemachineCamera.gameObject.SetActive(false);
             questStartCinemachineCamera.gameObject.SetActive(false);
-            foreach (var defeatEnemyCinemachineCamera in defeatEnemyCinemachineCameras)
+            foreach (var i in cinemachineCameras.List)
             {
-                defeatEnemyCinemachineCamera.gameObject.SetActive(false);
+                i.CinemachineCamera.gameObject.SetActive(false);
+            }
+            foreach (var i in defeatEnemyCinemachineCameras)
+            {
+                i.gameObject.SetActive(false);
             }
             cinemachineBrain.ResetState();
         }

@@ -16,6 +16,7 @@ MonoBehaviour:
   - rid: 1481063520193740887
   - rid: 1481063520193740891
   - rid: 803094660761780503
+  - rid: 803094660761780533
   - rid: 803094660761780527
   - rid: 803094595329065072
   - rid: 1481063520193740897
@@ -75,6 +76,9 @@ MonoBehaviour:
       type: {class: InvokeGameEvent, ns: MH3, asm: Assembly-CSharp}
       data:
         gameEventType: 9
+    - rid: 803094660761780533
+      type: {class: GameCameraForceDefault, ns: MH3, asm: Assembly-CSharp}
+      data: 
     - rid: 1481063520193740887
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
