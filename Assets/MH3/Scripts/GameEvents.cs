@@ -21,9 +21,9 @@ namespace MH3
 
         public readonly Subject<Unit> OnTransitioned = new();
 
-        public readonly Subject<Unit> OnBeginBattleEffect = new();
+        public readonly Subject<Unit> OnBeginBattleStartEffect = new();
 
-        public readonly Subject<Unit> OnEndBattleEffect = new();
+        public readonly Subject<Unit> OnEndBattleStartEffect = new();
 
         public enum Type
         {
@@ -35,8 +35,8 @@ namespace MH3
             BeginAcquireReward,
             EndAcquireReward,
             Transitioned,
-            BeginBattleEffect,
-            EndBattleEffect,
+            BeginBattleStartEffect,
+            EndBattleStartEffect,
         }
 
         public Subject<Unit> GetSubject(Type type)
@@ -51,8 +51,8 @@ namespace MH3
                 Type.BeginAcquireReward => OnBeginAcquireReward,
                 Type.EndAcquireReward => OnEndAcquireReward,
                 Type.Transitioned => OnTransitioned,
-                Type.BeginBattleEffect => OnBeginBattleEffect,
-                Type.EndBattleEffect => OnEndBattleEffect,
+                Type.BeginBattleStartEffect => OnBeginBattleStartEffect,
+                Type.EndBattleStartEffect => OnEndBattleStartEffect,
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null),
             };
         }
