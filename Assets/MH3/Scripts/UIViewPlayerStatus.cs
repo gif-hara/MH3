@@ -24,47 +24,37 @@ namespace MH3
             var staminaSlider = document.Q<HKUIDocument>("Slider.Stamina").Q<Slider>("Slider");
             var staminaSliderDefaultSize = ((RectTransform)staminaSlider.transform).sizeDelta;
             var gameEvents = TinyServiceLocator.Resolve<GameEvents>();
-            gameEvents.OnBeginTitle
+            Observable.Merge(
+                gameEvents.OnBeginTitle,
+                gameEvents.OnBeginPauseMenu,
+                gameEvents.OnBeginAcquireReward,
+                gameEvents.OnBeginBattleStartEffect
+                )
                 .Subscribe(document, static (x, t) =>
                 {
                     var document = t;
                     document.gameObject.SetActive(false);
                 })
                 .RegisterTo(scope);
-            gameEvents.OnEndTitle
+            Observable.Merge(
+                gameEvents.OnEndPauseMenu,
+                gameEvents.OnEndAcquireReward
+                )
+                .Subscribe(document, static (x, t) =>
+                {
+                    var document = t;
+                    document.gameObject.SetActive(true);
+                })
+                .RegisterTo(scope);
+            Observable.Merge(
+                gameEvents.OnEndTitle,
+                gameEvents.OnEndBattleStartEffect
+                )
                 .Subscribe(document, static (x, t) =>
                 {
                     var document = t;
                     document.gameObject.SetActive(true);
                     document.Q<SimpleAnimation>("Area.Animation").Play("In");
-                })
-                .RegisterTo(scope);
-            gameEvents.OnBeginPauseMenu
-                .Subscribe(document, static (x, t) =>
-                {
-                    var document = t;
-                    document.gameObject.SetActive(false);
-                })
-                .RegisterTo(scope);
-            gameEvents.OnEndPauseMenu
-                .Subscribe(document, static (x, t) =>
-                {
-                    var document = t;
-                    document.gameObject.SetActive(true);
-                })
-                .RegisterTo(scope);
-            gameEvents.OnBeginAcquireReward
-                .Subscribe(document, static (x, t) =>
-                {
-                    var document = t;
-                    document.gameObject.SetActive(false);
-                })
-                .RegisterTo(scope);
-            gameEvents.OnEndAcquireReward
-                .Subscribe(document, static (x, t) =>
-                {
-                    var document = t;
-                    document.gameObject.SetActive(true);
                 })
                 .RegisterTo(scope);
             ((RectTransform)hitPointSlider.transform).sizeDelta = new Vector2(

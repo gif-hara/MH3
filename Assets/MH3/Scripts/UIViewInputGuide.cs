@@ -25,14 +25,20 @@ namespace MH3
             });
             document.gameObject.SetActive(false);
             var gameEvents = TinyServiceLocator.Resolve<GameEvents>();
-            gameEvents.OnBeginTitle
+            Observable.Merge(
+                gameEvents.OnBeginTitle,
+                gameEvents.OnBeginBattleStartEffect
+                )
                 .Subscribe(document, static (x, t) =>
                 {
                     var document = t;
                     document.gameObject.SetActive(false);
                 })
                 .RegisterTo(scope);
-            gameEvents.OnEndTitle
+            Observable.Merge(
+                gameEvents.OnEndTitle,
+                gameEvents.OnEndBattleStartEffect
+                )
                 .Subscribe(document, static (x, t) =>
                 {
                     var document = t;
