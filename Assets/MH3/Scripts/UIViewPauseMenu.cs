@@ -51,12 +51,11 @@ namespace MH3
             Define.ArmorType selectedArmorType = Define.ArmorType.Head;
             HKUIDocument optionsListDocument = null;
             Selectable optionsListSelection = null;
-            HKUIDocument optionsDocument = null;
             List<UIViewTermDescription.Element> termDescriptionElements = null;
             Func<CancellationToken, UniTask> onEndTermDescriptionNextState = null;
             var listInitialIndexCaches = new Dictionary<string, int>();
             var gameEvents = TinyServiceLocator.Resolve<GameEvents>();
-            UIViewOptionsKeyConfig uiViewOptionsKeyConfig = null;
+            IUIViewOptions options = null;
             gameEvents.OnBeginQuestTransition
                 .Subscribe(pauseMenuScope, static (_, p) => p.Dispose())
                 .RegisterTo(pauseMenuScope.Token);
@@ -1485,59 +1484,36 @@ namespace MH3
                                             .Subscribe(_ =>
                                             {
                                                 UIViewTips.SetTip("マスター、BGM、効果音の音量設定を変更します。".Localized());
-                                                CreateOptionsDocument(optionsSoundsDocumentPrefab);
-                                                var saveData = TinyServiceLocator.Resolve<SaveData>();
-                                                optionsDocument
-                                                    .Q<HKUIDocument>("MasterVolume")
-                                                    .Q<HKUIDocument>("Area.Slider")
-                                                    .Q<HKUIDocument>("Element.Slider")
-                                                    .Q<Slider>("Slider")
-                                                    .value = saveData.SystemData.MasterVolume;
-                                                optionsDocument
-                                                    .Q<HKUIDocument>("BgmVolume")
-                                                    .Q<HKUIDocument>("Area.Slider")
-                                                    .Q<HKUIDocument>("Element.Slider")
-                                                    .Q<Slider>("Slider")
-                                                    .value = saveData.SystemData.BgmVolume;
-                                                optionsDocument
-                                                    .Q<HKUIDocument>("SfxVolume")
-                                                    .Q<HKUIDocument>("Area.Slider")
-                                                    .Q<HKUIDocument>("Element.Slider")
-                                                    .Q<Slider>("Slider")
-                                                    .value = saveData.SystemData.SfxVolume;
+                                                RegisterUIViewOptions(new UIViewOptionsSound(optionsSoundsDocumentPrefab));
                                             })
                                             .RegisterTo(button.destroyCancellationToken);
                                     });
                             },
-                            // document =>
-                            // {
-                            //     document.CreateListElementBuilder()
-                            //         .EditHeader(header =>
-                            //         {
-                            //             header.text = "キーコンフィグ".Localized();
-                            //         })
-                            //         .EditButton(button =>
-                            //         {
-                            //             button.OnClickAsObservable()
-                            //                 .Subscribe(_ =>
-                            //                 {
-                            //                     optionsListSelection = button;
-                            //                     stateMachine.Change(StateOptionsSounds);
-                            //                 })
-                            //                 .RegisterTo(button.destroyCancellationToken);
-                            //             button.OnSelectAsObservable()
-                            //                 .Subscribe(_ =>
-                            //                 {
-                            //                     UIViewTips.SetTip("操作するキーの設定を行います。".Localized());
-                            //                     if(optionsDocument != null)
-                            //                     {
-                            //                         optionsDocument.DestroySafe();
-                            //                     }
-
-                            //                 })
-                            //                 .RegisterTo(button.destroyCancellationToken);
-                            //         });
-                            // },
+                            document =>
+                            {
+                                document.CreateListElementBuilder()
+                                    .EditHeader(header =>
+                                    {
+                                        header.text = "キーコンフィグ".Localized();
+                                    })
+                                    .EditButton(button =>
+                                    {
+                                        button.OnClickAsObservable()
+                                            .Subscribe(_ =>
+                                            {
+                                                optionsListSelection = button;
+                                                stateMachine.Change(StateOptionsKeyConfig);
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                        button.OnSelectAsObservable()
+                                            .Subscribe(_ =>
+                                            {
+                                                UIViewTips.SetTip("操作するキーの設定を行います。".Localized());
+                                                RegisterUIViewOptions(new UIViewOptionsKeyConfig(optionsKeyConfigDocumentPrefab));
+                                            })
+                                            .RegisterTo(button.destroyCancellationToken);
+                                    });
+                            },
                             document =>
                             {
                                 document.CreateListElementBuilder()
@@ -1558,7 +1534,7 @@ namespace MH3
                                             .Subscribe(_ =>
                                             {
                                                 UIViewTips.SetTip("前のメニューに戻ります。".Localized());
-                                                optionsDocument.DestroySafe();
+                                                RegisterUIViewOptions(null);
                                             })
                                             .RegisterTo(button.destroyCancellationToken);
                                     });
@@ -1575,7 +1551,7 @@ namespace MH3
                     .OnPerformedAsObservable()
                     .Subscribe(_ =>
                     {
-                        optionsDocument.DestroySafe();
+                        RegisterUIViewOptions(null);
                         optionsListDocument.DestroySafe();
                         stateMachine.Change(StateHomeRoot);
                     })
@@ -1586,89 +1562,12 @@ namespace MH3
             async UniTask StateOptionsSounds(CancellationToken scope)
             {
                 SetHeaderText("サウンド設定".Localized());
-                var saveData = TinyServiceLocator.Resolve<SaveData>();
-                var audioManager = TinyServiceLocator.Resolve<AudioManager>();
-                var masterVolumeDocument = optionsDocument.Q<HKUIDocument>("MasterVolume");
-                var masterVolumeSelectable = masterVolumeDocument
-                    .Q<HKUIDocument>("Area.Button")
-                    .Q<Selectable>("Button");
-                var masterVolumeSlider = masterVolumeDocument
-                    .Q<HKUIDocument>("Area.Slider")
-                    .Q<HKUIDocument>("Element.Slider")
-                    .Q<Slider>("Slider");
-                var bgmVolumeDocument = optionsDocument.Q<HKUIDocument>("BgmVolume");
-                var bgmVolumeSelectable = bgmVolumeDocument
-                    .Q<HKUIDocument>("Area.Button")
-                    .Q<Selectable>("Button");
-                var bgmVolumeSlider = bgmVolumeDocument
-                    .Q<HKUIDocument>("Area.Slider")
-                    .Q<HKUIDocument>("Element.Slider")
-                    .Q<Slider>("Slider");
-                var sfxVolumeDocument = optionsDocument.Q<HKUIDocument>("SfxVolume");
-                var sfxVolumeSelectable = sfxVolumeDocument
-                    .Q<HKUIDocument>("Area.Button")
-                    .Q<Selectable>("Button");
-                var sfxVolumeSlider = sfxVolumeDocument
-                    .Q<HKUIDocument>("Area.Slider")
-                    .Q<HKUIDocument>("Element.Slider")
-                    .Q<Slider>("Slider");
-                new[]
-                {
-                    masterVolumeSelectable,
-                    bgmVolumeSelectable,
-                    sfxVolumeSelectable,
-                }.SetNavigationVertical();
+                await options.ActivateAsync(scope);
+                stateMachine.Change(StateOptionsRoot);
+            }
 
-                masterVolumeSelectable.OnSelectAsObservable()
-                    .Subscribe(_ => UIViewTips.SetTip("マスター音量を変更します。".Localized()))
-                    .AddTo(scope);
-
-                bgmVolumeSelectable.OnSelectAsObservable()
-                    .Subscribe(_ => UIViewTips.SetTip("BGMの音量を変更します。".Localized()))
-                    .AddTo(scope);
-
-                sfxVolumeSelectable.OnSelectAsObservable()
-                    .Subscribe(_ => UIViewTips.SetTip("効果音の音量を変更します。".Localized()))
-                    .AddTo(scope);
-
-                masterVolumeSelectable.Select();
-                masterVolumeSlider.value = saveData.SystemData.MasterVolume;
-                bgmVolumeSlider.value = saveData.SystemData.BgmVolume;
-                sfxVolumeSlider.value = saveData.SystemData.SfxVolume;
-
-                inputController.Actions.UI.Navigate.OnPerformedAsObservable()
-                    .Subscribe(context =>
-                    {
-                        var value = context.ReadValue<Vector2>();
-                        if (value.x == 0)
-                        {
-                            return;
-                        }
-                        var addValue = value.x > 0 ? 0.1f : -0.1f;
-                        switch (EventSystem.current.currentSelectedGameObject)
-                        {
-                            case var x when x == masterVolumeSelectable.gameObject:
-                                saveData.SystemData.MasterVolume = Mathf.Clamp(saveData.SystemData.MasterVolume + addValue, 0, 1);
-                                masterVolumeSlider.value = saveData.SystemData.MasterVolume;
-                                audioManager.SetVolumeMaster(saveData.SystemData.MasterVolume);
-                                SaveSystem.Save(saveData, SaveData.Path);
-                                break;
-                            case var x when x == bgmVolumeSelectable.gameObject:
-                                saveData.SystemData.BgmVolume = Mathf.Clamp(saveData.SystemData.BgmVolume + addValue, 0, 1);
-                                bgmVolumeSlider.value = saveData.SystemData.BgmVolume;
-                                audioManager.SetVolumeBgm(saveData.SystemData.BgmVolume);
-                                SaveSystem.Save(saveData, SaveData.Path);
-                                break;
-                            case var x when x == sfxVolumeSelectable.gameObject:
-                                saveData.SystemData.SfxVolume = Mathf.Clamp(saveData.SystemData.SfxVolume + addValue, 0, 1);
-                                sfxVolumeSlider.value = saveData.SystemData.SfxVolume;
-                                audioManager.SetVolumeSfx(saveData.SystemData.SfxVolume);
-                                SaveSystem.Save(saveData, SaveData.Path);
-                                break;
-                        }
-                    })
-                    .RegisterTo(scope);
-
+            async UniTask StateOptionsKeyConfig(CancellationToken scope)
+            {
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
                     .Subscribe(_ => stateMachine.Change(StateOptionsRoot))
@@ -1694,13 +1593,14 @@ namespace MH3
                 header.Q<TMP_Text>("Header").text = text;
             }
 
-            void CreateOptionsDocument(HKUIDocument optionsDocumentPrefab)
+            void RegisterUIViewOptions(IUIViewOptions newOptions)
             {
-                if (optionsDocument != null)
+                if (options != null)
                 {
-                    optionsDocument.DestroySafe();
+                    options.Dispose();
                 }
-                optionsDocument = UnityEngine.Object.Instantiate(optionsDocumentPrefab);
+
+                options = newOptions;
             }
         }
     }
