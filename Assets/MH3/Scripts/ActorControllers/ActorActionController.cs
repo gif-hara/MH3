@@ -153,7 +153,8 @@ namespace MH3.ActorControllers
         {
             return actor.StateMachine.TryChangeState(
                 TinyServiceLocator.Resolve<GameRules>().EmotionStateSequences,
-                containerAction: c => c.Register("AttackName", emotionName)
+                containerAction: c => c.Register("AttackName", emotionName),
+                force: true
                 );
         }
 
