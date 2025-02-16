@@ -135,6 +135,10 @@ namespace MH3
         public ScriptableSequences EnduranceStateSequences => enduranceStateSequences;
 
         [SerializeField]
+        private ScriptableSequences emotionStateSequences;
+        public ScriptableSequences EmotionStateSequences => emotionStateSequences;
+
+        [SerializeField]
         private int skillInvokeSharpenAttackUpAttackMax;
         public int SkillInvokeSharpenAttackUpAttackMax => skillInvokeSharpenAttackUpAttackMax;
 

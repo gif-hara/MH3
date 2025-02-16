@@ -149,6 +149,14 @@ namespace MH3.ActorControllers
             onBeginRecoveryCommand.OnNext(specController.RecoveryCommandType);
         }
 
+        public bool TryEmotion(string emotionName)
+        {
+            return actor.StateMachine.TryChangeState(
+                TinyServiceLocator.Resolve<GameRules>().EmotionStateSequences,
+                containerAction: c => c.Register("AttackName", emotionName)
+                );
+        }
+
         public async UniTask BeginDualSwordDodgeModeAsync()
         {
             try
