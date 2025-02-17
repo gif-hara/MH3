@@ -20,7 +20,7 @@ namespace MH3
             var inputController = TinyServiceLocator.Resolve<InputController>();
             await inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
-                    .FirstAsync();
+                    .FirstAsync(scope);
         }
 
         public void Dispose()
