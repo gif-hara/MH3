@@ -19,6 +19,8 @@ namespace MH3
     {
         private readonly HKUIDocument document;
         
+        private readonly List<Selectable> buttons = new();
+        
         private UIViewList(HKUIDocument document)
         {
             this.document = document;
@@ -28,7 +30,8 @@ namespace MH3
         (
             HKUIDocument listDocumentPrefab,
             IEnumerable<Action<HKUIDocument>> elementActivateActions,
-            int initialElementIndex
+            int initialElementIndex,
+            bool canSetSelectedGameObject = true
         )
         {
             var document = Object.Instantiate(listDocumentPrefab);
@@ -65,9 +68,9 @@ namespace MH3
                     EventSystem.current.SetSelectedGameObject(defaultSelectable.gameObject);
                 })
                 .RegisterTo(document.destroyCancellationToken);
-            CreateList(initialElementIndex % elementCount);
+            CreateList(initialElementIndex % elementCount, canSetSelectedGameObject);
 
-            void CreateList(int selectIndex)
+            void CreateList(int selectIndex, bool canSetSelectedGameObject)
             {
                 foreach (var element in elements)
                 {
@@ -75,13 +78,13 @@ namespace MH3
                 }
                 elements.Clear();
                 elementIndex = 0;
-                var buttons = new List<Button>();
+                result.buttons.Clear();
                 foreach (var action in elementActivateActions.Skip(pageIndex * elementCount).Take(elementCount))
                 {
                     var element = Object.Instantiate(listElementPrefab, listParent);
                     elements.Add(element);
                     var button = element.Q<Button>("Button");
-                    buttons.Add(button);
+                    result.buttons.Add(button);
                     action(element);
                     button.OnSelectAsObservable()
                         .Subscribe(_ =>
@@ -102,12 +105,12 @@ namespace MH3
                                     if (direction.x > 0)
                                     {
                                         pageIndex = (pageIndex + 1) % (pageMax + 1);
-                                        CreateList(0);
+                                        CreateList(0, true);
                                     }
                                     else if (direction.x < 0)
                                     {
                                         pageIndex = pageIndex == 0 ? pageMax : pageIndex - 1;
-                                        CreateList(0);
+                                        CreateList(0, true);
                                     }
                                 })
                                 .RegisterTo(element.destroyCancellationToken);
@@ -115,12 +118,15 @@ namespace MH3
                         .RegisterTo(element.destroyCancellationToken);
                     if (elementIndex == selectIndex)
                     {
-                        EventSystem.current.SetSelectedGameObject(button.gameObject);
+                        if (canSetSelectedGameObject)
+                        {
+                            EventSystem.current.SetSelectedGameObject(button.gameObject);
+                        }
                         defaultSelectable = button;
                     }
                     elementIndex++;
                 }
-                buttons.SetNavigationVertical();
+                result.buttons.SetNavigationVertical();
                 UpdatePage(pageIndex);
             }
             void UpdatePage(int index)
