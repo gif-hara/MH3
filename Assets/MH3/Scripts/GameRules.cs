@@ -4,6 +4,7 @@ using HK;
 using MH3.ProjectileControllers;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnitySequencerSystem;
 
 namespace MH3
@@ -242,10 +243,12 @@ namespace MH3
         public class KeyConfigElement
         {
             [SerializeField]
-            private InputActionReference inputAction;
+            private InputActionReference inputActionReference;
+            public InputActionReference InputActionReference => inputActionReference;
 
             [SerializeField]
             private string inputName;
+            public string InputName => inputName;
         }
     }
 }
