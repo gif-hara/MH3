@@ -15,5 +15,9 @@ namespace MH3
         [SerializeField]
         private SystemData systemData = new();
         public SystemData SystemData => systemData;
+        
+        [SerializeField]
+        private KeyConfigData keyConfigData = new();
+        public KeyConfigData KeyConfigData => keyConfigData;
     }
 }

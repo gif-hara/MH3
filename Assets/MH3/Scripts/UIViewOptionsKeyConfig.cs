@@ -27,13 +27,13 @@ namespace MH3
                 gameRules.KeyConfigElements.Select(x => new Action<HKUIDocument>(document =>
                 {
                     var builder = new UIViewListElementBuilder(document);
-                    builder.EditHeader(header => header.text = x.InputName);
+                    builder.EditHeader(header => header.text = x.InputName.Localized());
                     builder.EditButton(button =>
                     {
                         button.OnClickAsObservable()
                             .Subscribe(_ =>
                             {
-                                BeginRebindingAsync(x.InputActionReference.action, button).Forget();
+                                BeginRebindingAsync(x.InputActionReference.action, x.SaveKey, button).Forget();
                             })
                             .RegisterTo(button.destroyCancellationToken);
                     });
@@ -60,7 +60,7 @@ namespace MH3
             list.Dispose();
         }
         
-        private async UniTask BeginRebindingAsync(InputAction inputAction, Selectable listElementSelectable)
+        private async UniTask BeginRebindingAsync(InputAction inputAction, string saveKey, Selectable listElementSelectable)
         {
             EventSystem.current.SetSelectedGameObject(null);
             rebindingDocument.gameObject.SetActive(true);
@@ -68,6 +68,9 @@ namespace MH3
             await inputController.BeginRebindingAsync(inputAction);
             rebindingDocument.gameObject.SetActive(false);
             EventSystem.current.SetSelectedGameObject(listElementSelectable.gameObject);
+            var saveData = TinyServiceLocator.Resolve<SaveData>();
+            saveData.KeyConfigData.AddOrReplace(saveKey, inputAction.SaveBindingOverridesAsJson());
+            SaveSystem.Save(saveData, SaveData.Path);
         }
     }
 }

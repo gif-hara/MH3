@@ -249,6 +249,10 @@ namespace MH3
             [SerializeField]
             private string inputName;
             public string InputName => inputName;
+            
+            [SerializeField]
+            private string saveKey;
+            public string SaveKey => saveKey;
         }
     }
 }
