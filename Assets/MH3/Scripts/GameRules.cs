@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using HK;
 using MH3.ProjectileControllers;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnitySequencerSystem;
 
 namespace MH3
@@ -177,7 +178,10 @@ namespace MH3
         [SerializeField]
         private List<EnemyBeginQuestEmotion> enemyBeginQuestEmotions;
         public List<EnemyBeginQuestEmotion> EnemyBeginQuestEmotions => enemyBeginQuestEmotions;
-
+        
+        [SerializeField]
+        private List<KeyConfigElement> keyConfigElements;
+        public List<KeyConfigElement> KeyConfigElements => keyConfigElements;
 
         [Serializable]
         public class ElementProjectile
@@ -232,6 +236,16 @@ namespace MH3
             [SerializeField]
             private List<string> emotionKeys;
             public List<string> EmotionKeys => emotionKeys;
+        }
+
+        [Serializable]
+        public class KeyConfigElement
+        {
+            [SerializeField]
+            private InputActionReference inputAction;
+
+            [SerializeField]
+            private string inputName;
         }
     }
 }
