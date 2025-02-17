@@ -103,6 +103,9 @@ namespace MH3
 
         [SerializeField]
         private HKUIDocument optionsKeyConfigDocumentPrefab;
+        
+        [SerializeField]
+        private HKUIDocument keyConfigRebindingDocumentPrefab;
 
         [SerializeField]
         private HKUIDocument actorEventNotificationDocumentPrefab;
@@ -313,6 +316,7 @@ namespace MH3
                         optionsSoundsDocumentPrefab,
                         termDescriptionDocumentPrefab,
                         optionsKeyConfigDocumentPrefab,
+                        keyConfigRebindingDocumentPrefab,
                         player,
                         this,
                         currentQuestSpec.Id == homeQuestSpecId,

@@ -72,6 +72,11 @@ namespace MH3
                 Actions.Enable();
             }
         }
+        
+        public UniTask<RebindingResult> BeginRebindingAsync(InputAction inputAction)
+        {
+            return BeginRebindingAsync(inputAction, TinyServiceLocator.Resolve<InputScheme>().CurrentInputSchemeType);
+        }
 
         private void ChangeInputType(InputActionType type)
         {

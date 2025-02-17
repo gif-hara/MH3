@@ -29,6 +29,7 @@ namespace MH3
             HKUIDocument optionsSoundsDocumentPrefab,
             HKUIDocument termDescriptionDocumentPrefab,
             HKUIDocument optionsKeyConfigDocumentPrefab,
+            HKUIDocument keyConfigRebindingDocumentPrefab,
             Actor actor,
             GameSceneController gameSceneController,
             bool isHome,
@@ -1509,7 +1510,7 @@ namespace MH3
                                             .Subscribe(_ =>
                                             {
                                                 UIViewTips.SetTip("操作するキーの設定を行います。".Localized());
-                                                RegisterUIViewOptions(new UIViewOptionsKeyConfig(optionsKeyConfigDocumentPrefab));
+                                                RegisterUIViewOptions(new UIViewOptionsKeyConfig(optionsKeyConfigDocumentPrefab, keyConfigRebindingDocumentPrefab));
                                             })
                                             .RegisterTo(button.destroyCancellationToken);
                                     });
