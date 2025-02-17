@@ -153,6 +153,11 @@ namespace MH3
         {
             document.DestroySafe();
         }
+        
+        public void SetSelectable(int index)
+        {
+            EventSystem.current.SetSelectedGameObject(buttons[index].gameObject);
+        }
 
         public static void ApplyAsSimpleElement
         (
