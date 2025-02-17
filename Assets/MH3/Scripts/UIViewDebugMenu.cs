@@ -150,7 +150,7 @@ namespace MH3
                     .Subscribe(_ => debugMenuScope.Dispose())
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
             }
 
             async UniTask StateBattle(CancellationToken scope)
@@ -255,7 +255,7 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
             }
 
             async UniTask StateQuest(CancellationToken scope)
@@ -282,7 +282,7 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
             }
 
             async UniTask StateCreateInstanceWeapon(CancellationToken scope)
@@ -310,7 +310,7 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
             }
 
             async UniTask StateCreateInstanceArmor(CancellationToken scope)
@@ -338,7 +338,7 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
             }
 
             async UniTask StateCreateInstanceSkillCore(CancellationToken scope)
@@ -366,7 +366,7 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.gameObject.DestroySafe();
+                list.Dispose();
             }
 
             async UniTask StateAddAvailableContents(CancellationToken scope)
@@ -396,7 +396,7 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
             }
 
             async UniTask StateCheck(CancellationToken scope)
@@ -456,7 +456,7 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
             }
 
             async UniTask StateCreateSkillCoreSelectSkill(CancellationToken scope)
@@ -490,7 +490,7 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
             }
         }
     }

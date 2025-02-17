@@ -15,9 +15,16 @@ namespace MH3
     /// <summary>
     /// 
     /// </summary>
-    public sealed class UIViewList
+    public sealed class UIViewList : IDisposable
     {
-        public static HKUIDocument CreateWithPages
+        private readonly HKUIDocument document;
+        
+        private UIViewList(HKUIDocument document)
+        {
+            this.document = document;
+        }
+        
+        public static UIViewList CreateWithPages
         (
             HKUIDocument listDocumentPrefab,
             IEnumerable<Action<HKUIDocument>> elementActivateActions,
@@ -25,6 +32,7 @@ namespace MH3
         )
         {
             var document = Object.Instantiate(listDocumentPrefab);
+            var result = new UIViewList(document);
             var listParent = document.Q<RectTransform>("Parent.List");
             var layoutGroup = document.Q<VerticalLayoutGroup>("Parent.List");
             var listElementPrefab = document.Q<HKUIDocument>("Prefab.Element");
@@ -132,7 +140,12 @@ namespace MH3
                     document.Q<TMP_Text>("Text.Page").text = $"{index + 1}/{pageMax + 1}";
                 }
             }
-            return document;
+            return result;
+        }
+        
+        public void Dispose()
+        {
+            document.DestroySafe();
         }
 
         public static void ApplyAsSimpleElement

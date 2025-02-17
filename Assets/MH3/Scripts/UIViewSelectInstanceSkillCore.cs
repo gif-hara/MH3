@@ -45,7 +45,7 @@ namespace MH3
             scope.RegisterWithoutCaptureExecutionContext(() =>
             {
                 instanceSkillCoreView.DestroySafe();
-                list.DestroySafe();
+                list.Dispose();
                 inputController.PopActionType();
             });
             return UniTask.WaitUntilCanceled(scope);

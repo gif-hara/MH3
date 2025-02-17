@@ -2,13 +2,13 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using HK;
 using R3;
-using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace MH3
 {
     public class UIViewOptionsKeyConfig : IUIViewOptions
     {
-        private HKUIDocument document;
+        private readonly HKUIDocument document;
 
         public UIViewOptionsKeyConfig(HKUIDocument documentPrefab)
         {

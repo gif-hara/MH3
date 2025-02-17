@@ -80,7 +80,7 @@ namespace MH3
                 .OnPerformedAsObservable()
                 .FirstAsync(scope.Token);
             descriptionDocument.DestroySafe();
-            listDocument.DestroySafe();
+            listDocument.Dispose();
             scope.Cancel();
             scope.Dispose();
         }

@@ -49,7 +49,7 @@ namespace MH3
                 ).Localized(), pauseMenuScope.Token);
             InstanceWeapon selectedInstanceWeapon = null;
             Define.ArmorType selectedArmorType = Define.ArmorType.Head;
-            HKUIDocument optionsListDocument = null;
+            UIViewList optionsListDocument = null;
             Selectable optionsListSelection = null;
             List<UIViewTermDescription.Element> termDescriptionElements = null;
             Func<CancellationToken, UniTask> onEndTermDescriptionNextState = null;
@@ -193,7 +193,7 @@ namespace MH3
                     })
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
                 actorSpecStatusDocument.DestroySafe();
 
                 void AddListElement(string headerText, Action<Unit> onClick, Action<BaseEventData> onSelect, bool isActiveBadge)
@@ -274,7 +274,7 @@ namespace MH3
                     .Subscribe(_ => pauseMenuScope.Dispose())
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
             }
 
             async UniTask StateSelectQuest(CancellationToken scope)
@@ -325,7 +325,7 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateHomeRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
                 questSpecStatusDocument.DestroySafe();
             }
 
@@ -386,7 +386,7 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateHomeRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
                 void AddListElement(string headerText, Action<Unit> onClick, Action<BaseEventData> onSelect, bool isActiveBadge)
                 {
                     var index = listElements.Count;
@@ -528,7 +528,7 @@ namespace MH3
                 instanceWeaponView.Q("Area.Default").SetActive(instanceWeapons.Count > 0);
                 instanceWeaponView.Q("Area.Empty").SetActive(instanceWeapons.Count <= 0);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
                 instanceWeaponView.DestroySafe();
             }
 
@@ -647,7 +647,7 @@ namespace MH3
                 instanceArmorView.Q("Area.Default").SetActive(instanceArmors.Any());
                 instanceArmorView.Q("Area.Empty").SetActive(!instanceArmors.Any());
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
                 instanceArmorView.DestroySafe();
             }
 
@@ -708,7 +708,7 @@ namespace MH3
                     .Subscribe(_ => stateMachine.Change(StateHomeRoot))
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
                 void AddListElement(string headerText, Action<Unit> onClick, Action<BaseEventData> onSelect, bool isActiveBadge)
                 {
                     var index = listElements.Count;
@@ -753,7 +753,7 @@ namespace MH3
                     ).Localized(), scope);
                 CancellationDisposable dialogScope = null;
                 Selectable tempSelection = null;
-                HKUIDocument list = null;
+                UIViewList list = null;
                 CreateList();
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
@@ -767,7 +767,7 @@ namespace MH3
                 {
                     if (list != null)
                     {
-                        list.DestroySafe();
+                        list.Dispose();
                     }
                     var instanceWeapons = userData.InstanceWeapons
                         .Where(x => x.InstanceId != userData.EquippedInstanceWeaponId);
@@ -873,7 +873,7 @@ namespace MH3
                     instanceWeaponView.Q("Area.Empty").SetActive(!instanceWeapons.Any());
                 }
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
                 instanceWeaponView.DestroySafe();
             }
 
@@ -893,7 +893,7 @@ namespace MH3
                     ).Localized(), scope);
                 CancellationDisposable dialogScope = null;
                 Selectable tempSelection = null;
-                HKUIDocument list = null;
+                UIViewList list = null;
                 CreateList();
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
@@ -907,7 +907,7 @@ namespace MH3
                 {
                     if (list != null)
                     {
-                        list.DestroySafe();
+                        list.Dispose();
                     }
                     var instanceArmors = userData.InstanceArmors
                         .Where(x => x.ArmorSpec.ArmorType == selectedArmorType);
@@ -1023,7 +1023,7 @@ namespace MH3
                     instanceArmorView.Q("Area.Empty").SetActive(!instanceArmors.Any());
                 }
                 await UniTask.WaitUntilCanceled(scope);
-                list.DestroySafe();
+                list.Dispose();
                 instanceArmorView.DestroySafe();
             }
 
@@ -1143,7 +1143,7 @@ namespace MH3
                 instanceWeaponView.Q("Area.Empty").SetActive(!instanceWeapons.Any());
                 await UniTask.WaitUntilCanceled(scope);
                 instanceWeaponView.DestroySafe();
-                list.DestroySafe();
+                list.Dispose();
             }
 
             async UniTask StateRemoveInstanceSkillCore(CancellationToken scope)
@@ -1161,13 +1161,13 @@ namespace MH3
                     InputSprite.GetTag(inputController.Actions.UI.Description)
                     ).Localized(), scope);
                 CancellationDisposable dialogScope = null;
-                HKUIDocument list = null;
+                UIViewList list = null;
                 CreateList();
                 void CreateList()
                 {
                     if (list != null)
                     {
-                        list.DestroySafe();
+                        list.Dispose();
                     }
                     var instanceSkillCores = userData.InstanceSkillCores;
                     list = UIViewList.CreateWithPages(
@@ -1310,7 +1310,7 @@ namespace MH3
                     .RegisterTo(scope);
                 await UniTask.WaitUntilCanceled(scope);
                 instanceSkillCoreView.DestroySafe();
-                list.DestroySafe();
+                list.Dispose();
             }
 
             async UniTask StateAddInstanceSkillCoreSelectSkillCore(CancellationToken scope)
@@ -1320,14 +1320,14 @@ namespace MH3
                 var instanceSkillCoreSequences = instanceSkillCoreView.Q<SequencesMonoBehaviour>("Sequences");
                 var instanceSkillCores = TinyServiceLocator.Resolve<UserData>().InstanceSkillCores;
                 var listIndex = 0;
-                HKUIDocument list = null;
+                UIViewList list = null;
                 UIViewTips.SetTip("装着するスキルコアを選択してください。".Localized());
                 CreateList();
                 void CreateList()
                 {
                     if (list != null)
                     {
-                        list.DestroySafe();
+                        list.Dispose();
                     }
                     list = UIViewList.CreateWithPages(
                         listDocumentPrefab,
@@ -1452,7 +1452,7 @@ namespace MH3
                 await UniTask.WaitUntilCanceled(scope);
 
                 instanceSkillCoreView.DestroySafe();
-                list.DestroySafe();
+                list.Dispose();
             }
 
             async UniTask StateOptionsRoot(CancellationToken scope)
@@ -1526,7 +1526,7 @@ namespace MH3
                                         button.OnClickAsObservable()
                                             .Subscribe(_ =>
                                             {
-                                                optionsListDocument.DestroySafe();
+                                                optionsListDocument.Dispose();
                                                 stateMachine.Change(StateHomeRoot);
                                             })
                                             .RegisterTo(button.destroyCancellationToken);
@@ -1552,7 +1552,7 @@ namespace MH3
                     .Subscribe(_ =>
                     {
                         RegisterUIViewOptions(null);
-                        optionsListDocument.DestroySafe();
+                        optionsListDocument.Dispose();
                         stateMachine.Change(StateHomeRoot);
                     })
                     .RegisterTo(scope);
