@@ -23,6 +23,12 @@ namespace MH3
             }
         }
         
+        public string GetOrDefaultJson(string name)
+        {
+            var element = elements.Find(e => e.Name == name);
+            return element == null ? "" : element.Json;
+        }
+        
         [Serializable]
         public class Element
         {

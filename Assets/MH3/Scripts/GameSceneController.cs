@@ -5,6 +5,7 @@ using LitMotion;
 using MH3.ActorControllers;
 using R3;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnitySequencerSystem;
 
 namespace MH3
@@ -185,6 +186,14 @@ namespace MH3
                 saveData.SystemData.BgmVolume = 0.4f;
                 saveData.SystemData.SfxVolume = 1.0f;
                 SaveSystem.Save(saveData, SaveData.Path);
+            }
+            foreach (var i in gameRules.KeyConfigElements)
+            {
+                var json = saveData.KeyConfigData.GetOrDefaultJson(i.SaveKey);
+                if (!string.IsNullOrEmpty(json))
+                {
+                    i.InputActionReference.action.LoadBindingOverridesFromJson(json);
+                }
             }
             TinyServiceLocator.RegisterAsync(saveData, destroyCancellationToken).Forget();
             audioManager.SetVolumeMaster(saveData.SystemData.MasterVolume);
