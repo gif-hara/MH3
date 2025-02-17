@@ -58,6 +58,7 @@ namespace MH3
         public void Dispose()
         {
             list.Dispose();
+            rebindingDocument.DestroySafe();
         }
         
         private async UniTask BeginRebindingAsync(InputAction inputAction, string saveKey, Selectable listElementSelectable)
