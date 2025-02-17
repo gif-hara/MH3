@@ -26,20 +26,18 @@ namespace MH3
                 listDocumentPrefab,
                 gameRules.KeyConfigElements.Select(x => new Action<HKUIDocument>(document =>
                 {
-                    var builder = new UIViewListElementBuilder(document);
-                    builder.EditHeader(header => header.text = x.InputName.Localized());
+                    var builder = SetupListElementView(document, x);
                     builder.EditButton(button =>
                     {
                         button.OnClickAsObservable()
                             .Subscribe(_ =>
                             {
-                                BeginRebindingAsync(x.InputActionReference.action, x.SaveKey, button).Forget();
+                                BeginRebindingAsync(x.InputActionReference.action, x.SaveKey, button, document, x).Forget();
                             })
                             .RegisterTo(button.destroyCancellationToken);
                     });
-                    document.Q<TMP_Text>("InputSprite").text = InputSprite.GetTag(x.InputActionReference.action);
-                })),
-                    0,
+                })), 
+                0,
                 false
                 );
             rebindingDocument = Object.Instantiate(rebindingDocumentPrefab);
@@ -61,17 +59,35 @@ namespace MH3
             rebindingDocument.DestroySafe();
         }
         
-        private async UniTask BeginRebindingAsync(InputAction inputAction, string saveKey, Selectable listElementSelectable)
+        private async UniTask BeginRebindingAsync(
+            InputAction inputAction,
+            string saveKey,
+            Selectable listElementSelectable,
+            HKUIDocument listElementDocument,
+            GameRules.KeyConfigElement keyConfigElement
+            )
         {
             EventSystem.current.SetSelectedGameObject(null);
             rebindingDocument.gameObject.SetActive(true);
             var inputController = TinyServiceLocator.Resolve<InputController>();
-            await inputController.BeginRebindingAsync(inputAction);
+            var bindingResult = await inputController.BeginRebindingAsync(inputAction);
             rebindingDocument.gameObject.SetActive(false);
-            EventSystem.current.SetSelectedGameObject(listElementSelectable.gameObject);
-            var saveData = TinyServiceLocator.Resolve<SaveData>();
-            saveData.KeyConfigData.AddOrReplace(saveKey, inputAction.SaveBindingOverridesAsJson());
-            SaveSystem.Save(saveData, SaveData.Path);
+            if (bindingResult == InputController.RebindingResult.Completed)
+            {
+                EventSystem.current.SetSelectedGameObject(listElementSelectable.gameObject);
+                SetupListElementView(listElementDocument, keyConfigElement);
+                var saveData = TinyServiceLocator.Resolve<SaveData>();
+                saveData.KeyConfigData.AddOrReplace(saveKey, inputAction.SaveBindingOverridesAsJson());
+                SaveSystem.Save(saveData, SaveData.Path);
+            }
+        }
+
+        private static UIViewListElementBuilder SetupListElementView(HKUIDocument listElementDocument, GameRules.KeyConfigElement keyConfigElement)
+        {
+            var builder = new UIViewListElementBuilder(listElementDocument);
+            builder.EditHeader(header => header.text = keyConfigElement.InputName.Localized());
+            listElementDocument.Q<TMP_Text>("InputSprite").text = InputSprite.GetTag(keyConfigElement.InputActionReference.action);
+            return builder;
         }
     }
 }
