@@ -11,6 +11,7 @@ namespace MH3
         {
             Player,
             UI,
+            Disable,
         }
 
         public MHInputActions Actions { get; }
@@ -48,6 +49,7 @@ namespace MH3
         {
             rebindOperation?.Cancel();
             inputAction.Disable();
+            PushActionType(InputActionType.Disable);
             var bindingIndex = inputAction.GetBindingIndex(InputBinding.MaskByGroup(InputScheme.GetSchemeName(schemeType)));
             var source = new UniTaskCompletionSource<RebindingResult>();
             rebindOperation = inputAction.PerformInteractiveRebinding(bindingIndex)
@@ -61,6 +63,14 @@ namespace MH3
                     source.TrySetResult(RebindingResult.Canceled);
                     OnFinished();
                 })
+                .WithControlsExcluding("<Gamepad>/leftStick/left")
+                .WithControlsExcluding("<Gamepad>/leftStick/up")
+                .WithControlsExcluding("<Gamepad>/leftStick/right")
+                .WithControlsExcluding("<Gamepad>/leftStick/down")
+                .WithControlsExcluding("<Gamepad>/rightStick/left")
+                .WithControlsExcluding("<Gamepad>/rightStick/up")
+                .WithControlsExcluding("<Gamepad>/rightStick/right")
+                .WithControlsExcluding("<Gamepad>/rightStick/down")
                 .Start();
             
             return source.Task;
@@ -70,6 +80,7 @@ namespace MH3
                 rebindOperation?.Dispose();
                 rebindOperation = null;
                 inputAction.Enable();
+                PopActionType();
             }
         }
         
@@ -78,11 +89,21 @@ namespace MH3
             return BeginRebindingAsync(inputAction, TinyServiceLocator.Resolve<InputScheme>().CurrentInputSchemeType);
         }
 
-        public void LoadRebinding(List<string> jsons)
+        public InputAction FindAction(InputActionReference reference)
+        {
+            return Actions.FindAction(reference.action.name);
+        }
+
+        public void LoadBindingOverrideFromJson(string json)
+        {
+            Actions.LoadBindingOverridesFromJson(json, false);
+        }
+
+        public void LoadBindingOverrideFromJson(List<string> jsons)
         {
             foreach (var json in jsons)
             {
-                Actions.LoadBindingOverridesFromJson(json, false);
+                LoadBindingOverrideFromJson(json);
             }
         }
 

@@ -19,6 +19,8 @@ namespace MH3
         
         private readonly HKUIDocument rebindingDocument;
 
+        private bool isRebinding;
+
         public UIViewOptionsKeyConfig(HKUIDocument listDocumentPrefab, HKUIDocument rebindingDocumentPrefab)
         {
             var gameRules = TinyServiceLocator.Resolve<GameRules>();
@@ -50,6 +52,7 @@ namespace MH3
             var inputController = TinyServiceLocator.Resolve<InputController>();
             await inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
+                    .Where(_ => !isRebinding)
                     .FirstAsync(scope);
         }
 
@@ -67,26 +70,31 @@ namespace MH3
             GameRules.KeyConfigElement keyConfigElement
             )
         {
-            EventSystem.current.SetSelectedGameObject(null);
+            isRebinding = true;
+            EventSystem.current.SetSelectedGameObject(rebindingDocument.gameObject);
             rebindingDocument.gameObject.SetActive(true);
             var inputController = TinyServiceLocator.Resolve<InputController>();
             var bindingResult = await inputController.BeginRebindingAsync(inputAction);
             rebindingDocument.gameObject.SetActive(false);
             if (bindingResult == InputController.RebindingResult.Completed)
             {
-                EventSystem.current.SetSelectedGameObject(listElementSelectable.gameObject);
-                SetupListElementView(listElementDocument, keyConfigElement);
                 var saveData = TinyServiceLocator.Resolve<SaveData>();
-                saveData.KeyConfigData.AddOrReplace(saveKey, inputAction.SaveBindingOverridesAsJson());
+                var json = inputAction.SaveBindingOverridesAsJson();
+                saveData.KeyConfigData.AddOrReplace(saveKey, json);
+                TinyServiceLocator.Resolve<InputController>().LoadBindingOverrideFromJson(json);
                 SaveSystem.Save(saveData, SaveData.Path);
+                SetupListElementView(listElementDocument, keyConfigElement);
             }
+            await UniTask.Delay(TimeSpan.FromSeconds(0.05f));
+            EventSystem.current.SetSelectedGameObject(listElementSelectable.gameObject);
+            isRebinding = false;
         }
 
         private static UIViewListElementBuilder SetupListElementView(HKUIDocument listElementDocument, GameRules.KeyConfigElement keyConfigElement)
         {
             var builder = new UIViewListElementBuilder(listElementDocument);
             builder.EditHeader(header => header.text = keyConfigElement.InputName.Localized());
-            listElementDocument.Q<TMP_Text>("InputSprite").text = InputSprite.GetTag(keyConfigElement.InputActionReference.action);
+            listElementDocument.Q<TMP_Text>("InputSprite").text = InputSprite.GetTag(TinyServiceLocator.Resolve<InputController>().FindAction(keyConfigElement.InputActionReference));
             return builder;
         }
     }
