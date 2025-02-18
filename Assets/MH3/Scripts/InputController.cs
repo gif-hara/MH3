@@ -47,7 +47,7 @@ namespace MH3
         public UniTask<RebindingResult> BeginRebindingAsync(InputAction inputAction, InputScheme.InputSchemeType schemeType)
         {
             rebindOperation?.Cancel();
-            Actions.Disable();
+            inputAction.Disable();
             var bindingIndex = inputAction.GetBindingIndex(InputBinding.MaskByGroup(InputScheme.GetSchemeName(schemeType)));
             var source = new UniTaskCompletionSource<RebindingResult>();
             rebindOperation = inputAction.PerformInteractiveRebinding(bindingIndex)
@@ -69,13 +69,21 @@ namespace MH3
             {
                 rebindOperation?.Dispose();
                 rebindOperation = null;
-                Actions.Enable();
+                inputAction.Enable();
             }
         }
         
         public UniTask<RebindingResult> BeginRebindingAsync(InputAction inputAction)
         {
             return BeginRebindingAsync(inputAction, TinyServiceLocator.Resolve<InputScheme>().CurrentInputSchemeType);
+        }
+
+        public void LoadRebinding(List<string> jsons)
+        {
+            foreach (var json in jsons)
+            {
+                Actions.LoadBindingOverridesFromJson(json, false);
+            }
         }
 
         private void ChangeInputType(InputActionType type)

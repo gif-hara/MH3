@@ -187,14 +187,7 @@ namespace MH3
                 saveData.SystemData.SfxVolume = 1.0f;
                 SaveSystem.Save(saveData, SaveData.Path);
             }
-            foreach (var i in gameRules.KeyConfigElements)
-            {
-                var json = saveData.KeyConfigData.GetOrDefaultJson(i.SaveKey);
-                if (!string.IsNullOrEmpty(json))
-                {
-                    i.InputActionReference.action.LoadBindingOverridesFromJson(json);
-                }
-            }
+            inputController.LoadRebinding(saveData.KeyConfigData.GetAllJsons());
             TinyServiceLocator.RegisterAsync(saveData, destroyCancellationToken).Forget();
             audioManager.SetVolumeMaster(saveData.SystemData.MasterVolume);
             audioManager.SetVolumeBgm(saveData.SystemData.BgmVolume);

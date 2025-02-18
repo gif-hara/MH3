@@ -1569,11 +1569,9 @@ namespace MH3
 
             async UniTask StateOptionsKeyConfig(CancellationToken scope)
             {
-                inputController.Actions.UI.Cancel
-                    .OnPerformedAsObservable()
-                    .Subscribe(_ => stateMachine.Change(StateOptionsRoot))
-                    .RegisterTo(scope);
-                await UniTask.WaitUntilCanceled(scope);
+                SetHeaderText("キーコンフィグ".Localized());
+                await options.ActivateAsync(scope);
+                stateMachine.Change(StateOptionsRoot);
             }
 
             async UniTask StateTermDescription(CancellationToken scope)

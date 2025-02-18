@@ -28,6 +28,11 @@ namespace MH3
             var element = elements.Find(e => e.Name == name);
             return element == null ? "" : element.Json;
         }
+
+        public List<string> GetAllJsons()
+        {
+            return elements.ConvertAll(e => e.Json);
+        }
         
         [Serializable]
         public class Element

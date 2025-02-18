@@ -431,6 +431,20 @@ namespace MH3
                         {
                             UIViewList.ApplyAsSimpleElement(
                                 document,
+                                "Output SaveData Json",
+                                _ =>
+                                {
+                                    var json = JsonUtility.ToJson(TinyServiceLocator.Resolve<SaveData>(), true);
+                                    var path = $"{Application.persistentDataPath}/SaveData.json";
+                                    System.IO.File.WriteAllText(path, json);
+                                    Debug.Log($"Output SaveData: {path}");
+                                    System.Diagnostics.Process.Start("explorer.exe", "/select," + path.Replace('/', '\\'));
+                                });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
                                 "Save",
                                 _ =>
                                 {
