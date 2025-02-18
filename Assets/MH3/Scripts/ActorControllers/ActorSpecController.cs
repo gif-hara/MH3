@@ -428,7 +428,10 @@ namespace MH3.ActorControllers
             }
             if (Invincible.Value)
             {
-                onEvade.OnNext(Unit.Default);
+                if(!IsDead)
+                {
+                    onEvade.OnNext(Unit.Default);
+                }
                 return;
             }
 
