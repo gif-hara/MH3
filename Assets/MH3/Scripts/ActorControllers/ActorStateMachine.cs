@@ -34,14 +34,14 @@ namespace MH3.ActorControllers
             stateMachine?.Dispose();
         }
 
-        public bool TryChangeState(ScriptableSequences sequence, bool force = false, Action<Container> containerAction = null, Container nextContainer = null, bool deadSequence = false)
+        public bool TryChangeState(ScriptableSequences sequence, bool force = false, Action<Container> containerAction = null, Container nextContainer = null)
         {
-            if (!force && !deadSequence)
+            if(actor.SpecController.IsDead)
             {
-                if(actor.SpecController.IsDead)
-                {
-                    return false;
-                }
+                return false;
+            }
+            if (!force)
+            {
                 if (nextStateSequences != null)
                 {
                     return false;
@@ -56,11 +56,16 @@ namespace MH3.ActorControllers
                 }
             }
 
+            ChangeStateRaw(sequence, containerAction, nextContainer);
+            return true;
+        }
+
+        public void ChangeStateRaw(ScriptableSequences sequence, Action<Container> containerAction = null, Container nextContainer = null)
+        {
             nextStateSequences = sequence;
             this.nextContainer = nextContainer;
             this.containerAction = containerAction;
             stateMachine.Change(State);
-            return true;
         }
 
         private async UniTask State(CancellationToken scope)
