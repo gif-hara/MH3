@@ -421,6 +421,10 @@ namespace MH3.ActorControllers
 
         public void TakeDamage(Actor attacker, MasterData.AttackSpec attackSpec, Vector3 impactPosition)
         {
+            if(attacker.SpecController.IsDead)
+            {
+                return;
+            }
             if (attackSpec == null)
             {
                 Debug.LogError("AttackSpec is null.");
