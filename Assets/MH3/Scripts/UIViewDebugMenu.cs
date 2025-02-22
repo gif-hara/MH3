@@ -248,6 +248,32 @@ namespace MH3
                                     Debug.Log($"ForceFlinchSmallEnemy: {debugData.ForceFlinchSmallEnemy}");
                                 });
                         },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "相打ち再現（先手プレイヤー）".Localized(),
+                                _ =>
+                                {
+                                    var attackSpec = TinyServiceLocator.Resolve<MasterData>().AttackSpecs.Get("Debug.1");
+                                    enemy.SpecController.TakeDamage(player, attackSpec, Vector3.zero);
+                                    player.SpecController.TakeDamage(enemy, attackSpec, Vector3.zero);
+                                    Debug.Log($"相打ち再現（先手プレイヤー）");
+                                });
+                        },
+                        document =>
+                        {
+                            UIViewList.ApplyAsSimpleElement(
+                                document,
+                                "相打ち再現（先手エネミー）".Localized(),
+                                _ =>
+                                {
+                                    var attackSpec = TinyServiceLocator.Resolve<MasterData>().AttackSpecs.Get("Debug.1");
+                                    player.SpecController.TakeDamage(enemy, attackSpec, Vector3.zero);
+                                    enemy.SpecController.TakeDamage(player, attackSpec, Vector3.zero);
+                                    Debug.Log($"相打ち再現（先手エネミー）");
+                                });
+                        },
                     },
                     0
                 );
