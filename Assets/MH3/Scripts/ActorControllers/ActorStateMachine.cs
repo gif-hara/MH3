@@ -34,10 +34,14 @@ namespace MH3.ActorControllers
             stateMachine?.Dispose();
         }
 
-        public bool TryChangeState(ScriptableSequences sequence, bool force = false, Action<Container> containerAction = null, Container nextContainer = null)
+        public bool TryChangeState(ScriptableSequences sequence, bool force = false, Action<Container> containerAction = null, Container nextContainer = null, bool deadSequence = false)
         {
-            if (!force)
+            if (!force && !deadSequence)
             {
+                if(actor.SpecController.IsDead)
+                {
+                    return false;
+                }
                 if (nextStateSequences != null)
                 {
                     return false;

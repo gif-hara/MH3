@@ -544,7 +544,7 @@ namespace MH3.ActorControllers
 
                 if (fixedHitPoint <= 0)
                 {
-                    actor.StateMachine.TryChangeState(spec.DeadSequences, force: true);
+                    actor.StateMachine.TryChangeState(spec.DeadSequences, force: true, deadSequence: true);
                     onDead.OnNext(Unit.Default);
                     deadCancellationTokenSource.Cancel();
                 }
