@@ -5260,6 +5260,37 @@ Transform:
   - {fileID: 3644040840677302296}
   m_Father: {fileID: 2348120624201772175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3472991865016448175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6064113208113191710}
+  m_Layer: 0
+  m_Name: Poison
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6064113208113191710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3472991865016448175}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.404, z: 0.56}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2348120624201772175}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3877753016352188715
 GameObject:
   m_ObjectHideFlags: 0
@@ -5444,6 +5475,7 @@ Transform:
   - {fileID: 6512467387604763864}
   - {fileID: 3741586587114609927}
   - {fileID: 4537837427518285833}
+  - {fileID: 6064113208113191710}
   m_Father: {fileID: 4689199357322455563}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5680581291998855000
@@ -6520,7 +6552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: elements.list.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: elements.list.Array.data[2].name
@@ -6543,6 +6575,10 @@ PrefabInstance:
       value: Sharpen.1
       objectReference: {fileID: 0}
     - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: elements.list.Array.data[7].name
+      value: Poison
+      objectReference: {fileID: 0}
+    - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: elements.list.Array.data[2].transform
       value: 
       objectReference: {fileID: 238498635486094450}
@@ -6562,6 +6598,10 @@ PrefabInstance:
       propertyPath: elements.list.Array.data[6].transform
       value: 
       objectReference: {fileID: 4537837427518285833}
+    - target: {fileID: -1002714828873952109, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
+      propertyPath: elements.list.Array.data[7].transform
+      value: 
+      objectReference: {fileID: 6064113208113191710}
     - target: {fileID: 482408102529570401, guid: b71fe4e4c64838c4c9b9846f6271c75d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
