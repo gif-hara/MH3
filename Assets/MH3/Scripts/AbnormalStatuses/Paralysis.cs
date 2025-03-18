@@ -18,13 +18,13 @@ namespace MH3.AbnormalStatusSystems
             effectObject.transform.position = target.LocatorHolder.Get("Spine").position;
             effectObject.transform.SetParent(target.transform);
             await UniTask.Delay(TimeSpan.FromSeconds(target.SpecController.ParalysisDuration), cancellationToken: target.destroyCancellationToken);
+            effectManager.Return(effectObject, pool);
             if (target.SpecController.IsDead)
             {
                 return;
             }
             target.StateMachine.TryChangeState(gameRules.ParalysisEndSequence, true);
             target.SpecController.RemoveAppliedAbnormalStatus(Define.AbnormalStatusType.Paralysis);
-            effectManager.Return(effectObject, pool);
         }
     }
 }
