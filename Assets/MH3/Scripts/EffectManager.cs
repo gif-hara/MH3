@@ -18,6 +18,27 @@ namespace MH3
 
         public EffectObject Rent(string key)
         {
+            var pool = GetPool(key);
+            var instance = pool.Get();
+            ReturnAsync(pool, instance).Forget();
+            return instance;
+        }
+
+        public (EffectObject effectObject, ObjectPool<EffectObject> pool) RentManual(string key)
+        {
+            var pool = GetPool(key);
+            var instance = pool.Get();
+            return (instance, pool);
+        }
+
+        public void Return(EffectObject instance, ObjectPool<EffectObject> pool)
+        {
+            instance.transform.SetParent(transform);
+            pool.Release(instance);
+        }
+
+        private ObjectPool<EffectObject> GetPool(string key)
+        {
             if (!pools.TryGetValue(key, out var pool))
             {
                 var element = elements.Get(key);
@@ -30,9 +51,7 @@ namespace MH3
                 pools.Add(key, pool);
             }
 
-            var instance = pool.Get();
-            ReturnAsync(pool, instance).Forget();
-            return instance;
+            return pool;
         }
 
         private async UniTask ReturnAsync(ObjectPool<EffectObject> pool, EffectObject instance, CancellationToken cancellationToken = default)
@@ -43,8 +62,7 @@ namespace MH3
                 if (instance.CanWait())
                 {
                     await instance.WaitUntil(scope.Token);
-                    instance.transform.SetParent(transform);
-                    pool.Release(instance);
+                    Return(instance, pool);
                 }
             }
             catch (OperationCanceledException)
