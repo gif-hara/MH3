@@ -1,5 +1,70 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3266843598000402582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7825230889419629379}
+  - component: {fileID: 2722642827978266389}
+  m_Layer: 0
+  m_Name: Sequences
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7825230889419629379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3266843598000402582}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2576607508360681530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2722642827978266389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3266843598000402582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf7e9d8d7386d44eab912bc2ee1cf1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sequencesResolver:
+    rid: 2844027982870741084
+  playOnEnable: 1
+  root: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 2844027982870741084
+      type: {class: SequencesResolver/List, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value:
+        - rid: 2844027982870741085
+    - rid: 2844027982870741085
+      type: {class: PlaySfx, ns: MH3, asm: Assembly-CSharp}
+      data:
+        keyResolver:
+          rid: 2844027982870741086
+    - rid: 2844027982870741086
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Paralysis.1
 --- !u!1001 &8290785433163486290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8,6 +73,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3899821823048812639, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      propertyPath: lifeTime
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 5354848828147931912, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
       propertyPath: m_Name
       value: Effect.Paralysis.1
@@ -58,6 +127,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5822938317066341480, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5832314100289629130}
+    - targetCorrespondingSourceObject: {fileID: 5822938317066341480, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7825230889419629379}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f311de36128f45aaab6ebbaf3d0d271, type: 3}
 --- !u!4 &2576607508360681530 stripped
@@ -73,6 +145,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2576607508360681530}
     m_Modifications:
+    - target: {fileID: 414763684862052893, guid: c4758b790b6bbb44d94fa72ac207b97c, type: 3}
+      propertyPath: ShapeModule.type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 414763684862052893, guid: c4758b790b6bbb44d94fa72ac207b97c, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 414763684862052893, guid: c4758b790b6bbb44d94fa72ac207b97c, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 414763684862052893, guid: c4758b790b6bbb44d94fa72ac207b97c, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 414763684862052893, guid: c4758b790b6bbb44d94fa72ac207b97c, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 414763684862052893, guid: c4758b790b6bbb44d94fa72ac207b97c, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 414763684862052893, guid: c4758b790b6bbb44d94fa72ac207b97c, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 414763684862052893, guid: c4758b790b6bbb44d94fa72ac207b97c, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 30
