@@ -20,5 +20,10 @@ namespace MH3
                 TinyServiceLocator.Resolve<GameEvents>().OnTransitioned.FirstAsync().AsUniTask()
             );
         }
+
+        public bool CanWait()
+        {
+            return lifeTime > 0.0f;
+        }
     }
 }

@@ -35,14 +35,17 @@ namespace MH3
             return instance;
         }
 
-        private async UniTask ReturnAsync(ObjectPool<EffectObject> pool, EffectObject instance)
+        private async UniTask ReturnAsync(ObjectPool<EffectObject> pool, EffectObject instance, CancellationToken cancellationToken = default)
         {
             try
             {
-                var scope = CancellationTokenSource.CreateLinkedTokenSource(destroyCancellationToken, instance.destroyCancellationToken);
-                await instance.WaitUntil(scope.Token);
-                instance.transform.SetParent(transform);
-                pool.Release(instance);
+                var scope = CancellationTokenSource.CreateLinkedTokenSource(destroyCancellationToken, instance.destroyCancellationToken, cancellationToken);
+                if (instance.CanWait())
+                {
+                    await instance.WaitUntil(scope.Token);
+                    instance.transform.SetParent(transform);
+                    pool.Release(instance);
+                }
             }
             catch (OperationCanceledException)
             {
