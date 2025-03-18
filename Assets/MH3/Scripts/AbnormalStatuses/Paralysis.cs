@@ -15,7 +15,7 @@ namespace MH3.AbnormalStatusSystems
             target.StateMachine.TryChangeState(gameRules.ParalysisBeginSequence, true);
             target.SpecController.ResetFlinch();
             var (effectObject, pool) = effectManager.RentManual("AbnormalStatus.Paralysis.1");
-            effectObject.transform.position = target.transform.position;
+            effectObject.transform.position = target.LocatorHolder.Get("Spine").position;
             effectObject.transform.SetParent(target.transform);
             await UniTask.Delay(TimeSpan.FromSeconds(target.SpecController.ParalysisDuration), cancellationToken: target.destroyCancellationToken);
             if (target.SpecController.IsDead)
