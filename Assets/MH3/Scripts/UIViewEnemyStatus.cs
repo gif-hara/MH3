@@ -35,28 +35,32 @@ namespace MH3
             if (actor.SpecController.VisibleStatusUI)
             {
                 var gameEvents = TinyServiceLocator.Resolve<GameEvents>();
-                gameEvents.OnBeginPauseMenu
-                    .Subscribe(document, (_, d) =>
+                Observable.Merge
+                    (
+                        gameEvents.OnBeginPauseMenu,
+                        gameEvents.OnBeginAcquireReward,
+                        gameEvents.OnBeginBattleStartEffect
+                    )
+                    .Subscribe(document, static (_, d) =>
                     {
                         d.gameObject.SetActive(false);
                     })
                     .RegisterTo(actor.destroyCancellationToken);
-                gameEvents.OnEndPauseMenu
-                    .Subscribe(document, (_, d) =>
+                Observable.Merge
+                    (
+                        gameEvents.OnEndPauseMenu,
+                        gameEvents.OnEndAcquireReward
+                    )
+                    .Subscribe(document, static (_, d) =>
                     {
                         d.gameObject.SetActive(true);
                     })
                     .RegisterTo(actor.destroyCancellationToken);
-                gameEvents.OnBeginAcquireReward
-                    .Subscribe(document, (_, d) =>
-                    {
-                        d.gameObject.SetActive(false);
-                    })
-                    .RegisterTo(actor.destroyCancellationToken);
-                gameEvents.OnEndAcquireReward
-                    .Subscribe(document, (_, d) =>
+                gameEvents.OnEndBattleStartEffect
+                    .Subscribe(document, static (_, d) =>
                     {
                         d.gameObject.SetActive(true);
+                        d.Q<SimpleAnimation>("Area.Animation").Play("In");
                     })
                     .RegisterTo(actor.destroyCancellationToken);
             }
