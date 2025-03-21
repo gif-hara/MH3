@@ -41,18 +41,12 @@ MonoBehaviour:
       data:
         value:
         - rid: 803094595329065074
-        - rid: 803094595329065075
+        - rid: 830813453414563932
     - rid: 803094595329065074
       type: {class: GameCameraBeginQuestStartAsync, ns: MH3, asm: Assembly-CSharp}
       data:
         actorResolver:
           rid: 803094595329065084
-    - rid: 803094595329065075
-      type: {class: BeginNotificationCenterOneShotAsync, ns: MH3, asm: Assembly-CSharp}
-      data:
-        documentPrefab: {fileID: 6562501259230542608, guid: 921907e0c6d6f4a49ad870657b180977, type: 3}
-        messageResolver:
-          rid: -2
     - rid: 803094595329065084
       type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
       data:
@@ -79,6 +73,16 @@ MonoBehaviour:
     - rid: 803094660761780533
       type: {class: GameCameraForceDefault, ns: MH3, asm: Assembly-CSharp}
       data: 
+    - rid: 830813453414563932
+      type: {class: BeginQuestEffectAsync, ns: MH3, asm: Assembly-CSharp}
+      data:
+        documentPrefab: {fileID: 6562501259230542608, guid: 921907e0c6d6f4a49ad870657b180977, type: 3}
+        enemyResolver:
+          rid: 830813453414563933
+    - rid: 830813453414563933
+      type: {class: ActorResolver/Name, ns: MH3.UnitySequencerSystem.Resolvers, asm: Assembly-CSharp}
+      data:
+        name: Enemy
     - rid: 1481063520193740887
       type: {class: ActorSetBooleanState, ns: MH3, asm: Assembly-CSharp}
       data:
