@@ -18,14 +18,14 @@ namespace MH3
     public sealed class UIViewList : IDisposable
     {
         private readonly HKUIDocument document;
-        
+
         private readonly List<Selectable> buttons = new();
-        
+
         private UIViewList(HKUIDocument document)
         {
             this.document = document;
         }
-        
+
         public static UIViewList CreateWithPages
         (
             HKUIDocument listDocumentPrefab,
@@ -148,15 +148,20 @@ namespace MH3
             }
             return result;
         }
-        
+
         public void Dispose()
         {
             document.DestroySafe();
         }
-        
+
         public void SetSelectable(int index)
         {
             EventSystem.current.SetSelectedGameObject(buttons[index].gameObject);
+        }
+
+        public void SetEmptyAreaMessage(string message)
+        {
+            document.Q<TMP_Text>("Text.Empty").text = message;
         }
 
         public static void ApplyAsSimpleElement

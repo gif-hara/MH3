@@ -1133,6 +1133,7 @@ namespace MH3
                         })),
                     listInitialIndexCaches.TryGetValue(nameof(StateAddInstanceSkillCoreSelectInstanceWeapon), out var index) ? index : 0
                 );
+                list.SetEmptyAreaMessage("スキルスロットがある武器がありません。敵を倒して武器を手に入れましょう！".Localized());
                 inputController.Actions.UI.Cancel
                     .OnPerformedAsObservable()
                     .Subscribe(_ =>

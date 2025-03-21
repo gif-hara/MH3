@@ -208,7 +208,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7878806155023956656
 CanvasRenderer:
@@ -652,7 +652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3226790077275121132, guid: c737cb0b6058e4a46911b72cb5790297, type: 3}
       propertyPath: elements.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3226790077275121132, guid: c737cb0b6058e4a46911b72cb5790297, type: 3}
       propertyPath: elements.Array.data[0].document
@@ -675,6 +675,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1880963434244087996}
     - target: {fileID: 3226790077275121132, guid: c737cb0b6058e4a46911b72cb5790297, type: 3}
+      propertyPath: elements.Array.data[5].document
+      value: 
+      objectReference: {fileID: 4287937029077567574}
+    - target: {fileID: 3226790077275121132, guid: c737cb0b6058e4a46911b72cb5790297, type: 3}
       propertyPath: elements.Array.data[0].overrideName
       value: Parent.List
       objectReference: {fileID: 0}
@@ -693,6 +697,10 @@ PrefabInstance:
     - target: {fileID: 3226790077275121132, guid: c737cb0b6058e4a46911b72cb5790297, type: 3}
       propertyPath: elements.Array.data[4].overrideName
       value: Text.Page
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226790077275121132, guid: c737cb0b6058e4a46911b72cb5790297, type: 3}
+      propertyPath: elements.Array.data[5].overrideName
+      value: Text.Empty
       objectReference: {fileID: 0}
     - target: {fileID: 6927956933135241586, guid: c737cb0b6058e4a46911b72cb5790297, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
