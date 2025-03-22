@@ -104,7 +104,7 @@ namespace MH3
 
         [SerializeField]
         private HKUIDocument optionsKeyConfigDocumentPrefab;
-        
+
         [SerializeField]
         private HKUIDocument keyConfigRebindingDocumentPrefab;
 
